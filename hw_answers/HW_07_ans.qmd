@@ -1,0 +1,26 @@
+---
+title: "Homework 7 Answers"
+subtitle: "BSTA 550"
+date-modified: "today"
+format: 
+  html: 
+    link-external-newwindow: true
+    toc: true
+  pdf: default 
+editor_options: 
+  chunk_output_type: console
+---
+
+## Questions
+
+1. Not given.
+
+2. (a) $E\left(\overline{X}\right) = \mu$
+   (b) $\text{Var}\left(\overline{X}\right) = \dfrac{\sigma^2}{n}$
+
+3. See notes for how I start this problem!
+
+4. (a) $E(V) = 87850 \text{ ft}^3$, $\text{Var}(V) = 19100116 \ (\text{ft}^3)^2$ 
+      
+      (b) Expected value correct, variance incorrect
+

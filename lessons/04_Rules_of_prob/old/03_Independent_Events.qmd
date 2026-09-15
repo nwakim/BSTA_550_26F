@@ -1,0 +1,126 @@
+---
+title: "Chapter 3: Independent Events"
+author: "Meike Niederhausen and Nicky Wakim"
+title-slide-attributes:
+    data-background-color: "#006a4e"
+date: "10/07/2024"
+format: 
+  revealjs:
+    theme: "../simple_NW.scss"
+    slide-number: true
+    show-slide-number: all
+    width: 1955
+    height: 1100
+    footer: Chapter 3 Slides
+    html-math-method: mathjax
+---
+
+## Learning objectives
+
+1.  Define independence of 2-3 events given probability notation
+
+2.  Calculate whether two or more events are independent
+
+## Where are we?
+
+![](../img_slides/course_map.png){fig-align="center"}
+
+## Independent Events
+
+::: definition
+::: def-title
+Definition: Independence
+:::
+
+::: def-cont
+*Events* $A$ and $B$ are **independent** if $$\mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot  \mathbb{P}(B).$$
+:::
+:::
+
+**Notation:** For shorthand, we sometimes write $A \mathrel{\unicode{x2AEB}} B,$ to denote that $A$ and $B$ are independent events.
+
+ 
+
+- Also note: 
+$$\begin{aligned} \mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot  \mathbb{P}(B) & \implies A \mathrel{\unicode{x2AEB}} B \\
+A \mathrel{\unicode{x2AEB}} B & \implies \mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot  \mathbb{P}(B) \end{aligned}$$
+
+## Example of two dice
+
+::: example
+::: ex-title
+Example 1
+:::
+
+::: ex-cont
+*Two dice (red and blue) are rolled. Let* $A =$ event a total of 7 appears, and $B =$ event red die is a six. Are events $A$ and $B$ independent?
+:::
+:::
+
+## Independence of 3 Events
+
+::: definition
+::: def-title
+Definition: Independence of 3 Events
+:::
+
+::: def-cont
+*Events* $A$, $B$, and $C$ are *mutually* **independent** if
+
+1.  
+
+    -   $\mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot \mathbb{P}(B)$
+
+    -   $\mathbb{P}(A \cap C) = \mathbb{P}(A) \cdot \mathbb{P}(C)$
+
+    -   $\mathbb{P}(B \cap C) = \mathbb{P}(B) \cdot \mathbb{P}(C)$
+
+2.  $\mathbb{P}(A \cap B \cap C) = \mathbb{P}(A) \cdot \mathbb{P}(B) \cdot \mathbb{P}(C)$
+:::
+:::
+
+**Remark:**
+
+On your homework you will show that $(1) \not \Rightarrow (2)$ and $(2) \not \Rightarrow (1)$.
+
+## Probability at least one smoker
+
+::: columns
+
+::: {.column width="34%"}
+::: example
+::: ex-title
+Example 2
+:::
+
+::: ex-cont
+*Suppose you take a random sample of* $n$ people, of which people are smokers and non-smokers independently of each other. Let
+
+-   $A_i =$ event person $i$ is a smoker, for $i=1, \ldots ,n$, and
+
+-   $p_i =$ probability person $i$ is a smoker, for $i=1, \ldots ,n$.
+
+Find the probability that at least one person in the random sample is a smoker.
+:::
+:::
+
+:::
+:::
+
+## Building geometric series {visibility="hidden"}
+
+::: example
+::: ex-title
+Example 3
+:::
+
+::: ex-cont
+$A, B,$ and $C$ toss a fair coin in order. The first to throw heads wins. What are their respective chances of winning?
+:::
+:::
+
+Let
+
+-   $A_H$ and $A_T$ be the events player A tosses heads and tails, respectively.
+
+-   Similarly define $B_H$, $B_T$, $C_H$, and $C_T$.

@@ -1,0 +1,154 @@
+---
+title: "Chapter 4: Conditional Probability"
+author: "Meike Niederhausen and Nicky Wakim"
+title-slide-attributes:
+    data-background-color: "#006a4e"
+date: "10/09/2024"
+format: 
+  revealjs:
+    theme: "../simple_NW.scss"
+    slide-number: true
+    show-slide-number: all
+    width: 1955
+    height: 1100
+    footer: Chapter 4 Slides
+    html-math-method: mathjax
+---
+
+## Learning Objectives
+
+1.  Use set process to calculate probability of event of interest
+
+2.  Calculate the probability of an event occurring, given that another event occurred.
+
+3.  Define keys facts for conditional probabilities using notation.
+
+## Where are we?
+
+![](../img_slides/course_map.png){fig-align="center"}
+
+
+## General Process for Probability Word Problems
+
+1.  Clearly define your events of interest
+
+2.  Translate question to probability using defined events OR Venn Diagram
+
+3.  Ask yourself:
+
+    -   Are we sampling with or without replacement?
+
+    -   Does order matter?
+
+4.  Use axioms, properties, partitions, facts, etc. to define the end probability calculation into smaller parts
+
+    -   If probabilities are given to you, Venn Diagrams may help you parse out the events and probability calculations
+
+    -   If you need to find probabilities with counting, pictures or diagrams might help here
+
+5.  Write out a concluding statement that gives the probability context
+
+6.  (For own check) Make sure the calculated probability follows the axioms. Is is between 0 and 1?
+
+## Let's revisit our deck of cards
+
+::: columns
+::: {.column width="35%"}
+::: example
+::: ex-title
+Example 1
+:::
+
+::: ex-cont
+Suppose we randomly draw 2 cards from a standard deck of cards. What is the probability that we draw a spade then a heart?
+:::
+:::
+
+Let
+
+-   Let $A =$ event $1^{st}$ card is spades
+
+-   Let $B =$ event $2^{nd}$ card is heart
+:::
+
+::: column
+:::
+:::
+
+## Conditional Probability facts (1/2)
+
+::: columns
+::: column
+::: fact
+::: fact-title
+Fact 1: General Multiplication Rule
+:::
+
+::: fact-cont
+$$\mathbb{P}(A\cap B)=\mathbb{P}(A)\cdot\mathbb{P}(B|A)$$
+:::
+:::
+:::
+
+::: column
+::: fact
+::: fact-title
+Fact 2: Conditional Probability Definition
+:::
+
+::: fact-cont
+$$\mathbb{P}(A|B)=\frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)}$$
+:::
+:::
+:::
+:::
+
+## Conditional Probability facts (2/2)
+
+::: columns
+::: column
+::: fact
+::: fact-title
+Fact 3
+:::
+
+::: fact-cont
+If $A$ and $B$ are independent events ($A \unicode{x2AEB}B$), then $$\mathbb{P}(A|B) = \mathbb{P}(A)$$
+:::
+:::
+:::
+
+::: column
+::: fact
+::: fact-title
+Fact 4
+:::
+
+::: fact-cont
+$\mathbb{P}(A|B)$ is a probability, meaning that it satisfies the probability axioms. In particular, $$\mathbb{P}(A|B) + \mathbb{P}(A^C|B) = 1$$
+:::
+:::
+:::
+:::
+
+## Monty Hall Problem
+
+[Survivor Season 42](https://www.youtube.com/watch?v=6JGyiISwY1k)
+
+[With the Wiki page on it!](https://en.wikipedia.org/wiki/Monty_Hall_problem)
+
+## Conditional probability with two dice
+
+::: columns
+::: column
+::: example
+::: ex-title
+Example 2
+:::
+
+::: ex-cont
+Two dice (red and blue) are rolled. If the dice do not show the same face, what is the probability that one of the dice is a 1?
+:::
+:::
+:::
+:::

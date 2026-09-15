@@ -1,0 +1,278 @@
+---
+title: "Lesson 17: Central Limit Theorem"
+author: "Meike Niederhausen and Nicky Wakim"
+date: "`r library(here); source(here('class_dates.R')); w9d1`"
+title-slide-attributes:
+    data-background-color: "#006a4e"
+format: 
+  revealjs:
+    theme: "../simple_NW.scss"
+    slide-number: true
+    show-slide-number: all
+    width: 1955
+    height: 1100
+    footer: Lesson 17 Slides
+    html-math-method: mathjax
+---
+
+```{r setup, include=FALSE}
+library(here)
+source(here("class_dates.R"))
+```
+
+# Learning Objectives
+
+1.  Calculate probability of a sample mean using a population mean and
+    variance with unknown distribution
+2.  Use the Central Limit Theorem to construct the Normal approximation
+    of the Binomial and Poisson distributions
+
+## The Central Limit Theorem
+
+::: theorem
+::: thm-title
+Theorem 1: Central Limit Theorem (CLT)
+:::
+
+::: thm-cont
+Let $X_i$ be iid rv's with common mean $\mu$ and variance $\sigma^2$,
+for $i=1,2,\ldots,n$. Then
+$$\sum_{i=1}^n X_i \rightarrow \text{N}(n\mu, n\sigma^2)$$
+:::
+:::
+
+## Extension of the CLT
+
+::: proposition
+::: prop-title
+Corollary 1
+:::
+
+::: prop-cont
+Let $X_i$ be iid rv's with common mean $\mu$ and variance $\sigma^2$,
+for $i=1,2,\ldots,n$. Then
+$$\overline{X}=\frac{\sum_{i=1}^n X_i}{n}  \rightarrow \text{N}\Bigg(\mu, \dfrac{\sigma^2}{n}\Bigg)$$
+:::
+:::
+
+## Example of Corollary in use
+
+::: columns
+::: {.column width="40%"}
+::: example
+::: ex-title
+Example 1
+:::
+
+::: ex-cont
+According to a large US study, the mean resting heart rate of adult
+women is about 74 beats per minutes (bpm), with standard deviation 13
+bpm (NHANES 2003-2004).
+
+1.  Find the probability that the average resting heart rate for a
+    random sample of 36 adult women is more than 3 bpm away from the
+    mean.
+
+2.  Repeat the previous question for a single adult woman.
+:::
+:::
+:::
+:::
+
+## Example of CLT for exponential distribution
+
+::: columns
+::: {.column width="40%"}
+::: example
+::: ex-title
+Example 2
+:::
+
+::: ex-cont
+Let $X_i \sim Exp(\lambda)$ be iid RVs for $i=1,2,\ldots,n$. Then
+$$\sum_{i=1}^n X_i \rightarrow$$
+:::
+:::
+:::
+:::
+
+## CLT for Discrete RVs
+
+::: columns
+::: {.column width="49.5%"}
+1.  [**Binomial rv's**]{style="color:#F08897"}: Let $X \sim Bin(n,p)$
+
+    -   $X = \displaystyle\sum_{i=1}^n X_i$, where $X_i$ are iid
+        $\text{Bernoulli}(p)$
+    -   Rule of thumb: $np\geq10$ and $n(1-p)\geq 10$ to use Normal approximation
+:::
+
+::: {.column width="1%"}
+:::
+
+::: {.column width="49.5%"}
+2.  [**Poisson rv's**]{style="color:#6B8CC4"}: Let $X \sim Poisson(\lambda)$
+
+    -   $X = \displaystyle\sum_{i=1}^n X_i$, where $X_i$ are iid
+        $\text{Poiss}(1)$
+    -   Recall from [Chapter 18](/slides/18_Poisson_rv.qmd) that if
+        $X_i \sim Poiss(\lambda_i)$ and $X_i$ independent, then
+        $\sum_{i=1}^n X_i \sim Poiss(\sum_{i=1}^n \lambda_i)$
+    -   Rule of thumb: $\lambda \geq10$ to use Normal approximation
+
+:::
+:::
+
+## Larger example (1/7) {.smaller} 
+
+::: example
+::: ex-title
+Example 3
+:::
+
+::: ex-cont
+Suppose that the probability of developing a specific type of breast
+cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
+are independent. Suppose you have data from a random sample of 20,000
+women aged 40-49.
+
+1.  How many of the 20,000 women would you expect to develop this type
+    of breast cancer, and what is the standard deviation?
+
+2.  Find the **exact** probability that more than 15 of the 20,000 women
+    will develop this type of breast cancer.
+
+3.  Use the CLT to find the **approximate** probability that more than
+    15 of the 20,000 women will develop this type of breast cancer.
+
+4.  Use the CLT to approximate the following probabilities, where $X$ is
+    the number of women that will develop this type of breast cancer.
+
+    a.  $\mathbb{P}(15 \leq X \leq 22)$
+
+    b.  $\mathbb{P}(X > 20)$
+
+    c.  $\mathbb{P}(X < 20)$
+
+5.  Find the **approximate** probability that more than 15 of the 20,000
+    women will develop this type of breast cancer - not using the CLT!
+
+6.  Use the CLT to approximate the approximate probability in the
+    previous question!
+:::
+:::
+
+## Larger example (2/7) {.smaller} 
+
+::: example
+::: ex-title
+Example 3
+:::
+
+::: ex-cont
+Suppose that the probability of developing a specific type of breast
+cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
+are independent. Suppose you have data from a random sample of 20,000
+women aged 40-49.
+
+1.  How many of the 20,000 women would you expect to develop this type
+    of breast cancer, and what is the standard deviation?
+:::
+:::
+
+## Larger example (3/7) {.smaller} 
+
+::: example
+::: ex-title
+Example 3
+:::
+
+::: ex-cont
+Suppose that the probability of developing a specific type of breast
+cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
+are independent. Suppose you have data from a random sample of 20,000
+women aged 40-49.
+
+2.  Find the **exact** probability that more than 15 of the 20,000 women
+    will develop this type of breast cancer.
+:::
+:::
+
+## Larger example (4/7) {.smaller} 
+
+::: example
+::: ex-title
+Example 3
+:::
+
+::: ex-cont
+Suppose that the probability of developing a specific type of breast
+cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
+are independent. Suppose you have data from a random sample of 20,000
+women aged 40-49.
+
+3.  Use the CLT to find the **approximate** probability that more than
+    15 of the 20,000 women will develop this type of breast cancer.
+:::
+:::
+
+## Larger example (5/7) {.smaller} 
+
+::: example
+::: ex-title
+Example 3
+:::
+
+::: ex-cont
+Suppose that the probability of developing a specific type of breast
+cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
+are independent. Suppose you have data from a random sample of 20,000
+women aged 40-49.
+
+4.  Use the CLT to approximate the following probabilities, where $X$ is
+    the number of women that will develop this type of breast cancer.
+
+    a.  $\mathbb{P}(15 \leq X \leq 22)$
+
+    b.  $\mathbb{P}(X > 20)$
+
+    c.  $\mathbb{P}(X < 20)$
+:::
+:::
+
+## Larger example (6/7) {.smaller} 
+
+::: example
+::: ex-title
+Example 3
+:::
+
+::: ex-cont
+Suppose that the probability of developing a specific type of breast
+cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
+are independent. Suppose you have data from a random sample of 20,000
+women aged 40-49.
+
+5.  Find the **approximate** probability that more than 15 of the 20,000
+    women will develop this type of breast cancer - not using the CLT!
+:::
+:::
+
+## Larger example (7/7) {.smaller} 
+
+::: example
+::: ex-title
+Example 3
+:::
+
+::: ex-cont
+Suppose that the probability of developing a specific type of breast
+cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
+are independent. Suppose you have data from a random sample of 20,000
+women aged 40-49.
+
+6.  Use the CLT to approximate the approximate probability in the
+    previous question!
+:::
+:::
+

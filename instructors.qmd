@@ -1,0 +1,27 @@
+---
+title: "Instructor: Nicole (Nicky) Wakim, PhD"
+---
+
+::: columns
+::: {.column width="68%"}
+-   **Email:** [wakim\@ohsu.edu](mailto:wakim@ohsu.edu)
+
+-   **Office:** VPT 622A
+
+**Pronouns:** she/her/hers
+
+*You are welcome to address me as Nicky (pronounced "nik-EE"), Dr. Wakim (pronounced "wah-KEEM"), Dr. W, Dr. Nicky, Professor, Professor Wakim, or any combination of the prior.*
+
+**Best method to contact:** Office hours or email for general course questions.
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="30%"}
+![](images/N_Wakim.jpg){fig-align="right" width="256"}
+:::
+:::
+
+**Brief professor statement:** As a professor, my main goal is to instill a growth mindset into my students. Growth mindset means we are NOT stuck in our abilities or knowledge, and that we all can grow with effort, feedback, and learning from mistakes! This course aims to be as transparent as possible. I want you to understand my motivation for assessments, questions, and lessons. I also want those assessments to be clear, so please ask for clarification whenever needed.
+

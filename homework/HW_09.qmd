@@ -1,0 +1,46 @@
+---
+title: "Homework 9"
+subtitle: "BSTA 550"
+description: "Due: Thursday December 13, 2024 at 11pm"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+  pdf: default 
+editor_options: 
+  chunk_output_type: console
+---
+
+## Directions
+
+**Please turn in this homework on Sakai.** Please submit your homework in pdf or html format.
+
+You can type your work on your computer or submit a photo of your written work or any other method that can be turned into a pdf. The Adobe Scan phone app is an easy way to scan photos and compile into a PDF. Please let me know if you greatly prefer to submit a physical copy. We can work out another way for you to turn in homework.
+
+*You must show all of your work to receive credit.*
+
+Extra problems do not need to be turned in!
+
+## Questions
+
+1.  Let $R_X(t)=\ln(M_X(t))$. Show that $\text{Var}(X)=R''_X(0)$.
+
+2.  The mgf for a Gamma distribution is $M_X(t)=\frac{1}{(1-t/\lambda)^r}$. Use the mgf of an Exponential distribution (from #43.9), to show that the sum of $n$ i.i.d. Exponential($\lambda)$ random variables has a Gamma($r,\lambda$) distribution.
+
+### Extra problems
+
+3.  Using mgf's, show that the sum of $n$ i.i.d. Chi Square random variables with one degree of freedom ($\chi^2_{(1)}$) r.v.'s has a Chi Square with $n$ degrees of freedom ($\chi^2_{(n)}$) distribution.
+
+    *Hint:* First, look up the pdf of a $\chi^2_{(n)}$. This is a special case of the Gamma distribution with what parameters? Based on that and the information from \# 2 above, you can determine what the mgf of a $\chi^2_{(n)}$ is, which will help you determine whether the mgf of the sum of $n$ i.i.d. $\chi^2_{(1)}$ r.v.'s has a $\chi^2_{(n)}$ distribution.
+
+4.  Use the mgf of a Poisson distribution to find the mgf of the following distributions. If the mgf is that of a common named distribution, then name the distribution and state its parameter(s).
+
+    1.  The distribution of $\sum_{i=1}^nX_i$, if $X_i\sim$Poisson$(\lambda_i)$ and are independent.
+
+    2.  The distribution of $\sum_{i=1}^3X_i$, if $X_i\sim$Poisson$(\lambda)$ and are independent (i.i.d. in this case).
+
+    3.  The distribution of $3X$, if $X\sim$Poisson$(\lambda)$.
+
+    4.  Why are the answers to (b) and (c) different?
+

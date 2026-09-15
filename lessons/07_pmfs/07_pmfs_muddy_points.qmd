@@ -1,0 +1,20 @@
+---
+title: "Muddy Points"
+subtitle: "Lesson 7: pmf's"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Fall 2025
+
+### 1. I think what I am muddy on is the is why for pmf, we use "P(X)" and for pdfs, we use "f(x)"? Is it because for pdfs, the integration and f(x) is better suited for continuous probabilities?
+
+I think you're on the right track... $P(X)$, $P(X=x)$, and $p_X(x)$ represent probabilities. 
+
+For discrete random variables, we can use $P(X=x)$ or $p_X(x)$ to represent the probability that the random variable $X$ takes on the value $x$. And then we can discuss the probability mass function (pmf) as the probability distribution as well!
+
+For continuous random variables, we use $f_X(x)$ to represent the probability density function (pdf) of $X$ at the value $x$, BUT it is not equal to the actual probability! Aka $f_X(x)$ does not represent a probability, but the area under the curve of $f_X(x)$ over an interval gives us the probability.

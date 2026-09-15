@@ -1,0 +1,27 @@
+---
+title: "Key Info"
+date: "10/21/2024"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+library(here)
+source(here("class_dates.R"))
+```
+
+
+## Announcements
+
+- Quiz 1 grades look pretty good! Everyone got score above 11/15
+  - Feedback released at 12:10pm today
+  - Will go over questions next class
+
+## Key Dates
+
+- Homework 4 due `r hw4 %>% format("%m/%d")` at 11pm
+

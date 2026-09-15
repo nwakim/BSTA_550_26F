@@ -1,0 +1,35 @@
+---
+title: "Key Info"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Announcements
+
+-   We will finish up the example from last class
+-   No class on 11/26 and 12/1
+-   Biostatistics tutoring starts today
+    -   [Schedule a meeting here](https://traccloud.go-redrock.com/ohsu)
+    -   Or email Charles directly
+
+### Internship Opportunity in Biomedical Data Science
+
+The Division of Biostatistics in the Department of Preventive Medicine at the University of Tennessee Health Science Center in Memphis, Tennessee invites applications for paid internships in Biomedical Data Science.
+
+We expect to have at least two positions for the summer 2026. Interns will work with one or more of our faculty members on a statistical project of mutual interest. The work is expected to lead to a tangible research product, such as a software package or methodological paper. Interested individuals must have strong programming skills in at least one language (eg. R, Python, Julia, C/C++, SAS), possess basic data analysis skills, and have a willingness to learn biomedical science.
+
+Applicants should possess a relevant (e.g. statistics, mathematics, computer science) bachelor's or master's degree; undergraduate students must be rising juniors or seniors. Most internships are 20-40 hours per week for 10 weeks, but total hours are negotiable. Internships may be paid or for credit at the student's home institution, depending on institutional policies, student and faculty mentor preference.
+
+More info: [www.uthsc.edu/preventive-medicine/internships.php](www.uthsc.edu/preventive-medicine/internships.php)
+
+Alumni info: [www.uthsc.edu/preventive-medicine/internshipalumni.php](www.uthsc.edu/preventive-medicine/internshipalumni.php)
+
+## Key Dates
+
+-   Quiz 3 opens 12/3
+  - I posted some info on it
+-   HW 8 due 12/7

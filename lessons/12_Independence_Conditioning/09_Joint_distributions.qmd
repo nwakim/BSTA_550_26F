@@ -1,0 +1,287 @@
+---
+title: "Chapter 9: Independence and Conditioning (Joint Distributions)"
+author: "Meike Niederhausen and Nicky Wakim"
+title-slide-attributes:
+    data-background-color: "#006a4e"
+date: "10/21/2024"
+format: 
+  revealjs:
+    theme: "../simple_NW.scss"
+    slide-number: true
+    show-slide-number: all
+    width: 1955
+    height: 1100
+    footer: Chapter 9 Slides
+    html-math-method: mathjax
+---
+
+## Learning Objectives
+
+1.  Calculate probabilities for a pair of discrete random variables
+
+2.  Calculate a *joint, marginal, and conditional* probability mass function (pmf)
+
+3.  Calculate a *joint, marginal, and conditional* cumulative distribution function (CDF)
+
+## Where are we?
+
+![](../img_slides/course_map.png){fig-align="center"}
+
+## What is a joint pmf?
+
+::: definition
+::: def-title
+Definition: joint pmf
+:::
+
+::: def-cont
+The **joint pmf** of a pair of discrete r.v.'s $X$ and $Y$ is $$p_{X,Y}(x,y) = \mathbb{P}(X=x\ and\ Y=y) = \mathbb{P}(X=x, Y=y)$$
+:::
+:::
+
+## This chapter's main example
+
+::: columns
+::: {.column width="100%"}
+::: example
+::: ex-title
+Example 1
+:::
+
+::: ex-cont
+Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.
+
+1.  Find $p_{X,Y}(x,y)$.
+
+2.  Find $\mathbb{P}(X+Y=3).$
+
+3.  Find $\mathbb{P}(Y = 1).$
+
+4.  Find $\mathbb{P}(Y \leq 2).$
+
+5.  Find the joint CDF $F_{X,Y}(x,y)$ for the joint pmf $p_{X,Y}(x,y)$
+
+6.  Find the marginal CDFs $F_{X}(x)$ and $F_{Y}(y)$
+
+7.  Find $p_{X|Y}(x|y)$.
+
+8.  Are $X$ and $Y$ independent? Why or why not?
+:::
+:::
+:::
+:::
+
+## Joint pmf
+
+::: columns
+::: {.column width="35%"}
+::: example
+::: ex-title
+Example 1
+:::
+
+::: ex-cont
+Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.
+
+1.  Find $p_{X,Y}(x,y)$.
+
+2.  Find $\mathbb{P}(X+Y=3).$
+:::
+:::
+:::
+:::
+
+## Marginal pmf's
+
+::: columns
+::: {.column width="35%"}
+::: example
+::: ex-title
+Example 1
+:::
+
+::: ex-cont
+Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.
+
+3.  Find $\mathbb{P}(Y = 1).$
+
+4.  Find $\mathbb{P}(Y \leq 2).$
+:::
+:::
+:::
+:::
+
+## Remarks on the joint pmf
+
+Some properties of joint pmf's:
+
+-   A joint pmf $p_{X,Y}(x,y)$ must satisfy the following properties:
+
+    -   $p_{X,Y}(x,y)\geq 0$ for all $x, y$.
+
+    -   $\sum \limits_{\{all\ x\}} \sum \limits_{\{all\ y\}} p_{X,Y}(x,y)=1$.
+
+-   Marginal pmf's:
+
+    -   $p_X(x) = \sum \limits_{\{all\ y\}} p_{X,Y}(x,y)$
+
+    -   $p_Y(y) = \sum \limits_{\{all\ x\}} p_{X,Y}(x,y)$
+
+## What is a joint CDF?
+
+::: definition
+::: def-title
+Definition: joint CDF
+:::
+
+::: def-cont
+The **joint CDF** of a pair of discrete r.v.'s $X$ and $Y$ is $$F_{X,Y}(x,y) = \mathbb{P}(X \leq x\ and\ Y \leq y) = \mathbb{P}(X \leq x, Y \leq y)$$
+:::
+:::
+
+## Joint CDFs
+
+::: columns
+::: {.column width="35%"}
+::: example
+::: ex-title
+Example 1
+:::
+
+::: ex-cont
+Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.
+
+5.  Find the joint CDF $F_{X,Y}(x,y)$ for the joint pmf $p_{X,Y}(x,y)$
+:::
+:::
+:::
+:::
+
+## Marginal CDFs
+
+::: columns
+::: {.column width="35%"}
+::: example
+::: ex-title
+Example 1
+:::
+
+::: ex-cont
+Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.
+
+6.  Find the marginal CDFs $F_{X}(x)$ and $F_{Y}(y)$
+:::
+:::
+:::
+:::
+
+## Remarks on the joint and marginal CDF
+
+-   $F_X(x)$: right most columns of the CDf table (where the $Y$ values are largest)
+
+-   $F_Y(y)$: bottom row of the table (where X values are largest)
+
+-   $F_X(x)=\lim\limits_{y\rightarrow\infty}F_{X, Y}(x,y)$
+
+-   $F_Y(y)=\lim\limits_{x\rightarrow\infty}F_{X, Y}(x,y)$
+
+## Independence and Conditioning
+
+Recall that for *events* $A$ and $B$,
+
+-   $\mathbb{P}(A|B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}$
+
+-   $A$ and $B$ are independent if and only if
+
+    -   $\mathbb{P}(A|B) = \mathbb{P}(A)$
+
+    -   $\mathbb{P}(A \cap B) = \mathbb{P}(A)\cdot\mathbb{P}(B)$
+
+Independence and conditioning are defined similarly for r.v.'s, since $$p_X(x) = \mathbb{P}(X=x)\ \mathrm{and}\ \ p_{X,Y}(x,y) = \mathbb{P}(X = x ,Y = y).$$
+
+## What is the conditional pmf?
+
+::: definition
+::: def-title
+Definition: conditional pmf
+:::
+
+::: def-cont
+The **conditional pmf** of a pair of discrete r.v.'s $X$ and $Y$ is defined as $$p_{X|Y}(x|y) = \mathbb{P}(X = x |Y = y) = \frac{\mathbb{P}(X = x\ and\ Y = y)}{\mathbb{P}(Y = y)}
+=\frac{p_{X,Y}(x,y) }{p_{Y}(y) }$$ if $p_{Y}(y) > 0$.
+:::
+:::
+
+## Remarks on the conditional pmf
+
+The following properties follow from the conditional pmf definition:
+
+-   If $X \perp Y$ (independent)
+
+    -   $p_{X|Y}(x|y) = p_X(x)$ for all $x$ and $y$
+    -   $p_{X,Y}(x,y) = p_X(x)p_Y(y)$ for all $x$ and $y$
+    -   Which also implies ($\Rightarrow$): $F_{X,Y}(x,y) = F_X(x)F_Y(y)$ for all $x$ and $y$
+
+-   If $X_1, X_2, …, X_n$ are independent
+
+    -   $$p_{X_1, X_2, …, X_n}(x_1, x_2, …, x_n) = P(X_1=x_1, X_2=x_2, …, X_n=x_n)=\prod\limits_{i=1}^np_{X_i}(x_i)$$
+    -   $$F_{X_1, X_2, …, X_n}(x_1, x_2, …, x_n) = P(X_1\leq x_1, X_2\leq x_2, …, X_n\leq x_n)=\prod\limits_{i=1}^nP(X_i \leq x_i) = \prod\limits_{i=1}^nF_{X_i}(x_i)$$
+
+## Conditional pmf's
+
+::: columns
+::: {.column width="35%"}
+::: example
+::: ex-title
+Example 1
+:::
+
+::: ex-cont
+Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.
+
+7.  Find $p_{X|Y}(x|y)$.
+8.  Are $X$ and $Y$ independent? Why or why not?
+:::
+:::
+
+
+::: example
+::: ex-cont
+<font size=6ex>Remark:
+
+-   To show that $X$ and $Y$ are *not* independent, we just need to find one counter example
+-   However, to show that they *are* independent, we need to verify this for all possible pairs of $x$ and $y$ 
+
+</font>
+:::
+:::
+:::
+:::
+
+## Hypothetical 4-sided die {visibility="hidden"}
+
+::: example
+::: ex-title
+Example 3
+:::
+
+::: ex-cont
+-   Suppose you have a 4-sided die, and you roll the 4-sided die until the first 4 appears.
+
+-   Let $X$ be the number of rolls required until (and including) the first 4.
+
+-   After the first 4, you keep rolling it again until you roll a 3.
+
+-   Let $Y$ be the number of rolls, after the first 4, required until (and including) the 3.
+
+1.  Find $p_{X,Y}(x,y)$.
+
+2.  Using $p_{X,Y}(x,y)$, find $p_{Y}(y)$.
+
+3.  Find $p_{X}(x)$.
+
+4.  Are $X$ and $Y$ are independent? Why or why not?
+
+5.  Find $F_{X,Y}(x,y)$.
+:::
+:::

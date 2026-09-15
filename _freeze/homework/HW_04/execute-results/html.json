@@ -1,0 +1,15 @@
+{
+  "hash": "188c773b17017e27367947e93c32d62b",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Homework 4\"\nsubtitle: \"BSTA 550\"\ndescription: \"Due: 11/02 at 11pm\"\ndate-modified: \"today\"\nformat: \n  html:\n    link-external-newwindow: true\n    toc: true\n  pdf: default \neditor_options: \n  chunk_output_type: console\n---\n\n\n\n## Directions\n\n**Please turn in this homework on Sakai.** Please submit your homework in pdf or html format. \n\nYou can type your work on your computer or submit a photo of your written work or any other method that can be turned into a pdf. The Adobe Scan phone app is an easy way to scan photos and compile into a PDF. Please let me know if you greatly prefer to submit a physical copy. We can work out another way for you to turn in homework.\n\n*You must show all of your work to receive credit.*\n\n## Questions\n\n1. **Mystery constant.** Suppose $X$ is a discrete random variable with a probability mass function $p_X(x) = c(4- x)$ for $x$ in $\\{-1, 2, 3\\}$ and $p_X(x) = 0$ otherwise.\n\n    a. What is the value of c so that $p_X(x)$ is a mass?\n    b. Make a plot of the probability mass function and write the piecewise pmf\n    c. What is the CDF of $X$? Write the piecewise CDF.\n    d. Make a plot of the CDF.\n\n2. **Wastebasket basketball.** Chris tries to throw a ball of paper in the wastebasket behind his back (without looking). He estimates that his chance of success each time, regardless of the outcome of the other attempts, is $1/3$. Let $X$ be the number of attempts required. If he is not successful within the first 5 attempts, then he quits, and he lets $X = 6$ in such a case.\n\n    a. Draw the mass of $X$ and define the piecewise pmf.\n    b. Draw the CDF of $X$ and define the piecewise CDF.\n    c. Simulate 10,000 trials of this experiment in R and plot the approximate probability distribution.\n  \n  \n3. Suppose a density $f_X(x)$ increases linearly from $(16, 0)$ to\n$\\left(24, \\dfrac{1}{4}\\right)$.\n\n    a. Find the CDF of $X$.\n    b. What is the value of $a$ so that $P(X > a) = 0.75$?\n\n4. For the following pdf $$f_X(x) = \\begin{cases} kx^9(1-x)^2 & \\text{if } 0 \\leq x \\leq 1 \\\\ 0 & \\text{otherwise} \\end{cases}$$\n    \n    a. What is the constant $k$ that makes the following function a valid density?\n    b. What is the cumulative distribution function (cdf) $F_X(x)$?\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

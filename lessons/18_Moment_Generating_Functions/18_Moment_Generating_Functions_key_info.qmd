@@ -1,0 +1,38 @@
+---
+title: "Key Info"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Announcements
+
+- LAST CLASS!!!!
+  - Office hours will continue through 12/12
+- Finish CLT lesson
+- HW 7: Charles said it looked good!
+- HW 9 is optional!
+  - Can use HW 9 to replace a 0 for another homework
+  - But you can also turn in any homework up until 12/12 at 11pm
+- Please, please, please do your course eval! 
+  - It helps me improve the course
+  - It helps me get recognition for my work
+  - It is anonymous
+  - It takes like 5 minutes: you really only need to do the scorings, and maybe a sentence or two of comments
+
+
+## Key Dates
+
+-   Quiz 3 opens TODAY at 3pm
+  - I posted some info on it
+-   HW 8 due 12/7
+-   **IMPORTANT**: ALL coursework due by 12/12 at 11pm
+
+
+  
+
+
+

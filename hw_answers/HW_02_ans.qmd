@@ -1,0 +1,44 @@
+---
+title: "Homework 2 Answers"
+subtitle: "BSTA 550"
+date-modified: "today"
+format: 
+  html: 
+    link-external-newwindow: true
+    toc: true
+  pdf: default 
+editor_options: 
+  chunk_output_type: console
+---
+
+Below are some select answers from the homework.
+
+## Questions
+
+1. (a) ![](images/HW_01_NTB_01_A-01.png){width="500"} (b) Answers for part (ii) for each:
+
+    1.  0.48
+
+    2.  0.52
+
+    3.  0.2
+
+    4.  0.32
+
+    5.  0.03
+
+    6.  0.01
+
+    7.  0.02
+
+2.  (c) 0.384 If you have the right answer to (c), then you should be able to figure out the rest (see (e)).
+
+3. (a) 1 does not hold because $0 \neq \dfrac{1}{216}$      (b) 2 does not hold because $P(B \cap C) \neq P(B)P(C)$ 
+
+4. a. 5/9; b. 2/5; c. 2/4
+
+5. a. 0.71; b. 0.29; c. 48/71; d. 1; e. 25/29; f. 25/39
+
+### Extra problem
+
+1. (a) 16, (c) for one, $P(X=10) = \dfrac{5}{16}$, (d) 0.375

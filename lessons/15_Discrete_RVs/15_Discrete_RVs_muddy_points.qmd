@@ -1,0 +1,23 @@
+---
+title: "Muddy Points"
+subtitle: "Lesson 15: Discrete RVs"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Fall 2025
+
+### 1. Hypergeometric distribution is always a lot to look at
+
+Haha, so true. Hopefully more examples next class will be helpful.
+
+### 2. For the first couple of random variable types deriving the expected values & variances feels simple enough, for the later ones i have no idea how
+
+Yes, it gets tricky especially when $X$ can take infinite values. The good news is these are all very common random variables and there are many videos that go through the proofs. 
+
+For example, [here is one from Khan Academy on the geometric distribution.](https://www.youtube.com/watch?v=7br_-emGNec) 
+

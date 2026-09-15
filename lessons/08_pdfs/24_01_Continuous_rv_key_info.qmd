@@ -1,0 +1,29 @@
+---
+title: "Key Info"
+subtitle: "Chapter 24: Continuous RVs"
+date: "11/6/2024"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Announcements
+
+- Graded: HW 4 assignment and HW 3 solutions
+- Calendly is up!!
+
+## Key Dates
+
+- Thursday: HW 5 due
+- Sunday: HW 4 solutions due
+- Week of 11/11
+  - Make a meeting with me
+  - 11/12: recordings due if you are making that
+  - Now on Sakai
+  
+
+
+

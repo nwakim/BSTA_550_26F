@@ -1,0 +1,31 @@
+---
+title: "Homework 6 Answers"
+subtitle: "BSTA 550"
+date-modified: "today"
+format: 
+  html: 
+    link-external-newwindow: true
+    toc: true
+  pdf: default 
+editor_options: 
+  chunk_output_type: console
+---
+
+## Questions
+
+1. Partial answers:
+
+ - (g) $p_{X|Y}(X=\text{high school}| Y=\text{no smoking at all}) = 0.476$
+
+ - (h) $p_{Y|X}( Y=\text{no smoking at all}|X=\text{high school}) = 0.200$
+
+2. 
+    
+    - (a) $p_{X,Y}(x,y) = [0.99^{x-1}0.01][0.97^{y-1}0.03]$ for $x,y = 0, 1, 2, ...$
+    - (b) ![](./images/HW_04_NTB_2_B.png) And hint: ![](./images/Hint_NTB_9_02.png)
+        
+    - (c) ![](./images/HW_04_NTB_2_C.png)
+
+3.  
+    - (a) $f_{X|Y}(x|y)=\frac{1}{2}$ for (need $x$ and $y$ domains) 
+    - (c) $\frac{4}{7}$

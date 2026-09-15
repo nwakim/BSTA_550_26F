@@ -1,0 +1,37 @@
+---
+title: "Muddy Points"
+subtitle: "Pre Chapter 24: Calculus Review"
+date: "11/04/2024"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+editor_options: 
+  chunk_output_type: console
+---
+
+Muddy points from Fall 2023:
+
+### 1. Why we are allowed to "split" the operator d/dx into two pieces as if it were a fraction when it's an operator
+
+Here is a pretty helpful [StackExchange post](https://math.stackexchange.com/questions/2484781/writing-du-in-terms-of-dx-integrating-using-u-substitution) talking about this!
+
+### 2. How to know what to use as $u$ and $dv$ for integration by parts
+
+I have two approaches to identifying $u$ and $dv$:
+
+1.  Try to find a $u$ that will eventually differentiate into a constant. This usually works unless you're left with a $dv$ that is hard to integrate.
+
+    -   For example, $u=x^6$. the first derivative, $u'=6x^5$, which may lead us to do another integration by parts, but eventually, at the 6th derivative, we get 720. This means, in our integration by parts, we eventually get an integral that only has $x$ in the function once.
+
+        -   In this example, $x^6$ would result in many integration by parts. I feel like we don't typically see that many in our work.
+
+    -   In Example 3.5 in Calculus Review, setting $u=x^2$ is a bad idea because we don't really know how to integrate $dv=ln(x)$ into $v$.
+
+2.  Try to find a $u$ where $du$ is the reciprocal of $v$ or $du$ cancels with $v$.
+
+    -   Look again at Example 3.5 in the notes! Hint: What is the derivative of $ln(x)$? And what does $\dfrac{1}{x}x^3$ equal?
+
+### 3. Looking for more practice in calculus?
+
+I just stumbled upon [this website](https://www.mathway.com/popular-problems/Calculus)! Just a bunch of calculus practice problems! Might be some help.

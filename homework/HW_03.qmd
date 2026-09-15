@@ -1,0 +1,80 @@
+---
+title: "Homework 3"
+subtitle: "BSTA 550"
+description: "Due: `r library(here); source(here('class_dates.R')); hw3 %>% format('%m/%d')` at 11pm"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+  pdf: default 
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: "setup"
+#| include: false
+knitr::opts_chunk$set(echo = TRUE)
+
+library(here)
+source(here("class_dates.R"))
+```
+
+## Directions
+
+**Please turn in this homework on Sakai.** Please submit your homework in pdf or html format. 
+
+You can type your work on your computer or submit a photo of your written work or any other method that can be turned into a pdf. The Adobe Scan phone app is an easy way to scan photos and compile into a PDF. Please let me know if you greatly prefer to submit a physical copy. We can work out another way for you to turn in homework.
+
+*You must show all of your work to receive credit.*
+
+Extra problems do not need to be turned in!!
+
+## Questions
+
+1. **Cookies.** Consider a jar of 9 chocolate chip and 11 peanut butter cookies. You randomly select 2 cookies to eat. All possible choices are equally likely.
+
+    a. What is the probability that the 2 you select will both will be chocolate chip? *Calculate your answer "by hand."*
+    b. What is the probability that at least one of your cookies will be peanut butter? *Calculate your answer "by hand" then verify your answer by simulating the experiment in R at least 1000 times.*
+    c. What is the probability that last 2 cookies left in the jar (after 18 have been eaten) will be chocolate chip? (Is this answer the same or different than part a? Why or why not?) *Calculate your answer "by hand" then verify your answer by simulating the experiment in R at least 1000 times.*
+
+2. **Raffle tickets.** There are 30 raffle tickets in a bowl. Three winning tickets will be selected. Each ticket can win at most one prize. How many ways can the prizes be distributed if the following additional information is known?
+    
+    a. All 3 winners receive goldfish (the goldfish are indistinguishable).
+    b. The 1st winner receives a car, the 2nd a bicycle, and the 3rd a goldfish.
+
+3.  A new drug is packaged to contain 30 pills in a bottle. Suppose that 98% of all bottles contain no defective pills, 1.5% contain one defective pill, and 0.5% contain two defective pills. Two pills from a bottle are randomly selected and tested. What is the probability that there are 2 defective pills in the bottle given that one of the two tested pills is defective?
+
+## Extra Problems
+
+1.  Read the Washington Post article *The amazing woman who can smell Parkinson's disease - before symptoms appear* (<http://www.washingtonpost.com/news/morning-mix/wp/2015/10/23/scottish-woman-detects-a-musky-smell-that-could-radically-improve-how-parkinsons-disease-is-diagnosed/>)
+
+    Assuming Joy Milne does not have the ability to detect Parkinson's disease via smell, answer the following questions:
+
+    a.  What is the probability of her correctly detecting Parkinson's by smelling one t-shirt?
+
+    b.  What is the probability of her correctly detecting Parkinson's in 12 out of 12 t-shirts?
+
+2.  Calculus Review
+
+    a.  $$\int_0^yc(x+y)dx$$
+
+    b.  $$\frac{d}{dx}\bigg(\frac{4}{9}x^2y^2+\frac{5}{9}xy^4\bigg)$$
+
+    c.  $$\frac{d}{dy}\bigg(\frac{4}{9}x^2y^2+\frac{5}{9}xy^4\bigg)$$
+
+    d.  $$\int_0^y2e^{-x}e^{-y}dx$$
+
+    e.  $$\int_0^\infty xye^{-(x+y)}dy$$
+
+    f.  $$\int_x^{2x} 2e^{-(x+3y)}dy$$
+
+    g.  Find the area of the region bounded by the graphs of $f(x)=2-x^2$ and $g(x)=x$ by integrating with respect to $x$.
+
+    h.  Find the area of the region bounded by the graphs of $f(x)=2-x^2$ and $g(x)=x$ by integrating with respect to $y$.
+
+    i.  Find the area of the region bounded by the graphs of $x=3-y^2$ and $y=x-1$ by integrating with respect to $x$.
+
+    j.  Find the area of the region bounded by the graphs of $x=3-y^2$ and $y=x-1$ by integrating with respect to $y$.
+

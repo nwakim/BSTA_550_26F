@@ -1,0 +1,66 @@
+---
+title: "Homework 7"
+subtitle: "BSTA 550"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+  pdf: default 
+editor_options: 
+  chunk_output_type: console
+---
+
+## Directions
+
+**Please turn in this homework on Sakai.** Please submit your homework in pdf or html format. 
+
+You can type your work on your computer or submit a photo of your written work or any other method that can be turned into a pdf. The Adobe Scan phone app is an easy way to scan photos and compile into a PDF. Please let me know if you greatly prefer to submit a physical copy. We can work out another way for you to turn in homework.
+
+*You must show all of your work to receive credit.*
+
+Extra problems do not need to be turned in!
+
+## Questions
+
+1.  Prove that for a r.v. $X$ and constants $a$ and $b$, that $$\mathrm{Var}[aX+b]=a^2\mathrm{Var}[X].$$
+
+2.  Let $\overline{X}$ be the random variable for the sample mean, $\overline{X}=\frac{\sum_{i=1}^nX_i}{n}$, where the $X_i$ are i.i.d. random variables with common mean $\mu$ and variance $\sigma^2$.
+
+    a.  Find $\mathbb{E}[\overline{X}]$.
+
+    b.  Find $Var[\overline{X}]$.
+
+3.  Let $f_X(x)=\lambda e^{-\lambda x}$ for $x>0$, where $\lambda>0$.
+
+    a.  Show $Var[X]=\frac{1}{\lambda^2}$. You may use the result from class for $\mathbb{E}[X]$ without first proving it.
+
+4.  A shipping company handles containers in three different sizes: (1) 27 $ft^3$ (3 x 3 x 3), (2) 125 $ft^3$, and (3) 512 $ft^3$. Let $X_i$ ($i = 1, 2, 3$) denote the number of type $i$ containers shipped during a given week. Suppose that $\mu_1 =200,\sigma_1=10,\mu_2 =250,\sigma_2=12,\mu_3 =100,\sigma_3=8$.
+
+    a.  Assuming that $X_1,X_2,X_3$ are independent, calculate the expected value and variance of the total volume shipped.
+
+    b.  Would your calculations necessarily be correct if the $X_i$'s were not independent? Explain.
+
+5. Consider the joint density of $X$ and $Y$: $$f_{X,Y}(x,y)= \dfrac32 x y$$ for $0 \leq x$ and $0 \leq y$ and $x+y \leq 2$
+and $f_{X,Y}(x,y)=0$ otherwise. Find $E(Y)$.
+
+## Extra problems
+
+1.  There is a bowl containing 30 cashews, 20 pecans, 25 almonds, and 25 walnuts. I am going to randomly pick and eat 3 nuts (without replacement). Find the expected value of the number of cashews by defining the number of cashews as a sum of random variables. (This one takes a little while if we don't rely on the
+
+
+2.  Let $\hat{p}$ be the random variable for the sample proportion, $\hat{p}=\frac{X}{n}$, where $X$ is the number of successes in a random sample of size $n$. Assume the probability of success is $p$.
+
+    a.  Find $\mathbb{E}[\hat{p}]$.
+
+    b.  Find $Var[\hat{p}]$.
+
+3.  Suppose your waiting time for a bus in the morning is uniformly distributed on \[0, 8\] (minutes), whereas waiting time in the evening is uniformly distributed on \[0, 10\] (minutes) independent of morning waiting time. *Make sure to FIRST set up an equation for calculating the total waiting time in each question before calculating the mean and variance of the total waiting time.* *You may use results from class for the expected value and variance of uniform r.v.'s without proving them.*
+
+    a.  If you take the bus each morning and evening for a week (7 days), what is your total expected waiting time?
+
+    b.  What is the variance of your total waiting time?
+
+    c.  What are the expected value and variance of the difference between morning and evening waiting times on a given day?
+
+    d.  What are the expected value and variance of the difference between total morning waiting time and total evening waiting time for a particular week?

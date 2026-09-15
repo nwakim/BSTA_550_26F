@@ -1,0 +1,24 @@
+---
+title: "Muddy Points"
+subtitle: "Lesson 2: Introducation to Simulations"
+date: "10/01/2025"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Fall 2025
+
+### 1. I think just clarification on what it means to have "replacement" and "w/o replacement." I think it means something to do with an event not being replicated while the latter, an event cannot be done twice? Also, what is the importance of replacement.
+
+When we say "with replacement," it means that after we select an item (like drawing a card from a deck), we put it back before selecting again. This means that the **probability of selecting that item remains the same for each draw**. For example, if you draw a card from a standard deck of 52 cards and then put it back, the probability of drawing any specific card (like an Ace) remains 1/52 for each draw.
+
+On the other hand, "without replacement" means that once an item is selected, it is not put back. This means that the **probability of selecting that item *changes* for subsequent draws** because there are fewer items left to choose from. For example, if you draw a card from a deck and do not put it back, the probability of drawing an Ace on the next draw changes because there are now only 51 cards left in the deck.
+
+It's less about the importance of replacement, but that we accurately represent whatever scenario we want to simulate!
+
+
+

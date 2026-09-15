@@ -1,0 +1,15 @@
+{
+  "hash": "3ec2a49d3289f27d3e824d8b5f978fc2",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"DRAFT Schedule\"\nformat: \n  html:\n    link-external-newwindow: true\n    page-layout: full\neditor_options: \n  chunk_output_type: console\n---\n\n\n\n\n\nLast year, did material in 17 classes. Can I make that more efficient??\n\n| class | Lesson | Topic | TB | Things covered |\n|----|----|----|----|----|\n| 1 |  | Welcome |  | Hello and stuff |\n|  | 1 | Introduction to Probability | 1.1, 2.1, 2.2, 2.4 | randomness, probability, single coin toss + simulation, def of prob, outcomes, events, sample space |\n| 2 | 2 | Language of Probability and Simulations | 2.2, 2.4, | union, intersections, complements, mutually exclusive, prob axioms, prob properties, de morgans laws, partitions |\n| 3 |  | Introduction to Simulations | 2.5 |  |\n| 4 | 3 | Rules of probability | 3.5, 2.7, 3.4, 3.3 | multiplication rule, law of total probability, bayes rule, conditional prob, independence, fun link: <https://pudding.cool/2018/04/birthday-paradox/> |\n| 5 |  | Equally Likely Outcomes (some counting) | 3.6 |  |\n| 6 | pre-24 | Optional class: Calculus Review |  |  |\n| 7 | 7 | Random Variables | 2.3, 4.1 |  |\n|  | 8 | pmfs | 4.2 |  |\n| 8 |  | pdfs | 4.3 |  |\n|  |  | CDFs | 4.4 |  |\n| 9 | 9 | Tranformations of distributions, joint distributions | 4.6, 4.7 |  |\n| 10 |  | Independence and Conditioning (Joint Distributions) | 4.8, 4.9 |  |\n| 11 | 10 | Expected Values | 5.1 |  |\n|  | 11 | Expected Values of *sums* | 5.5 |  |\n|  |  | conditional expect value | 5.6 |  |\n| 12 | 12 | Variance | 5.2, 5.3 |  |\n| 13 | 14-20 | Some Important Discrete RVs | 6 |  |\n| 14 | 31-35 | Some Important Continuous RVs | 7 |  |\n| 15 | 37 | Central limit theorem | 8.1 |  |\n|  | 43 | Moment generating functions |  |  |\n| 16 |  | MGF part 2?? |  |  |\n| 17 |  |  |  |  |\n\n: {.striped .hover tbl-colwidths=\"\\[ 6, 6, 15, 6, 40\\]\"}\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

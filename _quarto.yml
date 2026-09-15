@@ -1,0 +1,32 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Introduction to Probability"
+  navbar:
+    background: primary
+    search: true
+    logo: "images/bsta_550_hex_3.png"
+    foreground: "#fff"
+    collapse-below: sm
+    right:
+      - schedule.qmd
+      - href: syllabus.qmd
+        text: Syllabus
+      - href: instructors.qmd
+        text: Instructor
+      - href: homeworks.qmd
+        text: Homework
+      - href: quiz.qmd
+        text: Quizzes
+
+execute:
+  freeze: auto
+
+format:
+  html:
+    theme:
+      - sandstone_NW.scss
+    toc: true
+

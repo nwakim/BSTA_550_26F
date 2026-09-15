@@ -1,0 +1,88 @@
+---
+title: "Chapter 17: Negative Binomial RVs"
+author: "Meike Niederhausen and Nicky Wakim"
+title-slide-attributes:
+    data-background-color: "#006a4e"
+date: "10/16/2024"
+format: 
+  revealjs:
+    theme: "../simple_NW.scss"
+    slide-number: true
+    show-slide-number: all
+    width: 1955
+    height: 1100
+    footer: Chapter 17 Slides
+    html-math-method: mathjax
+---
+
+## Learning Objectives
+
+1.  Identify the variable and the parameters of a Negative Binomial distribution in a word problem, and state what
+    the variable and parameters mean.
+2.  Use the formulas for the pmf/CDF, expected value, and variance to
+    answer questions and find probabilities.
+    
+## Where are we?
+
+![](../img_slides/course_map.png){fig-align="center"}
+
+## Properties of Negative Binomial RVs
+
+-   **Scenario:** There are repeated independent trials, each resulting
+    in a success or failure, with constant probability of success for
+    each trial. We are counting the number of trials until the $r^{th}$
+    success.
+-   Shorthand: $X \sim \text{NegBin}(p, r)$ or $X \sim \text{NB}(p, r)$
+-   Negative binomial is sum of $r$ geometric distributions
+
+$$
+X = \text{Number of independent trials until } r^{th} \text{ success}
+$$
+
+$$ p_X(x) = P(X=x) = {x-1 \choose r-1}(1-p)^{x-r}p^r \text{ for } x = r, r+1, r+2, ...$$
+
+$$ E(X) = \dfrac{r}{p}$$
+
+$$Var(X) = \dfrac{rq}{p^2} = \dfrac{r(1-p)}{p^2}$$
+
+## Hitting more than 1 bullseye
+
+::: columns
+::: {.column width="35%"}
+::: example
+::: ex-title
+Example 1
+:::
+
+::: ex-cont
+Consider again the bullseye example, where we throw darts at a dartboard
+until we hit the bullseye. Assume throws are independent and the
+probability of hitting the bullseye is 0.01 for each throw.
+
+1.  What is the expected value and variance of the number of throws needed to hit 5 bullseyes?
+:::
+:::
+:::
+:::
+
+## Hitting more than 1 bullseye
+
+::: columns
+::: {.column width="35%"}
+::: example
+::: ex-title
+Example 1
+:::
+
+::: ex-cont
+Consider again the bullseye example, where we throw darts at a dartboard
+until we hit the bullseye. Assume throws are independent and the
+probability of hitting the bullseye is 0.01 for each throw.
+
+2.  What is the probability that the $5^{th}$ bullseye is on the
+    $20^{th}$ throw?
+:::
+:::
+:::
+:::
+

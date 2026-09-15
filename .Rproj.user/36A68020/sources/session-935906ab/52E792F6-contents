@@ -1,0 +1,80 @@
+---
+title: ""
+toc: false
+page-layout: full
+link-external-newwindow: true
+---
+
+::: {style="background-color: #006a4e"}
+::: {style="color: #FFFFFF"}
+::: grid
+::: g-col-4
+![](images/bsta_550_hex_3.png){fig-align="center" width="337"}
+:::
+
+::: g-col-7
+# BSTA 550: Introduction to Probability
+
+### Fall 2025
+
+ 
+
+Welcome to Biostatistics and Probability! This course is designed to introduce history, concepts and distributions in probability, Monte Carlo simulation techniques, and Markov chains. Students will also learn how to write R codes for various statistical computations and plots. Previous experience in R is not required. R is free software available from <http://www.r-project.org>.
+
+ 
+:::
+:::
+:::
+:::
+
+::: grid
+::: g-col-3
+### Instructor
+
+{{< iconify fluent person-24-filled size=24px >}} [Dr. Nicky Wakim](instructors.qmd)
+
+{{< iconify bi building-fill size=24px >}} Vanport 622A
+
+{{< iconify tabler mail-filled size=24px >}} [wakim\@ohsu.edu](mailto:wakim@ohsu.edu)
+:::
+
+::: g-col-3
+### Office Hours
+
+[Charles](https://ohsu.webex.com/meet/parkecha) {{< iconify icon-park-solid time size=24px >}} Th 11am-12pm
+
+[Charles](https://ohsu.webex.com/meet/parkecha) {{< iconify icon-park-solid time size=24px >}} F 12-1pm
+
+[Nicky](https://ohsu.webex.com/meet/wakim) {{< iconify icon-park-solid time size=24px >}} Th 10-11am
+
+:::
+
+::: g-col-3
+### Course details
+
+{{< iconify fa6-solid calendar-days size=24px >}} Mondays, Wednesdays
+
+{{< iconify fa6-solid calendar size=24px >}} Sept 29 - Dec 10
+
+{{< iconify icon-park-solid time size=24px >}} 10:30 AM - 12 PM
+
+{{< iconify fa6-solid person-chalkboard size=24px >}} In-person, VPT 620M
+:::
+
+::: g-col-3
+### Contacting me
+
+E-mail or Slack is the best way to get in contact with me. I will try to respond to all course-related e-mails within 24 hours Monday-Friday.
+:::
+:::
+
+------------------------------------------------------------------------
+
+::: grid
+::: g-col-9
+:::
+
+::: g-col-3
+[{{< iconify icomoon-free github size=24px >}} View the source on GitHub](https://github.com/nwakim/BSTA_550_25F)
+:::
+:::

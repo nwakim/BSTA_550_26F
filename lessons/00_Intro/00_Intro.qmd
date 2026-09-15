@@ -1,0 +1,177 @@
+---
+title: "Welcome to BSTA 550!"
+author: "Nicky Wakim"
+title-slide-attributes:
+    data-background-color: "#006a4e"
+date: " `r library(here); source(here('class_dates.R')); w1d1` "
+categories: ["Week 1"]
+format: 
+  revealjs:
+    theme: "../simple_NW.scss"
+    chalkboard: true
+    slide-number: true
+    show-slide-number: all
+    width: 1955
+    height: 1100
+    footer: Welcome
+---
+
+## Nicky Wakim (she/her)
+
+::::::: columns
+::: {.column width="45%"}
+-   **Call me "Nicky," "Dr. W," "Professor Wakim," or any combo!**
+
+-   Assistant Professor of Biostatistics
+
+     
+
+-   Grew up in DC area (Virginia side!)
+
+-   Moved here from Michigan around 2 years ago
+
+-   Two sweet kitties
+
+-   Volleyball, pickleball, ceramics, strolling around my neighborhood
+
+-   But also sleeping, TV, and reading
+
+-   Proud plant mamma
+
+-   *A few other things about myself that I will share non-publicly*
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="25%"}
+![](/images/Intro_slides/bike.JPG){width="450"} ![](/images/Intro_slides/cats.mov){width="450"} ![](/images/Intro_slides/crater_lake.jpeg){width="450"}
+:::
+
+::: {.column width="25%"}
+![](/images/Intro_slides/Narrows.JPG){width="450"}
+:::
+:::::::
+
+```{r setup, include=FALSE}
+library(here)
+source(here("class_dates.R"))
+```
+
+# Pride yourself in learning things, not knowing things
+
+```{css}
+#| echo: false
+
+<style>
+#wrap { width: 600px; height: 390px; padding: 0; overflow: hidden; }
+#frame { width: 1300px; height: 600px; border: 1px solid black; }
+#frame { zoom: 1.5; -moz-transform: scale(1.5); -moz-transform-origin: 0 0; }
+</style>
+```
+
+## Some important tasks
+
+-   Star the class website: <https://nwakim.github.io/BSTA_550_25F/>
+
+ 
+
+-   Complete Homework 0 by this Thursday at 11pm!
+
+    -   Includes office hours set up, attendance prefereance, and homework due date decision
+    -   Think about what day of the week you would like your homeworks due
+
+ 
+
+-   Highly suggest that you make an appointment with a learning specialist through [Student Academic Success Center](https://sakai.ohsu.edu/portal/site/Student_Support)!
+
+## Let's visit the website: Homepage
+
+```{=html}
+<iframe id="frame" src="https://nwakim.github.io/BSTA_550_25F/"></iframe>
+```
+
+## Let's visit the website: Syllabus (1/2)
+
+-   Course learning objectives
+-   Textbook online! (different than last year)
+-   Resources: PennState STAT 414 site!
+-   R: you will get a lot of help in BSTA 511 and we will use some!
+-   Assessments and grade breakdowns
+    -   Mostly homework + quizzes
+-   Feedback from you to me: in the form of exit tickets, midterm feedback, and final course eval
+-   How to succeed in this course: resources and assignments explained
+-   Late work policy / Attendance policy
+-   ChatGPT and other AI technology
+-   Course expectations: a few ways that I will show you respect and commitment to you as students
+    -   And a few ways I expect from you!
+-   Communicating with me: give me 24 hours to reply M-F
+    -   I try really hard to keep emails from taking over my life
+    
+## Let's visit the website: Syllabus (2/2)
+
+```{=html}
+<iframe id="frame" src="https://nwakim.github.io/BSTA_550_25F/syllabus.html"></iframe>
+```
+
+
+## Let's visit the website: Schedule (1/2)
+
+-   Weeks, class info, homeworks, labs
+
+```{=html}
+<iframe id="frame" src="https://nwakim.github.io/BSTA_550_25F/schedule.html"></iframe>
+```
+
+## Let's visit the website: Schedule (2/2)
+
+|  |  |  |
+|:----------------------------|:-------------|:-----------------------------|
+| [[{{< iconify akar-icons info-fill size=80px >}}](lessons/01_Outcomes_Events_Sample/01_Outcomes_Events_Sample_key_info.qmd)]{style="color:#f8f5f0;"} | Key Info | I will post announcements and other important class related info here. For example, if I change a due date or discuss a common mistake in homework, I will put it here. |
+| [[{{< iconify ri slideshow-fill size=80px >}}](lessons/17_Negative_binomial_rv/17_Negative_binomial_rv.qmd)]{style="color:#f8f5f0;"} | Slides HTML | These are the basic slides that will open in your browser. |
+| [[{{< iconify bi file-earmark-pdf-fill size=80px >}}](lessons/01_Outcomes_Events_Sample/01_Outcomes_Events_Sample.pdf)]{style="color:#f8f5f0;"} | Slides PDF | These are the slides in pdf form for easy note taking. I'm not always the best at posting these before class, so make sure you know how to save your own copy of pdf slides! |
+| [[{{< iconify pepicons-pop pen-circle-filled size=80px >}}](lessons/01_Outcomes_Events_Sample/01_Outcomes_Events_Sample_notes.pdf)]{style="color:#f8f5f0;"} | Slides Notes | These are the annotated slides in pdf form. In class, I add my own notes to slides. After class, I will post them here. |
+| [[{{< iconify healthicons health-worker-form size=90px >}}](https://forms.office.com/Pages/ResponsePage.aspx?id=V3lz4rj6fk2U9pvWr59xWFMopmPUjRt)]{style="color:#f8f5f0;"} | Exit tix | These are links to that day's exit ticket. |
+| [[{{< iconify mdi video size=90px >}}](mothing)]{style="color:#f8f5f0;"} | Recording | I record our classes. This will be a link to the OneDrive folder containing this recording. |
+| [[{{< iconify pajamas question size=80px >}}](lessons/01_Outcomes_Events_Sample/01_Outcomes_Events_Sample_muddy_points.qmd)]{style="color:#f8f5f0;"} | Muddy Points | You will have a chance to ask questions about class in your exit tickets. If I notice a trend in confusion, I will add explanations to these "Muddy Points" |
+
+## Let's visit the website: Search
+
+```{=html}
+<iframe id="frame" src="https://nwakim.github.io/BSTA_550_25F/schedule.html"></iframe>
+```
+
+## Let's visit the website: Homework!
+
+```{=html}
+<iframe id="frame" src="https://nwakim.github.io/BSTA_550_25F/homeworks.html"></iframe>
+```
+
+## Decision on Homework due dates
+
+-   I have some set due dates in the schedule
+
+-   Please look at your other classes, your calendar, etc
+
+-   Consider what day of the week you would like to turn in your assignments
+
+-   Question in HW 0 to cast your vote and share your opinion
+
+## Structure for this course
+
+-   Learning the basic tools to understand statistics
+    - This is the first quarter that I am adding simulations
+    - So I rearranged a lot of the topics!
+
+ 
+
+-   It is going to feel useless at times, but I swear it is not!
+
+ 
+
+-   This class will help you build a toolbox that allows you to analyze data while understanding the inner theory at play
+  - You can use probability and simulations to change your analysis as you need 
+
+## What we will cover
+
+![](../img_slides/course_map.png){fig-align="center"}

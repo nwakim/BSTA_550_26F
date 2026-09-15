@@ -1,0 +1,22 @@
+---
+title: "Key Info"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Announcements
+
+- Q: Can we still turn in exit tickets even if its not the same day? For example I was here the first day but forgot to do the exit ticket, if I did it today would it still count towards my grade?
+  - Yes! I check them for "attendance" after 7 (sometimes more) days after the class
+
+- For muddy points, it really helps if you can asked a specific question about what you found confusing
+  - I can then address it in a more targeted way
+
+
+## Key Dates
+
+- HW 1 Assignment due this Thursday at 11pm

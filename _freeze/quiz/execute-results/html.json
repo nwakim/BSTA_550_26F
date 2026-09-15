@@ -1,0 +1,15 @@
+{
+  "hash": "00e2ef81f6c1119b8c39a95c0c95d4e9",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Quiz Info\"\ndate-modified: \"today\"\nformat: \n  html:\n    page-layout: full\n    link-external-newwindow: true\n---\n\n\n\nBelow is the general timing and lessons for each quiz:\n\n| Quiz | Lessons | HWs | Open Date \\@ 3pm | Close Date \\@ 11pm |\n|---------------|---------------|---------------|---------------|---------------|\n| 1 | 1-5 | 1-2 | 10/22 | 10/26 |\n| 2 | 7-9 | 4 | 11/05 | 11/09 |\n| 3 | 10-16 | 5-7 | 12/03 | 12/07 |\n\nQuizzes will be mostly conceptual questions with 10-15 multiple choice questions. Some calculations will need to be done for certain questions, but the focus will be on understanding concepts.\n\nMore information specific to each quiz will be posted below.\n\n### Instructions that will presented for each quiz\n\n1.  I have written a 30-minute quiz, but there is no time limit on the quiz. You will have from Wednesday at 3pm to Sunday at 11pm to finish the quiz.\n\n2.  The quiz is open book and open notes. You may use books other than the class textbook, you may use anything on our course webpage, and you may use reference websites (like Wikipedia, Googling expected value of specific distribution, etc.).\n\n3.  No cheating will be tolerated. Cheating includes:\n\n    -   Using ChatGPT or any other AI software\n    -   Copy and pasting the question from Sakai to any search engine.\n    -   Using question and answer threads typically seen on sites like StackExchange, WikiHow, Quora, Reddit, StackOverflow, Chegg, etc.\n    -   Asking other students, sharing quiz work or sharing quiz results.\n\n4.  Each question is worth 1 point, including multiple choice and free response questions.\n\n## Quiz 1\n\n-   A practice quiz is posted if you would like to do a trial run before the actual quiz\n-   Includes Lessons 1-5\n    -   Covers some probability rules and calculations (about half the questions)\n-   Three problems have **calculations** with probabilities\n-   One (ish) question on counting, but not too complicated\n-   For most questions, you will be given a scenario, and you will need to connect it back to probability rules\n    -   Example: If two events are mutually exclusive, what is the probability of their intersection?\n\n## Quiz 2\n\n-   Includes lesson 7-9\n    -   Lesson 6 not technically included, but will be covered\n    -   Might have one question from Lesson 10 about process of transformations\n\n## Quiz 3\n\n-   Includes lessons 10-16\n    -   Includes 15-16 since we extended from previous lessons to important distributions\n        -   Only 1 question about the relationships between distributions (so make sure to do the last problem in HW 8)\n    -   Transformations, joint distributions, independence and conditioning, expected values, and variance\n-   Just from the topics, I'd say this will be the hardest quiz\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

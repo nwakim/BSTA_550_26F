@@ -1,0 +1,15 @@
+{
+  "hash": "454f69cbe89efc709c5010243901fdcf",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Key Info\"\ndate: \"2025-10-01\"\ndate-modified: \"today\"\nformat: \n  html:\n    link-external-newwindow: true\neditor_options: \n  chunk_output_type: console\n---\n\n\n\n\n\n## Announcements\n\n## Key dates\n\n- Homework 0 is due TOMORROW at 11pm!\n\n## Last class\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

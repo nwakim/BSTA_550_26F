@@ -1,0 +1,460 @@
+---
+title: "Lesson 14: Variance"
+author: "Meike Niederhausen and Nicky Wakim"
+title-slide-attributes:
+    data-background-color: "#006a4e"
+date: "`r library(here); source(here('class_dates.R')); w7d2`"
+format: 
+  revealjs:
+    theme: "../simple_NW.scss"
+    slide-number: true
+    show-slide-number: all
+    width: 1955
+    height: 1100
+    footer: Lesson 14 Slides
+    html-math-method: mathjax
+---
+
+```{r setup, include=FALSE}
+library(here)
+source(here("class_dates.R"))
+
+library(tidyverse)
+```
+
+# Learning Objectives
+
+1.  Define and calculate the expected value for a function of discrete and continuous RVs
+
+2.  Define and calculate variance for a single random variable
+3.  Define and calculate variance for multiple random variables
+
+## Where are we?
+
+![](../img_slides/course_map.png){fig-align="center"}
+
+# Learning Objectives
+
+::: lob
+1.  Define and calculate the expected value for a function of discrete and continuous RVs
+:::
+
+2.  Define and calculate variance for a single random variable
+3.  Define and calculate variance for multiple random variables
+
+## Let's start building the variance through expected values of functions
+
+::: columns
+::: {.column width="40%"}
+::: example
+::: ex-title
+Example 1
+:::
+
+::: ex-cont
+Let $g$ be a function and let $g(x) = ax+b$, for real-valued constants
+$a$ and $b$. What is $\mathbb{E}[g(X)]$?
+:::
+:::
+:::
+:::
+
+## What is the expected value of a function?
+
+::: columns
+::: {.column width="50%"}
+::: proof1
+::: proof-title
+Expected value of function of **discrete** RV
+:::
+
+::: proof-cont
+For any function $g$ and discrete RV $X$, the expected value of $g(X)$
+is $$\mathbb{E}[g(X)] = \sum_{\{all\ x\}}\ g(x) p_X(x)$$
+:::
+:::
+:::
+
+
+::: {.column width="50%"}
+::: theorem
+::: thm-title
+Expected value of function of **continuous** RV
+:::
+
+::: thm-cont
+For any function $g$ and continuous RV $X$, the expected value of $g(X)$
+is $$\mathbb{E}[g(X)] = \displaystyle\int_{-\infty}^\infty g(x)f_X(x) dx$$
+:::
+:::
+:::
+
+:::
+
+- For example, if we have $g(x)=x^2$, then $$\mathbb{E}[X^2)] = \sum_{\{all\ x\}}\ x^2 p_X(x) \neq \left(\sum_{\{all\ x\}}\ x p_X(x)) \right)^2 = \left( \mathbb{E}[X] \right)^2$$
+
+## Let's revisit the card example (1/2)
+
+::: columns
+::: {.column width="35%"}
+::: example
+::: ex-title
+Example 2
+:::
+
+::: ex-cont
+Suppose you draw 2 cards from a standard deck of cards *with*
+replacement. Let $X$ be the number of hearts you draw.
+
+1.  Find $\mathbb{E}[X^2]$.
+:::
+:::
+
+::: example
+::: ex-cont
+<font size=6ex>Recall Binomial RV with $n=2$:
+
+$$p_X(x) = {2 \choose x}p^x(1-p)^{2-x} \text{  for } x = 0, 1, 2$$
+
+</font>
+:::
+:::
+:::
+:::
+
+## Let's revisit the card example (2/2)
+
+::: columns
+::: {.column width="35%"}
+::: example
+::: ex-title
+Example 2
+:::
+
+::: ex-cont
+Suppose you draw 2 cards from a standard deck of cards *with*
+replacement. Let $X$ be the number of hearts you draw.
+
+2.  Find $\mathbb{E}\big[\big(X-\frac{1}{2}\big)^2\big]$.
+:::
+:::
+
+::: example
+::: ex-cont
+<font size=6ex>Recall Binomial RV with $n=2$:
+
+$$p_X(x) = {2 \choose x}p^x(1-p)^{2-x} \text{  for } x = 0, 1, 2$$
+
+</font>
+:::
+:::
+:::
+:::
+
+
+# Learning Objectives
+
+1.  Define and calculate the expected value for a function of discrete and continuous RVs
+
+::: lob
+2.  Define and calculate variance for a single random variable
+:::
+
+3.  Define and calculate variance for multiple random variables
+
+## Variance of a RV
+
+::: definition
+::: def-title
+Definition: Variance of RV
+:::
+
+::: def-cont
+The variance of a RV $X$, with (finite) expected value
+$\mu_X=\mathbb{E}[X]$ is
+$$\sigma_X^2=Var(X)=\mathbb{E}[(X-\mu_X)^2] = \mathbb{E}[(X-\mathbb{E}[X])^2]$$
+:::
+:::
+
+::: definition
+::: def-title
+Definition: Standard deviation of RV
+:::
+
+::: def-cont
+The standard deviation of a RV $X$ is
+$$\sigma_X = SD(X) = \sqrt{\sigma_X^2}=\sqrt{Var(X)}.$$
+:::
+:::
+
+## Variance of discrete and continuous RVs
+
+::: columns
+::: {.column width="40%"}
+**How do we calculate the variance of a discrete RV?**
+
+   
+
+For discrete RVs:
+
+$$
+\begin{align}
+Var(X) & = \\ & = \sum_{\{all\ x\}}(x-\mu_x)^2 p_{X}(x) \\ & = 
+\mathbb{E}[(X-\mu_X)^2] \\ & = \mathbb{E}[(X-\mathbb{E}[X])^2] \\ &= \mathbb{E}[X^2]-(\mathbb{E}[X])^2
+\end{align}
+$$
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="45%"}
+**How do we calculate the variance of a continuous RV?**
+
+    
+
+For continuous RVs:
+
+$$
+\begin{align}
+Var(X) & =
+ \displaystyle\int_{-\infty}^\infty (x-\mu_X)^2f_X(x) dx \\ & = \mathbb{E}[(X-\mu_X)^2] \\ & = \mathbb{E}[(X-\mathbb{E}[X])^2] \\ &= \mathbb{E}[X^2]-(\mathbb{E}[X])^2 \end{align}
+$$
+:::
+:::
+
+
+## Questions {visibility="hidden"}
+
+**Questions:** Why do we square the difference in the variance
+definition? $(X-\mu_X)^2$
+
+-   Why not define the measure of spread as
+    $\mathbb{E}[X-\mu_X] = \mathbb{E}[X-\mathbb{E}[X]]$?
+
+-   Why not use $\mathbb{E}[|X-\mu_X|]$?
+
+## Let's calculate the variance and prove it! (1/2)
+
+::: columns
+::: {.column width="30%"}
+::: proof1
+::: proof-title
+Lemma 6: "Computation formula" for Variance
+:::
+
+::: proof-cont
+The variance of a RV $X$, can be computed as $$\begin{align}
+\sigma_X^2 & =Var(X) \\ & = \mathbb{E}[X^2]-\mu_X^2 \\ & = \mathbb{E}[X^2] - (\mathbb{E}[X])^2
+\end{align}$$
+:::
+:::
+:::
+:::
+
+## Let's calculate the variance and prove it! (2/2)
+
+## Variance of an Uniform distribution
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 2
+:::
+
+::: ex-cont
+Let $f_X(x)= \frac{1}{b-a}$, for $a \leq x \leq b$. Find $Var[X]$.
+:::
+:::
+:::
+:::
+
+## Variance of exponential distribution
+
+::: columns
+::: {.column width="30%"}
+
+In the homework:
+
+::: example
+::: ex-title
+Example 3
+:::
+
+::: ex-cont
+Let $f_X(x)= \lambda e^{-\lambda x}$, for $x > 0$ and $\lambda> 0$. Find
+$Var[X]$.
+:::
+:::
+:::
+:::
+
+
+# Learning Objectives 
+
+1.  Define and calculate the expected value for a function of discrete and continuous RVs
+
+2.  Define and calculate variance for a single random variable
+
+::: lob
+3.  Define and calculate variance for multiple random variables
+:::
+
+
+## Variance of a function with a single RV
+
+::: proof1
+::: proof-title
+Lemma 7
+:::
+
+::: proof-cont
+For a RV $X$ and constants $a$ and $b$, $$Var(aX+b) = a^2Var(X).$$
+:::
+:::
+
+Proof will be exercise in homework. It's fun! In a mathy kinda way.
+
+## Important results for ***independent*** RVs
+
+::: theorem
+::: thm-title
+Theorem 8
+:::
+
+::: thm-cont
+For independent RV's $X$ and $Y$, and functions $g$ and $h$,
+$$\mathbb{E}[g(X)h(Y)] = \mathbb{E}[g(X)]\mathbb{E}[h(Y)].$$
+:::
+:::
+
+::: proposition
+::: prop-title
+Corollary 1
+:::
+
+::: prop-cont
+For independent RV's $X$ and $Y$,
+$$\mathbb{E}[XY] = \mathbb{E}[X]\mathbb{E}[Y].$$
+:::
+:::
+
+## Variance of sum of independent discrete RVs
+
+::: theorem
+::: thm-title
+Theorem 9: Variance of sum of independent discrete RV's
+:::
+
+::: thm-cont
+For independent discrete RV's $X_i$ and constants $a_i$,
+$i=1,2,\dots, n$,
+$$Var\Bigg(\sum_{i=1}^n a_iX_i\Bigg) = \sum_{i=1}^n a_i^2Var(X_i).$$
+:::
+:::
+
+Simpler version: 
+
+$$Var(a_1 X + a_2 Y) = Var(a_1X) + Var(a_2 Y) = a_1^2 Var(X) + a_2^2 Var(Y)$$
+
+## Corollaries
+
+::: proposition
+::: prop-title
+Corollary 2
+:::
+
+::: prop-cont
+For independent discrete RV's $X_i$, $i=1,2,\dots, n$,
+$$Var\Bigg(\sum_{i=1}^n X_i\Bigg) = \sum_{i=1}^n Var(X_i).$$
+:::
+:::
+
+::: proposition
+::: prop-title
+Corollary 3
+:::
+
+::: prop-cont
+For independent identically distributed (i.i.d.) discrete RV's $X_i$,
+$i=1,2,\dots, n$, $$Var\Bigg(\sum_{i=1}^n X_i\Bigg) = n Var(X_1).$$
+:::
+:::
+
+## Ghost problem: *with replacement*
+
+::: columns
+::: {.column width="35%"}
+::: example
+::: ex-title
+Example 3.2
+:::
+
+::: ex-cont
+The ghost is trick-or-treating at a different house now. In this case it
+is known that the bag of candy has 10 chocolates, 20 lollipops, and 30
+laffy taffies. The ghost grabs a handful of five pieces of candy. What
+is the variance for the number of chocolates the ghost takes? Let's
+solve this for the cases ***with*** replacement.
+:::
+:::
+
+::: example
+::: ex-cont
+<font size=6ex>Recall probability with replacement:
+
+$$
+p_X(x) = {n \choose k}p^k(1-p)^{n-k}
+$$
+
+</font>
+:::
+:::
+:::
+:::
+
+
+## Back to our hotel example from Lesson 13
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 4
+:::
+
+::: ex-cont
+A tour group is planning a visit to the city of Minneapolis and needs to
+book 30 hotel rooms. The average price of a room is \$200 **with
+standard deviation \$10**. In addition, there is a 10% tourism tax for
+each room. What is the **standard deviation** of the cost for the 30
+hotel rooms? Assume rooms are independent.
+:::
+:::
+
+Problem to do at home if we don't have enough time.
+:::
+:::
+
+## Find the mean and sd from word problem (1/2)
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 4
+:::
+
+::: ex-cont
+A machine manufactures cubes with a side length that varies uniformly
+from 1 to 2 inches. Assume the sides of the base and height are equal.
+The cost to make a cube is 10 ¢ per cubic inch, and 5 ¢ cents for the
+general cost per cube. Find the mean and standard deviation of the cost
+to make 10 cubes.
+:::
+:::
+:::
+:::
+
+## Find the mean and sd from word problem (1/2)

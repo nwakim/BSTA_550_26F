@@ -1,0 +1,242 @@
+---
+title: "Chapter 5: Bayes' Theorem"
+author: "Meike Niederhausen and Nicky Wakim"
+title-slide-attributes:
+    data-background-color: "#006a4e"
+date: "10/09/2024"
+format: 
+  revealjs:
+    theme: "../simple_NW.scss"
+    slide-number: true
+    show-slide-number: all
+    width: 1955
+    height: 1100
+    footer: Chapter 5 Slides
+---
+
+## Learning Objectives
+
+1.  Calculate conditional probability of an event using Bayes' Theorem
+
+2.  Utilize additional probability rules in probability calculations, specifically the Higher Order Multiplication Rule and the Law of Total Probabilities
+
+## Where are we?
+
+![](../img_slides/course_map.png){fig-align="center"}
+
+## Introduction
+
+-   So we learned about conditional probabilities
+
+    -   We learned how the occurrence of event A affects event B (B conditional on A)
+
+-   Can we figure out information on how the occurrence of event B affects event A?
+
+-   We can use the conditional probability ($\mathbb{P}(A|B)$) to get information on the flipped conditional probability ($\mathbb{P}(B|A)$)
+
+## Bayes' Rule for two events
+
+::: columns
+::: column
+::: theorem
+::: thm-title
+Theorem: Bayes' Rule (for two events)
+:::
+
+::: thm-cont
+For any two events $A$ and $B$ with nonzero probabilties,
+
+$$\mathbb{P}(A| B) = 
+\frac{\mathbb{P}(A) \cdot \mathbb{P}(B|A)}
+{\mathbb{P}(B)}$$
+:::
+:::
+:::
+:::
+
+## Calculating probability with Higher Order Multiplication Rule
+
+::: columns
+::: column
+::: example
+::: ex-title
+Example 1
+:::
+
+::: ex-cont
+Suppose we draw 5 cards from a standard shuffled deck of 52 cards. What is the probability of a flush, that is all the cards are of the same suit (including straight flushes)?
+:::
+:::
+:::
+
+::: column
+::: fact
+::: fact-title
+Higher Order Multiplication Rule
+:::
+
+::: fact-cont
+$$\mathbb{P}(A_1\cap A_2 \cap  \ldots \cap A_n)=\mathbb{P}(A_1)\cdot\mathbb{P}(A_2|A_1) \cdot \\
+\mathbb{P}(A_3|A_1A_2)\ldots \cdot\mathbb{P}(A_n|A_1A_2\ldots A_{n-1})$$
+:::
+:::
+:::
+:::
+
+## Calculating probability with Law of Total Probability
+
+::: columns
+::: column
+::: example
+::: ex-title
+Example 2
+:::
+
+::: ex-cont
+Suppose 1% of people assigned female at birth (AFAB) and 5% of people assigned male at birth (AMAB) are color-blind. Assume person born is equally likely AFAB or AMAB (not including intersex). What is the probability that a person chosen at random is color-blind?
+:::
+:::
+:::
+
+::: column
+::: fact
+::: fact-title
+Law of Total Probability for 2 Events
+:::
+
+::: fact-cont
+For events $A$ and $B$,
+
+$$%\left(
+\begin{array}{ccl}
+\mathbb{P}(B)&=&\mathbb{P}(B \cap A) + \mathbb{P}(B \cap A^C)\\
+           &=& \mathbb{P}(B|A) \cdot \mathbb{P}(A)+ \mathbb{P}(B | A^C)\cdot \mathbb{P}(A^C)
+\end{array}
+%\right)$$
+:::
+:::
+:::
+:::
+
+## General Law of Total Proability
+
+::: fact
+::: fact-title
+Law of Total Probability (general)
+:::
+
+::: fact-cont
+If $\{A_i\}_{i=1}^{n} = \{A_1, A_2, \ldots, A_n\}$ form a partition of the sample space, then for event $B$,
+
+$$%\left(
+\begin{array}{ccl}
+\mathbb{P}(B)&=& \sum_{i=1}^{n} \mathbb{P}(B \cap A_i)\\
+           &=& \sum_{i=1}^{n} \mathbb{P}(B|A_i) \cdot \mathbb{P}(A_i)
+\end{array}
+%\right)$$
+:::
+:::
+
+## Calculating probability with generalized Law of Total Probability {.smaller}
+
+![](../img_slides/Chp_05_ex_03.jpeg){fig-align="center"}
+
+## Calculating probability with generalized Law of Total Probability {visibility="hidden"}
+
+::: columns
+::: {.column width="40%"}
+::: example
+::: ex-title
+Example 3
+:::
+
+::: ex-cont
+Individuals are diagnosed with a particular type of cancer that can take on three different disease forms,\* $D_1$, $D_2$, and $D_3$. It is known that amongst people diagnosed with this particular type of cancer,
+
+-   20% of people will eventually be diagnosed with form $D_1$,
+
+-   30% with form $D_2$, and
+
+-   50% with form $D_3$.
+
+The probability of requiring chemotherapy ($C$) differs among the three forms of disease:
+
+-   80% with $D_1$,
+
+-   30% with $D_2$, and
+
+-   10% with $D_3$.
+
+Based solely on the preliminary test of being diagnosed with the cancer, what is the probability of requiring chemotherapy (the event C)?
+:::
+:::
+:::
+
+::: column
+Skipping in class! Let me know if you would like me to post solutions to this if you work through it!
+:::
+:::
+
+## Let's revisit the color-blind example
+
+::: columns
+::: {.column width="40%"}
+::: example
+::: ex-title
+Example 4
+:::
+
+::: ex-cont
+Recall the color-blind example (Example [2](#Ex_colorblind){reference-type="ref" reference="Ex_colorblind"}), where
+
+-   a person is AMAB with probability 0.5,
+
+-   AMAB people are color-blind with probability 0.05, and
+
+-   all people are color-blind with probability 0.03.
+
+Assuming people are AMAB or AFAB, find the probability that a color-blind person is AMAB.
+:::
+:::
+:::
+:::
+
+## Calculate probability with both rules
+
+::: columns
+::: {.column width="40%"}
+::: example
+::: ex-title
+Example 5
+:::
+
+::: ex-cont
+Suppose
+
+-   1% of people who are AFAB aged 40-50 years have breast cancer,
+
+-   an AFAB person with breast cancer has a 90% chance of a positive test from a mammogram, and
+
+-   an AFAB person has a 10% chance of a false-positive result from a mammogram.
+
+What is the probability that an AFAB person has breast cancer given that they just had a positive test?
+:::
+:::
+:::
+:::
+
+## Bayes' Rule
+
+::: theorem
+::: thm-title
+Theorem: Bayes' Rule
+:::
+
+::: thm-cont
+If $\{A_i\}_{i=1}^{n}$ form a partition of the sample space $S$, with $\mathbb{P}(A_i)>0$ for $i=1\ldots n$ and $\mathbb{P}(B)>0$, then
+
+$$\mathbb{P}(A_j | B) = 
+\frac{\mathbb{P}(B|A_j) \cdot \mathbb{P}(A_j)}
+{\sum_{i=1}^{n} \mathbb{P}(B|A_i) \cdot \mathbb{P}(A_i)}$$
+:::
+:::

@@ -1,0 +1,15 @@
+{
+  "hash": "3a019f4e7becd37e23defc3f987cf23a",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Key Info and Announcements\"\ndate-modified: \"today\"\nformat: \n  html:\n    link-external-newwindow: true\neditor_options: \n  chunk_output_type: console\n---\n\n\n\n## Key Info\n\n- Quiz 1 questions?\n- Charles is still grading HW 2\n  - Posted solutions so you have as a reference during quiz\n- If links do not work on this site, there are two places where the files live:\n  - Github page: <https://github.com/nwakim/BSTA_550_25F>\n      - Link also on this homepage\n  - [OHSU OneDrive](https://ohsuitg-my.sharepoint.com/:f:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550?csf=1&web=1&e=3AkL9k)\n    - You should have access to this folder\n- If you want to attend class virtually when we're in-person, then you can use: <https://pdx.zoom.us/j/82027616951>\n  - However, I will not support virtual attendance when we're in-person\n  - I will not be monitoring the chat or helping with technical issues\n\n\n## Announcements\n\n- Homework 3 due 10/26 at 11pm\n- Quiz 1 opens on 10/22 at 3pm\n  - Closes 10/26 at 11pm\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

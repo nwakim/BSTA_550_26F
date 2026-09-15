@@ -1,0 +1,19 @@
+---
+title: "Key Info and Announcements"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Key Info
+
+- Quiz 1 info
+
+
+## Announcements
+
+- Homework 3 due this Sunday at 11pm
+- Quiz 1 opens on 10/22 at 3pm

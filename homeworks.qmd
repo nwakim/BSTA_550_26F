@@ -1,0 +1,45 @@
+---
+title: "Homework"
+date-modified: "today"
+format: 
+  html:
+    page-layout: full
+    link-external-newwindow: true
+    toc: false
+---
+
+```{r setup, include=FALSE}
+library(here)
+source(here("class_dates.R"))
+```
+
+| Homework | Assignment | Assignment due (\@11pm) | Answers | Solutions & videos |
+|----|----|----|----|----|
+| 0 | [[{{< iconify material-symbols assignment size=29px >}}](/homework/HW_00.qmd)]{style="color:#f8f5f0;"} | `r hw0 %>% format("%m/%d")` |  |  |
+| 1 | [[{{< iconify material-symbols assignment size=29px >}}](/homework/HW_01.qmd)]{style="color:#f8f5f0;"} | `r hw1 %>% format("%m/%d")` | [[{{< iconify ph key-fill size=29px >}}](/hw_answers/HW_01_ans.qmd)]{style="color:#f8f5f0;"} | [[{{< iconify icon-park-twotone file-code size=29px >}}](https://ohsuitg-my.sharepoint.com/:f:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/HW_solns/HW_01?csf=1&web=1&e=MkybbV)]{style="color:#f8f5f0;"} |
+| 2 | [[{{< iconify material-symbols assignment size=29px >}}](/homework/HW_02.qmd)]{style="color:#f8f5f0;"} | `r hw2 %>% format("%m/%d")` | [[{{< iconify ph key-fill size=29px >}}](/hw_answers/HW_02_ans.qmd)]{style="color:#f8f5f0;"} | [[{{< iconify icon-park-twotone file-code size=29px >}}](https://ohsuitg-my.sharepoint.com/:f:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/HW_solns/HW_02?csf=1&web=1&e=NJoXh9)]{style="color:#f8f5f0;"} |
+| 3 | [[{{< iconify material-symbols assignment size=29px >}}](/homework/HW_03.qmd)]{style="color:#f8f5f0;"} | `r hw3 %>% format("%m/%d")` | [[{{< iconify ph key-fill size=29px >}}](/hw_answers/HW_03_ans.qmd)]{style="color:#f8f5f0;"} | [[{{< iconify icon-park-twotone file-code size=29px >}}](https://ohsuitg-my.sharepoint.com/:f:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/HW_solns/HW_03?csf=1&web=1&e=0dp4TC)]{style="color:#f8f5f0;"} |
+| 4 | [[{{< iconify material-symbols assignment size=29px >}}](/homework/HW_04.qmd)]{style="color:#f8f5f0;"} | `r hw4 %>% format("%m/%d")` | [[{{< iconify ph key-fill size=29px >}}](/hw_answers/HW_04_ans.qmd)]{style="color:#f8f5f0;"} | [[{{< iconify icon-park-twotone file-code size=29px >}}](https://ohsuitg-my.sharepoint.com/:f:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/HW_solns/HW_04?csf=1&web=1&e=yyaYOa)]{style="color:#f8f5f0;"} |
+| 5 | [[{{< iconify material-symbols assignment size=29px >}}](/homework/HW_05.qmd)]{style="color:#f8f5f0;"} | `r hw5 %>% format("%m/%d")` | [[{{< iconify ph key-fill size=29px >}}](/hw_answers/HW_05_ans.qmd)]{style="color:#f8f5f0;"} | [[{{< iconify icon-park-twotone file-code size=29px >}}](https://ohsuitg-my.sharepoint.com/:f:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/HW_solns/HW_05?csf=1&web=1&e=TymdQO)]{style="color:#f8f5f0;"} |
+| 6 | [[{{< iconify material-symbols assignment size=29px >}}](/homework/HW_06.qmd)]{style="color:#f8f5f0;"} | `r hw6 %>% format("%m/%d")` | [[{{< iconify ph key-fill size=29px >}}](/hw_answers/HW_06_ans.qmd)]{style="color:#f8f5f0;"} | [[{{< iconify icon-park-twotone file-code size=29px >}}](https://ohsuitg-my.sharepoint.com/:f:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/HW_solns/HW_06?csf=1&web=1&e=vwXG7A)]{style="color:#f8f5f0;"} |
+| 7 | [[{{< iconify material-symbols assignment size=29px >}}](/homework/HW_07.qmd)]{style="color:#f8f5f0;"} | `r hw7 %>% format("%m/%d")` | [[{{< iconify ph key-fill size=29px >}}](/hw_answers/HW_07_ans.qmd)]{style="color:#f8f5f0;"} | [[{{< iconify icon-park-twotone file-code size=29px >}}](https://ohsuitg-my.sharepoint.com/:f:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/HW_solns/HW_07?csf=1&web=1&e=K3eKgH)]{style="color:#f8f5f0;"} |
+| 8 | [[{{< iconify material-symbols assignment size=29px >}}](/homework/HW_08.qmd)]{style="color:#f8f5f0;"} | `r hw8 %>% format("%m/%d")` | [[{{< iconify ph key-fill size=29px >}}](/hw_answers/HW_08_ans.qmd)]{style="color:#f8f5f0;"} | [{{< iconify icon-park-twotone file-code size=29px >}}]{style="color:#f8f5f0;"} |
+| 9 (optional) | [[{{< iconify material-symbols assignment size=29px >}}](/homework/HW_09.qmd)]{style="color:#f8f5f0;"} | `r hw9 %>% format("%m/%d")` | [[{{< iconify ph key-fill size=29px >}}](/hw_answers/HW_09_ans.qmd)]{style="color:#f8f5f0;"} | [{{< iconify icon-park-twotone file-code size=29px >}}]{style="color:#f8f5f0;"} |
+
+## File Naming
+
+-   For HW **Assignments**, please use the following file naming: "HW01_LastName_FirstInitial"
+
+    -   For homeworks without R, this should be a pdf file
+
+    -   For homeworks with R, this may be a pdf file (with the code in the pdf) or an html file
+
+## Rubric
+
+### Assignments
+
+A total of 1 point will be given for a complete homework. The following rubric will be used:
+
+|   | 1 point | 0 points |
+|----|----|----|
+| Completeness | 75% of the question parts are thoroughly worked out and have an answer. “Question parts” means the sub-questions labeled “Part \_." Answers can be incorrect or correct. For parts with longer processes and calculations, solution set up and calculations are required. | Less than 75% of question parts are thoroughly worked out. Attempts do not count as thoroughly worked out. |

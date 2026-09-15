@@ -1,0 +1,64 @@
+---
+title: "Homework 1"
+subtitle: "BSTA 550"
+date-modified: "today"
+format: 
+  html: 
+    link-external-newwindow: true
+    toc: true
+  pdf: default 
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: "setup"
+#| include: false
+knitr::opts_chunk$set(echo = TRUE)
+
+library(here)
+source(here("class_dates.R"))
+```
+
+::: {.callout-tip appearance="minimal"}
+**Due `r hw1 %>% format("%m/%d")` at 11pm**
+:::
+
+## Directions
+
+**Please turn in this homework on Sakai.** Please submit your homework in pdf format. You can type your work on your computer or submit a single file with photos of your written work or any other method that can be turned into a pdf. The Adobe Scan phone app is an easy way to scan photos and compile into a PDF. Please let me know if you greatly prefer to submit a physical copy. We can work out another way for you to turn in homework.
+
+**Try to complete all of the problems listed below at some point this quarter! You may want to save some of them for studying later!** Only turn in the ones listed in the "Turn In" column. Please submit problems in the order they are listed.
+
+*You must show all of your work to receive credit.*
+
+## Questions
+
+### 1. Outcomes, events, and sample space
+
+In the below parts, please list (i) one specific outcome, (ii) one event that contains more than one outcome, and (iii) the sample space. 
+
+a. Chris has an 5-pack of Gatorade sports drink: 1
+orange, 2 lemon-lime, and 2 fruit punch. He blindly grabs one out of the pack over and over if necessary, without replacement, until he finds an orange one. *Note, each lemon-lime is indistinguishable, and each fruit punch is indistinguishable.*
+
+b. A claw machine contains 10 plush toys: 5 Red Squishies (R), 3 Blue Dinosaurs (B), and 2 Yellow Star Puffs (Y). You successfully grab a toy, remove it, and then grab a second toy (sampling without replacement). The result is the ordered pair of the two toys' colors.
+
+c. You are opening a series of [mofusound Cat blind boxes](https://www.youtube.com/watch?v=wmehgHl8hj4). There are 4 possible figurines to collect: 1 shark cat (S), 1 orange striped fish cat (O), and 1 hen cat (H), and 1 cow cat (C). You buy a single blind box.
+
+### 2. Running a simulation!
+
+This assignment requires you to use the four-step simulation process in R to approximate the probability of a specific event.
+
+**Scenario: The Mystic Orb Blind Boxes**
+The "Mystic Orb" collectible series has 5 total figures you can find in the blind boxes:
+
+- 1 Rare Mystery Toy (M) - The figure Nicky wants.
+
+- 4 Common Figures (C) - All other figures.
+
+When you buy a blind box, you receive one of the 5 figures, and each figure is equally likely.
+
+Nicky decides to buy three Mystic Orb blind boxes. She really wants to get the Rare Mystery Toy!! The random variable of interest is X, the number of boxes out of the three that contain the Rare Mystery Toy.
+
+Using the four-step simulation process, approximate the probability that Nicky gets at least one Rare Mystery Toy when she buys three boxes.
+

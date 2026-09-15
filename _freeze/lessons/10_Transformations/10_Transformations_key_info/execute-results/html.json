@@ -1,0 +1,15 @@
+{
+  "hash": "f5ceabcfa46c9d510ad798daea73cb03",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Key Info\"\ndate: \"10/21/2024\"\ndate-modified: \"today\"\nformat: \n  html:\n    link-external-newwindow: true\neditor_options: \n  chunk_output_type: console\n---\n\n\n\n\n## Announcements\n\n- Quiz 1 grades look pretty good! Everyone got score above 11/15\n  - Feedback released at 12:10pm today\n  - Will go over questions next class\n\n## Key Dates\n\n- Homework 4 due 11/02 at 11pm\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

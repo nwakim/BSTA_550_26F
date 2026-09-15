@@ -1,0 +1,11 @@
+---
+title: "Untitled"
+---
+
+Let's write the pdf for a binomial distribution: $$f(x) = \binom{n}{x} p^x (1-p)^{n-x}$$ where $x = 0, 1, 2, \ldots, n$.
+
+Let's take the integral of this function from $-\infty$ to $\infty$:
+
+$$
+F_X(x) = \int_{-\infty}^{\infty} f(x) \, dx
+$$

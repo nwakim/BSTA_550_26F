@@ -1,0 +1,113 @@
+
+schedule:
+  - unit: "Summarizing Data"
+    materials:
+      - href: weeks/week_01_sched.qmd
+        date: 09/25/23
+        calendar-color: "#E25D3B"
+        calendar-color2: "#FFFFFF"
+      - href: homework/HW0.qmd
+        title: "HW 0 due"
+        date: 9/28/23
+        calendar-color: "#F08897"
+        calendar-color2: "#FFFFFF"
+      - href: weeks/week_02_sched.qmd
+        date: 10/2/23
+        calendar-color: "#E25D3B"
+        calendar-color2: "#FFFFFF"
+      - href: homework/HW1.qmd
+        title: "HW 1 due"
+        date: 10/5/23
+        calendar-color: "#F08897"
+        calendar-color2: "#FFFFFF"
+      - href: weeks/week_03_sched.qmd
+        date: 10/9/23
+        calendar-color: "#E25D3B"
+        calendar-color2: "#FFFFFF"
+      - title: "HW 2 due"
+        href: homework/HW2.qmd
+        date: 10/12/23
+        calendar-color: "#F08897"
+        calendar-color2: "#FFFFFF"      
+      - href: weeks/week_04_sched.qmd
+        date: 10/16/23
+        calendar-color: "#E25D3B"
+        calendar-color2: "#FFFFFF"
+      - title: "HW 3 due"
+        href: homework/HW3.qmd
+        date: 10/19/23
+        calendar-color: "#F08897"
+        calendar-color2: "#FFFFFF" 
+      - href: weeks/week_05_sched.qmd
+        date: 10/23/23
+        calendar-color: "#E25D3B"
+        calendar-color2: "#FFFFFF"
+      - title: "Virtual Class"
+        date: 10/25/23
+        calendar-color: "#006a4e"
+        calendar-color2: "#FFFFFF" 
+      - title: "HW 4 due"
+        href: homework/HW4.qmd
+        date: 10/26/23
+        calendar-color: "#F08897"
+        calendar-color2: "#FFFFFF" 
+      - href: weeks/week_06_sched.qmd
+        date: 10/30/23
+        calendar-color: "#E25D3B"
+        calendar-color2: "#FFFFFF"
+      - title: "Midterm"
+        date: 11/01/23        
+        calendar-color: "#F1CF58"
+        calendar-color2: "#FFFFFF" 
+      - title: "HW 5 due"
+        href: homework/HW5.qmd
+        date: 11/9/23
+        calendar-color: "#F08897"
+        calendar-color2: "#FFFFFF" 
+      - href: weeks/week_07_sched.qmd
+        date: 11/06/23
+        calendar-color: "#E25D3B"
+        calendar-color2: "#FFFFFF"
+      - href: weeks/week_08_sched.qmd
+        date: 11/13/23
+        calendar-color: "#E25D3B"
+        calendar-color2: "#FFFFFF"
+      - title: "HW 6 due"
+        href: homework/HW6.qmd
+        date: 11/16/23
+        calendar-color: "#F08897"
+        calendar-color2: "#FFFFFF" 
+      - href: weeks/week_09_sched.qmd
+        date: 11/20/23
+        calendar-color: "#E25D3B"
+        calendar-color2: "#FFFFFF"
+      - title: "No Class"
+        date: 11/22/23
+        calendar-color: "#006a4e"
+        calendar-color2: "#FFFFFF" 
+      - href: weeks/week_10_sched.qmd
+        date: 11/27/23
+        calendar-color: "#E25D3B"
+        calendar-color2: "#FFFFFF"
+      - title: "HW 7 due"
+        href: homework/HW7.qmd
+        date: 11/30/23
+        calendar-color: "#F08897"
+        calendar-color2: "#FFFFFF" 
+      - href: weeks/week_11_sched.qmd
+        date: 12/04/23
+        calendar-color: "#E25D3B"
+        calendar-color2: "#FFFFFF"
+      - title: "Final"
+        date: 12/04/23        
+        calendar-color: "#F1CF58"
+        calendar-color2: "#FFFFFF" 
+
+        
+auto-publish:
+  timezone: "America/Los_Angeles"
+  live-as-of: "Sys.time()"
+  notes-1-release: "Friday, 17:00" # for Tu/Weds notes
+  notes-2-release: "Friday, 17:00" # for Thu/Fri notes
+
+

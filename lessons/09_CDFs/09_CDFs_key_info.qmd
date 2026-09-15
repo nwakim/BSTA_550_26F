@@ -1,0 +1,35 @@
+---
+title: "Key Info and Announcements"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+library(here)
+source(here("class_dates.R"))
+```
+
+## Key Info
+
+- Quiz 1 questions?
+- Charles is still grading HW 2
+  - Posted solutions so you have as a reference during quiz
+- If links do not work on this site, there are two places where the files live:
+  - Github page: <https://github.com/nwakim/BSTA_550_25F>
+      - Link also on this homepage
+  - [OHSU OneDrive](https://ohsuitg-my.sharepoint.com/:f:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550?csf=1&web=1&e=3AkL9k)
+    - You should have access to this folder
+- If you want to attend class virtually when we're in-person, then you can use: <https://pdx.zoom.us/j/82027616951>
+  - However, I will not support virtual attendance when we're in-person
+  - I will not be monitoring the chat or helping with technical issues
+
+
+## Announcements
+
+- Homework 3 due `r q1_close %>% format("%m/%d")` at 11pm
+- Quiz 1 opens on `r q1_open %>% format("%m/%d")` at 3pm
+  - Closes `r q1_close %>% format("%m/%d")` at 11pm

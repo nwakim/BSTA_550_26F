@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2fa0555fe88427c29efa1b60aaf9e62d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.42">
+
+  <meta name="author" content="Nicky Wakim">
+  <meta name="dcterms.date" content="2025-10-06">
+  <title>Introduction to Probability – Lesson 3: Language of Probability</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-076a3aa726d0b67dd670335e7f534111.css">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-color="#006a4e" class="quarto-title-block center">
+  <h1 class="title">Lesson 3: Language of Probability</h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Nicky Wakim 
+</div>
+</div>
+</div>
+
+  <p class="date">2025-10-06</p>
+</section>
+<section>
+<section id="learning-objectives" class="title-slide slide level1 center">
+<h1>Learning Objectives</h1>
+<ol type="1">
+<li><p>Use set notation, Venn diagrams, and the concepts of unions, intersections, complements, and mutually exclusive events to represent and describe events.</p></li>
+<li><p>Apply the axioms of probability and related properties to calculate probabilities and prove simple results.</p></li>
+<li><p>Explain and use De Morgan’s Laws to simplify and solve probability problems.</p></li>
+<li><p>Connect partitions and all rules of probability to calculate probabilities.</p></li>
+</ol>
+</section>
+<section id="where-are-we" class="slide level2">
+<h2>Where are we?</h2>
+
+<img data-src="../img_slides/course_map.png" class="quarto-figure quarto-figure-center r-stretch"></section></section>
+<section>
+<section id="learning-objectives-1" class="title-slide slide level1 center">
+<h1>Learning Objectives</h1>
+<div class="lob">
+<ol type="1">
+<li>Use set notation, Venn diagrams, and the concepts of unions, intersections, complements, and mutually exclusive events to represent and describe events.</li>
+</ol>
+</div>
+<ol start="2" type="1">
+<li><p>Apply the axioms of probability and related properties to calculate probabilities and prove simple results.</p></li>
+<li><p>Explain and use De Morgan’s Laws to simplify and solve probability problems.</p></li>
+<li><p>Connect partitions and all rules of probability to calculate probabilities.</p></li>
+</ol>
+</section>
+<section id="set-theory-12" class="slide level2">
+<h2>Set Theory (1/2)</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>&nbsp;</p>
+<div class="definition">
+<div class="def-title">
+<p>Definition: Union</p>
+</div>
+<div class="def-cont">
+<p>The <strong>union</strong> of events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, denoted by <span class="math inline">\(A \cup B\)</span>, contains all outcomes that are in <span class="math inline">\(A\)</span> <em>or</em> <span class="math inline">\(B\)</span> or both</p>
+</div>
+</div>
+<div class="definition">
+<div class="def-title">
+<p>Definition: Intersection</p>
+</div>
+<div class="def-cont">
+<p>The <strong>intersection</strong> of events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, denoted by <span class="math inline">\(A \cap B\)</span>, contains all outcomes that are both in <span class="math inline">\(A\)</span> <em>and</em> <span class="math inline">\(B\)</span>.</p>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<p>Venn diagrams</p>
+</div></div>
+</section>
+<section id="set-theory-22" class="slide level2">
+<h2>Set Theory (2/2)</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>&nbsp;</p>
+<div class="definition">
+<div class="def-title">
+<p>Definition: Complement</p>
+</div>
+<div class="def-cont">
+<p>The <strong>complement</strong> of event <span class="math inline">\(A\)</span>, denoted by <span class="math inline">\(A^C\)</span> or <span class="math inline">\(A'\)</span>, contains all outcomes in the sample space <span class="math inline">\(S\)</span> that are <em>not</em> in <span class="math inline">\(A\)</span> .</p>
+</div>
+</div>
+<div class="definition">
+<div class="def-title">
+<p>Definition: Mutually Exclusive</p>
+</div>
+<div class="def-cont">
+<p>Events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <strong>mutually exclusive</strong>, or disjoint, if they have no outcomes in common. In this case <span class="math inline">\(A \cap B = \emptyset\)</span>, where <span class="math inline">\(\emptyset\)</span> is the empty set.</p>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<p>Venn diagrams</p>
+</div></div>
+</section></section>
+<section>
+<section id="learning-objective" class="title-slide slide level1 center">
+<h1>Learning Objective</h1>
+<ol type="1">
+<li>Use set notation, Venn diagrams, and the concepts of unions, intersections, complements, and mutually exclusive events to represent and describe events.</li>
+</ol>
+<div class="lob">
+<ol start="2" type="1">
+<li>Apply the axioms of probability and related properties to calculate probabilities and prove simple results.</li>
+</ol>
+</div>
+<ol start="4" type="1">
+<li><p>Explain and use De Morgan’s Laws to simplify and solve probability problems.</p></li>
+<li><p>Connect partitions and all rules of probability to calculate probabilities.</p></li>
+</ol>
+</section>
+<section id="probability-axioms" class="slide level2">
+<h2>Probability Axioms</h2>
+<div class="columns">
+<div class="column">
+<div class="axiom">
+<div class="axiom-title">
+<p>Axiom 1</p>
+</div>
+<div class="axiom-cont">
+<p>For every event <span class="math inline">\(A\)</span>, <span class="math inline">\(0\leq\mathbb{P}(A)\leq 1\)</span>. Probability is between 0 and 1.</p>
+</div>
+</div>
+<div class="axiom">
+<div class="axiom-title">
+<p>Axiom 2</p>
+</div>
+<div class="axiom-cont">
+<p>For the sample space <span class="math inline">\(S\)</span>, <span class="math inline">\(\mathbb{P}(S)=1\)</span>.</p>
+</div>
+</div>
+<div class="axiom">
+<div class="axiom-title">
+<p>Axiom 3</p>
+</div>
+<div class="axiom-cont">
+<p>If <span class="math inline">\(A_1, A_2, A_3, \ldots\)</span>, is a collection of <strong>disjoint</strong> events, then <span class="math display">\[\mathbb{P}\Big( \bigcup \limits_{i=1}^{\infty}A_i\Big) =  \sum_{i=1}^{\infty}\mathbb{P}(A_i).\]</span> The probability of at least one <span class="math inline">\(A_i\)</span> is the sum of the individual probabilities of each.</p>
+</div>
+</div>
+</div></div>
+</section>
+<section id="some-probability-properties" class="slide level2">
+<h2>Some probability properties</h2>
+<p>Using the Axioms, we can prove all other probability properties! Events A, B, and C are not necessarily disjoint!</p>
+<div class="columns">
+<div class="column">
+<div class="proposition">
+<div class="prop-title">
+<p>Proposition 1</p>
+</div>
+<div class="prop-cont">
+<p>For any event <span class="math inline">\(A\)</span>, <span class="math inline">\(\mathbb{P}(A)= 1 - \mathbb{P}(A^C)\)</span></p>
+</div>
+</div>
+<div class="proposition">
+<div class="prop-title">
+<p>Proposition 2</p>
+</div>
+<div class="prop-cont">
+<p><span class="math inline">\(\mathbb{P}(\emptyset)=0\)</span></p>
+</div>
+</div>
+<div class="proposition">
+<div class="prop-title">
+<p>Proposition 3</p>
+</div>
+<div class="prop-cont">
+<p>If <span class="math inline">\(A \subseteq B\)</span>, then <span class="math inline">\(\mathbb{P}(A) \leq \mathbb{P}(B)\)</span></p>
+</div>
+</div>
+</div><div class="column">
+<div class="proposition">
+<div class="prop-title">
+<p>Proposition 4</p>
+</div>
+<div class="prop-cont">
+<p><span class="math display">\[\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B)\]</span> where <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are not necessarily disjoint</p>
+</div>
+</div>
+<div class="proposition">
+<div class="prop-title">
+<p>Proposition 5</p>
+</div>
+<div class="prop-cont">
+<p><span class="math inline">\(\begin{aligned} \mathbb{P}(A \cup B &amp; \cup C) = \mathbb{P}(A) + \mathbb{P}(B) + \\ &amp; \mathbb{P}(C) - \mathbb{P}(A \cap B) - \mathbb{P}(A \cap C) - \\ &amp; \mathbb{P}(B \cap C) + \mathbb{P}(A \cap B \cap C) \end{aligned}\)</span></p>
+</div>
+</div>
+</div></div>
+</section>
+<section id="proposition-1-proof" class="slide level2">
+<h2>Proposition 1 Proof</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="proposition">
+<div class="prop-title">
+<p>Proposition 1</p>
+</div>
+<div class="prop-cont">
+<p>For any event <span class="math inline">\(A\)</span>, <span class="math inline">\(\mathbb{P}(A)= 1 - \mathbb{P}(A^C)\)</span></p>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="axiom">
+<div class="axiom-title">
+<p>Use Axioms!</p>
+</div>
+<div class="axiom-cont">
+<p>A1: <span class="math inline">\(0\leq\mathbb{P}(A)\leq 1\)</span></p>
+<p>A2: <span class="math inline">\(\mathbb{P}(S)=1\)</span></p>
+<p>A3: For disjoint <span class="math inline">\(A_i\)</span>,</p>
+<p><span class="math inline">\(\mathbb{P}\Big( \bigcup \limits_{i=1}^{\infty}A_i\Big) =  \sum_{i=1}^{\infty}\mathbb{P}(A_i)\)</span></p>
+</div>
+</div>
+</div></div>
+</section>
+<section id="proposition-2-proof" class="slide level2">
+<h2>Proposition 2 Proof</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="proposition">
+<div class="prop-title">
+<p>Proposition 2</p>
+</div>
+<div class="prop-cont">
+<p><span class="math inline">\(\mathbb{P}(\emptyset)=0\)</span></p>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="axiom">
+<div class="axiom-title">
+<p>Use Axioms!</p>
+</div>
+<div class="axiom-cont">
+<p>A1: <span class="math inline">\(0\leq\mathbb{P}(A)\leq 1\)</span></p>
+<p>A2: <span class="math inline">\(\mathbb{P}(S)=1\)</span></p>
+<p>A3: For disjoint <span class="math inline">\(A_i\)</span>,</p>
+<p><span class="math inline">\(\mathbb{P}\Big( \bigcup \limits_{i=1}^{\infty}A_i\Big) =  \sum_{i=1}^{\infty}\mathbb{P}(A_i)\)</span></p>
+</div>
+</div>
+</div></div>
+</section>
+<section id="proposition-3-proof" class="slide level2">
+<h2>Proposition 3 Proof</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="proposition">
+<div class="prop-title">
+<p>Proposition 3</p>
+</div>
+<div class="prop-cont">
+<p>If <span class="math inline">\(A \subseteq B\)</span>, then <span class="math inline">\(\mathbb{P}(A) \leq \mathbb{P}(B)\)</span></p>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="axiom">
+<div class="axiom-title">
+<p>Use Axioms!</p>
+</div>
+<div class="axiom-cont">
+<p>A1: <span class="math inline">\(0\leq\mathbb{P}(A)\leq 1\)</span></p>
+<p>A2: <span class="math inline">\(\mathbb{P}(S)=1\)</span></p>
+<p>A3: For disjoint <span class="math inline">\(A_i\)</span>,</p>
+<p><span class="math inline">\(\mathbb{P}\Big( \bigcup \limits_{i=1}^{\infty}A_i\Big) =  \sum_{i=1}^{\infty}\mathbb{P}(A_i)\)</span></p>
+</div>
+</div>
+</div></div>
+</section>
+<section id="proposition-4-visual-proof" class="slide level2">
+<h2>Proposition 4 Visual Proof</h2>
+<div class="proposition">
+<div class="prop-title">
+<p>Proposition 4</p>
+</div>
+<div class="prop-cont">
+<p><span class="math inline">\(\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B)\)</span></p>
+</div>
+</div>
+</section>
+<section id="proposition-5-visual-proof" class="slide level2">
+<h2>Proposition 5 Visual Proof</h2>
+<div class="proposition">
+<div class="prop-title">
+<p>Proposition 5</p>
+</div>
+<div class="prop-cont">
+<p><span class="math inline">\(\mathbb{P}(A \cup B \cup C) = \mathbb{P}(A) + \mathbb{P}(B) + \mathbb{P}(C) - \mathbb{P}(A \cap B) - \mathbb{P}(A \cap C) - \mathbb{P}(B \cap C) + \mathbb{P}(A \cap B \cap C)\)</span></p>
+</div>
+</div>
+</section>
+<section id="some-final-remarks-on-these-proposition" class="slide level2">
+<h2>Some final remarks on these proposition</h2>
+<ul>
+<li>Notice how we spliced events into multiple <strong>disjoint</strong> events
+<ul>
+<li>It is often easier to work with disjoint events</li>
+</ul></li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>If we want to calculate the probability for one event, we may need to get creative with how we manipulate other events and the sample space
+<ul>
+<li>Helps us use any incomplete information we have</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="learning-objectives-2" class="title-slide slide level1 center">
+<h1>Learning Objectives</h1>
+<ol type="1">
+<li><p>Use set notation, Venn diagrams, and the concepts of unions, intersections, complements, and mutually exclusive events to represent and describe events.</p></li>
+<li><p>Apply the axioms of probability and related properties to calculate probabilities and prove simple results.</p></li>
+</ol>
+<div class="lob">
+<ol start="4" type="1">
+<li>Explain and use De Morgan’s Laws to simplify and solve probability problems.</li>
+</ol>
+</div>
+<ol start="5" type="1">
+<li>Connect partitions and all rules of probability to calculate probabilities.</li>
+</ol>
+</section>
+<section id="de-morgans-laws" class="slide level2">
+<h2>De Morgan’s Laws</h2>
+<div class="theorem">
+<div class="thm-title">
+<p>Theorem: De Morgan’s 1st Law</p>
+</div>
+<div class="thm-cont">
+<p>For a collection of events (sets) <span class="math inline">\(A_1, A_2, A_3, \ldots\)</span></p>
+<p><span class="math display">\[\bigcap\limits_{i=1}^{n}A_i^C = \Big(\bigcup\limits_{i=1}^{n}A_i\Big)^C\]</span></p>
+</div>
+</div>
+<p>“all not A = <span class="math inline">\((\)</span>at least one event A<span class="math inline">\()^C\)</span>” or “intersection of the complements is the complement of the union”</p>
+<div class="theorem">
+<div class="thm-title">
+<p>Theorem: De Morgan’s 2nd Law</p>
+</div>
+<div class="thm-cont">
+<p>For a collection of events (sets) <span class="math inline">\(A_1, A_2, A_3, \ldots\)</span></p>
+<p><span class="math display">\[\bigcup\limits_{i=1}^{n}A_i^C = \Big(\bigcap\limits_{i=1}^{n}A_i\Big)^C\]</span></p>
+</div>
+</div>
+<p>“at least one event not A = <span class="math inline">\((\)</span>all A<span class="math inline">\()^C\)</span>” or “union of complements is complement of the intersection”</p>
+</section>
+<section id="bp-example-variation-13" class="slide level2">
+<h2>BP example variation (1/3)</h2>
+<ul>
+<li><p>Suppose you have <span class="math inline">\(n\)</span> subjects in a study.</p></li>
+<li><p>Let <span class="math inline">\(H_i\)</span> be the event that person <span class="math inline">\(i\)</span> has high BP, for <span class="math inline">\(i=1\ldots n\)</span>.</p></li>
+</ul>
+<p>&nbsp;</p>
+<p><em>Use set theory notation to denote the following events:</em></p>
+<ol type="1">
+<li><p>Event subject <span class="math inline">\(i\)</span> does not have high BP</p></li>
+<li><p>Event all <span class="math inline">\(n\)</span> subjects have high BP</p></li>
+<li><p>Event at least one subject has high BP</p></li>
+<li><p>Event all of them do not have high BP</p></li>
+<li><p>Event at least one subject does not have high BP</p></li>
+</ol>
+</section>
+<section id="bp-example-variation-23" class="slide level2">
+<h2>BP example variation (2/3)</h2>
+<ul>
+<li><p>Suppose you have <span class="math inline">\(n\)</span> subjects in a study.</p></li>
+<li><p>Let <span class="math inline">\(H_i\)</span> be the event that person <span class="math inline">\(i\)</span> has high BP, for <span class="math inline">\(i=1\ldots n\)</span>.</p></li>
+</ul>
+<p><em>Use set theory notation to denote the following events:</em></p>
+<ol type="1">
+<li><p>Event subject <span class="math inline">\(i\)</span> does not have high BP</p>
+<p>&nbsp;</p></li>
+<li><p>Event all <span class="math inline">\(n\)</span> subjects have high BP</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p></li>
+<li><p>Event at least one subject has high BP</p></li>
+</ol>
+</section>
+<section id="bp-example-variation-33" class="slide level2">
+<h2>BP example variation (3/3)</h2>
+<ol start="4" type="1">
+<li><p>Event all of them do not have high BP</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p></li>
+<li><p>Event at least one subject does not have high BP</p></li>
+</ol>
+</section>
+<section id="remarks-on-de-morgans-laws" class="slide level2">
+<h2>Remarks on De Morgan’s Laws</h2>
+<ul>
+<li><p>These laws also hold for infinite collections of events.</p>
+<p>&nbsp;</p></li>
+<li><p>Draw Venn diagrams to convince yourself that these are true!</p>
+<p>&nbsp;</p></li>
+<li><p>These laws are <em>very</em> useful when calculating probabilities.</p>
+<ul>
+<li><p>This is because calculating the probability of the <strong>intersection of events is often much easier than the union of events</strong>.</p></li>
+<li><p>This is not obvious right now, but we will see in the coming chapters why.</p></li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="learning-objectives-3" class="title-slide slide level1 center">
+<h1>Learning Objectives</h1>
+<ol type="1">
+<li><p>Use set notation, Venn diagrams, and the concepts of unions, intersections, complements, and mutually exclusive events to represent and describe events.</p></li>
+<li><p>Apply the axioms of probability and related properties to calculate probabilities and prove simple results.</p></li>
+<li><p>Explain and use De Morgan’s Laws to simplify and solve probability problems.</p></li>
+</ol>
+<div class="lob">
+<ol start="5" type="1">
+<li>Connect partitions and all rules of probability to calculate probabilities.</li>
+</ol>
+</div>
+</section>
+<section id="partitions" class="slide level2">
+<h2>Partitions</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="definition">
+<div class="def-title">
+<p>Definition: Partition</p>
+</div>
+<div class="def-cont">
+<p>A set of events <span class="math inline">\(\{A_i\}_{i=1}^{n}\)</span> create a <strong>partition</strong> of <span class="math inline">\(A\)</span>, if</p>
+<ul>
+<li><p>the <span class="math inline">\(A_i\)</span>’s are disjoint (mutually exclusive) and</p></li>
+<li><p><span class="math inline">\(\bigcup \limits_{i=1}^n A_i = A\)</span></p></li>
+</ul>
+</div>
+</div>
+<div class="example">
+<div class="ex-title">
+<p>Example 2</p>
+</div>
+<div class="ex-cont">
+<ul>
+<li><p>If <span class="math inline">\(A \subset B\)</span>, then <span class="math inline">\(\{A, B \cap A^C\}\)</span> is a partition of <span class="math inline">\(B\)</span>.</p></li>
+<li><p>If <span class="math inline">\(S = \bigcup \limits_{i=1}^n A_i\)</span>, and the <span class="math inline">\(A_i\)</span>’s are disjoint, then the <span class="math inline">\(A_i\)</span>’s are a partition of the sample space.</p></li>
+</ul>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+
+</div></div>
+<p>Creating partitions is sometimes used to help calculate probabilities, since by Axiom 3 we can add the probabilities of disjoint events.</p>
+</section>
+<section id="weekly-medications" class="slide level2">
+<h2>Weekly medications</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="example">
+<div class="ex-title">
+<p>Example 3</p>
+</div>
+<div class="ex-cont">
+<p>If a subject has an</p>
+<ul>
+<li><p>80% chance of taking their medication <em>this</em> week,</p></li>
+<li><p>70% chance of taking their medication <em>next</em> week, and</p></li>
+<li><p>10% chance of <em>not</em> taking their medication <em>either</em> week,</p></li>
+</ul>
+<p>then find the probability of them taking their medication exactly one of the two weeks.</p>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<p><em>Hint: Draw a Venn diagram labelling each of the parts to find the probability.</em></p>
+</div></div>
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>Lesson 3 Slides</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1955,
+
+        height: 1100,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

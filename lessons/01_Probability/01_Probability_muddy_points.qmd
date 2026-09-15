@@ -1,0 +1,39 @@
+---
+title: "Muddy Points"
+subtitle: "Lesson 1: Introduction to Probability"
+date: "10/01/2024"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Fall 2024
+
+### 1. Why is the number of possible events $2^{|S|}$?
+
+In class, we were wondering why/if $2^{|S|}$ is the general formula for calculating the total number of possible events. We were specifically wondering if the $2$ came from the fact that we had two options (heads and tails) for our outcome. Let's work through the example of a 6-sided die to explain this further. The sample space is $S=\{1, 2, 3, 4, 5, 6\}$. So is the total number of possible events $2^6$ or $6^6$ or something else? We can actually think about an event by using an indicator variable for each outcome of the sample space. An indicator variable is just a way to give us a yes/no answer to a question. So in this case, we are wondering: is this outcome a part of our event? If our **event** is $\{1\}$ then for the outcome $1$, the answer is "yes, the outcome is part of the event. For outcomes $2-6$, the answer is"no, the outcome is not apart of the event."
+
+![](images/event_1.png)
+
+For each outcome, we have a "yes" or "no" answer. We can look at another example of an event. Let's say our event is rolling an even number:
+
+![](images/event_2.png)
+
+For $2$, $4$, and $6$, the answer is "yes." We can define the indicator variable for whether an outcome is in an event or not. The indicator gives a 1 or 0 for yes and no respectively.
+
+![](images/indicator.png)
+
+As stated above, the $2$ in $2^6$ comes from the $2$ options from our indicator. Each side has two options, and there are $6$ sides. Thus, $2^6$ possible events.
+
+### 2. What is an event??
+
+I think this will become clearer when we start thinking about events in the context of probability. When we think of **events outside of probability**, we may think of something we actually do or something that happens, like going to a concert or coming to class or missing the streetcar. In this case, we think of the event as the single thing (out of all the options) that actually occured. For example, if I'm taking the streetcar to class, I can think of two definitive options of what *might* occur: I miss the streetcar or I get on the streetcar. Only one of these things can occur, which I may call an event *colloquially*.
+
+It is important to make the distinction with **events defined within probability**. Events are not necessarily a single thing that occurred. Instead it can be a collection of things that may occur. In the example of the streetcar, I can define my event to include both options. Thus, my event is that I make the streetcar or I miss it. Both of these things cannot happen simultaneously, but if I want to calculate the probability that I miss or make the streetcar, then it is helpful to have the event defined.
+
+#### And what is the difference between event and outcome?
+
+An outcome is a single result. The two options in the above example, missing the streetcar or getting on the streetcar, are two potential outcomes. Events are the collection of 0, 1, or more outcomes. So the possible events are: the empty set, missing the streetcar, getting on the streetcar, or the set of missing the streetcar and getting on the streetcar. 

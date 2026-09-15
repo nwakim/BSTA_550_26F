@@ -1,0 +1,89 @@
+---
+title: "Calculus Review"
+description: "Optional Reading"
+author: "Meike Niederhausen"
+date: "9/23/2023"
+date-modified: "7/31/2023"
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Introduction
+
+Calculus will be used in probability throughout the quarter, as well as in the following math stat classes. Below are topics and links from [Paul's Online Math Notes](http://tutorial.math.lamar.edu/) to help you review algebra and calculus skills that are essential to BSTA 550.
+
+-   You can ignore all examples that use trigonometry.
+
+-   I listed the sections that you should be familiar with. The webpages have both notes and exercises for you to practice.
+
+-   *I recommend first reviewing the italicized sections since we will be using series early in the course.*
+
+-   We will not use differentiation and integration until the second half of the course (Week 6), so you have some time to review.
+
+## Topics
+
+-   [*Algebra*](http://tutorial.math.lamar.edu/Classes/Alg/Alg.aspx)
+
+    -   [*Preliminaries*](http://tutorial.math.lamar.edu/Classes/Alg/Preliminaries.aspx)
+
+    -   [*Solving Equations And Inequalities*](http://tutorial.math.lamar.edu/Classes/Alg/Solving.aspx)
+
+    -   [*Graphing And Functions*](http://tutorial.math.lamar.edu/Classes/Alg/Graphing_Functions.aspx)
+
+    -   [*Exponential And Logarithm Functions*](http://tutorial.math.lamar.edu/Classes/Alg/ExpAndLog.aspx)
+
+-   Calculus 1   \[[Notes](http://tutorial.math.lamar.edu/Classes/CalcI/CalcI.aspx)\]   \[[Practice Problems](http://tutorial.math.lamar.edu/Problems/CalcI/CalcI.aspx)\]
+
+    -   Derivatives
+
+        -   Differentiation Formulas
+
+        -   Product and Quotient Rule
+
+        -   Derivatives of Exponential and Logarithm Functions (Only need exponential functions, and in particular only ex)
+
+        -   Chain Rule
+
+    -   Integrals
+
+        -   Indefinite Integrals
+
+        -   Computing Indefinite Integrals
+
+        -   Substitution Rule for Indefinite Integrals
+
+        -   More Substitution Rule
+
+        -   Area Problem
+
+            -   Don't worry about the computations. Read through as a review for how integrals calculate area under the curve as the limit of areas of rectangles.
+
+        -   The Definition of the Definite Integral
+
+        -   Computing Definite Integrals
+
+        -   Substitution Rule for Definite Integrals
+
+    -   Applications of Integrals
+
+        -   Area Between Curves
+
+    -   *Extras*
+
+        -   *Summation Notation*
+
+-   Calculus 2   \[[Notes](https://tutorial.math.lamar.edu/Classes/CalcI/CalcI.aspx)\]   \[[Practice Problems](http://tutorial.math.lamar.edu/Problems/CalcII/CalcII.aspx)\]
+
+    -   Integration Techniques
+
+        -   Integration by Parts
+
+    -   *Sequences and Series*
+
+        -   *Series - The Basics*
+
+        -   *Series - Special Series (just Geometric Series)*

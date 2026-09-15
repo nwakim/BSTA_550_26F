@@ -1,0 +1,24 @@
+---
+title: "Key Info"
+subtitle: "Pre Chapter 24: Calculus Review"
+date: "11/4/2024"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Announcements
+
+- This class is optional! 
+- Fire drills this week!
+
+## Key Dates
+
+- HW 2 due Sunday
+- Quiz 1 will open next Wednesday after class
+
+
+

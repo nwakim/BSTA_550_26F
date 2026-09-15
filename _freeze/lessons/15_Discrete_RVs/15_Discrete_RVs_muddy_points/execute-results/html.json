@@ -1,0 +1,17 @@
+{
+  "hash": "3571305dd636089188fb55a00cb4dc41",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Muddy Points\"\nsubtitle: \"Lesson 15: Discrete RVs\"\ndate-modified: \"today\"\nformat: \n  html:\n    link-external-newwindow: true\neditor_options: \n  chunk_output_type: console\n---\n\n## Fall 2025\n\n### 1. Hypergeometric distribution is always a lot to look at\n\nHaha, so true. Hopefully more examples next class will be helpful.\n\n### 2. For the first couple of random variable types deriving the expected values & variances feels simple enough, for the later ones i have no idea how\n\nYes, it gets tricky especially when $X$ can take infinite values. The good news is these are all very common random variables and there are many videos that go through the proofs. \n\nFor example, [here is one from Khan Academy on the geometric distribution.](https://www.youtube.com/watch?v=7br_-emGNec) \n\n## Fall 2024\n\n### 1. In-class example of the Poisson distribution\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\n\nx <- 0:250\n# n = c(6,14,30,60)\np = c(0.1, 0.5)\n\ngeom = expand.grid(x = x, p = p) %>%\n  mutate(y = dgeom(x, prob = p))\n\nggplot(geom %>% filter(y > 1e-5), \n       aes(x, y, color=factor(p))) +\n  geom_point(size=1) +\n  geom_segment(aes(x=x, xend=x, y=0, yend=y, color=factor(p)), lwd=0.8, alpha=0.5) +\n  facet_grid(rows = vars(p), scales=\"free_x\", space=\"free_x\") +\n  theme(legend.position = \"none\",\n        axis.title = element_text(size = 14),    # Axis title size\n        axis.text = element_text(size = 12),     # Axis text size\n        strip.text = element_text(size = 13)) +  # Facet label size\n  labs(x = \"Number of trials\", y = \"Probability\")\n```\n\n::: {.cell-output-display}\n![](15_Discrete_RVs_muddy_points_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n\n\n",
+    "supporting": [
+      "15_Discrete_RVs_muddy_points_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,44 @@
+---
+title: "Homework 10 Answers"
+subtitle: "BSTA 550"
+date-modified: "today"
+format: 
+  html: 
+    link-external-newwindow: true
+    toc: true
+  pdf: default 
+editor_options: 
+  chunk_output_type: console
+---
+
+## Non-textbook problems
+
+-   #1: 
+
+## Textbook problems
+
+There are answers at the back of the book!! Selected answers (or hints) not provided at the end the book:
+
+-   Chapter 37
+
+    -   \# 2: 0.8869
+
+    -   \# 4: 0.0023
+
+    -   \# 20: 0.3936
+
+    -   \# 24: 0.4562
+
+    -   \# 30: (b) 0.0022     (c) $478.696\approx 479$
+    
+-   Chapter 43
+
+    -   NTB 3: \(a\) Poisson$(\sum_{i=1}^n \lambda_i)$     (b)
+        Poisson$(3\lambda)$      (c) $M_{3X}(t)=e{\lambda(e^{3t}-1)}$
+        This is not an mgf of a common probability distribution.
+             (d) In (b) we are adding independent r.v.'s $X_i$, while
+        in (c) we are adding dependent r.v.'s ($3X=X+X+X$; $X$ is
+        dependent with itself).
+
+
+

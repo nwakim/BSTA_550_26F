@@ -1,0 +1,25 @@
+---
+title: "Key Info and Announcements"
+subtitle: "Welcome"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Announcements
+
+- Welcome! I will put announcements and reminders on these pages!
+- Thanks for being patient while I've been out of the country!
+
+## Key dates
+
+- Homework 0 is due THIS THURSDAY at 11pm!
+
+## Last class
+
+- There wasn't one heh
+
+

@@ -1,0 +1,94 @@
+---
+title: "Continuous Random Variables"
+author: "Nicky Wakim"
+date: "12/01/2023"
+title-slide-attributes:
+    data-background-color: "#006a4e"
+categories: ["Week 11"]
+format: 
+  html:
+    toc: true
+---
+
+## Properties of continuous uniform RVs
+
+-   **Scenario:** Events are equally likely to happen anywhere or anytime in an interval of values
+
+-   Shorthand: $X \sim \text{U}[a,b]$
+
+$$
+f_X(x) = \dfrac{1}{b-a}, \text{ for }a \leq x \leq b
+$$
+
+$$
+F_X(x) = \left\{
+        \begin{array}{ll}
+            0 & \quad x<a \quad \\
+            \dfrac{x-a}{b-a} & \quad a \leq x \leq b\quad \\
+            1 & \quad x>b \quad
+        \end{array}
+    \right.
+$$
+
+$$\text{E}(X) = \dfrac{a+b}{2} \text{, } \text{ Var}(X) = \dfrac{(b-a)^2}{12}$$
+
+## Properties of exponential RVs
+
+-   **Scenario:** Modeling the time until the next (first) event
+
+-   Continuous analog to the geometric distribution!
+
+-   Shorthand: $X \sim \text{Exp}(\lambda)$
+
+$$
+f_X(x) = \lambda e^{-\lambda x}\text{ for } x>0, \lambda>0
+$$
+
+$$
+F_X(x) = \left\{
+        \begin{array}{ll}
+            0 & \quad x<0 \quad \\
+            1 - e^{-\lambda x} & \quad x\geq0 \\
+        \end{array}
+    \right.
+$$
+
+$$\text{E}(X) = \dfrac{1}{\lambda}$$ $$\text{Var}(X) = \dfrac{1}{\lambda^2}$$
+
+
+## Properties of gamma RVs
+
+-   **Scenario:** Modeling the time until the $r^{th}$ event.
+-   Continuous analog to the Negative Binomial distribution
+-   Shorthand: $X \sim \text{Gamma}(r, \lambda)$
+
+$$
+f_X(x) = \dfrac{\lambda^r}{\Gamma(r)}x^{r-1} e^{-\lambda x}\text{ for } x>0, \lambda>0, \Gamma(r) = (r-1)!
+$$
+
+$$
+F_X(x) = \left\{
+        \begin{array}{ll}
+            0 & \quad x<0 \quad \\
+            1 - e^{-\lambda x}\displaystyle\sum_{j=0}^{r-1}\dfrac{(\lambda x)^j}{j!}  & \quad x\geq0 \\
+        \end{array}
+    \right.
+$$
+
+$$\text{E}(X) = \dfrac{r}{\lambda}\text{, }\text{ Var}(X) = \dfrac{r}{\lambda^2}$$
+
+Common to see $\alpha = r$ and $\beta = \lambda$
+
+## Properties of Normal RVs
+
+-   No scenario description here because the Normal distribution is so universal
+
+      -   Central Limit Theorem (next class) makes it applicable to many types of events
+
+-   Shorthand: $X \sim \text{Normal}(\mu, \sigma^2)$
+
+$$
+f_X(x) = \dfrac{1}{\sqrt{2\pi \sigma^2}}e^{-(x-\mu)^2/(2\sigma^2)} \text{, for} -inf < x < inf
+$$
+
+$$\text{E}(X) = \mu $$ $$\text{Var}(X) = \sigma^2$$

@@ -1,0 +1,306 @@
+/*-- scss:defaults --*/
+
+@import url(https://fonts.googleapis.com/css?family=News+Cycle:400,700);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+@import url('https://fonts.googleapis.com/css?family=Signika:400light,700light');
+
+@import url(https://fonts.googleapis.com/css?family=Quicksand:400,700,400italic,700italic);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
+
+// fonts
+$font-family-sans-serif: Lato, sans-serif !default;
+
+//$font-family-sans-serif: "Open Sans", sans-serif !default;
+
+$blue:        #29abe0 !default;
+$red:         #d9534f !default;
+$pink:        #F08897 !default;
+$green2:      #20c997 !default;
+$orange:      #E25D3B !default;
+$yellow:      #F1CF58 !default;
+$orange2:     #E89543 !default;
+$slate-grey:  #6C757D !default;
+$green:       #006a4e !default;
+$ivory:       #F2EFEA !default;
+
+
+// colors
+$body-bg: #fff !default;
+$body-color: #000 !default;
+$link-color: #E25D3B !default;
+$selection-bg: rgba(0, 0, 0, 0.99);
+
+// headings
+$presentation-heading-font: Signika, sans-serif !default;
+$presentation-heading-color: #006a4e !default;
+
+div.cell-output-stdout {
+  font-size: 1.5em;
+}
+
+.reveal .sourceCode {
+  font-size: 0.95em !important;
+}
+
+.reveal code {
+  max-height: 100% !important;
+}
+
+
+// My added divs
+
+
+// Learning Objectives
+.lob{
+  margin-left: 0em;
+  padding-left:  25px;
+  padding-top:  5px;
+  padding-bottom: 0.1em;
+  color: white;
+  background-color: $green;
+  font-size: 1em;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  border-radius: 15px;
+}
+
+// Definitions 
+.definition{
+  margin: 1em 0;
+  border: 3px solid #29abe0;
+  border-radius: 10px;
+}
+.def-title {
+  margin-left: 0em;
+  padding-left:  15px;
+  padding-top:  5px;
+  padding-bottom: 0.1em;
+  color: white;
+  background-color: #29abe0;
+  font-size: 1em;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  //background-image: url("goal.png");
+}
+.def-cont {
+  margin-left: 0em;
+  padding-top: 5px;
+  padding-left: 15px;
+  color: black;
+  background-color: white;
+  border-radius: 10px 10px 10px 10px;
+}
+
+// Theorem
+.theorem{
+  margin: 1em 0;
+  border: 3px solid #20c997;
+  border-radius: 10px;
+}
+.thm-title {
+  margin-left: 0em;
+  padding-left:  15px;
+  padding-top:  5px;
+  padding-bottom: 0.1em;
+  color: white;
+  background-color: #20c997;
+  font-size: 1em;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  //background-image: url("goal.png");
+}
+.thm-cont {
+  margin-left: 0em;
+  padding-top: 5px;
+  padding-left: 15px;
+  color: black;
+  background-color: white;
+  border-radius: 10px 10px 10px 10px;
+}
+
+// Proposition
+.proposition{
+  margin: 1em 0;
+  border: 3px solid #F08897;
+  border-radius: 10px;
+}
+
+.prop-title {
+  margin-left: 0em;
+  padding-left:  15px;
+  padding-top:  5px;
+  padding-bottom: 0.1em;
+  color: white;
+  background-color: #F08897;
+  font-size: 1em;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  //background-image: url("goal.png");
+}
+
+.prop-cont {
+  margin-left: 0em;
+  padding-top: 5px;
+  padding-left: 15px;
+  color: black;
+  background-color: white;
+  border-radius: 10px 10px 10px 10px;
+}
+
+// Axiom
+.axiom{
+  margin: 1em 0;
+  border: 3px solid #d9534f;
+  border-radius: 10px;
+}
+
+.axiom-title {
+  margin-left: 0em;
+  padding-left:  15px;
+  padding-top:  5px;
+  padding-bottom: 0.1em;
+  color: white;
+  background-color: #d9534f;
+  font-size: 1em;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  //background-image: url("goal.png");
+}
+
+.axiom-cont {
+  margin-left: 0em;
+  padding-top: 5px;
+  padding-left: 15px;
+  color: black;
+  background-color: white;
+  border-radius: 10px 10px 10px 10px;
+}
+
+// Proof
+.proof1{
+  margin: 1em 0;
+  border: 3px solid #E25D3B;
+  border-radius: 10px;
+}
+
+.proof-title {
+  margin-left: 0em;
+  padding-left:  15px;
+  padding-top:  5px;
+  padding-bottom: 0.1em;
+  color: white;
+  background-color: #E25D3B;
+  font-size: 1em;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  //background-image: url("goal.png");
+}
+
+.proof-cont {
+  margin-left: 0em;
+  padding: 5px 15px 5px 15px;
+  color: black;
+  background-color: white;
+  border-radius: 10px 10px 10px 10px;
+}
+
+// Example
+.example{
+  border-radius: 10px;
+  margin: 1em 0;
+  border: 3px solid #F1CF58;
+}
+
+.ex-title {
+  margin-left: 0em;
+  padding-left:  15px;
+  padding-top:  5px;
+  padding-bottom: 0.1em;
+  color: white;
+  background-color: #F1CF58;
+  font-size: 1em;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  //background-image: url("goal.png");
+}
+
+.ex-cont {
+  margin-left: 0em;
+  padding-top: 5px;
+  padding-left: 15px;
+  padding-right: 10px;
+  color: black;
+  background-color: white;
+  border-bottom-right-radius: 10px;
+}
+
+// Fact
+.fact{
+  border-radius: 10px;
+  margin: 1em 0;
+  border: 3px solid #006a4e;
+}
+
+.fact-title {
+  margin-left: 0em;
+  padding-left:  15px;
+  padding-top:  5px;
+  padding-bottom: 0.1em;
+  color: white;
+  background-color: #006a4e;
+  font-size: 1em;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  //background-image: url("goal.png");
+}
+
+.fact-cont {
+  margin-left: 0em;
+  padding-top: 5px;
+  padding-left: 15px;
+  color: black;
+  background-color: white;
+  border-bottom-right-radius: 10px;
+}
+
+// extra
+.extra{
+  border-radius: 10px;
+  margin: 1em 0;
+  border: 3px solid #E89543;
+}
+
+.ext-title {
+  margin-left: 0em;
+  padding-left:  15px;
+  padding-top:  5px;
+  padding-bottom: 0.1em;
+  color: white;
+  background-color: #E89543;
+  font-size: 1em;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  //background-image: url("goal.png");
+}
+
+.ext-cont {
+  margin-left: 0em;
+  padding-top: 5px;
+  padding-left: 15px;
+  color: black;
+  background-color: white;
+  border-bottom-right-radius: 10px;
+}
+
+
+
+

@@ -1,0 +1,20 @@
+{
+  "schedule.qmd": {
+    "schedule.html": "00fba51a"
+  },
+  "schedule_01.qmd": {
+    "schedule_01.html": "851e7ac7"
+  },
+  "lessons/04_Rules_of_prob/old/04_Conditional_Probability.qmd": {
+    "04_Conditional_Probability.html": "df79a53c"
+  },
+  "lessons/04_Rules_of_prob/old/05_Bayes_Theorem.qmd": {
+    "05_Bayes_Theorem.html": "23cff020"
+  },
+  "lessons/04_Rules_of_prob/old/03_Independent_Events.qmd": {
+    "03_Independent_Events.html": "b3599a6a"
+  },
+  "index.qmd": {
+    "index.html": "0d976a8e"
+  }
+}

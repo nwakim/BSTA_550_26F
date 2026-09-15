@@ -1,0 +1,34 @@
+---
+title: "Muddy Points"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Fall 2023
+
+### 1. Joint vs marginal vs conditional: How are we calculating the probability?
+
+If we start at a joint probability $f_{X,Y}(x,y)$.... we can look at a few probabilities:
+
+-   Joint probability: $P(a \leq X \leq b, c \leq Y \leq d)$
+
+    $$P(a \leq X \leq b, c \leq Y \leq d) = \displaystyle\int_{x=a}^{x=b}\displaystyle\int_{y=c}^{y=d} f_{X,Y}(x,y) dydx$$
+
+-   Marginal probability: $P(a \leq X \leq b)$
+
+    $$P(a \leq X \leq b) = \displaystyle\int_{x=a}^{x=b} f_{X}(x) dx$$
+
+    OR
+
+    $$P(a \leq X \leq b) = \displaystyle\int_{x=a}^{x=b}\displaystyle\int_{y=-\inf}^{y=\inf} f_{X,Y}(x,y) dydx$$
+
+-   Conditional probability: $P(a \leq X \leq b | Y = c)$
+
+    $$P(a \leq X \leq b | Y=c) = \displaystyle\int_{x=a}^{x=b} f_{X|Y}(x|y=c) dx$$
+
+    You cannot calculate $P(a \leq X \leq b | Y = c)$ by $\dfrac{P(a \leq X \leq b, Y=c)}{P(Y = c)}$ because $P(Y = c)$ is 0. Instead, we need to find $f_{X|Y}(x|y=c)$ by $\dfrac{f_{X,Y}(x,y=c)}{f_{Y}(y=c)}$ and THEN integrate over X.
+

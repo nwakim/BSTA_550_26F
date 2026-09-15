@@ -1,0 +1,25 @@
+---
+title: "Homework 5 Answers"
+subtitle: "BSTA 550"
+date-modified: "today"
+format: 
+  html: 
+    link-external-newwindow: true
+    toc: true
+  pdf: default 
+editor_options: 
+  chunk_output_type: console
+---
+
+## Questions
+
+1. Not given
+    
+2. $f_Z(z) = nF_X(z)^{n-1}f_X(z)$
+
+3.
+
+  - (b) $P(X<Y) = 0.099995$
+  - (d) $f_Z(z) = \dfrac{11-2z}{5}e^{-2z}$ for $0 \leq z \leq 5$
+        
+4. 2 cases: when $0< z < 1$ and $1 \leq z \leq 2$

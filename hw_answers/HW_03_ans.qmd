@@ -1,0 +1,33 @@
+---
+title: "Homework 3 Answers"
+subtitle: "BSTA 550"
+date-modified: "today"
+format: 
+  html: 
+    link-external-newwindow: true
+    toc: true
+  pdf: default 
+editor_options: 
+  chunk_output_type: console
+---
+
+## Questions
+
+1. (a) 0.189     (b) 0.811     (c) 0.189
+2. a. 4060; b. 24,360;
+3.  0.3916
+
+## Extra Problems
+
+1. Calculus review
+
+    a. $c(\frac{y^{2}}{2}+y^{2})$
+    b. $\frac{8}{9}xy^{2}+\frac{5}{9}y^{4}$
+    c. $\frac{8}{9}x^{2}y+\frac{20}{9}xy^{3}$
+    d. $-2e^{-2y}+2e^{-y}$
+    e. $xe^{-x}$
+    f. $-\frac{2}{3}(e^{-7x}-e^{-4x})$
+    g. $\frac{9}{2}$
+    h. $\frac{9}{2}$
+    i. $\frac{9}{2}$
+    j. $\frac{9}{2}$

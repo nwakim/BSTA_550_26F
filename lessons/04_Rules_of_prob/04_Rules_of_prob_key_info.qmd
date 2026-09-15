@@ -1,0 +1,24 @@
+---
+title: "Key Info"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Announcements
+
+- No office hours from me this week - I have a standing appointment 
+  - But we will start next week!
+
+- Drop deadline with 100% refund: this Friday, 10/10
+
+- New AI Video Tutorials! If anyone is looking for course materials on the responsible use of generative AI tools such as ChatGPT, I wanted to highlight that the OHSU library has released a new set of AI video tutorials!
+
+    - Created by librarian David Carson, this series of short videos (3-4 minutes each) is based on the [Kickstart Your Writing with AI workshop](https://librarycalendar.ohsu.edu/event/15062969) taught with writing specialist Zoe Speidel. Each video is standalone and can be viewed in any order, so faculty can share and reuse whichever are most relevant. The topics include effective prompting, AI and publishing, and how to cite or disclose AI. The videos are designed to be flexible resources and are available to embed directly into Sakai. This series is available on the [Library's Generative AI student guide.](https://libguides.ohsu.edu/aiforstudents/videotutorials)
+
+## Key Dates
+
+- HW 1 Assignment due this Sunday at 11pm

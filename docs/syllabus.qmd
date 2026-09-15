@@ -1,0 +1,476 @@
+---
+title: "BSTA 550 Syllabus"
+date-modified: "today"
+categories: [""]
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+  pdf: default
+editor_options: 
+  chunk_output_type: console
+---
+
+```{css, echo=FALSE}
+.title{
+  font-size: 40px;
+  color: #006a4e;
+  background-color: #fff;
+  padding: 8px;
+}
+
+.description{
+  font-size: 20px;
+  color: #fff;
+  background-color: #006a4e;
+  padding: 10px;
+}
+```
+
+## Key Course Info
+
+-   If an assignment on Sakai is closed or you are submitting late work, please email me AND the TAs your work
+-   For homework, you will have TWO no-questions-asked, 3-day extensions: one for the first assignment, and one for either the solutions or presentation. You just need to send me and the TAs a quick email saying "I am using my no-questions-asked extension for Homework \_\_ assignment/solutions/presentation."
+-   Attendance policy: attend in person and fill out exit tickets for 12 out of the 19 classes
+-   The class will end on December 9, 2024. **All coursework is expected to be completed by December 13, 2024 at 11pm.**
+
+## Description
+
+Welcome to BSTA 550! In this course, we will establish foundational knowledge in probability in which more statistics knowledge can be built! This course is designed to introduce history, concepts and distributions in probability, Monte Carlo simulation techniques, and Markov chains. Students will also learn how to write R codes for various statistical computations and plots. Previous experience in R is not required. R is free software available from http://www.r-project.org.
+
+### Course Learning Objectives
+
+At the end of this course, students should be able to...
+
+1.  Assign probability to a chance event using concepts of probability (including fundamental axioms, properties, and counting)
+
+2.  Compute probabilities for *discrete random variables* (including random variables following Bernoulli, binomial, geometric, and Poisson distributions)
+
+3.  Compute probabilities for *continuous random variables* (including random variables following Normal, Gamma, and Beta distributions)
+
+4.  Perform statistical computations and simulations using R
+
+## Instructors
+
+[Here is the instructor page.](instructors.qmd) This also has office hours!
+
+## Meeting Times
+
+Mondays          10:30 AM -- 12:00 PM PST in room VPT 620M
+
+Wednesdays    10:30 AM -- 12:00 PM PST in room VPT 620M
+
+### Known Exceptions
+
+Wednesday, November 26    No class
+
+```{r}
+#| echo: false
+g=3
+```
+
+## Materials
+
+### Textbook
+
+#### Introduction to Probability
+
+-   **Authors:** Mark Daniel Ward and Ellen Gundlach
+
+-   **Publisher:** W. H. Freeman
+
+-   **Edition:** 1st
+
+-   **ISBN-13**: 978-0716771098
+
+-   [Textbook in Sakai](https://sakai.ohsu.edu/access/content/group/BSTA-550-1-12619-F23/Textbook/introduction-to-probability_compress.pdf)
+
+#### Supplemental Readings (Optional)
+
+-   *Statistical Inference*, Casella and Berger, 2nd ed. (This will be the textbook for BSTA 551-552 Math Stat.)
+
+-   [*Introduction to Probability*](https://math.dartmouth.edu/~prob/prob/prob.pdf)*,* Charles M. Grinstead and J. Laurie Snell
+
+-   *Probability With Applications and R*, Robert P. Dobrow, Wiley 2013 (eBook available from OHSU library)
+
+-   *An Introduction to R* ([free pdf available](http://cran.r-project.org/manuals.html))
+
+### Online Resources
+
+#### Slack
+
+We will use Slack as our main form of communication for the class. If you are unsure how to do a homework problem or have other questions, please ask me by posting your question(s) on Slack. Please know that Slack is not guarded by the OSHU firewall, so if you have a question about accommodations or any sensitive topics, you may wish to message me via email. You can still message me regarding sensitive information on Slack, but I will not initiate those conversations on Slack.
+
+[\*\*Please use this invitation link for our Slack workspace!\*\*](https://join.slack.com/t/bsta550f23/shared_invite/zt-234443trn-SJOPMHIuUdZaVgSuFBHHIQ)
+
+**Tips on asking questions:**
+
+-   When reaching out for help for a homework problem, please include some context on what you have already tried.
+    -   For example, including a photo of your work thus far with an explanation of where you think you might be wrong is a quick way for me to look it over your work and help you troubleshoot. This helps me see what parts you already understand and which you need help with. If your question involves code, please include the copied code (not a screenshot) and an attachment to your full file. This way I can see the exact line you need help with and the full code in case the problem starts earlier.
+    -   If you are unsure how to start a problem, look through your notes and the book for examples that you think might be similar. When reaching out, mention these examples and why you think they might be helpful, but also why you are still unsure on how to proceed.
+    -   If you only write something similar to "I don't know how to do problem xxx," then my response will be to ask you what you tried so far. Thus, it will be quicker for you to let me know this information right away.
+-   If asking for help about a specific example that you don't understand, please also provide some detail beyond "I don't understand example xxx."
+    -   Which steps of the problem do you not understand? You can refer to a line number, for example.
+    -   If you don't understand the first step, do you understand the ones following it?
+-   In general, when asking a question, please provide the homework number it is from along with the chapter and problem number. If it's an example from the notes or book, an example number or slide number will help finding it.
+-   Want more tips on asking questions? This list on [this site](https://www.weareteachers.com/8-ways-to-pose-better-questions-in-math-class/){.uri} will help!
+-   Finally, if I don't respond within a day and you need a response soon, *please remind me by emailing or messaging me again*.
+
+#### Sakai
+
+While most course materials will be delivered online through this website, assignments will be turned in through [Sakai](https://sakai.ohsu.edu/), OHSU's course management system. I will include a link on this website to the Sakai assignment page. 
+
+#### Webex
+
+Webex software will be used for virtual office hours. To give everyone the best possible experience with Webex, I recommend the following best practices:
+
+-   Please stay muted until you want to participate
+
+-   During office hours, please send a message in chat with your question or with a statement like "I have a question." This makes sure I or the TA can address everyone's questions in order. 
+
+-   I encourage you to attend office hours with your video on. This helps me recognize you, and keep mental notes on what techniques/concepts I emphasize to facilitate your specific understanding. 
+
+#### Poll Everywhere
+
+We will use the Poll Everywhere tool as an interactive feature of the course. Poll Everywhere is a web-based application that allows students to participate by responding via text messages or by visiting a web page on an internet-enabled device (smartphone, tablet, laptop). Instructions will be displayed on-screen. The poll that is embedded within the presentation will update in real time. While there is no cost to use this software, standard text messaging rates will apply if you use your phone. Please make sure that you have a Poll Everywhere account before our first class. You are not required to use your OHSU/PSU email to make an account. 
+
+During lectures I will pose questions to the class. These questions are designed to provide real-time feedback to both students and the instructor on how well students are grasping the material. This is meant to be an interactive, learning activity with NO contribution to your grade. Your identity will never be connected to your answers, so I encourage you to answer honestly.
+
+#### PennState STAT 414 Website
+
+PennState has a class offered to advanced undergraduates that has some overlap with our class. They have all their [course notes posted on this page](https://online.stat.psu.edu/stat414/). This is a great source if you would like to see class notes with different phrasing.
+
+Not all of our topics are covered in their notes, but the most important ones are. If you are having trouble finding our course's concepts on their page, please make ask me at Office Hours, after class, or in a private meeting. I do not explicitly state corresponding sections under our schedule because I believe it is important for you to develop skills involving resources and learning key words that can help you find answers. 
+
+#### R: Statistical Computing Software
+
+Students will use statistical software to complete homework assignments. Students are required to use R/RStudio for this course. R can be freely downloaded. [Helpful documentation](https://rstudio-education.github.io/hopr/starting.html) on installing R is available. **I encourage you to install R prior to attending our first lecture.** Please email me if you need help installing R or RStudio.
+
+You will need to download the following three things:
+
+1.  R <https://www.r-project.org/>
+
+2.  Rstudio <https://posit.co/download/rstudio-desktop/>
+
+3.  Quarto <https://quarto.org/docs/get-started/>
+
+##### Additional R Resources
+
+Your learning and practicing of R will hopefully not be limited to this course. One of the best aspects of programming in R is that many resources are freely available online. Here are just a few additional resources you may explore beyond this class to continue your training in R.
+
+##### Useful online R resources
+
+-   [R for the rest of us](https://rfortherestofus.com/)
+
+-   Statistical tools for high-throughput data analysis. [ggplot2 essentials](http://www.sthda.com/english/wiki/ggplot2-essentials#google_vignette)
+
+-   [R-bloggers](http://www.r-bloggers.com/)
+
+-   Stack Overflow for troubleshooting
+
+-   [R Graphical Manual](https://www.imsbio.co.jp/RGM/R_image_list)
+
+-   [Quick-R](http://www.statmethods.net/). Accessing the power of R
+
+-   [R for SAS, STATA, and SPSS Users](http://r4stats.com/)
+
+-   [ggplot2](https://ggplot2.tidyverse.org/)
+
+-   [Learn R 4 free](https://www.learnr4free.com/en/index.html)
+
+-   [Join a local R user groups](https://www.r-consortium.org/blog/2019/09/09/r-community-explorer-r-user-groups)
+
+-   [Learning Machines](https://blog.ephorie.de/learning-r-the-ultimate-introduction-incl-machine-learning)
+
+#### Online R courses to complement or refresh material from class
+
+-   [R for the rest of us](https://rfortherestofus.com/)
+
+-   Coursera: [R programming](https://www.coursera.org/learn/r-programming)
+
+-   edX: [R basics](https://www.edx.org/course/data-science-r-basics)
+
+-   Data Carpentry: For Biologists
+
+-   Data Carpentry: [For Ecologists](https://datacarpentry.org/lessons/#ecology-workshop)
+
+-   [Psychiatric R](https://psyteachr.github.io/)
+
+-   [R coder](https://r-coder.com/)
+
+## Assessment
+
+The course is structured around the following four components:
+
++:------------------------------:+:------------:+:-------------:+:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **Component**                  | **Modality** | **Frequency** | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
++--------------------------------+--------------+---------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Lecture                        | In person    | Twice, Weekly | Course content is provided through in-person lectures. Lectures will consist of didactic lessons, interactive examples, and PollEverywhere questions. Sessions will be recorded through Explain Everything and posted to Sakai. **Attending or viewing the lecture within 7 days of the original lecture date is mandatory.** Class attendance will be taken through an Exit Ticket. If viewing the lecture asynchronously, you must take the Exit Ticket to verify your attendance. |
++--------------------------------+--------------+---------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Homework Assignment            | Online       | Weekly        | The course includes 9 homework assignments. They are an opportunity for you to engage with important concepts, practice some coding, and apply calculating skills. Homework assignments should be submitted online, and will be graded for completeness by the TAs. Students are encouraged to work in groups for homework assignments, but each person should do their own summary and hand in their work. **Homework assignments will be due on Thursday at 11 PM.**               |
++--------------------------------+--------------+---------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Homework Solutions             | Online       | Weekly        | The course includes 9 homework *solutions*. With groups of 4, you will make a homework key for 4 questions (that Nicky chooses). Each group member will be in charge of turning in one question's solutions. Homework solutions should be submitted online, and will be graded by the TAs for correctness. The group will receive the same grade, which is summed across questions. **Homework solutions will be due week following the assignment on \_\_\_\_ at 11 PM.**           |
++--------------------------------+--------------+---------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Homework Solution Presentation | Online       | 2x            | The course includes 2 presentations on homework solutions. For two homeworks, you will also be asked to make a video presentation or schedule a meeting with Nicky to present your thought process and explain your solutions. You will explain one of the problems that your group made solutions for. Videos will be submitted online and meetings will be help over Webex.                                                                                                        |
++--------------------------------+--------------+---------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+#### Types of assessments
+
+This class will use a combination of formative and summative assessments to build and test our knowledge. Below I define each of these types of assessments:
+
+-   **Formative assessment:** Activity or work meant to help students learn and practice. Feedback on these assessments are meant to help the instructor and student identify gaps in knowledge and highlight accomplishments.
+
+-   **Summative assessment:** Work meant to test how well students have achieved learning objectives. Grading of these assessments are meant to gauge how well a student grasps the learning objectives and will be able to use their knowledge outside of the classroom.
+
+### Breakdown
+
+#### Grading & Requirements
+
+Letter grades will be assigned roughly according to the following scheme: A (\>=93%), A- (90-92%), B+ (88-89%), B(83-87%), B- (82-80%), C+(78-79%), C(73-77%), C- (70-72%), D (60 -- 69%), F(\<60%).
+
+Grades will be based on homework assignments, midterm exam, class "attendance", and final exam, as follows:
+
++:-------------------------:+:----------------------:+:----------------:+:-----------------------------:+
+| **Course activity**       | **Type of Assessment** | **Due Date**     | **Percentage of final grade** |
++---------------------------+------------------------+------------------+-------------------------------+
+| Homework Assignment       | Formative              | Every week       | 27%                           |
++---------------------------+------------------------+------------------+-------------------------------+
+| Homework Solutions        | Summative              | Every week       | 40%                           |
++---------------------------+------------------------+------------------+-------------------------------+
+| Homework Presentations    | Summative              | Twice in quarter | 18%                           |
++---------------------------+------------------------+------------------+-------------------------------+
+| Group evals               | N/A                    | Twice in quarter | 8%                            |
++---------------------------+------------------------+------------------+-------------------------------+
+| Exit tickets (Attendance) | N/A                    | Twice Weekly     | 5%                            |
++---------------------------+------------------------+------------------+-------------------------------+
+| Mid-Quarter Feedback      | N/A                    | 10/28            | 2%                            |
++---------------------------+------------------------+------------------+-------------------------------+
+
+#### Homework grading
+
+No student has the same amount of time available to dedicate to homework. This class may not be a priority to you, you may be taking several other courses, or you may need to dedicate time to other activities. Homework *assignments* are **formative assessments**, meaning its purpose is to help you learn and practice. To reduce the pressure on you to have perfect homework (the first time around), I have a very simple grading policy: **Your homework will be given a check mark if you turn in completed work (whether it is correct or wrong).** I highly encourage you to stay up-to-date with the homeworks and put in as much effort as you can. This will be the most helpful work in this class!
+
+Because each homework assignment has dependent assignments (solutions and presentations), I will not accept late homework. If you have an accomodation, then there are exceptions to this. If you turn it in a couple hours after the assignment is closed, that is fine! The main reason why I have this strict rule is so that you do not get behind on your homework nor prevent your group from moving forward on the solutions.
+
+#### Viewing Grades in Sakai
+
+Points you receive for graded activities will be posted to the Sakai Gradebook. Click on the Gradebook link on the left navigation to view your points.
+
+## Course & Instructor Evaluations
+
+### Ongoing Course Feedback
+
+Throughout the duration of the course, you are also welcome to informally and anonymously submit your feedback through [this Microsoft Form](https://forms.office.com/Pages/ResponsePage.aspx?id=V3lz4rj6fk2U9pvWr59xWFMopmPUjRtDiHLswhgacNhUN0MzVDk5Q1pKUkxaWTM0VFhVQTJGRlJLRy4u) or Class Exit Tickets. This form will be available on Sakai. Students can submit feedback at any time and this form will be reviewed regularly by me. Your responses will be anonymous unless you elect to leave your email address. If I have done anything to make you feel uncomfortable, please give me feedback so I can change my behavior. **Ultimately, this class is for you, and my individual social identity/behavior should not inhibit your learning.** Thank you for your help making BSTA 550 a more successful class! Examples of ongoing feedback are:
+
+-   Nicky talks a little fast during lecture time. May you speak slower?
+
+-   During Office Hours, Dr. Wakim made a face when I asked a question. This face made me feel self-conscious about my question.
+
+-   Dr. W asked me a question about my experience that made me feel like a monolith. Please do not assume I can speak on behalf of my social identity groups.
+
+-   The in-class examples do not make me more interested in the material.
+
+### Midterm Feedback
+
+During the middle of the quarter, I will ask you to submit guided, anonymous feedback. Completion of feedback will be count towards your grade. To insure anonymity, I will ask you to sign a separate, written statement that you completed the feedback.
+
+### Final Course Feedback
+
+At the conclusion of the course, you will be asked to complete a formal online review of the course and the instructor. Your feedback on this University evaluation is critical to improving future student learning in this course as well as providing metrics relevant to the instructor's career advancement (or lack of). Since our class is on the smaller side, everyone's participation is needed for feedback to be released.
+
+## Schedule
+
+[Please refer to the Schedule page.](/schedule.qmd) I will make changes to this schedule if we need more or less time on a concept. You do not need to read the corresponding chapters in the textbook for each class.
+
+## How to succeed in this course
+
+Every professor has different expectations when assigning certain work or providing certain resources. I want to walk through each class resource and assignment so that you know what you can do to succeed in *this class*. For resources, I want you to optimize the opportunities to learn. For assignments, I want you to know the strategies that students can use to learn the most and prepare for future exams.
+
+### Resources
+
++:-------------------------------:+:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **Resource**                    | **What is it?**                                                                                                                                                                                                                                                                                                           | **How do I use it?**                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Office Hours                    | Blocks of time a professor or TA dedicates for questions. The teaching staff will be located in a specific room. Several students may enter the space at a time and will ask specific or broad questions. If many students attend office hours, a queue will be created so that students can be served equally.           | The main use of office hours is to ask questions about an assignment or lecture notes. You are welcome to sit and do homework in office hours. OH are also an informal way of meeting fellow students to collaborate with.                                                                                                                                                                                                                                                                    |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Lectures and lecture recordings | Time shared between the professor and students where the professor conveys important class material. Material discussed in lectures include concepts, calculations, code, and examples. Lectures are a mix of presentation of information, working through examples together, interactive activities, and in-class polls. | Students should attend lectures in person if possible. You should attempt to understand new material presented by following the presentation slides, taking notes on additional details that may conveyed verbally, and working through examples with the professor. Students are encouraged to ask questions when you don't understand the material at any point in the lecture.                                                                                                             |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Textbooks                       | Written and published material that explains concepts, steps through calculations, provides examples, and provides practice problems. The listed textbooks is the basis for this course. While I am to cover all topics in class, the textbook provides alternative explanations and additional examples.                 | While coming to class having read the accompanying textbook chapters helps understanding during class, I do not expect students to have read it. I see the textbook as a good resource if you are struggling with a specific topic after class, in need of an example while working on homework, or want additional practice when studying for the exam.                                                                                                                                      |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Website                         | The course website is designed by me so that you have access to all the course materials in a more organized and flexible way. All resources delivered from me to you will be available on the website. Any assignments turned in will be through Sakai.                                                                  | You can navigate through different course resources and information using the left-side tabs or top navigation bar. Course materials, like lecture notes, homework, data examples, and recordings, can be found under each week's page under the schedule tab. You can also find the individual resources under the "Course Materials" tab on the left. Links to turn in assignments through Sakai will be given on the website. Please explore the tabs and get a sense of the organization. |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Sakai                           | Sakai is a learning management system for higher ed. This is the university sanctioned LMS where we will submit assignments.                                                                                                                                                                                              | You will turn in assignments through Sakai under the "Submissions" tab. Generally, there will be a link to each assignment on the course website. You can also view your grades under "Gradebook" and links to Webex under "Webex."                                                                                                                                                                                                                                                           |
++---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+### Assignments
+
++:------------------:+:----------------------:+:----------------------------------------------------------------------------------------+:---------------------------------------------------------------------------------------------------+
+| **Assignment**     | **Type of assessment** | **Before you submit/take it**                                                           | **After it is graded**                                                                             |
++--------------------+------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+
+| Homework           | Formative              | -   Work out each problem on your own as much as you can                                | -   Discuss problems with your group                                                               |
+|                    |                        |                                                                                         |                                                                                                    |
+| assignment         |                        | -   Talk through problems with a peer                                                   | -   For answers that involve writing sentences, check with me or a TA if your answer is sufficient |
+|                    |                        |                                                                                         |                                                                                                    |
+|                    |                        | -   Go to Office Hours for help                                                         | -   Go to Office Hours to ask about your work                                                      |
+|                    |                        |                                                                                         |                                                                                                    |
+|                    |                        | -   Write down work that shows your thought process                                     |                                                                                                    |
+|                    |                        |                                                                                         |                                                                                                    |
+|                    |                        | -   Search your issue on Stack Exchange/Stack Overflow                                  |                                                                                                    |
+|                    |                        |                                                                                         |                                                                                                    |
+|                    |                        | -   Ask fellow students on Slack                                                        |                                                                                                    |
++--------------------+------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+
+| Homework solutions | Summative              | -   Discuss work with your group to compile thoughts and work                           | -   Discuss problems with your group                                                               |
+|                    |                        |                                                                                         |                                                                                                    |
+|                    |                        | -   Go to Office Hours for help                                                         | -   Get clarification on any missed points                                                         |
+|                    |                        |                                                                                         |                                                                                                    |
+|                    |                        | -   Write down work that shows your thought process                                     | -   Go to Office Hours to ask about your work                                                      |
+|                    |                        |                                                                                         |                                                                                                    |
+|                    |                        | -   Search your issue on Stack Exchange/Stack Overflow                                  | -   Prepare notes on how to change your work for your presentation                                 |
+|                    |                        |                                                                                         |                                                                                                    |
+|                    |                        | -   Ask other students and groups in person or on Slack                                 |                                                                                                    |
++--------------------+------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+
+| Class Exit Tickets | N/A                    | -   Bring appropriate electronic device to participate in polls                         | -   Review muddiest and clearest points from the week                                              |
+|                    |                        |                                                                                         |                                                                                                    |
+|                    |                        | -   Complete the survey during the last 5 minutes of class or after class within 7 days |                                                                                                    |
++--------------------+------------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+
+
+If you would like any other course resources explained in this format, please request it through the [Ongoing Course Feedback](https://forms.office.com/Pages/ResponsePage.aspx?id=V3lz4rj6fk2U9pvWr59xWFMopmPUjRtDiHLswhgacNhUNkE1U0IwRExOQTlGWElaUko4VDZaWFhINS4u). 
+
+## Course Policies and Resources
+
+### Late Work Policy
+
+I encourage you to make your best effort to submit all assignments on time, but I understand circumstances arise that are beyond our control. Please see this [Swansea University's page on extenuating circumstances](https://myuni.swansea.ac.uk/academic-life/extenuating-circumstances/#how-can-the-university-support-me-and-what-should-i-do=is-expanded&what-are-extenuating-circumstances=is-expanded&what-isnt-an-extenuating-circumstance=is-expanded&what-supporting-evidence-is-required=is-expanded&who-should-i-contact-to-make-an-extenuating-circumstances-application=is-expanded&who-will-make-a-decision-on-my-application=is-expanded) for some examples. Not all circumstances are covered here, so please reach out if you have questions. 
+
+-   The class will end on December 9, 2024. **All coursework is expected to be completed by December 13, 2024 at 11pm.** If you have *extenuating circumstances*, and need additional time to complete class assignments, please contact me. Together, we will come up with a plan for completion and to sort out registrar logistics.
+
+-   If you have extenuating circumstances that may jeopardize your ability to do work for several weeks, please contact me. We will come up with a plan to keep you on track in the course and prevent any delay in your education.
+
+-   For homework, I ask you to email me and the TAs directly about any late submissions. You can explain your circumstances and may ask us for an extension. I am very likely to grant an extension, but **I want to emphasize how important it will be to stay on track with your homework**! Your group is depending on you, and delaying homework may only add stress on the next homework!
+
+-   For homework, you will have TWO no-questions-asked, 3-day extensions: one for the first assignment part and one for either the solutions or presentation. Please use this wisely! You just need to send me a quick email saying "I am using my no-questions-asked extension for Homework \_\_ assignment/solutions/presentation."
+
+-   If you have a emergency involving your self, family, pet, friend, classmate, or anything/one deemed important to you, **please do not worry about immediately contacting me**. We can work something out after your emergency. If I contact you during an emergency, it is only because I am worried, and you do NOT need to respond until you are able. 
+
+### Regrade Policy
+
+If you think a question was incorrectly graded, first compare your answer to the answer key. If you believe a re-grade would be appropriate, write an email to me containing the question and a short explanation as to why the question(s) was/were incorrectly graded. Deadline: One week after assignments were returned to class (late requests will not be considered).
+
+### Attendance Policy
+
+You are expected to attend class, participate in-class polls, and complete the exit ticket. For students who miss class or need a review, I will make video and audio recordings of lectures available. There are no guarantees against technical or other challenges for the recording availability or quality.
+
+**You will need to attend at least 12 classes in person.** There are 19 classes total, so you are welcome to watch the recordings for up to 7 classes in lieu of in-person attendance. While I want attendance to be a flexible thing, I need to set certain requirements around in-person attendance to align with the school's policy.
+
+This is meant to keep you on track within the course and prevent a pile up of material. Make sure to complete the exit ticket at the end of class to demonstrate attendance.
+
+### Plagiarism and Attribution
+
+Please note that this section has been motivated by [Dr. Steven Bedrick's Course Policies and Grading site](https://dmice.ohsu.edu/bedricks/courses/bmi525/policies.html) for BMI 525. (Note that this is a good example of informal attribution of someone else's work.)
+
+In this class, it is easy to use ChatGPT or other AI tools to solve your homework for you. Many problems follow a basic structure that is especially easy for ChatGPT to solve. In this class, you may use ChatGPT to help with your homework. You may even ask for direct answers. However, there are a few things I do not want you to do:
+
+-   **Do not copy ChatGPT's answer directly into your homework.** Your homework is graded for full credit if you turn it in, in any state, so turning in ChatGPT's answers is unacceptable. I rather see half-written answers that show what you're thinking than see a correct answer from ChatGPT.
+
+-   **Do not stop once ChatGPT answered a question.** If it gives an explanation, interact with it! Make sure you understand the thought process of ChatGPT. Try writing out the process to help cement it in your head. Check the answer with what we learn in class.
+
+-   **Do not use ChatGPT on our exams!** Hence, you need to really understand how to solve these problems even if you use ChatGPT on the homework.
+
+At the end of the day, ChatGPT is a resource that will be available to you in a job and outside of school. Thus, we should use it as a tool in school as well! Let me know if ChatGPT helped you understand something! I would love to incorporate it into future classes!
+
+::: callout-important
+You can think of this class as assembling a toolbox. When a handyperson starts working for the first time, they need to buy their tools. For their first few jobs, they might need help finding their tools or remembering which tool is best used for what action. Eventually, they get to know their tools well, and using them appropriately becomes second nature.
+
+**For now, ChatGPT can help us find and use our tools, but we need to work towards using them as second nature!**
+:::
+
+## Course Expectations
+
+### Instructor Expectations
+
+[*Commitment to your learning and your success\
+*]{.underline}I believe that everyone has the ability to be successful in this course and I have put a lot of effort into designing the course in a way that maximizes your learning to ensure your success. Please talk to me before or after class or stop by my office if there is anything you want to discuss or about which you are unclear. I want to be supportive of your learning and growth.
+
+[*Inclusive & supportive learning community*]{.underline}\
+I believe that learning happens best when we all learn together, as a community. This means creating a space characterized by generous listening, civility, humility, patience, and hospitality. I will attempt to promote a safe climate where we examine content from multiple perspectives. I will strive to create and maintain a classroom atmosphere in which you feel free to both listen to others and express your views and ask questions to increase your learning.
+
+[*Openness to feedback*]{.underline}\
+I appreciate straightforward feedback from you regarding how well the class is meeting your needs. Let me know if material is not clear or when its relevance to the student learning outcomes for the course is not apparent. In particular, let me know if you identify bias or stereotyping in my teaching materials as I will seek to continuously improve. Please also let me know if there's an aspect of the class you find particularly interesting, helpful, or enjoyable!
+
+[*Responsiveness\
+*]{.underline}I will monitor email as well as the discussion board daily and try respond to all messages within 24 hours Monday-Friday.
+
+[*Clear guidelines and prompt feedback on assignments*]{.underline}\
+I will provide clear instructions for all assignments, and a grading rubric when applicable. The TAs and I will provide detailed feedback on your submissions and will update grades promptly in Sakai.
+
+### Student Expectations and Resources
+
+[*Attend class*]{.underline}**\
+**You are expected to attend at least 12 scheduled class meetings in-person. Attendance is taken through exit tickets. If you have issues accessing the poll on a specific day, please let me know. 
+
+[*Participate**\
+***]{.underline}I encourage you to participate actively in class and in Slack discussions. I will expect all students, and all instructors, to be respectful of each other's contributions, whether I agree with them or not. Professional interactions are expected.
+
+[*Build rapport*]{.underline}\
+If you find that you have any trouble keeping up with assignments or other aspects of the course, make sure you let me know as early as possible. As you will find, building rapport and effective relationships are key to becoming an effective professional. Make sure that you are proactive in informing me when difficulties arise during the quarter so that I can help you find a solution in regards to coursework.
+
+[*Complete assignments*]{.underline}\
+All assignments for this course will be submitted electronically through Sakai unless otherwise instructed. I encourage you to make your best effort to submit all assignments on time, but I understand that sometimes circumstances arise that are beyond our control. If you need an extension, please contact me in congruence with the Late Policy.
+
+[*Seek help if you need it*]{.underline}**\
+**I believe it is important to support the physical and emotional well‐being of my students. If you are experiencing physical and/or mental health issues, I encourage you to use the resources on campus such as those listed below. If you have a health issue that is affecting your performance or participation in the course, and/or if you need help connecting with these resources, please contact me.
+
+-   Student Health and Wellness Center (SHW), [Website](https://www.ohsu.edu/education/student-health-and-wellness), 503-494-8665 (OHSU Students only)
+
+-   Student Health and Counseling (SHAC), [Website](https://www.pdx.edu/health-counseling/), 503-725-2800
+
+[*Inform your instructor of any accommodations needed*]{.underline}\
+You should speak with or email me before or during the first week of classes regarding any special needs. Students seeking academic accommodations should register with the appropriate service under the School policies below.
+
+Some religious holidays may occur on regularly scheduled class days. Because available class hours are so limited in number, we will have to hold class on all such days. Class video recordings will be available and you are encouraged to engage with the material outside of the regular class time. Please email me about your absence. I will excuse the absece from your grade. You are also encouraged to come to office hours with questions from the session.
+
+[*Commit to integrity*]{.underline}**\
+**As a student in this course (and at PSU or OHSU) you are expected to maintain high degrees of professionalism, commitment to active learning and participation in this class and also integrity in your behavior in and out of the classroom.
+
+Cheating and other forms of academic misconduct will not be tolerated in this course and will be dealt with firmly. Student academic misconduct refers to behavior that includes plagiarism, cheating on assignments, fabrication of data, falsification of records or official documents, intentional misuse of equipment or materials (including library materials), or aiding and abetting the perpetration of such acts. Preparation of exams, assigned on an individual basis, must represent each student's own individual effort. When used, resource materials should be cited in conventional reference format.
+
+## Course Communications
+
+**Sakai/Slack announcements\
+**For important/urgent matters, I will communicate with you using announcements via Sakai that will be delivered to your OHSU Email account as well as displayed in the Sakai course site Announcements section. I will copy these announcements in Slack if they do not involve changes to the schedule. Unfortunately, there are certain announcements that OHSU requires I initiate behind the firewall.
+
+**General course questions\
+**It is normal to have many questions about things that relate to the course, such as clarification about assignments, course materials, or assessments. Please post these on our Slack Workspace. Please use the channels that I created for questions. You are encouraged to give answers and help each other. I will monitor these threads, so I will endorse or correct responses as needed. Please give me 24 hours to respond to questions within Monday-Friday. Work-life balance is important for me as well, so I will try to respond as quickly as I can within my healthy limits. 
+
+**E-mail**\
+E-mail should be used only for messages that are private in nature. Please send private messages to my OHSU email address (wakim\@ohsu.edu). **Messages sent through Sakai Inbox will not be answered.** Do not send messages asking general information about the class; please post those on Slack instead.
+
+## Further Student Resources
+
+### SPH Writing Lab
+
+The School of Public Health Writing Support serves graduate students (master's and PhD) in SPH, offering help on all professional writing tasks, including class papers, dissertations, job application documents, personal statements, and grant applications, to name a few. Leslie Bienen, MFA, DVM offers one-on-one writing support and other workshops. Appointments are virtual for the time being. You can make an appointment by contacting [writingsupportsph\@pdx.edu](mailto:writingsupportsph@pdx.edu) or making an appointment through [Calendly](https://calendly.com/writingsupportsph/writing-meeting).
+
+### Student Wellness
+
+I am committed to supporting the physical and emotional well-being of my students. Both PSU and OHSU have designated centers for student health. For OHSU, students can visit the [Behavioral Health site](https://www.ohsu.edu/education/behavioral-health), where you can find more information including the number to make an appointment. **All student visits are free.** OHSU students also have access to PSU's [Counseling Services](https://www.pdx.edu/health-counseling/counseling) through the school's Student Health & Counseling. Information on additional student resources for OHSU students are available on the OHSU [Health and Wellness Resource page](https://ohsu-psu-sph.org/health_and_wellness/). 
+
+### Support for Food Insecurity
+
+Students across the country experience food insecurity at alarming rates. OHSU and PSU both provide a list of resources to help combat food insecurity. Of note, the Committee to Improve Student Food Security (CISFS) at PSU provides a [Free Food Market](https://www.pdx.edu/student-access-center/free-food-market) on the second Monday of each month. OHSU also provides [SNAP Enrollment Assistance](https://o2.ohsu.edu/student-central/health-wellness/student-food-resources/snap.cfm). The [Supplemental Nutrition Assistance Program (SNAP)](https://oregonhunger.org/snap-for-students/) allocates money towards food for individuals below a certain income level. If you make less than \$2,430 monthly, you may wish to enroll.
+
+### Support for Students with Children
+
+Students who have children can use the PSU resource: [Resource Center for Students with Children](https://www.pdx.edu/students-with-children/). Resources are mostly focused on students with younger children. There are several great resources available, including: family-friendly study spaces, new baby starter packs, free kids clothing, and further information on financial resources for childcare.
+
+# Additional information
+
+Please go to the Syllabus tab in Sakai for the following information:
+
+-   School Policies and Resources
+
+-   OHSU Competencies
+
+-   Institutional Policies and Resources
+
+I do not include them here because I do not have the bandwidth to make sure all links and resources are up-to-date.

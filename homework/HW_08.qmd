@@ -1,0 +1,105 @@
+---
+title: "Homework 8"
+subtitle: "BSTA 550"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+    page-layout: full
+    embed-resources: true
+  pdf: default 
+editor_options: 
+  chunk_output_type: console
+---
+
+## Directions
+
+**Please turn in this homework on Sakai.** Please submit your homework in pdf or html format.
+
+You can type your work on your computer or submit a photo of your written work or any other method that can be turned into a pdf. The Adobe Scan phone app is an easy way to scan photos and compile into a PDF. Please let me know if you greatly prefer to submit a physical copy. We can work out another way for you to turn in homework.
+
+*You must show all of your work to receive credit.*
+
+Extra problems do not need to be turned in!
+
+## Questions
+
+1.  Let $X_i\sim$ Binomial($n_i,p$) be independent r.v.'s for $i=1,\ldots,m$.
+
+    a.  What does the r.v. $X=\sum_{i=1}^mX_i$ count, and what is the distribution of $X$? Make sure to specify the parameters of $X$'s distribution.
+
+    b.  Find $\mathbb{E}[X]$. *Make sure to show your work for (b) and (c). However, you may use without proof what you know about the mean and variance of each* $X_i$.
+
+    c.  Find $Var[X]$
+
+2.  Suppose that voters arrive at a polling station at the rate of 120 per hour.For each of the following parts, [give the name and parameter(s) of the distribution]{.underline} to be used to model the event and [set up the expression]{.underline} to find the specified probability.*You do not need to compute the probability.*
+
+    a.  The probability that the next voter will arrive in less than 30 seconds.
+
+    b.  The probability that 200 voters will arrive within two hours of each other.
+
+    c.  The probability that the $50^{th}$ voter will arrive in between 15 and 30 minutes.
+
+3.  **Pizza delivery.** Suppose that the times until Hector, Ivan, and Jacob’s pizza arrives are independent exponential random variables, each with average of 20 minutes. Find the probability that none of the waiting times exceed 20 minutes, i.e., find $P(\max(X, Y,Z) \leq 20)$.
+
+4.  I would like us to create a reference table for the important distributions. Fill out the following table and save it for future reference.
+
+| RV / Distribution | Type | Parameters | Possible values $X$ | PMF / PDF | Mean $E[X]$ | Variance $Var(X)$ |
+|:----------|:----------|:----------|:----------|:----------|:----------|:----------|
+| **Bernoulli** | Discrete | $p$ | $X = \{0, 1\}$ | $p^x(1-p)^{1-x}$ | $p$ | $p(1-p)$ |
+| **Binomial** |  |  |  |  |  |  |
+| **Geometric** |  |  |  |  |  |  |
+| **Negative Binomial** |  |  |  |  |  |  |
+| **Hypergeometric** |  |  |  |  |  |  |
+| **Poisson** |  |  |  |  |  |  |
+| **Discrete Uniform** |  |  |  |  |  |  |
+| **Continuous Uniform** |  |  |  |  |  |  |
+| **Exponential** |  |  |  |  |  |  |
+| **Gamma** |  |  |  |  |  |  |
+| **Normal** |  |  |  |  |  |  |
+
+5.  It is also important to know how different RVs/distributions relate to one another. In the following web, please fill in the relationships between each distribution. You can recreate the web or you can write out the relationships in a numbered list.
+
+```{mermaid}
+
+graph TD
+    
+    %% Define Node Styles
+    classDef discrete fill:#D6EAF8,stroke:#5DADE2,color:#333
+    classDef continuous fill:#D5F5E3,stroke:#58D68D,color:#333
+
+    %% === NODES ===
+    
+    %% Discrete Distributions
+    Bern(Bernoulli)
+    Geo(Geometric)
+    Bin(Binomial)
+    NegBin(Negative Binomial)
+    Hyper(Hypergeometric)
+    Pois(Poisson)
+    
+    %% Continuous Distributions
+    Exp(Exponential)
+    Gam(Gamma)
+    Norm(Normal)
+    Chi(Chi-Squared)
+    
+    %% === CONNECTIONS ===
+    Bern -- "1" --> Geo
+    Bern -- "2" --> Bin
+    Pois -- "3" --> Bin
+    Bin -- "9" --> Hyper
+    Norm -- "4" --> Bin
+    Norm -- "5" --> Chi
+        
+    Geo -- "8" --> NegBin
+    Pois -- "7" --> Exp
+    Gam -- "6" --> Exp
+
+
+
+    %% Apply Styles
+    class Bern,Bin,Geo,NegBin,Hyper,DiscUnif,Pois discrete
+    class ContUnif,Exp,Gam,Norm,Chi continuous
+```

@@ -1,0 +1,32 @@
+---
+title: "Homework 8 Answers"
+subtitle: "BSTA 550"
+date-modified: "today"
+format: 
+  html: 
+    link-external-newwindow: true
+    toc: true
+  pdf: default 
+editor_options: 
+  chunk_output_type: console
+---
+
+## Questions
+
+1. (a) parameters: $\sum_{i=1}^m n_i$ and $p$
+   (b) Not given
+   (c) $$p(1-p)\sum_{i=1}^m n_i$$
+
+
+2. (a) Exponential distribution 
+   (b) $\lambda = 240$
+   (c) Not given
+
+
+3. 0.252
+
+
+4. First row given in homework problem
+
+
+5. #3: Poisson approximation of Binomial when $n$ is large and $p$ is small

@@ -1,0 +1,73 @@
+---
+title: "Homework 0"
+subtitle: "BSTA 550"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+  pdf: default 
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: "setup"
+#| include: false
+knitr::opts_chunk$set(echo = TRUE)
+
+library(here)
+source(here("class_dates.R"))
+```
+
+::: {.callout-tip appearance="minimal"}
+**Due `r hw0 %>% format("%m/%d")`**
+
+**This homework does not need to be turned in on Sakai.**
+:::
+
+### Purpose
+
+This homework is meant to introduce yourself to me and your peers. In the first class, we will all briefly introduce ourselves, but we don't have enough time in-depth introductions. Thus, I'd like you to share some information with the class over Slack.
+
+### Grading
+
+Grading will be done as a check/no check for turning in your work. If you are stressed about time, please give yourself an extension.
+
+## Questions
+
+### Question 1
+
+Please upload a picture of yourself to Sakai. Make sure your face is visible in this picture. It will help me and the TAs identify you. 
+
+Please follow the below steps to add a picture of yourself in Sakai:
+
+1.  Click on the top right circle on your Sakai page. If you do not have a picture already, your initials will be showing.
+2.  Click "Profile."
+3.  Once in your profile, hover over the square then click "Change picture."
+4.  Upload a picture file of yourself.
+
+### Question 2
+
+Provide a pronunciation of your name: Please follow the below steps to add an audio and written pronunciation of your name in Sakai:
+
+1.  Click on the top right circle on your Sakai page. If you do not have a picture already, your initials will be showing.
+2.  Click "Profile."
+3. Hover over the section "Name Pronunciation and Pronouns." Click the edit button that should appear in the top right corner of the section.
+4. Add a recording of your name pronunciation. Please say your name a little slow! Check out my profile for an example. 
+5. OPTIONAL You may also edit the phonetic pronunciation of your name. I realize that doing this is may require a lot of time researching phonetics.
+6. OPTIONAL If you are comfortable sharing your pronouns, please change these as well.
+
+### Question 3
+
+Please complete the [following when2meet poll](https://www.when2meet.com/?32085078-33MkX) so that we can schedule office hours. Please use a unique identifier (does not have to be your name), so that I can make sure each student can attend at least one office hour.
+
+### Question 4
+
+Use this [Microsoft form](https://forms.office.com/Pages/ResponsePage.aspx?id=V3lz4rj6fk2U9pvWr59xWFMopmPUjRtDiHLswhgacNhUMTBLT1hLMldQNjBEVlZMME1QSzE3VUQ2QSQlQCNjPTEu) to fill out your preferences on homework due dates and attendance policy. 
+
+### Question 5
+
+Completion of this question is only necessary if you have accommodations. If you have any learning accommodations, please email me about your needs. I should receive a direct email from the Office of Student Access, but it is important that we discuss how accommodations will translate to our class. If you plan to seek accommodations, but do not have the formal document yet, please let me know!
+
+I highly suggest that you make an appointment with a learning specialist through [Student Academic Support Services](https://sakai.ohsu.edu/portal/site/Student_Support)! If you often need more time on a test, struggle to focus in class, or noticed a difference between your learning style and typical styles offered in school, **talk to academic support services and see if you qualify for accommodations!** Most professors should be working towards an inclusive classroom, but this is the best way to insure you get the learning environment you need!

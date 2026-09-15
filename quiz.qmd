@@ -1,0 +1,64 @@
+---
+title: "Quiz Info"
+date-modified: "today"
+format: 
+  html:
+    page-layout: full
+    link-external-newwindow: true
+---
+
+```{r setup, include=FALSE}
+library(here)
+source(here("class_dates.R"))
+```
+
+Below is the general timing and lessons for each quiz:
+
+| Quiz | Lessons | HWs | Open Date \@ 3pm | Close Date \@ 11pm |
+|---------------|---------------|---------------|---------------|---------------|
+| 1 | 1-5 | 1-2 | `r q1_open %>% format("%m/%d")` | `r q1_close %>% format("%m/%d")` |
+| 2 | 7-9 | 4 | `r q2_open %>% format("%m/%d")` | `r q2_close %>% format("%m/%d")` |
+| 3 | 10-16 | 5-7 | `r q3_open %>% format("%m/%d")` | `r q3_close %>% format("%m/%d")` |
+
+Quizzes will be mostly conceptual questions with 10-15 multiple choice questions. Some calculations will need to be done for certain questions, but the focus will be on understanding concepts.
+
+More information specific to each quiz will be posted below.
+
+### Instructions that will presented for each quiz
+
+1.  I have written a 30-minute quiz, but there is no time limit on the quiz. You will have from Wednesday at 3pm to Sunday at 11pm to finish the quiz.
+
+2.  The quiz is open book and open notes. You may use books other than the class textbook, you may use anything on our course webpage, and you may use reference websites (like Wikipedia, Googling expected value of specific distribution, etc.).
+
+3.  No cheating will be tolerated. Cheating includes:
+
+    -   Using ChatGPT or any other AI software
+    -   Copy and pasting the question from Sakai to any search engine.
+    -   Using question and answer threads typically seen on sites like StackExchange, WikiHow, Quora, Reddit, StackOverflow, Chegg, etc.
+    -   Asking other students, sharing quiz work or sharing quiz results.
+
+4.  Each question is worth 1 point, including multiple choice and free response questions.
+
+## Quiz 1
+
+-   A practice quiz is posted if you would like to do a trial run before the actual quiz
+-   Includes Lessons 1-5
+    -   Covers some probability rules and calculations (about half the questions)
+-   Three problems have **calculations** with probabilities
+-   One (ish) question on counting, but not too complicated
+-   For most questions, you will be given a scenario, and you will need to connect it back to probability rules
+    -   Example: If two events are mutually exclusive, what is the probability of their intersection?
+
+## Quiz 2
+
+-   Includes lesson 7-9
+    -   Lesson 6 not technically included, but will be covered
+    -   Might have one question from Lesson 10 about process of transformations
+
+## Quiz 3
+
+-   Includes lessons 10-16
+    -   Includes 15-16 since we extended from previous lessons to important distributions
+        -   Only 1 question about the relationships between distributions (so make sure to do the last problem in HW 8)
+    -   Transformations, joint distributions, independence and conditioning, expected values, and variance
+-   Just from the topics, I'd say this will be the hardest quiz

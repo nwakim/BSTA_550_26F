@@ -1,0 +1,16 @@
+{
+  "hash": "780a82b53e0acd547a6ead733f6fe73a",
+  "result": {
+    "markdown": "---\ntitle: \"Muddy Points\"\nsubtitle: \"Chapter 14-20: Discrete RVs\"\ndate: \"10/16/2024\"\ndate-modified: \"today\"\nformat: \n  html:\n    link-external-newwindow: true\neditor_options: \n  chunk_output_type: console\n---\n\n\n### 1. In-class example of the Poisson distribution\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\n\nx <- 0:250\n# n = c(6,14,30,60)\np = c(0.1, 0.5)\n\ngeom = expand.grid(x = x, p = p) %>%\n  mutate(y = dgeom(x, prob = p))\n\nggplot(geom %>% filter(y > 1e-5), \n       aes(x, y, color=factor(p))) +\n  geom_point(size=1) +\n  geom_segment(aes(x=x, xend=x, y=0, yend=y, color=factor(p)), lwd=0.8, alpha=0.5) +\n  facet_grid(rows = vars(p), scales=\"free_x\", space=\"free_x\") +\n  theme(legend.position = \"none\",\n        axis.title = element_text(size = 14),    # Axis title size\n        axis.text = element_text(size = 12),     # Axis text size\n        strip.text = element_text(size = 13)) +  # Facet label size\n  labs(x = \"Number of trials\", y = \"Probability\")\n```\n\n::: {.cell-output-display}\n![](14_20_Discrete_RVs_muddy_points_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "14_20_Discrete_RVs_muddy_points_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

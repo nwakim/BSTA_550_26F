@@ -1,0 +1,106 @@
+---
+title: "Muddy Points"
+subtitle: "Lesson 8: pdf's"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Fall 2025
+
+### 1. I think what I am muddy on is the is why for pmf, we use "P(X)" and for pdfs, we use "f(x)"? Is it because for pdfs, the integration and f(x) is better suited for continuous probabilities?
+
+I think you're on the right track... $P(X)$, $P(X=x)$, and $p_X(x)$ represent probabilities. 
+
+For discrete random variables, we can use $P(X=x)$ or $p_X(x)$ to represent the probability that the random variable $X$ takes on the value $x$. And then we can discuss the probability mass function (pmf) as the probability distribution as well!
+
+For continuous random variables, we use $f_X(x)$ to represent the probability density function (pdf) of $X$ at the value $x$, BUT it is not equal to the actual probability! Aka $f_X(x)$ does not represent a probability, but the area under the curve of $f_X(x)$ over an interval gives us the probability.
+
+## Fall 2023
+
+### 1. How do pdf, CDF, and probability interact with each other?
+
+Let's say we have a pdf, $f_X(x) = \dfrac{1}{9}x^2$ for $0 \leq x \leq 3$. This is just a function. The pdf is not used on its own to report any probability. We must integrate over the pdf to find a probability.
+
+```{r}
+library("ggplot2")
+eq = function(x){(1/9)*x^2}
+ggplot(data.frame(x=c(1, 50)), aes(x=x)) + 
+  stat_function(fun=eq) +
+  xlab("x") + ylab("pdf") +
+  xlim(0,3)
+```
+
+The total area under the pdf is 1. This makes our pdf valid.
+
+```{r}
+eq = function(x){(1/9)*x^2}
+ggplot(data.frame(x=c(1, 50)), aes(x=x)) + 
+  stat_function(fun=eq) +
+  xlab("x") + ylab("pdf") +
+  xlim(0,3) +
+  stat_function(fun=eq, 
+                xlim = c(0, 3),
+                geom = "area", 
+                aes(fill = "red")) +
+  theme(legend.position = "none") +
+  annotate("text", x = 0.5, y = 0.7, label = "AUC = 1", color = "black")
+```
+
+If we only look at a proportion of the area under the pdf, then we start constructing our probabilities. For example, we can look at probability that we have a value between 0 and 1.5.
+
+```{r}
+ggplot(data.frame(x=c(1, 50)), aes(x=x)) + 
+  stat_function(fun=eq) +
+  xlab("x") + ylab("pdf") +
+  xlim(0,3) +
+  stat_function(fun=eq, 
+                xlim = c(0, 1.5),
+                geom = "area", 
+                aes(fill = "blue")) +
+  theme(legend.position = "none") +
+  annotate("text", x = 0.5, y = 0.7, label = "AUC = 0.125", color = "black")
+```
+
+Instead of calculating the EXACT probability for each value between 0 and 3, we can find the CDF of the pdf.
+
+The CDF is: $$
+F_X(x) = \left\{
+        \begin{array}{ll}
+            0 & \quad x<3 \quad \\
+            \dfrac{1}{27}x^3 & \quad 0 \leq x \leq 3\quad \\
+            1 & \quad x>3 \quad
+        \end{array}
+    \right.
+$$
+
+```{r}
+cdf = function(x){(1/27)*x^3}
+ggplot(data.frame(x=c(1, 50)), aes(x=x)) + 
+  stat_function(fun=cdf) +
+  xlab("x") + ylab("CDF") +
+  xlim(0,3) +
+  theme(legend.position = "none")
+```
+
+When $x=1.5$, we can calculate the probability using the CDF. Remember that $F_X(x) = P(X \leq x)$. So we can say $P(X \leq 1.5) = F_X(1.5) = \dfrac{1}{27}(1.5)^3$, which equals 0.125.
+
+```{r}
+cdf = function(x){(1/27)*x^3}
+ggplot(data.frame(x=c(1, 50)), aes(x=x)) + 
+  stat_function(fun=cdf) +
+  xlab("x") + ylab("CDF") +
+  xlim(0,3) +
+  theme(legend.position = "none") +
+  geom_point(aes(x=1.5, y=.125), colour="blue", size=3) +
+  annotate("text", x = 0.5, y = 0.7, label = "CDF = 0.125", color = "black")
+```
+
+We can also calculate the probability with an integral: $P(X \leq 1.5) = \displaystyle\int_0^{1.5} \dfrac{1}{9}x^2 dx$.
+
+We can also find the probability that X is between two numbers. $P(1\leq X \leq 1.5) = F_X(1.5) - F_X(1)$ or $P(1\leq X \leq 1.5) = \displaystyle\int_1^{1.5} \dfrac{1}{9}x^2 dx$.
+
+

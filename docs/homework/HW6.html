@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2023-11-16">
+<meta name="description" content="Due: Thursday November 16, 2023 at 11pm">
+
+<title>Introduction to Probability - Homework 6</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-sm navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/bsta_550_hex_3.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Introduction to Probability</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../schedule.html" rel="" target="">
+ <span class="menu-text">Schedule</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html" rel="" target="">
+ <span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../instructors.html" rel="" target="">
+ <span class="menu-text">Instructors</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../homeworks.html" rel="" target="">
+ <span class="menu-text">Homework</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#directions" id="toc-directions" class="nav-link active" data-scroll-target="#directions">Directions</a></li>
+  <li><a href="#non-textbook-problems-ntb" id="toc-non-textbook-problems-ntb" class="nav-link" data-scroll-target="#non-textbook-problems-ntb">Non-textbook problems (NTB)</a></li>
+  <li><a href="#some-select-answers" id="toc-some-select-answers" class="nav-link" data-scroll-target="#some-select-answers">Some select answers</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="HW6.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Homework 6</h1>
+<p class="subtitle lead">BSTA 550</p>
+</div>
+
+<div>
+  <div class="description">
+    Due: Thursday November 16, 2023 at 11pm
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 16, 2023</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">November 6, 2023</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+HW 6 Due Date
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can turn in the homework any time through Sunday, November 19th.</p>
+</div>
+</div>
+<section id="directions" class="level2">
+<h2 class="anchored" data-anchor-id="directions">Directions</h2>
+<p><a href="https://sakai.ohsu.edu/portal/site/BSTA-550-1-12619-F23/tool/085b18e7-8118-4a51-ace5-0255aa46136e">Please turn in this homework on Sakai.</a> Please submit your homework in pdf format. You can type your work on your computer or submit a photo of your written work or any other method that can be turned into a pdf. Please let me know if you greatly prefer to submit a physical copy. We can work out another way for you to turn in homework.</p>
+<p><strong>Try to complete all of the problems listed below at some point this quarter! You may want to save some of them for studying later!</strong> Only turn in the ones listed in the “Turn In” column. Please submit problems in the order they are listed.</p>
+<p>The more work you include that shows your thought process, the more I can give you feedback.</p>
+<div class="center">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Chapter</th>
+<th style="text-align: center;">Turn In</th>
+<th style="text-align: center;">Extra Problems</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Calculus Review</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">NTB # 1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">24</td>
+<td style="text-align: center;">TB # 19, 20*</td>
+<td style="text-align: center;"># 2, 3, 7, 17, 18, 22, 23</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>*Also find the cdf <span class="math inline">\(F_X(x)\)</span></p>
+</section>
+<section id="non-textbook-problems-ntb" class="level2">
+<h2 class="anchored" data-anchor-id="non-textbook-problems-ntb">Non-textbook problems (NTB)</h2>
+<ol type="1">
+<li><p>Calculus Review</p>
+<ol type="a">
+<li><span class="math display">\[\int_0^yc(x+y)dx\]</span></li>
+<li><span class="math display">\[\frac{d}{dx}\bigg(\frac{4}{9}x^2y^2+\frac{5}{9}xy^4\bigg)\]</span></li>
+<li><span class="math display">\[\frac{d}{dy}\bigg(\frac{4}{9}x^2y^2+\frac{5}{9}xy^4\bigg)\]</span></li>
+<li><span class="math display">\[\int_0^y2e^{-x}e^{-y}dx\]</span></li>
+<li><span class="math display">\[\int_0^\infty xye^{-(x+y)}dy\]</span></li>
+<li><span class="math display">\[\int_x^{2x} 2e^{-(x+3y)}dy\]</span></li>
+<li>Find the area of the region bounded by the graphs of <span class="math inline">\(f(x)=2-x^2\)</span> and <span class="math inline">\(g(x)=x\)</span> by integrating with respect to <span class="math inline">\(x\)</span>.</li>
+<li>Find the area of the region bounded by the graphs of <span class="math inline">\(f(x)=2-x^2\)</span> and <span class="math inline">\(g(x)=x\)</span> by integrating with respect to <span class="math inline">\(y\)</span>.</li>
+<li>Find the area of the region bounded by the graphs of <span class="math inline">\(x=3-y^2\)</span> and <span class="math inline">\(y=x-1\)</span> by integrating with respect to <span class="math inline">\(x\)</span>.</li>
+<li>Find the area of the region bounded by the graphs of <span class="math inline">\(x=3-y^2\)</span> and <span class="math inline">\(y=x-1\)</span> by integrating with respect to <span class="math inline">\(y\)</span>.</li>
+</ol></li>
+</ol>
+</section>
+<section id="some-select-answers" class="level2">
+<h2 class="anchored" data-anchor-id="some-select-answers">Some select answers</h2>
+<p>Selected answers (or hints) not provided at the end the book:</p>
+<ul>
+<li><p>Calculus Review</p>
+<ul>
+<li><p>(a)&nbsp;&nbsp;<span class="math inline">\(c(\frac{y^{2}}{2}+y^{2})\)</span></p></li>
+<li><p>(b)&nbsp;&nbsp;<span class="math inline">\(\frac{8}{9}xy^{2}+\frac{5}{9}y^{4}\)</span></p></li>
+<li><p>(c)&nbsp;&nbsp;<span class="math inline">\(\frac{8}{9}x^{2}y+\frac{20}{9}xy^{3}\)</span></p></li>
+<li><p>(d)&nbsp;&nbsp;<span class="math inline">\(-2e^{-2y}+2e^{-y}\)</span></p></li>
+<li><p>(e)&nbsp;&nbsp;<span class="math inline">\(xe^{-x}\)</span></p></li>
+<li><p>(f)&nbsp;&nbsp;<span class="math inline">\(-\frac{2}{3}(e^{-7x}-e^{-4x})\)</span></p></li>
+<li><p>(g)&nbsp;&nbsp;<span class="math inline">\(\frac{9}{2}\)</span></p></li>
+<li><p>(h)&nbsp;&nbsp;<span class="math inline">\(\frac{9}{2}\)</span></p></li>
+<li><p>(i)&nbsp;&nbsp;<span class="math inline">\(\frac{9}{2}\)</span></p></li>
+<li><p>(j)&nbsp;&nbsp;<span class="math inline">\(\frac{9}{2}\)</span></p></li>
+</ul></li>
+<li><p>Chapter 24</p>
+<ul>
+<li><p># 2: (a) Discrete &nbsp;&nbsp;&nbsp;&nbsp;(b) Discrete &nbsp;&nbsp;&nbsp;&nbsp;(c) Continuous</p></li>
+<li><p># 22: <span class="math display">\[f_X(x) = \left\{
+        \begin{array}{ll}
+            0 &amp; \quad x &lt;0 \\
+            \frac{7x}{4} &amp; \quad 0\leq x\leq 1 \\
+            0 &amp; \quad 1&lt; x&lt; 7 \\
+            \frac{1}{8} &amp; \quad 7\leq x\leq 8 \\
+            0 &amp; \quad  x&gt;8 \\
+        \end{array}
+    \right.\]</span></p></li>
+</ul></li>
+<li><p>Chapter 25</p>
+<ul>
+<li><p># 4: &nbsp;&nbsp;7/16</p></li>
+<li><p># 8:&nbsp;&nbsp;(a) <span class="math inline">\(\frac{25}{228}\)</span> &nbsp;&nbsp;&nbsp;&nbsp;(b) <span class="math inline">\(f_X(x)=\frac{1}{12}(x+1)\)</span>, for <span class="math inline">\(0\leq x\leq 4\)</span> &nbsp;&nbsp;&nbsp;&nbsp;(c) <span class="math inline">\(f_Y(y)=\frac{3}{76}(y^2+1)\)</span>, for <span class="math inline">\(0\leq y\leq 4\)</span></p></li>
+<li><p># 18:&nbsp;&nbsp;5/6</p></li>
+<li><p># 24:&nbsp;&nbsp;(a) <span class="math inline">\(f_X(x)=-2e^{-2x}+2e^{-x}\)</span>, for <span class="math inline">\(x\geq 0\)</span> &nbsp;&nbsp;&nbsp;&nbsp;(b) <span class="math inline">\(f_Y(y)=2e^{-2y}\)</span>, for <span class="math inline">\(y\geq 0\)</span></p></li>
+</ul></li>
+<li><p>Chapter 26</p>
+<ul>
+<li><p># 12:&nbsp;&nbsp;(b) <span class="math inline">\(\frac{233}{256}\)</span> &nbsp;&nbsp;&nbsp;&nbsp;(c) <span class="math inline">\(\frac{65}{256}\)</span> &nbsp;&nbsp;&nbsp;&nbsp;(d) <span class="math inline">\(\frac{1}{512}\)</span></p></li>
+<li><p># 20:&nbsp;&nbsp;(a) Yes. &nbsp;&nbsp;&nbsp;&nbsp;(b) <span class="math inline">\(\frac{15}{16}\)</span></p></li>
+<li><p>NTB # 3: (b) 0.09999546 &nbsp;&nbsp;(d) <span class="math inline">\(f_Z(z) =\Big(\frac{11}{5} - \frac{2z}{5}\Big)e^{-2z}\)</span>, for what values of <span class="math inline">\(z\)</span>?</p></li>
+</ul></li>
+<li><p>Chapter 27</p>
+<ul>
+<li><p># 6: <span class="math inline">\(f_{X|Y}(x|y)=\frac{e^{-x/4-y/5}}{4(e^{-y/5}-e^{-9y/20})}\)</span>, for <span class="math inline">\(0&lt; x&lt; y\)</span></p></li>
+<li><p># 8: <span class="math inline">\(f_{X|Y}(x|y)=\frac{1-x^2}{1-y-\frac{(1-y)^3}{3}}\)</span>, for <span class="math inline">\(0\leq x, 0\leq y, x+y\leq 1\)</span></p></li>
+<li><p># 12: (a) <span class="math inline">\(f_{X|Y}(x|y)=\frac{1}{2}\)</span> &nbsp;&nbsp;&nbsp;(c) <span class="math inline">\(\frac{4}{7}\)</span></p></li>
+</ul></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+      }
+    }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

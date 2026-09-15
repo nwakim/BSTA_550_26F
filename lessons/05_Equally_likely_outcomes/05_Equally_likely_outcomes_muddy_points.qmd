@@ -1,0 +1,58 @@
+---
+title: "Muddy Points"
+subtitle: "Lesson 5: Equally Likely Outcomes"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Fall 2025
+
+### 1. Going through page 14 of the equally likely outcomes slides, the P(two spades) equation makes less sense the more I think about it & create toy examples to try to understand. Could just be overthinking it, maybe the best thing to do would be to not think about it
+
+Here's the slide: ![](slide_shot.png)
+
+**Let's think of a different scenario (Scenario 1): Let's find the probability of drawing a spade and a heart from a standard deck of cards when drawing two cards without replacement.**
+
+There are 52 cards in a standard deck, with 13 spades and 13 hearts.
+
+- Let's look at the sample space size, $|S|$. We need to enumerate all the possible combinations of two cards. 
+   $$\binom{52}{2} = \frac{52 \times 51}{2} = 1326$$
+   
+- The more difficult part is the size of our event A, $|A|$. We need to enumerate all the ways to draw 1 spade and 1 heart:
+   - Ways to choose 1 spade from 13: $\binom{13}{1} = 13$
+   - Ways to choose 1 heart from 13: $\binom{13}{1} = 13$
+   - For each potential spade we draw, there are 13 potential hearts we could draw. So we can multiply the two together to get the total number of ways to draw a spade and a heart: $$|A| = 13 \times 13 = 169$$
+  
+Then we could calculate the probability of drawing a spade and a heart as:
+$$P(A) = \frac{|A|}{|S|} = \frac{13 \times 13}{1326} = \frac{169}{1326} = 0.1275$$
+
+**We can keep expanding our scenario (Scenario 2): Let's find the probability of drawing one spade, one heart, one diamond, and one club without replacement.**
+
+- Let's look at the sample space size, $|S|$. We need to enumerate all the possible combinations of two cards. 
+   $$\binom{52}{4} = \frac{52 \times 51 \times 50 \times 49}{4 \times 3 \times 2 \times 1} = 270725$$
+   
+- Now, size of event A, $|A|$. We need to enumerate all the ways to draw one spade, one heart, one diamond, and one club:
+   - Ways to choose 1 spade from 13: $\binom{13}{1} = 13$
+   - Ways to choose 1 heart from 13: $\binom{13}{1} = 13$
+   - Ways to choose 1 diamond from 13: $\binom{13}{1} = 13$
+   - Ways to choose 1 club from 13: $\binom{13}{1} = 13$
+   - For each potential spade we draw, there are 13 potential hearts we could draw. And from each specific spade and heart combo, there are 13 potential diamonds, etc. So we can multiply all four together to get the total number of ways to draw a spade and a heart: $$|A| = 13 \times 13 \times 13 \times 13 = 28561$$
+  
+Then we could calculate the probability of drawing a spade and a heart as:
+$$P(A) = \frac{|A|}{|S|} = \frac{13 \times 13 \times 13 \times 13}{270725} = \frac{28561}{270725} = 0.1055$$
+
+**In both the above scenarios, we calculated the size of event A only with the cards we DRAW** I just wanted to emphasize that for each suit of cards, we can technically enumerate all the ways to draw a certain number of cards, including 0. 
+
+If we go back to scenario 1, we could also calculate the size of our event A, $|A|$ as: 
+
+   - Ways to choose 1 spade from 13: $\binom{13}{1} = 13$
+   - Ways to choose 1 heart from 13: $\binom{13}{1} = 13$
+   - Ways to choose 0 diamonds from 13: $\binom{13}{0} = 1$
+   - Ways to choose 0 clubs from 13: $\binom{13}{0} = 1$
+   - For each potential spade we draw, there are 13 potential hearts we could draw. So we can multiply the four together to get the total number of ways to draw a spade and a heart and 0 diamonds and 0 clubs: $$|A| = 13 \times 13 \times 1 \times 1 = 169$$
+   
+   

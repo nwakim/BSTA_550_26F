@@ -1,0 +1,767 @@
+---
+title: "Lesson 2: Introduction to Simulations"
+author: "Nicky Wakim"
+title-slide-attributes:
+    data-background-color: "#006a4e"
+date: "`r library(here); source(here('class_dates.R')); w1d2`"
+format: 
+  revealjs:
+    theme: "../simple_NW.scss"
+    slide-number: true
+    show-slide-number: all
+    width: 1955
+    height: 1100
+    footer: Lesson 2 Slides
+    html-math-method: mathjax
+    highlight-style: atom-one
+    echo: true
+---
+
+```{r setup, include=FALSE}
+#| echo: false
+
+library(here)
+library(tidyverse)
+
+source(here("class_dates.R"))
+```
+
+# Learning Objectives
+
+1. Describe random variables and distinguish between discrete and continuous types
+2. Explain the role of simulation in approximating probabilities and distributions
+3. Use R to run simulations of discrete random variables
+4. Apply and interpret the four-step simulation process
+
+## Where are we?
+
+![](../img_slides/course_map.png){fig-align="center"}
+
+# Learning Objectives
+
+::: lob
+1. Describe random variables and distinguish between discrete and continuous types
+:::
+
+2. Explain the role of simulation in approximating probabilities and distributions
+3. Use R to run simulations of discrete random variables
+4. Apply and interpret the four-step simulation process
+
+## Recall: Outcomes, events, sample spaces
+
+::::: definition
+::: def-title
+Definition: Outcome
+:::
+
+::: def-cont
+The possible results in a random phenomenon.
+:::
+:::::
+
+::::: definition
+::: def-title
+Definition: Sample Space
+:::
+
+::: def-cont
+The **sample space** $S$ is the set of *all* outcomes
+:::
+:::::
+
+::::: definition
+::: def-title
+Definition: Event
+:::
+
+::: def-cont
+An **event** is a *collection of some* outcomes. An event can include multiple outcomes or no outcomes (a subset of the sample space).
+:::
+:::::
+
+When thinking about events, think about outcomes that you might be asking the probability of. For example, what is the probability that you get a heads or a tails in one flip? (Answer: 1)
+
+## We need to understand random variables 
+
+::: definition
+::: def-title
+Definition: Random Variable
+:::
+
+::: def-cont
+For a given sample space $S$, a **random variable** (r.v.) is a **function** whose domain is $S$ and whose range is the set of real numbers $\mathbb{R}$. **A random variable assigns a real number to each outcome in the sample space.**
+:::
+:::
+
+-   A random variable's value is completely determined by the outcome $\omega$, where $\omega \in S$
+
+    -   What is *random* is the outcome $\omega$
+
+-   A **random variable** is a function from the sample space (with outcomes $\omega$) to the set of real numbers
+
+    -   We typically write $X(\omega)$ (or $X$ for short), where $X$ is our random variable
+    
+- Thus, we can take our sample space (all outcomes) and make functional transformations to it
+
+## The cool (and tricky) thing about random variables
+
+Do you remember our coin example from Lesson 1? We tossed one or two coins.
+
+- For each coin, the **sample space** is heads and tails ($S = \{H,T\}$)
+- If we want the **sample space** for both coins in order, then we have combinations ($S=\{(H,H), (H,T), (T,H), (T,T)\}$)
+
+ 
+
+We make the **random variable** a *function* of the **sample space**.
+
+- For one coin toss, we can say random variable $X$ is $1$ if we toss a heads ($\omega = \text{H}$) and $X=0$ if we get a tails
+- For the two coins, we can say $X$ is the count of heads, so if $\omega = \text{(H, T)}$, then $X=1$
+    
+## Types of random variables
+
+There are two types of random variables:
+
+::: columns
+::: column
+
+::: theorem
+::: thm-cont
+-   [**Discrete random variables** (RVs)]{style="color:#20c997;"}: the set of possible values is either finite or can be put into a countably infinite list
+
+    -   You could *theoretically* list the specific possible outcomes that the variable can take
+
+    -   If you sum the rolls of three dice, you must get a whole number. For example, you can't get any number between 3 and 4.
+:::
+:::
+
+:::
+::: column
+
+::: axiom
+::: axiom-cont
+-   [**Continuous random variables** (RVs)]{style="color:#d9534f;"}: take on values from continuous *intervals*, or unions of continuous intervals
+
+    -   Variable takes on a range of values, but there are infinitely possible values within the range
+
+    -   If you keep track of the time you sleep, you can sleep for 8 hours or 7.9 hours or 7.99 hours or 7.999 hours ...
+:::
+:::
+:::
+:::
+
+-   **Discrete random variables** (RVs) are a little easier to simulate right now
+    - We will only do discrete RVs today
+
+
+# Learning Objectives 
+
+1. Describe random variables and distinguish between discrete and continuous types
+
+::: lob
+2. Explain the role of simulation in approximating probabilities and distributions
+:::
+
+3. Use R to run simulations of discrete random variables
+4. Apply and interpret the four-step simulation process
+
+## What is a simulation?
+
+A **probability model** for a random phenomenon includes a sample space, events, random variables, and a probability measure.
+
+::::: definition
+::: def-title
+Simulation
+:::
+
+::: def-cont
+**Simulation** involves using a probability model to artificially recreate a random phenomenon, many times, usually using a computer.
+:::
+:::::
+
+We simulate outcomes and values of random variables according to the model's assumptions.
+
+## The Foundation: Relative Frequencies
+
+-   Probabilities can be interpreted as **long-run relative frequencies**
+
+ 
+
+-   By simulating a random phenomenon a large number of times, we can approximate the probability of an event by calculating the relative frequency of its occurrence
+    - Basically, out of all the trials we run, how many times did the event happen?
+
+ 
+
+-   Simulation is a powerful tool to **approximate a few things**:
+    - Probabilities
+    - Distributions of random variables
+    - Long-run averages
+
+## We saw an example of long-run relative frequency in our coin flip 
+
+In Lesson 1, we flipped a coin 100 times and recorded the proportion of heads.
+
+- We tossed 50 heads out of the 100 flips
+- Our long-run frequency was $50/100 = 0.5$, which **approximated the probability** of getting a head on any one flip
+
+```{r}
+#| echo: false
+#| output: false
+
+set.seed(13)
+coin = c("heads", "tails")
+sample(coin, 1)
+```
+
+```{r, echo = FALSE}
+
+n = 10 ^ (1:3)
+
+last_n = 1000
+
+i_n = 1:last_n
+
+x = sample(c("H", "T"), size = last_n, replace = TRUE)
+
+x_n = cumsum(x == "H")
+
+x2 = cbind(as.numeric(x == "H"),
+           matrix(rbinom(3 * last_n, 1, 0.5), ncol = 3))
+
+phat_n = sweep(apply(x2, 2, cumsum), 1, i_n, FUN = '/') %>%
+  as.data.frame() %>%
+  mutate(i_n = row_number(), .before = everything()) %>%
+  pivot_longer(cols = !i_n, names_to = "set", values_to = "proportion") %>%
+  mutate(set = str_remove(set, "V"))
+
+```
+
+::: columns
+::: {.column width="30%"}
+![](../img_slides/coin_flip.png){fig-align="center"}
+:::
+::: {.column width="70%"}
+```{r coin-flips-plot, echo = FALSE}
+#| fig-width: 13
+#| fig-height: 7
+
+ggplot(phat_n %>%
+         filter(set == "1") %>%
+         filter(i_n <= n[2]),
+       aes(x = i_n,
+           y = proportion,
+           col = set)) +
+  geom_line() +
+  geom_point( 
+    size = 2
+              ) +
+  geom_hline(yintercept = 0.5, lty = "dotted") +
+  # scale_x_continuous(breaks = 0:n[2]) +
+  scale_y_continuous(limits = c(0, 1)) +
+  theme_classic() +
+  theme(
+    legend.position = "none", 
+    axis.text.x = element_text(size = 20), 
+    axis.text.y = element_text(size = 20),
+    axis.title.x = element_text(size = 20),
+    axis.title.y = element_text(size = 20)
+    ) +
+  labs(
+    x = "Flip number",
+    y = "Running proportion of H"
+    )
+```
+
+:::
+:::
+
+## Tactile simulations
+
+-   We've already seen coin flips!
+-   We can also use cards, dice, and other objects to simulate discrete random variables
+
+ 
+
+-   Other common method: A **box model** uses a box/hat/bucket of "tickets" with labels to represent possible outcomes
+    -   Allows us to increase the number of "tickets" with appropriate labels
+    -   **Coin flip as box model:** A box with two tickets (H and T).
+    -   **90% free throw shooter:** A box with 10 tickets (9 "make" and 1 "miss").
+    -   Draws can be **with replacement** (e.g., coin flips) or **without replacement** (e.g., dealing a poker hand).
+
+# Learning objectives
+
+1. Describe random variables and distinguish between discrete and continuous types
+2. Explain the role of simulation in approximating probabilities and distributions
+
+::: lob
+3. Use R to run simulations of discrete random variables
+:::
+
+4. Apply and interpret the four-step simulation process
+
+## Example to build our simulation skills
+
+::::: example
+::: ex-title
+Example: Simulating Two Rolls of a Fair Four-Sided Die
+:::
+
+::: ex-cont
+We're going to roll two four-sided die. Let $X$ be the sum of two rolls, and $Y$ be the larger of the two rolls. How would we simulate $X$ and $Y$ separately?
+:::
+:::::
+
+ 
+
+- Note: this example is not asking for a probability! 
+    - We can simulate a random variable and looks at its distribution without calculating any probabilities.
+
+
+ 
+
+- We will focus on simulating $X$ first
+
+ 
+
+Let's build up some coding tools to do this!
+
+## How do we simulate something like a **single** dice roll?
+
+-   We can also use `R` to sample from the box or spinner
+
+-   The `sample()` function is a powerful tool for simulating draws from a box model.
+
+-   For example, we can simulate a coin flip
+
+      - What is `x`? 
+      - What is `size`?
+
+```{r}
+#| echo: true
+
+sample(x = c("H", "T"), size = 1)
+```
+
+ 
+
+- Or a dice roll
+
+```{r}
+#| echo: true
+
+sample(x = c(1, 2, 3, 4), size = 1)
+```
+
+## What if we have multiple rolls at once?
+
+- We can set `size` to be larger than 1 to simulate multiple draws at once
+
+```{r}
+#| echo: true
+
+sample(x = c("H", "T"), size = 5, replace = TRUE)
+```
+
+-   We can simulate our example of the two four-sided dice
+
+```{r}
+#| echo: true
+
+sample(x = c(1, 2, 3, 4), size = 2, replace = TRUE)
+```
+
+ 
+
+- What happens if we set `replace = FALSE`?
+
+```{r}
+#| echo: true
+
+sample(x = c(1, 2, 3, 4), size = 2, replace = FALSE)
+sample(x = c(1, 2, 3, 4), size = 4, replace = FALSE)
+```
+
+## Can we start to simulate many rolls of two dice?
+
+::::: example
+::: ex-title
+Example: Simulating Two Rolls of a Fair Four-Sided Die
+:::
+
+::: ex-cont
+We're going to roll two four-sided dice. Let $X$ be the sum of two rolls, and $Y$ be the larger of the two rolls. How would we simulate $X$ and $Y$ separately?
+:::
+:::::
+
+- We've seen how to simulate a single pair of rolls
+```{r}
+#| echo: true
+
+rolls <- sample(x = c(1, 2, 3, 4), size = 2, replace = TRUE)
+```
+
+- We can use the `replicate()` function to repeat this process many times (we'll do 10)
+```{r}
+#| echo: true
+
+reps <- 10
+replicate(reps, sample(x = 1:4, size = 2, replace = TRUE))
+```
+
+## We need more reps for long-run relative frequencies
+
+```{r}
+#| echo: true
+
+reps <- 10000
+simulations <- replicate(reps, sample(x = 1:4, size = 2, replace = TRUE))
+```
+
+- Let's show the first 14 simulations
+
+```{r}
+simulations[, 1:14]
+```
+
+ 
+
+- $X$ is the sum of the two rolls: we could calculate that for each column
+
+```{r}
+X_simulated <- apply(simulations, 2, sum)
+X_simulated[1:14]
+```
+
+## We can look at the plot of random variable $X$
+
+```{r}
+#| echo: false
+
+X_df <- as.data.frame(X_simulated) %>%
+  rename(X = X_simulated)
+
+ggplot(X_df, aes(x = X)) +
+  geom_histogram(binwidth = 1, color = "black", fill = "lightblue") +
+  scale_x_continuous(breaks = seq(2, 8, by = 1)) +
+  labs(title = "Simulated Distribution of X (Sum of Two Rolls)",
+       x = "Value of X",
+       y = "Frequency") +
+  theme_minimal()
+```
+
+## If we want to calculate something else, we can!
+
+::: columns
+::: {.column width="50%"}
+
+- Average:
+```{r}
+#| echo: true
+
+mean(X_simulated)
+```
+
+- Standard deviation:
+
+```{r}
+#| echo: true
+
+sd(X_simulated)
+```
+
+
+- Probability that $X=5$:
+```{r}
+#| echo: true
+
+sum(X_simulated == 5) / reps
+```
+
+- Probability that $X<3$:
+```{r}
+#| echo: true
+
+sum(X_simulated < 3) / reps
+```
+
+:::
+::: {.column width="50%"}
+
+ 
+
+ 
+
+ 
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+::: proof1
+::: proof-cont
+Probabilities (relative frequencies) are calculated by:
+
+- summing the number of times an event occurs and 
+- dividing by the total number of simulations (reps)
+:::
+:::
+:::
+:::
+
+# Learning objectives
+
+1. Describe random variables and distinguish between discrete and continuous types
+2. Explain the role of simulation in approximating probabilities and distributions
+3. Use R to run simulations of discrete random variables
+
+::: lob
+4. Apply and interpret the four-step simulation process
+:::
+
+## 4 (S)teps of a Simulation
+
+::::: proposition
+::: prop-title
+1.  Set up
+:::
+
+::: prop-cont
+Define the probability space and related random variables and events, including assumptions.
+:::
+:::::
+
+::::: proof1
+::: proof-title
+2.  Simulate
+:::
+
+::: proof-cont
+Run the simulation to generate outcomes according to the assumptions.
+:::
+:::::
+
+::::: example
+::: ex-title
+3.  Summarize
+:::
+
+::: ex-cont
+Analyze the output using plots and summary statistics like relative frequencies and averages.
+:::
+:::::
+
+::::: extra
+::: ext-title
+4.  Sensitivity analysis
+:::
+
+::: ext-cont
+Investigate how results change when assumptions or parameters of the model are altered.
+:::
+:::::
+
+## Example: Dice Rolls
+
+::::: example
+::: ex-title
+Example: Simulating Two Rolls of a Fair Four-Sided Die
+:::
+
+::: ex-cont
+We're going to roll two four-sided die. Let $X$ be the sum of two rolls, and $Y$ be the larger of the two rolls. How would we simulate $X$ and $Y$ separately?
+:::
+:::::
+
+- Use the steps to run simulation for for $Y$ now
+
+## 
+
+::::: proposition
+::: prop-title
+1.  Set up
+:::
+
+::: prop-cont
+Define the probability space and related random variables and events, including assumptions.
+:::
+:::::
+
+- **Random variable:** $Y(\omega)$ is the larger of the two rolls in outcome $\omega$
+- **Goal:** simulate $Y$, the larger of two rolls of a fair four-sided die
+- **Sample space:** all possible outcomes of rolling two four-sided die
+    - Not necessary, but helpful to define the sample space
+    
+$$\begin{aligned} S =  \{ &(1,1), (1,2), (1,3), (1,4), (2,1), (2,2), (2,3), (2,4),\\ & (3,1), (3,2), (3,3), (3,4), (4,1), (4,2), (4,3), (4,4)\} \end{aligned}$$
+
+- **Assumptions:** each die is fair and rolls are independent
+  - Each outcome in $S$ is equally likely with probability $1/16$
+
+## 
+
+::::: proof1
+::: proof-title
+2.  Simulate
+:::
+
+::: proof-cont
+Run the simulation to generate outcomes according to the assumptions.
+:::
+:::::
+
+```{r}
+#| echo: true
+
+reps <- 10000
+simulations <- replicate(reps, sample(x = 1:4, size = 2, replace = TRUE))
+Y_simulated <- apply(simulations, 2, max)
+```
+
+ 
+
+- We can look at the first 30 simulations
+```{r}
+Y_simulated[1:30]
+```
+
+## 
+
+::::: example
+::: ex-title
+3.  Summarize
+:::
+
+::: ex-cont
+Analyze the output using plots and summary statistics like relative frequencies and averages.
+:::
+:::::
+
+::: columns
+::: {.column width="55%"}
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show/Hide Code for plotting Y"
+#| fig-width: 11
+#| fig-height: 7
+
+Y_df <- as.data.frame(Y_simulated) %>%
+  rename(Y = Y_simulated)
+
+ggplot(Y_df, aes(x = Y)) +
+  geom_histogram(binwidth = 1, color = "black", fill = "#B3C8BF") +
+  scale_x_continuous(breaks = seq(1, 4, by = 1)) +
+  labs(title = "Simulated Distribution of Y (Larger of Two Rolls)",
+       x = "Value of Y",
+       y = "Frequency") +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(size = 20), 
+    axis.text.y = element_text(size = 20),
+    axis.title.x = element_text(size = 20),
+    axis.title.y = element_text(size = 20), 
+    plot.title = element_text(size = 20)
+    )
+```
+
+:::
+::: {.column width="45%"}
+
+If the problem asked us for something else, we could compute it:
+
+- Average:
+
+```{r}
+#| echo: true
+mean(Y_simulated)
+```
+
+- Probability that $Y=1$:  
+    
+```{r}
+#| echo: true
+
+sum(Y_simulated == 1) / reps
+```
+
+- Probability that $Y>3$:  
+    
+```{r}
+#| echo: true
+
+sum(Y_simulated > 3) / reps
+```
+
+:::
+:::
+
+## 
+
+::::: extra
+::: ext-title
+4.  Sensitivity analysis
+:::
+
+::: ext-cont
+Investigate how results change when assumptions or parameters of the model are altered.
+:::
+:::::
+
+What if we rolled three die instead of two?
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| echo: true
+
+reps <- 10000
+die <- 3
+simulations <- replicate(
+  reps, 
+  sample(x = 1:4, 
+         size = die, 
+         replace = TRUE)
+)
+simulations[, 1:6]
+Y_simulated <- apply(simulations, 2, max)
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| code-fold: true
+#| code-summary: "Show/Hide Code for plotting Y"
+#| fig-width: 11
+#| fig-height: 7
+
+Y_df <- as.data.frame(Y_simulated) %>%
+  rename(Y = Y_simulated)
+
+ggplot(Y_df, aes(x = Y)) +
+  geom_histogram(binwidth = 1, color = "black", fill = "#B3C8BF") +
+  scale_x_continuous(breaks = seq(1, 4, by = 1)) +
+  labs(title = "Simulated Distribution of Y (Larger of Two Rolls)",
+       x = "Value of Y",
+       y = "Frequency") +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(size = 20), 
+    axis.text.y = element_text(size = 20),
+    axis.title.x = element_text(size = 20),
+    axis.title.y = element_text(size = 20), 
+    plot.title = element_text(size = 20)
+    )
+```
+
+:::
+:::
+
+# Learning Objectives
+
+1. Describe random variables and distinguish between discrete and continuous types
+2. Explain the role of simulation in approximating probabilities and distributions
+3. Use R to run simulations of discrete random variables
+4. Apply and interpret the four-step simulation process

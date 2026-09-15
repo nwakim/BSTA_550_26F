@@ -1,0 +1,41 @@
+---
+title: "Key Info"
+date: "11/11/2024"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Announcements
+
+- Grading HW 6 assignment today! 
+  
+  - Feel free to turn in solutions later than 11/24 since I took so long to grade
+  
+- I made quite a few changes to the homeworks
+  - HW 10 is gone
+  - HW 9 is optional
+  - Instead of a HW assignment due over late November break
+    - HW 8 will include material from Week 8 and 9 and be due 12/5
+    
+- I have quite a bit of grading to catch up on!
+
+- Realizing I never gave you mid-quarter feedback forms... 
+
+  - Let's chat about this and our assessment breakdown in the coming weeks
+
+- Anything else?
+
+## Key Dates
+
+- Thursday: HW 7 due
+- Sunday: HW 6 solutions due
+
+
+  
+
+
+

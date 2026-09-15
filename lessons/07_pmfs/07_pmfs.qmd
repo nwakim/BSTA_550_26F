@@ -1,0 +1,450 @@
+---
+title: "Lesson 7: Probability Mass Functions (pmf's)"
+author: "Meike Niederhausen and Nicky Wakim"
+title-slide-attributes:
+    data-background-color: "#006a4e"
+date: " `r library(here); source(here('class_dates.R')); w4d1` "
+format: 
+  revealjs:
+    theme: "../simple_NW.scss"
+    slide-number: true
+    show-slide-number: all
+    width: 1955
+    height: 1100
+    footer: Lesson 7 Slides
+    html-math-method: mathjax
+---
+
+# Learning Objectives
+
+1. Identify a probability mass function (pmf) from past simulations
+2. Identify a binomial random variable and its parameters from a word problem
+3. Use R to calculate probabilities and simulate binomial random variables
+
+## Where are we?
+
+![](../img_slides/course_map.png){fig-align="center"}
+
+```{r setup, include=FALSE}
+library(here)
+library(tidyverse)
+source(here("class_dates.R"))
+
+theme_set(theme_minimal(base_size = 22))
+theme_update(plot.title = element_text(size = 22, hjust = 0.5))
+knitr::opts_chunk$set(warning=FALSE, message=FALSE, echo = TRUE)
+```
+
+# Learning Objectives
+
+::: lob
+1. Identify a probability mass function (pmf) from past simulations
+:::
+
+2. Identify a binomial random variable and its parameters from a word problem
+3. Use R to calculate probabilities and simulate binomial random variables
+
+## From Lesson 2: Types of random variables
+
+There are two types of random variables:
+
+::: columns
+::: column
+
+::: theorem
+::: thm-cont
+-   [**Discrete random variables** (RVs)]{style="color:#20c997;"}: the set of possible values is either finite or can be put into a countably infinite list
+
+    -   You could *theoretically* list the specific possible outcomes that the variable can take
+
+    -   If you sum the rolls of three dice, you must get a whole number. For example, you can't get any number between 3 and 4.
+:::
+:::
+
+:::
+::: column
+
+::: axiom
+::: axiom-cont
+-   [**Continuous random variables** (RVs)]{style="color:#d9534f;"}: take on values from continuous *intervals*, or unions of continuous intervals
+
+    -   Variable takes on a range of values, but there are infinitely possible values within the range
+
+    -   If you keep track of the time you sleep, you can sleep for 8 hours or 7.9 hours or 7.99 hours or 7.999 hours ...
+:::
+:::
+:::
+:::
+
+-   **Discrete random variables** (RVs) are a little easier to simulate right now
+    - We will only do discrete RVs today
+
+## What is a probability mass function?
+
+::: definition
+::: def-title
+Definition: probability distribution or probability mass function (pmf)
+:::
+
+::: def-cont
+The **probability distribution** or **probability mass function** (**pmf**) of a discrete r.v. $X$ is defined for every number $x$ by $$p_X(x) = \mathbb{P}(X=x) = \mathbb{P}(\mathrm{all }\ \omega\in S:X(\omega) = x)$$
+:::
+:::
+
+## From Lesson 2: Simulating two rolls (1/2)
+
+::::: example
+::: ex-title
+Example: Simulating Two Rolls of a Fair Four-Sided Die
+:::
+
+::: ex-cont
+We're going to roll two four-sided die. Let $X$ be the sum of two rolls. How would we simulate $X$?
+:::
+:::::
+
+```{r}
+#| echo: true
+
+reps <- 100000
+simulations <- replicate(reps, sample(x = 1:4, size = 2, replace = TRUE))
+```
+
+- Let's show the first 14 simulations
+
+```{r}
+simulations[, 1:14]
+```
+
+
+- $X$ is the sum of the two rolls: we could calculate that for each column
+
+```{r}
+X_simulated <- apply(simulations, 2, sum)
+X_simulated[1:14]
+```
+
+## From Lesson 2: Simulating two rolls (2/2)
+
+::: columns
+::: {.column width="55%"}
+```{r}
+#| code-fold: true
+#| code-summary: "Plot simulated distribution of X"
+#| fig-width: 10
+#| fig-height: 6
+
+X_df <- as.data.frame(X_simulated) %>%
+  rename(X = X_simulated)
+
+ggplot(X_df, aes(x = X, after_stat(density))) +
+  geom_histogram(binwidth = 1, color = "black", fill = "lightblue") +
+  scale_x_continuous(breaks = seq(2, 8, by = 1)) +
+  labs(title = "Simulated Distribution of X (Sum of Two Rolls)",
+       x = "Value of X",
+       y = "Approximated probablity")
+```
+
+:::
+::: {.column width="45%"}
+- For the RV $X$, we can find the probability for each possible value, $P(X=x) = p_X(x)$:
+$$
+p_X(x) =
+\begin{cases}
+\frac{4-|x-5|}{16}, & x = 2, 3, 4, 5, 6,7, 8,\\
+0, & \text{otherwise}
+\end{cases}
+$$
+:::
+:::
+
+## Remarks on the pmf
+
+::: axiom
+::: axiom-title
+Properties of pmf
+:::
+
+::: axiom-cont
+A pmf $p_X(x)$ must satisfy the following properties:
+
+-   $0 \leq p_X(x) \leq 1$ for all $x$
+
+-   $\sum \limits_{\{all\ x\}}p_X(x)=1$
+:::
+:::
+
+-   Some distributions depend on parameters
+
+    -   Each value of a parameter gives a **different** pmf
+
+    -   In previous example, the number of dice rolled was a parameter
+
+        -   We rolled 2 dice
+
+        -   If we rolled 4 dice, we'd get a **different** pmf!
+
+    -   The collection of all pmf's *for different values of the parameters* is called a **family** of pmf's
+
+# Learning Objectives
+
+1. Identify a probability mass function (pmf) from past simulations
+
+::: lob
+2. Identify a binomial random variable and its parameters from a word problem
+:::
+
+3. Use R to calculate probabilities and simulate binomial random variables
+
+## Binomial random variables
+
+-   **One specific type of discrete random variable** is a binomial random variable
+
+::::: definition
+::: def-title
+Binomial random variable
+:::
+
+::: def-cont
+-   $X$ is a binomial random variable if it represents the number of successes in $n$ independent replications (or trials) of an experiment where
+
+    -   Each replicate has two possible outcomes: either **success** or **failure**
+    -   The probability of success is $p$
+    -   The probability of failure is $q=1-p$
+:::
+:::::
+
+-   A binomial random variable takes on values $0, 1, 2, \dots, n$.
+
+-   If a r.v. $X$ is modeled by a Binomial distribution, then we write in shorthand $X \sim \text{Binom}(n,p)$
+
+-   Quick example: The number of heads in 3 tosses of a fair coin is a binomial random variable with parameters $n = 3$ and $p = 0.5$.
+
+## Binomial family of distributions
+
+::::: definition
+::: def-title
+Distribution (or pmf) of a **Binomial** random variable
+:::
+
+::: def-cont
+Let $X$ be the total number of successes in $n$ independent trials, each with probability $p$ of a success. Then probability of observing exactly $k$ successes in $n$ independent trials is 
+
+$$P(X = x) = \binom{n}{x} p^x (1-p)^{n-x},  x= 0, 1, 2, \dots, n $$
+
+:::
+:::::
+
+-   The parameters of a binomial distribution are $p$ and $n$.
+
+## Binomial distribution: R commands
+
+R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#367B79"}:
+
+::: columns
+::: column
+
+| R code     | What does it return?                                                                                                         |
+|--------------------|----------------------------------------------------|
+| `rbinom()` | returns [sample of random variables]{style="color:#367B79"} with [specified binomial distribution]{style="color:#BF396F"}    |
+| `dbinom()` | returns [probability]{style="color:#367B79"} of getting [certain number of successes]{style="color:#BF396F"}                 |
+| `pbinom()` | returns [cumulative probability]{style="color:#367B79"} of getting [certain number or less]{style="color:#BF396F"} successes |
+| `qbinom()` | returns [number of successes]{style="color:#367B79"} corresponding to [desired quantile]{style="color:#BF396F"}              |
+:::
+::: column
+:::
+:::
+
+# Learning Objectives
+
+1. Identify a probability mass function (pmf) from past simulations
+2. Identify a binomial random variable and its parameters from a word problem
+
+::: lob
+3. Use R to calculate probabilities and simulate binomial random variables
+:::
+
+## Falls in Older Adults (1/5)
+
+::: columns
+::: {.column width="100%"}
+::: example
+::: ex-title
+Example 1: Falls in Older Adults
+:::
+
+::: ex-cont
+A major public health concern is falls among older adults (age 65+). National data suggests that 25% of older adults will experience at least one fall within a given year. A community health program is tracking a random group of $n = 8$ older adults for one year. Assume the likelihood of falling is independent from person to person.
+
+Let $X$ be the random variable representing the number of individuals in this group who experience at least one fall.
+
+1. What is the sample space for the random variable $X$?
+2. Write the probability mass function (pmf) for $X$. 
+3. Use R to calculate the probability for each possible value of $X$.
+4. Make a bar plot of the pmf.
+5. Simulate $X$ for 10000 groups and plot the approximated pmf.
+:::
+:::
+:::
+:::
+
+## Falls in Older Adults (2/5)
+
+::: columns
+::: {.column width="50%"}
+::: example
+::: ex-title
+Example 1: Falls in Older Adults
+:::
+
+::: ex-cont
+1. What is the sample space for the random variable $X$?
+:::
+:::
+:::
+:::
+
+## Falls in Older Adults (3/5)
+
+::: columns
+::: {.column width="50%"}
+::: example
+::: ex-title
+Example 1: Falls in Older Adults
+:::
+
+::: ex-cont
+2. Write the probability mass function (pmf) for $X$. 
+:::
+:::
+:::
+:::
+
+$$P(X = x) = \binom{n}{x} p^x (1-p)^{n-x},  x= 0, 1, 2, \dots, n $$
+
+## Falls in Older Adults (4/6)
+
+::: columns
+::: {.column width="50%"}
+::: example
+::: ex-title
+Example 1: Falls in Older Adults
+:::
+
+::: ex-cont
+3. Use R to calculate the probability for each possible value of $X$.
+:::
+:::
+
+```{r}
+n = 8
+p = 0.25
+
+dbinom(0, size = n, prob = p)  #P(X=0)
+
+falls <- tibble(
+  x = 0:n,
+  prob = dbinom(x, size = n, prob = p)
+)
+```
+
+:::
+
+::: column
+
+ 
+
+ 
+
+```{r}
+falls
+```
+
+:::
+:::
+
+## Falls in Older Adults (5/6)
+
+::: columns
+::: {.column width="50%"}
+::: example
+::: ex-title
+Example 1: Falls in Older Adults
+:::
+
+::: ex-cont
+4. Make a bar plot of the pmf.
+:::
+
+:::
+:::
+:::
+
+```{r}
+#| fig-align: "center"
+#| output-location: column
+#| fig-width: 9
+#| fig-height: 6
+
+library(ggplot2)
+
+ggplot(falls, aes(x = x, y = prob)) +
+  geom_col() + 
+  labs(
+    title = "Probability mass function (pmf) of X",
+    x = "Number of adults (x)",
+    y = "Probability"
+  ) 
+```
+
+
+## Falls in Older Adults (6/6)
+
+::: columns
+::: {.column width="50%"}
+::: example
+::: ex-title
+Example 1: Falls in Older Adults
+:::
+
+::: ex-cont
+5. Simulate $X$ for 10000 groups and plot the approximated pmf.
+:::
+:::
+
+```{r}
+set.seed(4764)
+reps = 10000
+
+sims = rbinom(n = reps, 
+              size = n, 
+              prob = p)
+
+sims %>% head(., 14)
+
+falls2 <- tibble(x = 0:n) %>%
+  rowwise() %>%
+  mutate(prob = sum(sims == x) / reps)
+```
+
+:::
+
+::: column
+```{r}
+#| fig-align: "center"
+#| fig-width: 9
+#| fig-height: 6
+
+ggplot(falls2, aes(x = x, y = prob)) +
+  geom_col() + 
+  labs(
+    title = "Approximate probability mass function (pmf) of X",
+    x = "Number of adults (x)",
+    y = "Approximate Probability"
+  ) 
+```
+:::
+
+:::
+
+

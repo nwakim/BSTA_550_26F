@@ -6,7 +6,6 @@ format:
   html: 
     link-external-newwindow: true
     toc: true
-    embed-resources: true
   pdf: default 
 editor_options: 
   chunk_output_type: console
@@ -14,31 +13,13 @@ editor_options:
 
 ## Questions
 
-1. Not given
+1. Not given.
 
-2. Not given
+2. (a) $E\left(\overline{X}\right) = \mu$
+   (b) $\text{Var}\left(\overline{X}\right) = \dfrac{\sigma^2}{n}$
 
-3. 
+3. See notes for how I start this problem!
 
-    a. $$F_X(x) = \left\{
-                \begin{array}{ll}
-                    0 & \quad x \leq 16 \\
-                    \frac{1}{64}x^2 - \frac{1}{2}x + 4 & \quad 16 < x\leq 24 \\
-                    1 & \quad x > 24 \\
-                \end{array}
-            \right.$$
-    b. $a=20$
-        
-4. 
-    
-    (a) $k=660$
+4. (a) $E(V) = 87850 \text{ ft}^3$, $\text{Var}(V) = 19100116 \ (\text{ft}^3)^2$ 
       
-    (b) $$F_X(x) = \left\{
-                \begin{array}{ll}
-                    0 & \quad x < 0 \\
-                    55x^{12} - 120x^{11} + 66x^{10} & \quad 0 \leq x\leq 1 \\
-                    1 & \quad x > 24 \\
-                \end{array}
-            \right.$$
-
-## Extra Problems
+      (b) Expected value correct, variance incorrect

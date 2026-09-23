@@ -175,7 +175,7 @@ I teach a course, PUBH 523, that serves as an introduction to R. You can access 
 The course is structured around the following four components:
 
 |  |  |  |  |
-|:------:|:------:|:------:|:-----------------------------------------------|
+|:--:|:--:|:--:|:---|
 | **Component** | **Modality** | **Frequency** | **Description** |
 | Lecture | In person | Twice, Weekly | Course content is provided through in-person lectures. Lectures will consist of didactic lessons and interactive examples. Sessions will be recorded and posted online. **Attending or viewing the lecture within 7 days of the original lecture date is mandatory.** Class attendance will be taken through an Exit Ticket. If viewing the lecture asynchronously, you must take the Exit Ticket to verify your attendance. |
 | Homework Assignment | Online | Weekly | The course includes 9 homework assignments. They are an opportunity for you to engage with important concepts, practice some coding, and apply calculating skills. Homework assignments should be submitted online, and will be graded for completeness by the TAs. Students are encouraged to work in groups for homework assignments, but each person should do their own summary and hand in their work. **Homework assignments will be due on Thursday at 11 PM.** |
@@ -199,7 +199,7 @@ Letter grades will be assigned roughly according to the following scheme: A (\>=
 Grades will be based on homework assignments, midterm exam, class "attendance", and final exam, as follows:
 
 |  |  |  |  |
-|:---------------:|:---------------:|:---------------:|:---------------:|
+|:--:|:--:|:--:|:--:|
 | **Course activity** | **Type of Assessment** | **Due Dates** | **Percentage of final grade** |
 | Homework | Formative | Every 1-2 weeks | 30% |
 | Quizzes | Summative | `r q1_close %>% format("%m/%d")`, `r q2_close %>% format("%m/%d")`, `r q3_close %>% format("%m/%d")` | 24% |
@@ -249,7 +249,7 @@ Every professor has different expectations when assigning certain work or provid
 ### Resources
 
 |  |  |  |
-|:------------:|:----------------------|:-----------------------------------|
+|:--:|:---|:---|
 | **Resource** | **What is it?** | **How do I use it?** |
 | Office Hours | Blocks of time a professor or TA dedicates for questions. The teaching staff will be located in a specific room. Several students may enter the space at a time and will ask specific or broad questions. If many students attend office hours, a queue will be created so that students can be served equally. | The main use of office hours is to ask questions about an assignment or lecture notes. You are welcome to sit and do homework in office hours. OH are also an informal way of meeting fellow students to collaborate with. |
 | Lectures and lecture recordings | Time shared between the professor and students where the professor conveys important class material. Material discussed in lectures include concepts, calculations, code, and examples. Lectures are a mix of presentation of information, working through examples together, interactive activities, and in-class polls. | Students should attend lectures in person if possible. You should attempt to understand new material presented by following the presentation slides, taking notes on additional details that may conveyed verbally, and working through examples with the professor. Students are encouraged to ask questions when you don't understand the material at any point in the lecture. |
@@ -259,13 +259,7 @@ Every professor has different expectations when assigning certain work or provid
 
 ### Assignments
 
-<table style="width:99%;">
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 28%" />
-<col style="width: 35%" />
-</colgroup>
+<table>
 <tbody>
 <tr>
 <td style="text-align: center;"><p><strong>Assignment</strong></p></td>
@@ -316,7 +310,7 @@ Every professor has different expectations when assigning certain work or provid
 <li><p>Complete the survey during the last 5 minutes of class or after class within 7 days</p></li>
 </ul></td>
 <td style="text-align: left;"><ul>
-<li>Review muddiest and clearest points from the week</li>
+<li><p>Review muddiest and clearest points from the week</p></li>
 </ul></td>
 </tr>
 </tbody>

@@ -71,5 +71,45 @@
   },
   "lessons/11_Joint_distributions/11_Joint_distributions_review.qmd": {
     "11_Joint_distributions_review.html": "f8284dee"
+  },
+  "hw_answers/HW_01_ans.qmd": {
+    "HW_01_ans.html": "6a1b9aa2",
+    "HW_01_ans.tex": "2314d171"
+  },
+  "hw_answers/HW_02_ans.qmd": {
+    "HW_02_ans.html": "879e98ef"
+  },
+  "hw_answers/HW_03_ans.qmd": {
+    "HW_03_ans.html": "fe72c8dd"
+  },
+  "hw_answers/HW_05_ans.qmd": {
+    "HW_05_ans.html": "bdf274ca"
+  },
+  "hw_answers/HW_04_ans.qmd": {
+    "HW_04_ans.html": "9d5e0651"
+  },
+  "hw_answers/HW_06_ans.qmd": {
+    "HW_06_ans.html": "157f166b"
+  },
+  "hw_answers/HW_07_ans.qmd": {
+    "HW_07_ans.html": "d9e19497"
+  },
+  "homework/HW_03.qmd": {
+    "HW_03.html": "5c8ba17a"
+  },
+  "homework/HW_02.qmd": {
+    "HW_02.html": "e9b656e5"
+  },
+  "homework/HW_05.qmd": {
+    "HW_05.html": "4b7753cb"
+  },
+  "homework/HW_04.qmd": {
+    "HW_04.html": "3009f2a0"
+  },
+  "homework/HW_06.qmd": {
+    "HW_06.html": "ff967f38"
+  },
+  "homework/HW_07.qmd": {
+    "HW_07.html": "8b6969ed"
   }
 }

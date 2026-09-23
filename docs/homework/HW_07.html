@@ -2,17 +2,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Due: r library(here); source(here('class_dates.R')); hw7 %>% format('%m/%d') at 11pm">
 
-<title>Homework 7 – Introduction to Probability</title>
+<title>Homework 7 (Optional) – Introduction to Probability</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -32,15 +39,14 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-9945c5c3bf24965647d4ea0e1a99ef83.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-ebccf0fbef503770ee9b85daf8f5af23.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,7 +76,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -132,7 +138,7 @@ window.Quarto = {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../instructors.html"> 
-<span class="menu-text">Instructor</span></a>
+<span class="menu-text">Instructors</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../homeworks.html"> 
@@ -141,6 +147,10 @@ window.Quarto = {
   <li class="nav-item">
     <a class="nav-link" href="../quiz.html"> 
 <span class="menu-text">Quizzes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../project.html"> 
+<span class="menu-text">Project</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -159,8 +169,10 @@ window.Quarto = {
    
   <ul>
   <li><a href="#directions" id="toc-directions" class="nav-link active" data-scroll-target="#directions">Directions</a></li>
-  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a>
+  <ul class="collapse">
   <li><a href="#extra-problems" id="toc-extra-problems" class="nav-link" data-scroll-target="#extra-problems">Extra problems</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="HW_07.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
@@ -169,10 +181,15 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Homework 7</h1>
+<h1 class="title">Homework 7 (Optional)</h1>
 <p class="subtitle lead">BSTA 550</p>
 </div>
 
+<div>
+  <div class="description">
+    Due: <code>r library(here); source(here('class_dates.R')); hw7 %&gt;% format('%m/%d')</code> at 11pm
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -182,7 +199,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 6, 2025</p>
+      <p class="date-modified">September 23, 2026</p>
     </div>
   </div>
     
@@ -203,43 +220,25 @@ window.Quarto = {
 <section id="questions" class="level2">
 <h2 class="anchored" data-anchor-id="questions">Questions</h2>
 <ol type="1">
-<li><p>Prove that for a r.v. <span class="math inline">\(X\)</span> and constants <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, that <span class="math display">\[\mathrm{Var}[aX+b]=a^2\mathrm{Var}[X].\]</span></p></li>
-<li><p>Let <span class="math inline">\(\overline{X}\)</span> be the random variable for the sample mean, <span class="math inline">\(\overline{X}=\frac{\sum_{i=1}^nX_i}{n}\)</span>, where the <span class="math inline">\(X_i\)</span> are i.i.d. random variables with common mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>.</p>
-<ol type="a">
-<li><p>Find <span class="math inline">\(\mathbb{E}[\overline{X}]\)</span>.</p></li>
-<li><p>Find <span class="math inline">\(Var[\overline{X}]\)</span>.</p></li>
-</ol></li>
-<li><p>Let <span class="math inline">\(f_X(x)=\lambda e^{-\lambda x}\)</span> for <span class="math inline">\(x&gt;0\)</span>, where <span class="math inline">\(\lambda&gt;0\)</span>.</p>
-<ol type="a">
-<li>Show <span class="math inline">\(Var[X]=\frac{1}{\lambda^2}\)</span>. You may use the result from class for <span class="math inline">\(\mathbb{E}[X]\)</span> without first proving it.</li>
-</ol></li>
-<li><p>A shipping company handles containers in three different sizes: (1) 27 <span class="math inline">\(ft^3\)</span> (3 x 3 x 3), (2) 125 <span class="math inline">\(ft^3\)</span>, and (3) 512 <span class="math inline">\(ft^3\)</span>. Let <span class="math inline">\(X_i\)</span> (<span class="math inline">\(i = 1, 2, 3\)</span>) denote the number of type <span class="math inline">\(i\)</span> containers shipped during a given week. Suppose that <span class="math inline">\(\mu_1 =200,\sigma_1=10,\mu_2 =250,\sigma_2=12,\mu_3 =100,\sigma_3=8\)</span>.</p>
-<ol type="a">
-<li><p>Assuming that <span class="math inline">\(X_1,X_2,X_3\)</span> are independent, calculate the expected value and variance of the total volume shipped.</p></li>
-<li><p>Would your calculations necessarily be correct if the <span class="math inline">\(X_i\)</span>’s were not independent? Explain.</p></li>
-</ol></li>
-<li><p>Consider the joint density of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>: <span class="math display">\[f_{X,Y}(x,y)= \dfrac32 x y\]</span> for <span class="math inline">\(0 \leq x\)</span> and <span class="math inline">\(0 \leq y\)</span> and <span class="math inline">\(x+y \leq 2\)</span> and <span class="math inline">\(f_{X,Y}(x,y)=0\)</span> otherwise. Find <span class="math inline">\(E(Y)\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(R_X(t)=\ln(M_X(t))\)</span>. Show that <span class="math inline">\(\text{Var}(X)=R''_X(0)\)</span>.</p></li>
+<li><p>The mgf for a Gamma distribution is <span class="math inline">\(M_X(t)=\frac{1}{(1-t/\lambda)^r}\)</span>. Use the mgf of an Exponential distribution (from #43.9), to show that the sum of <span class="math inline">\(n\)</span> i.i.d. Exponential(<span class="math inline">\(\lambda)\)</span> random variables has a Gamma(<span class="math inline">\(r,\lambda\)</span>) distribution.</p></li>
 </ol>
-</section>
-<section id="extra-problems" class="level2">
-<h2 class="anchored" data-anchor-id="extra-problems">Extra problems</h2>
+<section id="extra-problems" class="level3">
+<h3 class="anchored" data-anchor-id="extra-problems">Extra problems</h3>
+<ol start="3" type="1">
+<li><p>Using mgf’s, show that the sum of <span class="math inline">\(n\)</span> i.i.d. Chi Square random variables with one degree of freedom (<span class="math inline">\(\chi^2_{(1)}\)</span>) r.v.’s has a Chi Square with <span class="math inline">\(n\)</span> degrees of freedom (<span class="math inline">\(\chi^2_{(n)}\)</span>) distribution.</p>
+<p><em>Hint:</em> First, look up the pdf of a <span class="math inline">\(\chi^2_{(n)}\)</span>. This is a special case of the Gamma distribution with what parameters? Based on that and the information from # 2 above, you can determine what the mgf of a <span class="math inline">\(\chi^2_{(n)}\)</span> is, which will help you determine whether the mgf of the sum of <span class="math inline">\(n\)</span> i.i.d. <span class="math inline">\(\chi^2_{(1)}\)</span> r.v.’s has a <span class="math inline">\(\chi^2_{(n)}\)</span> distribution.</p></li>
+<li><p>Use the mgf of a Poisson distribution to find the mgf of the following distributions. If the mgf is that of a common named distribution, then name the distribution and state its parameter(s).</p>
 <ol type="1">
-<li><p>There is a bowl containing 30 cashews, 20 pecans, 25 almonds, and 25 walnuts. I am going to randomly pick and eat 3 nuts (without replacement). Find the expected value of the number of cashews by defining the number of cashews as a sum of random variables. (This one takes a little while if we don’t rely on the</p></li>
-<li><p>Let <span class="math inline">\(\hat{p}\)</span> be the random variable for the sample proportion, <span class="math inline">\(\hat{p}=\frac{X}{n}\)</span>, where <span class="math inline">\(X\)</span> is the number of successes in a random sample of size <span class="math inline">\(n\)</span>. Assume the probability of success is <span class="math inline">\(p\)</span>.</p>
-<ol type="a">
-<li><p>Find <span class="math inline">\(\mathbb{E}[\hat{p}]\)</span>.</p></li>
-<li><p>Find <span class="math inline">\(Var[\hat{p}]\)</span>.</p></li>
-</ol></li>
-<li><p>Suppose your waiting time for a bus in the morning is uniformly distributed on [0, 8] (minutes), whereas waiting time in the evening is uniformly distributed on [0, 10] (minutes) independent of morning waiting time. <em>Make sure to FIRST set up an equation for calculating the total waiting time in each question before calculating the mean and variance of the total waiting time.</em> <em>You may use results from class for the expected value and variance of uniform r.v.’s without proving them.</em></p>
-<ol type="a">
-<li><p>If you take the bus each morning and evening for a week (7 days), what is your total expected waiting time?</p></li>
-<li><p>What is the variance of your total waiting time?</p></li>
-<li><p>What are the expected value and variance of the difference between morning and evening waiting times on a given day?</p></li>
-<li><p>What are the expected value and variance of the difference between total morning waiting time and total evening waiting time for a particular week?</p></li>
+<li><p>The distribution of <span class="math inline">\(\sum_{i=1}^nX_i\)</span>, if <span class="math inline">\(X_i\sim\)</span>Poisson<span class="math inline">\((\lambda_i)\)</span> and are independent.</p></li>
+<li><p>The distribution of <span class="math inline">\(\sum_{i=1}^3X_i\)</span>, if <span class="math inline">\(X_i\sim\)</span>Poisson<span class="math inline">\((\lambda)\)</span> and are independent (i.i.d. in this case).</p></li>
+<li><p>The distribution of <span class="math inline">\(3X\)</span>, if <span class="math inline">\(X\sim\)</span>Poisson<span class="math inline">\((\lambda)\)</span>.</p></li>
+<li><p>Why are the answers to (b) and (c) different?</p></li>
 </ol></li>
 </ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -6,6 +6,7 @@ format:
   html: 
     link-external-newwindow: true
     toc: true
+    embed-resources: true
   pdf: default 
 editor_options: 
   chunk_output_type: console
@@ -13,21 +14,31 @@ editor_options:
 
 ## Questions
 
-1. (a) 0.189     (b) 0.811     (c) 0.189
-2. a. 4060; b. 24,360;
-3.  0.3916
+1. Not given
+
+2. Not given
+
+3. 
+
+    a. $$F_X(x) = \left\{
+                \begin{array}{ll}
+                    0 & \quad x \leq 16 \\
+                    \frac{1}{64}x^2 - \frac{1}{2}x + 4 & \quad 16 < x\leq 24 \\
+                    1 & \quad x > 24 \\
+                \end{array}
+            \right.$$
+    b. $a=20$
+        
+4. 
+    
+    (a) $k=660$
+      
+    (b) $$F_X(x) = \left\{
+                \begin{array}{ll}
+                    0 & \quad x < 0 \\
+                    55x^{12} - 120x^{11} + 66x^{10} & \quad 0 \leq x\leq 1 \\
+                    1 & \quad x > 24 \\
+                \end{array}
+            \right.$$
 
 ## Extra Problems
-
-1. Calculus review
-
-    a. $c(\frac{y^{2}}{2}+y^{2})$
-    b. $\frac{8}{9}xy^{2}+\frac{5}{9}y^{4}$
-    c. $\frac{8}{9}x^{2}y+\frac{20}{9}xy^{3}$
-    d. $-2e^{-2y}+2e^{-y}$
-    e. $xe^{-x}$
-    f. $-\frac{2}{3}(e^{-7x}-e^{-4x})$
-    g. $\frac{9}{2}$
-    h. $\frac{9}{2}$
-    i. $\frac{9}{2}$
-    j. $\frac{9}{2}$

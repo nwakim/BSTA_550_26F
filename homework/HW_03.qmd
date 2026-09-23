@@ -29,52 +29,30 @@ You can type your work on your computer or submit a photo of your written work o
 
 *You must show all of your work to receive credit.*
 
-Extra problems do not need to be turned in!!
-
 ## Questions
 
-1. **Cookies.** Consider a jar of 9 chocolate chip and 11 peanut butter cookies. You randomly select 2 cookies to eat. All possible choices are equally likely.
+1. **Mystery constant.** Suppose $X$ is a discrete random variable with a probability mass function $p_X(x) = c(4- x)$ for $x$ in $\{-1, 2, 3\}$ and $p_X(x) = 0$ otherwise.
 
-    a. What is the probability that the 2 you select will both will be chocolate chip? *Calculate your answer "by hand."*
-    b. What is the probability that at least one of your cookies will be peanut butter? *Calculate your answer "by hand" then verify your answer by simulating the experiment in R at least 1000 times.*
-    c. What is the probability that last 2 cookies left in the jar (after 18 have been eaten) will be chocolate chip? (Is this answer the same or different than part a? Why or why not?) *Calculate your answer "by hand" then verify your answer by simulating the experiment in R at least 1000 times.*
+    a. What is the value of c so that $p_X(x)$ is a mass?
+    b. Make a plot of the probability mass function and write the piecewise pmf
+    c. What is the CDF of $X$? Write the piecewise CDF.
+    d. Make a plot of the CDF.
 
-2. **Raffle tickets.** There are 30 raffle tickets in a bowl. Three winning tickets will be selected. Each ticket can win at most one prize. How many ways can the prizes be distributed if the following additional information is known?
+2. **Wastebasket basketball.** Chris tries to throw a ball of paper in the wastebasket behind his back (without looking). He estimates that his chance of success each time, regardless of the outcome of the other attempts, is $1/3$. Let $X$ be the number of attempts required. If he is not successful within the first 5 attempts, then he quits, and he lets $X = 6$ in such a case.
+
+    a. Draw the mass of $X$ and define the piecewise pmf.
+    b. Draw the CDF of $X$ and define the piecewise CDF.
+    c. Simulate 10,000 trials of this experiment in R and plot the approximate probability distribution.
+  
+  
+3. Suppose a density $f_X(x)$ increases linearly from $(16, 0)$ to
+$\left(24, \dfrac{1}{4}\right)$.
+
+    a. Find the CDF of $X$.
+    b. What is the value of $a$ so that $P(X > a) = 0.75$?
+
+4. For the following pdf $$f_X(x) = \begin{cases} kx^9(1-x)^2 & \text{if } 0 \leq x \leq 1 \\ 0 & \text{otherwise} \end{cases}$$
     
-    a. All 3 winners receive goldfish (the goldfish are indistinguishable).
-    b. The 1st winner receives a car, the 2nd a bicycle, and the 3rd a goldfish.
-
-3.  A new drug is packaged to contain 30 pills in a bottle. Suppose that 98% of all bottles contain no defective pills, 1.5% contain one defective pill, and 0.5% contain two defective pills. Two pills from a bottle are randomly selected and tested. What is the probability that there are 2 defective pills in the bottle given that one of the two tested pills is defective?
-
-## Extra Problems
-
-1.  Read the Washington Post article *The amazing woman who can smell Parkinson's disease - before symptoms appear* (<http://www.washingtonpost.com/news/morning-mix/wp/2015/10/23/scottish-woman-detects-a-musky-smell-that-could-radically-improve-how-parkinsons-disease-is-diagnosed/>)
-
-    Assuming Joy Milne does not have the ability to detect Parkinson's disease via smell, answer the following questions:
-
-    a.  What is the probability of her correctly detecting Parkinson's by smelling one t-shirt?
-
-    b.  What is the probability of her correctly detecting Parkinson's in 12 out of 12 t-shirts?
-
-2.  Calculus Review
-
-    a.  $$\int_0^yc(x+y)dx$$
-
-    b.  $$\frac{d}{dx}\bigg(\frac{4}{9}x^2y^2+\frac{5}{9}xy^4\bigg)$$
-
-    c.  $$\frac{d}{dy}\bigg(\frac{4}{9}x^2y^2+\frac{5}{9}xy^4\bigg)$$
-
-    d.  $$\int_0^y2e^{-x}e^{-y}dx$$
-
-    e.  $$\int_0^\infty xye^{-(x+y)}dy$$
-
-    f.  $$\int_x^{2x} 2e^{-(x+3y)}dy$$
-
-    g.  Find the area of the region bounded by the graphs of $f(x)=2-x^2$ and $g(x)=x$ by integrating with respect to $x$.
-
-    h.  Find the area of the region bounded by the graphs of $f(x)=2-x^2$ and $g(x)=x$ by integrating with respect to $y$.
-
-    i.  Find the area of the region bounded by the graphs of $x=3-y^2$ and $y=x-1$ by integrating with respect to $x$.
-
-    j.  Find the area of the region bounded by the graphs of $x=3-y^2$ and $y=x-1$ by integrating with respect to $y$.
+    a. What is the constant $k$ that makes the following function a valid density?
+    b. What is the cumulative distribution function (cdf) $F_X(x)$?
 

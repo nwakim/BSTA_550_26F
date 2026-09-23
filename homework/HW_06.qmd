@@ -1,6 +1,7 @@
 ---
 title: "Homework 6"
 subtitle: "BSTA 550"
+description: "Due: `r library(here); source(here('class_dates.R')); hw6 %>% format('%m/%d')` at 11pm"
 date-modified: "today"
 format: 
   html:
@@ -49,3 +50,67 @@ Extra problems do not need to be turned in!
     c. Find the conditional probability that $X \leq 1$, given $3 \leq Y \leq 9$.
     d. Find $P(0.5 \leq X \leq 3 | Y=4)$
     e. Find $P(0.5 \leq X \leq 3 | Y=7)$
+
+4. Consider the joint density of $X$ and $Y$: $$f_{X,Y}(x,y)= \dfrac32 x y$$ for $0 \leq x$ and $0 \leq y$ and $x+y \leq 2$
+and $f_{X,Y}(x,y)=0$ otherwise. Find $E(Y)$.
+
+5.  I would like us to create a reference table for the important distributions. Fill out the following table and save it for future reference.
+
+| RV / Distribution | Type | Parameters | Possible values $X$ | PMF / PDF | Mean $E[X]$ | Variance $Var(X)$ |
+|:----------|:----------|:----------|:----------|:----------|:----------|:----------|
+| **Bernoulli** | Discrete | $p$ | $X = \{0, 1\}$ | $p^x(1-p)^{1-x}$ | $p$ | $p(1-p)$ |
+| **Binomial** |  |  |  |  |  |  |
+| **Geometric** |  |  |  |  |  |  |
+| **Negative Binomial** |  |  |  |  |  |  |
+| **Hypergeometric** |  |  |  |  |  |  |
+| **Poisson** |  |  |  |  |  |  |
+| **Discrete Uniform** |  |  |  |  |  |  |
+| **Continuous Uniform** |  |  |  |  |  |  |
+| **Exponential** |  |  |  |  |  |  |
+| **Gamma** |  |  |  |  |  |  |
+| **Normal** |  |  |  |  |  |  |
+
+6.  It is also important to know how different RVs/distributions relate to one another. In the following web, please fill in the relationships between each distribution. You can recreate the web or you can write out the relationships in a numbered list.
+
+```{mermaid}
+
+graph TD
+    
+    %% Define Node Styles
+    classDef discrete fill:#D6EAF8,stroke:#5DADE2,color:#333
+    classDef continuous fill:#D5F5E3,stroke:#58D68D,color:#333
+
+    %% === NODES ===
+    
+    %% Discrete Distributions
+    Bern(Bernoulli)
+    Geo(Geometric)
+    Bin(Binomial)
+    NegBin(Negative Binomial)
+    Hyper(Hypergeometric)
+    Pois(Poisson)
+    
+    %% Continuous Distributions
+    Exp(Exponential)
+    Gam(Gamma)
+    Norm(Normal)
+    Chi(Chi-Squared)
+    
+    %% === CONNECTIONS ===
+    Bern -- "1" --> Geo
+    Bern -- "2" --> Bin
+    Pois -- "3" --> Bin
+    Bin -- "9" --> Hyper
+    Norm -- "4" --> Bin
+    Norm -- "5" --> Chi
+        
+    Geo -- "8" --> NegBin
+    Pois -- "7" --> Exp
+    Gam -- "6" --> Exp
+
+
+
+    %% Apply Styles
+    class Bern,Bin,Geo,NegBin,Hyper,DiscUnif,Pois discrete
+    class ContUnif,Exp,Gam,Norm,Chi continuous
+```

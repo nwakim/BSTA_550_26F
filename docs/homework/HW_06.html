@@ -2,17 +2,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Due: r library(here); source(here('class_dates.R')); hw6 %>% format('%m/%d') at 11pm">
 
 <title>Homework 6 – Introduction to Probability</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -32,15 +39,14 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-9945c5c3bf24965647d4ea0e1a99ef83.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-ebccf0fbef503770ee9b85daf8f5af23.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,9 +74,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -132,7 +141,7 @@ window.Quarto = {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../instructors.html"> 
-<span class="menu-text">Instructor</span></a>
+<span class="menu-text">Instructors</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../homeworks.html"> 
@@ -141,6 +150,10 @@ window.Quarto = {
   <li class="nav-item">
     <a class="nav-link" href="../quiz.html"> 
 <span class="menu-text">Quizzes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../project.html"> 
+<span class="menu-text">Project</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -172,6 +185,11 @@ window.Quarto = {
 <p class="subtitle lead">BSTA 550</p>
 </div>
 
+<div>
+  <div class="description">
+    Due: <code>r library(here); source(here('class_dates.R')); hw6 %&gt;% format('%m/%d')</code> at 11pm
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -181,7 +199,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 19, 2025</p>
+      <p class="date-modified">September 23, 2026</p>
     </div>
   </div>
     
@@ -227,7 +245,185 @@ window.Quarto = {
 <li>Find <span class="math inline">\(P(0.5 \leq X \leq 3 | Y=4)\)</span></li>
 <li>Find <span class="math inline">\(P(0.5 \leq X \leq 3 | Y=7)\)</span></li>
 </ol></li>
+<li><p>Consider the joint density of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>: <span class="math display">\[f_{X,Y}(x,y)= \dfrac32 x y\]</span> for <span class="math inline">\(0 \leq x\)</span> and <span class="math inline">\(0 \leq y\)</span> and <span class="math inline">\(x+y \leq 2\)</span> and <span class="math inline">\(f_{X,Y}(x,y)=0\)</span> otherwise. Find <span class="math inline">\(E(Y)\)</span>.</p></li>
+<li><p>I would like us to create a reference table for the important distributions. Fill out the following table and save it for future reference.</p></li>
 </ol>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">RV / Distribution</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Parameters</th>
+<th style="text-align: left;">Possible values <span class="math inline">\(X\)</span></th>
+<th style="text-align: left;">PMF / PDF</th>
+<th style="text-align: left;">Mean <span class="math inline">\(E[X]\)</span></th>
+<th style="text-align: left;">Variance <span class="math inline">\(Var(X)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Bernoulli</strong></td>
+<td style="text-align: left;">Discrete</td>
+<td style="text-align: left;"><span class="math inline">\(p\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(X = \{0, 1\}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(p^x(1-p)^{1-x}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(p\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(p(1-p)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Binomial</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Geometric</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Negative Binomial</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Hypergeometric</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Poisson</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Discrete Uniform</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Continuous Uniform</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Exponential</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Gamma</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Normal</strong></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<ol start="6" type="1">
+<li>It is also important to know how different RVs/distributions relate to one another. In the following web, please fill in the relationships between each distribution. You can recreate the web or you can write out the relationships in a numbered list.</li>
+</ol>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    
+    %% Define Node Styles
+    classDef discrete fill:#D6EAF8,stroke:#5DADE2,color:#333
+    classDef continuous fill:#D5F5E3,stroke:#58D68D,color:#333
+
+    %% === NODES ===
+    
+    %% Discrete Distributions
+    Bern(Bernoulli)
+    Geo(Geometric)
+    Bin(Binomial)
+    NegBin(Negative Binomial)
+    Hyper(Hypergeometric)
+    Pois(Poisson)
+    
+    %% Continuous Distributions
+    Exp(Exponential)
+    Gam(Gamma)
+    Norm(Normal)
+    Chi(Chi-Squared)
+    
+    %% === CONNECTIONS ===
+    Bern -- "1" --&gt; Geo
+    Bern -- "2" --&gt; Bin
+    Pois -- "3" --&gt; Bin
+    Bin -- "9" --&gt; Hyper
+    Norm -- "4" --&gt; Bin
+    Norm -- "5" --&gt; Chi
+        
+    Geo -- "8" --&gt; NegBin
+    Pois -- "7" --&gt; Exp
+    Gam -- "6" --&gt; Exp
+
+
+
+    %% Apply Styles
+    class Bern,Bin,Geo,NegBin,Hyper,DiscUnif,Pois discrete
+    class ContUnif,Exp,Gam,Norm,Chi continuous
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 
 
 </section>

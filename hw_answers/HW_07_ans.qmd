@@ -1,5 +1,5 @@
 ---
-title: "Homework 7 Answers"
+title: "Homework 7 (Optional) Answers"
 subtitle: "BSTA 550"
 date-modified: "today"
 format: 
@@ -13,14 +13,11 @@ editor_options:
 
 ## Questions
 
-1. Not given.
+### Extra problems
 
-2. (a) $E\left(\overline{X}\right) = \mu$
-   (b) $\text{Var}\left(\overline{X}\right) = \dfrac{\sigma^2}{n}$
-
-3. See notes for how I start this problem!
-
-4. (a) $E(V) = 87850 \text{ ft}^3$, $\text{Var}(V) = 19100116 \ (\text{ft}^3)^2$ 
-      
-      (b) Expected value correct, variance incorrect
-
+4. \(a\) Poisson$(\sum_{i=1}^n \lambda_i)$     (b)
+Poisson$(3\lambda)$      (c) $M_{3X}(t)=e{\lambda(e^{3t}-1)}$
+This is not an mgf of a common probability distribution.
+(d) In (b) we are adding independent r.v.'s $X_i$, while
+in (c) we are adding dependent r.v.'s ($3X=X+X+X$; $X$ is
+dependent with itself).

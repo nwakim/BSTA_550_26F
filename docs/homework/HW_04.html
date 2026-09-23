@@ -2,18 +2,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Due: 11/02 at 11pm">
+<meta name="description" content="Due: r library(here); source(here('class_dates.R')); hw4 %>% format('%m/%d') at 11pm">
 
 <title>Homework 4 – Introduction to Probability</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -33,15 +39,14 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-9945c5c3bf24965647d4ea0e1a99ef83.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-ebccf0fbef503770ee9b85daf8f5af23.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,7 +76,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -133,7 +138,7 @@ window.Quarto = {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../instructors.html"> 
-<span class="menu-text">Instructor</span></a>
+<span class="menu-text">Instructors</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../homeworks.html"> 
@@ -142,6 +147,10 @@ window.Quarto = {
   <li class="nav-item">
     <a class="nav-link" href="../quiz.html"> 
 <span class="menu-text">Quizzes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../project.html"> 
+<span class="menu-text">Project</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -161,6 +170,7 @@ window.Quarto = {
   <ul>
   <li><a href="#directions" id="toc-directions" class="nav-link active" data-scroll-target="#directions">Directions</a></li>
   <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
+  <li><a href="#extra-problems" id="toc-extra-problems" class="nav-link" data-scroll-target="#extra-problems">Extra problems</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="HW_04.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
@@ -175,7 +185,7 @@ window.Quarto = {
 
 <div>
   <div class="description">
-    Due: 11/02 at 11pm
+    Due: <code>r library(here); source(here('class_dates.R')); hw4 %&gt;% format('%m/%d')</code> at 11pm
   </div>
 </div>
 
@@ -187,7 +197,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">October 30, 2025</p>
+      <p class="date-modified">September 23, 2026</p>
     </div>
   </div>
     
@@ -203,32 +213,43 @@ window.Quarto = {
 <p><strong>Please turn in this homework on Sakai.</strong> Please submit your homework in pdf or html format.</p>
 <p>You can type your work on your computer or submit a photo of your written work or any other method that can be turned into a pdf. The Adobe Scan phone app is an easy way to scan photos and compile into a PDF. Please let me know if you greatly prefer to submit a physical copy. We can work out another way for you to turn in homework.</p>
 <p><em>You must show all of your work to receive credit.</em></p>
+<p>Extra problems do not need to be turned in!</p>
 </section>
 <section id="questions" class="level2">
 <h2 class="anchored" data-anchor-id="questions">Questions</h2>
 <ol type="1">
-<li><p><strong>Mystery constant.</strong> Suppose <span class="math inline">\(X\)</span> is a discrete random variable with a probability mass function <span class="math inline">\(p_X(x) = c(4- x)\)</span> for <span class="math inline">\(x\)</span> in <span class="math inline">\(\{-1, 2, 3\}\)</span> and <span class="math inline">\(p_X(x) = 0\)</span> otherwise.</p>
+<li><p>Prove that for a r.v. <span class="math inline">\(X\)</span> and constants <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, that <span class="math display">\[\mathrm{Var}[aX+b]=a^2\mathrm{Var}[X].\]</span></p></li>
+<li><p>Let <span class="math inline">\(\overline{X}\)</span> be the random variable for the sample mean, <span class="math inline">\(\overline{X}=\frac{\sum_{i=1}^nX_i}{n}\)</span>, where the <span class="math inline">\(X_i\)</span> are i.i.d. random variables with common mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>.</p>
 <ol type="a">
-<li>What is the value of c so that <span class="math inline">\(p_X(x)\)</span> is a mass?</li>
-<li>Make a plot of the probability mass function and write the piecewise pmf</li>
-<li>What is the CDF of <span class="math inline">\(X\)</span>? Write the piecewise CDF.</li>
-<li>Make a plot of the CDF.</li>
+<li><p>Find <span class="math inline">\(\mathbb{E}[\overline{X}]\)</span>.</p></li>
+<li><p>Find <span class="math inline">\(Var[\overline{X}]\)</span>.</p></li>
 </ol></li>
-<li><p><strong>Wastebasket basketball.</strong> Chris tries to throw a ball of paper in the wastebasket behind his back (without looking). He estimates that his chance of success each time, regardless of the outcome of the other attempts, is <span class="math inline">\(1/3\)</span>. Let <span class="math inline">\(X\)</span> be the number of attempts required. If he is not successful within the first 5 attempts, then he quits, and he lets <span class="math inline">\(X = 6\)</span> in such a case.</p>
+<li><p>Let <span class="math inline">\(f_X(x)=\lambda e^{-\lambda x}\)</span> for <span class="math inline">\(x&gt;0\)</span>, where <span class="math inline">\(\lambda&gt;0\)</span>.</p>
 <ol type="a">
-<li>Draw the mass of <span class="math inline">\(X\)</span> and define the piecewise pmf.</li>
-<li>Draw the CDF of <span class="math inline">\(X\)</span> and define the piecewise CDF.</li>
-<li>Simulate 10,000 trials of this experiment in R and plot the approximate probability distribution.</li>
+<li>Show <span class="math inline">\(Var[X]=\frac{1}{\lambda^2}\)</span>. You may use the result from class for <span class="math inline">\(\mathbb{E}[X]\)</span> without first proving it.</li>
 </ol></li>
-<li><p>Suppose a density <span class="math inline">\(f_X(x)\)</span> increases linearly from <span class="math inline">\((16, 0)\)</span> to <span class="math inline">\(\left(24, \dfrac{1}{4}\right)\)</span>.</p>
+<li><p>A shipping company handles containers in three different sizes: (1) 27 <span class="math inline">\(ft^3\)</span> (3 x 3 x 3), (2) 125 <span class="math inline">\(ft^3\)</span>, and (3) 512 <span class="math inline">\(ft^3\)</span>. Let <span class="math inline">\(X_i\)</span> (<span class="math inline">\(i = 1, 2, 3\)</span>) denote the number of type <span class="math inline">\(i\)</span> containers shipped during a given week. Suppose that <span class="math inline">\(\mu_1 =200,\sigma_1=10,\mu_2 =250,\sigma_2=12,\mu_3 =100,\sigma_3=8\)</span>.</p>
 <ol type="a">
-<li>Find the CDF of <span class="math inline">\(X\)</span>.</li>
-<li>What is the value of <span class="math inline">\(a\)</span> so that <span class="math inline">\(P(X &gt; a) = 0.75\)</span>?</li>
+<li><p>Assuming that <span class="math inline">\(X_1,X_2,X_3\)</span> are independent, calculate the expected value and variance of the total volume shipped.</p></li>
+<li><p>Would your calculations necessarily be correct if the <span class="math inline">\(X_i\)</span>’s were not independent? Explain.</p></li>
 </ol></li>
-<li><p>For the following pdf <span class="math display">\[f_X(x) = \begin{cases} kx^9(1-x)^2 &amp; \text{if } 0 \leq x \leq 1 \\ 0 &amp; \text{otherwise} \end{cases}\]</span></p>
+</ol>
+</section>
+<section id="extra-problems" class="level2">
+<h2 class="anchored" data-anchor-id="extra-problems">Extra problems</h2>
+<ol type="1">
+<li><p>There is a bowl containing 30 cashews, 20 pecans, 25 almonds, and 25 walnuts. I am going to randomly pick and eat 3 nuts (without replacement). Find the expected value of the number of cashews by defining the number of cashews as a sum of random variables. (This one takes a little while if we don’t rely on the</p></li>
+<li><p>Let <span class="math inline">\(\hat{p}\)</span> be the random variable for the sample proportion, <span class="math inline">\(\hat{p}=\frac{X}{n}\)</span>, where <span class="math inline">\(X\)</span> is the number of successes in a random sample of size <span class="math inline">\(n\)</span>. Assume the probability of success is <span class="math inline">\(p\)</span>.</p>
 <ol type="a">
-<li>What is the constant <span class="math inline">\(k\)</span> that makes the following function a valid density?</li>
-<li>What is the cumulative distribution function (cdf) <span class="math inline">\(F_X(x)\)</span>?</li>
+<li><p>Find <span class="math inline">\(\mathbb{E}[\hat{p}]\)</span>.</p></li>
+<li><p>Find <span class="math inline">\(Var[\hat{p}]\)</span>.</p></li>
+</ol></li>
+<li><p>Suppose your waiting time for a bus in the morning is uniformly distributed on [0, 8] (minutes), whereas waiting time in the evening is uniformly distributed on [0, 10] (minutes) independent of morning waiting time. <em>Make sure to FIRST set up an equation for calculating the total waiting time in each question before calculating the mean and variance of the total waiting time.</em> <em>You may use results from class for the expected value and variance of uniform r.v.’s without proving them.</em></p>
+<ol type="a">
+<li><p>If you take the bus each morning and evening for a week (7 days), what is your total expected waiting time?</p></li>
+<li><p>What is the variance of your total waiting time?</p></li>
+<li><p>What are the expected value and variance of the difference between morning and evening waiting times on a given day?</p></li>
+<li><p>What are the expected value and variance of the difference between total morning waiting time and total evening waiting time for a particular week?</p></li>
 </ol></li>
 </ol>
 

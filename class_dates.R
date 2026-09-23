@@ -1,4 +1,3 @@
-
 library(dplyr)
 
 # Set the first day of class: "Term begins" date in OHSU academic calendar
@@ -19,18 +18,18 @@ hw0 = cal_dates[4]
 w2d1 = cal_dates[8]
 w2d2 = cal_dates[10]
 hw1 = cal_dates[14]
+cp0 = cal_dates[14]
 
 ## Week 3 dates
 w3d1 = cal_dates[15]
 w3d2 = cal_dates[17]
-hw2 = cal_dates[21]
-cp0 = cal_dates[21]
+cp1 = cal_dates[21]
 hw1sol = cal_dates[21]
 
 ## Week 4 dates 
 w4d1 = cal_dates[22]
 w4d2 = cal_dates[24]
-hw3 = cal_dates[28]
+hw2 = cal_dates[28]
 hw2sol = cal_dates[28]
 q1_open = cal_dates[24]
 q1_close = cal_dates[28]
@@ -38,14 +37,13 @@ q1_close = cal_dates[28]
 ## Week 5 dates
 w5d1 = cal_dates[29]
 w5d2 = cal_dates[31]
-hw4 = cal_dates[35]
+hw3 = cal_dates[35]
 hw3sol = cal_dates[35]
-cp1 = cal_dates[35]
 
 ## Week 6 dates
 w6d1 = cal_dates[36]
 w6d2 = cal_dates[38]
-hw5 = cal_dates[42]
+hw4 = cal_dates[42]
 hw4sol = cal_dates[42]
 q2_open = cal_dates[38]
 q2_close = cal_dates[42]
@@ -53,13 +51,12 @@ q2_close = cal_dates[42]
 ## Week 7 dates
 w7d1 = cal_dates[43]
 w7d2 = cal_dates[45]
-hw6 = cal_dates[49]
 cp2 = cal_dates[49]
 
 ## Week 8 dates
 w8d1 = cal_dates[50]
 w8d2 = cal_dates[52]
-hw7 = cal_dates[56]
+hw5 = cal_dates[56]
 
 ## Week 9 dates
 w9d1 = cal_dates[57]
@@ -69,7 +66,7 @@ cp3 = cal_dates[63]
 ## Week 10 dates
 w10d1 = cal_dates[64]
 w10d2 = cal_dates[66]
-hw8 = cal_dates[70]
+hw6 = cal_dates[70]
 hw7sol = cal_dates[69]
 q3_open = cal_dates[66]
 q3_close = cal_dates[70]
@@ -77,5 +74,9 @@ q3_close = cal_dates[70]
 ## Week 11 dates
 w11d1 = cal_dates[71]
 w11d2 = cal_dates[73]
-hw9 = cal_dates[74]
+hw7 = cal_dates[74]
 proj = cal_dates[75]
+
+## Old HW 8/9 dates: no longer used for homework, kept so schedule_01.qmd still renders
+hw8 = cal_dates[70]
+hw9 = cal_dates[74]

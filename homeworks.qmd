@@ -14,7 +14,7 @@ source(here("class_dates.R"))
 ```
 
 | Homework | Assignment | Assignment due (\@11pm) | Answers | Solutions & videos |
-|----|----|----|----|----|
+|---------------|---------------|---------------|---------------|---------------|
 | 0 | [[{{< iconify material-symbols assignment size=29px >}}](/homework/HW_00.qmd)]{style="color:#f8f5f0;"} | `r hw0 %>% format("%m/%d")` |  |  |
 | 1 | [[{{< iconify material-symbols assignment size=29px >}}](/homework/HW_01.qmd)]{style="color:#f8f5f0;"} | `r hw1 %>% format("%m/%d")` | [[{{< iconify ph key-fill size=29px >}}](/hw_answers/HW_01_ans.qmd)]{style="color:#f8f5f0;"} | [[{{< iconify icon-park-twotone file-code size=29px >}}](https://ohsuitg-my.sharepoint.com/:f:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/HW_solns/HW_01?csf=1&web=1&e=MkybbV)]{style="color:#f8f5f0;"} |
 | 2 | [[{{< iconify material-symbols assignment size=29px >}}](/homework/HW_02.qmd)]{style="color:#f8f5f0;"} | `r hw2 %>% format("%m/%d")` | [[{{< iconify ph key-fill size=29px >}}](/hw_answers/HW_02_ans.qmd)]{style="color:#f8f5f0;"} | [[{{< iconify icon-park-twotone file-code size=29px >}}](https://ohsuitg-my.sharepoint.com/:f:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/HW_solns/HW_02?csf=1&web=1&e=NJoXh9)]{style="color:#f8f5f0;"} |
@@ -28,11 +28,11 @@ source(here("class_dates.R"))
 
 ## File Naming
 
--   For HW **Assignments**, please use the following file naming: "HW01_LastName_FirstInitial"
+For HW **Assignments**, please use the following file naming: "HW01_LastName_FirstInitial"
 
-    -   For homeworks without R, this should be a pdf file
+- For homeworks without R, this should be a pdf file
 
-    -   For homeworks with R, this may be a pdf file (with the code in the pdf) or an html file
+- For homeworks with R, this may be a pdf file (with the code in the pdf) or an html file
 
 ## Rubric
 
@@ -41,5 +41,5 @@ source(here("class_dates.R"))
 A total of 1 point will be given for a complete homework. The following rubric will be used:
 
 |   | 1 point | 0 points |
-|----|----|----|
+|------------------------|------------------------|------------------------|
 | Completeness | 75% of the question parts are thoroughly worked out and have an answer. “Question parts” means the sub-questions labeled “Part \_." Answers can be incorrect or correct. For parts with longer processes and calculations, solution set up and calculations are required. | Less than 75% of question parts are thoroughly worked out. Attempts do not count as thoroughly worked out. |

@@ -5,6 +5,11 @@ page-layout: full
 link-external-newwindow: true
 ---
 
+```{r setup, include=FALSE}
+library(here)
+source(here("class_dates.R"))
+```
+
 ::: {style="background-color: #006a4e"}
 ::: {style="color: #FFFFFF"}
 ::: grid
@@ -15,11 +20,13 @@ link-external-newwindow: true
 ::: g-col-7
 # BSTA 550: Introduction to Probability
 
-### Fall 2025
+### Fall 2026
 
  
 
-Welcome to Biostatistics and Probability! This course is designed to introduce history, concepts and distributions in probability, Monte Carlo simulation techniques, and Markov chains. Students will also learn how to write R codes for various statistical computations and plots. Previous experience in R is not required. R is free software available from <http://www.r-project.org>.
+Welcome to Biostatistics and Probability!
+
+This course is an introduction to the methods and concepts of probability theory, including conditional probability and independence, combinatorics, discrete and continuous random variables, probability distributions, joint distributions, expectation, transformations of random variables, and the central limit theorem. Students will apply probability concepts and develop statistical reasoning through simulations in R. 
 
  
 :::
@@ -41,11 +48,9 @@ Welcome to Biostatistics and Probability! This course is designed to introduce h
 ::: g-col-3
 ### Office Hours
 
-[Charles](https://ohsu.webex.com/meet/parkecha) {{< iconify icon-park-solid time size=24px >}} Th 11am-12pm
+[TA]() {{< iconify icon-park-solid time size=24px >}} TBD
 
-[Charles](https://ohsu.webex.com/meet/parkecha) {{< iconify icon-park-solid time size=24px >}} F 12-1pm
-
-[Nicky](https://ohsu.webex.com/meet/wakim) {{< iconify icon-park-solid time size=24px >}} Th 10-11am
+[Nicky](https://ohsu.webex.com/meet/wakim) {{< iconify icon-park-solid time size=24px >}} TBD
 
 :::
 
@@ -54,11 +59,11 @@ Welcome to Biostatistics and Probability! This course is designed to introduce h
 
 {{< iconify fa6-solid calendar-days size=24px >}} Mondays, Wednesdays
 
-{{< iconify fa6-solid calendar size=24px >}} Sept 29 - Dec 10
+{{< iconify fa6-solid calendar size=24px >}} `{r} w1d1 %>% format("%m/%d")` - `{r} w11d1 %>% format("%m/%d")`
 
 {{< iconify icon-park-solid time size=24px >}} 10:30 AM - 12 PM
 
-{{< iconify fa6-solid person-chalkboard size=24px >}} In-person, VPT 620M
+{{< iconify fa6-solid person-chalkboard size=24px >}} In-person, VPT 264
 :::
 
 ::: g-col-3
@@ -75,6 +80,6 @@ E-mail or Slack is the best way to get in contact with me. I will try to respond
 :::
 
 ::: g-col-3
-[{{< iconify icomoon-free github size=24px >}} View the source on GitHub](https://github.com/nwakim/BSTA_550_25F)
+[{{< iconify icomoon-free github size=24px >}} View the source on GitHub](https://github.com/nwakim/BSTA_550_26F)
 :::
 :::

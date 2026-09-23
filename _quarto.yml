@@ -15,11 +15,14 @@ website:
       - href: syllabus.qmd
         text: Syllabus
       - href: instructors.qmd
-        text: Instructor
+        text: Instructors
       - href: homeworks.qmd
         text: Homework
       - href: quiz.qmd
         text: Quizzes
+      - href: project.qmd
+        text: Project
+      
 
 execute:
   freeze: auto

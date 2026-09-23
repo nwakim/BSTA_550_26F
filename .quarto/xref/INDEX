@@ -16,5 +16,60 @@
   },
   "index.qmd": {
     "index.html": "0d976a8e"
+  },
+  "syllabus.qmd": {
+    "syllabus.html": "e1fbb1f0",
+    "syllabus.tex": "a8f5b470"
+  },
+  "homeworks.qmd": {
+    "homeworks.html": "628ba965"
+  },
+  "homework/HW_00.qmd": {
+    "HW_00.html": "cbdadc03",
+    "HW_00.tex": "186e299d"
+  },
+  "project.qmd": {
+    "project.html": "48c147c7",
+    "project.tex": "f7947820"
+  },
+  "project/Lab_01_instructions.qmd": {
+    "Lab_01_instructions.html": "c1a5b4f5"
+  },
+  "project/Lab_04_instructions.qmd": {
+    "Lab_04_instructions.html": "946c4e7d"
+  },
+  "project/Lab_03_instructions.qmd": {
+    "Lab_03_instructions.html": "952c876b"
+  },
+  "project/Final_Project_instructions.qmd": {
+    "Final_Project_instructions.html": "cf670ede"
+  },
+  "project/lastname_firstinit_lab_04.qmd": {
+    "lastname_firstinit_lab_04.html": "cec564bd"
+  },
+  "project/lastname_firstinit_lab_02.qmd": {
+    "lastname_firstinit_lab_02.html": "afbdaec7"
+  },
+  "project/Lab_02_instructions.qmd": {
+    "Lab_02_instructions.html": "80b418cf"
+  },
+  "project/lastname_firstinit_lab_03.qmd": {
+    "lastname_firstinit_lab_03.html": "a0fb1772"
+  },
+  "project/lastname_firstinit_lab_01.qmd": {
+    "lastname_firstinit_lab_01.html": "8c06b993"
+  },
+  "project/Checkpoint_00_instructions.qmd": {
+    "Checkpoint_00_instructions.html": "f31714c2",
+    "Checkpoint_00_instructions.tex": "31a7bcc2"
+  },
+  "lessons/15_Discrete_RVs/15_Discrete_RVs.qmd": {
+    "15_Discrete_RVs.html": "4c42dcb3"
+  },
+  "lessons/13_Expected_Values/13_Expected_Values.qmd": {
+    "13_Expected_Values.html": "6e81e48d"
+  },
+  "lessons/11_Joint_distributions/11_Joint_distributions_review.qmd": {
+    "11_Joint_distributions_review.html": "f8284dee"
   }
 }

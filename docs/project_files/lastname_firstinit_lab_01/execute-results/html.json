@@ -1,0 +1,15 @@
+{
+  "hash": "9fa90e40eeb895e3cf2e9f51c89d5be3",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Lab 1\"\nauthor: \"Your name here!\"\nsubtitle: \"PUBH 523/623\"\ndate-modified: \"today\"\nformat: \n  html:\n    link-external-newwindow: true\n    toc: true\n    self-contained: true\n    embed-resources: true\n    number-sections: true\n    number-depth: 4\n    code-annotations: hover\n    page-layout: full\n    highlight-style: ayu\n    code-block-bg: \"#f8f9fa\"\n    code-block-border-left: \"#5BAFF8\" \n  pdf: default \neditor_options: \n  chunk_output_type: console\nexecute:\n  freeze: auto \n---\n\n\n\n::: {.cell}\n\n:::\n\n\n::: callout-warning\nNote that this is the editing file. **There are detailed instructions on our course page for Lab 1 that are not in this file.**\n:::\n\n## Lab activities\n\n### Familiarize yourself with the Well-Being and Basic Needs Survey\n\n::: callout-important\n#### Task\n\nAnswer the following questions using information on WBNS:\n\n- What is the motivation for this study?\n- How could an information sheet on components of the WBNS help change policy?\n- Why is it important to study basic needs?\n:::\n\n### File organization\n\n::: callout-important\n#### Task\n\nDisplay your working directory using the `here` package and `here()` function.\n\nInsert an image of your folder organization with the `.Rproj` file in the correct place.\n:::\n\n### Access and download the data\n\n::: callout-important\n#### Task\n\nNo task to report back on. Just make sure you have the data and read the User Guide!\n:::\n\n### Load the data and rename the dataset\n\n::: callout-important\n#### Task\n\nLoad your downloaded data file into R. Rename the loaded object to a clean dataset name of your choice. (Make sure to show the code for this!)\n:::\n\n### Decide on your project question\n\n::: callout-important\n#### Task\n\nWrite down your chosen project option number and question.\n:::\n\n### Getting data in working format\n\n::: callout-important\n#### Task\n\nRemove the parentheses with values that are in front of the category names. Verify that the parentheses are gone using `glimpse()`.\n:::\n\n### Save data for processing with `.Rda`\n\n::: callout-important\n#### Task\n\nInclude a screenshot showing the new `.Rda` file within your data folder.\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

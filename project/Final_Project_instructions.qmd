@@ -1,0 +1,224 @@
+---
+title: "Final Project Instructions"
+author: "Nicky Wakim"
+subtitle: "PUBH 523/623"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+    self-contained: true
+    embed-resources: true
+    number-sections: true
+    number-depth: 4
+    code-annotations: hover
+    page-layout: full
+    highlight-style: ayu
+    code-block-bg: "#f8f9fa" 
+    code-block-border-left: "#5BAFF8"
+  pdf: default 
+editor_options: 
+  chunk_output_type: console
+execute:
+  freeze: auto 
+---
+
+::: callout-warning
+These instructions are ready to go! (Nicky 8/28/2026)
+:::
+
+
+::: {.callout-note}
+Please turn in your final **.pptx** file and **.pdf** version on Brightspace, using the naming convention `lastname_firstinit_final_project.pptx` and `lastname_firstinit_final_project.pdf`.
+
+Most of this project is about **translating your work into plain language** and **polishing your visuals** so they can stand alone for a specific audience.
+:::
+
+## Purpose
+
+Across Labs 1–4 you turned the raw Well-Being and Basic Needs Survey (WBNS) into a cleaned dataset, built a composite score, summarized it in a table, and visualized it. In this final project, you will translate that work for a reader who has never seen your code: a **one-page information sheet**, built from the provided PowerPoint template, that presents your project focus, your key findings, and why they matter.
+
+::: {.callout-tip}
+Here are two sites that have examples of style and content:
+
+- [Venngage statistical infographic templates](https://venngage.com/templates/infographics/statistical): you can use these as inspiration for *styling and layout*.
+- [Multnomah County Health Data and Reports](https://multco.us/info/health-data-reports): you can use these as inspiration for *content, structure, and language*.
+  - A lot of these are very long, but I think it's helpful for you to see what a public health department puts out for the public!
+:::
+
+## What your information sheet should include
+
+Use the provided PowerPoint template (`final_project_template.pptx`) as your starting point. It is sized for a normal sheet of paper (8.5" × 11", one slide) and laid out with the sections below already placed for you. More information on each section appears below.
+
+You will replace the placeholder text and placeholder image boxes with your own content. **You're welcome to adjust the layout and style**, but the following information should appear somewhere on your page:
+
+1. **Title + Author + Headline takeaway** (@sec-title): a short title and one plain-language sentence that captures your single most important finding. 
+    - If someone only reads one line on your whole page, this should be it.
+2. **Background / Why it matters** (@sec-background): 1-3 sentences on what the WBNS is and why your topic matters, drawing on what you wrote for Lab 1 (motivation for the study, why basic needs matter).
+3. **Population / Who we looked at** (@sec-pop):a plain-language description of your population and sample size — no code, no variable names like `FPL_LT50` (e.g. "adults living below the poverty line who received free groceries or meals in the past year").
+4. **Findings** (@sec-findings): 2-3 short findings, each pairing **one image** (a polished plot or table, exported from R, see below) with **1-3 sentences of plain-language description** for each finding. Structure them so they build on each other:
+   - **Finding 1: One main variable on its own.** Describe what you found for a single main variable by itself (not yet in relation to anything else) — for example, the overall distribution of your composite score, or what share of your population fell into each category of your other main variable.
+   - **Finding 2: the relationship between your two main variables.** This is the heart of your project question. Show how your composite score compares across the groups of your other main variable (this is exactly what your Lab 3 grouped summary and Lab 4 visualization already show you).
+   - **Finding 3 (optional): one main variable alongside one additional variable.** If you have room, take one main variable and break it down by one of the suggested additional variables from your Lab 2 table (e.g., a demographic variable) to add texture to your story.
+
+   Your tables and plots are hopefully already completed from Labs 3/4. At this point, you should focus on choosing which findings to present, polishing the table/visual, and describing the finding in plain language. 
+5. **So what? / What does this mean?** (@sec-so-what): a few sentences connecting your findings back to your original question: why does this matter, and what might it suggest for programs or policy?
+6. **Data source and limitations** (@sec-data-source): a short citation of the WBNS, and at least one honest limitation of your analysis (e.g., small sample size after filtering, self-reported data, cross-sectional so no causal claims).
+
+The sections below will give more detail on what is expected in each section.
+
+### Title + Author + Headline takeaway {#sec-title}
+
+This should appear at the top of your information sheet and be the first (and maybe only) thing a reader sees.
+
+- **Title:** Keep it descriptive, there's no need for a clever tile. In fact, a clever title is often distracting. A plain title like "Food Security Among Free Food Recipients" does the job. A reader should know what your page is about before they've read a single full sentence.
+- **Author:** Include your name here.
+- **Headline takeaway:** One sentence, in plain language, that states your single most important finding. 
+    - This is the sentence you'd want someone to remember if they only read one line on the whole page. 
+    - **This will most likely pertain to the relationship between your two main variables and Finding 2.**
+    - Write it the way you'd say it out loud to a person, not like the results line of a hypothesis test
+        - e.g., "Most adults who received free groceries or meals also reported experiencing food insecurity," not "Food insecurity was observed in X% of the sample"
+
+::: callout-tip
+#### Tip
+
+It's often easier to write this section (title and headline) *last*, after you've written your findings, that way you can easily summarize your findings. 
+:::
+
+### Background / why it matters {#sec-background}
+
+This goes under **"Why This Matters"** on the left side of the page, just below the title banner. 
+
+In 1-3 sentences:
+
+- Briefly explain what the Well-Being and Basic Needs Survey is (a survey of adults' experiences with finances, poverty, hardship, housing, and safety-net programs)
+  - A quick sentence is enough, this isn't the focus
+- Spend the rest of the space on why *your specific topic* matters. Pull from what you wrote in Lab 1 about your motivation for choosing this project
+  - Why should a reader care about food security, LGBTQ+ healthcare trust, or mental health and benefit receipt (whichever is your project)?
+
+::: callout-tip
+Write it as if you're explaining your project to a relative with no public health background. 
+:::
+
+### Population / who we looked at {#sec-pop}
+
+This goes under **"Who We Looked At"** on the right side, parallel to the background section. 
+
+In 1-3 sentences, plainly state:
+
+- Who qualified for your study population (the filtering criteria from Lab 2)
+    - Again, this should be in plain English, not variable names. Instead of "FPL_LT50 == 1," write something like "adults living below the federal poverty line."
+- Your final sample size, after all of your data cleaning in Labs 2-3
+    - This is very important! Giving a sense of the sample helps with context!
+
+::: callout-tip
+Avoid any variable names or question codes (`FOOD_INSEC`, `Q27`, etc.).
+:::
+
+### Findings {#sec-findings}
+
+Use the 2-3 findings to build your story in order (see the structure above): 
+
+1. Finding 1 introduces one main variable on its own 
+2. Finding 2 shows the relationship between your two main variables (this is your core result) 
+3. Finding 3 (optional) adds one additional variable for texture 
+
+Each finding box in the template has **two** pieces of text, not one:
+
+- A **short headline** above the image (a few words, not a full sentence)
+    - Think of it like a newspaper subhead that names the point of that finding at a glance, e.g. "Access Difficulty Varies by Food Security Status."
+- A **1-3 sentence caption** below each image that spells the finding out in plain language.
+
+For example, a Finding 1 headline/caption pair might look like:
+
+> **Headline:** Most Respondents Reported Food Insecurity
+>
+> **Caption:** Among adults who received free groceries or meals in the past year, approximately 75\% also reported experiencing food insecurity in the past 12 months.
+
+(If you're on Project 3, a Finding 1 caption might instead read something like: "72% of respondents reported feeling nervous or hopeless at least some of the time in the past 30 days.")
+
+For every caption, state the number, then say what it means, not "the mean composite score was 14.3," but something closer to "most people in our sample reported relatively easy access to free food." 
+
+::: callout-tip
+Keep your language **descriptive, not causal**: say what you found (e.g., "respondents who reported X also more often reported Y"), not that one thing caused, drove, or explains another. A single survey snapshot can't support that kind of claim. Words like "associated with" or "related to" also imply statistical testing you haven't done here, so we need to stick to desriptive language. 
+:::
+
+### So what? / What does this mean?
+
+This section will appear near the bottom of your information sheet.
+
+In 1-3 sentences, connect your findings back to your original project question: why does this matter, and what might it suggest for programs or policy? 
+
+You don't need to make formal policy recommendations, just describe the implication in plain language, and keep it as descriptive as your findings (avoid claiming your data proves a program should change; describe what your findings might suggest is worth a closer look).
+
+### Data source and limitations
+
+This is the small-print line at the very bottom of the page. In one or two sentences:
+
+- Cite the WBNS
+  - Check out the [website where we got the data](https://www.icpsr.umich.edu/web/HMCA/studies/39691/datadocumentation) (in Lab 1), and click on "Cite this study" near the top of the page.
+- Name at least one honest limitation of your analysis
+  - For example, your sample size after filtering, the fact that responses are self-reported, or that the survey is cross-sectional (a single point in time), so your findings describe what respondents reported together, not what caused what.
+
+## Tips for exporting and polishing your visuals
+
+### Getting your images out of R
+
+Everything you place into the PowerPoint template is a static image (`.png` or `.jpg`). There's no R code in a PowerPoint file, so you'll export your finished plots and tables from your Lab 3/4 and then place the image files into your powerpoint.
+
+This will require you to write some more code or adjust your previously saved images. Adjustments are usually needed to make sure it is legible within the powerpoint.
+
+::: tip-callout
+It might be nice to create a new folder within your project folder called `images` to hold all of your exported images.
+:::
+
+**Saving a `ggplot`:**
+
+```r
+ggsave("plots/ease_food_by_insecurity.png", plot = my_plot,
+       width = 5, height = 4, units = "in", dpi = 300)
+```
+
+- Save at `dpi = 300` or higher so it looks crisp on a printed page.
+- Match the `width`/`height` roughly to the space you have in the template so you don't have to stretch or squish it later
+
+**Saving a `gtsummary`/`gt` table as an image:**
+
+```r
+pacman::p_load(
+  gtsummary, 
+  gt, 
+  webshot2
+  )
+
+my_table <- tbl_summary(wbns_06_cat, by = FOOD_INSEC) |>
+  as_gt()
+  
+gtsave(data = my_table, file = here("project", "images", "food_ins_table.png"))
+```
+
+`gtsave()` needs the `webshot2` package installed the first time (`install.packages("webshot2")`). If you'd rather not install anything new, you can also just take a screenshot of the rendered table from your Viewer pane — that works fine for a one-pager.
+
+::: {.callout-tip}
+Make sure to open the image file afterward and check that it's actually readable once you place it in your powerpoint. Text that looked fine on your screen can turn out tiny once you fit it into the appropriate space on a powerpoint.
+:::
+
+
+### Polishing plots and tables before you export them
+
+The plots and table you made for Lab 3/4 may not be publication ready. They may still have default `ggplot` gray backgrounds, variable names as axis labels, or titles like "Boxplot of trust_courtesy_respect by Q27." Before exporting, revise each one so it can stand on its own for a general audience:
+
+- A plain-language, descriptive title (not a variable name or "Var1 x Var2")
+- Axis or column labels in plain language (no raw variable names or question codes)
+- A deliberate color choice, ideally consistent across your visuals
+- Clean theme to appear nicely on your powerpoint
+
+A `tbl_summary()` table is great for a report but can be dense on a one-pager, maybe you select one variable to run through `tbl_summary()` or consider whether a simple bar chart is more appropriate. **Always keep in mind, simpler presentations with minimum needed information will be easier for you audience to digest!**
+
+## Before you submit
+
+Read your finished page as if you were a stranger seeing it for the first time: does it read cleanly top to bottom, does every visual have a caption, and is there anything left over that still sounds like it was written for this class instead of for a general audience (leftover variable names, stats without interpretation, placeholder text from the template)?
+
+Confirm your files are named `lastname_firstinit_final_project.pptx` and `lastname_firstinit_final_project.pdf` before uploading to Brightspace.
+
+Check the rubric for all needed items for the final project!

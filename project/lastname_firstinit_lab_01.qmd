@@ -1,0 +1,112 @@
+---
+title: "Lab 1"
+author: "Your name here!"
+subtitle: "PUBH 523/623"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+    self-contained: true
+    embed-resources: true
+    number-sections: true
+    number-depth: 4
+    code-annotations: hover
+    page-layout: full
+    highlight-style: ayu
+    code-block-bg: "#f8f9fa"
+    code-block-border-left: "#5BAFF8" 
+  pdf: default 
+editor_options: 
+  chunk_output_type: console
+execute:
+  freeze: auto 
+---
+
+
+```{r}
+#| message: false
+#| echo: false
+
+# PLEASE DO NOT REMOVE THIS CODE CHUNK!!!
+### ADD YOUR LIBRARIES HERE!!! ####
+pacman::p_load( # These are my go to packages to load
+  here, 
+  tidyverse, 
+  writexl, 
+  rstatix, 
+  janitor, 
+  naniar,
+  gt,
+  gtsummary,
+  readxl
+)
+```
+
+::: callout-warning
+Note that this is the editing file. **There are detailed instructions on our course page for Lab 1 that are not in this file.**
+:::
+
+## Lab activities
+
+### Familiarize yourself with the Well-Being and Basic Needs Survey
+
+::: callout-important
+#### Task
+
+Answer the following questions using information on WBNS:
+
+- What is the motivation for this study?
+- How could an information sheet on components of the WBNS help change policy?
+- Why is it important to study basic needs?
+:::
+
+### File organization
+
+::: callout-important
+#### Task
+
+Display your working directory using the `here` package and `here()` function.
+
+Insert an image of your folder organization with the `.Rproj` file in the correct place.
+:::
+
+### Access and download the data
+
+::: callout-important
+#### Task
+
+No task to report back on. Just make sure you have the data and read the User Guide!
+:::
+
+### Load the data and rename the dataset
+
+::: callout-important
+#### Task
+
+Load your downloaded data file into R. Rename the loaded object to a clean dataset name of your choice. (Make sure to show the code for this!)
+:::
+
+### Decide on your project question
+
+::: callout-important
+#### Task
+
+Write down your chosen project option number and question.
+:::
+
+### Getting data in working format
+
+::: callout-important
+#### Task
+
+Remove the parentheses with values that are in front of the category names. Verify that the parentheses are gone using `glimpse()`.
+:::
+
+### Save data for processing with `.Rda`
+
+::: callout-important
+#### Task
+
+Include a screenshot showing the new `.Rda` file within your data folder.
+:::

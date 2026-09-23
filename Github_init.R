@@ -6,7 +6,7 @@
 
 
 git init
-git remote add origin git@github.com:nwakim/PUBH_523_26Su.git
+git remote add origin git@github.com:nwakim/BSTA_550_26F.git
 git branch -M main
 git add --all
 git commit -m "first commit"

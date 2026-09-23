@@ -2,17 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Homework – Introduction to Probability</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -32,15 +38,14 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9945c5c3bf24965647d4ea0e1a99ef83.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ebccf0fbef503770ee9b85daf8f5af23.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/iconify-1.0.0-beta.2/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -100,11 +105,11 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./syllabus.html"> 
-<span class="menu-text">Syllabus</span></a>
+<span class="menu-text">BSTA 550 Syllabus</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./instructors.html"> 
-<span class="menu-text">Instructor</span></a>
+<span class="menu-text">Instructor: Nicole (Nicky) Wakim, PhD</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./homeworks.html" aria-current="page"> 
@@ -113,6 +118,10 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link" href="./quiz.html"> 
 <span class="menu-text">Quizzes</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="./project.qmd"> 
+<span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -143,7 +152,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">December 8, 2025</p>
+      <p class="date-modified">September 22, 2026</p>
     </div>
   </div>
     
@@ -168,70 +177,70 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td>0</td>
 <td><span style="color:#f8f5f0;"><a href="./homework/HW_00.html"><iconify-icon inline="" icon="material-symbols:assignment" style="font-size: 29px;"></iconify-icon></a></span></td>
-<td>10/02</td>
+<td>10/01</td>
 <td></td>
 <td></td>
 </tr>
 <tr class="even">
 <td>1</td>
 <td><span style="color:#f8f5f0;"><a href="./homework/HW_01.html"><iconify-icon inline="" icon="material-symbols:assignment" style="font-size: 29px;"></iconify-icon></a></span></td>
-<td>10/12</td>
+<td>10/11</td>
 <td><span style="color:#f8f5f0;"><a href="./hw_answers/HW_01_ans.html"><iconify-icon inline="" icon="ph:key-fill" style="font-size: 29px;"></iconify-icon></a></span></td>
 <td><span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:f:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/HW_solns/HW_01?csf=1&amp;web=1&amp;e=MkybbV"><iconify-icon inline="" icon="icon-park-twotone:file-code" style="font-size: 29px;"></iconify-icon></a></span></td>
 </tr>
 <tr class="odd">
 <td>2</td>
 <td><span style="color:#f8f5f0;"><a href="./homework/HW_02.html"><iconify-icon inline="" icon="material-symbols:assignment" style="font-size: 29px;"></iconify-icon></a></span></td>
-<td>10/19</td>
+<td>10/18</td>
 <td><span style="color:#f8f5f0;"><a href="./hw_answers/HW_02_ans.html"><iconify-icon inline="" icon="ph:key-fill" style="font-size: 29px;"></iconify-icon></a></span></td>
 <td><span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:f:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/HW_solns/HW_02?csf=1&amp;web=1&amp;e=NJoXh9"><iconify-icon inline="" icon="icon-park-twotone:file-code" style="font-size: 29px;"></iconify-icon></a></span></td>
 </tr>
 <tr class="even">
 <td>3</td>
 <td><span style="color:#f8f5f0;"><a href="./homework/HW_03.html"><iconify-icon inline="" icon="material-symbols:assignment" style="font-size: 29px;"></iconify-icon></a></span></td>
-<td>10/26</td>
+<td>10/25</td>
 <td><span style="color:#f8f5f0;"><a href="./hw_answers/HW_03_ans.html"><iconify-icon inline="" icon="ph:key-fill" style="font-size: 29px;"></iconify-icon></a></span></td>
 <td><span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:f:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/HW_solns/HW_03?csf=1&amp;web=1&amp;e=0dp4TC"><iconify-icon inline="" icon="icon-park-twotone:file-code" style="font-size: 29px;"></iconify-icon></a></span></td>
 </tr>
 <tr class="odd">
 <td>4</td>
 <td><span style="color:#f8f5f0;"><a href="./homework/HW_04.html"><iconify-icon inline="" icon="material-symbols:assignment" style="font-size: 29px;"></iconify-icon></a></span></td>
-<td>11/02</td>
+<td>11/01</td>
 <td><span style="color:#f8f5f0;"><a href="./hw_answers/HW_04_ans.html"><iconify-icon inline="" icon="ph:key-fill" style="font-size: 29px;"></iconify-icon></a></span></td>
 <td><span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:f:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/HW_solns/HW_04?csf=1&amp;web=1&amp;e=yyaYOa"><iconify-icon inline="" icon="icon-park-twotone:file-code" style="font-size: 29px;"></iconify-icon></a></span></td>
 </tr>
 <tr class="even">
 <td>5</td>
 <td><span style="color:#f8f5f0;"><a href="./homework/HW_05.html"><iconify-icon inline="" icon="material-symbols:assignment" style="font-size: 29px;"></iconify-icon></a></span></td>
-<td>11/09</td>
+<td>11/08</td>
 <td><span style="color:#f8f5f0;"><a href="./hw_answers/HW_05_ans.html"><iconify-icon inline="" icon="ph:key-fill" style="font-size: 29px;"></iconify-icon></a></span></td>
 <td><span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:f:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/HW_solns/HW_05?csf=1&amp;web=1&amp;e=TymdQO"><iconify-icon inline="" icon="icon-park-twotone:file-code" style="font-size: 29px;"></iconify-icon></a></span></td>
 </tr>
 <tr class="odd">
 <td>6</td>
 <td><span style="color:#f8f5f0;"><a href="./homework/HW_06.html"><iconify-icon inline="" icon="material-symbols:assignment" style="font-size: 29px;"></iconify-icon></a></span></td>
-<td>11/16</td>
+<td>11/15</td>
 <td><span style="color:#f8f5f0;"><a href="./hw_answers/HW_06_ans.html"><iconify-icon inline="" icon="ph:key-fill" style="font-size: 29px;"></iconify-icon></a></span></td>
 <td><span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:f:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/HW_solns/HW_06?csf=1&amp;web=1&amp;e=vwXG7A"><iconify-icon inline="" icon="icon-park-twotone:file-code" style="font-size: 29px;"></iconify-icon></a></span></td>
 </tr>
 <tr class="even">
 <td>7</td>
 <td><span style="color:#f8f5f0;"><a href="./homework/HW_07.html"><iconify-icon inline="" icon="material-symbols:assignment" style="font-size: 29px;"></iconify-icon></a></span></td>
-<td>11/23</td>
+<td>11/22</td>
 <td><span style="color:#f8f5f0;"><a href="./hw_answers/HW_07_ans.html"><iconify-icon inline="" icon="ph:key-fill" style="font-size: 29px;"></iconify-icon></a></span></td>
 <td><span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:f:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/HW_solns/HW_07?csf=1&amp;web=1&amp;e=K3eKgH"><iconify-icon inline="" icon="icon-park-twotone:file-code" style="font-size: 29px;"></iconify-icon></a></span></td>
 </tr>
 <tr class="odd">
 <td>8</td>
 <td><span style="color:#f8f5f0;"><a href="./homework/HW_08.html"><iconify-icon inline="" icon="material-symbols:assignment" style="font-size: 29px;"></iconify-icon></a></span></td>
-<td>12/07</td>
+<td>12/06</td>
 <td><span style="color:#f8f5f0;"><a href="./hw_answers/HW_08_ans.html"><iconify-icon inline="" icon="ph:key-fill" style="font-size: 29px;"></iconify-icon></a></span></td>
 <td><span style="color:#f8f5f0;"><iconify-icon inline="" icon="icon-park-twotone:file-code" style="font-size: 29px;"></iconify-icon></span></td>
 </tr>
 <tr class="even">
 <td>9 (optional)</td>
 <td><span style="color:#f8f5f0;"><a href="./homework/HW_09.html"><iconify-icon inline="" icon="material-symbols:assignment" style="font-size: 29px;"></iconify-icon></a></span></td>
-<td>12/11</td>
+<td>12/10</td>
 <td><span style="color:#f8f5f0;"><a href="./hw_answers/HW_09_ans.html"><iconify-icon inline="" icon="ph:key-fill" style="font-size: 29px;"></iconify-icon></a></span></td>
 <td><span style="color:#f8f5f0;"><iconify-icon inline="" icon="icon-park-twotone:file-code" style="font-size: 29px;"></iconify-icon></span></td>
 </tr>
@@ -239,12 +248,10 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <section id="file-naming" class="level2">
 <h2 class="anchored" data-anchor-id="file-naming">File Naming</h2>
-<ul>
-<li><p>For HW <strong>Assignments</strong>, please use the following file naming: “HW01_LastName_FirstInitial”</p>
+<p>For HW <strong>Assignments</strong>, please use the following file naming: “HW01_LastName_FirstInitial”</p>
 <ul>
 <li><p>For homeworks without R, this should be a pdf file</p></li>
 <li><p>For homeworks with R, this may be a pdf file (with the code in the pdf) or an html file</p></li>
-</ul></li>
 </ul>
 </section>
 <section id="rubric" class="level2">

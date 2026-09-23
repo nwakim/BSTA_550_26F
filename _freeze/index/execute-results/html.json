@@ -1,0 +1,15 @@
+{
+  "hash": "1982d1765adcd205d10aac8406d167ba",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"\"\ntoc: false\npage-layout: full\nlink-external-newwindow: true\n---\n\n\n\n::: {style=\"background-color: #006a4e\"}\n::: {style=\"color: #FFFFFF\"}\n::: grid\n::: g-col-4\n![](images/bsta_550_hex_3.png){fig-align=\"center\" width=\"337\"}\n:::\n\n::: g-col-7\n# BSTA 550: Introduction to Probability\n\n### Fall 2026\n\n \n\nWelcome to Biostatistics and Probability!\n\nThis course is an introduction to the methods and concepts of probability theory, including conditional probability and independence, combinatorics, discrete and continuous random variables, probability distributions, joint distributions, expectation, transformations of random variables, and the central limit theorem. Students will apply probability concepts and develop statistical reasoning through simulations in R. \n\n \n:::\n:::\n:::\n:::\n\n::: grid\n::: g-col-3\n### Instructor\n\n{{< iconify fluent person-24-filled size=24px >}} [Dr. Nicky Wakim](instructors.qmd)\n\n{{< iconify bi building-fill size=24px >}} Vanport 622A\n\n{{< iconify tabler mail-filled size=24px >}} [wakim\\@ohsu.edu](mailto:wakim@ohsu.edu)\n:::\n\n::: g-col-3\n### Office Hours\n\n[TA]() {{< iconify icon-park-solid time size=24px >}} TBD\n\n[Nicky](https://ohsu.webex.com/meet/wakim) {{< iconify icon-park-solid time size=24px >}} TBD\n\n:::\n\n::: g-col-3\n### Course details\n\n{{< iconify fa6-solid calendar-days size=24px >}} Mondays, Wednesdays\n\n{{< iconify fa6-solid calendar size=24px >}} 09/28 - 12/07\n\n{{< iconify icon-park-solid time size=24px >}} 10:30 AM - 12 PM\n\n{{< iconify fa6-solid person-chalkboard size=24px >}} In-person, VPT 264\n:::\n\n::: g-col-3\n### Contacting me\n\nE-mail or Slack is the best way to get in contact with me. I will try to respond to all course-related e-mails within 24 hours Monday-Friday.\n:::\n:::\n\n------------------------------------------------------------------------\n\n::: grid\n::: g-col-9\n:::\n\n::: g-col-3\n[{{< iconify icomoon-free github size=24px >}} View the source on GitHub](https://github.com/nwakim/BSTA_550_26F)\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

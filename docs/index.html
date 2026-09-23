@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -39,10 +42,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-77dffb7075e2b29ebfc93c2ffa3fcbe1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ebccf0fbef503770ee9b85daf8f5af23.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/iconify-1.0.0-beta.2/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -146,10 +149,11 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <section id="bsta-550-introduction-to-probability" class="level1 g-col-7">
 <h1>BSTA 550: Introduction to Probability</h1>
-<section id="fall-2025" class="level3">
-<h3 class="anchored" data-anchor-id="fall-2025">Fall 2025</h3>
+<section id="fall-2026" class="level3">
+<h3 class="anchored" data-anchor-id="fall-2026">Fall 2026</h3>
 <p>&nbsp;</p>
-<p>Welcome to Biostatistics and Probability! This course is designed to introduce history, concepts and distributions in probability, Monte Carlo simulation techniques, and Markov chains. Students will also learn how to write R codes for various statistical computations and plots. Previous experience in R is not required. R is free software available from <a href="http://www.r-project.org" class="uri">http://www.r-project.org</a>.</p>
+<p>Welcome to Biostatistics and Probability!</p>
+<p>This course is an introduction to the methods and concepts of probability theory, including conditional probability and independence, combinatorics, discrete and continuous random variables, probability distributions, joint distributions, expectation, transformations of random variables, and the central limit theorem. Students will apply probability concepts and develop statistical reasoning through simulations in R.</p>
 <p>&nbsp;</p>
 </section>
 </section>
@@ -165,16 +169,15 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="office-hours" class="level3 g-col-3">
 <h3 class="anchored" data-anchor-id="office-hours">Office Hours</h3>
-<p><a href="https://ohsu.webex.com/meet/parkecha">Charles</a> <iconify-icon inline="" icon="icon-park-solid:time" style="font-size: 24px;"></iconify-icon> Th 11am-12pm</p>
-<p><a href="https://ohsu.webex.com/meet/parkecha">Charles</a> <iconify-icon inline="" icon="icon-park-solid:time" style="font-size: 24px;"></iconify-icon> F 12-1pm</p>
-<p><a href="https://ohsu.webex.com/meet/wakim">Nicky</a> <iconify-icon inline="" icon="icon-park-solid:time" style="font-size: 24px;"></iconify-icon> Th 10-11am</p>
+<p><a href="">TA</a> <iconify-icon inline="" icon="icon-park-solid:time" style="font-size: 24px;"></iconify-icon> TBD</p>
+<p><a href="https://ohsu.webex.com/meet/wakim">Nicky</a> <iconify-icon inline="" icon="icon-park-solid:time" style="font-size: 24px;"></iconify-icon> TBD</p>
 </section>
 <section id="course-details" class="level3 g-col-3">
 <h3 class="anchored" data-anchor-id="course-details">Course details</h3>
 <p><iconify-icon inline="" icon="fa6-solid:calendar-days" style="font-size: 24px;"></iconify-icon> Mondays, Wednesdays</p>
-<p><iconify-icon inline="" icon="fa6-solid:calendar" style="font-size: 24px;"></iconify-icon> Sept 29 - Dec 10</p>
+<p><iconify-icon inline="" icon="fa6-solid:calendar" style="font-size: 24px;"></iconify-icon> 09/28 - 12/07</p>
 <p><iconify-icon inline="" icon="icon-park-solid:time" style="font-size: 24px;"></iconify-icon> 10:30 AM - 12 PM</p>
-<p><iconify-icon inline="" icon="fa6-solid:person-chalkboard" style="font-size: 24px;"></iconify-icon> In-person, VPT 620M</p>
+<p><iconify-icon inline="" icon="fa6-solid:person-chalkboard" style="font-size: 24px;"></iconify-icon> In-person, VPT 264</p>
 </section>
 <section id="contacting-me" class="level3 g-col-3">
 <h3 class="anchored" data-anchor-id="contacting-me">Contacting me</h3>
@@ -187,7 +190,7 @@ ul.task-list li input[type="checkbox"] {
 
 </div>
 <div class="g-col-3">
-<p><a href="https://github.com/nwakim/BSTA_550_25F"><iconify-icon inline="" icon="icomoon-free:github" style="font-size: 24px;"></iconify-icon> View the source on GitHub</a></p>
+<p><a href="https://github.com/nwakim/BSTA_550_26F"><iconify-icon inline="" icon="icomoon-free:github" style="font-size: 24px;"></iconify-icon> View the source on GitHub</a></p>
 </div>
 </div>
 

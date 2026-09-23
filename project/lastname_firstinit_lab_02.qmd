@@ -1,0 +1,115 @@
+---
+title: "Lab 2"
+author: "Your name here!"
+subtitle: "PUBH 523/623"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+    self-contained: true
+    embed-resources: true
+    number-sections: true
+    number-depth: 4
+    code-annotations: hover
+    page-layout: full
+    highlight-style: ayu
+    code-block-bg: "#f8f9fa"
+    code-block-border-left: "#5BAFF8" 
+  pdf: default 
+editor_options: 
+  chunk_output_type: console
+execute:
+  freeze: auto 
+---
+
+
+```{r}
+#| message: false
+#| echo: false
+
+# PLEASE DO NOT REMOVE THIS CODE CHUNK!!!
+### ADD YOUR LIBRARIES HERE!!! ####
+pacman::p_load( # These are my go to packages to load
+  here, 
+  tidyverse, 
+  writexl, 
+  rstatix, 
+  janitor, 
+  naniar,
+  gt,
+  gtsummary,
+  readxl
+)
+```
+
+::: callout-warning
+Note that this is the editing file. **There are detailed instructions on our course page for Lab 2 that are not in this file.**
+:::
+
+## Lab activities
+
+### Import your saved data from Lab 1
+
+::: callout-important
+#### Task
+From the exported data file you created in Lab 1, import your data into R using `import()` from the `rio` package. Save this as a new object called `wbns_00`. Print out the number of rows and columns to verify the import.
+:::
+
+### Filtering to Your Target Subpopulation
+
+::: callout-important
+#### Task
+
+Write a pipeline that filters the dataset down to your specific population of interest. Save this as a new object called `wbns_01_pop`. Print out the number of rows before and after filtering to verify the operation.
+:::
+
+### Selecting Project Variables
+
+::: callout-important
+#### Task
+
+Use `select()` to keep the variables relevant to your project. Save this as a new object called `wbns_02_pop_vars`. Print out the number of columns before and after filtering to verify the operation.
+:::
+
+### Quick browsing of data
+
+::: callout-important
+#### Task
+
+Using `skim()` or another summary function, take a quick look at your data to see what you are working with.
+
+Take note of any potential issues with the data. Are there many missing values? Do categories align with the codebook? Are there any values that are out of range? Are there any refusals that need to be handled? Write a brief paragraph summarizing your findings.
+:::
+
+### Rename variables for clarity
+
+::: callout-important
+#### Task
+
+Use `rename()` to give your **main** and **suggested additional** variables clear, descriptive names (for example, renaming `Q108B_2` to `trust_treatment`). Save this as a new object called `wbns_03_renamed`. Use `glimpse()` to confirm your new variable names.
+:::
+
+### Remove NA's
+
+::: callout-important
+#### Task
+
+Recode any "Refused" or "Don't know" responses to `NA` (if they aren't already), then use `drop_na()` (or `filter()`) to remove rows with missing values in your key variables. Save this as a new object called `wbns_04_no_na`. Print the number of rows before and after this step to verify the operation, and write 1-2 sentences describing how many rows you lost and whether that seems reasonable.
+:::
+
+### Constructing the Composite Score
+
+::: callout-important
+#### Task
+
+Create your new composite scores using `mutate()`, following the guidance above for your project. Save this as a new object called `wbns_05_composite`. Display a summary of each combined variable, and briefly explain (1-2 sentences) whether the range and direction of your composite score make sense.
+:::
+
+### Export datasets
+
+::: callout-important
+#### Task
+
+Save your datasets in a `.rda` file in your `data_project` folder. Name the file something that will help you identify it later, like `wbns_data_lab_02_work.rda` or `wbns_data_02_pop_comp.rda`
+:::

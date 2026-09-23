@@ -1,0 +1,91 @@
+---
+title: "Checkpoint 0: Choose Your Scenario"
+date-modified: "today"
+categories: [""]
+format:
+  html:
+    link-external-newwindow: true
+    toc: true
+  pdf: default
+editor_options:
+  chunk_output_type: console
+---
+
+```{css, echo=FALSE}
+.title{
+  font-size: 30px;
+  color: #006a4e;
+  background-color: #fff;
+  padding: 0px;
+}
+```
+
+```{r setup, include=FALSE}
+library(here)
+source(here("class_dates.R"))
+```
+
+::: callout-important
+**Due `r cp0 %>% format("%m/%d")`** (4 points). See [Project Central](/project/project_central.qmd) for the full project overview.
+:::
+
+## Goal
+
+Choose the health scenario you will follow all quarter, and gather the real-world numbers you will need for Checkpoints 1–3.
+
+## Tasks
+
+### 1. Team and scenario
+
+-   State whether you are working alone or with a partner (and your partner's name).
+-   Choose a scenario from the [scenario menu](/project/project_central.qmd#scenario-menu) **or** propose your own.
+-   In 3–5 sentences, describe the scenario: Who is the population? What is being tested, counted, or measured? Why does it matter to a clinician or public health decision-maker?
+
+::: callout-tip
+## Proposing your own scenario?
+
+Your scenario needs three pieces:
+
+1.  a **test or classification** with a sensitivity/specificity (or two conditional probabilities) for Checkpoint 1,
+2.  a **count** of events that could be modeled with a discrete distribution for Checkpoint 2, and
+3.  a **time or measurement** that could be modeled with a continuous distribution for Checkpoint 3.
+
+If you are unsure, email me or come to office hours before the due date.
+:::
+
+### 2. Find your input values
+
+Fill in the table below. For each quantity, find a published value and cite it. You will need **at least one value for each checkpoint**. Values can be approximate (e.g., "about 1 in 1,000").
+
+| Checkpoint | Quantity | Value | Source |
+|----|----|----|----|
+| 1 | Prevalence (or base rate) |  |  |
+| 1 | Sensitivity (or P(+ \| condition)) |  |  |
+| 1 | Specificity (or P(− \| no condition)) |  |  |
+| 2 | Rate or probability for your count |  |  |
+| 3 | Mean (and SD, if available) of your time/measurement |  |  |
+
+Acceptable sources include CDC or WHO reports, USPSTF evidence reviews, government health statistics, and peer-reviewed articles. Wikipedia is fine for finding a source, but cite the original source.
+
+### 3. Your guiding questions
+
+Write one question for each checkpoint that your analysis will answer. For example (emergency department scenario):
+
+-   **CP 1:** If a patient is triaged at level 2, what is the probability they are admitted?
+-   **CP 2:** What is the probability that more than 15 patients arrive in one hour?
+-   **CP 3:** What is the probability that the average wait time of the next 50 patients exceeds 3 hours?
+
+These can change later. This step is to make sure your scenario will work for all three checkpoints.
+
+## Submission
+
+Submit a rendered HTML file (and your `.qmd`) with the three sections above. One submission per team.
+
+## Rubric (4 points)
+
+| Criterion | 1 point | 0 points |
+|----|----|----|
+| Scenario is described clearly and fits all three checkpoints | Yes | Missing or does not fit |
+| Input table has at least one value for each checkpoint | Yes | Incomplete |
+| Every value has a credible, cited source | Yes | Missing or unreliable sources |
+| One guiding question for each checkpoint | Yes | Missing |

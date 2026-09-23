@@ -24,6 +24,7 @@ hw1 = cal_dates[14]
 w3d1 = cal_dates[15]
 w3d2 = cal_dates[17]
 hw2 = cal_dates[21]
+cp0 = cal_dates[21]
 hw1sol = cal_dates[21]
 
 ## Week 4 dates 
@@ -39,7 +40,7 @@ w5d1 = cal_dates[29]
 w5d2 = cal_dates[31]
 hw4 = cal_dates[35]
 hw3sol = cal_dates[35]
-gp_eval1 = cal_dates[32]
+cp1 = cal_dates[35]
 
 ## Week 6 dates
 w6d1 = cal_dates[36]
@@ -53,18 +54,17 @@ q2_close = cal_dates[42]
 w7d1 = cal_dates[43]
 w7d2 = cal_dates[45]
 hw6 = cal_dates[49]
-hw3prez = cal_dates[46]
-hw5sol = cal_dates[49]
+cp2 = cal_dates[49]
 
 ## Week 8 dates
 w8d1 = cal_dates[50]
 w8d2 = cal_dates[52]
 hw7 = cal_dates[56]
-hw6sol = cal_dates[56]
 
 ## Week 9 dates
 w9d1 = cal_dates[57]
 w9d2 = cal_dates[59]
+cp3 = cal_dates[63]
 
 ## Week 10 dates
 w10d1 = cal_dates[64]
@@ -78,5 +78,4 @@ q3_close = cal_dates[70]
 w11d1 = cal_dates[71]
 w11d2 = cal_dates[73]
 hw9 = cal_dates[74]
-hw8sol = cal_dates[75]
-hw7prez = cal_dates[73]
+proj = cal_dates[75]

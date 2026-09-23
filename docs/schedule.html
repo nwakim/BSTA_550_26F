@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -39,10 +42,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2baf9616dcd62a487e8517e630363ef5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-713b0136666c1ca4047413a70816f99a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9d0deaf840f6781ce9b64dd55fce8b7d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5be061d12dc7d2e9ad22aa8fd905e241.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/iconify-1.0.0-beta.2/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -106,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./instructors.html"> 
-<span class="menu-text">Instructor</span></a>
+<span class="menu-text">Instructors</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./homeworks.html"> 
@@ -115,6 +118,10 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link" href="./quiz.html"> 
 <span class="menu-text">Quizzes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./project.html"> 
+<span class="menu-text">Project</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -196,11 +203,20 @@ ul.task-list li input[type="checkbox"] {
   color: #C83532; 
 }
 
-.sched table tbody tr:has(.pract-row) td, 
-.sched table tbody tr:has(.proj-row) td,
+.sched table tbody tr:has(.pract-row) td,
 .sched table tbody tr:has(.lab-row) td{
   background-color: #FCF6F1 !important;
-  color: #E89543; 
+  color: #E89543;
+}
+
+.sched table tbody tr:has(.quiz-row) td{
+  background-color: #F4F7FC !important;
+  color: #6B8CC4;
+}
+
+.sched table tbody tr:has(.proj-row) td{
+  background-color: #FEF6F7 !important;
+  color: #F08897;
 }
 
 .sched table tbody tr:has(.week-row) td{
@@ -272,8 +288,8 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: left;">09/28</td>
 <td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/00_Intro/00_Intro_key_info.html"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
 <td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=V3lz4rj6fk2U9pvWr59xWFMopmPUjRtDiHLswhgacNhUOUcyWVVIQU5QR0lGSU4zWjE5M0dIWlMzRiQlQCNjPTEu"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/00_Welcome.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=AthcXF"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span></td>
-<td style="text-align: left;"></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></span></td>
+<td style="text-align: left;">0</td>
 <td style="text-align: left;">Welcome</td>
 <td></td>
 <td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/00_Intro/00_Intro.html"><iconify-icon inline="" icon="ri:slideshow-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
@@ -286,7 +302,7 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: left;"></td>
 <td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></span></td>
 <td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/01_Probability_01.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=mCz24v"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span> <span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/01_Probability_02.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=KBn1gT"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></span></td>
 <td style="text-align: left;">1</td>
 <td style="text-align: left;">Introduction to Probability</td>
 <td>1.1, 2.1, 2.2, 2.4.1</td>
@@ -300,7 +316,7 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: left;">09/30</td>
 <td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/02_Simulations/02_Simulations_key_info.html"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
 <td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=V3lz4rj6fk2U9pvWr59xWFMopmPUjRtDiHLswhgacNhURUlRNE04N1dFT0JMTVhZMk40SVYxV1JIViQlQCNjPTEu"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/02_Simulations.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=3oMNFO"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></span></td>
 <td style="text-align: left;">2</td>
 <td style="text-align: left;">Introduction to Simulations</td>
 <td>2.3, 2.5</td>
@@ -340,9 +356,9 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td style="text-align: left;">2</td>
 <td style="text-align: left;">10/05</td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/03_Lang_prob/03_Lang_prob_key_info.html"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=V3lz4rj6fk2U9pvWr59xWFMopmPUjRtDiHLswhgacNhUQ1BFWU5SU0ZaQUVPQjJUUDIxS0JVQjJXMiQlQCNjPTEu"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/03_Lang_prob_01.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=C2nUI4"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span> <span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/03_Lang_prob_02.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=gr4wV7"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span> <span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/03_Lang_prob_03.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=1m19wU"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></span></td>
 <td style="text-align: left;">3</td>
 <td style="text-align: left;">Language of Probability</td>
 <td>2.2, 2.4</td>
@@ -354,9 +370,9 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">10/07</td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/04_Rules_of_prob/04_Rules_of_prob_key_info.html"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=V3lz4rj6fk2U9pvWr59xWFMopmPUjRtDiHLswhgacNhUNEJURTlCQ043NUIzSUNBVVdLMFhTNE5MNiQlQCNjPTEu"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/04_Rules_of_prob_01.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=jjzboT"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span> <span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/04_Rules_of_prob_02.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=lb1sqA"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></span></td>
 <td style="text-align: left;">4</td>
 <td style="text-align: left;">Rules of Probability</td>
 <td>2.7, 3.3-3.5</td>
@@ -380,6 +396,20 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>10/18</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="proj-row"><strong>Checkpoint 0 due 11pm</strong></span></td>
+<td></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
 <td style="text-align: left;"><span class="week-row">&nbsp;</span></td>
 <td style="text-align: left;"></td>
 <td style="text-align: center;"></td>
@@ -393,12 +423,12 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">3</td>
 <td style="text-align: left;">10/12</td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/06_Calculus_review/06_Calculus_review_key_info.html"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=V3lz4rj6fk2U9pvWr59xWFMopmPUjRtDiHLswhgacNhUMVBEWVcwQ1UyVUU2TUhLVE1JTFpGNkNORiQlQCNjPTEu"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/06_Calculus_review.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=eoeGIb"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></span></td>
 <td style="text-align: left;">6</td>
 <td style="text-align: left;">Async optional video: Calculus Review</td>
 <td></td>
@@ -407,35 +437,35 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/06_Calculus_review/06_Calculus_review_notes.pdf"><iconify-icon inline="" icon="pepicons-pop:pen-circle-filled" style="font-size: 29px;"></iconify-icon></a></span></td>
 <td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/06_Calculus_review/06_Calculus_review_muddy_points.html"><iconify-icon inline="" icon="pajamas:question" style="font-size: 30px;"></iconify-icon></a></span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">10/14</td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/05_Equally_likely_outcomes/05_Equally_likely_outcomes_key_info.html"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=V3lz4rj6fk2U9pvWr59xWFMopmPUjRtDiHLswhgacNhUMDJOQzRVOUxaWTNaV0g5WFFNNkZBT0hOMCQlQCNjPTEu"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/05_Equally_likely_outcomes.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=OmANo8"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></span></td>
 <td style="text-align: left;">5</td>
-<td style="text-align: left;">Equally Likely Outcomes</td>
+<td style="text-align: left;">Virtual class: Equally Likely Outcomes</td>
 <td>3.6</td>
 <td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/05_Equally_likely_outcomes/05_Equally_likely_outcomes.html"><iconify-icon inline="" icon="ri:slideshow-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
 <td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/05_Equally_likely_outcomes/05_Equally_likely_outcomes.pdf"><iconify-icon inline="" icon="bi:file-earmark-pdf-fill" style="font-size: 28px;"></iconify-icon></a></span></td>
 <td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/05_Equally_likely_outcomes/05_Equally_likely_outcomes_notes.pdf"><iconify-icon inline="" icon="pepicons-pop:pen-circle-filled" style="font-size: 29px;"></iconify-icon></a></span></td>
 <td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/05_Equally_likely_outcomes/05_Equally_likely_outcomes_muddy_points.html"><iconify-icon inline="" icon="pajamas:question" style="font-size: 30px;"></iconify-icon></a></span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><strong>10/18</strong></td>
+<td style="text-align: left;"><strong>11/01</strong></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><span class="pract-row"><strong>HW 2 due 11 pm</strong></span></td>
+<td style="text-align: left;"><span class="proj-row"><strong>Checkpoint 1 due 11pm</strong></span></td>
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><span class="week-row">&nbsp;</span></td>
 <td style="text-align: left;"></td>
 <td style="text-align: center;"></td>
@@ -449,12 +479,12 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">4</td>
 <td style="text-align: left;">10/19</td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/07_pmfs/07_pmfs_key_info.html"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=V3lz4rj6fk2U9pvWr59xWFMopmPUjRtDiHLswhgacNhUQTBPMzhJMDNZV1VFSERaUk9VWkxaRjQxRyQlQCNjPTEu"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/07_pmfs.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=sIVEiu"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></span></td>
 <td style="text-align: left;">7</td>
 <td style="text-align: left;">pmfs</td>
 <td>4.1, 4.2</td>
@@ -463,12 +493,12 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/07_pmfs/07_pmfs_notes.pdf"><iconify-icon inline="" icon="pepicons-pop:pen-circle-filled" style="font-size: 29px;"></iconify-icon></a></span></td>
 <td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/07_pmfs/07_pmfs_muddy_points.html"><iconify-icon inline="" icon="pajamas:question" style="font-size: 30px;"></iconify-icon></a></span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/08_pdfs.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=P2trtP"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></span></td>
 <td style="text-align: left;">8</td>
 <td style="text-align: left;">pdfs</td>
 <td>4.3</td>
@@ -477,12 +507,12 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/08_pdfs/08_pdfs_notes.pdf"><iconify-icon inline="" icon="pepicons-pop:pen-circle-filled" style="font-size: 29px;"></iconify-icon></a></span></td>
 <td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/08_pdfs/08_pdfs_muddy_points.html"><iconify-icon inline="" icon="pajamas:question" style="font-size: 30px;"></iconify-icon></a></span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">10/21</td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/09_CDFs/09_CDFs_key_info.html"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=V3lz4rj6fk2U9pvWr59xWFMopmPUjRtDiHLswhgacNhURExZOFNKNkpTRldYVFAxTzczSzNVVVFGNSQlQCNjPTEu"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/09_CDFs.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=FbbEAq"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></span></td>
 <td style="text-align: left;">9</td>
 <td style="text-align: left;">CDFs</td>
 <td>4.4</td>
@@ -491,14 +521,28 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/09_CDFs/09_CDFs_notes.pdf"><iconify-icon inline="" icon="pepicons-pop:pen-circle-filled" style="font-size: 29px;"></iconify-icon></a></span></td>
 <td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="pajamas:question" style="font-size: 30px;"></iconify-icon></span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><strong>10/21</strong></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><span class="pract-row"><strong>Quiz 1 opens @ 3pm</strong></span></td>
+<td style="text-align: left;"><span class="quiz-row"><strong>Quiz 1 opens @ 3pm</strong></span></td>
+<td></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="pract-row"><strong>10/18</strong></span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>HW 2 due 11 pm</strong></td>
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -507,21 +551,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><span class="pract-row"><strong>10/25</strong></span></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><strong>HW 3 due 11 pm</strong></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><span class="pract-row"><strong>10/25</strong></span></td>
+<td style="text-align: left;"><span class="quiz-row"><strong>10/25</strong></span></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -533,7 +563,7 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><span class="week-row">&nbsp;</span></td>
 <td style="text-align: left;"></td>
 <td style="text-align: center;"></td>
@@ -547,56 +577,42 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">5</td>
 <td style="text-align: left;">10/26</td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/10_Transformations/10_Transformations_key_info.html"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=V3lz4rj6fk2U9pvWr59xWFMopmPUjRtDiHLswhgacNhUNlNSSFVIUk05MkpWT1NaSzYxTFhYOTRURyQlQCNjPTEu"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/10_Transformations.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=iqlxg5"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span></td>
-<td style="text-align: left;">10</td>
-<td style="text-align: left;">Transformations of distributions</td>
-<td>4.6</td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/10_Transformations/10_Transformations.html"><iconify-icon inline="" icon="ri:slideshow-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/10_Transformations/10_Transformations.pdf"><iconify-icon inline="" icon="bi:file-earmark-pdf-fill" style="font-size: 28px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/10_Transformations/10_Transformations_notes.pdf"><iconify-icon inline="" icon="pepicons-pop:pen-circle-filled" style="font-size: 29px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="pajamas:question" style="font-size: 30px;"></iconify-icon></span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">10/28</td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/11_Joint_distributions/11_Joint_distributions_key_info.html"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=V3lz4rj6fk2U9pvWr59xWFMopmPUjRtDiHLswhgacNhUQ1JHVlE0UkoxTUI4SE5HNk8yU0dFRlYyQyQlQCNjPTEu"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/11_Joint_distributions_01.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=XVWPgR"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span> <span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/11_Joint_distributions_02.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=DajVXN"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span> <span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/11_Joint_distributions_03.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=isjLFA"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span></td>
-<td style="text-align: left;">11</td>
-<td style="text-align: left;">Joint distributions</td>
-<td>4.7</td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/11_Joint_distributions/11_Joint_distributions.html"><iconify-icon inline="" icon="ri:slideshow-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/11_Joint_distributions/11_Joint_distributions.pdf"><iconify-icon inline="" icon="bi:file-earmark-pdf-fill" style="font-size: 28px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/11_Joint_distributions/11_Joint_distributions_notes.pdf"><iconify-icon inline="" icon="pepicons-pop:pen-circle-filled" style="font-size: 29px;"></iconify-icon></a></span> <span style="color:#f8f5f0;"><a href="lessons/11_Joint_distributions/11_Joint_distributions_notes_02.pdf"><iconify-icon inline="" icon="pepicons-pop:pen-circle-filled" style="font-size: 29px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/11_Joint_distributions/11_Joint_distributions_muddy_points.html"><iconify-icon inline="" icon="pajamas:question" style="font-size: 30px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></span></td>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">Expected Values</td>
+<td>5.1</td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/13_Expected_Values/13_Expected_Values.html"><iconify-icon inline="" icon="ri:slideshow-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/13_Expected_Values/13_Expected_Values.pdf"><iconify-icon inline="" icon="bi:file-earmark-pdf-fill" style="font-size: 28px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/13_Expected_Values/13_Expected_Values_notes.pdf"><iconify-icon inline="" icon="pepicons-pop:pen-circle-filled" style="font-size: 29px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/13_Expected_Values/13_Expected_Values_muddy_points.html"><iconify-icon inline="" icon="pajamas:question" style="font-size: 30px;"></iconify-icon></a></span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><strong>11/01</strong></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><span class="pract-row"><strong>HW 4 due 11 pm</strong></span></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: left;">10/28</td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></span></td>
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">Variance</td>
+<td>5.2, 5.3</td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/14_Variance/14_Variance.html"><iconify-icon inline="" icon="ri:slideshow-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/14_Variance/14_Variance.pdf"><iconify-icon inline="" icon="bi:file-earmark-pdf-fill" style="font-size: 28px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/14_Variance/14_Variance_notes.pdf"><iconify-icon inline="" icon="pepicons-pop:pen-circle-filled" style="font-size: 29px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/14_Variance/14_Variance_muddy_points.html"><iconify-icon inline="" icon="pajamas:question" style="font-size: 30px;"></iconify-icon></a></span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><span class="pract-row"><strong>11/01</strong></span></td>
+<td style="text-align: left;"><strong>10/25</strong></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><strong>Midterm feedback due @ 11pm</strong></td>
+<td style="text-align: left;"><span class="pract-row"><strong>HW 3 due 11 pm</strong></span></td>
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -620,34 +636,34 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td style="text-align: left;">6</td>
 <td style="text-align: left;">11/02</td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/12_Independence_conditioning/12_Independence_Conditioning_key_info.qmd"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=V3lz4rj6fk2U9pvWr59xWFMopmPUjRtDiHLswhgacNhUMUdEVFROQVhIUjBMUkFTNE5UNDNaNVNFTCQlQCNjPTEu"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/12_Independence_conditioning_01.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=QGwtra"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span> <span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/12_Independence_conditioning_02.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=YaCSnn"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span></td>
-<td style="text-align: left;">12</td>
-<td style="text-align: left;">Independence and Conditioning</td>
-<td>4.8, 4.9</td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/12_Independence_Conditioning/12_Independence_conditioning.html"><iconify-icon inline="" icon="ri:slideshow-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/12_Independence_Conditioning/12_Independence_conditioning.pdf"><iconify-icon inline="" icon="bi:file-earmark-pdf-fill" style="font-size: 28px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/12_Independence_Conditioning/12_Independence_conditioning_notes.pdf"><iconify-icon inline="" icon="pepicons-pop:pen-circle-filled" style="font-size: 29px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/12_Independence_Conditioning/12_Independence_conditioning_muddy_points.html"><iconify-icon inline="" icon="pajamas:question" style="font-size: 30px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></span></td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">Important discrete RVs</td>
+<td>6</td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/15_Discrete_RVs/15_Discrete_RVs.html"><iconify-icon inline="" icon="ri:slideshow-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/15_Discrete_RVs/15_Discrete_RVs.pdf"><iconify-icon inline="" icon="bi:file-earmark-pdf-fill" style="font-size: 28px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/15_Discrete_RVs/15_Discrete_RVs_notes.pdf"><iconify-icon inline="" icon="pepicons-pop:pen-circle-filled" style="font-size: 29px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/15_Discrete_RVs/15_Discrete_RVs_muddy_points.html"><iconify-icon inline="" icon="pajamas:question" style="font-size: 30px;"></iconify-icon></a></span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">11/04</td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/11_Joint_distributions/11_Joint_distributions_review_key_info.html"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=V3lz4rj6fk2U9pvWr59xWFMopmPUjRtDiHLswhgacNhUQlo5VUFQVEYxOVJIVkMwNDM2RExEMlFQNyQlQCNjPTEu"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/11_Joint_distributions_03.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=2Mbplt"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Review of joint distributions, independence, conditioning</td>
-<td></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/11_Joint_distributions/11_Joint_distributions_review.html"><iconify-icon inline="" icon="ri:slideshow-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/11_Joint_distributions/11_Joint_distributions.pdf"><iconify-icon inline="" icon="bi:file-earmark-pdf-fill" style="font-size: 28px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/11_Joint_distributions/11_Joint_distributions_notes.pdf"><iconify-icon inline="" icon="pepicons-pop:pen-circle-filled" style="font-size: 29px;"></iconify-icon></a></span> <span style="color:#f8f5f0;"><a href="lessons/11_Joint_distributions/11_Joint_distributions_notes_02.pdf"><iconify-icon inline="" icon="pepicons-pop:pen-circle-filled" style="font-size: 29px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/11_Joint_distributions/11_Joint_distributions_muddy_points.html"><iconify-icon inline="" icon="pajamas:question" style="font-size: 30px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></span></td>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">Important continuous RVS</td>
+<td>7</td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/16_Cont_RVs/16_Cont_RVs.html"><iconify-icon inline="" icon="ri:slideshow-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/16_Cont_RVs/16_Cont_RVs.pdf"><iconify-icon inline="" icon="bi:file-earmark-pdf-fill" style="font-size: 28px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/16_Cont_RVs/16_Cont_RVs_notes.pdf"><iconify-icon inline="" icon="pepicons-pop:pen-circle-filled" style="font-size: 29px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/16_Cont_RVs/16_Cont_RVs_muddy_points.html"><iconify-icon inline="" icon="pajamas:question" style="font-size: 30px;"></iconify-icon></a></span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><span class="pract-row"><strong>11/04</strong></span></td>
+<td style="text-align: left;"><span class="quiz-row"><strong>11/04</strong></span></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -661,12 +677,12 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><span class="pract-row"><strong>11/08</strong></span></td>
+<td style="text-align: left;"><span class="pract-row"><strong>11/01</strong></span></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><strong>HW 5 due 11 pm</strong></td>
+<td style="text-align: left;"><strong>HW 4 due 11 pm</strong></td>
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -675,7 +691,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><span class="pract-row"><strong>11/08</strong></span></td>
+<td style="text-align: left;"><span class="quiz-row"><strong>11/08</strong></span></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -704,39 +720,39 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td style="text-align: left;">7</td>
 <td style="text-align: left;">11/09</td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/13_Expected_Values/13_Expected_Values_key_info.html"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=V3lz4rj6fk2U9pvWr59xWFMopmPUjRtDiHLswhgacNhUMzlDTE9aQlpTSFU5Njg0NVhWTjBYMU9RTyQlQCNjPTEu"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/13_Expected_values.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=02kLlp"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span></td>
-<td style="text-align: left;">13</td>
-<td style="text-align: left;">Expected Values</td>
-<td>5.1</td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/13_Expected_Values/13_Expected_Values.html"><iconify-icon inline="" icon="ri:slideshow-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/13_Expected_Values/13_Expected_Values.pdf"><iconify-icon inline="" icon="bi:file-earmark-pdf-fill" style="font-size: 28px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/13_Expected_Values/13_Expected_Values_notes.pdf"><iconify-icon inline="" icon="pepicons-pop:pen-circle-filled" style="font-size: 29px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/13_Expected_Values/13_Expected_Values_muddy_points.html"><iconify-icon inline="" icon="pajamas:question" style="font-size: 30px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></span></td>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">Transformations of distributions</td>
+<td>4.6</td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/10_Transformations/10_Transformations.html"><iconify-icon inline="" icon="ri:slideshow-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/10_Transformations/10_Transformations.pdf"><iconify-icon inline="" icon="bi:file-earmark-pdf-fill" style="font-size: 28px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/10_Transformations/10_Transformations_notes.pdf"><iconify-icon inline="" icon="pepicons-pop:pen-circle-filled" style="font-size: 29px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="pajamas:question" style="font-size: 30px;"></iconify-icon></span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">11/11</td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/14_Variance/14_Variance_key_info.html"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=V3lz4rj6fk2U9pvWr59xWFMopmPUjRtDiHLswhgacNhUMDJKQ0JXVTRBSjI1TVVTNElNMlA0MTIxSCQlQCNjPTEu"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/14_Variance.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=pzibdn"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span> <a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/14_Variance_02.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=5pKcfW"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></td>
-<td style="text-align: left;">14</td>
-<td style="text-align: left;">Variance</td>
-<td>5.2, 5.3</td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/14_Variance/14_Variance.html"><iconify-icon inline="" icon="ri:slideshow-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/14_Variance/14_Variance.pdf"><iconify-icon inline="" icon="bi:file-earmark-pdf-fill" style="font-size: 28px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/14_Variance/14_Variance_notes.pdf"><iconify-icon inline="" icon="pepicons-pop:pen-circle-filled" style="font-size: 29px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/14_Variance/14_Variance_muddy_points.html"><iconify-icon inline="" icon="pajamas:question" style="font-size: 30px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></span></td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">Joint distributions</td>
+<td>4.7</td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/11_Joint_distributions/11_Joint_distributions.html"><iconify-icon inline="" icon="ri:slideshow-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/11_Joint_distributions/11_Joint_distributions.pdf"><iconify-icon inline="" icon="bi:file-earmark-pdf-fill" style="font-size: 28px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/11_Joint_distributions/11_Joint_distributions_notes.pdf"><iconify-icon inline="" icon="pepicons-pop:pen-circle-filled" style="font-size: 29px;"></iconify-icon></a></span> <span style="color:#f8f5f0;"><a href="lessons/11_Joint_distributions/11_Joint_distributions_notes_02.pdf"><iconify-icon inline="" icon="pepicons-pop:pen-circle-filled" style="font-size: 29px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/11_Joint_distributions/11_Joint_distributions_muddy_points.html"><iconify-icon inline="" icon="pajamas:question" style="font-size: 30px;"></iconify-icon></a></span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><span class="pract-row"><strong>11/15</strong></span></td>
+<td style="text-align: left;"><strong>11/15</strong></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><strong>HW 6 due 11 pm</strong>]</td>
+<td style="text-align: left;"><span class="proj-row"><strong>Checkpoint 2 due 11pm</strong></span></td>
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -760,39 +776,39 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td style="text-align: left;">8</td>
 <td style="text-align: left;">11/16</td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/15_Discrete_RVs/15_Discrete_RVs_key_info.html"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=V3lz4rj6fk2U9pvWr59xWFMopmPUjRtDiHLswhgacNhUNDZHTkRXUUNFMkc2VEo5SlJCRUkzRVZWMSQlQCNjPTEu"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/15_Discrete_RVs.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=6OpuN7"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span> <a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/15_Discrete_RVs_02.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=u7ChSj"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></td>
-<td style="text-align: left;">15</td>
-<td style="text-align: left;">Important discrete RVs</td>
-<td>6</td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/15_Discrete_RVs/15_Discrete_RVs.html"><iconify-icon inline="" icon="ri:slideshow-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/15_Discrete_RVs/15_Discrete_RVs.pdf"><iconify-icon inline="" icon="bi:file-earmark-pdf-fill" style="font-size: 28px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/15_Discrete_RVs/15_Discrete_RVs_notes.pdf"><iconify-icon inline="" icon="pepicons-pop:pen-circle-filled" style="font-size: 29px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/15_Discrete_RVs/15_Discrete_RVs_muddy_points.html"><iconify-icon inline="" icon="pajamas:question" style="font-size: 30px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></span></td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">Independence and Conditioning</td>
+<td>4.8, 4.9</td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/12_Independence_Conditioning/12_Independence_conditioning.html"><iconify-icon inline="" icon="ri:slideshow-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/12_Independence_Conditioning/12_Independence_conditioning.pdf"><iconify-icon inline="" icon="bi:file-earmark-pdf-fill" style="font-size: 28px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/12_Independence_Conditioning/12_Independence_conditioning_notes.pdf"><iconify-icon inline="" icon="pepicons-pop:pen-circle-filled" style="font-size: 29px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/12_Independence_Conditioning/12_Independence_conditioning_muddy_points.html"><iconify-icon inline="" icon="pajamas:question" style="font-size: 30px;"></iconify-icon></a></span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">11/18</td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/16_Cont_RVs/16_Cont_RVs_key_info.html"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=V3lz4rj6fk2U9pvWr59xWFMopmPUjRtDiHLswhgacNhUMk83UDcwU0g1SE9NNE9LRU9CRllKWDlWTiQlQCNjPTEu"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/16_Continuous_RVs_01.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=30ZRpU"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span> <span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/16_Cont_RVs_02.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=lmuUuw"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span></td>
-<td style="text-align: left;">16</td>
-<td style="text-align: left;">Important continuous RVS</td>
-<td>7</td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/16_Cont_RVs/16_Cont_RVs.html"><iconify-icon inline="" icon="ri:slideshow-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/16_Cont_RVs/16_Cont_RVs.pdf"><iconify-icon inline="" icon="bi:file-earmark-pdf-fill" style="font-size: 28px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="lessons/16_Cont_RVs/16_Cont_RVs_notes.pdf"><iconify-icon inline="" icon="pepicons-pop:pen-circle-filled" style="font-size: 29px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/16_Cont_RVs/16_Cont_RVs_muddy_points.html"><iconify-icon inline="" icon="pajamas:question" style="font-size: 30px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></span></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Catch-up day</td>
+<td></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="ri:slideshow-fill" style="font-size: 30px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="bi:file-earmark-pdf-fill" style="font-size: 28px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="pepicons-pop:pen-circle-filled" style="font-size: 29px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="pajamas:question" style="font-size: 30px;"></iconify-icon></span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><span class="pract-row"><strong>11/22</strong></span></td>
+<td style="text-align: left;"><span class="pract-row"><strong>11/08</strong></span></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><strong>HW 7 due 11 pm</strong></td>
+<td style="text-align: left;"><strong>HW 5 due 11 pm</strong></td>
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -816,9 +832,9 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td style="text-align: left;">9</td>
 <td style="text-align: left;">11/23</td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem_key_info.html"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=V3lz4rj6fk2U9pvWr59xWFMopmPUjRtDiHLswhgacNhUQkszTk9SVDJYTVJHNjJVU0Y4TTBCTTQ0UyQlQCNjPTEu"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/37_CLT.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=yq7D8w"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span> <span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/17_CLT.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=ygdAde"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span> <span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/17_CLT_02.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=zNyxqM"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></span></td>
 <td style="text-align: left;">17</td>
 <td style="text-align: left;">Central limit theorem</td>
 <td>8.1</td>
@@ -842,6 +858,20 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>11/29</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="proj-row"><strong>Checkpoint 3 due 11pm</strong></span></td>
+<td></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;"><span class="week-row">&nbsp;</span></td>
 <td style="text-align: left;"></td>
 <td style="text-align: center;"></td>
@@ -855,26 +885,12 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">10</td>
 <td style="text-align: left;">11/30</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">No class</td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">12/02</td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="./lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions_key_info.html"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=V3lz4rj6fk2U9pvWr59xWFMopmPUjRtDiHLswhgacNhUQ1JHN1VCMEYxNDNCQTc3SlA5WFFYR01YWCQlQCNjPTEu"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></a></span></td>
-<td style="text-align: center;"><span style="color:#f8f5f0;"><a href="https://ohsuitg-my.sharepoint.com/:v:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/Recordings/18_MGFs.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=fe3GpH"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></a></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></span></td>
 <td style="text-align: left;">18</td>
 <td style="text-align: left;">Moment Generating functions</td>
 <td></td>
@@ -885,7 +901,21 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><span class="pract-row"><strong>12/02</strong></span></td>
+<td style="text-align: left;">12/02</td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="akar-icons:info-fill" style="font-size: 30px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="healthicons:health-worker-form" style="font-size: 32px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="mdi:video" style="font-size: 34px;"></iconify-icon></span></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Catch-up day</td>
+<td></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="ri:slideshow-fill" style="font-size: 30px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="bi:file-earmark-pdf-fill" style="font-size: 28px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="pepicons-pop:pen-circle-filled" style="font-size: 29px;"></iconify-icon></span></td>
+<td style="text-align: center;"><span style="color:#f8f5f0;"><iconify-icon inline="" icon="pajamas:question" style="font-size: 30px;"></iconify-icon></span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="quiz-row"><strong>12/02</strong></span></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -897,23 +927,23 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><span class="pract-row"><strong>12/06</strong></span></td>
+<td style="text-align: left;"><span class="pract-row"><strong>11/15</strong></span></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><strong>HW 8 due 11 pm</strong></td>
+<td style="text-align: left;"><strong>HW 6 due 11 pm</strong></td>
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><span class="pract-row"><strong>12/06</strong></span></td>
+<td style="text-align: left;"><span class="quiz-row"><strong>12/06</strong></span></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -925,7 +955,7 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"><span class="week-row">&nbsp;</span></td>
 <td style="text-align: left;"></td>
 <td style="text-align: center;"></td>
@@ -939,7 +969,7 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">11</td>
 <td style="text-align: left;">12/07</td>
 <td style="text-align: center;"></td>
@@ -953,14 +983,28 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="pract-row"><strong>11/22</strong></span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><strong>Optional HW 7 due 11 pm</strong></td>
+<td></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><span class="pract-row"><strong>12/10</strong></span></td>
+<td style="text-align: left;"><strong>12/11</strong></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"><strong>Optional HW 9 due 11 pm</strong></td>
+<td style="text-align: left;"><span class="proj-row"><strong>Final Project: Clinician Brief due 11pm</strong></span></td>
 <td></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>

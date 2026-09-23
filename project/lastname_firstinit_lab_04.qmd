@@ -1,0 +1,128 @@
+---
+title: "Lab 4"
+author: "Your name here!"
+subtitle: "PUBH 523/623"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+    self-contained: true
+    embed-resources: true
+    number-sections: true
+    number-depth: 4
+    code-annotations: hover
+    page-layout: full
+    highlight-style: ayu
+    code-block-bg: "#f8f9fa"      
+    code-block-border-left: "#5BAFF8" 
+  pdf: default 
+editor_options: 
+  chunk_output_type: console
+execute:
+  freeze: auto 
+---
+
+```{r}
+#| message: false
+#| echo: false
+
+# PLEASE DO NOT REMOVE THIS CODE CHUNK!!!
+### ADD YOUR LIBRARIES HERE!!! ####
+pacman::p_load( 
+  here, 
+  tidyverse, 
+  writexl, 
+  rstatix, 
+  janitor, 
+  naniar,
+  gt,
+  gtsummary,
+  readxl
+)
+```
+
+::: callout-warning
+Note that this is the editing file. **There are detailed instructions on our course page for Lab 2 that are not in this file.**
+:::
+
+## Lab activities
+
+### Restate your selected project
+
+::: {.callout-important}
+#### Task
+Copy and paste the row from the above table that corresponds to your project into your `.qmd` file, same as you did in Lab 3.
+:::
+
+
+### Import your saved data from Lab 3
+
+::: {.callout-important}
+#### Task
+From the `.rda` file you exported at the end of Lab 3, import `wbns_06_cat` and `summary_table_overall` into R using `load()` or `import()` from the `rio` package. Print out the number of rows and columns of `wbns_06_cat` to verify the import.
+:::
+
+
+### Plan your three findings
+
+::: {.callout-important}
+#### Task
+For Finding 1 and 3, write down which variable(s) you will visualize. 
+:::
+
+- **Finding 1 variable:** 
+- **Finding 3 variable(s) (optional):** 
+
+### Finding 1: Create the dataframe
+
+::: callout-important
+#### Task
+
+Use `count()` and `mutate()` to build a small dataframe of counts and percentages for your Finding 1 variable. Save it as a new object called `finding1_data`.
+:::
+
+### Finding 1: Visualize one main variable
+
+::: {.callout-important}
+#### Task
+Build your Finding 1 visualization using `ggplot2`, adding and editing the code above with your own variable and category labels. Save the plot as a new object (e.g., `finding1_plot`).
+:::
+
+### Finding 2: Create the dataframe
+
+::: {.callout-important}
+#### Task
+Use `count()`, `group_by()`, and `mutate()` to build a dataframe of within-group percentages for your two main variables. Save it as a new object called `finding2_data`.
+:::
+
+
+### Finding 2: Visualize the relationship between your two main variables
+
+::: {.callout-important}
+#### Task
+Build your Finding 2 visualization using `ggplot2`, adding and editing the code above with your own variables and category labels. Save the plot as a new object (e.g., `finding2_plot`).
+:::
+
+
+### Finding 3: Create the dataframe
+
+::: {.callout-important}
+#### Task
+Clean your chosen additional variable, then use `count()`, `group_by()`, and `mutate()` to build a dataframe of within-group percentages. Save it as a new object called `finding3_data`.
+:::
+
+### Finding 3: Visualize one main variable + one additional variable
+
+::: {.callout-important}
+#### Task
+Build your Finding 3 visualization using `ggplot2`, adding and editing the code above with your own variables and category labels. Save the plot as a new object (e.g., `finding3_plot`).
+:::
+
+### Export your visualizations and save your environment 
+
+::: {.callout-important}
+#### Task
+Export each of your polished visualizations as a `.png` file into your `plots` folder. Include a screenshot showing the exported files in your `plots` folder.
+:::
+

@@ -1,0 +1,112 @@
+---
+title: "Lab 3"
+author: "Your name here!"
+subtitle: "PUBH 523/623"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+    toc: true
+    self-contained: true
+    embed-resources: true
+    number-sections: true
+    number-depth: 4
+    code-annotations: hover
+    page-layout: full
+    highlight-style: ayu
+    code-block-bg: "#f8f9fa"      
+    code-block-border-left: "#5BAFF8" 
+  pdf: default 
+editor_options: 
+  chunk_output_type: console
+execute:
+  freeze: auto 
+---
+
+
+```{r}
+#| message: false
+#| echo: false
+
+# PLEASE DO NOT REMOVE THIS CODE CHUNK!!!
+### ADD YOUR LIBRARIES HERE!!! ####
+pacman::p_load( # These are my go to packages to load
+  here, 
+  tidyverse, 
+  writexl, 
+  rstatix, 
+  janitor, 
+  naniar,
+  gt,
+  gtsummary,
+  readxl
+)
+```
+
+::: callout-warning
+Note that this is the editing file. **There are detailed instructions on our course page for Lab 3 that are not in this file.**
+:::
+
+## Lab activities
+
+### Restate your selected project
+
+::: callout-important
+#### Task
+
+Copy and paste the row from the above table that corresponds to your project into your `.qmd` file. This will help you (and me hehe) keep track of your project question, population, main variables, and composite score(s) as you work through this lab.
+:::
+
+### Import your saved data from Lab 2
+
+::: callout-important
+#### Task
+
+From the `.rda` file you exported at the end of Lab 2, import your data into R using `import()` from the `rio` package. Save this as a new object called `wbns_05_composite`. Print out the number of rows and columns to verify the import.
+:::
+
+### Quick summaries of your variables
+
+::: callout-important
+#### Task
+
+Take your `wbns_05_composite` dataset and use `skim()` to generate a quick summary of your main variables and composite score(s). Save the result as a new object called `quick_summaries`, and print it out. Use this to check for any unexpected values, missing data, or other issues that may need to be addressed before moving forward.
+:::
+
+### Creating categorical versions of your composite score(s)
+
+::: callout-important
+#### Task
+
+Use `mutate()` with `case_when()` or `cut()` to create a new categorical variable for each composite score, with meaningful category labels. Save the result as a new object called `wbns_06_cat`. Use `tabyl()` or `count()` to display how many respondents fall into each category, and confirm no one was left out (e.g., turned into an unexpected `NA`).
+:::
+
+### Building a summary table
+
+::: callout-important
+#### Task
+
+Use `tbl_summary()` to build a clean overall summary table of your composite score(s) and other main variable. Save this as a new object called `summary_table_overall`, and display it. 
+
+Customize at least one thing about the table's appearance or labels (e.g., with `modify_header()` or by relabeling variables) so it's easier for someone unfamiliar with your project to read.
+:::
+
+### Grouped summaries
+
+::: callout-important
+#### Task
+
+Use `group_by()` and `get_summary_stats()` to calculate your composite score's common summary statistics separately for each level of your chosen grouping variable. Write 2-3 sentences interpreting what you see. Does the composite score noticeably differ across groups? Does this align with what you'd expect given your project question?
+:::
+
+::: callout-note
+*Optional/Additional:* You can also pass your grouping variable into `tbl_summary(by = ...)` to get a nicely formatted side-by-side table instead of (or in addition to) the `group_by()`/`get_summary_stats()` output above.
+:::
+
+### Export tables
+
+::: callout-important
+#### Task
+
+Save `wbns_06_cat` and `summary_table_overall` in a `.rda` file in your `data_project` folder. Name the file something that will help you identify it later, like `wbns_data_lab_03_work.rda` or `wbns_data_03_summ.rda`.
+:::

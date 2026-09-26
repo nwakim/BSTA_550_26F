@@ -61,8 +61,6 @@ source(here("class_dates.R"))
 # Pride yourself in learning things, not knowing things
 
 ```{css}
-#| echo: false
-
 <style>
 #wrap { width: 600px; height: 390px; padding: 0; overflow: hidden; }
 #frame { width: 1300px; height: 600px; border: 1px solid black; }
@@ -72,7 +70,7 @@ source(here("class_dates.R"))
 
 ## Some important tasks
 
--   Star the class website: <https://nwakim.github.io/BSTA_550_25F/>
+-   Star the class website: <https://nwakim.github.io/BSTA_550_26F/>
 
  
 
@@ -88,7 +86,7 @@ source(here("class_dates.R"))
 ## Let's visit the website: Homepage
 
 ```{=html}
-<iframe id="frame" src="https://nwakim.github.io/BSTA_550_25F/"></iframe>
+<iframe id="frame" src="https://nwakim.github.io/BSTA_550_26F/"></iframe>
 ```
 
 ## Let's visit the website: Syllabus (1/2)
@@ -111,7 +109,7 @@ source(here("class_dates.R"))
 ## Let's visit the website: Syllabus (2/2)
 
 ```{=html}
-<iframe id="frame" src="https://nwakim.github.io/BSTA_550_25F/syllabus.html"></iframe>
+<iframe id="frame" src="https://nwakim.github.io/BSTA_550_26F/syllabus.html"></iframe>
 ```
 
 
@@ -120,7 +118,7 @@ source(here("class_dates.R"))
 -   Weeks, class info, homeworks, labs
 
 ```{=html}
-<iframe id="frame" src="https://nwakim.github.io/BSTA_550_25F/schedule.html"></iframe>
+<iframe id="frame" src="https://nwakim.github.io/BSTA_550_26F/schedule.html"></iframe>
 ```
 
 ## Let's visit the website: Schedule (2/2)
@@ -138,13 +136,13 @@ source(here("class_dates.R"))
 ## Let's visit the website: Search
 
 ```{=html}
-<iframe id="frame" src="https://nwakim.github.io/BSTA_550_25F/schedule.html"></iframe>
+<iframe id="frame" src="https://nwakim.github.io/BSTA_550_26F/schedule.html"></iframe>
 ```
 
 ## Let's visit the website: Homework!
 
 ```{=html}
-<iframe id="frame" src="https://nwakim.github.io/BSTA_550_25F/homeworks.html"></iframe>
+<iframe id="frame" src="https://nwakim.github.io/BSTA_550_26F/homeworks.html"></iframe>
 ```
 
 ## Decision on Homework due dates

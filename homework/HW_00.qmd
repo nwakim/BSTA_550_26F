@@ -1,73 +1,135 @@
 ---
 title: "Homework 0"
 subtitle: "BSTA 550"
+author: "Your name here"
 date-modified: "today"
-format: 
+format:
   html:
-    link-external-newwindow: true
     toc: true
-  pdf: default 
+    embed-resources: true
+    link-external-newwindow: true
+  typst:
+    toc: true
+    papersize: us-letter
+    margin:
+      x: 1in
+      y: 1in
 editor_options: 
   chunk_output_type: console
 ---
+
+<!--
+HOW TO USE THIS FILE
+- Put your name in the "author" line at the very top.
+- Type your answers under each question.
+- You don't need to change anything between the --- lines at the top
+  or any line starting with :::
+- Click the arrow next to "Render" and choose "Render HTML" or
+  "Render Typst" (Typst makes a PDF). Submit that file.
+-->
 
 ```{r}
 #| label: "setup"
 #| include: false
 knitr::opts_chunk$set(echo = TRUE)
 
-library(here)
-source(here("class_dates.R"))
+# Uses the course date file when it's available;
+# otherwise falls back to the due date below.
+if (requireNamespace("here", quietly = TRUE) &&
+    file.exists(here::here("class_dates.R"))) {
+  source(here::here("class_dates.R"))
+} else {
+  hw0 <- as.Date("2026-10-01")
+}
 ```
 
 ::: {.callout-tip appearance="minimal"}
-**Due `r hw0 %>% format("%m/%d")`**
+**Due `r format(hw0, "%m/%d")`**
 
-**This homework does not need to be turned in on Sakai.**
+**This homework does not need to be turned in on Brightspace.**
 :::
+
+## Assignment information 
 
 ### Purpose
 
-This homework is meant to introduce yourself to me and your peers. In the first class, we will all briefly introduce ourselves, but we don't have enough time in-depth introductions. Thus, I'd like you to share some information with the class over Slack.
+This homework is meant to introduce yourself to me and your peers. In the first class, we will all briefly introduce ourselves, but we don't have enough time for in-depth introductions. Thus, I'd like you to share some information with the class through your Brightspace profile.
 
 ### Grading
 
 Grading will be done as a check/no check for turning in your work. If you are stressed about time, please give yourself an extension.
 
+::: {.callout-note collapse="false"}
+## AI Use Statement
+
+**Using AI is not required in this class.** If you *did* use an AI tool (ChatGPT, Claude, Copilot, Gemini, an RStudio assistant, etc.) on this homework, add a brief AI Use Statement at the very top of your submission. Include:
+
+-   **Which tool(s)** you used
+-   **What for** (a sentence or two, with question numbers)
+-   **Where** it contributed to any written interpretations (if at all)
+-   *You do NOT need to link your conversation.*
+
+For example:
+
+> *AI Use Statement: Claude was used to explain an error message in Question 3. All statistical reasoning, code review, and conclusions are my own.*
+
+OR
+
+> *AI Use Statement: AI was not used in this assignment.*
+
+Before using AI, check the table of allowed uses in the [Generative AI Policy](https://nwakim.github.io/BSTA_550_26F/syllabus.html#generative-ai-policy). For homework, AI can help you *understand* (explain an error or a concept, check an answer you already worked out, give feedback on your own writing), but it should not do the problem for you. A half-finished answer that shows your thinking is always better than a polished one from AI!
+:::
+
 ## Questions
 
 ### Question 1
 
-Please upload a picture of yourself to Sakai. Make sure your face is visible in this picture. It will help me and the TAs identify you. 
+Please upload a picture of yourself to Brightspace. Make sure your face is the focus of the picture and is visibly large. It will help me and the TAs recognize you. 
 
-Please follow the below steps to add a picture of yourself in Sakai:
+Please follow the below steps to add a picture of yourself in Brightspace:
 
-1.  Click on the top right circle on your Sakai page. If you do not have a picture already, your initials will be showing.
+1.  Click on your name in the top right corner on your Brightspace page. If you do not have a picture already, your initials will be showing.
 2.  Click "Profile."
-3.  Once in your profile, hover over the square then click "Change picture."
+3.  Click "Change picture" under your name. 
 4.  Upload a picture file of yourself.
+5. Click "Save and Close" at the bottom of the page. 
 
 ### Question 2
 
-Provide a pronunciation of your name: Please follow the below steps to add an audio and written pronunciation of your name in Sakai:
+Provide a pronunciation of your name: Please follow the below steps to add a written pronunciation of your name in Brightspace. *Unfortunately, Brightspace does not allow you to record your name, so I will likely ask everyone privately, in-person, to confirm I have your pronunciation right.* 
 
-1.  Click on the top right circle on your Sakai page. If you do not have a picture already, your initials will be showing.
+1.  Click on your name in the top right corner on your Brightspace page. If you do not have a picture already, your initials will be showing.
 2.  Click "Profile."
-3. Hover over the section "Name Pronunciation and Pronouns." Click the edit button that should appear in the top right corner of the section.
-4. Add a recording of your name pronunciation. Please say your name a little slow! Check out my profile for an example. 
-5. OPTIONAL You may also edit the phonetic pronunciation of your name. I realize that doing this is may require a lot of time researching phonetics.
-6. OPTIONAL If you are comfortable sharing your pronouns, please change these as well.
+3. Under "Tagline," please write: "Pronunciation:" followed by a phonetic pronunciation of your name. 
+4. Click "Save and Close" at the bottom of the page. 
+
+::: {.callout-note collapse="false"}
+How to write a phonetic pronunciation:
+
+- I don't really know how to, haha
+- But I can Google! 
+- I googled "phonetic pronunciation of Nicky Wakim" and it gave me a pretty good answer: "The name Nicky Wakim is pronounced "NIH-kee wah-KEEM"."
+- So I would start there! 
+:::
 
 ### Question 3
 
-Please complete the [following when2meet poll](https://www.when2meet.com/?32085078-33MkX) so that we can schedule office hours. Please use a unique identifier (does not have to be your name), so that I can make sure each student can attend at least one office hour.
+(OPTIONAL) If you are comfortable sharing your pronouns, please change these as well.
+
+Here's how:
+
+1.  Click on your name in the top right corner on your Brightspace page. If you do not have a picture already, your initials will be showing.
+2.  Click "Account Settings"
+3. Under "Pronouns," you can opt to "Allow others to see my pronouns" and then click either what the organization has on record or different ones.
+4. Click "Save and Close" at the bottom of the page. 
+
 
 ### Question 4
 
-Use this [Microsoft form](https://forms.office.com/Pages/ResponsePage.aspx?id=V3lz4rj6fk2U9pvWr59xWFMopmPUjRtDiHLswhgacNhUMTBLT1hLMldQNjBEVlZMME1QSzE3VUQ2QSQlQCNjPTEu) to fill out your preferences on homework due dates and attendance policy. 
+Please complete the [following when2meet poll](https://www.when2meet.com/?38866937-SwNL6) so that we can schedule office hours. Please use a unique identifier (does not have to be your name), so that I can make sure each student can attend at least one office hour.
 
 ### Question 5
 
 Completion of this question is only necessary if you have accommodations. If you have any learning accommodations, please email me about your needs. I should receive a direct email from the Office of Student Access, but it is important that we discuss how accommodations will translate to our class. If you plan to seek accommodations, but do not have the formal document yet, please let me know!
 
-I highly suggest that you make an appointment with a learning specialist through [Student Academic Support Services](https://sakai.ohsu.edu/portal/site/Student_Support)! If you often need more time on a test, struggle to focus in class, or noticed a difference between your learning style and typical styles offered in school, **talk to academic support services and see if you qualify for accommodations!** Most professors should be working towards an inclusive classroom, but this is the best way to insure you get the learning environment you need!
+I highly suggest that you make an appointment with a learning specialist through OHSU's [Academic Success Center](https://ohsuitg.sharepoint.com/sites/AcademicSuccessCenter)! If you often need more time on a test, struggle to focus in class, or noticed a difference between your learning style and typical styles offered in school, **talk to the Academic Success Center and see if you qualify for accommodations!** Most instructors should be working towards an inclusive classroom, but this is the best way to ensure you get the learning environment you need!

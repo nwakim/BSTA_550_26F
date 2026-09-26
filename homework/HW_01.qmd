@@ -1,59 +1,134 @@
 ---
 title: "Homework 1"
 subtitle: "BSTA 550"
+author: "Your name here"
 date-modified: "today"
-format: 
-  html: 
-    link-external-newwindow: true
+format:
+  html:
     toc: true
-  pdf: default 
-editor_options: 
+    embed-resources: true
+    link-external-newwindow: true
+  typst:
+    toc: true
+    papersize: us-letter
+    margin:
+      x: 1in
+      y: 1in
+editor_options:
   chunk_output_type: console
 ---
+
+<!--
+HOW TO USE THIS FILE
+- Put your name in the "author" line at the very top.
+- Type your answers after each "Answer:" line.
+- Put R code inside the gray code chunks (between ```{r} and ```).
+- You don't need to change anything between the --- lines at the top (YAML)
+  or any line starting with :::
+- Click the arrow next to "Render" and choose "Render HTML" or
+  "Render Typst" (Typst makes a PDF). Submit that file.
+-->
 
 ```{r}
 #| label: "setup"
 #| include: false
+
 knitr::opts_chunk$set(echo = TRUE)
 
-library(here)
-source(here("class_dates.R"))
+# Uses the course date file when it's available;
+# otherwise falls back to the due date below.
+if (requireNamespace("here", quietly = TRUE) &&
+    file.exists(here::here("class_dates.R"))) {
+  source(here::here("class_dates.R"))
+} else {
+  hw1 <- as.Date("2026-10-11")
+}
 ```
 
 ::: {.callout-tip appearance="minimal"}
-**Due `r hw1 %>% format("%m/%d")` at 11pm**
+**Due `r format(hw1, "%m/%d")` at 11pm**
 :::
 
-## Directions
+## Assignment information
 
-**Please turn in this homework on Sakai.** Please submit your homework in pdf format. You can type your work on your computer or submit a single file with photos of your written work or any other method that can be turned into a pdf. The Adobe Scan phone app is an easy way to scan photos and compile into a PDF. Please let me know if you greatly prefer to submit a physical copy. We can work out another way for you to turn in homework.
+### Directions
 
-**Try to complete all of the problems listed below at some point this quarter! You may want to save some of them for studying later!** Only turn in the ones listed in the "Turn In" column. Please submit problems in the order they are listed.
+**Please turn in this homework on Brightspace.** Please submit your homework as a pdf or html file. You can type your work in this file and render it, or submit a single file with photos of your written work or any other method that can be turned into a pdf. Please let me know if you prefer to submit a physical copy, we can arrange for a physical "turn in" during Monday's class.
 
 *You must show all of your work to receive credit.*
+
+::: {.callout-warning collapse="false"}
+#### If you are editing this file to turn in
+
+If you are editing this `.qmd` file, then you will see a section right below the YAML called "HOW TO USE THIS FILE." Please follow those instructions to make sure you are not deleting essential parts of this file. When you render, that section will not show up. 
+:::
+
+::: {.callout-note collapse="false"}
+#### AI Use Statement
+
+**Using AI is not required in this class.** If you *did* use an AI tool (ChatGPT, Claude, Copilot, Gemini, an RStudio assistant, etc.) on this homework, add a brief AI Use Statement at the very top of your submission. Include:
+
+-   **Which tool(s)** you used
+-   **What for** (a sentence or two, with question numbers)
+-   **Where** it contributed to any written interpretations (if at all)
+-   *You do NOT need to link your conversation.*
+
+For example:
+
+> *AI Use Statement: Claude was used to explain an error message in Question 3. All statistical reasoning, code review, and conclusions are my own.*
+
+OR
+
+> *AI Use Statement: AI was not used in this assignment.*
+
+Before using AI, check the table of allowed uses in the [Generative AI Policy](https://nwakim.github.io/BSTA_550_26F/syllabus.html#generative-ai-policy). For homework, AI can help you *understand* (explain an error or a concept, check an answer you already worked out, give feedback on your own writing), but it should not do the problem for you. A half-finished answer that shows your thinking is always better than a polished one from AI!
+:::
 
 ## Questions
 
 ### 1. Outcomes, events, and sample space
 
-In the below parts, please list (i) one specific outcome, (ii) one event that contains more than one outcome, and (iii) the sample space. 
+In the below parts, please list (i) one specific outcome, (ii) one event that contains more than one outcome, and (iii) the sample space.
 
-a. Chris has an 5-pack of Gatorade sports drink: 1
-orange, 2 lemon-lime, and 2 fruit punch. He blindly grabs one out of the pack over and over if necessary, without replacement, until he finds an orange one. *Note, each lemon-lime is indistinguishable, and each fruit punch is indistinguishable.*
+#### Part a
 
-b. A claw machine contains 10 plush toys: 5 Red Squishies (R), 3 Blue Dinosaurs (B), and 2 Yellow Star Puffs (Y). You successfully grab a toy, remove it, and then grab a second toy (sampling without replacement). The result is the ordered pair of the two toys' colors.
+Chris has a 5-pack of Gatorade sports drink: 1 orange, 2 lemon-lime, and 2 fruit punch. He blindly grabs one out of the pack over and over if necessary, without replacement, until he finds an orange one. *Note, each lemon-lime is indistinguishable, and each fruit punch is indistinguishable.*
 
-c. You are opening a series of [mofusound Cat blind boxes](https://www.youtube.com/watch?v=wmehgHl8hj4). There are 4 possible figurines to collect: 1 shark cat (S), 1 orange striped fish cat (O), and 1 hen cat (H), and 1 cow cat (C). You buy a single blind box.
+[***Answer:***]{style="color: #990000;"}
+
+- One outcome:
+- One event:
+- Sample space:
+
+#### Part b
+
+A claw machine contains 10 plush toys: 5 Red Squishies (R), 3 Blue Dinosaurs (B), and 2 Yellow Star Puffs (Y). You successfully grab a toy, remove it, and then grab a second toy (sampling without replacement). The result is the ordered pair of the two toys' colors.
+
+[***Answer:***]{style="color: #990000;"}
+
+- One outcome:
+- One event:
+- Sample space:
+
+#### Part c
+
+You are opening a series of [mofusound Cat blind boxes](https://www.youtube.com/watch?v=wmehgHl8hj4). There are 4 possible figurines to collect: 1 shark cat (S), 1 orange striped fish cat (O), 1 hen cat (H), and 1 cow cat (C). You buy a single blind box.
+
+[***Answer:***]{style="color: #990000;"}
+
+- One outcome:
+- One event:
+- Sample space:
 
 ### 2. Running a simulation!
 
 This assignment requires you to use the four-step simulation process in R to approximate the probability of a specific event.
 
 **Scenario: The Mystic Orb Blind Boxes**
+
 The "Mystic Orb" collectible series has 5 total figures you can find in the blind boxes:
 
 - 1 Rare Mystery Toy (M) - The figure Nicky wants.
-
 - 4 Common Figures (C) - All other figures.
 
 When you buy a blind box, you receive one of the 5 figures, and each figure is equally likely.
@@ -61,4 +136,13 @@ When you buy a blind box, you receive one of the 5 figures, and each figure is e
 Nicky decides to buy three Mystic Orb blind boxes. She really wants to get the Rare Mystery Toy!! The random variable of interest is X, the number of boxes out of the three that contain the Rare Mystery Toy.
 
 Using the four-step simulation process, approximate the probability that Nicky gets at least one Rare Mystery Toy when she buys three boxes.
+
+[***Answer:***]{style="color: #990000;"}
+
+```{r}
+#| label: "q2-simulation"
+
+# Your code here
+
+```
 

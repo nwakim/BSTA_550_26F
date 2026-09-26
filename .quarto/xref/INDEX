@@ -74,7 +74,8 @@
   },
   "hw_answers/HW_01_ans.qmd": {
     "HW_01_ans.html": "6a1b9aa2",
-    "HW_01_ans.tex": "2314d171"
+    "HW_01_ans.tex": "2314d171",
+    "HW_01_ans.typ": "3c596c9e"
   },
   "hw_answers/HW_02_ans.qmd": {
     "HW_02_ans.html": "879e98ef"
@@ -114,5 +115,11 @@
   },
   "instructors.qmd": {
     "instructors.html": "6b133eb2"
+  },
+  "homework/HW_01.qmd": {
+    "HW_01.html": "913f4467"
+  },
+  "lessons/00_Intro/00_Intro.qmd": {
+    "00_Intro.html": "38566a6d"
   }
 }

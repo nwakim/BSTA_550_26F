@@ -109,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./instructors.html"> 
-<span class="menu-text">Instructor</span></a>
+<span class="menu-text">Instructors</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./homeworks.html"> 
@@ -118,6 +118,10 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link" href="./quiz.html"> 
 <span class="menu-text">Quizzes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./project.html"> 
+<span class="menu-text">Project</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -137,61 +141,144 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div style="background-color: #006a4e">
-<div style="color: #FFFFFF">
-<div class="grid">
-<div class="g-col-4">
+<style>
+/* ---- BSTA 550 color palette ---- */
+:root {
+  --green:  #006a4e;
+  --blue:   #6B8CC4;  --blue-text:   #4F70AD;
+  --orange: #E25D3B;  --orange-text: #C24A2A;
+  --pink:   #F08897;  --pink-deep:   #C9445A;
+  --yellow: #F1CF58;
+  --ivory:  #F2EFEA;
+}
+
+/* ---- Welcome banner ---- */
+.hero {
+  background-color: var(--green);
+  color: white;
+  border-radius: 16px;
+  padding: 2rem 2rem 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+}
+.hero h1 {
+  color: white;
+  border-bottom: none;
+  margin-top: 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+.hero img { border-radius: 12px; }
+.term-pill {
+  display: inline-block;
+  background-color: var(--yellow);
+  color: #1F3B30;
+  font-weight: 700;
+  padding: 0.2em 0.9em;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+}
+.hero-text { font-size: 1.08rem; line-height: 1.6; }
+.hero-text strong { color: white; }
+
+/* Buttons in the banner */
+.hero-btn {
+  display: inline-block;
+  background-color: white;
+  color: var(--green) !important;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0.45em 1.1em;
+  border-radius: 999px;
+  margin: 0.25rem 0.4rem 0.25rem 0;
+  border: 2px solid white;
+}
+.hero-btn:hover { background-color: transparent; color: white !important; }
+
+/* ---- Info cards ---- */
+.cards-band {
+  padding: 0.5rem 0;
+}
+.info-card {
+  background-color: white;
+  border: 1px solid #E4DFD7;
+  border-top: 6px solid var(--card);
+  border-radius: 12px;
+  padding: 1rem 1.25rem 0.5rem 1.25rem;
+  height: 100%;
+  box-sizing: border-box;
+}
+.info-card h3 {
+  color: var(--card-text);
+  margin-top: 0.25rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.info-card .icon { color: var(--card); }
+.info-card p { margin-bottom: 0.6rem; }
+.card-orange { --card: var(--orange);    --card-text: var(--orange-text); }
+.card-blue   { --card: var(--blue);      --card-text: var(--blue-text); }
+.card-pink   { --card: var(--pink-deep); --card-text: var(--pink-deep); }
+.card-green  { --card: var(--green);     --card-text: var(--green); }
+
+.source-link { text-align: right; color: #6C757D; margin-top: 1rem; }
+</style>
+<div class="grid hero">
+<div class="g-col-12 g-col-md-4">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/bsta_550_hex_3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="337"></p>
 </figure>
 </div>
 </div>
-<section id="bsta-550-introduction-to-probability" class="level1 g-col-7">
+<section id="bsta-550-introduction-to-probability" class="level1 g-col-12 g-col-md-8">
 <h1>BSTA 550: Introduction to Probability</h1>
-<section id="fall-2026" class="level3">
-<h3 class="anchored" data-anchor-id="fall-2026">Fall 2026</h3>
-<p>&nbsp;</p>
-<p>Welcome to Biostatistics and Probability!</p>
+<p><span class="term-pill">Fall 2026</span></p>
+<div class="hero-text">
+<p><strong>Welcome to Biostatistics and Probability!</strong></p>
 <p>This course is an introduction to the methods and concepts of probability theory, including conditional probability and independence, combinatorics, discrete and continuous random variables, probability distributions, joint distributions, expectation, transformations of random variables, and the central limit theorem. Students will apply probability concepts and develop statistical reasoning through simulations in R.</p>
-<p>&nbsp;</p>
+</div>
+<p><a href="PASTE-ONEDRIVE-LINK-HERE" class="hero-btn">OneDrive Folder</a> <a href="./syllabus.html" class="hero-btn">Syllabus</a> <a href="./schedule.html" class="hero-btn">Schedule</a></p>
 </section>
-</section>
 </div>
-</div>
-</div>
+<div class="cards-band">
 <div class="grid">
-<section id="instructor" class="level3 g-col-3">
+<div class="g-col-12 g-col-md-6 g-col-lg-3">
+<section id="instructor" class="level3 info-card card-orange">
 <h3 class="anchored" data-anchor-id="instructor">Instructor</h3>
-<p><iconify-icon inline="" icon="fluent:person-24-filled" style="font-size: 24px;"></iconify-icon> <a href="./instructors.html">Dr.&nbsp;Nicky Wakim</a></p>
-<p><iconify-icon inline="" icon="bi:building-fill" style="font-size: 24px;"></iconify-icon> Vanport 622A</p>
-<p><iconify-icon inline="" icon="tabler:mail-filled" style="font-size: 24px;"></iconify-icon> <a href="mailto:wakim@ohsu.edu">wakim@ohsu.edu</a></p>
+<p><span class="icon"><iconify-icon inline="" icon="fluent:person-24-filled" style="font-size: 24px;"></iconify-icon></span> <a href="./instructors.html">Dr.&nbsp;Nicky Wakim</a></p>
+<p><span class="icon"><iconify-icon inline="" icon="bi:building-fill" style="font-size: 24px;"></iconify-icon></span> Vanport 622A</p>
+<p><span class="icon"><iconify-icon inline="" icon="tabler:mail-filled" style="font-size: 24px;"></iconify-icon></span> <a href="mailto:wakim@ohsu.edu">wakim@ohsu.edu</a></p>
 </section>
-<section id="office-hours" class="level3 g-col-3">
+</div>
+<div class="g-col-12 g-col-md-6 g-col-lg-3">
+<section id="office-hours" class="level3 info-card card-blue">
 <h3 class="anchored" data-anchor-id="office-hours">Office Hours</h3>
-<p><a href="">TA</a> <iconify-icon inline="" icon="icon-park-solid:time" style="font-size: 24px;"></iconify-icon> TBD</p>
-<p><a href="https://ohsu.webex.com/meet/wakim">Nicky</a> <iconify-icon inline="" icon="icon-park-solid:time" style="font-size: 24px;"></iconify-icon> TBD</p>
+<p><strong><a href="https://ohsu.webex.com/meet/wakim">Nicky</a></strong></p>
+<p><span class="icon"><iconify-icon inline="" icon="icon-park-solid:time" style="font-size: 24px;"></iconify-icon></span> TBD</p>
+<p><strong>TA</strong></p>
+<p><span class="icon"><iconify-icon inline="" icon="icon-park-solid:time" style="font-size: 24px;"></iconify-icon></span> TBD</p>
 </section>
-<section id="course-details" class="level3 g-col-3">
+</div>
+<div class="g-col-12 g-col-md-6 g-col-lg-3">
+<section id="course-details" class="level3 info-card card-pink">
 <h3 class="anchored" data-anchor-id="course-details">Course details</h3>
-<p><iconify-icon inline="" icon="fa6-solid:calendar-days" style="font-size: 24px;"></iconify-icon> Mondays, Wednesdays</p>
-<p><iconify-icon inline="" icon="fa6-solid:calendar" style="font-size: 24px;"></iconify-icon> 09/28 - 12/07</p>
-<p><iconify-icon inline="" icon="icon-park-solid:time" style="font-size: 24px;"></iconify-icon> 10:30 AM - 12 PM</p>
-<p><iconify-icon inline="" icon="fa6-solid:person-chalkboard" style="font-size: 24px;"></iconify-icon> In-person, VPT 264</p>
+<p><span class="icon"><iconify-icon inline="" icon="fa6-solid:calendar-days" style="font-size: 24px;"></iconify-icon></span> Mondays, Wednesdays</p>
+<p><span class="icon"><iconify-icon inline="" icon="fa6-solid:calendar" style="font-size: 24px;"></iconify-icon></span> 09/28 - 12/07</p>
+<p><span class="icon"><iconify-icon inline="" icon="icon-park-solid:time" style="font-size: 24px;"></iconify-icon></span> 10:30 AM - 12 PM</p>
+<p><span class="icon"><iconify-icon inline="" icon="fa6-solid:person-chalkboard" style="font-size: 24px;"></iconify-icon></span> In-person, VPT 264</p>
 </section>
-<section id="contacting-me" class="level3 g-col-3">
+</div>
+<div class="g-col-12 g-col-md-6 g-col-lg-3">
+<section id="contacting-me" class="level3 info-card card-green">
 <h3 class="anchored" data-anchor-id="contacting-me">Contacting me</h3>
-<p>E-mail or Slack is the best way to get in contact with me. I will try to respond to all course-related e-mails within 24 hours Monday-Friday.</p>
+<p><span class="icon"><iconify-icon inline="" icon="tabler:mail-filled" style="font-size: 24px;"></iconify-icon></span> E-mail is the best way to reach me. I try to respond to all course-related e-mails within 24 hours, Monday-Friday.</p>
 </section>
 </div>
-<hr>
-<div class="grid">
-<div class="g-col-9">
-
 </div>
-<div class="g-col-3">
+</div>
+<div class="source-link">
 <p><a href="https://github.com/nwakim/BSTA_550_26F"><iconify-icon inline="" icon="icomoon-free:github" style="font-size: 24px;"></iconify-icon> View the source on GitHub</a></p>
-</div>
 </div>
 
 

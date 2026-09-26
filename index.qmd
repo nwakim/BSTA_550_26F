@@ -10,76 +10,163 @@ library(here)
 source(here("class_dates.R"))
 ```
 
-::: {style="background-color: #006a4e"}
-::: {style="color: #FFFFFF"}
-::: grid
-::: g-col-4
+```{=html}
+<style>
+/* ---- BSTA 550 color palette ---- */
+:root {
+  --green:  #006a4e;
+  --blue:   #6B8CC4;  --blue-text:   #4F70AD;
+  --orange: #E25D3B;  --orange-text: #C24A2A;
+  --pink:   #F08897;  --pink-deep:   #C9445A;
+  --yellow: #F1CF58;
+  --ivory:  #F2EFEA;
+}
+
+/* ---- Welcome banner ---- */
+.hero {
+  background-color: var(--green);
+  color: white;
+  border-radius: 16px;
+  padding: 2rem 2rem 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+}
+.hero h1 {
+  color: white;
+  border-bottom: none;
+  margin-top: 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+.hero img { border-radius: 12px; }
+.term-pill {
+  display: inline-block;
+  background-color: var(--yellow);
+  color: #1F3B30;
+  font-weight: 700;
+  padding: 0.2em 0.9em;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+}
+.hero-text { font-size: 1.08rem; line-height: 1.6; }
+.hero-text strong { color: white; }
+
+/* Buttons in the banner */
+.hero-btn {
+  display: inline-block;
+  background-color: white;
+  color: var(--green) !important;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0.45em 1.1em;
+  border-radius: 999px;
+  margin: 0.25rem 0.4rem 0.25rem 0;
+  border: 2px solid white;
+}
+.hero-btn:hover { background-color: transparent; color: white !important; }
+
+/* ---- Info cards ---- */
+.cards-band {
+  padding: 0.5rem 0;
+}
+.info-card {
+  background-color: white;
+  border: 1px solid #E4DFD7;
+  border-top: 6px solid var(--card);
+  border-radius: 12px;
+  padding: 1rem 1.25rem 0.5rem 1.25rem;
+  height: 100%;
+  box-sizing: border-box;
+}
+.info-card h3 {
+  color: var(--card-text);
+  margin-top: 0.25rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.info-card .icon { color: var(--card); }
+.info-card p { margin-bottom: 0.6rem; }
+.card-orange { --card: var(--orange);    --card-text: var(--orange-text); }
+.card-blue   { --card: var(--blue);      --card-text: var(--blue-text); }
+.card-pink   { --card: var(--pink-deep); --card-text: var(--pink-deep); }
+.card-green  { --card: var(--green);     --card-text: var(--green); }
+
+.source-link { text-align: right; color: #6C757D; margin-top: 1rem; }
+</style>
+```
+
+::: {.grid .hero}
+::: {.g-col-12 .g-col-md-4}
 ![](images/bsta_550_hex_3.png){fig-align="center" width="337"}
 :::
 
-::: g-col-7
+::: {.g-col-12 .g-col-md-8}
 # BSTA 550: Introduction to Probability
 
-### Fall 2026
+[Fall 2026]{.term-pill}
 
- 
+::: hero-text
+**Welcome to Biostatistics and Probability!**
 
-Welcome to Biostatistics and Probability!
-
-This course is an introduction to the methods and concepts of probability theory, including conditional probability and independence, combinatorics, discrete and continuous random variables, probability distributions, joint distributions, expectation, transformations of random variables, and the central limit theorem. Students will apply probability concepts and develop statistical reasoning through simulations in R. 
-
- 
-:::
-:::
-:::
+This course is an introduction to the methods and concepts of probability theory, including conditional probability and independence, combinatorics, discrete and continuous random variables, probability distributions, joint distributions, expectation, transformations of random variables, and the central limit theorem. Students will apply probability concepts and develop statistical reasoning through simulations in R.
 :::
 
+[OneDrive Folder](PASTE-ONEDRIVE-LINK-HERE){.hero-btn} [Syllabus](syllabus.qmd){.hero-btn} [Schedule](schedule.qmd){.hero-btn}
+:::
+:::
+
+::: cards-band
 ::: grid
-::: g-col-3
+::: {.g-col-12 .g-col-md-6 .g-col-lg-3}
+::: {.info-card .card-orange}
 ### Instructor
 
-{{< iconify fluent person-24-filled size=24px >}} [Dr. Nicky Wakim](instructors.qmd)
+[{{< iconify fluent person-24-filled size=24px >}}]{.icon} [Dr. Nicky Wakim](instructors.qmd)
 
-{{< iconify bi building-fill size=24px >}} Vanport 622A
+[{{< iconify bi building-fill size=24px >}}]{.icon} Vanport 622A
 
-{{< iconify tabler mail-filled size=24px >}} [wakim\@ohsu.edu](mailto:wakim@ohsu.edu)
+[{{< iconify tabler mail-filled size=24px >}}]{.icon} [wakim\@ohsu.edu](mailto:wakim@ohsu.edu)
+:::
 :::
 
-::: g-col-3
+::: {.g-col-12 .g-col-md-6 .g-col-lg-3}
+::: {.info-card .card-blue}
 ### Office Hours
 
-[TA]() {{< iconify icon-park-solid time size=24px >}} TBD
+**[Nicky](https://ohsu.webex.com/meet/wakim)**
 
-[Nicky](https://ohsu.webex.com/meet/wakim) {{< iconify icon-park-solid time size=24px >}} TBD
+[{{< iconify icon-park-solid time size=24px >}}]{.icon} TBD
 
+**TA**
+
+[{{< iconify icon-park-solid time size=24px >}}]{.icon} TBD
+:::
 :::
 
-::: g-col-3
+::: {.g-col-12 .g-col-md-6 .g-col-lg-3}
+::: {.info-card .card-pink}
 ### Course details
 
-{{< iconify fa6-solid calendar-days size=24px >}} Mondays, Wednesdays
+[{{< iconify fa6-solid calendar-days size=24px >}}]{.icon} Mondays, Wednesdays
 
-{{< iconify fa6-solid calendar size=24px >}} `{r} w1d1 %>% format("%m/%d")` - `{r} w11d1 %>% format("%m/%d")`
+[{{< iconify fa6-solid calendar size=24px >}}]{.icon} `{r} w1d1 %>% format("%m/%d")` - `{r} w11d1 %>% format("%m/%d")`
 
-{{< iconify icon-park-solid time size=24px >}} 10:30 AM - 12 PM
+[{{< iconify icon-park-solid time size=24px >}}]{.icon} 10:30 AM - 12 PM
 
-{{< iconify fa6-solid person-chalkboard size=24px >}} In-person, VPT 264
+[{{< iconify fa6-solid person-chalkboard size=24px >}}]{.icon} In-person, VPT 264
+:::
 :::
 
-::: g-col-3
+::: {.g-col-12 .g-col-md-6 .g-col-lg-3}
+::: {.info-card .card-green}
 ### Contacting me
 
-E-mail or Slack is the best way to get in contact with me. I will try to respond to all course-related e-mails within 24 hours Monday-Friday.
+[{{< iconify tabler mail-filled size=24px >}}]{.icon} E-mail is the best way to reach me. I try to respond to all course-related e-mails within 24 hours, Monday-Friday.
+:::
+:::
 :::
 :::
 
-------------------------------------------------------------------------
-
-::: grid
-::: g-col-9
-:::
-
-::: g-col-3
+::: source-link
 [{{< iconify icomoon-free github size=24px >}} View the source on GitHub](https://github.com/nwakim/BSTA_550_26F)
-:::
 :::

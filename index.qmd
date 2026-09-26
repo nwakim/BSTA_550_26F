@@ -111,7 +111,7 @@ source(here("class_dates.R"))
 This course is an introduction to the methods and concepts of probability theory, including conditional probability and independence, combinatorics, discrete and continuous random variables, probability distributions, joint distributions, expectation, transformations of random variables, and the central limit theorem. Students will apply probability concepts and develop statistical reasoning through simulations in R.
 :::
 
-[OneDrive Folder](PASTE-ONEDRIVE-LINK-HERE){.hero-btn} [Syllabus](syllabus.qmd){.hero-btn} [Schedule](schedule.qmd){.hero-btn}
+[OneDrive Folder](https://ohsuitg-my.sharepoint.com/:f:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_26F/student-files_BSTA-550-26F?d=w9b7f2bea238c4945a16ae56ba5f76966&csf=1&web=1&e=LAAfkq){.hero-btn} [Syllabus](syllabus.qmd){.hero-btn} [Schedule](schedule.qmd){.hero-btn}
 :::
 :::
 

@@ -78,7 +78,7 @@ Key Course Info
 - **Need an extension?** Email me.
 - **Homework:** turn it in any time before the course ends. On-time homework gets feedback; late homework does not.
 - **Project checkpoints:** you get ONE no-questions-asked, 3-day extension.
-- **Attendance:** come to class or watch the recording, and complete the exit ticket within 7 days of each class. Attendance is not part of your grade.
+- **Attendance:** try to come to class in-person. Recordings will be available.
 - **Used AI on an assignment?** Add an AI Use Statement at the top (see the [Generative AI Policy](#generative-ai-policy)).
 - Class ends `{r} w11d1 %>% format("%B %d, %Y")`. **All coursework MUST be completed by `{r} last_day %>% format("%B %d, %Y")`.**
 - Questions or concerns anytime? Use the [Ongoing Course Feedback](https://forms.office.com/Pages/ResponsePage.aspx?id=V3lz4rj6fk2U9pvWr59xWFMopmPUjRtDiHLswhgacNhUN0MzVDk5Q1pKUkxaWTM0VFhVQTJGRlJLRy4u) form.
@@ -151,9 +151,9 @@ New to R? I also teach PUBH 523, an introduction to R. You can use its videos, p
 ## Course Structure {.sec4}
 
 | **Component** | **Modality** | **Frequency** | **Description** |
-|:----------|:----------|:----------|:----------------------------------------|
-| Lecture | In person | Twice weekly | Lectures with interactive examples. Sessions are recorded and posted online. **Attend or watch each lecture within 7 days and complete its Exit Ticket.** |
-| Homework | Online | Weekly | 9 assignments to engage with concepts, practice coding, and apply calculations. Working in groups is encouraged, but everyone submits their own work. **Due Thursdays at 11 PM** to get feedback, but accepted any time before the course ends. |
+|:------------|:------------|:------------|:--------------------------------|
+| Lecture | In person | Twice weekly | Lectures with interactive examples. Sessions are recorded and posted online. **Attendance in-person is encouraged.** |
+| Homework | Online | Every 1-2 weeks | 7 assignments to engage with concepts, practice coding, and apply calculations. Working in groups is encouraged, but everyone submits their own work. **Due Sundays at 11 PM** to get feedback, but accepted any time before the course ends. |
 | Quizzes | Online | Every 3 weeks | Questions on key concepts, statistical processes, and interpreting output. **Online, open over a few days, and open book.** Work on quizzes independently. |
 | Project (Checkpoints + Final Brief) | Online | 4 checkpoints, 1 final brief | Checkpoints guide you through the calculations and background for a real-world scenario, and the final brief summarizes your context and results. Work independently or in pairs. |
 
@@ -202,9 +202,9 @@ The final brief brings together your checkpoint work into a summary of your scen
 
 ### Attendance
 
-You're expected to attend class, take part in in-class polls, and complete the exit ticket. **Please attend at least 12 classes in person.** I know flexibility matters, but I need some in-person requirements to align with the school's policy. For the rest, you're welcome to watch the recordings. (I can't guarantee against technical issues with recordings.) Attendance is not part of your grade.
+You're expected to attend class, take part in in-class polls, and complete the exit ticket. **Please try attend classes in person.** Attendance is not part of your grade and recording will be available. I cannot gaurentee recordings will be perfect, sometimes there are technical issues! In-person attendance is your best bet to get the class materials and create community with your classmates!
 
-Exit tickets keep you on track and prevent a pile-up of material. If you have trouble accessing the exit ticket on a specific day, just let me know.
+Exit tickets are meant for points of confusion and clarification!
 
 If a religious holiday falls on a class day, please email me and I'll excuse the absence. Recordings will be available, and you're welcome to bring questions to office hours.
 
@@ -261,7 +261,7 @@ Think of this class as assembling a toolbox. A new handyperson might need help f
 *Quizzes means while you're actively taking a quiz, not while studying for one.*
 
 | **Can I use AI to...** | **Homework** | **Project** | **Quizzes** |
-|:--------------------------|:-------------:|:-------------:|:-------------:|
+|:-----------------------|:--------------:|:--------------:|:--------------:|
 | ***Coding*** |  |  |  |
 | Explain an error message | [Yes]{.yes} | [Yes]{.yes} | [No]{.no} |
 | Explain what a function does | [Yes]{.yes} | [Yes]{.yes} | [No]{.no} |

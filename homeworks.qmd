@@ -1,7 +1,7 @@
 ---
 title: "Homework"
 date-modified: "today"
-format: 
+format:
   html:
     page-layout: full
     link-external-newwindow: true
@@ -13,8 +13,73 @@ library(here)
 source(here("class_dates.R"))
 ```
 
+```{=html}
+<style>
+/* ---- BSTA 550 color palette ---- */
+:root {
+  --green:  #006a4e;
+  --blue:   #6B8CC4;  --blue-text:   #4F70AD;
+  --orange: #E25D3B;  --orange-text: #C24A2A;
+  --pink:   #F08897;  --pink-deep:   #C9445A;
+  --ivory:  #F2EFEA;
+}
+.title { font-size: 40px; color: var(--green); }
+
+.sec-orange { --sec: var(--orange); --sec-light: #F3C4B6; --sec-text: var(--orange-text); }
+.sec-blue   { --sec: var(--blue);   --sec-light: #CBD7EC; --sec-text: var(--blue-text); }
+/* Main headers: colored text with a soft underline */
+section.level2 > h2 {
+  color: var(--sec-text, var(--green));
+  font-weight: 700;
+  padding-bottom: 0.3em;
+  border-bottom: 3px solid var(--sec-light, #CCE1DA);
+  margin-top: 2.5rem;
+}
+section.level3 > h3 { color: var(--sec-text, var(--green)); margin-top: 1.5rem; }
+section.level2 li strong, section.level2 p strong { color: var(--sec-text, var(--green)); }
+
+/* ---- Homework table ---- */
+.hw-table table { border-collapse: separate; border-spacing: 0; }
+.hw-table table thead th {
+  background-color: var(--green);
+  color: white;
+  border-bottom: none;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.6em 0.8em;
+}
+.hw-table table thead th:first-child { border-radius: 10px 0 0 0; }
+.hw-table table thead th:last-child  { border-radius: 0 10px 0 0; }
+.hw-table table tbody tr:nth-child(even) { background-color: var(--ivory); }
+.hw-table table td { text-align: center; vertical-align: middle; padding: 0.4em 0.8em; }
+.hw-table table td:nth-child(1) { font-weight: 700; color: var(--green); }
+.hw-table table td:nth-child(3) { font-weight: 700; }
+/* Icons: all green */
+.hw-table table td a { color: var(--green) !important; }
+.hw-table table td a:hover { opacity: 0.75; }
+
+/* File name example */
+main code.filename {
+  background-color: var(--ivory);
+  color: var(--orange-text);
+  font-weight: 700;
+  padding: 0.15em 0.5em;
+  border-radius: 6px;
+}
+
+/* ---- Rubric table ---- */
+.rubric table { border-collapse: separate; border-spacing: 0; }
+.rubric table thead th { color: white; background-color: var(--green); border-bottom: none; padding: 0.6em 0.8em; }
+.rubric table thead th:first-child { border-radius: 10px 0 0 0; }
+.rubric table thead th:last-child  { border-radius: 0 10px 0 0; }
+.rubric table td { padding: 0.6em 0.8em; vertical-align: top; }
+.rubric table td:nth-child(1) { font-weight: 700; color: var(--green); }
+</style>
+```
+
+::: hw-table
 | Homework | Assignment | Assignment due (\@11pm) | Answers | Solutions & videos |
-|----|----|----|----|----|
+|---------------|---------------|---------------|---------------|---------------|
 | 0 | [[{{< iconify material-symbols assignment size=29px >}}](/homework/HW_00.qmd)]{style="color:#f8f5f0;"} | `r hw0 %>% format("%m/%d")` |  |  |
 | 1 | [[{{< iconify material-symbols assignment size=29px >}}](/homework/HW_01.qmd)]{style="color:#f8f5f0;"} | `r hw1 %>% format("%m/%d")` | [[{{< iconify ph key-fill size=29px >}}](/hw_answers/HW_01_ans.qmd)]{style="color:#f8f5f0;"} | [[{{< iconify icon-park-twotone file-code size=29px >}}](https://ohsuitg-my.sharepoint.com/:f:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/HW_solns/HW_01?csf=1&web=1&e=MkybbV)]{style="color:#f8f5f0;"} |
 | 2 | [[{{< iconify material-symbols assignment size=29px >}}](/homework/HW_02.qmd)]{style="color:#f8f5f0;"} | `r hw2 %>% format("%m/%d")` | [[{{< iconify ph key-fill size=29px >}}](/hw_answers/HW_02_ans.qmd)]{style="color:#f8f5f0;"} | [[{{< iconify icon-park-twotone file-code size=29px >}}](https://ohsuitg-my.sharepoint.com/:f:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/HW_solns/HW_02?csf=1&web=1&e=NJoXh9)]{style="color:#f8f5f0;"} [[{{< iconify icon-park-twotone file-code size=29px >}}](https://ohsuitg-my.sharepoint.com/:f:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/HW_solns/HW_03?csf=1&web=1&e=0dp4TC)]{style="color:#f8f5f0;"} |
@@ -23,21 +88,25 @@ source(here("class_dates.R"))
 | 5 | [[{{< iconify material-symbols assignment size=29px >}}](/homework/HW_05.qmd)]{style="color:#f8f5f0;"} | `r hw5 %>% format("%m/%d")` | [[{{< iconify ph key-fill size=29px >}}](/hw_answers/HW_05_ans.qmd)]{style="color:#f8f5f0;"} | [[{{< iconify icon-park-twotone file-code size=29px >}}](https://ohsuitg-my.sharepoint.com/:f:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/HW_solns/HW_05?csf=1&web=1&e=TymdQO)]{style="color:#f8f5f0;"} |
 | 6 | [[{{< iconify material-symbols assignment size=29px >}}](/homework/HW_06.qmd)]{style="color:#f8f5f0;"} | `r hw6 %>% format("%m/%d")` | [[{{< iconify ph key-fill size=29px >}}](/hw_answers/HW_06_ans.qmd)]{style="color:#f8f5f0;"} | [[{{< iconify icon-park-twotone file-code size=29px >}}](https://ohsuitg-my.sharepoint.com/:f:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_25F/Student_files_BSTA_550/HW_solns/HW_06?csf=1&web=1&e=vwXG7A)]{style="color:#f8f5f0;"} |
 | 7 (optional) | [[{{< iconify material-symbols assignment size=29px >}}](/homework/HW_07.qmd)]{style="color:#f8f5f0;"} | `r hw7 %>% format("%m/%d")` | [[{{< iconify ph key-fill size=29px >}}](/hw_answers/HW_07_ans.qmd)]{style="color:#f8f5f0;"} | [{{< iconify icon-park-twotone file-code size=29px >}}]{style="color:#f8f5f0;"} |
+:::
 
-## File Naming
+ 
 
-For HW **Assignments**, please use the following file naming: "HW01_LastName_FirstInitial"
+## File Naming {.sec-orange}
 
-- For homeworks without R, this should be a pdf file
+For HW **Assignments**, please use the following file naming: `HW01_LastName_FirstInitial`{.filename}
 
-- For homeworks with R, this may be a pdf file (with the code in the pdf) or an html file
+- For homeworks without R, this should be a **pdf** file
+- For homeworks with R, this may be a **pdf** file (with the code in the pdf) or an **html** file
 
-## Rubric
+## Rubric {.sec-blue}
 
 ### Assignments
 
-A total of 1 point will be given for a complete homework. The following rubric will be used:
+A total of **1 point** will be given for a complete homework. The following rubric will be used:
 
+::: rubric
 |   | 1 point | 0 points |
-|----|----|----|
+|------------------------|------------------------|------------------------|
 | Completeness | 75% of the question parts are thoroughly worked out and have an answer. “Question parts” means the sub-questions labeled “Part \_." Answers can be incorrect or correct. For parts with longer processes and calculations, solution set up and calculations are required. | Less than 75% of question parts are thoroughly worked out. Attempts do not count as thoroughly worked out. |
+:::

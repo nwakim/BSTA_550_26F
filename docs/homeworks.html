@@ -163,6 +163,68 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<style>
+/* ---- BSTA 550 color palette ---- */
+:root {
+  --green:  #006a4e;
+  --blue:   #6B8CC4;  --blue-text:   #4F70AD;
+  --orange: #E25D3B;  --orange-text: #C24A2A;
+  --pink:   #F08897;  --pink-deep:   #C9445A;
+  --ivory:  #F2EFEA;
+}
+.title { font-size: 40px; color: var(--green); }
+
+.sec-orange { --sec: var(--orange); --sec-light: #F3C4B6; --sec-text: var(--orange-text); }
+.sec-blue   { --sec: var(--blue);   --sec-light: #CBD7EC; --sec-text: var(--blue-text); }
+/* Main headers: colored text with a soft underline */
+section.level2 > h2 {
+  color: var(--sec-text, var(--green));
+  font-weight: 700;
+  padding-bottom: 0.3em;
+  border-bottom: 3px solid var(--sec-light, #CCE1DA);
+  margin-top: 2.5rem;
+}
+section.level3 > h3 { color: var(--sec-text, var(--green)); margin-top: 1.5rem; }
+section.level2 li strong, section.level2 p strong { color: var(--sec-text, var(--green)); }
+
+/* ---- Homework table ---- */
+.hw-table table { border-collapse: separate; border-spacing: 0; }
+.hw-table table thead th {
+  background-color: var(--green);
+  color: white;
+  border-bottom: none;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.6em 0.8em;
+}
+.hw-table table thead th:first-child { border-radius: 10px 0 0 0; }
+.hw-table table thead th:last-child  { border-radius: 0 10px 0 0; }
+.hw-table table tbody tr:nth-child(even) { background-color: var(--ivory); }
+.hw-table table td { text-align: center; vertical-align: middle; padding: 0.4em 0.8em; }
+.hw-table table td:nth-child(1) { font-weight: 700; color: var(--green); }
+.hw-table table td:nth-child(3) { font-weight: 700; }
+/* Icons: all green */
+.hw-table table td a { color: var(--green) !important; }
+.hw-table table td a:hover { opacity: 0.75; }
+
+/* File name example */
+main code.filename {
+  background-color: var(--ivory);
+  color: var(--orange-text);
+  font-weight: 700;
+  padding: 0.15em 0.5em;
+  border-radius: 6px;
+}
+
+/* ---- Rubric table ---- */
+.rubric table { border-collapse: separate; border-spacing: 0; }
+.rubric table thead th { color: white; background-color: var(--green); border-bottom: none; padding: 0.6em 0.8em; }
+.rubric table thead th:first-child { border-radius: 10px 0 0 0; }
+.rubric table thead th:last-child  { border-radius: 0 10px 0 0; }
+.rubric table td { padding: 0.6em 0.8em; vertical-align: top; }
+.rubric table td:nth-child(1) { font-weight: 700; color: var(--green); }
+</style>
+<div class="hw-table">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -232,19 +294,22 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<section id="file-naming" class="level2">
-<h2 class="anchored" data-anchor-id="file-naming">File Naming</h2>
-<p>For HW <strong>Assignments</strong>, please use the following file naming: “HW01_LastName_FirstInitial”</p>
+</div>
+<p>&nbsp;</p>
+<section id="file-naming" class="level2 sec-orange">
+<h2 class="sec-orange anchored" data-anchor-id="file-naming">File Naming</h2>
+<p>For HW <strong>Assignments</strong>, please use the following file naming: <code class="filename">HW01_LastName_FirstInitial</code></p>
 <ul>
-<li><p>For homeworks without R, this should be a pdf file</p></li>
-<li><p>For homeworks with R, this may be a pdf file (with the code in the pdf) or an html file</p></li>
+<li>For homeworks without R, this should be a <strong>pdf</strong> file</li>
+<li>For homeworks with R, this may be a <strong>pdf</strong> file (with the code in the pdf) or an <strong>html</strong> file</li>
 </ul>
 </section>
-<section id="rubric" class="level2">
-<h2 class="anchored" data-anchor-id="rubric">Rubric</h2>
+<section id="rubric" class="level2 sec-blue">
+<h2 class="sec-blue anchored" data-anchor-id="rubric">Rubric</h2>
 <section id="assignments" class="level3">
 <h3 class="anchored" data-anchor-id="assignments">Assignments</h3>
-<p>A total of 1 point will be given for a complete homework. The following rubric will be used:</p>
+<p>A total of <strong>1 point</strong> will be given for a complete homework. The following rubric will be used:</p>
+<div class="rubric">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -266,6 +331,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+</div>
 
 
 </section>

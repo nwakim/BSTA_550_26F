@@ -17945,14 +17945,14 @@
     "href": "homeworks.html#file-naming",
     "title": "Homework",
     "section": "File Naming",
-    "text": "File Naming\nFor HW Assignments, please use the following file naming: “HW01_LastName_FirstInitial”\n\nFor homeworks without R, this should be a pdf file\nFor homeworks with R, this may be a pdf file (with the code in the pdf) or an html file"
+    "text": "File Naming\nFor HW Assignments, please use the following file naming: HW01_LastName_FirstInitial\n\nFor homeworks without R, this should be a pdf file\nFor homeworks with R, this may be a pdf file (with the code in the pdf) or an html file"
   },
   {
     "objectID": "homeworks.html#rubric",
     "href": "homeworks.html#rubric",
     "title": "Homework",
     "section": "Rubric",
-    "text": "Rubric\n\nAssignments\nA total of 1 point will be given for a complete homework. The following rubric will be used:\n\n\n\n\n\n\n\n\n\n1 point\n0 points\n\n\n\n\nCompleteness\n75% of the question parts are thoroughly worked out and have an answer. “Question parts” means the sub-questions labeled “Part _.” Answers can be incorrect or correct. For parts with longer processes and calculations, solution set up and calculations are required.\nLess than 75% of question parts are thoroughly worked out. Attempts do not count as thoroughly worked out."
+    "text": "Rubric\n\nAssignments\nA total of 1 point will be given for a complete homework. The following rubric will be used:\n\n\n\n\n\n\n\n\n\n\n1 point\n0 points\n\n\n\n\nCompleteness\n75% of the question parts are thoroughly worked out and have an answer. “Question parts” means the sub-questions labeled “Part _.” Answers can be incorrect or correct. For parts with longer processes and calculations, solution set up and calculations are required.\nLess than 75% of question parts are thoroughly worked out. Attempts do not count as thoroughly worked out."
   },
   {
     "objectID": "quiz.html",

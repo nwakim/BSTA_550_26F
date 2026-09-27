@@ -27,9 +27,9 @@ library(tidyverse)
 
 # Learning Objectives
 
-1. Use simulations (e.g., coin flips in R) to illustrate randomness in equally likely outcomes.
+1.  Use simulations (e.g., coin flips in R) to illustrate randomness in equally likely outcomes.
 
-2. Identify sample spaces and events for basic experiments, and define probability calculations. 
+2.  Identify sample spaces and events for basic experiments, and define probability calculations.
 
 ## Where are we?
 
@@ -40,12 +40,12 @@ library(tidyverse)
 ## What is probability? (1/2)
 
 - We hear the word "probability" pretty often
-  - Common in news reports, advertisements, sports, medicine, etc. 
-  
+  - Common in news reports, advertisements, sports, medicine, etc.
+
 > Researchers say the *probability* of living past 110 is on the rise
 >
 > [CNBC, 2021](https://www.cnbc.com/2021/07/17/study-living-past-110-is-becoming-more-likely-longevity-tips.html)
-  
+
 - We may hear "probability" or similar words like "chance," "likelihood," or "odds"
 
 > Scientists fine-tune *odds* of asteroid Bennu hitting Earth through 2300 with NASA probe’s help
@@ -55,7 +55,7 @@ library(tidyverse)
 ## Before we take one more step
 
 - The following few slides *use some undefined words* to **define new words** that in turn *define the previously undefined words*
-- It's confusing! 
+- It's confusing!
 - We're going off assumption that we all have some daily understanding of probability, so stop me if you are confused!
 
 ![](./images/Math_Lady_meme.png){fig-align="center"}
@@ -63,10 +63,10 @@ library(tidyverse)
 # Learning Objectives
 
 ::: lob
-1. Use simulations (e.g., coin flips in R) to illustrate randomness in equally likely outcomes.
+1.  Use simulations (e.g., coin flips in R) to illustrate randomness in equally likely outcomes.
 :::
 
-2. Identify sample spaces and events for basic experiments, and define probability calculations.
+2.  Identify sample spaces and events for basic experiments, and define probability calculations.
 
 ## Probability and randomness
 
@@ -78,22 +78,19 @@ library(tidyverse)
 
 - **Outcomes** can be ["equally likely,"]{style="color:#d9534f;"} meaning each **outcome** has the *same* probability of happening
   - But [**random**]{style="color:#29abe0;"} does **NOT** necessarily mean [equally likely]{style="color:#d9534f;"}
-
 - We often use physical randomness to demonstrate [equally likely]{style="color:#d9534f;"} outcomes
   - Think: flipping coins, rolling a dice, drawing cards
-  
+
  
-  
+
 - The occurrence of outcomes can be [**uncertain**]{style="color:#E89543;"}, but there is an **underlying distribution of the probability** of outcomes
   - There is a distribution of outcomes over large number of (hypothetical repetitions)
-  
+
 ## A single coin flip then 100 coin flips
 
 [Seeing Theory, Chapter 1: Basic Probability, Chance Events](https://seeing-theory.brown.edu/basic-probability/index.html)
 
-```{css}
-#| echo: false
-
+```{css, echo = FALSE}
 <style>
 #wrap { width: 600px; height: 390px; padding: 0; overflow: hidden; }
 #frame { width: 1300px; height: 600px; border: 1px solid black; }
@@ -145,7 +142,6 @@ phat_n = sweep(apply(x2, 2, cumsum), 1, i_n, FUN = '/') %>%
 
 ```
 
-
 ```{r coin-flips-table, echo = FALSE}
 
 knitr::kable(
@@ -195,7 +191,7 @@ ggplot(phat_n %>%
 
 ## Can we simulate more?? {visibility="hidden"}
 
-- I can start to count the number of tails in the flips 
+- I can start to count the number of tails in the flips
 
 ```{r include=FALSE}
 set.seed(12)
@@ -230,12 +226,11 @@ sum( sample(coin, 100000, replace = T) == "heads" ) / 100000
  
 
 - Why do we need to simulate 100s or 1000s of coin flips?
-    - With enough repetitions, we can **use simulations to approximate the probability of an event**
+  - With enough repetitions, we can **use simulations to approximate the probability of an event**
 
  
 
 - Okay, but why is that helpful? (next slide!)
-
 
 ## Why are simulations important? (bigger picture)
 
@@ -243,32 +238,31 @@ In the previous example, coding a simulation seemed more educational than necess
 
  
 
-1. Simulations can help us (or be necessary) to **solve a problem when calculations are complex**
-    - We can often calculate probabilities mathematically, but we will eventually get to complex calculations 
+1.  Simulations can help us (or be necessary) to **solve a problem when calculations are complex**
 
-2. Simulations are a great way to **check your work**!
+    - We can often calculate probabilities mathematically, but we will eventually get to complex calculations
 
+2.  Simulations are a great way to **check your work**!
 
-3. Simulation based **reasoning** is helpful in statistics
+3.  Simulation based **reasoning** is helpful in statistics
+
     - You'll see this in confidence intervals in Biostatistics courses
 
-    
-4. Simulations allow you to **change assumptions easily** and see how they affect your results
+4.  Simulations allow you to **change assumptions easily** and see how they affect your results
 
-
-5. It is often **how statisticians "run" experiments** on their methods of hypotheses
+5.  It is often **how statisticians "run" experiments** on their methods of hypotheses
 
 # Learning Objectives
 
-1. Use simulations (e.g., coin flips in R) to illustrate randomness in equally likely outcomes.
+1.  Use simulations (e.g., coin flips in R) to illustrate randomness in equally likely outcomes.
 
 ::: lob
-2. Identify sample spaces and events for basic experiments, and define probability calculations.
+2.  Identify sample spaces and events for basic experiments, and define probability calculations.
 :::
 
 ## Outcomes, events, sample spaces
 
-::: definition
+::::: definition
 ::: def-title
 Definition: Outcome
 :::
@@ -276,9 +270,9 @@ Definition: Outcome
 ::: def-cont
 The possible results in a random phenomenon.
 :::
-:::
+:::::
 
-::: definition
+::::: definition
 ::: def-title
 Definition: Sample Space
 :::
@@ -286,9 +280,9 @@ Definition: Sample Space
 ::: def-cont
 The **sample space** $S$ is the set of *all* outcomes
 :::
-:::
+:::::
 
-::: definition
+::::: definition
 ::: def-title
 Definition: Event
 :::
@@ -296,49 +290,49 @@ Definition: Event
 ::: def-cont
 An **event** is a *collection of some* outcomes. An event can include multiple outcomes or no outcomes (a subset of the sample space).
 :::
-:::
+:::::
 
 When thinking about events, think about outcomes that you might be asking the probability of. For example, what is the probability that you get a heads or a tails in one flip? (Answer: 1)
 
 ## Coin Toss Example: 1 coin (1/3)
 
-::: columns
-::: column
-::: example
+::::::: columns
+:::::: column
+::::: example
 ::: ex-title
 Single coin toss
 :::
+
 ::: ex-cont
 **Suppose you toss one coin.**
 
--   What are the possible outcomes?
+- What are the possible outcomes?
 
-     
+   
 
--   What is the sample space?
+- What is the sample space?
 
-     
+   
 
--   What are the possible events?
+- What are the possible events?
 :::
-:::
-
-:::
-:::
+:::::
+::::::
+:::::::
 
 ## Coin Toss Example: 1 coin (2/3)
 
 **Suppose you toss one coin.**
 
--   What are the possible outcomes?
+- What are the possible outcomes?
 
-    -   Heads ($H$)
+  - Heads ($H$)
 
-    -   Tails ($T$)
+  - Tails ($T$)
 
  
 
-::: fact
+::::: fact
 ::: fact-title
 Note
 :::
@@ -346,38 +340,35 @@ Note
 ::: fact-cont
 When something happens at random, such as a coin toss, there are several possible outcomes, and *exactly one* of the outcomes will occur.
 :::
-:::
-
+:::::
 
 ## Coin Toss Example: 1 coin (3/3)
 
-::: columns
-
+::::::::::: columns
 ::: {.column width="60%"}
--   What is the sample space?
+- What is the sample space?
 
-    -   $S =$
-
- 
+  - $S =$
 
  
 
--   What are the possible events?
+ 
 
-    -   
+- What are the possible events?
 
-    -   
+  - 
 
-    -   
+  - 
 
-    -   
+  - 
 
-     
+  - 
 
+   
 :::
 
-::: {.column width="40%"}
-::: fact
+::::::::: {.column width="40%"}
+::::: fact
 ::: fact-title
 Note #1
 :::
@@ -385,9 +376,9 @@ Note #1
 ::: fact-cont
 We use curly brackets ($\{\}$) to denote a set (collecting a list of outcomes or values)
 :::
-:::
+:::::
 
-::: fact
+::::: fact
 ::: fact-title
 Note #2
 :::
@@ -395,50 +386,48 @@ Note #2
 ::: fact-cont
 The total number of possible events is $$2^{|S|}$$ where $|S|$ is the total number of outcomes in the sample space. Also, possible events are not necessarily something that can actually occur (i.e. getting a heads and a tails on a single coin flip)
 :::
-:::
-:::
-:::
-
+:::::
+:::::::::
+:::::::::::
 
 ## Coin Toss Example: 2 coins
 
 **Suppose you toss two coins.**
 
--   What is the sample space? *Assume the coins are distinguishable*
+- What is the sample space? *Assume the coins are distinguishable*
 
-    -   $S =$
+  - $S =$
 
  
 
--   What are some possible events?
+- What are some possible events?
 
-    -   $A =$ exactly one $H =$
+  - $A =$ exactly one $H =$
 
-    -   $B =$ at least one $H =$
+  - $B =$ at least one $H =$
 
-    -   
+  - 
 
-    -   
+  - 
 
 ## More info on events and sample spaces
 
--   We usually use capital letters from the beginning of the alphabet to denote events. However, other letters might be chosen to be more descriptive.
-    - Examples: $A, B, C, A_1, A_2$
-
+- We usually use capital letters from the beginning of the alphabet to denote events. However, other letters might be chosen to be more descriptive.
+  - Examples: $A, B, C, A_1, A_2$
 - We can also define a new event as a combination of other events (**next lesson**)
-    - Examples: $A \cup B$ (union), $A \cap B$ (intersection), $A^C$ (complement)
+  - Examples: $A \cup B$ (union), $A \cap B$ (intersection), $A^C$ (complement)
 
  
 
--   We use the notation $|S|$ to denote the **size** of the sample space.
+- We use the notation $|S|$ to denote the **size** of the sample space.
 
  
 
--   The total number of possible events is $2^{|S|}$, which is the total number of possible subsets of $S$. 
+- The total number of possible events is $2^{|S|}$, which is the total number of possible subsets of $S$.
 
  
 
--   The **empty set**, denoted by $\emptyset$, is the set containing no outcomes.
+- The **empty set**, denoted by $\emptyset$, is the set containing no outcomes.
 
 ## Example: Keep sampling until... {visibility="hidden"}
 
@@ -448,13 +437,13 @@ The total number of possible events is $$2^{|S|}$$ where $|S|$ is the total numb
 
 **What is the sample space?**
 
--   Let $H =$ denote someone with high BP.
+- Let $H =$ denote someone with high BP.
 
--   Let $H^C =$ denote someone with not high blood pressure, such as low or regular BP.
+- Let $H^C =$ denote someone with not high blood pressure, such as low or regular BP.
 
  
 
--   Then, $S =$
+- Then, $S =$
 
 ## Let's define probability with events and spaces
 
@@ -462,7 +451,7 @@ If $S$ is a finite sample space, with [**equally likely**]{style="color:#d9534f;
 
 $$\mathbb{P}(A) = \frac{|A|}{|S|}$$
 
-In human speak: 
+In human speak:
 
 - For [**equally likely**]{style="color:#d9534f;"} **outcomes**, the probability that a certain event occurs is: the number of outcomes within the event of interest ($|A|$) **divided by** the total number of possible outcomes ($|S|$)
 
@@ -474,19 +463,19 @@ $$\mathbb{P}(A) = \frac{\text{total number of outcomes in event A}}{\text{total 
 
 - $\mathbb{P}(A)$ is a function with
 
-    -   **Input:** event $A$ from the sample space $S$, ($A \subseteq S$)
+  - **Input:** event $A$ from the sample space $S$, ($A \subseteq S$)
 
-        - $A \subseteq S$ means "A contained within S" or "A is a subset of S"
+    - $A \subseteq S$ means "A contained within S" or "A is a subset of S"
 
-    -   **Output:** a number between 0 and 1 (inclusive)
-    
+  - **Output:** a number between 0 and 1 (inclusive)
+
  
 
 - The [**probability function**]{style="color:#E25D3B;"} maps an event (input) to value between 0 and 1 (output)
 
   - When we speak of the probability function, we often call the values between 0 and 1 "probabilities"
-  
-    - Example: "The probability of drawing a heart is 0.25" for $P(\text{heart}) = 0.25$ 
+
+    - Example: "The probability of drawing a heart is 0.25" for $P(\text{heart}) = 0.25$
 
  
 
@@ -494,12 +483,12 @@ $$\mathbb{P}(A) = \frac{\text{total number of outcomes in event A}}{\text{total 
 
 ## Coin Toss Example Revisited: 2 coins
 
--   From our sample space and events:
-    -   Sample space: $S = \{HH, HT, TH, TT\}$
+- From our sample space and events:
+  - Sample space: $S = \{HH, HT, TH, TT\}$
 
-    -   Event A: $A = \text{exactly one H} = \{HT, TH\}$
+  - Event A: $A = \text{exactly one H} = \{HT, TH\}$
 
-    -   Event B: $B = \text{at least one H} = \{HT, TH, HH\}$
+  - Event B: $B = \text{at least one H} = \{HT, TH, HH\}$
 
  
 
@@ -507,6 +496,6 @@ $$\mathbb{P}(A) = \frac{\text{total number of outcomes in event A}}{\text{total 
 
 # Learning Objectives
 
-1. Use simulations (e.g., coin flips in R) to illustrate randomness in equally likely outcomes.
+1.  Use simulations (e.g., coin flips in R) to illustrate randomness in equally likely outcomes.
 
-2. Identify sample spaces and events for basic experiments, and define probability calculations.
+2.  Identify sample spaces and events for basic experiments, and define probability calculations.

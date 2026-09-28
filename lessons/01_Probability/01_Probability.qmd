@@ -14,6 +14,7 @@ format:
     footer: Lesson 1 Slides
     html-math-method: mathjax
     highlight-style: atom-one
+    code-annotations: hover
 execute: 
   echo: true
 ---
@@ -91,11 +92,9 @@ library(tidyverse)
 [Seeing Theory, Chapter 1: Basic Probability, Chance Events](https://seeing-theory.brown.edu/basic-probability/index.html)
 
 ```{css, echo = FALSE}
-<style>
 #wrap { width: 600px; height: 390px; padding: 0; overflow: hidden; }
 #frame { width: 1300px; height: 600px; border: 1px solid black; }
 #frame { zoom: 1.5; -moz-transform: scale(1.5); -moz-transform-origin: 0 0; }
-</style>
 ```
 
 ```{=html}
@@ -107,116 +106,67 @@ library(tidyverse)
 - We know that heads and tails are [equally likely]{style="color:#d9534f;"} for a single flip
 
 ```{r}
-set.seed(13)
-coin = c("heads", "tails")
-sample(coin, 1)
+set.seed(13) #<1>
+coin <- c("heads", "tails") #<2>
+sample(coin, 1) #<3>
 ```
 
-- When we only flip the coin once, we only only get one outcome (heads or tails)
+1. We need to set a seed, to hold our place in the randomness in R.
+2. We set our two options for our coin toss.
+3. We then sample the coin (flip it) one time. 
+
+- When we only flip the coin once, we only get one outcome (heads or tails)
   - We cannot see any distribution of the probability of outcomes
 
 ## What if I sample 10 coin flips?
 
-- How many tails do we get? Are we getting closer to a distribution of heads and tails that we expect?
+- How many heads do we get? Are we getting closer to a distribution of heads and tails that we expect?
 
-```{r, echo = FALSE}
+```{r sim-flips, echo = FALSE}
+# Four independent sequences of 1000 fair coin flips (one row per flip),
+# with the running count and running proportion of heads in each sequence
+n_flips <- 1000
 
-n = 10 ^ (1:3)
-
-last_n = 1000
-
-i_n = 1:last_n
-
-x = sample(c("H", "T"), size = last_n, replace = TRUE)
-
-x_n = cumsum(x == "H")
-
-x2 = cbind(as.numeric(x == "H"),
-           matrix(rbinom(3 * last_n, 1, 0.5), ncol = 3))
-
-phat_n = sweep(apply(x2, 2, cumsum), 1, i_n, FUN = '/') %>%
-  as.data.frame() %>%
-  mutate(i_n = row_number(), .before = everything()) %>%
-  pivot_longer(cols = !i_n, names_to = "set", values_to = "proportion") %>%
-  mutate(set = str_remove(set, "V"))
-
+flips <- expand_grid(set = 1:4, flip = 1:n_flips) |>
+  mutate(result = sample(c("H", "T"), n(), replace = TRUE)) |>
+  group_by(set) |>
+  mutate(
+    heads_count = cumsum(result == "H"),
+    prop_heads  = heads_count / flip
+  ) |>
+  ungroup()
 ```
 
 ```{r coin-flips-table, echo = FALSE}
-
-knitr::kable(
-  data.frame(i_n[1:n[1]],
-             x[1:n[1]],
-             x_n[1:n[1]],
-             phat_n %>% filter(set == "1") %>% filter(i_n <= n[1]) %>% select(proportion)),
-  align = "r",
-  col.names = c("Flip", "Result",
-                "Running count of H",
-                "Running proportion of H"),
-  digits = 3,
-  booktabs = TRUE,
-  caption = 'Results and running proportion of H for 10 flips of a fair coin.'
-)
-
+flips |>
+  filter(set == 1, flip <= 10) |>
+  select(flip, result, heads_count, prop_heads) |>
+  knitr::kable(
+    align = "r",
+    col.names = c("Flip", "Result",
+                  "Running count of H",
+                  "Running proportion of H"),
+    digits = 3,
+    booktabs = TRUE,
+    caption = "Results and running proportion of H for 10 flips of a fair coin."
+  )
 ```
 
 ## What if I sample 100 coin flips?
 
 ```{r coin-flips-plot, echo = FALSE}
-
-ggplot(phat_n %>%
-         filter(set == "1") %>%
-         filter(i_n <= n[2]),
-       aes(x = i_n,
-           y = proportion,
-           col = set)) +
+flips |>
+  filter(set == 1, flip <= 100) |>
+  ggplot(aes(x = flip, y = prop_heads)) +
   geom_line() +
   geom_point() +
-  geom_hline(yintercept = 0.5, lty = "dotted") +
-  # scale_x_continuous(breaks = 0:n[2]) +
+  geom_hline(yintercept = 0.5, linetype = "dotted") +
   scale_y_continuous(limits = c(0, 1)) +
-  theme_classic() +
-  theme(
-    legend.position = "none", 
-    axis.text.x = element_text(size = 16), 
-    axis.text.y = element_text(size = 16),
-    axis.title.x = element_text(size = 16),
-    axis.title.y = element_text(size = 16)
-    ) +
+  theme_classic(base_size = 16) +
   labs(
     x = "Flip number",
     y = "Running proportion of H"
-    )
-```
-
-## Can we simulate more?? {visibility="hidden"}
-
-- I can start to count the number of tails in the flips
-
-```{r include=FALSE}
-set.seed(12)
-```
-
-```{r}
-sum( sample(coin, 100, replace = T) == "heads" )
-```
-
-- And I can see the proportion of tails in the flips
-
-```{r include=FALSE}
-set.seed(12)
-```
-
-```{r}
-sum( sample(coin, 100, replace = T) == "heads" ) / 100
-```
-
-- I can do this with more flips
-
-```{r}
-sum( sample(coin, 1000, replace = T) == "heads" ) / 1000
-sum( sample(coin, 10000, replace = T) == "heads" ) / 10000
-sum( sample(coin, 100000, replace = T) == "heads" ) / 100000
+  )
 ```
 
 ## What's the point?
@@ -357,10 +307,16 @@ When something happens at random, such as a coin toss, there are several possibl
 - What are the possible events?
 
   - 
+  
+   
 
   - 
+  
+   
 
   - 
+  
+   
 
   - 
 
@@ -403,10 +359,16 @@ The total number of possible events is $$2^{|S|}$$ where $|S|$ is the total numb
 - What are some possible events?
 
   - $A =$ exactly one $H =$
+  
+   
 
   - $B =$ at least one $H =$
+  
+   
 
   - 
+  
+   
 
   - 
 

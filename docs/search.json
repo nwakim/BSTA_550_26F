@@ -5611,7 +5611,7 @@
     "href": "lessons/01_Probability/01_Probability.html#how-do-we-simulate-this-in-r",
     "title": "Lesson 1: Introduction to Probability",
     "section": "How do we simulate this in R?",
-    "text": "How do we simulate this in R?\n\nWe know that heads and tails are equally likely for a single flip\n\n\nset.seed(13)\ncoin = c(\"heads\", \"tails\")\nsample(coin, 1)\n\n[1] \"tails\"\n\n\n\nWhen we only flip the coin once, we only only get one outcome (heads or tails)\n\nWe cannot see any distribution of the probability of outcomes"
+    "text": "How do we simulate this in R?\n\nWe know that heads and tails are equally likely for a single flip\n\n\n1set.seed(13)\n2coin &lt;- c(\"heads\", \"tails\")\n3sample(coin, 1)\n\n\n1\n\nWe need to set a seed, to hold our place in the randomness in R.\n\n2\n\nWe set our two options for our coin toss.\n\n3\n\nWe then sample the coin (flip it) one time.\n\n\n\n\n[1] \"tails\"\n\n\n\nWhen we only flip the coin once, we only get one outcome (heads or tails)\n\nWe cannot see any distribution of the probability of outcomes"
   },
   {
     "objectID": "lessons/01_Probability/01_Probability.html#why-is-simulation-important",
@@ -5658,9 +5658,9 @@
   {
     "objectID": "lessons/01_Probability/01_Probability.html#can-we-simulate-more",
     "href": "lessons/01_Probability/01_Probability.html#can-we-simulate-more",
-    "title": "Lesson 1: Introduction to Probability and Simulation",
+    "title": "Lesson 1: Introduction to Probability",
     "section": "Can we simulate more??",
-    "text": "Can we simulate more??\n\nI can start to count the number of tails in the flips\n\n\nsum( sample(coin, 100, replace = T) == \"tails\" )\n\n[1] 58\n\n\n\nAnd I can see the proportion of tails in the flips\n\n\nsum( sample(coin, 100, replace = T) == \"tails\" ) / 100\n\n[1] 0.58\n\n\n\nI can do this with more flips\n\n\nsum( sample(coin, 1000, replace = T) == \"tails\" ) / 1000\n\n[1] 0.469\n\nsum( sample(coin, 10000, replace = T) == \"tails\" ) / 10000\n\n[1] 0.5044\n\nsum( sample(coin, 100000, replace = T) == \"tails\" ) / 100000\n\n[1] 0.49967"
+    "text": "Can we simulate more??\n\nFirst, save 100 flips so we can use them more than once\n\n\nflips_100 &lt;- sample(coin, 100, replace = TRUE)\n\n\nI can count the number of heads in the flips\n\n\nsum(flips_100 == \"heads\")\n\n[1] 42\n\n\n\nAnd I can see the proportion of heads in the flips\n\n\nmean(flips_100 == \"heads\")\n\n[1] 0.42\n\n\n\nflips_100 == \"heads\" is a vector of TRUE/FALSE values. R treats TRUE as 1 and FALSE as 0, so sum() counts the heads and mean() gives the proportion"
   },
   {
     "objectID": "lessons/01_Probability/01_Probability.html#as-the-number-of-flips-increases-we-converge-to-the-expected-probability",
@@ -5674,7 +5674,7 @@
     "href": "lessons/01_Probability/01_Probability.html#what-if-i-sample-10-coin-flips",
     "title": "Lesson 1: Introduction to Probability",
     "section": "What if I sample 10 coin flips?",
-    "text": "What if I sample 10 coin flips?\n\nHow many tails do we get? Are we getting closer to a distribution of heads and tails that we expect?\n\n\n\n\nResults and running proportion of H for 10 flips of a fair coin.\n\n\nFlip\nResult\nRunning count of H\nRunning proportion of H\n\n\n\n\n1\nH\n1\n1.000\n\n\n2\nT\n1\n0.500\n\n\n3\nH\n2\n0.667\n\n\n4\nT\n2\n0.500\n\n\n5\nH\n3\n0.600\n\n\n6\nT\n3\n0.500\n\n\n7\nT\n3\n0.429\n\n\n8\nT\n3\n0.375\n\n\n9\nT\n3\n0.333\n\n\n10\nT\n3\n0.300"
+    "text": "What if I sample 10 coin flips?\n\nHow many heads do we get? Are we getting closer to a distribution of heads and tails that we expect?\n\n\n\n\nResults and running proportion of H for 10 flips of a fair coin.\n\n\nFlip\nResult\nRunning count of H\nRunning proportion of H\n\n\n\n\n1\nH\n1\n1.000\n\n\n2\nT\n1\n0.500\n\n\n3\nH\n2\n0.667\n\n\n4\nT\n2\n0.500\n\n\n5\nH\n3\n0.600\n\n\n6\nT\n3\n0.500\n\n\n7\nT\n3\n0.429\n\n\n8\nT\n3\n0.375\n\n\n9\nT\n3\n0.333\n\n\n10\nT\n3\n0.300"
   },
   {
     "objectID": "lessons/01_Probability/01_Probability.html#what-if-i-sample-100-coin-flips",
@@ -5947,14 +5947,14 @@
     "href": "lessons/01_Probability/01_Probability.html#coin-toss-example-1-coin-33",
     "title": "Lesson 1: Introduction to Probability",
     "section": "Coin Toss Example: 1 coin (3/3)",
-    "text": "Coin Toss Example: 1 coin (3/3)\n\n\n\nWhat is the sample space?\n\n\\(S =\\)\n\n\n \n \n\nWhat are the possible events?\n\n\n\n\n\n\n \n\n\n\n\nNote #1\n\n\nWe use curly brackets (\\(\\{\\}\\)) to denote a set (collecting a list of outcomes or values)\n\n\n\n\nNote #2\n\n\nThe total number of possible events is \\[2^{|S|}\\] where \\(|S|\\) is the total number of outcomes in the sample space. Also, possible events are not necessarily something that can actually occur (i.e. getting a heads and a tails on a single coin flip)"
+    "text": "Coin Toss Example: 1 coin (3/3)\n\n\n\nWhat is the sample space?\n\n\\(S =\\)\n\n\n \n \n\nWhat are the possible events?\n\n\n\n \n\n\n\n \n\n\n\n \n\n\n\n \n\n\n\n\nNote #1\n\n\nWe use curly brackets (\\(\\{\\}\\)) to denote a set (collecting a list of outcomes or values)\n\n\n\n\nNote #2\n\n\nThe total number of possible events is \\[2^{|S|}\\] where \\(|S|\\) is the total number of outcomes in the sample space. Also, possible events are not necessarily something that can actually occur (i.e. getting a heads and a tails on a single coin flip)"
   },
   {
     "objectID": "lessons/01_Probability/01_Probability.html#coin-toss-example-2-coins",
     "href": "lessons/01_Probability/01_Probability.html#coin-toss-example-2-coins",
     "title": "Lesson 1: Introduction to Probability",
     "section": "Coin Toss Example: 2 coins",
-    "text": "Coin Toss Example: 2 coins\nSuppose you toss two coins.\n\nWhat is the sample space? Assume the coins are distinguishable\n\n\\(S =\\)\n\n\n \n\nWhat are some possible events?\n\n\\(A =\\) exactly one \\(H =\\)\n\\(B =\\) at least one \\(H =\\)"
+    "text": "Coin Toss Example: 2 coins\nSuppose you toss two coins.\n\nWhat is the sample space? Assume the coins are distinguishable\n\n\\(S =\\)\n\n\n \n\nWhat are some possible events?\n\n\\(A =\\) exactly one \\(H =\\)\n\n \n\n\\(B =\\) at least one \\(H =\\)"
   },
   {
     "objectID": "lessons/01_Probability/01_Probability.html#more-info-on-events-and-sample-spaces",
@@ -25009,5 +25009,26 @@
     "title": "Homework 1 Answers",
     "section": "",
     "text": "In the below parts, please list (i) one specific outcome, (ii) one event that contains more than one outcome, and (iii) the sample space.\n\n\nChris has a 5-pack of Gatorade sports drink: 1 orange, 2 lemon-lime, and 2 fruit punch. He blindly grabs one out of the pack over and over if necessary, without replacement, until he finds an orange one. Note, each lemon-lime is indistinguishable, and each fruit punch is indistinguishable.\n\nLet \\(L\\) = Lemon-Lime, \\(P\\) = Fruit Punch, and \\(O\\) = Orange. Since \\(L\\) and \\(P\\) are indistinguishable, we do not need include more information on the two bottles.\n\n\n\\((L, P, O)\\) OR \\((P, O)\\)\n\n\n\n\n\n\n19 total outcomes\n\n\n\n\n\nA claw machine contains 10 plush toys: 5 Red Squishies (R), 3 Blue Dinosaurs (B), and 2 Yellow Star Puffs (Y). You successfully grab a toy, remove it, and then grab a second toy (sampling without replacement). The result is the ordered pair of the two toys’ colors.\n\n\n\n(R, Y) OR (B, R)\n\n\n\n\n\n\n9 total outcomes\n\n\n\n\n\nYou are opening a series of mofusound Cat blind boxes. There are 4 possible figurines to collect: 1 shark cat (S), 1 orange striped fish cat (O), 1 hen cat (H), and 1 cow cat (C). You buy a single blind box.\n\n\n\nS (Shark Cat) OR O (Orange Striped Fish Cat)\n\n\n\n\n\n\n4 total outcomes\n\n\n\n\n\n\n\nWe’ll all have slightly different answers, but with 100,000 simulations, I got the probability of 0.489."
+  },
+  {
+    "objectID": "lessons/01_Probability/01_Probability.html#what-if-four-people-each-flip-100-coins",
+    "href": "lessons/01_Probability/01_Probability.html#what-if-four-people-each-flip-100-coins",
+    "title": "Lesson 1: Introduction to Probability",
+    "section": "What if four people each flip 100 coins?",
+    "text": "What if four people each flip 100 coins?\n\nEach sequence of flips takes a different random path, but they all settle toward 0.5"
+  },
+  {
+    "objectID": "lessons/01_Probability/01_Probability.html#what-about-even-more-flips",
+    "href": "lessons/01_Probability/01_Probability.html#what-about-even-more-flips",
+    "title": "Lesson 1: Introduction to Probability",
+    "section": "What about even more flips?",
+    "text": "What about even more flips?\n\nAs the number of flips grows, the proportion of heads gets closer to 0.5\n\n\nmean(sample(coin, 1000, replace = TRUE) == \"heads\")\n\n[1] 0.531\n\nmean(sample(coin, 10000, replace = TRUE) == \"heads\")\n\n[1] 0.4956\n\nmean(sample(coin, 100000, replace = TRUE) == \"heads\")\n\n[1] 0.50033"
+  },
+  {
+    "objectID": "lessons/01_Probability/01_Probability.html#random-does-not-mean-equally-likely",
+    "href": "lessons/01_Probability/01_Probability.html#random-does-not-mean-equally-likely",
+    "title": "Lesson 1: Introduction to Probability",
+    "section": "Random does not mean equally likely",
+    "text": "Random does not mean equally likely\n\nWe can also simulate an unfair coin with the prob argument\n\nHere, heads has probability 0.7 and tails has probability 0.3\n\n\n\nunfair_flips &lt;- sample(coin, 10000, replace = TRUE, prob = c(0.7, 0.3))\nmean(unfair_flips == \"heads\")\n\n[1] 0.6989\n\n\n\nEach flip is still random, but the outcomes are not equally likely"
   }
 ]

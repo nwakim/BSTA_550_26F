@@ -151,7 +151,7 @@ New to R? I also teach PUBH 523, an introduction to R. You can use its videos, p
 ## Course Structure {.sec4}
 
 | **Component** | **Modality** | **Frequency** | **Description** |
-|:------------|:------------|:------------|:--------------------------------|
+|:---|:---|:---|:---|
 | Lecture | In person | Twice weekly | Lectures with interactive examples. Sessions are recorded and posted online. **Attendance in-person is encouraged.** |
 | Homework | Online | Every 1-2 weeks | 7 assignments to engage with concepts, practice coding, and apply calculations. Working in groups is encouraged, but everyone submits their own work. **Due Sundays at 11 PM** to get feedback, but accepted any time before the course ends. |
 | Quizzes | Online | Every 3 weeks | Questions on key concepts, statistical processes, and interpreting output. **Online, open over a few days, and open book.** Work on quizzes independently. |
@@ -165,7 +165,7 @@ This class uses two types of assessments:
 - **Summative:** work meant to show *how well you've met the learning objectives* and can use your skills outside the classroom.
 
 | **Course activity** | **Type** | **Due** | **Percentage of final grade** |
-|:-----------------|:-----------------|:-----------------|:-----------------:|
+|:---|:---|:---|:--:|
 | Homework | Formative | Weekly | 30% |
 | Quizzes | Summative | `r q1_close %>% format("%m/%d")`, `r q2_close %>% format("%m/%d")`, `r q3_close %>% format("%m/%d")` | 24% |
 | Project Checkpoints | Formative/Summative | Every 2-3 weeks | 32% |
@@ -261,7 +261,7 @@ Think of this class as assembling a toolbox. A new handyperson might need help f
 *Quizzes means while you're actively taking a quiz, not while studying for one.*
 
 | **Can I use AI to...** | **Homework** | **Project** | **Quizzes** |
-|:-----------------------|:--------------:|:--------------:|:--------------:|
+|:---|:--:|:--:|:--:|
 | ***Coding*** |  |  |  |
 | Explain an error message | [Yes]{.yes} | [Yes]{.yes} | [No]{.no} |
 | Explain what a function does | [Yes]{.yes} | [Yes]{.yes} | [No]{.no} |
@@ -339,7 +339,7 @@ Every instructor uses resources and assignments a little differently, so here's 
 ### Resources
 
 | **Resource** | **How to use it** |
-|:------------------------|:----------------------------------------------|
+|:---|:---|
 | Lectures and recordings | Come in person if you can. Follow the slides, take notes on details mentioned out loud, work through examples with me, and ask questions whenever something isn't clear. |
 | Office hours | Ask questions about assignments or lecture notes, work on homework with help nearby, or meet classmates to collaborate with. |
 | Textbooks | Not required reading. Reading ahead can help during class, but I see the textbook as a resource for when you're stuck on a topic, need an example for homework, or want more practice before a quiz. |
@@ -348,7 +348,7 @@ Every instructor uses resources and assignments a little differently, so here's 
 ### Assignments
 
 | **Assignment** | **Before you submit** | **After it's graded** |
-|:-------------------|:-------------------------|:-------------------------|
+|:---|:---|:---|
 | Homework | • Work out each problem on your own as much as you can<br>• Talk through problems with a peer<br>• Come to office hours for help<br>• Show your thought process<br>• Search Stack Overflow for R errors | • Review the solutions and your mistakes<br>• For written answers, check with me or a TA if yours is sufficient<br>• Bring questions to office hours |
 | Quizzes | • Identify the learning objectives in each lecture<br>• Understand *why* certain tools are used for certain cases<br>• Practice testing yourself and others<br>• Bring specific problems to office hours | • Review the solutions and your mistakes<br>• For written answers, check with me or a TA if yours fits the solution<br>• Only ask for a regrade after viewing the solutions |
 | Project | • Start each checkpoint early<br>• Check your calculations with a partner or classmates<br>• Bring specific questions to office hours | • Use checkpoint feedback in your next checkpoint and final brief<br>• Email me with grade questions |

@@ -127,5 +127,8 @@
   },
   "lessons/00_Intro/00_Intro_key_info.qmd": {
     "00_Intro_key_info.html": "5bad0371"
+  },
+  "lessons/01_Probability/01_Probability_muddy_points.qmd": {
+    "01_Probability_muddy_points.html": "e54aa817"
   }
 }

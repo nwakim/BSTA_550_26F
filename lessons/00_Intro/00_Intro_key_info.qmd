@@ -1,7 +1,8 @@
 ---
 title: "Key Info and Announcements"
 subtitle: "Welcome"
-date-modified: "today"
+date: "`r library(here); source(here('class_dates.R')); w1d1`"
+date-modified: today 
 format: 
   html:
     link-external-newwindow: true
@@ -9,10 +10,16 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r setup, include=FALSE}
+library(here)
+source(here("class_dates.R"))
+```
+
 ## Announcements
 
 - Welcome! I will put announcements and reminders on these pages!
-- Thanks for being patient while I've been out of the country!
+  - Can be class, program, or school related!
+- Some upcoming school events: ![](first_week.jpg)
 
 ## Key dates
 

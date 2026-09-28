@@ -124,5 +124,8 @@
   },
   "lessons/01_Probability/01_Probability.qmd": {
     "01_Probability.html": "054724eb"
+  },
+  "lessons/00_Intro/00_Intro_key_info.qmd": {
+    "00_Intro_key_info.html": "5bad0371"
   }
 }

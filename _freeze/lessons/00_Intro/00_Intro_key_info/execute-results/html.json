@@ -1,0 +1,15 @@
+{
+  "hash": "ceec099dec0187b0fcac28d3708cc42d",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Key Info and Announcements\"\nsubtitle: \"Welcome\"\ndate: \"2026-09-28\"\ndate-modified: today \nformat: \n  html:\n    link-external-newwindow: true\neditor_options: \n  chunk_output_type: console\n---\n\n\n\n## Announcements\n\n- Welcome! I will put announcements and reminders on these pages!\n  - Can be class, program, or school related!\n- Some upcoming school events: ![](first_week.jpg)\n\n## Key dates\n\n- Homework 0 is due THIS THURSDAY at 11pm!\n\n## Last class\n\n- There wasn't one heh\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

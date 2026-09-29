@@ -74,6 +74,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -139,10 +168,12 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#goal" id="toc-goal" class="nav-link active" data-scroll-target="#goal">Goal</a></li>
+  <li><a href="#how-the-scenarios-work" id="toc-how-the-scenarios-work" class="nav-link" data-scroll-target="#how-the-scenarios-work">How the scenarios work</a></li>
+  <li><a href="#scenario-cards" id="toc-scenario-cards" class="nav-link" data-scroll-target="#scenario-cards">Scenario cards</a></li>
   <li><a href="#tasks" id="toc-tasks" class="nav-link" data-scroll-target="#tasks">Tasks</a>
   <ul class="collapse">
   <li><a href="#team-and-scenario" id="toc-team-and-scenario" class="nav-link" data-scroll-target="#team-and-scenario">1. Team and scenario</a></li>
-  <li><a href="#find-your-input-values" id="toc-find-your-input-values" class="nav-link" data-scroll-target="#find-your-input-values">2. Find your input values</a></li>
+  <li><a href="#find-your-numbers-in-the-sources" id="toc-find-your-numbers-in-the-sources" class="nav-link" data-scroll-target="#find-your-numbers-in-the-sources">2. Find your numbers in the sources</a></li>
   <li><a href="#your-guiding-questions" id="toc-your-guiding-questions" class="nav-link" data-scroll-target="#your-guiding-questions">3. Your guiding questions</a></li>
   </ul></li>
   <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
@@ -198,12 +229,275 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Due 10/11</strong> (4 points). See <a href="../project/project_central.qmd">Project Central</a> for the full project overview.</p>
+<p><strong>Due 10/11</strong> (4 points). See <a href="../project.html">Project Central</a> for the full project overview.</p>
 </div>
 </div>
 <section id="goal" class="level2">
 <h2 class="anchored" data-anchor-id="goal">Goal</h2>
-<p>Choose the health scenario you will follow all quarter, and gather the real-world numbers you will need for Checkpoints 1–3.</p>
+<p>Choose the public health scenario you will follow all quarter, read the published sources that come with it, and pull out the numbers you will use in Checkpoints 1–3.</p>
+<p>You do <strong>not</strong> need to search for sources on your own. Each scenario below comes with a short <strong>source packet</strong>: the setting is fixed, and the papers you need are listed for you. Your job in this checkpoint is to read those sources, find the numbers, and describe them in your own words.</p>
+</section>
+<section id="how-the-scenarios-work" class="level2">
+<h2 class="anchored" data-anchor-id="how-the-scenarios-work">How the scenarios work</h2>
+<p>Each scenario card below has:</p>
+<ul>
+<li><strong>The setting:</strong> who the population is and what happens to them. Please stay inside this setting all quarter.</li>
+<li><strong>The source packet:</strong> 1–3 published sources. Every number you use must come from these sources or from a value the card gives you.</li>
+<li><strong>Course values:</strong> a few numbers that the papers do not report in a usable form. The card gives you these directly. Use them as written.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Words you will see in the papers
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The papers use some terms we have not covered yet. You do not need to understand them fully for Checkpoint 0. Use this list to find the right number, and we will build each idea in class.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Term in the paper</th>
+<th>What it means in plain words</th>
+<th>When we use it</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Prevalence</td>
+<td>Out of everyone in the group, the fraction who have the condition</td>
+<td>CP 1</td>
+</tr>
+<tr class="even">
+<td>Sensitivity</td>
+<td>Out of the people who <strong>have</strong> the condition, the fraction who test positive</td>
+<td>CP 1</td>
+</tr>
+<tr class="odd">
+<td>Specificity</td>
+<td>Out of the people who <strong>do not have</strong> the condition, the fraction who test negative</td>
+<td>CP 1</td>
+</tr>
+<tr class="even">
+<td>False-positive rate</td>
+<td>Out of the people who <strong>do not have</strong> the condition, the fraction who test positive (1 − specificity)</td>
+<td>CP 1</td>
+</tr>
+<tr class="odd">
+<td>Positive predictive value (PPV)</td>
+<td>Out of the people who test positive, the fraction who have the condition. <strong>You will calculate this in CP 1</strong>, so do not record it now.</td>
+<td>CP 1</td>
+</tr>
+<tr class="even">
+<td>Rate / attack rate / recall rate</td>
+<td>The fraction (or percent) of people or events that are a “yes”</td>
+<td>CP 2</td>
+</tr>
+<tr class="odd">
+<td>Mean</td>
+<td>The average value</td>
+<td>CP 3</td>
+</tr>
+<tr class="even">
+<td>Median and interquartile range (IQR)</td>
+<td>The middle value, and the range that holds the middle half of the values</td>
+<td>CP 3</td>
+</tr>
+<tr class="odd">
+<td>Standard deviation (SD)</td>
+<td>How spread out the values are around the mean</td>
+<td>CP 3</td>
+</tr>
+<tr class="even">
+<td>95% confidence interval (CI)</td>
+<td>A range of plausible values around an estimate. <strong>Record only the main estimate</strong>, not the interval.</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="scenario-cards" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-cards">Scenario cards</h2>
+<p>Choose <strong>one</strong> of the three scenarios.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Scenario A</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Scenario B</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Scenario C</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<section id="community-breast-cancer-screening-program" class="level4">
+<h4 class="anchored" data-anchor-id="community-breast-cancer-screening-program">Community breast cancer screening program</h4>
+<p><strong>The setting:</strong> A county health department runs a <strong>mobile 3D mammography van</strong> that brings free breast cancer screening to rural and underserved communities. The program screens women ages 40–74, following the current U.S. recommendation. A radiologist reads each exam as either normal or abnormal, and every woman with an abnormal read needs a follow-up diagnostic appointment. The program manager needs to know what an abnormal read means for the women served, how many follow-up appointments to reserve after each van day, and whether screening is finding cancers while they are still small.</p>
+<p><strong>Source packet</strong></p>
+<ol type="1">
+<li>Lee CI, Abraham L, Miglioretti DL, et al.&nbsp;National performance benchmarks for screening digital breast tomosynthesis: Update from the Breast Cancer Surveillance Consortium. <em>Radiology</em>. 2023;307(4):e222499. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10323294/">Free full text</a></li>
+</ol>
+<p>This one paper has everything you need. Look in the <strong>Abstract</strong> and the <strong>Results</strong> section. Use the numbers for <strong>DBT</strong> (digital breast tomosynthesis), not for digital mammography (DM).</p>
+<p><strong>What each checkpoint will look at</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Checkpoint</th>
+<th>What we model</th>
+<th>Where it comes from</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CP 1</td>
+<td>The chance a woman has cancer, given an abnormal read</td>
+<td>Sensitivity and specificity (paper); prevalence (course value below)</td>
+</tr>
+<tr class="even">
+<td>CP 2</td>
+<td>The number of abnormal reads (follow-up appointments needed) out of 40 screens on one van day</td>
+<td>Abnormal interpretation rate (paper)</td>
+</tr>
+<tr class="odd">
+<td>CP 3</td>
+<td>The size of a tumor found by screening, in millimeters</td>
+<td>Median and IQR (paper); mean and SD (course values below)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Course values</strong></p>
+<ul>
+<li><strong>Prevalence:</strong> 6.6 cancers per 1,000 women screened. (The paper reports the <em>cancer detection rate</em>, which only counts the cancers that the screen found. We divided it by the sensitivity to include the cancers the screen missed.)</li>
+<li><strong>Screens per van day:</strong> 40.</li>
+<li><strong>Tumor size:</strong> mean of about 14 mm, SD of about 9 mm. (The paper reports a median and IQR. These values match that median and IQR for a right-skewed shape.)</li>
+</ul>
+</section>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<section id="county-covid-19-testing-and-contact-tracing" class="level4">
+<h4 class="anchored" data-anchor-id="county-covid-19-testing-and-contact-tracing">County COVID-19 testing and contact tracing</h4>
+<p><strong>The setting:</strong> A county health department gives out free rapid at-home antigen tests so that residents <strong>without symptoms</strong> can screen themselves, for example before visiting an older relative. When a resident tests positive and is confirmed as a case, the department’s contact tracers follow up with the people they live with. The department needs to know how much to trust a positive screening test, how many household members of each case are likely to be infected (to plan test kits and isolation support), and how long household contacts should watch for symptoms.</p>
+<p><strong>Source packet</strong></p>
+<ol type="1">
+<li>Cochrane. How accurate are rapid antigen tests for diagnosing COVID-19? Plain language summary of Dinnes J, et al.&nbsp;<em>Cochrane Database of Systematic Reviews</em>, 2025 update (CD013705). <a href="https://www.cochrane.org/evidence/CD013705_how-accurate-are-rapid-antigen-tests-diagnosing-covid-19">Summary page</a> · <a href="https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD013705.pub4/full">Full review</a></li>
+<li>Madewell ZJ, Yang Y, Longini IM Jr, Halloran ME, Dean NE. Household secondary attack rates of SARS-CoV-2 by variant and vaccination status: An updated systematic review and meta-analysis. <em>JAMA Network Open</em>. 2022;5(4):e229317. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9051991/">Free full text</a></li>
+<li>Wu Y, Kang L, Guo Z, Liu J, Liu M, Liang W. Incubation period of COVID-19 caused by unique SARS-CoV-2 strains: A systematic review and meta-analysis. <em>JAMA Network Open</em>. 2022;5(8):e2228008. <a href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2795489">Free full text</a></li>
+</ol>
+<p>For source 1, use the <strong>overall</strong> numbers for people <strong>without symptoms</strong>. For sources 2 and 3, use the numbers for the <strong>Omicron</strong> variant. Look in the <strong>Abstract</strong> or <strong>Key Points</strong> box of each paper.</p>
+<p><strong>What each checkpoint will look at</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Checkpoint</th>
+<th>What we model</th>
+<th>Where it comes from</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CP 1</td>
+<td>The chance a resident is infected, given a positive rapid test</td>
+<td>Sensitivity and specificity (source 1); prevalence (course value below)</td>
+</tr>
+<tr class="even">
+<td>CP 2</td>
+<td>The number of household contacts of one case who get infected</td>
+<td>Household secondary attack rate for Omicron (source 2)</td>
+</tr>
+<tr class="odd">
+<td>CP 3</td>
+<td>The incubation period: days from infection until symptoms start</td>
+<td>Mean incubation period for Omicron (source 3)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Course values</strong></p>
+<ul>
+<li><strong>Prevalence:</strong> 0.5% (5 out of every 1,000 residents without symptoms who test). This is the example prevalence the Cochrane summary uses for general screening.</li>
+<li><strong>Household contacts per case:</strong> 3 (a household of 4 people, with 1 case).</li>
+</ul>
+</section>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<section id="state-newborn-heart-screening-program" class="level4">
+<h4 class="anchored" data-anchor-id="state-newborn-heart-screening-program">State newborn heart screening program</h4>
+<p><strong>The setting:</strong> A state health department runs a <strong>newborn screening program</strong> that requires every baby born in the state to get pulse oximetry screening before going home. Pulse oximetry is a painless test that measures the oxygen level in the blood. It looks for critical congenital heart defects (CCHD), which are serious heart problems that need treatment soon after birth. The state has about 40,000 births a year. The program needs to know what a positive screen means for families, how many babies with CCHD to expect each year (to plan follow-up with pediatric heart specialists), and what typical birth weight looks like across the state’s newborns.</p>
+<p><strong>Source packet</strong></p>
+<ol type="1">
+<li>Cochrane. Pulse oximetry for diagnosis of critical congenital heart defects. Plain language summary of Plana MN, Zamora J, Suresh G, et al.&nbsp;<em>Cochrane Database of Systematic Reviews</em>. 2018;3:CD011912. <a href="https://www.cochrane.org/CD011912/NEONATAL_pulse-oximetry-diagnosis-critical-congenital-heart-defects">Summary page</a> · <a href="https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD011912.pub2/full">Full review</a></li>
+<li>Donahue SMA, Kleinman KP, Gillman MW, Oken E. Trends in birth weight and gestational length among singleton term births in the United States: 1990–2005. <em>Obstetrics &amp; Gynecology</em>. 2010;115(2 Pt 1):357–364. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3219436/">Free full text</a></li>
+</ol>
+<p>For source 1, look for the numbers “per 10,000 newborns” and the <strong>false-positive rate</strong>. Use the false-positive rate instead of the specificity, because the specificity (99.9%) is rounded too much to be useful. For source 2, use the mean and SD for <strong>2005</strong>.</p>
+<p><strong>What each checkpoint will look at</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Checkpoint</th>
+<th>What we model</th>
+<th>Where it comes from</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CP 1</td>
+<td>The chance a baby has CCHD, given a positive screen</td>
+<td>Prevalence, sensitivity, and false-positive rate (source 1)</td>
+</tr>
+<tr class="even">
+<td>CP 2</td>
+<td>The number of babies born with CCHD in the state in one year</td>
+<td>Prevalence (source 1); births per year (course value below)</td>
+</tr>
+<tr class="odd">
+<td>CP 3</td>
+<td>Birth weight, in grams</td>
+<td>Mean and SD for 2005 (source 2)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Course values</strong></p>
+<ul>
+<li><strong>Births per year in the state:</strong> 40,000.</li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Want to propose your own scenario?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You may propose your own scenario <strong>only with my approval</strong>. Email me by 10/05 with:</p>
+<ol type="1">
+<li>the setting (who, where, and what test or classification),</li>
+<li><strong>one to three published sources</strong> that give you the same kinds of numbers as the scenario cards above: a prevalence, a sensitivity, and a specificity for CP 1; the chance of a “yes” for a count in CP 2; and a mean (and SD, if available) for a time or measurement in CP 3.</li>
+</ol>
+<p>If you do not have my approval by the due date, please choose one of the three scenarios above.</p>
+</div>
+</div>
 </section>
 <section id="tasks" class="level2">
 <h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
@@ -211,85 +505,127 @@ Important
 <h3 class="anchored" data-anchor-id="team-and-scenario">1. Team and scenario</h3>
 <ul>
 <li>State whether you are working alone or with a partner (and your partner’s name).</li>
-<li>Choose a scenario from the <a href="../project/project_central.qmd#scenario-menu">scenario menu</a> <strong>or</strong> propose your own.</li>
-<li>In 3–5 sentences, describe the scenario: Who is the population? What is being tested, counted, or measured? Why does it matter to a clinician or public health decision-maker?</li>
+<li>State which scenario you chose (A, B, or C).</li>
+<li>In 3–5 sentences, and <strong>in your own words</strong>, describe the scenario: Who is the population? What is being tested, counted, or measured? What decision does the public health program need to make, and why does it matter for the population it serves?</li>
 </ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Proposing your own scenario?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you want to propose you <strong><em>own</em></strong> scenario, it will need three pieces:</p>
-<ol type="1">
-<li>a <strong>test or classification</strong> with a sensitivity/specificity (or two conditional probabilities) for Checkpoint 1,</li>
-<li>a <strong>count</strong> of events that could be modeled with a discrete distribution for Checkpoint 2, and</li>
-<li>a <strong>time or measurement</strong> that could be modeled with a continuous distribution for Checkpoint 3.</li>
-</ol>
-<p>If you are unsure, email me or come to office hours before the due date.</p>
-</div>
-</div>
 </section>
-<section id="find-your-input-values" class="level3">
-<h3 class="anchored" data-anchor-id="find-your-input-values">2. Find your input values</h3>
-<p>Fill in the table below. For each quantity, find a published value and cite it. You will need <strong>at least one value for each checkpoint</strong>. Values can be approximate (e.g., “about 1 in 1,000”).</p>
+<section id="find-your-numbers-in-the-sources" class="level3">
+<h3 class="anchored" data-anchor-id="find-your-numbers-in-the-sources">2. Find your numbers in the sources</h3>
+<p>Fill in the table below for your scenario. For each row:</p>
+<ul>
+<li><strong>Value:</strong> Write the number from the source (or the course value from your scenario card).</li>
+<li><strong>Where I found it:</strong> Name the source (1, 2, 3, or “course value”) and the section, table, or sentence where the number appears (for example, “Source 1, Abstract, Results”).</li>
+<li><strong>Probability statement:</strong> For the three Checkpoint 1 rows only, write the value as a probability. Define your events first, for example, <span class="math inline">\(D\)</span> = has the condition and <span class="math inline">\(T^+\)</span> = tests positive. Then write, for example, <span class="math inline">\(P(T^+ \mid D) = 0.874\)</span>.</li>
+</ul>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
 <thead>
 <tr class="header">
-<th>Checkpoint</th>
-<th>Quantity</th>
+<th>CP</th>
+<th>What you are looking for (in plain words)</th>
 <th>Value</th>
-<th>Source</th>
+<th>Where I found it</th>
+<th>Probability statement (CP 1 only)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>1</td>
-<td>Prevalence (or base rate)</td>
+<td>Out of everyone screened or tested, the fraction who <strong>have</strong> the condition</td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
 <tr class="even">
 <td>1</td>
-<td>Sensitivity (or P(+ | condition))</td>
+<td>Out of the people who <strong>have</strong> the condition, the fraction who test positive</td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
 <tr class="odd">
 <td>1</td>
-<td>Specificity (or P(− | no condition))</td>
+<td>Out of the people who <strong>do not have</strong> the condition, the fraction who test negative (A and B) <strong>or</strong> test positive (C)</td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
 <tr class="even">
 <td>2</td>
-<td>Rate or probability for your count</td>
+<td>The chance that one screen, one household member, or one baby is a “yes”</td>
 <td></td>
 <td></td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>How many screens, household members, or babies are in the group</td>
+<td></td>
+<td></td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>The mean (average) of the time or measurement, with units</td>
+<td></td>
+<td></td>
+<td>—</td>
 </tr>
 <tr class="odd">
 <td>3</td>
-<td>Mean (and SD, if available) of your time/measurement</td>
+<td>The SD of the time or measurement, with units (write “not reported” if the source does not give it)</td>
 <td></td>
 <td></td>
+<td>—</td>
 </tr>
 </tbody>
 </table>
-<p>Acceptable sources include CDC or WHO reports, USPSTF evidence reviews, government health statistics, and peer-reviewed articles. Wikipedia is fine for finding a source, but cite the original source.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Record only what the source says
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Copy the main estimate only. Do not include the 95% confidence interval.</li>
+<li>Do not calculate anything new yet. For example, do not calculate the chance that someone with a positive test has the condition. That is the job of Checkpoint 1.</li>
+<li>Convert percents to decimals in the probability statement column (e.g., 87.4% becomes 0.874).</li>
+</ul>
+</div>
+</div>
 </section>
 <section id="your-guiding-questions" class="level3">
 <h3 class="anchored" data-anchor-id="your-guiding-questions">3. Your guiding questions</h3>
-<p>Write one question for each checkpoint that your analysis will answer. For example (emergency department scenario):</p>
+<p>Write one question for each checkpoint that your analysis will answer. You may use the examples below for your scenario, or change them (for example, a different cutoff).</p>
+<p><strong>Scenario A (community breast cancer screening program)</strong></p>
 <ul>
-<li><strong>CP 1:</strong> If a patient is triaged at level 2, what is the probability they are admitted?</li>
-<li><strong>CP 2:</strong> What is the probability that more than 15 patients arrive in one hour?</li>
-<li><strong>CP 3:</strong> What is the probability that the average wait time of the next 50 patients exceeds 3 hours?</li>
+<li><strong>CP 1:</strong> If a woman screened on the van gets an abnormal read, what is the probability that she has breast cancer?</li>
+<li><strong>CP 2:</strong> If the program reserves 6 follow-up appointments after each van day of 40 screens, what is the probability that it needs more than 6?</li>
+<li><strong>CP 3:</strong> What is the probability that the average size of the next 30 tumors the program finds is more than 15 mm?</li>
 </ul>
-<p>These can change later. This step is to make sure your scenario will work for all three checkpoints.</p>
+<p><strong>Scenario B (county COVID-19 testing and contact tracing)</strong></p>
+<ul>
+<li><strong>CP 1:</strong> If a resident without symptoms gets a positive rapid test, what is the probability that they are infected?</li>
+<li><strong>CP 2:</strong> For a case who lives with 3 other people, what is the probability that at least 2 of them also get infected?</li>
+<li><strong>CP 3:</strong> What is the probability that the average incubation period across the county’s next 50 cases is more than 4 days?</li>
+</ul>
+<p><strong>Scenario C (state newborn heart screening program)</strong></p>
+<ul>
+<li><strong>CP 1:</strong> If a newborn has a positive pulse oximetry screen, what is the probability that the baby has CCHD?</li>
+<li><strong>CP 2:</strong> With 40,000 births a year, what is the probability that the state has 30 or more babies with CCHD in one year?</li>
+<li><strong>CP 3:</strong> What is the probability that the average birth weight of 100 babies born in one county in a month is less than 3,300 grams?</li>
+</ul>
+<p>These can change later. This step is to make sure your scenario works for all three checkpoints.</p>
 </section>
 </section>
 <section id="submission" class="level2">
@@ -313,19 +649,19 @@ Important
 </thead>
 <tbody>
 <tr class="odd">
-<td>Scenario is described clearly and fits all three checkpoints</td>
+<td>Scenario is chosen (or approved) and described in your own words</td>
 <td>Yes</td>
-<td>Missing or does not fit</td>
+<td>Missing, or not in your own words</td>
 </tr>
 <tr class="even">
-<td>Input table has at least one value for each checkpoint</td>
+<td>Input table is complete, with the correct numbers from the sources or course values</td>
 <td>Yes</td>
-<td>Incomplete</td>
+<td>Incomplete or incorrect</td>
 </tr>
 <tr class="odd">
-<td>Every value has a credible, cited source</td>
+<td>Every value says where it was found, and the three CP 1 rows have correct probability statements</td>
 <td>Yes</td>
-<td>Missing or unreliable sources</td>
+<td>Missing locations or incorrect statements</td>
 </tr>
 <tr class="even">
 <td>One guiding question for each checkpoint</td>

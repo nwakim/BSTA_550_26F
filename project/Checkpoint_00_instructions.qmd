@@ -67,7 +67,9 @@ The papers use some terms we have not covered yet. You do not need to understand
 Choose **one** of the three scenarios.
 
 ::: panel-tabset
-### A. Community breast cancer screening program
+### Scenario A
+
+#### Community breast cancer screening program
 
 **The setting:** A county health department runs a **mobile 3D mammography van** that brings free breast cancer screening to rural and underserved communities. The program screens women ages 40–74, following the current U.S. recommendation. A radiologist reads each exam as either normal or abnormal, and every woman with an abnormal read needs a follow-up diagnostic appointment. The program manager needs to know what an abnormal read means for the women served, how many follow-up appointments to reserve after each van day, and whether screening is finding cancers while they are still small.
 
@@ -91,7 +93,9 @@ This one paper has everything you need. Look in the **Abstract** and the **Resul
 -   **Screens per van day:** 40.
 -   **Tumor size:** mean of about 14 mm, SD of about 9 mm. (The paper reports a median and IQR. These values match that median and IQR for a right-skewed shape.)
 
-### B. County COVID-19 testing and contact tracing
+### Scenario B
+
+#### County COVID-19 testing and contact tracing
 
 **The setting:** A county health department gives out free rapid at-home antigen tests so that residents **without symptoms** can screen themselves, for example before visiting an older relative. When a resident tests positive and is confirmed as a case, the department's contact tracers follow up with the people they live with. The department needs to know how much to trust a positive screening test, how many household members of each case are likely to be infected (to plan test kits and isolation support), and how long household contacts should watch for symptoms.
 
@@ -116,7 +120,9 @@ For source 1, use the **overall** numbers for people **without symptoms**. For s
 -   **Prevalence:** 0.5% (5 out of every 1,000 residents without symptoms who test). This is the example prevalence the Cochrane summary uses for general screening.
 -   **Household contacts per case:** 3 (a household of 4 people, with 1 case).
 
-### C. State newborn heart screening program
+### Scenario C
+
+#### State newborn heart screening program
 
 **The setting:** A state health department runs a **newborn screening program** that requires every baby born in the state to get pulse oximetry screening before going home. Pulse oximetry is a painless test that measures the oxygen level in the blood. It looks for critical congenital heart defects (CCHD), which are serious heart problems that need treatment soon after birth. The state has about 40,000 births a year. The program needs to know what a positive screen means for families, how many babies with CCHD to expect each year (to plan follow-up with pediatric heart specialists), and what typical birth weight looks like across the state's newborns.
 

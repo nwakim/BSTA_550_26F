@@ -26,72 +26,107 @@ source(here("class_dates.R"))
 ```
 
 ::: callout-important
-**Due `r cp2 %>% format("%m/%d")`** (12 points). See [Project Central](/project/project_central.qmd) for the full project overview. Make sure you have addressed any feedback from Checkpoint 1.
+**Due `r cp2 %>% format("%m/%d")`** (12 points). See [Project Central](/project.qmd) for the full project overview. Make sure you have addressed any feedback from Checkpoint 1.
 :::
 
 ## Goal
 
-Model a **count** in your scenario with a discrete random variable, and use it to answer a practical question, such as staffing, capacity, or how often something unusual happens.
+Model a **count** in your scenario with a discrete random variable, and use it to answer a planning question for your public health program, such as how many follow-up appointments to reserve, how much support to plan for, or how often an unusual year happens.
 
-**Course topics used:** discrete random variables, PMFs and CDFs, expected value and variance, named discrete distributions (Bernoulli, Binomial, Geometric, Poisson, etc.).
+**Course topics used:** discrete random variables, PMFs and CDFs, expected value and variance, named discrete distributions (Bernoulli, Binomial, Poisson).
+
+## Your scenario
+
+Use the Checkpoint 2 rows from your [Checkpoint 0](/project/Checkpoint_00_instructions.qmd#scenario-cards) table, with any corrections from my feedback.
+
+::: panel-tabset
+### Scenario A
+
+#### Community breast cancer screening program
+
+-   **Random variable:** $X$ = number of screens read as abnormal out of the 40 screens on one van day.
+-   **Distribution:** Binomial, with $n = 40$ (course value) and $p$ = the abnormal interpretation rate from Lee et al. (2023).
+-   **Planning question:** Each woman with an abnormal read needs a follow-up diagnostic appointment. How many appointments should the program reserve after each van day?
+
+### Scenario B
+
+#### County COVID-19 testing and contact tracing
+
+-   **Random variable:** $X$ = number of the 3 household contacts of one case who get infected.
+-   **Distribution:** Binomial, with $n = 3$ (course value) and $p$ = the household secondary attack rate for Omicron from Madewell et al. (2022).
+-   **Planning question:** How many household contacts per case should the department plan to support with isolation guidance and test kits?
+
+### Scenario C
+
+#### State newborn heart screening program
+
+-   **Random variable:** $X$ = number of babies born with CCHD in the state in one year.
+-   **Distribution:** Binomial, with $n = 40{,}000$ births (course value) and $p$ = the prevalence of CCHD from the Cochrane review. Because $n$ is large and $p$ is small, you may also use a Poisson distribution with $\lambda = np$. If you do, explain why the Poisson is a good approximation here.
+-   **Planning question:** How many babies with CCHD should the state's pediatric heart specialists be ready to see in a year, and how unusual would a very busy year be?
+:::
 
 ## Tasks
 
 ### 1. Define your random variable
 
--   Define $X$ in words, including its units and time frame (e.g., "$X$ = number of patients arriving at the ED between 6 and 7 pm").
+-   Write $X$ in words, including its units and time frame, using the definition for your scenario above.
 -   List the possible values (the support) of $X$.
 
-### 2. Choose and justify a distribution
+### 2. Justify the distribution
 
--   Choose a named distribution for $X$ and state its parameter(s), using a cited value.
--   List the assumptions of that distribution (e.g., fixed number of trials, independence, constant probability or rate), and explain whether each is reasonable for your scenario.
+-   State the distribution for your scenario and its parameter(s), citing where each value came from.
+-   List the assumptions of that distribution (e.g., a fixed number of trials, independent trials, and the same probability of a "yes" on every trial), and explain whether each is reasonable for your scenario.
 -   Identify the assumption **most likely to fail** in real life, and explain why.
 
 ### 3. Solve it analytically
 
 -   Find $E(X)$, $\text{Var}(X)$, and $\text{SD}(X)$ using formulas from class.
--   Calculate **two** probabilities that answer practical questions, for example:
-    -   $P(X \geq k)$ for a staffing or capacity threshold $k$, and
+-   Calculate **two** probabilities that answer your program's planning question, for example:
+    -   $P(X > k)$ for a capacity $k$, such as the number of reserved appointments, and
     -   $P(X = 0)$ or $P(a \leq X \leq b)$.
--   Show the formula (PMF or CDF) for each, then compute with R (e.g., `dpois()`, `ppois()`, `pbinom()`).
+-   Show the formula (PMF or CDF) for each, then compute with R (e.g., `dbinom()`, `pbinom()`, `dpois()`, `ppois()`).
 
 ### 4. Simulate it
 
--   Generate at least 10,000 draws of $X$ with R (e.g., `rpois()`, `rbinom()`, `rgeom()`).
+-   Generate at least 10,000 draws of $X$ with R (e.g., `rbinom()` or `rpois()`).
 -   Make a plot comparing the **empirical** distribution (from your simulation) with the **theoretical PMF**, for example side-by-side bars or points on a bar chart.
 -   Compare the simulated mean, variance, and your two probabilities with the analytic values in a small table.
 
-Starter code (Poisson example; change it for your distribution):
+Starter code (Binomial example with placeholder values; change it for your scenario):
 
 ```{r}
 #| eval: false
 set.seed(550)
-lambda <- 12      # mean arrivals per hour (cite your source!)
-n_sim  <- 10000
+n     <- 20       # number of trials: replace with your value
+p     <- 0.10     # P("yes") on one trial: replace with your value (cite your source!)
+n_sim <- 10000
 
-x <- rpois(n_sim, lambda)
+x <- rbinom(n_sim, size = n, prob = p)
 
 tibble::tibble(
-  quantity  = c("Mean", "Variance", "P(X >= 18)"),
-  analytic  = c(lambda, lambda, 1 - ppois(17, lambda)),
-  simulated = c(mean(x), var(x), mean(x >= 18))
+  quantity  = c("Mean", "Variance", "P(X > 4)"),
+  analytic  = c(n * p, n * p * (1 - p), 1 - pbinom(4, size = n, prob = p)),
+  simulated = c(mean(x), var(x), mean(x > 4))
 )
 ```
 
 ::: callout-warning
-## Watch the parameterization
+## Watch the inequality
 
-R's `rgeom()` counts the number of **failures before** the first success, which may not match the definition we used in class. Check your definitions, and adjust if needed (e.g., `rgeom(n, p) + 1`).
+`pbinom(k, ...)` and `ppois(k, ...)` give $P(X \leq k)$. So $P(X > k)$ is `1 - pbinom(k, ...)`, but $P(X \geq k)$ is `1 - pbinom(k - 1, ...)`. Check which one your planning question needs.
 :::
 
 ### 5. Stretch (optional, +1 bonus)
 
-Break the assumption you identified in Task 2 and show how the answer changes. For example, if arrivals are more variable than a Poisson allows, simulate from a model where the rate itself varies from hour to hour, and compare $P(X \geq k)$ with your original answer.
+Break the assumption you identified in Task 2 and show how the answer changes. Some ideas for each scenario:
+
+-   **Scenario A:** The abnormal rate may differ from one van day to the next (for example, more women getting their first-ever mammogram on some days). Let $p$ vary from day to day and compare $P(X > k)$ with your original answer.
+-   **Scenario B:** Household members are not independent: if one contact gets infected, the others are more likely to be exposed too. Simulate households where $p$ itself varies from household to household.
+-   **Scenario C:** The number of births and the prevalence may change from year to year. Let $n$ or $p$ vary across years and compare the chance of a very busy year.
 
 ### 6. Say it
 
-Write a short paragraph (4–6 sentences) **for a manager or clinician** who needs to plan around this count. What is typical? What is unusual, and how often does it happen? What would you warn them about, given the assumption most likely to fail?
+Write a short paragraph (4–6 sentences) **for the program manager** who needs to plan around this count. What is typical? What is unusual, and how often does it happen? What would you warn them about, given the assumption most likely to fail?
 
 ## Submission
 
@@ -104,4 +139,4 @@ Submit a rendered HTML file (use `code-fold: true`) and your `.qmd`. One submiss
 | **Setup** (random variable, distribution, assumptions) | Clear and correct; assumptions discussed with care | Minor gaps | Major errors or missing |
 | **Analytic solution** (mean, variance, two probabilities) | Correct, with formulas shown | Small errors | Mostly incorrect or no work shown |
 | **Simulation** (draws, PMF plot, comparison table) | Agrees with analytic answers; plot is clear | Runs, but comparison or plot is weak | Missing or incorrect |
-| **Interpretation** (paragraph for a manager or clinician) | Accurate, practical, and in plain language | Somewhat technical or vague | Missing or misleading |
+| **Interpretation** (paragraph for the program manager) | Accurate, practical, and in plain language | Somewhat technical or vague | Missing or misleading |

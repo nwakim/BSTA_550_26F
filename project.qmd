@@ -33,7 +33,7 @@ I used Claude (Sonnet 5) to help me brainstorm project ideas for this class usin
 
 ## Project Overview: Probability in the Wild
 
-This quarter, you will follow **one health scenario**. Each time we learn a new set of probability and simulation tools, you will apply them to your scenario in a checkpoint. At the end of the quarter, you will pull your checkpoints together into a short brief written for a clinician or public health partner.
+This quarter, you will follow **one public health scenario**. Each time we learn a new set of probability and simulation tools, you will apply them to your scenario in a checkpoint. At the end of the quarter, you will pull your checkpoints together into a short brief written for the public health program in your scenario.
 
 Every checkpoint follows the same three steps:
 
@@ -72,14 +72,14 @@ The checkpoints build, step by step, the work you need for the final project, so
 
 All checkpoints are submitted as a **rendered Quarto HTML file** (with `code-fold: true`) plus your `.qmd` file.
 
-## Final Project: Clinician Brief
+## Final Project: Public Health Brief
 
 **The final project is due `r proj %>% format("%m/%d")`.**
 
 In the final project, you will revise your three checkpoints based on feedback and combine them into one story about your scenario. You will submit:
 
 1.  **Technical appendix:** Your revised Checkpoints 1–3 in a single rendered Quarto file.
-2.  **Clinician brief:** A 2-page brief (or a 5-minute recorded explanation) for a clinician or public health partner. It should answer: *What does probability tell us about this situation, and what should they keep in mind when making decisions?*
+2.  **Public health brief:** A 2-page brief (or a 5-minute recorded explanation) for the manager of the public health program in your scenario. It should answer: *What does probability tell us about this program, and what should the manager keep in mind when making decisions?*
 
 The following links will give you the needed instructions, rubric, and template to complete the final project.
 

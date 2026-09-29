@@ -26,35 +26,67 @@ source(here("class_dates.R"))
 ```
 
 ::: callout-important
-**Due `r cp3 %>% format("%m/%d")`** (12 points). See [Project Central](/project/project_central.qmd) for the full project overview. Make sure you have addressed any feedback from Checkpoint 2.
+**Due `r cp3 %>% format("%m/%d")`** (12 points). See [Project Central](/project.qmd) for the full project overview. Make sure you have addressed any feedback from Checkpoint 2.
 :::
 
 ## Goal
 
-Model a **time or measurement** in your scenario with a continuous random variable, then use the Central Limit Theorem to answer a question about an **average** of many observations.
+Model a **time or measurement** in your scenario with a continuous random variable, then use the Central Limit Theorem to answer a question about an **average** across many people served by your program.
 
 **Course topics used:** continuous random variables, PDFs and CDFs, quantiles, named continuous distributions (Uniform, Exponential, Gamma, Normal), sums of independent random variables, the Central Limit Theorem.
+
+## Your scenario
+
+Use the Checkpoint 3 rows from your [Checkpoint 0](/project/Checkpoint_00_instructions.qmd#scenario-cards) table, with any corrections from my feedback.
+
+::: panel-tabset
+### Scenario A
+
+#### Community breast cancer screening program
+
+-   **Random variable:** $Y$ = size (in mm) of a breast cancer found by screening.
+-   **Distribution:** Gamma, with the course values mean = 14 mm and SD = 9 mm. For a Gamma, the shape is $(\text{mean}/\text{SD})^2$ and the rate is $\text{mean}/\text{SD}^2$, so use shape $\approx 2.42$ and rate $\approx 0.173$ per mm.
+-   **Average question:** The program tracks the average size of the tumors it finds each year. Smaller tumors mean the program is catching cancers early. Use $n = 30$ tumors (about one year of cancers found by the program).
+
+### Scenario B
+
+#### County COVID-19 testing and contact tracing
+
+-   **Random variable:** $Y$ = incubation period (in days) from infection to the start of symptoms.
+-   **Distribution:** Exponential, with rate $= 1/\text{mean}$, using the mean incubation period for Omicron from Wu et al. (2022). The paper reports a mean but not an SD, which is why we use a one-parameter distribution.
+-   **Average question:** The department reviews the average incubation period across recent cases to decide how long household contacts should watch for symptoms. Use $n = 50$ cases.
+-   **Think about:** The Exponential says the most likely incubation period is close to 0 days. Is that realistic? Discuss this in Task 2.
+
+### Scenario C
+
+#### State newborn heart screening program
+
+-   **Random variable:** $Y$ = birth weight (in grams) of a baby born at term.
+-   **Distribution:** Normal, with the mean and SD for 2005 from Donahue et al. (2010).
+-   **Average question:** The state reports the average birth weight of babies born in each county every month. Use $n = 100$ babies (a small county's births in one month).
+-   **Think about:** Your $Y$ is already Normal. In Task 4, explain why your histograms of sample means look Normal even when $n = 5$, and how this is different from a skewed distribution like the Exponential.
+:::
 
 ## Tasks
 
 ### 1. Define your random variable
 
--   Define $Y$ in words, including its units (e.g., "$Y$ = time in hours from ED arrival to being seen by a provider").
+-   Write $Y$ in words, including its units, using the definition for your scenario above.
 -   State the support of $Y$.
 
-### 2. Choose and justify a distribution
+### 2. Justify the distribution
 
--   Choose a named continuous distribution for $Y$, and state its parameter(s) using cited values.
--   Explain why this distribution is a reasonable choice. Consider its shape (symmetric or skewed?), its support, and what we know about the real quantity.
--   Plot the PDF of your chosen distribution.
+-   State the distribution for your scenario and its parameter(s), citing where each value came from.
+-   Explain why this distribution is a reasonable choice, and where it might not match the real quantity. Consider its shape (symmetric or skewed?), its support, and what we know about the real quantity.
+-   Plot the PDF of your distribution.
 
 ### 3. Solve it analytically
 
 -   Find $E(Y)$ and $\text{Var}(Y)$.
--   Calculate **two** probabilities or quantiles that answer practical questions, for example:
-    -   $P(Y > c)$ for a clinically meaningful cutoff $c$, and
+-   Calculate **two** probabilities or quantiles that answer practical questions for your program, for example:
+    -   $P(Y > c)$ for a meaningful cutoff $c$ (e.g., a tumor larger than 20 mm, symptoms starting more than 7 days after infection, or a birth weight under 2,500 grams, the cutoff for low birth weight), and
     -   the 90th percentile of $Y$.
--   Show the setup (integral or CDF) for at least one of them, then compute with R (e.g., `pexp()`, `qgamma()`, `pnorm()`).
+-   Show the setup (integral or CDF) for at least one of them, then compute with R (e.g., `pgamma()`, `pexp()`, `pnorm()`, `qgamma()`, `qexp()`, `qnorm()`).
 
 ### 4. Simulate the Central Limit Theorem
 
@@ -65,12 +97,12 @@ Let $\bar{Y}_n$ be the average of $n$ independent observations of $Y$.
 -   Compare the mean and SD of your simulated sample means with the CLT's predictions.
 -   In 2–3 sentences, describe how quickly the distribution of $\bar{Y}_n$ looks normal. How does the shape (skewness) of $Y$ affect this?
 
-Starter code (Exponential example; change it for your distribution):
+Starter code (Exponential example with a placeholder value; change it for your scenario):
 
 ```{r}
 #| eval: false
 set.seed(550)
-rate  <- 1 / 2.5          # mean wait of 2.5 hours (cite your source!)
+rate  <- 1 / 2        # placeholder mean of 2: replace with your distribution
 mu    <- 1 / rate
 sigma <- 1 / rate
 n_rep <- 5000
@@ -80,21 +112,29 @@ sim_means <- function(n) replicate(n_rep, mean(rexp(n, rate)))
 means_30 <- sim_means(30)
 
 hist(means_30, freq = FALSE, breaks = 40,
-     main = "Sample means, n = 30", xlab = "Average wait (hours)")
+     main = "Sample means, n = 30", xlab = "Sample mean")
 curve(dnorm(x, mean = mu, sd = sigma / sqrt(30)), add = TRUE, lwd = 2)
 ```
 
+For a Gamma, use `rgamma(n, shape = , rate = )`. For a Normal, use `rnorm(n, mean = , sd = )`.
+
 ### 5. Answer a question about an average
 
-Use the CLT to answer a practical question about $\bar{Y}_n$ with an $n$ that makes sense for your scenario. For example: *What is the probability that the average wait of the next 50 patients is more than 3 hours?*
+Use the CLT to answer a practical question about $\bar{Y}_n$, using the $n$ for your scenario above. For example:
+
+-   **Scenario A:** What is the probability that the average size of the next 30 tumors the program finds is more than 15 mm?
+-   **Scenario B:** What is the probability that the average incubation period across the next 50 cases is more than 4 days?
+-   **Scenario C:** What is the probability that the average birth weight of 100 babies born in one county in a month is less than 3,300 grams?
+
+Then:
 
 -   Compute the CLT approximation.
 -   Check it with your simulation.
--   Compare it with the probability that a **single** observation exceeds the same cutoff, and explain why the two answers differ.
+-   Compare it with the probability that a **single** observation is beyond the same cutoff, and explain why the two answers differ.
 
 ### 6. Say it
 
-Write a short paragraph (4–6 sentences) **for a clinician or administrator** that explains the difference between what happens to *one* patient and what happens *on average* across many patients, using your results.
+Write a short paragraph (4–6 sentences) **for the program manager or health department** that explains the difference between what happens to *one* person and what happens *on average* across many people, using your results. Why does this difference matter when the program reports averages to the public?
 
 ## Submission
 
@@ -107,4 +147,4 @@ Submit a rendered HTML file (use `code-fold: true`) and your `.qmd`. One submiss
 | **Setup** (random variable, distribution, justification, PDF plot) | Clear and correct; choice well justified | Minor gaps | Major errors or missing |
 | **Analytic solution** (mean, variance, probabilities or quantiles, CLT approximation) | Correct, with work shown | Small errors | Mostly incorrect or no work shown |
 | **Simulation** (CLT histograms for three sample sizes, comparison with predictions) | Clear plots; matches CLT predictions; role of skewness explained | Runs, but comparison is weak | Missing or incorrect |
-| **Interpretation** (one patient vs. the average) | Accurate and in plain language | Somewhat technical or vague | Missing or misleading |
+| **Interpretation** (one person vs. the average) | Accurate and in plain language | Somewhat technical or vague | Missing or misleading |

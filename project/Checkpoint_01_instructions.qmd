@@ -26,22 +26,52 @@ source(here("class_dates.R"))
 ```
 
 ::: callout-important
-**Due `r cp1 %>% format("%m/%d")`** (12 points). See [Project Central](/project/project_central.qmd) for the full project overview. Make sure you have addressed any feedback from Checkpoint 0.
+**Due `r cp1 %>% format("%m/%d")`** (12 points). See [Project Central](/project.qmd) for the full project overview. Make sure you have addressed any feedback from Checkpoint 0.
 :::
 
 ## Goal
 
-Use conditional probability and Bayes' rule to answer: *If someone in my scenario gets a positive result, how likely is it that they truly have the condition?*
+Use conditional probability and Bayes' rule to answer: *If someone served by my public health program gets a positive result, how likely is it that they truly have the condition?*
 
 **Course topics used:** events, conditional probability, the Law of Total Probability, Bayes' rule, independence.
+
+## Your scenario
+
+Use the input values from your [Checkpoint 0](/project/Checkpoint_00_instructions.qmd#scenario-cards) table, with any corrections from my feedback. Every value should come from your source packet or from a course value on your scenario card.
+
+::: panel-tabset
+### Scenario A
+
+#### Community breast cancer screening program
+
+-   **Events:** $D$ = has breast cancer; $T^+$ = the mammogram is read as abnormal.
+-   **Inputs:** prevalence (course value), sensitivity, and specificity from Lee et al. (2023).
+-   **Program question:** What does an abnormal read mean for a woman screened on the van?
+
+### Scenario B
+
+#### County COVID-19 testing and contact tracing
+
+-   **Events:** $D$ = infected with SARS-CoV-2; $T^+$ = the rapid antigen test is positive.
+-   **Inputs:** prevalence (course value), and sensitivity and specificity for people without symptoms from the Cochrane review.
+-   **Program question:** How much should a resident without symptoms trust a positive rapid test?
+
+### Scenario C
+
+#### State newborn heart screening program
+
+-   **Events:** $D$ = has a critical congenital heart defect (CCHD); $T^+$ = the pulse oximetry screen is positive.
+-   **Inputs:** prevalence, sensitivity, and false-positive rate from the Cochrane review. Your specificity is $1 - (\text{false-positive rate})$.
+-   **Program question:** What does a positive screen mean for a newborn's family?
+:::
 
 ## Tasks
 
 ### 1. Set up the problem
 
--   Define your events with notation (e.g., $D$ = has the disease, $T^+$ = tests positive).
--   Write each input value from Checkpoint 0 as a probability statement, for example $P(T^+ \mid D) = 0.90$. Cite your sources.
--   Draw a tree diagram **or** a 2×2 table for a hypothetical population of 100,000 people.
+-   Define your events with notation, using the events for your scenario above.
+-   Write each input value as a probability statement, for example $P(T^+ \mid D) = 0.874$. Cite the source for each value.
+-   Draw a tree diagram **or** a 2×2 table for a hypothetical population of 100,000 people screened by your program.
 
 ### 2. Solve it analytically
 
@@ -55,15 +85,15 @@ Use conditional probability and Bayes' rule to answer: *If someone in my scenari
 -   Estimate PPV and NPV from your simulated population and compare them with your analytic answers.
 -   In 1–2 sentences, explain why the simulated and analytic values are close but not identical.
 
-Starter code (replace the input values with your own):
+Starter code (replace the placeholder input values with your own):
 
 ```{r}
 #| eval: false
 set.seed(550)
 N    <- 1e5
-prev <- 0.01   # P(D)
-sens <- 0.90   # P(T+ | D)
-spec <- 0.95   # P(T- | D^c)
+prev <- 0.01   # P(D): replace with your value
+sens <- 0.90   # P(T+ | D): replace with your value
+spec <- 0.95   # P(T- | D^c): replace with your value
 
 disease  <- rbinom(N, size = 1, prob = prev)
 test_pos <- ifelse(disease == 1,
@@ -76,15 +106,21 @@ ppv_bayes <- (sens * prev) / (sens * prev + (1 - spec) * (1 - prev))
 c(simulated = ppv_sim, analytic = ppv_bayes)
 ```
 
+::: callout-tip
+## Rare conditions need big populations
+
+If your prevalence is very small (Scenario C has about 6 cases per 10,000 babies), a population of 100,000 has only a few dozen true cases, so your simulated PPV will bounce around. Try $N = 10^6$ and see whether your simulated values get closer to your analytic answers.
+:::
+
 ### 4. Explore: how does prevalence matter?
 
 -   Compute the analytic PPV for prevalence values from 0.1% to 50%, keeping sensitivity and specificity fixed.
 -   Plot PPV (y-axis) against prevalence (x-axis), and mark your scenario's prevalence on the plot.
--   In 2–3 sentences, describe what happens to PPV as prevalence changes. When would this test be most useful?
+-   In 2–3 sentences, describe what happens to PPV as prevalence changes. Then describe a group or setting your program might serve where the prevalence would be higher or lower than your scenario's value (for example, women with a family history of breast cancer, residents tested during a COVID-19 surge, or babies whose prenatal ultrasound showed a possible heart problem). How would a positive result mean something different there?
 
 ### 5. Say it
 
-Write a short paragraph (4–6 sentences) **for a patient** who just received a positive result. Explain what the result means using natural frequencies (e.g., "Out of 1,000 people like you who test positive, about \_\_\_ actually have...") rather than probability notation.
+Your program sends a letter or text message to every person with a positive result. Write a short paragraph (4–6 sentences) for that message. Explain what the result means using natural frequencies (e.g., "Out of 1,000 people who get a positive result, about \_\_\_ actually have...") rather than probability notation, and say what the next step is (a follow-up appointment, a confirmatory test, or a heart ultrasound).
 
 ## Submission
 
@@ -97,4 +133,4 @@ Submit a rendered HTML file (use `code-fold: true`) and your `.qmd`. One submiss
 | **Setup** (notation, input values, tree or table) | Clear and correct; inputs cited | Minor gaps in notation or citation | Major errors or missing |
 | **Analytic solution** (LTP, PPV, NPV) | Correct, with work shown | Small errors | Mostly incorrect or no work shown |
 | **Simulation** (code, comparison to analytic answer, prevalence plot) | Agrees with analytic answer; differences explained; plot is clear | Runs, but comparison or plot is weak | Missing or incorrect |
-| **Interpretation** (prevalence discussion, patient paragraph) | Accurate and in plain language | Somewhat technical or vague | Missing or misleading |
+| **Interpretation** (prevalence discussion, program message) | Accurate and in plain language | Somewhat technical or vague | Missing or misleading |

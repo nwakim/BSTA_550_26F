@@ -142,5 +142,15 @@
   },
   "lessons/02_Simulations/02_Simulations_muddy_points.qmd": {
     "02_Simulations_muddy_points.html": "cb7ebbc5"
+  },
+  "project/Checkpoint_01_instructions.qmd": {
+    "Checkpoint_01_instructions.html": "0364624a",
+    "Checkpoint_01_instructions.tex": "19af5541"
+  },
+  "project/Checkpoint_03_instructions.qmd": {
+    "Checkpoint_03_instructions.html": "62dd3351"
+  },
+  "project/Checkpoint_02_instructions.qmd": {
+    "Checkpoint_02_instructions.html": "714d873c"
   }
 }

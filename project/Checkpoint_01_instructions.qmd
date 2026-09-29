@@ -1,0 +1,100 @@
+---
+title: "Checkpoint 1: When Is a Positive Really Positive?"
+date-modified: "today"
+categories: [""]
+format:
+  html:
+    link-external-newwindow: true
+    toc: true
+  pdf: default
+editor_options:
+  chunk_output_type: console
+---
+
+```{css, echo=FALSE}
+.title{
+  font-size: 30px;
+  color: #006a4e;
+  background-color: #fff;
+  padding: 0px;
+}
+```
+
+```{r setup, include=FALSE}
+library(here)
+source(here("class_dates.R"))
+```
+
+::: callout-important
+**Due `r cp1 %>% format("%m/%d")`** (12 points). See [Project Central](/project/project_central.qmd) for the full project overview. Make sure you have addressed any feedback from Checkpoint 0.
+:::
+
+## Goal
+
+Use conditional probability and Bayes' rule to answer: *If someone in my scenario gets a positive result, how likely is it that they truly have the condition?*
+
+**Course topics used:** events, conditional probability, the Law of Total Probability, Bayes' rule, independence.
+
+## Tasks
+
+### 1. Set up the problem
+
+-   Define your events with notation (e.g., $D$ = has the disease, $T^+$ = tests positive).
+-   Write each input value from Checkpoint 0 as a probability statement, for example $P(T^+ \mid D) = 0.90$. Cite your sources.
+-   Draw a tree diagram **or** a 2×2 table for a hypothetical population of 100,000 people.
+
+### 2. Solve it analytically
+
+-   Use the Law of Total Probability to find $P(T^+)$.
+-   Use Bayes' rule to find the **positive predictive value** $P(D \mid T^+)$ and the **negative predictive value** $P(D^c \mid T^-)$.
+-   Show your work. You may use R as a calculator, but write out each formula first.
+
+### 3. Simulate it
+
+-   Simulate a population of at least 100,000 people in R. Assign each person a disease status, then a test result that depends on their disease status.
+-   Estimate PPV and NPV from your simulated population and compare them with your analytic answers.
+-   In 1–2 sentences, explain why the simulated and analytic values are close but not identical.
+
+Starter code (replace the input values with your own):
+
+```{r}
+#| eval: false
+set.seed(550)
+N    <- 1e5
+prev <- 0.01   # P(D)
+sens <- 0.90   # P(T+ | D)
+spec <- 0.95   # P(T- | D^c)
+
+disease  <- rbinom(N, size = 1, prob = prev)
+test_pos <- ifelse(disease == 1,
+                   rbinom(N, size = 1, prob = sens),
+                   rbinom(N, size = 1, prob = 1 - spec))
+
+ppv_sim   <- mean(disease[test_pos == 1])
+ppv_bayes <- (sens * prev) / (sens * prev + (1 - spec) * (1 - prev))
+
+c(simulated = ppv_sim, analytic = ppv_bayes)
+```
+
+### 4. Explore: how does prevalence matter?
+
+-   Compute the analytic PPV for prevalence values from 0.1% to 50%, keeping sensitivity and specificity fixed.
+-   Plot PPV (y-axis) against prevalence (x-axis), and mark your scenario's prevalence on the plot.
+-   In 2–3 sentences, describe what happens to PPV as prevalence changes. When would this test be most useful?
+
+### 5. Say it
+
+Write a short paragraph (4–6 sentences) **for a patient** who just received a positive result. Explain what the result means using natural frequencies (e.g., "Out of 1,000 people like you who test positive, about \_\_\_ actually have...") rather than probability notation.
+
+## Submission
+
+Submit a rendered HTML file (use `code-fold: true`) and your `.qmd`. One submission per team.
+
+## Rubric (12 points)
+
+| Criterion | 3 | 2 | 1 |
+|----|----|----|----|
+| **Setup** (notation, input values, tree or table) | Clear and correct; inputs cited | Minor gaps in notation or citation | Major errors or missing |
+| **Analytic solution** (LTP, PPV, NPV) | Correct, with work shown | Small errors | Mostly incorrect or no work shown |
+| **Simulation** (code, comparison to analytic answer, prevalence plot) | Agrees with analytic answer; differences explained; plot is clear | Runs, but comparison or plot is weak | Missing or incorrect |
+| **Interpretation** (prevalence discussion, patient paragraph) | Accurate and in plain language | Somewhat technical or vague | Missing or misleading |

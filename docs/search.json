@@ -25240,5 +25240,89 @@
     "title": "Lesson 2: Introduction to Simulations",
     "section": "",
     "text": "Sensitivity analysis\n\n\n\nInvestigate how results change when assumptions or parameters of the model are altered.\n\n\n\n\n\nWhat changed? Each simulation now has three rolls, like the first one here:\n\n\n1rolls |&gt; filter(sim == 1)\n\n\n1\n\nfilter() keeps only the rows that match a condition. Here, that is the three rolls from simulation 1.\n\n\n\n\n# A tibble: 3 × 3\n    sim   die  roll\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1     1     1     2\n2     1     2     4\n3     1     3     2\n\n\n \n\nWith more dice, it is more likely that at least one die shows a 4\n\n\\(P(Y = 4)\\) goes from about 0.44 with two dice to about 0.58 with three dice\n\n\n\n\n\nShow/Hide Code for plotting Y\n1ggplot(Y_sims, aes(x = Y, y = after_stat(prop))) +\n2  geom_bar(color = \"black\", fill = \"#B3C8BF\") +\n3  scale_x_continuous(breaks = 1:4) +\n4  labs(title = \"Simulated Distribution of Y (Larger of Three Rolls)\",\n       x = \"Value of Y\",\n       y = \"Relative frequency\") +\n5  theme_minimal(base_size = 20)\n\n\n\n1\n\nStart a plot of Y_sims with Y on the x-axis. after_stat(prop) makes each bar’s height a proportion (relative frequency) instead of a count. Layers are added with +.\n\n2\n\nDraw one bar for each value of Y, with a black outline.\n\n3\n\nPut tick marks at 1, 2, 3, and 4.\n\n4\n\nAdd a title and axis labels.\n\n5\n\nUse a simple theme with larger text so the plot is readable on slides."
+  },
+  {
+    "objectID": "project/Checkpoint_01_instructions.html#goal",
+    "href": "project/Checkpoint_01_instructions.html#goal",
+    "title": "Checkpoint 1: When Is a Positive Really Positive?",
+    "section": "Goal",
+    "text": "Goal\nUse conditional probability and Bayes’ rule to answer: If someone in my scenario gets a positive result, how likely is it that they truly have the condition?\nCourse topics used: events, conditional probability, the Law of Total Probability, Bayes’ rule, independence."
+  },
+  {
+    "objectID": "project/Checkpoint_01_instructions.html#tasks",
+    "href": "project/Checkpoint_01_instructions.html#tasks",
+    "title": "Checkpoint 1: When Is a Positive Really Positive?",
+    "section": "Tasks",
+    "text": "Tasks\n\n1. Set up the problem\n\nDefine your events with notation (e.g., \\(D\\) = has the disease, \\(T^+\\) = tests positive).\nWrite each input value from Checkpoint 0 as a probability statement, for example \\(P(T^+ \\mid D) = 0.90\\). Cite your sources.\nDraw a tree diagram or a 2×2 table for a hypothetical population of 100,000 people.\n\n\n\n2. Solve it analytically\n\nUse the Law of Total Probability to find \\(P(T^+)\\).\nUse Bayes’ rule to find the positive predictive value \\(P(D \\mid T^+)\\) and the negative predictive value \\(P(D^c \\mid T^-)\\).\nShow your work. You may use R as a calculator, but write out each formula first.\n\n\n\n3. Simulate it\n\nSimulate a population of at least 100,000 people in R. Assign each person a disease status, then a test result that depends on their disease status.\nEstimate PPV and NPV from your simulated population and compare them with your analytic answers.\nIn 1–2 sentences, explain why the simulated and analytic values are close but not identical.\n\nStarter code (replace the input values with your own):\n\nset.seed(550)\nN    &lt;- 1e5\nprev &lt;- 0.01   # P(D)\nsens &lt;- 0.90   # P(T+ | D)\nspec &lt;- 0.95   # P(T- | D^c)\n\ndisease  &lt;- rbinom(N, size = 1, prob = prev)\ntest_pos &lt;- ifelse(disease == 1,\n                   rbinom(N, size = 1, prob = sens),\n                   rbinom(N, size = 1, prob = 1 - spec))\n\nppv_sim   &lt;- mean(disease[test_pos == 1])\nppv_bayes &lt;- (sens * prev) / (sens * prev + (1 - spec) * (1 - prev))\n\nc(simulated = ppv_sim, analytic = ppv_bayes)\n\n\n\n4. Explore: how does prevalence matter?\n\nCompute the analytic PPV for prevalence values from 0.1% to 50%, keeping sensitivity and specificity fixed.\nPlot PPV (y-axis) against prevalence (x-axis), and mark your scenario’s prevalence on the plot.\nIn 2–3 sentences, describe what happens to PPV as prevalence changes. When would this test be most useful?\n\n\n\n5. Say it\nWrite a short paragraph (4–6 sentences) for a patient who just received a positive result. Explain what the result means using natural frequencies (e.g., “Out of 1,000 people like you who test positive, about ___ actually have…”) rather than probability notation."
+  },
+  {
+    "objectID": "project/Checkpoint_01_instructions.html#submission",
+    "href": "project/Checkpoint_01_instructions.html#submission",
+    "title": "Checkpoint 1: When Is a Positive Really Positive?",
+    "section": "Submission",
+    "text": "Submission\nSubmit a rendered HTML file (use code-fold: true) and your .qmd. One submission per team."
+  },
+  {
+    "objectID": "project/Checkpoint_01_instructions.html#rubric-12-points",
+    "href": "project/Checkpoint_01_instructions.html#rubric-12-points",
+    "title": "Checkpoint 1: When Is a Positive Really Positive?",
+    "section": "Rubric (12 points)",
+    "text": "Rubric (12 points)\n\n\n\n\n\n\n\n\n\nCriterion\n3\n2\n1\n\n\n\n\nSetup (notation, input values, tree or table)\nClear and correct; inputs cited\nMinor gaps in notation or citation\nMajor errors or missing\n\n\nAnalytic solution (LTP, PPV, NPV)\nCorrect, with work shown\nSmall errors\nMostly incorrect or no work shown\n\n\nSimulation (code, comparison to analytic answer, prevalence plot)\nAgrees with analytic answer; differences explained; plot is clear\nRuns, but comparison or plot is weak\nMissing or incorrect\n\n\nInterpretation (prevalence discussion, patient paragraph)\nAccurate and in plain language\nSomewhat technical or vague\nMissing or misleading"
+  },
+  {
+    "objectID": "project/Checkpoint_02_instructions.html#goal",
+    "href": "project/Checkpoint_02_instructions.html#goal",
+    "title": "Checkpoint 2: Counting Events",
+    "section": "Goal",
+    "text": "Goal\nModel a count in your scenario with a discrete random variable, and use it to answer a practical question, such as staffing, capacity, or how often something unusual happens.\nCourse topics used: discrete random variables, PMFs and CDFs, expected value and variance, named discrete distributions (Bernoulli, Binomial, Geometric, Poisson, etc.)."
+  },
+  {
+    "objectID": "project/Checkpoint_02_instructions.html#tasks",
+    "href": "project/Checkpoint_02_instructions.html#tasks",
+    "title": "Checkpoint 2: Counting Events",
+    "section": "Tasks",
+    "text": "Tasks\n\n1. Define your random variable\n\nDefine \\(X\\) in words, including its units and time frame (e.g., “\\(X\\) = number of patients arriving at the ED between 6 and 7 pm”).\nList the possible values (the support) of \\(X\\).\n\n\n\n2. Choose and justify a distribution\n\nChoose a named distribution for \\(X\\) and state its parameter(s), using a cited value.\nList the assumptions of that distribution (e.g., fixed number of trials, independence, constant probability or rate), and explain whether each is reasonable for your scenario.\nIdentify the assumption most likely to fail in real life, and explain why.\n\n\n\n3. Solve it analytically\n\nFind \\(E(X)\\), \\(\\text{Var}(X)\\), and \\(\\text{SD}(X)\\) using formulas from class.\nCalculate two probabilities that answer practical questions, for example:\n\n\\(P(X \\geq k)\\) for a staffing or capacity threshold \\(k\\), and\n\\(P(X = 0)\\) or \\(P(a \\leq X \\leq b)\\).\n\nShow the formula (PMF or CDF) for each, then compute with R (e.g., dpois(), ppois(), pbinom()).\n\n\n\n4. Simulate it\n\nGenerate at least 10,000 draws of \\(X\\) with R (e.g., rpois(), rbinom(), rgeom()).\nMake a plot comparing the empirical distribution (from your simulation) with the theoretical PMF, for example side-by-side bars or points on a bar chart.\nCompare the simulated mean, variance, and your two probabilities with the analytic values in a small table.\n\nStarter code (Poisson example; change it for your distribution):\n\nset.seed(550)\nlambda &lt;- 12      # mean arrivals per hour (cite your source!)\nn_sim  &lt;- 10000\n\nx &lt;- rpois(n_sim, lambda)\n\ntibble::tibble(\n  quantity  = c(\"Mean\", \"Variance\", \"P(X &gt;= 18)\"),\n  analytic  = c(lambda, lambda, 1 - ppois(17, lambda)),\n  simulated = c(mean(x), var(x), mean(x &gt;= 18))\n)\n\n\n\n\n\n\n\nWarningWatch the parameterization\n\n\n\nR’s rgeom() counts the number of failures before the first success, which may not match the definition we used in class. Check your definitions, and adjust if needed (e.g., rgeom(n, p) + 1).\n\n\n\n\n5. Stretch (optional, +1 bonus)\nBreak the assumption you identified in Task 2 and show how the answer changes. For example, if arrivals are more variable than a Poisson allows, simulate from a model where the rate itself varies from hour to hour, and compare \\(P(X \\geq k)\\) with your original answer.\n\n\n6. Say it\nWrite a short paragraph (4–6 sentences) for a manager or clinician who needs to plan around this count. What is typical? What is unusual, and how often does it happen? What would you warn them about, given the assumption most likely to fail?"
+  },
+  {
+    "objectID": "project/Checkpoint_02_instructions.html#submission",
+    "href": "project/Checkpoint_02_instructions.html#submission",
+    "title": "Checkpoint 2: Counting Events",
+    "section": "Submission",
+    "text": "Submission\nSubmit a rendered HTML file (use code-fold: true) and your .qmd. One submission per team."
+  },
+  {
+    "objectID": "project/Checkpoint_02_instructions.html#rubric-12-points",
+    "href": "project/Checkpoint_02_instructions.html#rubric-12-points",
+    "title": "Checkpoint 2: Counting Events",
+    "section": "Rubric (12 points)",
+    "text": "Rubric (12 points)\n\n\n\n\n\n\n\n\n\nCriterion\n3\n2\n1\n\n\n\n\nSetup (random variable, distribution, assumptions)\nClear and correct; assumptions discussed with care\nMinor gaps\nMajor errors or missing\n\n\nAnalytic solution (mean, variance, two probabilities)\nCorrect, with formulas shown\nSmall errors\nMostly incorrect or no work shown\n\n\nSimulation (draws, PMF plot, comparison table)\nAgrees with analytic answers; plot is clear\nRuns, but comparison or plot is weak\nMissing or incorrect\n\n\nInterpretation (paragraph for a manager or clinician)\nAccurate, practical, and in plain language\nSomewhat technical or vague\nMissing or misleading"
+  },
+  {
+    "objectID": "project/Checkpoint_03_instructions.html#goal",
+    "href": "project/Checkpoint_03_instructions.html#goal",
+    "title": "Checkpoint 3: Averages and the Central Limit Theorem",
+    "section": "Goal",
+    "text": "Goal\nModel a time or measurement in your scenario with a continuous random variable, then use the Central Limit Theorem to answer a question about an average of many observations.\nCourse topics used: continuous random variables, PDFs and CDFs, quantiles, named continuous distributions (Uniform, Exponential, Gamma, Normal), sums of independent random variables, the Central Limit Theorem."
+  },
+  {
+    "objectID": "project/Checkpoint_03_instructions.html#tasks",
+    "href": "project/Checkpoint_03_instructions.html#tasks",
+    "title": "Checkpoint 3: Averages and the Central Limit Theorem",
+    "section": "Tasks",
+    "text": "Tasks\n\n1. Define your random variable\n\nDefine \\(Y\\) in words, including its units (e.g., “\\(Y\\) = time in hours from ED arrival to being seen by a provider”).\nState the support of \\(Y\\).\n\n\n\n2. Choose and justify a distribution\n\nChoose a named continuous distribution for \\(Y\\), and state its parameter(s) using cited values.\nExplain why this distribution is a reasonable choice. Consider its shape (symmetric or skewed?), its support, and what we know about the real quantity.\nPlot the PDF of your chosen distribution.\n\n\n\n3. Solve it analytically\n\nFind \\(E(Y)\\) and \\(\\text{Var}(Y)\\).\nCalculate two probabilities or quantiles that answer practical questions, for example:\n\n\\(P(Y &gt; c)\\) for a clinically meaningful cutoff \\(c\\), and\nthe 90th percentile of \\(Y\\).\n\nShow the setup (integral or CDF) for at least one of them, then compute with R (e.g., pexp(), qgamma(), pnorm()).\n\n\n\n4. Simulate the Central Limit Theorem\nLet \\(\\bar{Y}_n\\) be the average of \\(n\\) independent observations of \\(Y\\).\n\nFor \\(n = 5\\), \\(30\\), and \\(100\\), simulate at least 5,000 sample means.\nFor each \\(n\\), plot a histogram of the sample means with the normal curve predicted by the CLT, \\(N\\left(\\mu, \\sigma^2/n\\right)\\), overlaid.\nCompare the mean and SD of your simulated sample means with the CLT’s predictions.\nIn 2–3 sentences, describe how quickly the distribution of \\(\\bar{Y}_n\\) looks normal. How does the shape (skewness) of \\(Y\\) affect this?\n\nStarter code (Exponential example; change it for your distribution):\n\nset.seed(550)\nrate  &lt;- 1 / 2.5          # mean wait of 2.5 hours (cite your source!)\nmu    &lt;- 1 / rate\nsigma &lt;- 1 / rate\nn_rep &lt;- 5000\n\nsim_means &lt;- function(n) replicate(n_rep, mean(rexp(n, rate)))\n\nmeans_30 &lt;- sim_means(30)\n\nhist(means_30, freq = FALSE, breaks = 40,\n     main = \"Sample means, n = 30\", xlab = \"Average wait (hours)\")\ncurve(dnorm(x, mean = mu, sd = sigma / sqrt(30)), add = TRUE, lwd = 2)\n\n\n\n5. Answer a question about an average\nUse the CLT to answer a practical question about \\(\\bar{Y}_n\\) with an \\(n\\) that makes sense for your scenario. For example: What is the probability that the average wait of the next 50 patients is more than 3 hours?\n\nCompute the CLT approximation.\nCheck it with your simulation.\nCompare it with the probability that a single observation exceeds the same cutoff, and explain why the two answers differ.\n\n\n\n6. Say it\nWrite a short paragraph (4–6 sentences) for a clinician or administrator that explains the difference between what happens to one patient and what happens on average across many patients, using your results."
+  },
+  {
+    "objectID": "project/Checkpoint_03_instructions.html#submission",
+    "href": "project/Checkpoint_03_instructions.html#submission",
+    "title": "Checkpoint 3: Averages and the Central Limit Theorem",
+    "section": "Submission",
+    "text": "Submission\nSubmit a rendered HTML file (use code-fold: true) and your .qmd. One submission per team."
+  },
+  {
+    "objectID": "project/Checkpoint_03_instructions.html#rubric-12-points",
+    "href": "project/Checkpoint_03_instructions.html#rubric-12-points",
+    "title": "Checkpoint 3: Averages and the Central Limit Theorem",
+    "section": "Rubric (12 points)",
+    "text": "Rubric (12 points)\n\n\n\n\n\n\n\n\n\nCriterion\n3\n2\n1\n\n\n\n\nSetup (random variable, distribution, justification, PDF plot)\nClear and correct; choice well justified\nMinor gaps\nMajor errors or missing\n\n\nAnalytic solution (mean, variance, probabilities or quantiles, CLT approximation)\nCorrect, with work shown\nSmall errors\nMostly incorrect or no work shown\n\n\nSimulation (CLT histograms for three sample sizes, comparison with predictions)\nClear plots; matches CLT predictions; role of skewness explained\nRuns, but comparison is weak\nMissing or incorrect\n\n\nInterpretation (one patient vs. the average)\nAccurate and in plain language\nSomewhat technical or vague\nMissing or misleading"
   }
 ]

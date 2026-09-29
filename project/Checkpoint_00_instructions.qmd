@@ -31,7 +31,7 @@ source(here("class_dates.R"))
 
 ## Goal
 
-Choose the health scenario you will follow all quarter, read the published sources that come with it, and pull out the numbers you will use in Checkpoints 1–3.
+Choose the public health scenario you will follow all quarter, read the published sources that come with it, and pull out the numbers you will use in Checkpoints 1–3.
 
 You do **not** need to search for sources on your own. Each scenario below comes with a short **source packet**: the setting is fixed, and the papers you need are listed for you. Your job in this checkpoint is to read those sources, find the numbers, and describe them in your own words.
 
@@ -67,9 +67,9 @@ The papers use some terms we have not covered yet. You do not need to understand
 Choose **one** of the three scenarios.
 
 ::: panel-tabset
-### A. Breast cancer screening
+### A. Community breast cancer screening program
 
-**The setting:** Women in the United States who get a routine screening mammogram using digital breast tomosynthesis (3D mammography). A radiologist reads each exam as either normal or abnormal. An abnormal read means the woman is called back for more imaging. We want to know what an abnormal read actually means for her.
+**The setting:** A county health department runs a **mobile 3D mammography van** that brings free breast cancer screening to rural and underserved communities. The program screens women ages 40–74, following the current U.S. recommendation. A radiologist reads each exam as either normal or abnormal, and every woman with an abnormal read needs a follow-up diagnostic appointment. The program manager needs to know what an abnormal read means for the women served, how many follow-up appointments to reserve after each van day, and whether screening is finding cancers while they are still small.
 
 **Source packet**
 
@@ -82,18 +82,18 @@ This one paper has everything you need. Look in the **Abstract** and the **Resul
 | Checkpoint | What we model | Where it comes from |
 |----|----|----|
 | CP 1 | The chance a woman has cancer, given an abnormal read | Sensitivity and specificity (paper); prevalence (course value below) |
-| CP 2 | The number of abnormal reads out of 40 screens in one clinic day | Abnormal interpretation rate (paper) |
+| CP 2 | The number of abnormal reads (follow-up appointments needed) out of 40 screens on one van day | Abnormal interpretation rate (paper) |
 | CP 3 | The size of a tumor found by screening, in millimeters | Median and IQR (paper); mean and SD (course values below) |
 
 **Course values**
 
 -   **Prevalence:** 6.6 cancers per 1,000 women screened. (The paper reports the *cancer detection rate*, which only counts the cancers that the screen found. We divided it by the sensitivity to include the cancers the screen missed.)
--   **Screens per clinic day:** 40.
+-   **Screens per van day:** 40.
 -   **Tumor size:** mean of about 14 mm, SD of about 9 mm. (The paper reports a median and IQR. These values match that median and IQR for a right-skewed shape.)
 
-### B. COVID-19 in a household
+### B. County COVID-19 testing and contact tracing
 
-**The setting:** Adults in the United States with **no symptoms** who use a rapid at-home antigen test for COVID-19. If someone is infected, the virus can spread to the other people they live with. We want to know how much to trust a positive test, how many household members might get infected, and how long it takes for symptoms to start.
+**The setting:** A county health department gives out free rapid at-home antigen tests so that residents **without symptoms** can screen themselves, for example before visiting an older relative. When a resident tests positive and is confirmed as a case, the department's contact tracers follow up with the people they live with. The department needs to know how much to trust a positive screening test, how many household members of each case are likely to be infected (to plan test kits and isolation support), and how long household contacts should watch for symptoms.
 
 **Source packet**
 
@@ -107,18 +107,18 @@ For source 1, use the **overall** numbers for people **without symptoms**. For s
 
 | Checkpoint | What we model | Where it comes from |
 |----|----|----|
-| CP 1 | The chance a person is infected, given a positive rapid test | Sensitivity and specificity (source 1); prevalence (course value below) |
-| CP 2 | The number of the other household members who get infected | Household secondary attack rate for Omicron (source 2) |
+| CP 1 | The chance a resident is infected, given a positive rapid test | Sensitivity and specificity (source 1); prevalence (course value below) |
+| CP 2 | The number of household contacts of one case who get infected | Household secondary attack rate for Omicron (source 2) |
 | CP 3 | The incubation period: days from infection until symptoms start | Mean incubation period for Omicron (source 3) |
 
 **Course values**
 
--   **Prevalence:** 0.5% (5 out of every 1,000 people without symptoms who test). This is the example prevalence the Cochrane summary uses for general screening.
--   **Other household members:** 3 (a household of 4 people, with 1 infected person).
+-   **Prevalence:** 0.5% (5 out of every 1,000 residents without symptoms who test). This is the example prevalence the Cochrane summary uses for general screening.
+-   **Household contacts per case:** 3 (a household of 4 people, with 1 case).
 
-### C. Newborn heart screening
+### C. State newborn heart screening program
 
-**The setting:** Newborn babies in a U.S. hospital who get pulse oximetry screening, a painless test that measures the oxygen level in the blood, before they go home. The test looks for critical congenital heart defects (CCHD), which are serious heart problems that need treatment soon after birth. We want to know what a positive screen means for a family, how many babies with CCHD a hospital should expect, and how much babies weigh at birth.
+**The setting:** A state health department runs a **newborn screening program** that requires every baby born in the state to get pulse oximetry screening before going home. Pulse oximetry is a painless test that measures the oxygen level in the blood. It looks for critical congenital heart defects (CCHD), which are serious heart problems that need treatment soon after birth. The state has about 40,000 births a year. The program needs to know what a positive screen means for families, how many babies with CCHD to expect each year (to plan follow-up with pediatric heart specialists), and what typical birth weight looks like across the state's newborns.
 
 **Source packet**
 
@@ -132,12 +132,12 @@ For source 1, look for the numbers "per 10,000 newborns" and the **false-positiv
 | Checkpoint | What we model | Where it comes from |
 |----|----|----|
 | CP 1 | The chance a baby has CCHD, given a positive screen | Prevalence, sensitivity, and false-positive rate (source 1) |
-| CP 2 | The number of babies born with CCHD at one hospital in one year | Prevalence (source 1); births per year (course value below) |
+| CP 2 | The number of babies born with CCHD in the state in one year | Prevalence (source 1); births per year (course value below) |
 | CP 3 | Birth weight, in grams | Mean and SD for 2005 (source 2) |
 
 **Course values**
 
--   **Births per year at the hospital:** 3,000.
+-   **Births per year in the state:** 40,000.
 :::
 
 ::: callout-tip
@@ -157,7 +157,7 @@ If you do not have my approval by the due date, please choose one of the three s
 
 -   State whether you are working alone or with a partner (and your partner's name).
 -   State which scenario you chose (A, B, or C).
--   In 3–5 sentences, and **in your own words**, describe the scenario: Who is the population? What is being tested, counted, or measured? Why would a clinician or public health decision-maker care about it?
+-   In 3–5 sentences, and **in your own words**, describe the scenario: Who is the population? What is being tested, counted, or measured? What decision does the public health program need to make, and why does it matter for the population it serves?
 
 ### 2. Find your numbers in the sources
 
@@ -189,23 +189,23 @@ Fill in the table below for your scenario. For each row:
 
 Write one question for each checkpoint that your analysis will answer. You may use the examples below for your scenario, or change them (for example, a different cutoff).
 
-**Scenario A (breast cancer screening)**
+**Scenario A (community breast cancer screening program)**
 
--   **CP 1:** If a woman's screening mammogram is read as abnormal, what is the probability that she has breast cancer?
--   **CP 2:** On a clinic day with 40 screens, what is the probability that 6 or more are read as abnormal?
--   **CP 3:** What is the probability that the average size of the next 30 tumors found by screening is more than 15 mm?
+-   **CP 1:** If a woman screened on the van gets an abnormal read, what is the probability that she has breast cancer?
+-   **CP 2:** If the program reserves 6 follow-up appointments after each van day of 40 screens, what is the probability that it needs more than 6?
+-   **CP 3:** What is the probability that the average size of the next 30 tumors the program finds is more than 15 mm?
 
-**Scenario B (COVID-19 in a household)**
+**Scenario B (county COVID-19 testing and contact tracing)**
 
--   **CP 1:** If a person without symptoms gets a positive rapid test, what is the probability that they are infected?
--   **CP 2:** If one person in a household of 4 is infected, what is the probability that at least 2 of the other 3 also get infected?
--   **CP 3:** What is the probability that the average incubation period of the next 50 cases is more than 4 days?
+-   **CP 1:** If a resident without symptoms gets a positive rapid test, what is the probability that they are infected?
+-   **CP 2:** For a case who lives with 3 other people, what is the probability that at least 2 of them also get infected?
+-   **CP 3:** What is the probability that the average incubation period across the county's next 50 cases is more than 4 days?
 
-**Scenario C (newborn heart screening)**
+**Scenario C (state newborn heart screening program)**
 
 -   **CP 1:** If a newborn has a positive pulse oximetry screen, what is the probability that the baby has CCHD?
--   **CP 2:** In a hospital with 3,000 births a year, what is the probability that there are no babies with CCHD in a given year?
--   **CP 3:** What is the probability that the average birth weight of the next 25 babies born is less than 3,200 grams?
+-   **CP 2:** With 40,000 births a year, what is the probability that the state has 30 or more babies with CCHD in one year?
+-   **CP 3:** What is the probability that the average birth weight of 100 babies born in one county in a month is less than 3,300 grams?
 
 These can change later. This step is to make sure your scenario works for all three checkpoints.
 

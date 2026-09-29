@@ -49,9 +49,9 @@ Pick one of the three scenarios below. Each one comes with a fixed setting and a
 
 | Scenario | CP 1: Conditional probability & Bayes | CP 2: Discrete RV | CP 3: Continuous RV & CLT |
 |----|----|----|----|
-| A. Breast cancer screening | P(cancer \| abnormal mammogram) | Abnormal reads out of 40 screens in a clinic day | Size of a tumor found by screening |
-| B. COVID-19 in a household | P(infected \| positive rapid test) | Other household members who get infected | Incubation period |
-| C. Newborn heart screening | P(heart defect \| positive pulse oximetry screen) | Babies born with a heart defect at one hospital in a year | Birth weight |
+| A. Community breast cancer screening program | P(cancer \| abnormal mammogram) | Follow-up appointments needed after a van day of 40 screens | Size of a tumor found by screening |
+| B. County COVID-19 testing and contact tracing | P(infected \| positive rapid test) | Household contacts of a case who get infected | Incubation period |
+| C. State newborn heart screening program | P(heart defect \| positive pulse oximetry screen) | Babies born with a heart defect in the state in a year | Birth weight |
 
 ::: callout-note
 ## Use real numbers

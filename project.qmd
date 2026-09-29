@@ -45,20 +45,18 @@ You may work **alone or in pairs**. If you work in a pair, you keep the same par
 
 ### Scenario menu
 
-Pick one scenario below, or propose your own in Checkpoint 0. The table shows where each checkpoint could go for each scenario. These are suggestions, not requirements.
+Pick one of the three scenarios below. Each one comes with a fixed setting and a short packet of published sources, so you do not need to search for sources yourself. The full scenario cards are in [Checkpoint 0](/project/Checkpoint_00_instructions.qmd#scenario-cards). You may propose your own scenario only with my approval (see Checkpoint 0).
 
 | Scenario | CP 1: Conditional probability & Bayes | CP 2: Discrete RV | CP 3: Continuous RV & CLT |
 |----|----|----|----|
-| Cancer screening | PPV/NPV of a screening test | Number of positive screens in a clinic day (Binomial) | Tumor size or biomarker level (Normal) |
-| Emergency department | P(admitted \| triage level) | Arrivals per hour (Poisson) | Wait time (Exponential) |
-| Infectious disease outbreak | P(infected \| positive rapid test) | Secondary cases from one infected person (Poisson) | Incubation period (Gamma) |
-| Clinical trial recruitment | P(eligible \| screened) | Patients screened until the first eligible one (Geometric) | Time to enroll *n* patients (Gamma) |
-| Newborn screening | P(condition \| positive heel-prick test) | Affected infants per 10,000 births (Binomial / Poisson) | Birth weight (Normal) |
+| A. Breast cancer screening | P(cancer \| abnormal mammogram) | Abnormal reads out of 40 screens in a clinic day | Size of a tumor found by screening |
+| B. COVID-19 in a household | P(infected \| positive rapid test) | Other household members who get infected | Incubation period |
+| C. Newborn heart screening | P(heart defect \| positive pulse oximetry screen) | Babies born with a heart defect at one hospital in a year | Birth weight |
 
 ::: callout-note
 ## Use real numbers
 
-Wherever you need an input value (prevalence, sensitivity, rate, mean, etc.), find a published estimate and cite it. Good sources include CDC reports, USPSTF evidence reviews, and peer-reviewed articles. You do not need to analyze a dataset. The data in this project come from simulation.
+Every input value (prevalence, sensitivity, rate, mean, etc.) comes from your scenario's source packet or from a course value on your scenario card. Cite the source each time you use a value. You do not need to analyze a dataset. The data in this project come from simulation.
 :::
 
 ## Checkpoints
@@ -67,7 +65,7 @@ The checkpoints build, step by step, the work you need for the final project, so
 
 | Checkpoint Instructions | Points | Rubric | Due Date | Topics |
 |------------|------------|------------|------------|------------|
-| [Checkpoint 0](/project/Checkpoint_00_instructions.qmd) | 4 | [[{{< iconify material-symbols rubric-rounded size=30px >}}](/project/Checkpoint_00_rubric.xlsx)]{style="color:#f8f5f0;"} | `r cp0 %>% format("%m/%d")` | Choose your scenario + find and cite input values |
+| [Checkpoint 0](/project/Checkpoint_00_instructions.qmd) | 4 | [[{{< iconify material-symbols rubric-rounded size=30px >}}](/project/Checkpoint_00_rubric.xlsx)]{style="color:#f8f5f0;"} | `r cp0 %>% format("%m/%d")` | Choose your scenario + find input values in your source packet |
 | [Checkpoint 1](/project/Checkpoint_01_instructions.qmd) | 12 | [[{{< iconify material-symbols rubric-rounded size=30px >}}](/project/Checkpoint_01_rubric.xlsx)]{style="color:#f8f5f0;"} | `r cp1 %>% format("%m/%d")` | Conditional probability + Bayes' rule: when is a positive really positive? |
 | [Checkpoint 2](/project/Checkpoint_02_instructions.qmd) | 12 | [[{{< iconify material-symbols rubric-rounded size=30px >}}](/project/Checkpoint_02_rubric.xlsx)]{style="color:#f8f5f0;"} | `r cp2 %>% format("%m/%d")` | Discrete random variables: counting events |
 | [Checkpoint 3](/project/Checkpoint_03_instructions.qmd) | 12 | [[{{< iconify material-symbols rubric-rounded size=30px >}}](/project/Checkpoint_03_rubric.xlsx)]{style="color:#f8f5f0;"} | `r cp3 %>% format("%m/%d")` | Continuous random variables + the Central Limit Theorem |

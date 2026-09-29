@@ -33,7 +33,7 @@ I used Claude (Sonnet 5) to help me brainstorm project ideas for this class usin
 
 ## Project Overview: Probability in the Wild
 
-This quarter, you will follow **one health scenario** through the whole course. Each time we learn a new set of probability tools, you will apply them to your scenario in a checkpoint. At the end of the quarter, you will pull your checkpoints together into a short brief written for a clinician or public health partner.
+This quarter, you will follow **one health scenario**. Each time we learn a new set of probability and simulation tools, you will apply them to your scenario in a checkpoint. At the end of the quarter, you will pull your checkpoints together into a short brief written for a clinician or public health partner.
 
 Every checkpoint follows the same three steps:
 

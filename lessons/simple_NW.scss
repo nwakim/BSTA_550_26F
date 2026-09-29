@@ -48,6 +48,26 @@ div.cell-output-stdout {
 
 
 // My added divs
+// Target the Tippy box explicitly for code annotations
+.tippy-box {
+  font-size: 1.1em !important; /* Bump up as much as you need */
+  
+  // --- Widens the hover popup box ---
+  max-width: 550px !important;  /* Prevents Tippy from clamping the width */
+  width: 500px !important;      /* Sets the actual width of the box */
+  
+  // Target the container grid inside the popup
+  dl.code-annotation-container-grid {
+    font-size: 1.1em !important; 
+    
+    dt {
+      font-size: 1.1em !important; /* Sizes the numbers (e.g., 1, 2) */
+    }
+    dd {
+      font-size: 1.1em !important; /* Sizes your actual description text */
+    }
+  }
+}
 
 
 // Learning Objectives

@@ -44,7 +44,7 @@ Choose the health scenario you will follow all quarter, and gather the real-worl
 ::: callout-tip
 ## Proposing your own scenario?
 
-Your scenario needs three pieces:
+If you want to propose you ***own*** scenario, it will need three pieces:
 
 1.  a **test or classification** with a sensitivity/specificity (or two conditional probabilities) for Checkpoint 1,
 2.  a **count** of events that could be modeled with a discrete distribution for Checkpoint 2, and

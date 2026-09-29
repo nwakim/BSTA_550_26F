@@ -10,8 +10,10 @@ editor_options:
 
 ## Announcements
 
-- Attendance policy: a little confusing
-
+- Some upcoming school events: ![](../00_Intro/first_week.jpg)
+- Make sure to...
+  - Fill out [the when2meet](https://www.when2meet.com/?38866937-SwNL6) ASAP!
+  
 
 ## Key dates
 
@@ -19,4 +21,7 @@ editor_options:
 
 ## Last class
 
-- Did not finish Lesson 1, so we will finish!
+- We introduced probability:
+  - Discussed randomness, uncertainty, and equally likely outcomes
+  - Looked a *very* brief simulation
+  - Defined outcomes, sample space, and events!

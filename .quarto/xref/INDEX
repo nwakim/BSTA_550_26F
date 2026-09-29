@@ -130,5 +130,17 @@
   },
   "lessons/01_Probability/01_Probability_muddy_points.qmd": {
     "01_Probability_muddy_points.html": "e54aa817"
+  },
+  "lessons/02_Simulations/02_Simulations.qmd": {
+    "02_Simulations.html": "9d931602"
+  },
+  "lessons/02_Simulations/02_Simulations (1).qmd": {
+    "02_Simulations (1).html": "6a7e4c98"
+  },
+  "lessons/02_Simulations/02_Simulations_key_info.qmd": {
+    "02_Simulations_key_info.html": "5163c48b"
+  },
+  "lessons/02_Simulations/02_Simulations_muddy_points.qmd": {
+    "02_Simulations_muddy_points.html": "cb7ebbc5"
   }
 }

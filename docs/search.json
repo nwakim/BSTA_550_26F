@@ -18358,7 +18358,7 @@
     "href": "lessons/02_Simulations/02_Simulations.html#we-saw-an-example-of-long-run-relative-frequency-in-our-coin-flip",
     "title": "Lesson 2: Introduction to Simulations",
     "section": "We saw an example of long-run relative frequency in our coin flip",
-    "text": "We saw an example of long-run relative frequency in our coin flip\nIn Lesson 1, we flipped a coin 100 times and recorded the proportion of heads.\n\nWe tossed 50 heads out of the 100 flips\nOur long-run frequency was \\(50/100 = 0.5\\), which approximated the probability of getting a head on any one flip"
+    "text": "We saw an example of long-run relative frequency in our coin flip\nIn Lesson 1, we flipped a coin 100 times and recorded the proportion of heads.\n\nWe tossed 50 heads out of the 100 flips\nOur long-run relative frequency was \\(50/100 = 0.5\\), which approximated the probability of getting a head on any one flip"
   },
   {
     "objectID": "lessons/02_Simulations/02_Simulations.html#tactile-simulations",
@@ -18372,7 +18372,7 @@
     "href": "lessons/02_Simulations/02_Simulations.html#example-to-build-our-simulation-skills",
     "title": "Lesson 2: Introduction to Simulations",
     "section": "Example to build our simulation skills",
-    "text": "Example to build our simulation skills\n\n\nExample: Simulating Two Rolls of a Fair Four-Sided Die\n\n\nWe’re going to roll two four-sided die. Let \\(X\\) be the sum of two rolls, and \\(Y\\) be the larger of the two rolls. How would we simulate \\(X\\) and \\(Y\\) separately?\n\n\n \n\nNote: this example is not asking for a probability!\n\nWe can simulate a random variable and looks at its distribution without calculating any probabilities.\n\n\n \n\nWe will focus on simulating \\(X\\) first\n\n \nLet’s build up some coding tools to do this!"
+    "text": "Example to build our simulation skills\n\n\nExample: Simulating Two Rolls of a Fair Four-Sided Die\n\n\nWe’re going to roll two four-sided dice. Let \\(X\\) be the sum of two rolls, and \\(Y\\) be the larger of the two rolls. How would we simulate \\(X\\) and \\(Y\\) separately?\n\n\n \n\nNote: this example is not asking for a probability!\n\nWe can simulate a random variable and look at its distribution without calculating any probabilities.\n\n\n \n\nWe will focus on simulating \\(X\\) first\n\n \nLet’s build up some coding tools to do this!"
   },
   {
     "objectID": "lessons/02_Simulations/02_Simulations.html#how-do-we-simulate-something-like-a-single-dice-roll",
@@ -18386,21 +18386,21 @@
     "href": "lessons/02_Simulations/02_Simulations.html#what-if-we-have-multiple-rolls-at-once",
     "title": "Lesson 2: Introduction to Simulations",
     "section": "What if we have multiple rolls at once?",
-    "text": "What if we have multiple rolls at once?\n\nWe can set size to be larger than 1 to simulate multiple draws at once\n\n\nsample(x = c(\"H\", \"T\"), size = 5, replace = TRUE)\n\n[1] \"T\" \"T\" \"T\" \"H\" \"T\"\n\n\n\nWe can simulate our example of the two four-sided dice\n\n\nsample(x = c(1, 2, 3, 4), size = 2, replace = TRUE)\n\n[1] 3 3\n\n\n \n\nWhat happens if we set replace = FALSE?\n\n\nsample(x = c(1, 2, 3, 4), size = 2, replace = FALSE)\n\n[1] 4 2\n\nsample(x = c(1, 2, 3, 4), size = 4, replace = FALSE)\n\n[1] 2 1 3 4"
+    "text": "What if we have multiple rolls at once?\n\nWe can set size to be larger than 1 to simulate multiple draws at once\n\n\n1sample(x = c(\"H\", \"T\"), size = 5, replace = TRUE)\n\n\n1\n\nsize = 5 draws 5 tickets. replace = TRUE puts each ticket back before the next draw, so “H” and “T” can come up again, just like flipping the same coin 5 times.\n\n\n\n\n[1] \"T\" \"T\" \"T\" \"H\" \"T\"\n\n\n\nWe can simulate our example of the two four-sided dice\n\n\n1sample(x = c(1, 2, 3, 4), size = 2, replace = TRUE)\n\n\n1\n\nTwo rolls of a four-sided die. Because of replace = TRUE, both rolls can show the same number.\n\n\n\n\n[1] 3 3\n\n\n \n\nWhat happens if we set replace = FALSE?\n\n\n1sample(x = c(1, 2, 3, 4), size = 2, replace = FALSE)\n2sample(x = c(1, 2, 3, 4), size = 4, replace = FALSE)\n\n\n1\n\nWithout replacement, a ticket cannot be drawn twice, so the two numbers are always different.\n\n2\n\nDrawing all 4 tickets without replacement just shuffles 1, 2, 3, and 4.\n\n\n\n\n[1] 4 2\n[1] 2 1 3 4"
   },
   {
     "objectID": "lessons/02_Simulations/02_Simulations.html#can-we-start-to-simulate-many-rolls-of-two-dice",
     "href": "lessons/02_Simulations/02_Simulations.html#can-we-start-to-simulate-many-rolls-of-two-dice",
     "title": "Lesson 2: Introduction to Simulations",
     "section": "Can we start to simulate many rolls of two dice?",
-    "text": "Can we start to simulate many rolls of two dice?\n\n\nExample: Simulating Two Rolls of a Fair Four-Sided Die\n\n\nWe’re going to roll two four-sided dice. Let \\(X\\) be the sum of two rolls, and \\(Y\\) be the larger of the two rolls. How would we simulate \\(X\\) and \\(Y\\) separately?\n\n\n\nWe’ve seen how to simulate a single pair of rolls\n\n\nrolls &lt;- sample(x = c(1, 2, 3, 4), size = 2, replace = TRUE)\n\n\nWe can use the replicate() function to repeat this process many times (we’ll do 10)\n\n\nreps &lt;- 10\nreplicate(reps, sample(x = 1:4, size = 2, replace = TRUE))\n\n     [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]\n[1,]    2    3    3    3    3    3    3    1    3     3\n[2,]    1    1    2    2    2    1    4    1    4     2"
+    "text": "Can we start to simulate many rolls of two dice?\n\n\nExample: Simulating Two Rolls of a Fair Four-Sided Die\n\n\nWe’re going to roll two four-sided dice. Let \\(X\\) be the sum of two rolls, and \\(Y\\) be the larger of the two rolls. How would we simulate \\(X\\) and \\(Y\\) separately?\n\n\n\nTo repeat our pair of rolls many times, we make a table with one row for every roll\n\nsim numbers each simulation (each pair of rolls), and die says which die was rolled\nexpand_grid() makes every combination of sim and die, and n() is the number of rows\n\n\n \n\nLet’s start with 5 simulations\n\n\n1reps &lt;- 5\n\n2rolls &lt;- expand_grid(sim = 1:reps, die = 1:2) |&gt;\n3  mutate(roll = sample(1:4, n(), replace = TRUE))\n\n\n1\n\nSave the number of simulations as reps, so it is easy to change later.\n\n2\n\nMake a table with every combination of simulation number (1 to 5) and die number (1 or 2), which gives 10 rows. The pipe |&gt; passes this table to the next line.\n\n3\n\nmutate() adds a new column called roll. n() is the number of rows (10), so we get one random roll of a four-sided die for every row."
   },
   {
     "objectID": "lessons/02_Simulations/02_Simulations.html#we-need-more-reps-for-long-run-relative-frequencies",
     "href": "lessons/02_Simulations/02_Simulations.html#we-need-more-reps-for-long-run-relative-frequencies",
     "title": "Lesson 2: Introduction to Simulations",
     "section": "We need more reps for long-run relative frequencies",
-    "text": "We need more reps for long-run relative frequencies\n\nreps &lt;- 10000\nsimulations &lt;- replicate(reps, sample(x = 1:4, size = 2, replace = TRUE))\n\n\nLet’s show the first 14 simulations\n\n\nsimulations[, 1:14]\n\n     [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13] [,14]\n[1,]    4    1    2    2    4    2    1    2    4     1     4     2     2     3\n[2,]    4    4    1    3    1    1    2    3    2     4     1     2     2     2\n\n\n \n\n\\(X\\) is the sum of the two rolls: we could calculate that for each column\n\n\nX_simulated &lt;- apply(simulations, 2, sum)\nX_simulated[1:14]\n\n [1] 8 5 3 5 5 3 3 5 6 5 5 4 4 5"
+    "text": "We need more reps for long-run relative frequencies\n\n\n\nSame code, but now with 10,000 simulations\n\n\n1reps &lt;- 10000\n\n2rolls &lt;- expand_grid(sim = 1:reps, die = 1:2) |&gt;\n  mutate(roll = sample(1:4, n(), replace = TRUE))\n\n3X_sims &lt;- rolls |&gt;\n  group_by(sim) |&gt;\n  summarise(X = sum(roll))\n\n\n1\n\nThe only change: 10,000 simulations instead of 5.\n\n2\n\nSame as before: one row per roll (now 20,000 rows), each with a random roll.\n\n3\n\nSame as before: add up the rolls in each simulation. We save the result as X_sims.\n\n\n\n\n\n\nLet’s look at the first few simulations\n\n\n1X_sims\n\n\n1\n\nA tibble (table) only prints its first 10 rows, followed by a note saying how many rows are left.\n\n\n\n\n# A tibble: 10,000 × 2\n     sim     X\n   &lt;int&gt; &lt;int&gt;\n 1     1     5\n 2     2     4\n 3     3     7\n 4     4     2\n 5     5     7\n 6     6     5\n 7     7     8\n 8     8     5\n 9     9     3\n10    10     5\n# ℹ 9,990 more rows"
   },
   {
     "objectID": "lessons/02_Simulations/02_Simulations.html#we-can-look-at-the-plot-of-random-variable-x",
@@ -18414,7 +18414,7 @@
     "href": "lessons/02_Simulations/02_Simulations.html#if-we-want-to-calculate-something-else-we-can",
     "title": "Lesson 2: Introduction to Simulations",
     "section": "If we want to calculate something else, we can!",
-    "text": "If we want to calculate something else, we can!\n\n\n\nAverage:\n\n\nmean(X_simulated)\n\n[1] 5.0044\n\n\n\nStandard deviation:\n\n\nsd(X_simulated)\n\n[1] 1.574303\n\n\n\nProbability that \\(X=5\\):\n\n\nsum(X_simulated == 5) / reps\n\n[1] 0.2468\n\n\n\nProbability that \\(X&lt;3\\):\n\n\nsum(X_simulated &lt; 3) / reps\n\n[1] 0.0584\n\n\n\n \n \n \n \n \n \n \n\n\nProbabilities (relative frequencies) are calculated by:\n\nsumming the number of times an event occurs and\ndividing by the total number of simulations (reps)"
+    "text": "If we want to calculate something else, we can!\n\n\n\nsummarise() can calculate several summaries at once:\n\nAverage and standard deviation of \\(X\\)\nProbability that \\(X = 5\\) and probability that \\(X &lt; 3\\)\n\n\n\n1X_sims |&gt;\n2  summarise(\n3    average     = mean(X),\n    std_dev     = sd(X),\n4    prob_5      = mean(X == 5),\n    prob_less_3 = mean(X &lt; 3)\n  )\n\n\n1\n\nStart with the 10,000 simulated values of X.\n\n2\n\nsummarise() collapses the whole table into one row. Each name inside it becomes a column.\n\n3\n\nThe average and standard deviation of the simulated values of X.\n\n4\n\nX == 5 and X &lt; 3 are TRUE or FALSE for each simulation, so their mean is the proportion of simulations where the event happened.\n\n\n\n\n# A tibble: 1 × 4\n  average std_dev prob_5 prob_less_3\n    &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;\n1    5.00    1.57  0.247      0.0585\n\n\n\n \n\n\nProbabilities (relative frequencies) are the proportion of simulations where the event occurs:\n\nX == 5 is TRUE or FALSE for each simulation\nR treats TRUE as 1 and FALSE as 0, so mean(X == 5) is the number of times the event occurs divided by the total number of simulations (reps)"
   },
   {
     "objectID": "lessons/02_Simulations/02_Simulations.html#steps-of-a-simulation",
@@ -18428,35 +18428,35 @@
     "href": "lessons/02_Simulations/02_Simulations.html#example-dice-rolls",
     "title": "Lesson 2: Introduction to Simulations",
     "section": "Example: Dice Rolls",
-    "text": "Example: Dice Rolls\n\n\nExample: Simulating Two Rolls of a Fair Four-Sided Die\n\n\nWe’re going to roll two four-sided die. Let \\(X\\) be the sum of two rolls, and \\(Y\\) be the larger of the two rolls. How would we simulate \\(X\\) and \\(Y\\) separately?\n\n\n\nUse the steps to run simulation for for \\(Y\\) now"
+    "text": "Example: Dice Rolls\n\n\nExample: Simulating Two Rolls of a Fair Four-Sided Die\n\n\nWe’re going to roll two four-sided dice. Let \\(X\\) be the sum of two rolls, and \\(Y\\) be the larger of the two rolls. How would we simulate \\(X\\) and \\(Y\\) separately?\n\n\n\nUse the steps to run simulation for \\(Y\\) now"
   },
   {
     "objectID": "lessons/02_Simulations/02_Simulations.html#section",
     "href": "lessons/02_Simulations/02_Simulations.html#section",
     "title": "Lesson 2: Introduction to Simulations",
     "section": "",
-    "text": "Set up\n\n\n\nDefine the probability space and related random variables and events, including assumptions.\n\n\n\nRandom variable: \\(Y(\\omega)\\) is the larger of the two rolls in outcome \\(\\omega\\)\nGoal: simulate \\(Y\\), the larger of two rolls of a fair four-sided die\nSample space: all possible outcomes of rolling two four-sided die\n\nNot necessary, but helpful to define the sample space\n\n\n\\[\\begin{aligned} S =  \\{ &(1,1), (1,2), (1,3), (1,4), (2,1), (2,2), (2,3), (2,4),\\\\ & (3,1), (3,2), (3,3), (3,4), (4,1), (4,2), (4,3), (4,4)\\} \\end{aligned}\\]\n\nAssumptions: each die is fair and rolls are independent\n\nEach outcome in \\(S\\) is equally likely with probability \\(1/16\\)"
+    "text": "Set up\n\n\n\nDefine the probability space and related random variables and events, including assumptions.\n\n\n\nRandom variable: \\(Y(\\omega)\\) is the larger of the two rolls in outcome \\(\\omega\\)\nGoal: simulate \\(Y\\), the larger of two rolls of a fair four-sided die\nSample space: all possible outcomes of rolling two four-sided dice\n\nNot necessary, but helpful to define the sample space\n\n\n\\[\\begin{aligned} S =  \\{ &(1,1), (1,2), (1,3), (1,4), (2,1), (2,2), (2,3), (2,4),\\\\ & (3,1), (3,2), (3,3), (3,4), (4,1), (4,2), (4,3), (4,4)\\} \\end{aligned}\\]\n\nAssumptions: each die is fair and rolls are independent\n\nEach outcome in \\(S\\) is equally likely with probability \\(1/16\\)"
   },
   {
     "objectID": "lessons/02_Simulations/02_Simulations.html#section-1",
     "href": "lessons/02_Simulations/02_Simulations.html#section-1",
     "title": "Lesson 2: Introduction to Simulations",
     "section": "",
-    "text": "Simulate\n\n\n\nRun the simulation to generate outcomes according to the assumptions.\n\n\n\nreps &lt;- 10000\nsimulations &lt;- replicate(reps, sample(x = 1:4, size = 2, replace = TRUE))\nY_simulated &lt;- apply(simulations, 2, max)\n\n \n\nWe can look at the first 30 simulations\n\n\nY_simulated[1:30]\n\n [1] 3 4 4 4 2 4 4 4 2 3 4 4 1 4 4 3 4 4 2 4 4 4 1 4 2 2 4 4 3 3"
+    "text": "Simulate\n\n\n\nRun the simulation to generate outcomes according to the assumptions.\n\n\n\nSame code as for \\(X\\), but we take the max() of each simulation instead of the sum()\nWe also save the number of dice as n_dice, so it is easy to change later\n\n\n1reps &lt;- 10000\nn_dice &lt;- 2\n\n2rolls &lt;- expand_grid(sim = 1:reps, die = 1:n_dice) |&gt;\n  mutate(roll = sample(1:4, n(), replace = TRUE))\n\n3Y_sims &lt;- rolls |&gt;\n  group_by(sim) |&gt;\n  summarise(Y = max(roll))\n\n\n1\n\nSave the settings for the simulation: 10,000 simulations with 2 dice each.\n\n2\n\nSame as for X: one row per roll, with a random roll of a four-sided die in each row.\n\n3\n\nThe only change from X: max() keeps the larger roll in each simulation instead of adding them up.\n\n\n\n\n\nWe can look at the first 30 simulations\n\n\n1head(Y_sims$Y, 30)\n\n\n1\n\nY_sims$Y pulls out the Y column, and head(..., 30) shows its first 30 values.\n\n\n\n\n [1] 4 2 4 3 2 2 3 4 4 4 2 4 4 4 2 3 4 4 1 4 4 3 4 4 2 4 4 4 1 4"
   },
   {
     "objectID": "lessons/02_Simulations/02_Simulations.html#section-2",
     "href": "lessons/02_Simulations/02_Simulations.html#section-2",
     "title": "Lesson 2: Introduction to Simulations",
     "section": "",
-    "text": "Summarize\n\n\n\nAnalyze the output using plots and summary statistics like relative frequencies and averages.\n\n\n\n\n\n\nShow/Hide Code for plotting Y\nY_df &lt;- as.data.frame(Y_simulated) %&gt;%\n  rename(Y = Y_simulated)\n\nggplot(Y_df, aes(x = Y)) +\n  geom_histogram(binwidth = 1, color = \"black\", fill = \"#B3C8BF\") +\n  scale_x_continuous(breaks = seq(1, 4, by = 1)) +\n  labs(title = \"Simulated Distribution of Y (Larger of Two Rolls)\",\n       x = \"Value of Y\",\n       y = \"Frequency\") +\n  theme_minimal() +\n  theme(\n    axis.text.x = element_text(size = 20), \n    axis.text.y = element_text(size = 20),\n    axis.title.x = element_text(size = 20),\n    axis.title.y = element_text(size = 20), \n    plot.title = element_text(size = 20)\n    )\n\n\n\n\n\n\n\n\n\n\nIf the problem asked us for something else, we could compute it:\n\nAverage:\n\n\nmean(Y_simulated)\n\n[1] 3.1199\n\n\n\nProbability that \\(Y=1\\):\n\n\nsum(Y_simulated == 1) / reps\n\n[1] 0.0634\n\n\n\nProbability that \\(Y&gt;3\\):\n\n\nsum(Y_simulated &gt; 3) / reps\n\n[1] 0.4356"
+    "text": "Summarize\n\n\n\nAnalyze the output using plots and summary statistics like relative frequencies and averages.\n\n\n\n\n\n\nShow/Hide Code for plotting Y\n1ggplot(Y_sims, aes(x = Y, y = after_stat(prop))) +\n2  geom_bar(color = \"black\", fill = \"#B3C8BF\") +\n3  scale_x_continuous(breaks = 1:4) +\n4  labs(title = \"Simulated Distribution of Y (Larger of Two Rolls)\",\n       x = \"Value of Y\",\n       y = \"Relative frequency\") +\n5  theme_minimal(base_size = 20)\n\n\n\n1\n\nStart a plot of Y_sims with Y on the x-axis. after_stat(prop) makes each bar’s height a proportion (relative frequency) instead of a count. Layers are added with +.\n\n2\n\nDraw one bar for each value of Y, with a black outline.\n\n3\n\nPut tick marks at 1, 2, 3, and 4.\n\n4\n\nAdd a title and axis labels.\n\n5\n\nUse a simple theme with larger text so the plot is readable on slides.\n\n\n\n\n\n\n\n\n\n\n\n\nIf the problem asked us for something else, we could compute it:\n\nAverage of \\(Y\\)\nProbability that \\(Y = 1\\)\nProbability that \\(Y &gt; 3\\)\n\n\n1Y_sims |&gt;\n  summarise(\n2    average     = mean(Y),\n3    prob_1      = mean(Y == 1),\n    prob_over_3 = mean(Y &gt; 3)\n  )\n\n\n1\n\nCollapse the 10,000 simulated values of Y into one row of summaries.\n\n2\n\nThe average of Y.\n\n3\n\nThe proportion of simulations where Y = 1 and where Y &gt; 3. These approximate the probabilities.\n\n\n\n\n# A tibble: 1 × 3\n  average prob_1 prob_over_3\n    &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;\n1    3.12 0.0634       0.436"
   },
   {
     "objectID": "lessons/02_Simulations/02_Simulations.html#section-3",
     "href": "lessons/02_Simulations/02_Simulations.html#section-3",
     "title": "Lesson 2: Introduction to Simulations",
     "section": "",
-    "text": "Sensitivity analysis\n\n\n\nInvestigate how results change when assumptions or parameters of the model are altered.\n\n\nWhat if we rolled three die instead of two?\n\n\n\nreps &lt;- 10000\ndie &lt;- 3\nsimulations &lt;- replicate(\n  reps, \n  sample(x = 1:4, \n         size = die, \n         replace = TRUE)\n)\nsimulations[, 1:6]\n\n     [,1] [,2] [,3] [,4] [,5] [,6]\n[1,]    1    3    1    4    2    3\n[2,]    4    1    2    1    2    3\n[3,]    4    4    4    4    3    3\n\nY_simulated &lt;- apply(simulations, 2, max)\n\n\n\n\nShow/Hide Code for plotting Y\nY_df &lt;- as.data.frame(Y_simulated) %&gt;%\n  rename(Y = Y_simulated)\n\nggplot(Y_df, aes(x = Y)) +\n  geom_histogram(binwidth = 1, color = \"black\", fill = \"#B3C8BF\") +\n  scale_x_continuous(breaks = seq(1, 4, by = 1)) +\n  labs(title = \"Simulated Distribution of Y (Larger of Two Rolls)\",\n       x = \"Value of Y\",\n       y = \"Frequency\") +\n  theme_minimal() +\n  theme(\n    axis.text.x = element_text(size = 20), \n    axis.text.y = element_text(size = 20),\n    axis.title.x = element_text(size = 20),\n    axis.title.y = element_text(size = 20), \n    plot.title = element_text(size = 20)\n    )"
+    "text": "Sensitivity analysis\n\n\n\nInvestigate how results change when assumptions or parameters of the model are altered.\n\n\nWhat if we rolled three dice instead of two?\n\nWe only need to change n_dice! Everything else stays the same (the changed line is highlighted)\n\n\n1reps &lt;- 10000\n2n_dice &lt;- 3\n\n3rolls &lt;- expand_grid(sim = 1:reps, die = 1:n_dice) |&gt;\n  mutate(roll = sample(1:4, n(), replace = TRUE))\n\nY_sims &lt;- rolls |&gt;\n  group_by(sim) |&gt;\n  summarise(Y = max(roll))\n\n\n1\n\nStill 10,000 simulations.\n\n2\n\nThe only change: roll 3 dice in each simulation instead of 2.\n\n3\n\nExactly the same code as before. Because we wrote n_dice instead of typing 2, each simulation now gets three rows automatically."
   },
   {
     "objectID": "lessons/03_Lang_prob/03_Lang_prob_muddy_points.html",
@@ -18498,14 +18498,14 @@
     "href": "lessons/02_Simulations/02_Simulations_key_info.html",
     "title": "Key Info",
     "section": "",
-    "text": "Attendance policy: a little confusing"
+    "text": "Some upcoming school events: \nMake sure to…\n\nFill out the when2meet ASAP!"
   },
   {
     "objectID": "lessons/02_Simulations/02_Simulations_key_info.html#announcements",
     "href": "lessons/02_Simulations/02_Simulations_key_info.html#announcements",
     "title": "Key Info",
     "section": "",
-    "text": "Attendance policy: a little confusing"
+    "text": "Some upcoming school events: \nMake sure to…\n\nFill out the when2meet ASAP!"
   },
   {
     "objectID": "lessons/03_Lang_prob/03_Lang_prob.html",
@@ -18645,7 +18645,7 @@
     "href": "lessons/02_Simulations/02_Simulations_key_info.html#last-class",
     "title": "Key Info",
     "section": "Last class",
-    "text": "Last class\n\nDid not finish Lesson 1, so we will finish!"
+    "text": "Last class\n\nWe introduced probability:\n\nDiscussed randomness, uncertainty, and equally likely outcomes\nLooked a very brief simulation\nDefined outcomes, sample space, and events!"
   },
   {
     "objectID": "lessons/01_Probability/01_Probability_muddy_points.html#fall-2024",
@@ -24882,7 +24882,7 @@
     "href": "project.html#project-overview-probability-in-the-wild",
     "title": "Project Central",
     "section": "Project Overview: Probability in the Wild",
-    "text": "Project Overview: Probability in the Wild\nThis quarter, you will follow one health scenario through the whole course. Each time we learn a new set of probability tools, you will apply them to your scenario in a checkpoint. At the end of the quarter, you will pull your checkpoints together into a short brief written for a clinician or public health partner.\nEvery checkpoint follows the same three steps:\n\nSolve it: Set up the problem with probability notation and solve it analytically (by hand or with R as a calculator).\nSimulate it: Write a simulation in R and check that it agrees with your analytic answer. If the two answers disagree, explain why.\nSay it: Interpret your results in plain language for someone who is not a statistician.\n\nYou may work alone or in pairs. If you work in a pair, you keep the same partner and scenario for the whole quarter.\n\nScenario menu\nPick one scenario below, or propose your own in Checkpoint 0. The table shows where each checkpoint could go for each scenario. These are suggestions, not requirements.\n\n\n\n\n\n\n\n\n\nScenario\nCP 1: Conditional probability & Bayes\nCP 2: Discrete RV\nCP 3: Continuous RV & CLT\n\n\n\n\nCancer screening\nPPV/NPV of a screening test\nNumber of positive screens in a clinic day (Binomial)\nTumor size or biomarker level (Normal)\n\n\nEmergency department\nP(admitted | triage level)\nArrivals per hour (Poisson)\nWait time (Exponential)\n\n\nInfectious disease outbreak\nP(infected | positive rapid test)\nSecondary cases from one infected person (Poisson)\nIncubation period (Gamma)\n\n\nClinical trial recruitment\nP(eligible | screened)\nPatients screened until the first eligible one (Geometric)\nTime to enroll n patients (Gamma)\n\n\nNewborn screening\nP(condition | positive heel-prick test)\nAffected infants per 10,000 births (Binomial / Poisson)\nBirth weight (Normal)\n\n\n\n\n\n\n\n\n\nNoteUse real numbers\n\n\n\nWherever you need an input value (prevalence, sensitivity, rate, mean, etc.), find a published estimate and cite it. Good sources include CDC reports, USPSTF evidence reviews, and peer-reviewed articles. You do not need to analyze a dataset. The data in this project come from simulation."
+    "text": "Project Overview: Probability in the Wild\nThis quarter, you will follow one health scenario. Each time we learn a new set of probability and simulation tools, you will apply them to your scenario in a checkpoint. At the end of the quarter, you will pull your checkpoints together into a short brief written for a clinician or public health partner.\nEvery checkpoint follows the same three steps:\n\nSolve it: Set up the problem with probability notation and solve it analytically (by hand or with R as a calculator).\nSimulate it: Write a simulation in R and check that it agrees with your analytic answer. If the two answers disagree, explain why.\nSay it: Interpret your results in plain language for someone who is not a statistician.\n\nYou may work alone or in pairs. If you work in a pair, you keep the same partner and scenario for the whole quarter.\n\nScenario menu\nPick one scenario below, or propose your own in Checkpoint 0. The table shows where each checkpoint could go for each scenario. These are suggestions, not requirements.\n\n\n\n\n\n\n\n\n\nScenario\nCP 1: Conditional probability & Bayes\nCP 2: Discrete RV\nCP 3: Continuous RV & CLT\n\n\n\n\nCancer screening\nPPV/NPV of a screening test\nNumber of positive screens in a clinic day (Binomial)\nTumor size or biomarker level (Normal)\n\n\nEmergency department\nP(admitted | triage level)\nArrivals per hour (Poisson)\nWait time (Exponential)\n\n\nInfectious disease outbreak\nP(infected | positive rapid test)\nSecondary cases from one infected person (Poisson)\nIncubation period (Gamma)\n\n\nClinical trial recruitment\nP(eligible | screened)\nPatients screened until the first eligible one (Geometric)\nTime to enroll n patients (Gamma)\n\n\nNewborn screening\nP(condition | positive heel-prick test)\nAffected infants per 10,000 births (Binomial / Poisson)\nBirth weight (Normal)\n\n\n\n\n\n\n\n\n\nNoteUse real numbers\n\n\n\nWherever you need an input value (prevalence, sensitivity, rate, mean, etc.), find a published estimate and cite it. Good sources include CDC reports, USPSTF evidence reviews, and peer-reviewed articles. You do not need to analyze a dataset. The data in this project come from simulation."
   },
   {
     "objectID": "project.html#checkpoints",
@@ -24910,7 +24910,7 @@
     "href": "project/Checkpoint_00_instructions.html#tasks",
     "title": "Checkpoint 0: Choose Your Scenario",
     "section": "Tasks",
-    "text": "Tasks\n\n1. Team and scenario\n\nState whether you are working alone or with a partner (and your partner’s name).\nChoose a scenario from the scenario menu or propose your own.\nIn 3–5 sentences, describe the scenario: Who is the population? What is being tested, counted, or measured? Why does it matter to a clinician or public health decision-maker?\n\n\n\n\n\n\n\nTipProposing your own scenario?\n\n\n\nYour scenario needs three pieces:\n\na test or classification with a sensitivity/specificity (or two conditional probabilities) for Checkpoint 1,\na count of events that could be modeled with a discrete distribution for Checkpoint 2, and\na time or measurement that could be modeled with a continuous distribution for Checkpoint 3.\n\nIf you are unsure, email me or come to office hours before the due date.\n\n\n\n\n2. Find your input values\nFill in the table below. For each quantity, find a published value and cite it. You will need at least one value for each checkpoint. Values can be approximate (e.g., “about 1 in 1,000”).\n\n\n\nCheckpoint\nQuantity\nValue\nSource\n\n\n\n\n1\nPrevalence (or base rate)\n\n\n\n\n1\nSensitivity (or P(+ | condition))\n\n\n\n\n1\nSpecificity (or P(− | no condition))\n\n\n\n\n2\nRate or probability for your count\n\n\n\n\n3\nMean (and SD, if available) of your time/measurement\n\n\n\n\n\nAcceptable sources include CDC or WHO reports, USPSTF evidence reviews, government health statistics, and peer-reviewed articles. Wikipedia is fine for finding a source, but cite the original source.\n\n\n3. Your guiding questions\nWrite one question for each checkpoint that your analysis will answer. For example (emergency department scenario):\n\nCP 1: If a patient is triaged at level 2, what is the probability they are admitted?\nCP 2: What is the probability that more than 15 patients arrive in one hour?\nCP 3: What is the probability that the average wait time of the next 50 patients exceeds 3 hours?\n\nThese can change later. This step is to make sure your scenario will work for all three checkpoints."
+    "text": "Tasks\n\n1. Team and scenario\n\nState whether you are working alone or with a partner (and your partner’s name).\nChoose a scenario from the scenario menu or propose your own.\nIn 3–5 sentences, describe the scenario: Who is the population? What is being tested, counted, or measured? Why does it matter to a clinician or public health decision-maker?\n\n\n\n\n\n\n\nTipProposing your own scenario?\n\n\n\nIf you want to propose you own scenario, it will need three pieces:\n\na test or classification with a sensitivity/specificity (or two conditional probabilities) for Checkpoint 1,\na count of events that could be modeled with a discrete distribution for Checkpoint 2, and\na time or measurement that could be modeled with a continuous distribution for Checkpoint 3.\n\nIf you are unsure, email me or come to office hours before the due date.\n\n\n\n\n2. Find your input values\nFill in the table below. For each quantity, find a published value and cite it. You will need at least one value for each checkpoint. Values can be approximate (e.g., “about 1 in 1,000”).\n\n\n\nCheckpoint\nQuantity\nValue\nSource\n\n\n\n\n1\nPrevalence (or base rate)\n\n\n\n\n1\nSensitivity (or P(+ | condition))\n\n\n\n\n1\nSpecificity (or P(− | no condition))\n\n\n\n\n2\nRate or probability for your count\n\n\n\n\n3\nMean (and SD, if available) of your time/measurement\n\n\n\n\n\nAcceptable sources include CDC or WHO reports, USPSTF evidence reviews, government health statistics, and peer-reviewed articles. Wikipedia is fine for finding a source, but cite the original source.\n\n\n3. Your guiding questions\nWrite one question for each checkpoint that your analysis will answer. For example (emergency department scenario):\n\nCP 1: If a patient is triaged at level 2, what is the probability they are admitted?\nCP 2: What is the probability that more than 15 patients arrive in one hour?\nCP 3: What is the probability that the average wait time of the next 50 patients exceeds 3 hours?\n\nThese can change later. This step is to make sure your scenario will work for all three checkpoints."
   },
   {
     "objectID": "project/Checkpoint_00_instructions.html#submission",
@@ -25030,5 +25030,215 @@
     "title": "Lesson 1: Introduction to Probability",
     "section": "Random does not mean equally likely",
     "text": "Random does not mean equally likely\n\nWe can also simulate an unfair coin with the prob argument\n\nHere, heads has probability 0.7 and tails has probability 0.3\n\n\n\nunfair_flips &lt;- sample(coin, 10000, replace = TRUE, prob = c(0.7, 0.3))\nmean(unfair_flips == \"heads\")\n\n[1] 0.6989\n\n\n\nEach flip is still random, but the outcomes are not equally likely"
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations.html#how-do-we-simulate-something-like-a-single-roll-of-a-die",
+    "href": "lessons/02_Simulations/02_Simulations.html#how-do-we-simulate-something-like-a-single-roll-of-a-die",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "How do we simulate something like a single roll of a die?",
+    "text": "How do we simulate something like a single roll of a die?\n\nWe can also use R to sample from the box or spinner\nThe sample() function is a powerful tool for simulating draws from a box model.\nFor example, we can simulate a coin flip\n\nWhat is x?\nWhat is size?\n\n\n\n1sample(x = c(\"H\", \"T\"), size = 1)\n\n\n1\n\nsample() draws at random from the values in x. c(\"H\", \"T\") puts “H” and “T” together as a box of two tickets, and size = 1 draws one ticket.\n\n\n\n\n[1] \"T\"\n\n\n \n\nOr a roll of a four-sided die\n\n\n1sample(x = c(1, 2, 3, 4), size = 1)\n\n\n1\n\nSame idea for a four-sided die: the box has tickets 1, 2, 3, and 4, and we draw one.\n\n\n\n\n[1] 1"
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations.html#then-we-calculate-x-for-each-simulation",
+    "href": "lessons/02_Simulations/02_Simulations.html#then-we-calculate-x-for-each-simulation",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "Then we calculate \\(X\\) for each simulation",
+    "text": "Then we calculate \\(X\\) for each simulation\n\n\\(X\\) is the sum of the two rolls, so we add up the rolls within each simulation\n\ngroup_by(sim) tells R to treat each simulation separately\nsummarise() collapses each group into one row\n\n\n\n1rolls |&gt;\n2  group_by(sim) |&gt;\n3  summarise(X = sum(roll))\n\n\n1\n\nStart with the table of rolls and pass it to the next line.\n\n2\n\nGroup the rows by simulation, so each pair of rolls is handled separately.\n\n3\n\nAdd up the rolls in each simulation. This makes one row per simulation, with the sum saved in a new column called X.\n\n\n\n\n# A tibble: 5 × 2\n    sim     X\n  &lt;int&gt; &lt;int&gt;\n1     1     5\n2     2     3\n3     3     4\n4     4     5\n5     5     5\n\n\n \n\nNow we have one row per simulation and one value of \\(X\\) in each row"
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations (1).html#where-are-we",
+    "href": "lessons/02_Simulations/02_Simulations (1).html#where-are-we",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "Where are we?",
+    "text": "Where are we?"
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations (1).html#recall-outcomes-events-sample-spaces",
+    "href": "lessons/02_Simulations/02_Simulations (1).html#recall-outcomes-events-sample-spaces",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "Recall: Outcomes, events, sample spaces",
+    "text": "Recall: Outcomes, events, sample spaces\n\n\nDefinition: Outcome\n\n\nThe possible results in a random phenomenon.\n\n\n\n\nDefinition: Sample Space\n\n\nThe sample space \\(S\\) is the set of all outcomes\n\n\n\n\nDefinition: Event\n\n\nAn event is a collection of some outcomes. An event can include multiple outcomes or no outcomes (a subset of the sample space).\n\n\nWhen thinking about events, think about outcomes that you might be asking the probability of. For example, what is the probability that you get a heads or a tails in one flip? (Answer: 1)"
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations (1).html#we-need-to-understand-random-variables",
+    "href": "lessons/02_Simulations/02_Simulations (1).html#we-need-to-understand-random-variables",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "We need to understand random variables",
+    "text": "We need to understand random variables\n\n\nDefinition: Random Variable\n\n\nFor a given sample space \\(S\\), a random variable (r.v.) is a function whose domain is \\(S\\) and whose range is the set of real numbers \\(\\mathbb{R}\\). A random variable assigns a real number to each outcome in the sample space.\n\n\n\nA random variable’s value is completely determined by the outcome \\(\\omega\\), where \\(\\omega \\in S\\)\n\nWhat is random is the outcome \\(\\omega\\)\n\nA random variable is a function from the sample space (with outcomes \\(\\omega\\)) to the set of real numbers\n\nWe typically write \\(X(\\omega)\\) (or \\(X\\) for short), where \\(X\\) is our random variable\n\nThus, we can take our sample space (all outcomes) and make functional transformations to it"
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations (1).html#the-cool-and-tricky-thing-about-random-variables",
+    "href": "lessons/02_Simulations/02_Simulations (1).html#the-cool-and-tricky-thing-about-random-variables",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "The cool (and tricky) thing about random variables",
+    "text": "The cool (and tricky) thing about random variables\nDo you remember our coin example from Lesson 1? We tossed one or two coins.\n\nFor each coin, the sample space is heads and tails (\\(S = \\{H,T\\}\\))\nIf we want the sample space for both coins in order, then we have combinations (\\(S=\\{(H,H), (H,T), (T,H), (T,T)\\}\\))\n\n \nWe make the random variable a function of the sample space.\n\nFor one coin toss, we can say random variable \\(X\\) is \\(1\\) if we toss a heads (\\(\\omega = \\text{H}\\)) and \\(X=0\\) if we get a tails\nFor the two coins, we can say \\(X\\) is the count of heads, so if \\(\\omega = \\text{(H, T)}\\), then \\(X=1\\)"
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations (1).html#types-of-random-variables",
+    "href": "lessons/02_Simulations/02_Simulations (1).html#types-of-random-variables",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "Types of random variables",
+    "text": "Types of random variables\nThere are two types of random variables:\n\n\n\n\n\nDiscrete random variables (RVs): the set of possible values is either finite or can be put into a countably infinite list\n\nYou could theoretically list the specific possible outcomes that the variable can take\nIf you sum the rolls of three dice, you must get a whole number. For example, you can’t get any number between 3 and 4.\n\n\n\n\n\n\n\n\nContinuous random variables (RVs): take on values from continuous intervals, or unions of continuous intervals\n\nVariable takes on a range of values, but there are infinitely possible values within the range\nIf you keep track of the time you sleep, you can sleep for 8 hours or 7.9 hours or 7.99 hours or 7.999 hours …\n\n\n\n\n\n\nDiscrete random variables (RVs) are a little easier to simulate right now\n\nWe will only do discrete RVs today"
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations (1).html#what-is-a-simulation",
+    "href": "lessons/02_Simulations/02_Simulations (1).html#what-is-a-simulation",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "What is a simulation?",
+    "text": "What is a simulation?\nA probability model for a random phenomenon includes a sample space, events, random variables, and a probability measure.\n\n\nSimulation\n\n\nSimulation involves using a probability model to artificially recreate a random phenomenon, many times, usually using a computer.\n\n\nWe simulate outcomes and values of random variables according to the model’s assumptions."
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations (1).html#the-foundation-relative-frequencies",
+    "href": "lessons/02_Simulations/02_Simulations (1).html#the-foundation-relative-frequencies",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "The Foundation: Relative Frequencies",
+    "text": "The Foundation: Relative Frequencies\n\nProbabilities can be interpreted as long-run relative frequencies\n\n \n\nBy simulating a random phenomenon a large number of times, we can approximate the probability of an event by calculating the relative frequency of its occurrence\n\nBasically, out of all the trials we run, how many times did the event happen?\n\n\n \n\nSimulation is a powerful tool to approximate a few things:\n\nProbabilities\nDistributions of random variables\nLong-run averages"
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations (1).html#we-saw-an-example-of-long-run-relative-frequency-in-our-coin-flip",
+    "href": "lessons/02_Simulations/02_Simulations (1).html#we-saw-an-example-of-long-run-relative-frequency-in-our-coin-flip",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "We saw an example of long-run relative frequency in our coin flip",
+    "text": "We saw an example of long-run relative frequency in our coin flip\nIn Lesson 1, we flipped a coin 100 times and recorded the proportion of heads.\n\nWe tossed 50 heads out of the 100 flips\nOur long-run relative frequency was \\(50/100 = 0.5\\), which approximated the probability of getting a head on any one flip"
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations (1).html#tactile-simulations",
+    "href": "lessons/02_Simulations/02_Simulations (1).html#tactile-simulations",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "Tactile simulations",
+    "text": "Tactile simulations\n\nWe’ve already seen coin flips!\nWe can also use cards, dice, and other objects to simulate discrete random variables\n\n \n\nOther common method: A box model uses a box/hat/bucket of “tickets” with labels to represent possible outcomes\n\nAllows us to increase the number of “tickets” with appropriate labels\nCoin flip as box model: A box with two tickets (H and T).\n90% free throw shooter: A box with 10 tickets (9 “make” and 1 “miss”).\nDraws can be with replacement (e.g., coin flips) or without replacement (e.g., dealing a poker hand)."
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations (1).html#example-to-build-our-simulation-skills",
+    "href": "lessons/02_Simulations/02_Simulations (1).html#example-to-build-our-simulation-skills",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "Example to build our simulation skills",
+    "text": "Example to build our simulation skills\n\n\nExample: Simulating Two Rolls of a Fair Four-Sided Die\n\n\nWe’re going to roll two four-sided dice. Let \\(X\\) be the sum of two rolls, and \\(Y\\) be the larger of the two rolls. How would we simulate \\(X\\) and \\(Y\\) separately?\n\n\n \n\nNote: this example is not asking for a probability!\n\nWe can simulate a random variable and look at its distribution without calculating any probabilities.\n\n\n \n\nWe will focus on simulating \\(X\\) first\n\n \nLet’s build up some coding tools to do this!"
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations (1).html#how-do-we-simulate-something-like-a-single-roll-of-a-die",
+    "href": "lessons/02_Simulations/02_Simulations (1).html#how-do-we-simulate-something-like-a-single-roll-of-a-die",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "How do we simulate something like a single roll of a die?",
+    "text": "How do we simulate something like a single roll of a die?\n\nWe can also use R to sample from the box or spinner\nThe sample() function is a powerful tool for simulating draws from a box model.\nFor example, we can simulate a coin flip\n\nWhat is x?\nWhat is size?\n\n\n\n1sample(x = c(\"H\", \"T\"), size = 1)\n\n\n1\n\nsample() draws at random from the values in x. c(\"H\", \"T\") puts “H” and “T” together as a box of two tickets, and size = 1 draws one ticket.\n\n\n\n\n[1] \"T\"\n\n\n \n\nOr a roll of a four-sided die\n\n\n1sample(x = c(1, 2, 3, 4), size = 1)\n\n\n1\n\nSame idea for a four-sided die: the box has tickets 1, 2, 3, and 4, and we draw one.\n\n\n\n\n[1] 1"
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations (1).html#what-if-we-have-multiple-rolls-at-once",
+    "href": "lessons/02_Simulations/02_Simulations (1).html#what-if-we-have-multiple-rolls-at-once",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "What if we have multiple rolls at once?",
+    "text": "What if we have multiple rolls at once?\n\nWe can set size to be larger than 1 to simulate multiple draws at once\n\n\n1sample(x = c(\"H\", \"T\"), size = 5, replace = TRUE)\n\n\n1\n\nsize = 5 draws 5 tickets. replace = TRUE puts each ticket back before the next draw, so “H” and “T” can come up again, just like flipping the same coin 5 times.\n\n\n\n\n[1] \"T\" \"T\" \"T\" \"H\" \"T\"\n\n\n\nWe can simulate our example of the two four-sided dice\n\n\n1sample(x = c(1, 2, 3, 4), size = 2, replace = TRUE)\n\n\n1\n\nTwo rolls of a four-sided die. Because of replace = TRUE, both rolls can show the same number.\n\n\n\n\n[1] 3 3\n\n\n \n\nWhat happens if we set replace = FALSE?\n\n\n1sample(x = c(1, 2, 3, 4), size = 2, replace = FALSE)\n2sample(x = c(1, 2, 3, 4), size = 4, replace = FALSE)\n\n\n1\n\nWithout replacement, a ticket cannot be drawn twice, so the two numbers are always different.\n\n2\n\nDrawing all 4 tickets without replacement just shuffles 1, 2, 3, and 4.\n\n\n\n\n[1] 4 2\n[1] 2 1 3 4"
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations (1).html#can-we-start-to-simulate-many-rolls-of-two-dice",
+    "href": "lessons/02_Simulations/02_Simulations (1).html#can-we-start-to-simulate-many-rolls-of-two-dice",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "Can we start to simulate many rolls of two dice?",
+    "text": "Can we start to simulate many rolls of two dice?\n\n\nExample: Simulating Two Rolls of a Fair Four-Sided Die\n\n\nWe’re going to roll two four-sided dice. Let \\(X\\) be the sum of two rolls, and \\(Y\\) be the larger of the two rolls. How would we simulate \\(X\\) and \\(Y\\) separately?\n\n\n\nTo repeat our pair of rolls many times, we make a table with one row for every roll\n\nsim numbers each simulation (each pair of rolls), and die says which die was rolled\nexpand_grid() makes every combination of sim and die, and n() is the number of rows\n\n\n \n\nLet’s start with 5 simulations\n\n\n1reps &lt;- 5\n\n2rolls &lt;- expand_grid(sim = 1:reps, die = 1:2) |&gt;\n3  mutate(roll = sample(1:4, n(), replace = TRUE))\n\n\n1\n\nSave the number of simulations as reps, so it is easy to change later.\n\n2\n\nMake a table with every combination of simulation number (1 to 5) and die number (1 or 2), which gives 10 rows. The pipe |&gt; passes this table to the next line.\n\n3\n\nmutate() adds a new column called roll. n() is the number of rows (10), so we get one random roll of a four-sided die for every row."
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations (1).html#then-we-calculate-x-for-each-simulation",
+    "href": "lessons/02_Simulations/02_Simulations (1).html#then-we-calculate-x-for-each-simulation",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "Then we calculate \\(X\\) for each simulation",
+    "text": "Then we calculate \\(X\\) for each simulation\n\n\\(X\\) is the sum of the two rolls, so we add up the rolls within each simulation\n\ngroup_by(sim) tells R to treat each simulation separately\nsummarise() collapses each group into one row\n\n\n\n1rolls |&gt;\n2  group_by(sim) |&gt;\n3  summarise(X = sum(roll))\n\n\n1\n\nStart with the table of rolls and pass it to the next line.\n\n2\n\nGroup the rows by simulation, so each pair of rolls is handled separately.\n\n3\n\nAdd up the rolls in each simulation. This makes one row per simulation, with the sum saved in a new column called X.\n\n\n\n\n# A tibble: 5 × 2\n    sim     X\n  &lt;int&gt; &lt;int&gt;\n1     1     5\n2     2     3\n3     3     4\n4     4     5\n5     5     5\n\n\n \n\nNow we have one row per simulation and one value of \\(X\\) in each row"
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations (1).html#we-need-more-reps-for-long-run-relative-frequencies",
+    "href": "lessons/02_Simulations/02_Simulations (1).html#we-need-more-reps-for-long-run-relative-frequencies",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "We need more reps for long-run relative frequencies",
+    "text": "We need more reps for long-run relative frequencies\n\n\n\nSame code, but now with 10,000 simulations\n\n\n1reps &lt;- 10000\n\n2rolls &lt;- expand_grid(sim = 1:reps, die = 1:2) |&gt;\n  mutate(roll = sample(1:4, n(), replace = TRUE))\n\n3X_sims &lt;- rolls |&gt;\n  group_by(sim) |&gt;\n  summarise(X = sum(roll))\n\n\n1\n\nThe only change: 10,000 simulations instead of 5.\n\n2\n\nSame as before: one row per roll (now 20,000 rows), each with a random roll.\n\n3\n\nSame as before: add up the rolls in each simulation. We save the result as X_sims.\n\n\n\n\n\n\nLet’s look at the first few simulations\n\n\n1X_sims\n\n\n1\n\nA tibble (table) only prints its first 10 rows, followed by a note saying how many rows are left.\n\n\n\n\n# A tibble: 10,000 × 2\n     sim     X\n   &lt;int&gt; &lt;int&gt;\n 1     1     5\n 2     2     4\n 3     3     7\n 4     4     2\n 5     5     7\n 6     6     5\n 7     7     8\n 8     8     5\n 9     9     3\n10    10     5\n# ℹ 9,990 more rows"
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations (1).html#we-can-look-at-the-plot-of-random-variable-x",
+    "href": "lessons/02_Simulations/02_Simulations (1).html#we-can-look-at-the-plot-of-random-variable-x",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "We can look at the plot of random variable \\(X\\)",
+    "text": "We can look at the plot of random variable \\(X\\)"
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations (1).html#if-we-want-to-calculate-something-else-we-can",
+    "href": "lessons/02_Simulations/02_Simulations (1).html#if-we-want-to-calculate-something-else-we-can",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "If we want to calculate something else, we can!",
+    "text": "If we want to calculate something else, we can!\n\n\n\nsummarise() can calculate several summaries at once:\n\nAverage and standard deviation of \\(X\\)\nProbability that \\(X = 5\\) and probability that \\(X &lt; 3\\)\n\n\n\n1X_sims |&gt;\n2  summarise(\n3    average     = mean(X),\n    std_dev     = sd(X),\n4    prob_5      = mean(X == 5),\n    prob_less_3 = mean(X &lt; 3)\n  )\n\n\n1\n\nStart with the 10,000 simulated values of X.\n\n2\n\nsummarise() collapses the whole table into one row. Each name inside it becomes a column.\n\n3\n\nThe average and standard deviation of the simulated values of X.\n\n4\n\nX == 5 and X &lt; 3 are TRUE or FALSE for each simulation, so their mean is the proportion of simulations where the event happened.\n\n\n\n\n# A tibble: 1 × 4\n  average std_dev prob_5 prob_less_3\n    &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;\n1    5.00    1.57  0.247      0.0585\n\n\n\n \n\n\nProbabilities (relative frequencies) are the proportion of simulations where the event occurs:\n\nX == 5 is TRUE or FALSE for each simulation\nR treats TRUE as 1 and FALSE as 0, so mean(X == 5) is the number of times the event occurs divided by the total number of simulations (reps)"
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations (1).html#steps-of-a-simulation",
+    "href": "lessons/02_Simulations/02_Simulations (1).html#steps-of-a-simulation",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "4 (S)teps of a Simulation",
+    "text": "4 (S)teps of a Simulation\n\n\n\nSet up\n\n\n\nDefine the probability space and related random variables and events, including assumptions.\n\n\n\n\n\nSimulate\n\n\n\nRun the simulation to generate outcomes according to the assumptions.\n\n\n\n\n\nSummarize\n\n\n\nAnalyze the output using plots and summary statistics like relative frequencies and averages.\n\n\n\n\n\nSensitivity analysis\n\n\n\nInvestigate how results change when assumptions or parameters of the model are altered."
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations (1).html#example-dice-rolls",
+    "href": "lessons/02_Simulations/02_Simulations (1).html#example-dice-rolls",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "Example: Dice Rolls",
+    "text": "Example: Dice Rolls\n\n\nExample: Simulating Two Rolls of a Fair Four-Sided Die\n\n\nWe’re going to roll two four-sided dice. Let \\(X\\) be the sum of two rolls, and \\(Y\\) be the larger of the two rolls. How would we simulate \\(X\\) and \\(Y\\) separately?\n\n\n\nUse the steps to run simulation for \\(Y\\) now"
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations (1).html#section",
+    "href": "lessons/02_Simulations/02_Simulations (1).html#section",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "",
+    "text": "Set up\n\n\n\nDefine the probability space and related random variables and events, including assumptions.\n\n\n\nRandom variable: \\(Y(\\omega)\\) is the larger of the two rolls in outcome \\(\\omega\\)\nGoal: simulate \\(Y\\), the larger of two rolls of a fair four-sided die\nSample space: all possible outcomes of rolling two four-sided dice\n\nNot necessary, but helpful to define the sample space\n\n\n\\[\\begin{aligned} S =  \\{ &(1,1), (1,2), (1,3), (1,4), (2,1), (2,2), (2,3), (2,4),\\\\ & (3,1), (3,2), (3,3), (3,4), (4,1), (4,2), (4,3), (4,4)\\} \\end{aligned}\\]\n\nAssumptions: each die is fair and rolls are independent\n\nEach outcome in \\(S\\) is equally likely with probability \\(1/16\\)"
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations (1).html#section-1",
+    "href": "lessons/02_Simulations/02_Simulations (1).html#section-1",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "",
+    "text": "Simulate\n\n\n\nRun the simulation to generate outcomes according to the assumptions.\n\n\n\nSame code as for \\(X\\), but we take the max() of each simulation instead of the sum()\nWe also save the number of dice as n_dice, so it is easy to change later\n\n\n1reps &lt;- 10000\nn_dice &lt;- 2\n\n2rolls &lt;- expand_grid(sim = 1:reps, die = 1:n_dice) |&gt;\n  mutate(roll = sample(1:4, n(), replace = TRUE))\n\n3Y_sims &lt;- rolls |&gt;\n  group_by(sim) |&gt;\n  summarise(Y = max(roll))\n\n\n1\n\nSave the settings for the simulation: 10,000 simulations with 2 dice each.\n\n2\n\nSame as for X: one row per roll, with a random roll of a four-sided die in each row.\n\n3\n\nThe only change from X: max() keeps the larger roll in each simulation instead of adding them up.\n\n\n\n\n\nWe can look at the first 30 simulations\n\n\n1head(Y_sims$Y, 30)\n\n\n1\n\nY_sims$Y pulls out the Y column, and head(..., 30) shows its first 30 values.\n\n\n\n\n [1] 4 2 4 3 2 2 3 4 4 4 2 4 4 4 2 3 4 4 1 4 4 3 4 4 2 4 4 4 1 4"
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations (1).html#section-2",
+    "href": "lessons/02_Simulations/02_Simulations (1).html#section-2",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "",
+    "text": "Summarize\n\n\n\nAnalyze the output using plots and summary statistics like relative frequencies and averages.\n\n\n\n\n\n\nShow/Hide Code for plotting Y\n1ggplot(Y_sims, aes(x = Y, y = after_stat(prop))) +\n2  geom_bar(color = \"black\", fill = \"#B3C8BF\") +\n3  scale_x_continuous(breaks = 1:4) +\n4  labs(title = \"Simulated Distribution of Y (Larger of Two Rolls)\",\n       x = \"Value of Y\",\n       y = \"Relative frequency\") +\n5  theme_minimal(base_size = 20)\n\n\n\n1\n\nStart a plot of Y_sims with Y on the x-axis. after_stat(prop) makes each bar’s height a proportion (relative frequency) instead of a count. Layers are added with +.\n\n2\n\nDraw one bar for each value of Y, with a black outline.\n\n3\n\nPut tick marks at 1, 2, 3, and 4.\n\n4\n\nAdd a title and axis labels.\n\n5\n\nUse a simple theme with larger text so the plot is readable on slides.\n\n\n\n\n\n\n\n\n\n\n\n\nIf the problem asked us for something else, we could compute it:\n\nAverage of \\(Y\\)\nProbability that \\(Y = 1\\)\nProbability that \\(Y &gt; 3\\)\n\n\n1Y_sims |&gt;\n  summarise(\n2    average     = mean(Y),\n3    prob_1      = mean(Y == 1),\n    prob_over_3 = mean(Y &gt; 3)\n  )\n\n\n1\n\nCollapse the 10,000 simulated values of Y into one row of summaries.\n\n2\n\nThe average of Y.\n\n3\n\nThe proportion of simulations where Y = 1 and where Y &gt; 3. These approximate the probabilities.\n\n\n\n\n# A tibble: 1 × 3\n  average prob_1 prob_over_3\n    &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;\n1    3.12 0.0634       0.436"
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations (1).html#section-3",
+    "href": "lessons/02_Simulations/02_Simulations (1).html#section-3",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "",
+    "text": "Sensitivity analysis\n\n\n\nInvestigate how results change when assumptions or parameters of the model are altered.\n\n\nWhat if we rolled three dice instead of two?\n\nWe only need to change n_dice! Everything else stays the same (the changed line is highlighted)\n\n\n1reps &lt;- 10000\n2n_dice &lt;- 3\n\n3rolls &lt;- expand_grid(sim = 1:reps, die = 1:n_dice) |&gt;\n  mutate(roll = sample(1:4, n(), replace = TRUE))\n\nY_sims &lt;- rolls |&gt;\n  group_by(sim) |&gt;\n  summarise(Y = max(roll))\n\n\n1\n\nStill 10,000 simulations.\n\n2\n\nThe only change: roll 3 dice in each simulation instead of 2.\n\n3\n\nExactly the same code as before. Because we wrote n_dice instead of typing 2, each simulation now gets three rows automatically."
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations (1).html#what-changed-when-we-rolled-three-dice",
+    "href": "lessons/02_Simulations/02_Simulations (1).html#what-changed-when-we-rolled-three-dice",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "What changed when we rolled three dice?",
+    "text": "What changed when we rolled three dice?\n\n\n\nThe first two simulations now have three rolls each\n\n\nrolls |&gt; filter(sim &lt;= 2)\n\n# A tibble: 6 × 3\n    sim   die  roll\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1     1     1     2\n2     1     2     4\n3     1     3     2\n4     2     1     3\n5     2     2     3\n6     2     3     3\n\n\n \n\nWith more dice, it is more likely that at least one die shows a 4\n\n\\(P(Y = 4)\\) goes from about 0.44 with two dice to about 0.58 with three dice\n\n\n\n\n\nShow/Hide Code for plotting Y\nggplot(Y_sims, aes(x = Y, y = after_stat(prop))) +\n  geom_bar(color = \"black\", fill = \"#B3C8BF\") +\n  scale_x_continuous(breaks = 1:4) +\n  labs(title = \"Simulated Distribution of Y (Larger of Three Rolls)\",\n       x = \"Value of Y\",\n       y = \"Relative frequency\") +\n  theme_minimal(base_size = 20)"
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations (1).html#what-does-our-table-of-rolls-look-like",
+    "href": "lessons/02_Simulations/02_Simulations (1).html#what-does-our-table-of-rolls-look-like",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "What does our table of rolls look like?",
+    "text": "What does our table of rolls look like?\n\n\n\n1rolls\n\n\n1\n\nTyping the name of a saved object prints it.\n\n\n\n\n# A tibble: 10 × 3\n     sim   die  roll\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;\n 1     1     1     1\n 2     1     2     4\n 3     2     1     2\n 4     2     2     1\n 5     3     1     3\n 6     3     2     1\n 7     4     1     3\n 8     4     2     2\n 9     5     1     3\n10     5     2     2\n\n\n\n \n\nEach row is one roll of one die\n\n \n\nEach simulation (sim) takes up two rows: one for die 1 and one for die 2\n\nFor example, the two rows with sim = 1 are the first pair of rolls\n\n\n \n\nNext, we combine the two rolls in each simulation to get \\(X\\)"
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations (1).html#section-4",
+    "href": "lessons/02_Simulations/02_Simulations (1).html#section-4",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "",
+    "text": "Sensitivity analysis\n\n\n\nInvestigate how results change when assumptions or parameters of the model are altered.\n\n\n\n\n\nWhat changed? Each simulation now has three rolls, like the first one here:\n\n\n1rolls |&gt; filter(sim == 1)\n\n\n1\n\nfilter() keeps only the rows that match a condition. Here, that is the three rolls from simulation 1.\n\n\n\n\n# A tibble: 3 × 3\n    sim   die  roll\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1     1     1     2\n2     1     2     4\n3     1     3     2\n\n\n \n\nWith more dice, it is more likely that at least one die shows a 4\n\n\\(P(Y = 4)\\) goes from about 0.44 with two dice to about 0.58 with three dice\n\n\n\n\n\nShow/Hide Code for plotting Y\n1ggplot(Y_sims, aes(x = Y, y = after_stat(prop))) +\n2  geom_bar(color = \"black\", fill = \"#B3C8BF\") +\n3  scale_x_continuous(breaks = 1:4) +\n4  labs(title = \"Simulated Distribution of Y (Larger of Three Rolls)\",\n       x = \"Value of Y\",\n       y = \"Relative frequency\") +\n5  theme_minimal(base_size = 20)\n\n\n\n1\n\nStart a plot of Y_sims with Y on the x-axis. after_stat(prop) makes each bar’s height a proportion (relative frequency) instead of a count. Layers are added with +.\n\n2\n\nDraw one bar for each value of Y, with a black outline.\n\n3\n\nPut tick marks at 1, 2, 3, and 4.\n\n4\n\nAdd a title and axis labels.\n\n5\n\nUse a simple theme with larger text so the plot is readable on slides."
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations.html#what-does-our-table-of-rolls-look-like",
+    "href": "lessons/02_Simulations/02_Simulations.html#what-does-our-table-of-rolls-look-like",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "What does our table of rolls look like?",
+    "text": "What does our table of rolls look like?\n\n\n\n1rolls\n\n\n1\n\nTyping the name of a saved object prints it.\n\n\n\n\n# A tibble: 10 × 3\n     sim   die  roll\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;\n 1     1     1     1\n 2     1     2     4\n 3     2     1     2\n 4     2     2     1\n 5     3     1     3\n 6     3     2     1\n 7     4     1     3\n 8     4     2     2\n 9     5     1     3\n10     5     2     2\n\n\n\n \n\nEach row is one roll of one die\n\n \n\nEach simulation (sim) takes up two rows: one for die 1 and one for die 2\n\nFor example, the two rows with sim = 1 are the first pair of rolls\n\n\n \n\nNext, we combine the two rolls in each simulation to get \\(X\\)"
+  },
+  {
+    "objectID": "lessons/02_Simulations/02_Simulations.html#section-4",
+    "href": "lessons/02_Simulations/02_Simulations.html#section-4",
+    "title": "Lesson 2: Introduction to Simulations",
+    "section": "",
+    "text": "Sensitivity analysis\n\n\n\nInvestigate how results change when assumptions or parameters of the model are altered.\n\n\n\n\n\nWhat changed? Each simulation now has three rolls, like the first one here:\n\n\n1rolls |&gt; filter(sim == 1)\n\n\n1\n\nfilter() keeps only the rows that match a condition. Here, that is the three rolls from simulation 1.\n\n\n\n\n# A tibble: 3 × 3\n    sim   die  roll\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1     1     1     2\n2     1     2     4\n3     1     3     2\n\n\n \n\nWith more dice, it is more likely that at least one die shows a 4\n\n\\(P(Y = 4)\\) goes from about 0.44 with two dice to about 0.58 with three dice\n\n\n\n\n\nShow/Hide Code for plotting Y\n1ggplot(Y_sims, aes(x = Y, y = after_stat(prop))) +\n2  geom_bar(color = \"black\", fill = \"#B3C8BF\") +\n3  scale_x_continuous(breaks = 1:4) +\n4  labs(title = \"Simulated Distribution of Y (Larger of Three Rolls)\",\n       x = \"Value of Y\",\n       y = \"Relative frequency\") +\n5  theme_minimal(base_size = 20)\n\n\n\n1\n\nStart a plot of Y_sims with Y on the x-axis. after_stat(prop) makes each bar’s height a proportion (relative frequency) instead of a count. Layers are added with +.\n\n2\n\nDraw one bar for each value of Y, with a black outline.\n\n3\n\nPut tick marks at 1, 2, 3, and 4.\n\n4\n\nAdd a title and axis labels.\n\n5\n\nUse a simple theme with larger text so the plot is readable on slides."
   }
 ]

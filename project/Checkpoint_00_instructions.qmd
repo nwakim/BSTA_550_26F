@@ -55,7 +55,10 @@ The papers use some terms we have not covered yet. You do not need to understand
 | Specificity | Out of the people who **do not have** the condition, the fraction who test negative | CP 1 |
 | False-positive rate | Out of the people who **do not have** the condition, the fraction who test positive (1 − specificity) | CP 1 |
 | Positive predictive value (PPV) | Out of the people who test positive, the fraction who have the condition. **You will calculate this in CP 1**, so do not record it now. | CP 1 |
-| Rate / attack rate / recall rate | The fraction (or percent) of people or events that are a "yes" | CP 2 |
+| Abnormal interpretation rate (AIR) | Out of all screening exams, the fraction read as abnormal (the woman is called back) | CP 2 |
+| Cancer detection rate (CDR) | The number of cancers the screen **found**, per 1,000 exams. This is **not** the prevalence, because it leaves out the cancers the screen missed. | — |
+| Secondary attack rate (SAR) | Out of the people exposed to a case (e.g., the people they live with), the fraction who get infected | CP 2 |
+| "Per 1,000" or "per 10,000" | A count out of 1,000 or 10,000 people. To turn it into a decimal, divide: 3 per 10,000 = 3 / 10,000 = 0.0003. | CP 1, CP 2 |
 | Mean | The average value | CP 3 |
 | Median and interquartile range (IQR) | The middle value, and the range that holds the middle half of the values | CP 3 |
 | Standard deviation (SD) | How spread out the values are around the mean | CP 3 |
@@ -93,6 +96,21 @@ This one paper has everything you need. Look in the **Abstract** and the **Resul
 -   **Screens per van day:** 40.
 -   **Tumor size:** mean of about 14 mm, SD of about 9 mm. (The paper reports a median and IQR. These values match that median and IQR for a right-skewed shape.)
 
+::: callout-tip
+## Finding your numbers (Scenario A)
+
+| Row in your Checkpoint 0 table | What it is called in the source |
+|----|----|
+| CP 1: prevalence | Course value on this card |
+| CP 1: sensitivity | "Sensitivity" (DBT) |
+| CP 1: specificity | "Specificity" (DBT) |
+| CP 2: chance of a "yes" | "Abnormal interpretation rate" or "AIR" (DBT). A "yes" is a screen read as abnormal. Do **not** use the cancer detection rate (CDR) or PPV1. |
+| CP 2: group size | Course value on this card |
+| CP 3: mean and SD | Course values on this card. The paper reports a median and IQR for tumor size, which you may list too. |
+
+The abstract reports each measure for DBT and for DM side by side, so double-check that you are copying the DBT number.
+:::
+
 ### Scenario B
 
 #### County COVID-19 testing and contact tracing
@@ -120,6 +138,22 @@ For source 1, use the **overall** numbers for people **without symptoms**. For s
 -   **Prevalence:** 0.5% (5 out of every 1,000 residents without symptoms who test). This is the example prevalence the Cochrane summary uses for general screening.
 -   **Household contacts per case:** 3 (a household of 4 people, with 1 case).
 
+::: callout-tip
+## Finding your numbers (Scenario B)
+
+| Row in your Checkpoint 0 table | What it is called in the source |
+|----|----|
+| CP 1: prevalence | Course value on this card |
+| CP 1: sensitivity | "Average sensitivity" (source 1). Use the average across **all** evaluations, not the numbers for subgroups such as "general screening" or "suspected exposure". |
+| CP 1: specificity | "Average specificity" (source 1), also across all evaluations |
+| CP 2: chance of a "yes" | "Household secondary attack rate" or "household SAR" for **Omicron** (source 2). A "yes" is a household contact who gets infected. |
+| CP 2: group size | Course value on this card |
+| CP 3: mean | Mean incubation period for **Omicron** (source 3) |
+| CP 3: SD | Source 3 does not report an SD, so write "not reported". Do not use the range of incubation periods as the SD. |
+
+For source 1, use the numbers on the linked **2025** summary page. Older versions of this review report different numbers.
+:::
+
 ### Scenario C
 
 #### State newborn heart screening program
@@ -144,6 +178,19 @@ For source 1, look for the numbers "per 10,000 newborns" and the **false-positiv
 **Course values**
 
 -   **Births per year in the state:** 40,000.
+
+::: callout-tip
+## Finding your numbers (Scenario C)
+
+| Row in your Checkpoint 0 table | What it is called in the source |
+|----|----|
+| CP 1: prevalence | The number of newborns out of 10,000 who have CCHD (source 1). Convert it to a decimal (see "per 10,000" in the word list above). |
+| CP 1: sensitivity | "Sensitivity" (source 1) |
+| CP 1: false-positive rate | "False-positive rate" (source 1). Write it as $P(T^+ \mid D^c)$, **not** as a specificity. |
+| CP 2: chance of a "yes" | The **same** prevalence as your CP 1 row. A "yes" is a baby born with CCHD. |
+| CP 2: group size | Course value on this card |
+| CP 3: mean and SD | Mean and SD of birth weight for **2005** (source 2), in grams |
+:::
 :::
 
 ::: callout-tip
@@ -170,7 +217,8 @@ If you do not have my approval by the due date, please choose one of the three s
 Fill in the table below for your scenario. For each row:
 
 -   **Value:** Write the number from the source (or the course value from your scenario card).
--   **Where I found it:** Name the source (1, 2, 3, or "course value") and the section, table, or sentence where the number appears (for example, "Source 1, Abstract, Results").
+-   **Where I found it:** Name the source (1, 2, or 3) and the section, table, or sentence where the number appears (for example, "Source 1, Abstract, Results"). For a number from your scenario card, write "course value".
+-   The **Finding your numbers** box on your scenario card tells you what each number is called in the source.
 -   **Probability statement:** For the three Checkpoint 1 rows only, write the value as a probability. Define your events first, for example, $D$ = has the condition and $T^+$ = tests positive. Then write, for example, $P(T^+ \mid D) = 0.874$.
 
 | CP | What you are looking for (in plain words) | Value | Where I found it | Probability statement (CP 1 only) |
@@ -178,8 +226,8 @@ Fill in the table below for your scenario. For each row:
 | 1 | Out of everyone screened or tested, the fraction who **have** the condition |  |  |  |
 | 1 | Out of the people who **have** the condition, the fraction who test positive |  |  |  |
 | 1 | Out of the people who **do not have** the condition, the fraction who test negative (A and B) **or** test positive (C) |  |  |  |
-| 2 | The chance that one screen, one household member, or one baby is a "yes" |  |  | — |
-| 2 | How many screens, household members, or babies are in the group |  |  | — |
+| 2 | The chance of a "yes" for one screen (A: read as abnormal), one household contact (B: gets infected), or one baby (C: born with CCHD) |  |  | — |
+| 2 | How many screens, household contacts, or babies are in the group |  |  | — |
 | 3 | The mean (average) of the time or measurement, with units |  |  | — |
 | 3 | The SD of the time or measurement, with units (write "not reported" if the source does not give it) |  |  | — |
 
@@ -188,7 +236,7 @@ Fill in the table below for your scenario. For each row:
 
 -   Copy the main estimate only. Do not include the 95% confidence interval.
 -   Do not calculate anything new yet. For example, do not calculate the chance that someone with a positive test has the condition. That is the job of Checkpoint 1.
--   Convert percents to decimals in the probability statement column (e.g., 87.4% becomes 0.874).
+-   Convert percents and "per 1,000" or "per 10,000" values to decimals in the probability statement column (e.g., 87.4% becomes 0.874, and 3 per 10,000 becomes 0.0003).
 :::
 
 ### 3. Your guiding questions

@@ -203,10 +203,11 @@ window.Quarto = {
    
   <ul>
   <li><a href="#goal" id="toc-goal" class="nav-link active" data-scroll-target="#goal">Goal</a></li>
+  <li><a href="#your-scenario" id="toc-your-scenario" class="nav-link" data-scroll-target="#your-scenario">Your scenario</a></li>
   <li><a href="#tasks" id="toc-tasks" class="nav-link" data-scroll-target="#tasks">Tasks</a>
   <ul class="collapse">
   <li><a href="#define-your-random-variable" id="toc-define-your-random-variable" class="nav-link" data-scroll-target="#define-your-random-variable">1. Define your random variable</a></li>
-  <li><a href="#choose-and-justify-a-distribution" id="toc-choose-and-justify-a-distribution" class="nav-link" data-scroll-target="#choose-and-justify-a-distribution">2. Choose and justify a distribution</a></li>
+  <li><a href="#justify-the-distribution" id="toc-justify-the-distribution" class="nav-link" data-scroll-target="#justify-the-distribution">2. Justify the distribution</a></li>
   <li><a href="#solve-it-analytically" id="toc-solve-it-analytically" class="nav-link" data-scroll-target="#solve-it-analytically">3. Solve it analytically</a></li>
   <li><a href="#simulate-it" id="toc-simulate-it" class="nav-link" data-scroll-target="#simulate-it">4. Simulate it</a></li>
   <li><a href="#stretch-optional-1-bonus" id="toc-stretch-optional-1-bonus" class="nav-link" data-scroll-target="#stretch-optional-1-bonus">5. Stretch (optional, +1 bonus)</a></li>
@@ -234,7 +235,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">September 29, 2026</p>
+      <p class="date-modified">September 30, 2026</p>
     </div>
   </div>
     
@@ -265,28 +266,67 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Due 11/15</strong> (12 points). See <a href="../project/project_central.qmd">Project Central</a> for the full project overview. Make sure you have addressed any feedback from Checkpoint 1.</p>
+<p><strong>Due 11/15</strong> (12 points). See <a href="../project.html">Project Central</a> for the full project overview. Make sure you have addressed any feedback from Checkpoint 1.</p>
 </div>
 </div>
 <section id="goal" class="level2">
 <h2 class="anchored" data-anchor-id="goal">Goal</h2>
-<p>Model a <strong>count</strong> in your scenario with a discrete random variable, and use it to answer a practical question, such as staffing, capacity, or how often something unusual happens.</p>
-<p><strong>Course topics used:</strong> discrete random variables, PMFs and CDFs, expected value and variance, named discrete distributions (Bernoulli, Binomial, Geometric, Poisson, etc.).</p>
+<p>Model a <strong>count</strong> in your scenario with a discrete random variable, and use it to answer a planning question for your public health program, such as how many follow-up appointments to reserve, how much support to plan for, or how often an unusual year happens.</p>
+<p><strong>Course topics used:</strong> discrete random variables, PMFs and CDFs, expected value and variance, named discrete distributions (Bernoulli, Binomial, Poisson).</p>
+</section>
+<section id="your-scenario" class="level2">
+<h2 class="anchored" data-anchor-id="your-scenario">Your scenario</h2>
+<p>Use the Checkpoint 2 rows from your <a href="../project/Checkpoint_00_instructions.html#scenario-cards">Checkpoint 0</a> table, with any corrections from my feedback.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Scenario A</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Scenario B</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Scenario C</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<section id="community-breast-cancer-screening-program" class="level4">
+<h4 class="anchored" data-anchor-id="community-breast-cancer-screening-program">Community breast cancer screening program</h4>
+<ul>
+<li><strong>Random variable:</strong> <span class="math inline">\(X\)</span> = number of screens read as abnormal out of the 40 screens on one van day.</li>
+<li><strong>Distribution:</strong> Binomial, with <span class="math inline">\(n = 40\)</span> (course value) and <span class="math inline">\(p\)</span> = the abnormal interpretation rate from Lee et al.&nbsp;(2023).</li>
+<li><strong>Planning question:</strong> Each woman with an abnormal read needs a follow-up diagnostic appointment. How many appointments should the program reserve after each van day?</li>
+</ul>
+</section>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<section id="county-covid-19-testing-and-contact-tracing" class="level4">
+<h4 class="anchored" data-anchor-id="county-covid-19-testing-and-contact-tracing">County COVID-19 testing and contact tracing</h4>
+<ul>
+<li><strong>Random variable:</strong> <span class="math inline">\(X\)</span> = number of the 3 household contacts of one case who get infected.</li>
+<li><strong>Distribution:</strong> Binomial, with <span class="math inline">\(n = 3\)</span> (course value) and <span class="math inline">\(p\)</span> = the household secondary attack rate for Omicron from Madewell et al.&nbsp;(2022).</li>
+<li><strong>Planning question:</strong> How many household contacts per case should the department plan to support with isolation guidance and test kits?</li>
+</ul>
+</section>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<section id="state-newborn-heart-screening-program" class="level4">
+<h4 class="anchored" data-anchor-id="state-newborn-heart-screening-program">State newborn heart screening program</h4>
+<ul>
+<li><strong>Random variable:</strong> <span class="math inline">\(X\)</span> = number of babies born with CCHD in the state in one year.</li>
+<li><strong>Distribution:</strong> Binomial, with <span class="math inline">\(n = 40{,}000\)</span> births (course value) and <span class="math inline">\(p\)</span> = the prevalence of CCHD from the Cochrane review. Because <span class="math inline">\(n\)</span> is large and <span class="math inline">\(p\)</span> is small, you may also use a Poisson distribution with <span class="math inline">\(\lambda = np\)</span>. If you do, explain why the Poisson is a good approximation here.</li>
+<li><strong>Planning question:</strong> How many babies with CCHD should the state’s pediatric heart specialists be ready to see in a year, and how unusual would a very busy year be?</li>
+</ul>
+</section>
+</div>
+</div>
+</div>
 </section>
 <section id="tasks" class="level2">
 <h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
 <section id="define-your-random-variable" class="level3">
 <h3 class="anchored" data-anchor-id="define-your-random-variable">1. Define your random variable</h3>
 <ul>
-<li>Define <span class="math inline">\(X\)</span> in words, including its units and time frame (e.g., “<span class="math inline">\(X\)</span> = number of patients arriving at the ED between 6 and 7 pm”).</li>
+<li>Write <span class="math inline">\(X\)</span> in words, including its units and time frame, using the definition for your scenario above.</li>
 <li>List the possible values (the support) of <span class="math inline">\(X\)</span>.</li>
 </ul>
 </section>
-<section id="choose-and-justify-a-distribution" class="level3">
-<h3 class="anchored" data-anchor-id="choose-and-justify-a-distribution">2. Choose and justify a distribution</h3>
+<section id="justify-the-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="justify-the-distribution">2. Justify the distribution</h3>
 <ul>
-<li>Choose a named distribution for <span class="math inline">\(X\)</span> and state its parameter(s), using a cited value.</li>
-<li>List the assumptions of that distribution (e.g., fixed number of trials, independence, constant probability or rate), and explain whether each is reasonable for your scenario.</li>
+<li>State the distribution for your scenario and its parameter(s), citing where each value came from.</li>
+<li>List the assumptions of that distribution (e.g., a fixed number of trials, independent trials, and the same probability of a “yes” on every trial), and explain whether each is reasonable for your scenario.</li>
 <li>Identify the assumption <strong>most likely to fail</strong> in real life, and explain why.</li>
 </ul>
 </section>
@@ -294,34 +334,35 @@ Important
 <h3 class="anchored" data-anchor-id="solve-it-analytically">3. Solve it analytically</h3>
 <ul>
 <li>Find <span class="math inline">\(E(X)\)</span>, <span class="math inline">\(\text{Var}(X)\)</span>, and <span class="math inline">\(\text{SD}(X)\)</span> using formulas from class.</li>
-<li>Calculate <strong>two</strong> probabilities that answer practical questions, for example:
+<li>Calculate <strong>two</strong> probabilities that answer your program’s planning question, for example:
 <ul>
-<li><span class="math inline">\(P(X \geq k)\)</span> for a staffing or capacity threshold <span class="math inline">\(k\)</span>, and</li>
+<li><span class="math inline">\(P(X &gt; k)\)</span> for a capacity <span class="math inline">\(k\)</span>, such as the number of reserved appointments, and</li>
 <li><span class="math inline">\(P(X = 0)\)</span> or <span class="math inline">\(P(a \leq X \leq b)\)</span>.</li>
 </ul></li>
-<li>Show the formula (PMF or CDF) for each, then compute with R (e.g., <code>dpois()</code>, <code>ppois()</code>, <code>pbinom()</code>).</li>
+<li>Show the formula (PMF or CDF) for each, then compute with R (e.g., <code>dbinom()</code>, <code>pbinom()</code>, <code>dpois()</code>, <code>ppois()</code>).</li>
 </ul>
 </section>
 <section id="simulate-it" class="level3">
 <h3 class="anchored" data-anchor-id="simulate-it">4. Simulate it</h3>
 <ul>
-<li>Generate at least 10,000 draws of <span class="math inline">\(X\)</span> with R (e.g., <code>rpois()</code>, <code>rbinom()</code>, <code>rgeom()</code>).</li>
+<li>Generate at least 10,000 draws of <span class="math inline">\(X\)</span> with R (e.g., <code>rbinom()</code> or <code>rpois()</code>).</li>
 <li>Make a plot comparing the <strong>empirical</strong> distribution (from your simulation) with the <strong>theoretical PMF</strong>, for example side-by-side bars or points on a bar chart.</li>
 <li>Compare the simulated mean, variance, and your two probabilities with the analytic values in a small table.</li>
 </ul>
-<p>Starter code (Poisson example; change it for your distribution):</p>
+<p>Starter code (Binomial example with placeholder values; change it for your scenario):</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">550</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="dv">12</span>      <span class="co"># mean arrivals per hour (cite your source!)</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>n_sim  <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rpois</span>(n_sim, lambda)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">quantity  =</span> <span class="fu">c</span>(<span class="st">"Mean"</span>, <span class="st">"Variance"</span>, <span class="st">"P(X &gt;= 18)"</span>),</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">analytic  =</span> <span class="fu">c</span>(lambda, lambda, <span class="dv">1</span> <span class="sc">-</span> <span class="fu">ppois</span>(<span class="dv">17</span>, lambda)),</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">simulated =</span> <span class="fu">c</span>(<span class="fu">mean</span>(x), <span class="fu">var</span>(x), <span class="fu">mean</span>(x <span class="sc">&gt;=</span> <span class="dv">18</span>))</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>n     <span class="ot">&lt;-</span> <span class="dv">20</span>       <span class="co"># number of trials: replace with your value</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>p     <span class="ot">&lt;-</span> <span class="fl">0.10</span>     <span class="co"># P("yes") on one trial: replace with your value (cite your source!)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>n_sim <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n_sim, <span class="at">size =</span> n, <span class="at">prob =</span> p)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">quantity  =</span> <span class="fu">c</span>(<span class="st">"Mean"</span>, <span class="st">"Variance"</span>, <span class="st">"P(X &gt; 4)"</span>),</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">analytic  =</span> <span class="fu">c</span>(n <span class="sc">*</span> p, n <span class="sc">*</span> p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p), <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pbinom</span>(<span class="dv">4</span>, <span class="at">size =</span> n, <span class="at">prob =</span> p)),</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">simulated =</span> <span class="fu">c</span>(<span class="fu">mean</span>(x), <span class="fu">var</span>(x), <span class="fu">mean</span>(x <span class="sc">&gt;</span> <span class="dv">4</span>))</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -329,21 +370,26 @@ Important
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Watch the parameterization
+<span class="screen-reader-only">Warning</span>Watch the inequality
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>R’s <code>rgeom()</code> counts the number of <strong>failures before</strong> the first success, which may not match the definition we used in class. Check your definitions, and adjust if needed (e.g., <code>rgeom(n, p) + 1</code>).</p>
+<p><code>pbinom(k, ...)</code> and <code>ppois(k, ...)</code> give <span class="math inline">\(P(X \leq k)\)</span>. So <span class="math inline">\(P(X &gt; k)\)</span> is <code>1 - pbinom(k, ...)</code>, but <span class="math inline">\(P(X \geq k)\)</span> is <code>1 - pbinom(k - 1, ...)</code>. Check which one your planning question needs.</p>
 </div>
 </div>
 </section>
 <section id="stretch-optional-1-bonus" class="level3">
 <h3 class="anchored" data-anchor-id="stretch-optional-1-bonus">5. Stretch (optional, +1 bonus)</h3>
-<p>Break the assumption you identified in Task 2 and show how the answer changes. For example, if arrivals are more variable than a Poisson allows, simulate from a model where the rate itself varies from hour to hour, and compare <span class="math inline">\(P(X \geq k)\)</span> with your original answer.</p>
+<p>Break the assumption you identified in Task 2 and show how the answer changes. Some ideas for each scenario:</p>
+<ul>
+<li><strong>Scenario A:</strong> The abnormal rate may differ from one van day to the next (for example, more women getting their first-ever mammogram on some days). Let <span class="math inline">\(p\)</span> vary from day to day and compare <span class="math inline">\(P(X &gt; k)\)</span> with your original answer.</li>
+<li><strong>Scenario B:</strong> Household members are not independent: if one contact gets infected, the others are more likely to be exposed too. Simulate households where <span class="math inline">\(p\)</span> itself varies from household to household.</li>
+<li><strong>Scenario C:</strong> The number of births and the prevalence may change from year to year. Let <span class="math inline">\(n\)</span> or <span class="math inline">\(p\)</span> vary across years and compare the chance of a very busy year.</li>
+</ul>
 </section>
 <section id="say-it" class="level3">
 <h3 class="anchored" data-anchor-id="say-it">6. Say it</h3>
-<p>Write a short paragraph (4–6 sentences) <strong>for a manager or clinician</strong> who needs to plan around this count. What is typical? What is unusual, and how often does it happen? What would you warn them about, given the assumption most likely to fail?</p>
+<p>Write a short paragraph (4–6 sentences) <strong>for the program manager</strong> who needs to plan around this count. What is typical? What is unusual, and how often does it happen? What would you warn them about, given the assumption most likely to fail?</p>
 </section>
 </section>
 <section id="submission" class="level2">
@@ -387,7 +433,7 @@ Important
 <td>Missing or incorrect</td>
 </tr>
 <tr class="even">
-<td><strong>Interpretation</strong> (paragraph for a manager or clinician)</td>
+<td><strong>Interpretation</strong> (paragraph for the program manager)</td>
 <td>Accurate, practical, and in plain language</td>
 <td>Somewhat technical or vague</td>
 <td>Missing or misleading</td>

@@ -49,7 +49,7 @@ Each scenario card below has:
 The papers use some terms we have not covered yet. You do not need to understand them fully for Checkpoint 0. Use this list to find the right number, and we will build each idea in class.
 
 | Term in the paper | What it means in plain words | When we use it |
-|----|----|----|
+|------|---------|----|
 | Prevalence | Out of everyone in the group, the fraction who have the condition | CP 1 |
 | Sensitivity | Out of the people who **have** the condition, the fraction who test positive | CP 1 |
 | Specificity | Out of the people who **do not have** the condition, the fraction who test negative | CP 1 |

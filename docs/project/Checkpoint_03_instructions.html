@@ -203,10 +203,11 @@ window.Quarto = {
    
   <ul>
   <li><a href="#goal" id="toc-goal" class="nav-link active" data-scroll-target="#goal">Goal</a></li>
+  <li><a href="#your-scenario" id="toc-your-scenario" class="nav-link" data-scroll-target="#your-scenario">Your scenario</a></li>
   <li><a href="#tasks" id="toc-tasks" class="nav-link" data-scroll-target="#tasks">Tasks</a>
   <ul class="collapse">
   <li><a href="#define-your-random-variable" id="toc-define-your-random-variable" class="nav-link" data-scroll-target="#define-your-random-variable">1. Define your random variable</a></li>
-  <li><a href="#choose-and-justify-a-distribution" id="toc-choose-and-justify-a-distribution" class="nav-link" data-scroll-target="#choose-and-justify-a-distribution">2. Choose and justify a distribution</a></li>
+  <li><a href="#justify-the-distribution" id="toc-justify-the-distribution" class="nav-link" data-scroll-target="#justify-the-distribution">2. Justify the distribution</a></li>
   <li><a href="#solve-it-analytically" id="toc-solve-it-analytically" class="nav-link" data-scroll-target="#solve-it-analytically">3. Solve it analytically</a></li>
   <li><a href="#simulate-the-central-limit-theorem" id="toc-simulate-the-central-limit-theorem" class="nav-link" data-scroll-target="#simulate-the-central-limit-theorem">4. Simulate the Central Limit Theorem</a></li>
   <li><a href="#answer-a-question-about-an-average" id="toc-answer-a-question-about-an-average" class="nav-link" data-scroll-target="#answer-a-question-about-an-average">5. Answer a question about an average</a></li>
@@ -234,7 +235,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">September 29, 2026</p>
+      <p class="date-modified">September 30, 2026</p>
     </div>
   </div>
     
@@ -265,41 +266,82 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Due 11/29</strong> (12 points). See <a href="../project/project_central.qmd">Project Central</a> for the full project overview. Make sure you have addressed any feedback from Checkpoint 2.</p>
+<p><strong>Due 11/29</strong> (12 points). See <a href="../project.html">Project Central</a> for the full project overview. Make sure you have addressed any feedback from Checkpoint 2.</p>
 </div>
 </div>
 <section id="goal" class="level2">
 <h2 class="anchored" data-anchor-id="goal">Goal</h2>
-<p>Model a <strong>time or measurement</strong> in your scenario with a continuous random variable, then use the Central Limit Theorem to answer a question about an <strong>average</strong> of many observations.</p>
+<p>Model a <strong>time or measurement</strong> in your scenario with a continuous random variable, then use the Central Limit Theorem to answer a question about an <strong>average</strong> across many people served by your program.</p>
 <p><strong>Course topics used:</strong> continuous random variables, PDFs and CDFs, quantiles, named continuous distributions (Uniform, Exponential, Gamma, Normal), sums of independent random variables, the Central Limit Theorem.</p>
+</section>
+<section id="your-scenario" class="level2">
+<h2 class="anchored" data-anchor-id="your-scenario">Your scenario</h2>
+<p>Use the Checkpoint 3 rows from your <a href="../project/Checkpoint_00_instructions.html#scenario-cards">Checkpoint 0</a> table, with any corrections from my feedback.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Scenario A</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Scenario B</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Scenario C</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<section id="community-breast-cancer-screening-program" class="level4">
+<h4 class="anchored" data-anchor-id="community-breast-cancer-screening-program">Community breast cancer screening program</h4>
+<ul>
+<li><strong>Random variable:</strong> <span class="math inline">\(Y\)</span> = size (in mm) of a breast cancer found by screening.</li>
+<li><strong>Distribution:</strong> Gamma, with the course values mean = 14 mm and SD = 9 mm. For a Gamma, the shape is <span class="math inline">\((\text{mean}/\text{SD})^2\)</span> and the rate is <span class="math inline">\(\text{mean}/\text{SD}^2\)</span>, so use shape <span class="math inline">\(\approx 2.42\)</span> and rate <span class="math inline">\(\approx 0.173\)</span> per mm.</li>
+<li><strong>Average question:</strong> The program tracks the average size of the tumors it finds each year. Smaller tumors mean the program is catching cancers early. Use <span class="math inline">\(n = 30\)</span> tumors (about one year of cancers found by the program).</li>
+</ul>
+</section>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<section id="county-covid-19-testing-and-contact-tracing" class="level4">
+<h4 class="anchored" data-anchor-id="county-covid-19-testing-and-contact-tracing">County COVID-19 testing and contact tracing</h4>
+<ul>
+<li><strong>Random variable:</strong> <span class="math inline">\(Y\)</span> = incubation period (in days) from infection to the start of symptoms.</li>
+<li><strong>Distribution:</strong> Exponential, with rate <span class="math inline">\(= 1/\text{mean}\)</span>, using the mean incubation period for Omicron from Wu et al.&nbsp;(2022). The paper reports a mean but not an SD, which is why we use a one-parameter distribution.</li>
+<li><strong>Average question:</strong> The department reviews the average incubation period across recent cases to decide how long household contacts should watch for symptoms. Use <span class="math inline">\(n = 50\)</span> cases.</li>
+<li><strong>Think about:</strong> The Exponential says the most likely incubation period is close to 0 days. Is that realistic? Discuss this in Task 2.</li>
+</ul>
+</section>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<section id="state-newborn-heart-screening-program" class="level4">
+<h4 class="anchored" data-anchor-id="state-newborn-heart-screening-program">State newborn heart screening program</h4>
+<ul>
+<li><strong>Random variable:</strong> <span class="math inline">\(Y\)</span> = birth weight (in grams) of a baby born at term.</li>
+<li><strong>Distribution:</strong> Normal, with the mean and SD for 2005 from Donahue et al.&nbsp;(2010).</li>
+<li><strong>Average question:</strong> The state reports the average birth weight of babies born in each county every month. Use <span class="math inline">\(n = 100\)</span> babies (a small county’s births in one month).</li>
+<li><strong>Think about:</strong> Your <span class="math inline">\(Y\)</span> is already Normal. In Task 4, explain why your histograms of sample means look Normal even when <span class="math inline">\(n = 5\)</span>, and how this is different from a skewed distribution like the Exponential.</li>
+</ul>
+</section>
+</div>
+</div>
+</div>
 </section>
 <section id="tasks" class="level2">
 <h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
 <section id="define-your-random-variable" class="level3">
 <h3 class="anchored" data-anchor-id="define-your-random-variable">1. Define your random variable</h3>
 <ul>
-<li>Define <span class="math inline">\(Y\)</span> in words, including its units (e.g., “<span class="math inline">\(Y\)</span> = time in hours from ED arrival to being seen by a provider”).</li>
+<li>Write <span class="math inline">\(Y\)</span> in words, including its units, using the definition for your scenario above.</li>
 <li>State the support of <span class="math inline">\(Y\)</span>.</li>
 </ul>
 </section>
-<section id="choose-and-justify-a-distribution" class="level3">
-<h3 class="anchored" data-anchor-id="choose-and-justify-a-distribution">2. Choose and justify a distribution</h3>
+<section id="justify-the-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="justify-the-distribution">2. Justify the distribution</h3>
 <ul>
-<li>Choose a named continuous distribution for <span class="math inline">\(Y\)</span>, and state its parameter(s) using cited values.</li>
-<li>Explain why this distribution is a reasonable choice. Consider its shape (symmetric or skewed?), its support, and what we know about the real quantity.</li>
-<li>Plot the PDF of your chosen distribution.</li>
+<li>State the distribution for your scenario and its parameter(s), citing where each value came from.</li>
+<li>Explain why this distribution is a reasonable choice, and where it might not match the real quantity. Consider its shape (symmetric or skewed?), its support, and what we know about the real quantity.</li>
+<li>Plot the PDF of your distribution.</li>
 </ul>
 </section>
 <section id="solve-it-analytically" class="level3">
 <h3 class="anchored" data-anchor-id="solve-it-analytically">3. Solve it analytically</h3>
 <ul>
 <li>Find <span class="math inline">\(E(Y)\)</span> and <span class="math inline">\(\text{Var}(Y)\)</span>.</li>
-<li>Calculate <strong>two</strong> probabilities or quantiles that answer practical questions, for example:
+<li>Calculate <strong>two</strong> probabilities or quantiles that answer practical questions for your program, for example:
 <ul>
-<li><span class="math inline">\(P(Y &gt; c)\)</span> for a clinically meaningful cutoff <span class="math inline">\(c\)</span>, and</li>
+<li><span class="math inline">\(P(Y &gt; c)\)</span> for a meaningful cutoff <span class="math inline">\(c\)</span> (e.g., a tumor larger than 20 mm, symptoms starting more than 7 days after infection, or a birth weight under 2,500 grams, the cutoff for low birth weight), and</li>
 <li>the 90th percentile of <span class="math inline">\(Y\)</span>.</li>
 </ul></li>
-<li>Show the setup (integral or CDF) for at least one of them, then compute with R (e.g., <code>pexp()</code>, <code>qgamma()</code>, <code>pnorm()</code>).</li>
+<li>Show the setup (integral or CDF) for at least one of them, then compute with R (e.g., <code>pgamma()</code>, <code>pexp()</code>, <code>pnorm()</code>, <code>qgamma()</code>, <code>qexp()</code>, <code>qnorm()</code>).</li>
 </ul>
 </section>
 <section id="simulate-the-central-limit-theorem" class="level3">
@@ -311,10 +353,10 @@ Important
 <li>Compare the mean and SD of your simulated sample means with the CLT’s predictions.</li>
 <li>In 2–3 sentences, describe how quickly the distribution of <span class="math inline">\(\bar{Y}_n\)</span> looks normal. How does the shape (skewness) of <span class="math inline">\(Y\)</span> affect this?</li>
 </ul>
-<p>Starter code (Exponential example; change it for your distribution):</p>
+<p>Starter code (Exponential example with a placeholder value; change it for your scenario):</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">550</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>rate  <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="fl">2.5</span>          <span class="co"># mean wait of 2.5 hours (cite your source!)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>rate  <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">2</span>        <span class="co"># placeholder mean of 2: replace with your distribution</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>mu    <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> rate</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> rate</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>n_rep <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
@@ -324,22 +366,29 @@ Important
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>means_30 <span class="ot">&lt;-</span> <span class="fu">sim_means</span>(<span class="dv">30</span>)</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(means_30, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">breaks =</span> <span class="dv">40</span>,</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Sample means, n = 30"</span>, <span class="at">xlab =</span> <span class="st">"Average wait (hours)"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Sample means, n = 30"</span>, <span class="at">xlab =</span> <span class="st">"Sample mean"</span>)</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">30</span>)), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>For a Gamma, use <code>rgamma(n, shape = , rate = )</code>. For a Normal, use <code>rnorm(n, mean = , sd = )</code>.</p>
 </section>
 <section id="answer-a-question-about-an-average" class="level3">
 <h3 class="anchored" data-anchor-id="answer-a-question-about-an-average">5. Answer a question about an average</h3>
-<p>Use the CLT to answer a practical question about <span class="math inline">\(\bar{Y}_n\)</span> with an <span class="math inline">\(n\)</span> that makes sense for your scenario. For example: <em>What is the probability that the average wait of the next 50 patients is more than 3 hours?</em></p>
+<p>Use the CLT to answer a practical question about <span class="math inline">\(\bar{Y}_n\)</span>, using the <span class="math inline">\(n\)</span> for your scenario above. For example:</p>
+<ul>
+<li><strong>Scenario A:</strong> What is the probability that the average size of the next 30 tumors the program finds is more than 15 mm?</li>
+<li><strong>Scenario B:</strong> What is the probability that the average incubation period across the next 50 cases is more than 4 days?</li>
+<li><strong>Scenario C:</strong> What is the probability that the average birth weight of 100 babies born in one county in a month is less than 3,300 grams?</li>
+</ul>
+<p>Then:</p>
 <ul>
 <li>Compute the CLT approximation.</li>
 <li>Check it with your simulation.</li>
-<li>Compare it with the probability that a <strong>single</strong> observation exceeds the same cutoff, and explain why the two answers differ.</li>
+<li>Compare it with the probability that a <strong>single</strong> observation is beyond the same cutoff, and explain why the two answers differ.</li>
 </ul>
 </section>
 <section id="say-it" class="level3">
 <h3 class="anchored" data-anchor-id="say-it">6. Say it</h3>
-<p>Write a short paragraph (4–6 sentences) <strong>for a clinician or administrator</strong> that explains the difference between what happens to <em>one</em> patient and what happens <em>on average</em> across many patients, using your results.</p>
+<p>Write a short paragraph (4–6 sentences) <strong>for the program manager or health department</strong> that explains the difference between what happens to <em>one</em> person and what happens <em>on average</em> across many people, using your results. Why does this difference matter when the program reports averages to the public?</p>
 </section>
 </section>
 <section id="submission" class="level2">
@@ -383,7 +432,7 @@ Important
 <td>Missing or incorrect</td>
 </tr>
 <tr class="even">
-<td><strong>Interpretation</strong> (one patient vs.&nbsp;the average)</td>
+<td><strong>Interpretation</strong> (one person vs.&nbsp;the average)</td>
 <td>Accurate and in plain language</td>
 <td>Somewhat technical or vague</td>
 <td>Missing or misleading</td>

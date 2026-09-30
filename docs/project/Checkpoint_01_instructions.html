@@ -203,6 +203,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#goal" id="toc-goal" class="nav-link active" data-scroll-target="#goal">Goal</a></li>
+  <li><a href="#your-scenario" id="toc-your-scenario" class="nav-link" data-scroll-target="#your-scenario">Your scenario</a></li>
   <li><a href="#tasks" id="toc-tasks" class="nav-link" data-scroll-target="#tasks">Tasks</a>
   <ul class="collapse">
   <li><a href="#set-up-the-problem" id="toc-set-up-the-problem" class="nav-link" data-scroll-target="#set-up-the-problem">1. Set up the problem</a></li>
@@ -233,7 +234,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">September 29, 2026</p>
+      <p class="date-modified">September 30, 2026</p>
     </div>
   </div>
     
@@ -264,22 +265,61 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Due 10/18</strong> (12 points). See <a href="../project/project_central.qmd">Project Central</a> for the full project overview. Make sure you have addressed any feedback from Checkpoint 0.</p>
+<p><strong>Due 10/18</strong> (12 points). See <a href="../project.html">Project Central</a> for the full project overview. Make sure you have addressed any feedback from Checkpoint 0.</p>
 </div>
 </div>
 <section id="goal" class="level2">
 <h2 class="anchored" data-anchor-id="goal">Goal</h2>
-<p>Use conditional probability and Bayes’ rule to answer: <em>If someone in my scenario gets a positive result, how likely is it that they truly have the condition?</em></p>
+<p>Use conditional probability and Bayes’ rule to answer: <em>If someone served by my public health program gets a positive result, how likely is it that they truly have the condition?</em></p>
 <p><strong>Course topics used:</strong> events, conditional probability, the Law of Total Probability, Bayes’ rule, independence.</p>
+</section>
+<section id="your-scenario" class="level2">
+<h2 class="anchored" data-anchor-id="your-scenario">Your scenario</h2>
+<p>Use the input values from your <a href="../project/Checkpoint_00_instructions.html#scenario-cards">Checkpoint 0</a> table, with any corrections from my feedback. Every value should come from your source packet or from a course value on your scenario card.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Scenario A</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Scenario B</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Scenario C</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<section id="community-breast-cancer-screening-program" class="level4">
+<h4 class="anchored" data-anchor-id="community-breast-cancer-screening-program">Community breast cancer screening program</h4>
+<ul>
+<li><strong>Events:</strong> <span class="math inline">\(D\)</span> = has breast cancer; <span class="math inline">\(T^+\)</span> = the mammogram is read as abnormal.</li>
+<li><strong>Inputs:</strong> prevalence (course value), sensitivity, and specificity from Lee et al.&nbsp;(2023).</li>
+<li><strong>Program question:</strong> What does an abnormal read mean for a woman screened on the van?</li>
+</ul>
+</section>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<section id="county-covid-19-testing-and-contact-tracing" class="level4">
+<h4 class="anchored" data-anchor-id="county-covid-19-testing-and-contact-tracing">County COVID-19 testing and contact tracing</h4>
+<ul>
+<li><strong>Events:</strong> <span class="math inline">\(D\)</span> = infected with SARS-CoV-2; <span class="math inline">\(T^+\)</span> = the rapid antigen test is positive.</li>
+<li><strong>Inputs:</strong> prevalence (course value), and sensitivity and specificity for people without symptoms from the Cochrane review.</li>
+<li><strong>Program question:</strong> How much should a resident without symptoms trust a positive rapid test?</li>
+</ul>
+</section>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<section id="state-newborn-heart-screening-program" class="level4">
+<h4 class="anchored" data-anchor-id="state-newborn-heart-screening-program">State newborn heart screening program</h4>
+<ul>
+<li><strong>Events:</strong> <span class="math inline">\(D\)</span> = has a critical congenital heart defect (CCHD); <span class="math inline">\(T^+\)</span> = the pulse oximetry screen is positive.</li>
+<li><strong>Inputs:</strong> prevalence, sensitivity, and false-positive rate from the Cochrane review. Your specificity is <span class="math inline">\(1 - (\text{false-positive rate})\)</span>.</li>
+<li><strong>Program question:</strong> What does a positive screen mean for a newborn’s family?</li>
+</ul>
+</section>
+</div>
+</div>
+</div>
 </section>
 <section id="tasks" class="level2">
 <h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
 <section id="set-up-the-problem" class="level3">
 <h3 class="anchored" data-anchor-id="set-up-the-problem">1. Set up the problem</h3>
 <ul>
-<li>Define your events with notation (e.g., <span class="math inline">\(D\)</span> = has the disease, <span class="math inline">\(T^+\)</span> = tests positive).</li>
-<li>Write each input value from Checkpoint 0 as a probability statement, for example <span class="math inline">\(P(T^+ \mid D) = 0.90\)</span>. Cite your sources.</li>
-<li>Draw a tree diagram <strong>or</strong> a 2×2 table for a hypothetical population of 100,000 people.</li>
+<li>Define your events with notation, using the events for your scenario above.</li>
+<li>Write each input value as a probability statement, for example <span class="math inline">\(P(T^+ \mid D) = 0.874\)</span>. Cite the source for each value.</li>
+<li>Draw a tree diagram <strong>or</strong> a 2×2 table for a hypothetical population of 100,000 people screened by your program.</li>
 </ul>
 </section>
 <section id="solve-it-analytically" class="level3">
@@ -297,13 +337,13 @@ Important
 <li>Estimate PPV and NPV from your simulated population and compare them with your analytic answers.</li>
 <li>In 1–2 sentences, explain why the simulated and analytic values are close but not identical.</li>
 </ul>
-<p>Starter code (replace the input values with your own):</p>
+<p>Starter code (replace the placeholder input values with your own):</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">550</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>N    <span class="ot">&lt;-</span> <span class="fl">1e5</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>prev <span class="ot">&lt;-</span> <span class="fl">0.01</span>   <span class="co"># P(D)</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>sens <span class="ot">&lt;-</span> <span class="fl">0.90</span>   <span class="co"># P(T+ | D)</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>spec <span class="ot">&lt;-</span> <span class="fl">0.95</span>   <span class="co"># P(T- | D^c)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>prev <span class="ot">&lt;-</span> <span class="fl">0.01</span>   <span class="co"># P(D): replace with your value</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>sens <span class="ot">&lt;-</span> <span class="fl">0.90</span>   <span class="co"># P(T+ | D): replace with your value</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>spec <span class="ot">&lt;-</span> <span class="fl">0.95</span>   <span class="co"># P(T- | D^c): replace with your value</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>disease  <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(N, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> prev)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>test_pos <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(disease <span class="sc">==</span> <span class="dv">1</span>,</span>
@@ -315,18 +355,31 @@ Important
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">simulated =</span> ppv_sim, <span class="at">analytic =</span> ppv_bayes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Rare conditions need big populations
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If your prevalence is very small (Scenario C has about 6 cases per 10,000 babies), a population of 100,000 has only a few dozen true cases, so your simulated PPV will bounce around. Try <span class="math inline">\(N = 10^6\)</span> and see whether your simulated values get closer to your analytic answers.</p>
+</div>
+</div>
 </section>
 <section id="explore-how-does-prevalence-matter" class="level3">
 <h3 class="anchored" data-anchor-id="explore-how-does-prevalence-matter">4. Explore: how does prevalence matter?</h3>
 <ul>
 <li>Compute the analytic PPV for prevalence values from 0.1% to 50%, keeping sensitivity and specificity fixed.</li>
 <li>Plot PPV (y-axis) against prevalence (x-axis), and mark your scenario’s prevalence on the plot.</li>
-<li>In 2–3 sentences, describe what happens to PPV as prevalence changes. When would this test be most useful?</li>
+<li>In 2–3 sentences, describe what happens to PPV as prevalence changes. Then describe a group or setting your program might serve where the prevalence would be higher or lower than your scenario’s value (for example, women with a family history of breast cancer, residents tested during a COVID-19 surge, or babies whose prenatal ultrasound showed a possible heart problem). How would a positive result mean something different there?</li>
 </ul>
 </section>
 <section id="say-it" class="level3">
 <h3 class="anchored" data-anchor-id="say-it">5. Say it</h3>
-<p>Write a short paragraph (4–6 sentences) <strong>for a patient</strong> who just received a positive result. Explain what the result means using natural frequencies (e.g., “Out of 1,000 people like you who test positive, about ___ actually have…”) rather than probability notation.</p>
+<p>Your program sends a letter or text message to every person with a positive result. Write a short paragraph (4–6 sentences) for that message. Explain what the result means using natural frequencies (e.g., “Out of 1,000 people who get a positive result, about ___ actually have…”) rather than probability notation, and say what the next step is (a follow-up appointment, a confirmatory test, or a heart ultrasound).</p>
 </section>
 </section>
 <section id="submission" class="level2">
@@ -370,7 +423,7 @@ Important
 <td>Missing or incorrect</td>
 </tr>
 <tr class="even">
-<td><strong>Interpretation</strong> (prevalence discussion, patient paragraph)</td>
+<td><strong>Interpretation</strong> (prevalence discussion, program message)</td>
 <td>Accurate and in plain language</td>
 <td>Somewhat technical or vague</td>
 <td>Missing or misleading</td>

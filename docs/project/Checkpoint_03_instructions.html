@@ -295,9 +295,9 @@ Important
 <h4 class="anchored" data-anchor-id="county-covid-19-testing-and-contact-tracing">County COVID-19 testing and contact tracing</h4>
 <ul>
 <li><strong>Random variable:</strong> <span class="math inline">\(Y\)</span> = incubation period (in days) from infection to the start of symptoms.</li>
-<li><strong>Distribution:</strong> Exponential, with rate <span class="math inline">\(= 1/\text{mean}\)</span>, using the mean incubation period for Omicron from Wu et al.&nbsp;(2022). The paper reports a mean but not an SD, which is why we use a one-parameter distribution.</li>
+<li><strong>Distribution:</strong> Gamma, using the mean and SD of the Omicron incubation period from Del Águila-Mejía et al.&nbsp;(2022). For a Gamma, the shape is <span class="math inline">\((\text{mean}/\text{SD})^2\)</span> and the rate is <span class="math inline">\(\text{mean}/\text{SD}^2\)</span>. Calculate the shape and rate from your values, and show your work.</li>
 <li><strong>Average question:</strong> The department reviews the average incubation period across recent cases to decide how long household contacts should watch for symptoms. Use <span class="math inline">\(n = 50\)</span> cases.</li>
-<li><strong>Think about:</strong> The Exponential says the most likely incubation period is close to 0 days. Is that realistic? Discuss this in Task 2.</li>
+<li><strong>Think about:</strong> Your Gamma has a small shape, so it is very right-skewed. Most people get symptoms within a few days, but a few take much longer. Is that realistic for an incubation period? Discuss this in Task 2, and watch how the skew affects your CLT histograms in Task 4.</li>
 </ul>
 </section>
 </div>
@@ -376,7 +376,7 @@ Important
 <p>Use the CLT to answer a practical question about <span class="math inline">\(\bar{Y}_n\)</span>, using the <span class="math inline">\(n\)</span> for your scenario above. For example:</p>
 <ul>
 <li><strong>Scenario A:</strong> What is the probability that the average size of the next 30 tumors the program finds is more than 15 mm?</li>
-<li><strong>Scenario B:</strong> What is the probability that the average incubation period across the next 50 cases is more than 4 days?</li>
+<li><strong>Scenario B:</strong> What is the probability that the average incubation period across the next 50 cases is more than 3.5 days?</li>
 <li><strong>Scenario C:</strong> What is the probability that the average birth weight of 100 babies born in one county in a month is less than 3,300 grams?</li>
 </ul>
 <p>Then:</p>

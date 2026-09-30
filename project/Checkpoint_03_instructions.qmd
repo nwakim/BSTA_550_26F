@@ -53,9 +53,9 @@ Use the Checkpoint 3 rows from your [Checkpoint 0](/project/Checkpoint_00_instru
 #### County COVID-19 testing and contact tracing
 
 -   **Random variable:** $Y$ = incubation period (in days) from infection to the start of symptoms.
--   **Distribution:** Exponential, with rate $= 1/\text{mean}$, using the mean incubation period for Omicron from Wu et al. (2022). The paper reports a mean but not an SD, which is why we use a one-parameter distribution.
+-   **Distribution:** Gamma, using the mean and SD of the Omicron incubation period from Del Águila-Mejía et al. (2022). For a Gamma, the shape is $(\text{mean}/\text{SD})^2$ and the rate is $\text{mean}/\text{SD}^2$. Calculate the shape and rate from your values, and show your work.
 -   **Average question:** The department reviews the average incubation period across recent cases to decide how long household contacts should watch for symptoms. Use $n = 50$ cases.
--   **Think about:** The Exponential says the most likely incubation period is close to 0 days. Is that realistic? Discuss this in Task 2.
+-   **Think about:** Your Gamma has a small shape, so it is very right-skewed. Most people get symptoms within a few days, but a few take much longer. Is that realistic for an incubation period? Discuss this in Task 2, and watch how the skew affects your CLT histograms in Task 4.
 
 ### Scenario C
 
@@ -123,7 +123,7 @@ For a Gamma, use `rgamma(n, shape = , rate = )`. For a Normal, use `rnorm(n, mea
 Use the CLT to answer a practical question about $\bar{Y}_n$, using the $n$ for your scenario above. For example:
 
 -   **Scenario A:** What is the probability that the average size of the next 30 tumors the program finds is more than 15 mm?
--   **Scenario B:** What is the probability that the average incubation period across the next 50 cases is more than 4 days?
+-   **Scenario B:** What is the probability that the average incubation period across the next 50 cases is more than 3.5 days?
 -   **Scenario C:** What is the probability that the average birth weight of 100 babies born in one county in a month is less than 3,300 grams?
 
 Then:

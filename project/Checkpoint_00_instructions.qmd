@@ -122,9 +122,9 @@ The abstract reports each measure for DBT and for DM side by side, so double-che
 
 1.  Cochrane. How accurate are rapid antigen tests for diagnosing COVID-19? Plain language summary of Dinnes J, et al. *Cochrane Database of Systematic Reviews*, 2025 update (CD013705). [Summary page](https://www.cochrane.org/evidence/CD013705_how-accurate-are-rapid-antigen-tests-diagnosing-covid-19) · [Full review](https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD013705.pub4/full)
 2.  Madewell ZJ, Yang Y, Longini IM Jr, Halloran ME, Dean NE. Household secondary attack rates of SARS-CoV-2 by variant and vaccination status: An updated systematic review and meta-analysis. *JAMA Network Open*. 2022;5(4):e229317. [Free full text](https://pmc.ncbi.nlm.nih.gov/articles/PMC9051991/)
-3.  Wu Y, Kang L, Guo Z, Liu J, Liu M, Liang W. Incubation period of COVID-19 caused by unique SARS-CoV-2 strains: A systematic review and meta-analysis. *JAMA Network Open*. 2022;5(8):e2228008. [Free full text](https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2795489)
+3.  Del Águila-Mejía J, et al. Secondary attack rate, transmission and incubation periods, and serial interval of SARS-CoV-2 Omicron variant, Spain. *Emerging Infectious Diseases*. 2022;28(6). [Free full text](https://wwwnc.cdc.gov/eid/article/28/6/22-0158)
 
-For source 1, use the **overall** numbers for people **without symptoms**. For sources 2 and 3, use the numbers for the **Omicron** variant. Look in the **Abstract** or **Key Points** box of each paper.
+For source 1, use the **overall** numbers for people **without symptoms**. For source 2, use the number for the **Omicron** variant in the **Abstract**. For source 3, use the **Omicron** incubation period in **Table 2**.
 
 **What each checkpoint will look at**
 
@@ -132,7 +132,7 @@ For source 1, use the **overall** numbers for people **without symptoms**. For s
 |----|--------|--------|
 | CP 1 | The chance a resident is infected, given a positive rapid test | Sensitivity and specificity (source 1); prevalence (course value below) |
 | CP 2 | The number of household contacts of one case who get infected | Household secondary attack rate for Omicron (source 2) |
-| CP 3 | The incubation period: days from infection until symptoms start | Mean incubation period for Omicron (source 3) |
+| CP 3 | The incubation period: days from infection until symptoms start | Mean and SD of the incubation period for Omicron (source 3) |
 
 **Course values**
 
@@ -149,8 +149,7 @@ For source 1, use the **overall** numbers for people **without symptoms**. For s
 | CP 1: specificity | "Average specificity" (source 1), also across all evaluations |
 | CP 2: chance of a "yes" | "Household secondary attack rate" or "household SAR" for **Omicron** (source 2). A "yes" is a household contact who gets infected. |
 | CP 2: group size | Course value on this card |
-| CP 3: mean | Mean incubation period for **Omicron** (source 3) |
-| CP 3: SD | Source 3 does not report an SD, so write "not reported". Do not use the range of incubation periods as the SD. |
+| CP 3: mean and SD | The "Incubation period" row for **Omicron** in Table 2 (source 3). The table lists each value as "Mean (SD)", so the number in parentheses is the SD. Use the overall row, not the rows for vaccinated or unvaccinated index case-patients. |
 
 For source 1, use the numbers on the linked **2025** summary page. Older versions of this review report different numbers.
 :::
@@ -230,7 +229,7 @@ Fill in the table below for your scenario. For each row:
 | 2 | The chance of a "yes" for one screen (A: read as abnormal), one household contact (B: gets infected), or one baby (C: born with CCHD) |  |  | — |
 | 2 | How many screens, household contacts, or babies are in the group |  |  | — |
 | 3 | The mean (average) of the time or measurement, with units |  |  | — |
-| 3 | The SD of the time or measurement, with units (write "not reported" if the source does not give it) |  |  | — |
+| 3 | The SD of the time or measurement, with units |  |  | — |
 
 ::: callout-warning
 ## Record only what the source says
@@ -254,7 +253,7 @@ Write one question for each checkpoint that your analysis will answer. You may u
 
 -   **CP 1:** If a resident without symptoms gets a positive rapid test, what is the probability that they are infected?
 -   **CP 2:** For a case who lives with 3 other people, what is the probability that at least 2 of them also get infected?
--   **CP 3:** What is the probability that the average incubation period across the county's next 50 cases is more than 4 days?
+-   **CP 3:** What is the probability that the average incubation period across the county's next 50 cases is more than 3.5 days?
 
 **Scenario C (state newborn heart screening program)**
 

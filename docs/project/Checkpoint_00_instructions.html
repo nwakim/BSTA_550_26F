@@ -159,7 +159,7 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -182,7 +182,7 @@ window.Quarto = {
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Checkpoint_00_instructions.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -191,7 +191,7 @@ window.Quarto = {
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page-left">
 
     
   
@@ -246,14 +246,16 @@ Important
 <li><strong>Course values:</strong> a few numbers that the papers do not report in a usable form. The card gives you these directly. Use them as written.</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Words you will see in the papers
+<span class="screen-reader-only">Note</span>Words you might see in the papers
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The papers use some terms we have not covered yet. You do not need to understand them fully for Checkpoint 0. Use this list to find the right number, and we will build each idea in class.</p>
 <table class="caption-top table">
@@ -266,7 +268,7 @@ Important
 <tr class="header">
 <th>Term in the paper</th>
 <th>What it means in plain words</th>
-<th>When we use it</th>
+<th>Checkpoint used in</th>
 </tr>
 </thead>
 <tbody>
@@ -296,32 +298,48 @@ Important
 <td>CP 1</td>
 </tr>
 <tr class="even">
-<td>Rate / attack rate / recall rate</td>
-<td>The fraction (or percent) of people or events that are a “yes”</td>
+<td>Abnormal interpretation rate (AIR)</td>
+<td>Out of all screening exams, the fraction read as abnormal (the woman is called back)</td>
 <td>CP 2</td>
 </tr>
 <tr class="odd">
+<td>Cancer detection rate (CDR)</td>
+<td>The number of cancers the screen <strong>found</strong>, per 1,000 exams. This is <strong>not</strong> the prevalence, because it leaves out the cancers the screen missed.</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>Secondary attack rate (SAR)</td>
+<td>Out of the people exposed to a case (e.g., the people they live with), the fraction who get infected</td>
+<td>CP 2</td>
+</tr>
+<tr class="odd">
+<td>“Per 1,000” or “per 10,000”</td>
+<td>A count out of 1,000 or 10,000 people. To turn it into a decimal, divide: 3 per 10,000 = 3 / 10,000 = 0.0003.</td>
+<td>CP 1, CP 2</td>
+</tr>
+<tr class="even">
 <td>Mean</td>
 <td>The average value</td>
 <td>CP 3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Median and interquartile range (IQR)</td>
 <td>The middle value, and the range that holds the middle half of the values</td>
 <td>CP 3</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Standard deviation (SD)</td>
 <td>How spread out the values are around the mean</td>
 <td>CP 3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>95% confidence interval (CI)</td>
 <td>A range of plausible values around an estimate. <strong>Record only the main estimate</strong>, not the interval.</td>
 <td>—</td>
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 </div>
 </section>
@@ -343,9 +361,9 @@ Important
 <p><strong>What each checkpoint will look at</strong></p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 18%">
+<col style="width: 40%">
+<col style="width: 40%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -378,6 +396,57 @@ Important
 <li><strong>Screens per van day:</strong> 40.</li>
 <li><strong>Tumor size:</strong> mean of about 14 mm, SD of about 9 mm. (The paper reports a median and IQR. These values match that median and IQR for a right-skewed shape.)</li>
 </ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Finding your numbers (Scenario A)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 60%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Row in your Checkpoint 0 table</th>
+<th>What it is called in the source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CP 1: prevalence</td>
+<td>Course value on this card</td>
+</tr>
+<tr class="even">
+<td>CP 1: sensitivity</td>
+<td>“Sensitivity” (DBT)</td>
+</tr>
+<tr class="odd">
+<td>CP 1: specificity</td>
+<td>“Specificity” (DBT)</td>
+</tr>
+<tr class="even">
+<td>CP 2: chance of a “yes”</td>
+<td>“Abnormal interpretation rate” or “AIR” (DBT). A “yes” is a screen read as abnormal. Do <strong>not</strong> use the cancer detection rate (CDR) or PPV1.</td>
+</tr>
+<tr class="odd">
+<td>CP 2: group size</td>
+<td>Course value on this card</td>
+</tr>
+<tr class="even">
+<td>CP 3: mean and SD</td>
+<td>Course values on this card. The paper reports a median and IQR for tumor size, which you may list too.</td>
+</tr>
+</tbody>
+</table>
+<p>The abstract reports each measure for DBT and for DM side by side, so double-check that you are copying the DBT number.</p>
+</div>
+</div>
 </section>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
@@ -394,9 +463,9 @@ Important
 <p><strong>What each checkpoint will look at</strong></p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 20%">
+<col style="width: 40%">
+<col style="width: 40%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -428,6 +497,61 @@ Important
 <li><strong>Prevalence:</strong> 0.5% (5 out of every 1,000 residents without symptoms who test). This is the example prevalence the Cochrane summary uses for general screening.</li>
 <li><strong>Household contacts per case:</strong> 3 (a household of 4 people, with 1 case).</li>
 </ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Finding your numbers (Scenario B)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 69%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Row in your Checkpoint 0 table</th>
+<th>What it is called in the source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CP 1: prevalence</td>
+<td>Course value on this card</td>
+</tr>
+<tr class="even">
+<td>CP 1: sensitivity</td>
+<td>“Average sensitivity” (source 1). Use the average across <strong>all</strong> evaluations, not the numbers for subgroups such as “general screening” or “suspected exposure”.</td>
+</tr>
+<tr class="odd">
+<td>CP 1: specificity</td>
+<td>“Average specificity” (source 1), also across all evaluations</td>
+</tr>
+<tr class="even">
+<td>CP 2: chance of a “yes”</td>
+<td>“Household secondary attack rate” or “household SAR” for <strong>Omicron</strong> (source 2). A “yes” is a household contact who gets infected.</td>
+</tr>
+<tr class="odd">
+<td>CP 2: group size</td>
+<td>Course value on this card</td>
+</tr>
+<tr class="even">
+<td>CP 3: mean</td>
+<td>Mean incubation period for <strong>Omicron</strong> (source 3)</td>
+</tr>
+<tr class="odd">
+<td>CP 3: SD</td>
+<td>Source 3 does not report an SD, so write “not reported”. Do not use the range of incubation periods as the SD.</td>
+</tr>
+</tbody>
+</table>
+<p>For source 1, use the numbers on the linked <strong>2025</strong> summary page. Older versions of this review report different numbers.</p>
+</div>
+</div>
 </section>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
@@ -443,9 +567,9 @@ Important
 <p><strong>What each checkpoint will look at</strong></p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 18%">
+<col style="width: 40%">
+<col style="width: 40%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -476,19 +600,71 @@ Important
 <ul>
 <li><strong>Births per year in the state:</strong> 40,000.</li>
 </ul>
-</section>
-</div>
-</div>
-</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Want to propose your own scenario?
+<span class="screen-reader-only">Tip</span>Finding your numbers (Scenario C)
 </div>
 </div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 69%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Row in your Checkpoint 0 table</th>
+<th>What it is called in the source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CP 1: prevalence</td>
+<td>The number of newborns out of 10,000 who have CCHD (source 1). Convert it to a decimal (see “per 10,000” in the word list above).</td>
+</tr>
+<tr class="even">
+<td>CP 1: sensitivity</td>
+<td>“Sensitivity” (source 1)</td>
+</tr>
+<tr class="odd">
+<td>CP 1: false-positive rate</td>
+<td>“False-positive rate” (source 1). Write it as <span class="math inline">\(P(T^+ \mid D^c)\)</span>, <strong>not</strong> as a specificity.</td>
+</tr>
+<tr class="even">
+<td>CP 2: chance of a “yes”</td>
+<td>The <strong>same</strong> prevalence as your CP 1 row. A “yes” is a baby born with CCHD.</td>
+</tr>
+<tr class="odd">
+<td>CP 2: group size</td>
+<td>Course value on this card</td>
+</tr>
+<tr class="even">
+<td>CP 3: mean and SD</td>
+<td>Mean and SD of birth weight for <strong>2005</strong> (source 2), in grams</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Want to propose your own scenario?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>You may propose your own scenario <strong>only with my approval</strong>. Email me by 10/05 with:</p>
 <ol type="1">
@@ -496,6 +672,7 @@ Important
 <li><strong>one to three published sources</strong> that give you the same kinds of numbers as the scenario cards above: a prevalence, a sensitivity, and a specificity for CP 1; the chance of a “yes” for a count in CP 2; and a mean (and SD, if available) for a time or measurement in CP 3.</li>
 </ol>
 <p>If you do not have my approval by the due date, please choose one of the three scenarios above.</p>
+</div>
 </div>
 </div>
 </section>
@@ -514,15 +691,16 @@ Important
 <p>Fill in the table below for your scenario. For each row:</p>
 <ul>
 <li><strong>Value:</strong> Write the number from the source (or the course value from your scenario card).</li>
-<li><strong>Where I found it:</strong> Name the source (1, 2, 3, or “course value”) and the section, table, or sentence where the number appears (for example, “Source 1, Abstract, Results”).</li>
+<li><strong>Where I found it:</strong> Name the source (1, 2, or 3) and the section, table, or sentence where the number appears (for example, “Source 1, Abstract, Results”). For a number from your scenario card, write “course value”.</li>
+<li>The <strong>Finding your numbers</strong> box on your scenario card tells you what each number is called in the source.</li>
 <li><strong>Probability statement:</strong> For the three Checkpoint 1 rows only, write the value as a probability. Define your events first, for example, <span class="math inline">\(D\)</span> = has the condition and <span class="math inline">\(T^+\)</span> = tests positive. Then write, for example, <span class="math inline">\(P(T^+ \mid D) = 0.874\)</span>.</li>
 </ul>
 <table class="caption-top table">
 <colgroup>
+<col style="width: 7%">
+<col style="width: 30%">
 <col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
+<col style="width: 22%">
 <col style="width: 20%">
 </colgroup>
 <thead>
@@ -558,14 +736,14 @@ Important
 </tr>
 <tr class="even">
 <td>2</td>
-<td>The chance that one screen, one household member, or one baby is a “yes”</td>
+<td>The chance of a “yes” for one screen (A: read as abnormal), one household contact (B: gets infected), or one baby (C: born with CCHD)</td>
 <td></td>
 <td></td>
 <td>—</td>
 </tr>
 <tr class="odd">
 <td>2</td>
-<td>How many screens, household members, or babies are in the group</td>
+<td>How many screens, household contacts, or babies are in the group</td>
 <td></td>
 <td></td>
 <td>—</td>
@@ -599,7 +777,7 @@ Important
 <ul>
 <li>Copy the main estimate only. Do not include the 95% confidence interval.</li>
 <li>Do not calculate anything new yet. For example, do not calculate the chance that someone with a positive test has the condition. That is the job of Checkpoint 1.</li>
-<li>Convert percents to decimals in the probability statement column (e.g., 87.4% becomes 0.874).</li>
+<li>Convert percents and “per 1,000” or “per 10,000” values to decimals in the probability statement column (e.g., 87.4% becomes 0.874, and 3 per 10,000 becomes 0.0003).</li>
 </ul>
 </div>
 </div>
@@ -630,15 +808,15 @@ Important
 </section>
 <section id="submission" class="level2">
 <h2 class="anchored" data-anchor-id="submission">Submission</h2>
-<p>Submit a rendered HTML file (and your <code>.qmd</code>) with the three sections above. One submission per team.</p>
+<p>Submit a rendered HTML file (and your <code>.qmd</code>) with the three sections above. Make sure the qmd and html are named <code>lastname_firstinitial_checkpoint_00.qmd</code> and <code>lastname_firstinitial_checkpoint_00.html</code> or <code>lastname1_lastname2_checkpoint_00.qmd</code> and <code>lastname1_lastname2_checkpoint_00.html</code>. One submission per team. Either person in the pair can submit it.</p>
 </section>
 <section id="rubric-4-points" class="level2">
 <h2 class="anchored" data-anchor-id="rubric-4-points">Rubric (4 points)</h2>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 42%">
+<col style="width: 21%">
+<col style="width: 36%">
 </colgroup>
 <thead>
 <tr class="header">

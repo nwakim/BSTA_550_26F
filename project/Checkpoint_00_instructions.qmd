@@ -6,6 +6,7 @@ format:
   html:
     link-external-newwindow: true
     toc: true
+    page-layout: full
   pdf: default
 editor_options:
   chunk_output_type: console
@@ -43,12 +44,12 @@ Each scenario card below has:
 -   **The source packet:** 1–3 published sources. Every number you use must come from these sources or from a value the card gives you.
 -   **Course values:** a few numbers that the papers do not report in a usable form. The card gives you these directly. Use them as written.
 
-::: callout-note
-## Words you will see in the papers
+::: {.callout-note collapse="true"}
+### Words you might see in the papers
 
 The papers use some terms we have not covered yet. You do not need to understand them fully for Checkpoint 0. Use this list to find the right number, and we will build each idea in class.
 
-| Term in the paper | What it means in plain words | When we use it |
+| Term in the paper | What it means in plain words | Checkpoint used in |
 |------|---------|----|
 | Prevalence | Out of everyone in the group, the fraction who have the condition | CP 1 |
 | Sensitivity | Out of the people who **have** the condition, the fraction who test positive | CP 1 |
@@ -85,7 +86,7 @@ This one paper has everything you need. Look in the **Abstract** and the **Resul
 **What each checkpoint will look at**
 
 | Checkpoint | What we model | Where it comes from |
-|----|----|----|
+|----|---------|---------|
 | CP 1 | The chance a woman has cancer, given an abnormal read | Sensitivity and specificity (paper); prevalence (course value below) |
 | CP 2 | The number of abnormal reads (follow-up appointments needed) out of 40 screens on one van day | Abnormal interpretation rate (paper) |
 | CP 3 | The size of a tumor found by screening, in millimeters | Median and IQR (paper); mean and SD (course values below) |
@@ -97,10 +98,10 @@ This one paper has everything you need. Look in the **Abstract** and the **Resul
 -   **Tumor size:** mean of about 14 mm, SD of about 9 mm. (The paper reports a median and IQR. These values match that median and IQR for a right-skewed shape.)
 
 ::: callout-tip
-## Finding your numbers (Scenario A)
+#### Finding your numbers (Scenario A)
 
 | Row in your Checkpoint 0 table | What it is called in the source |
-|----|----|
+|----|------|
 | CP 1: prevalence | Course value on this card |
 | CP 1: sensitivity | "Sensitivity" (DBT) |
 | CP 1: specificity | "Specificity" (DBT) |
@@ -128,7 +129,7 @@ For source 1, use the **overall** numbers for people **without symptoms**. For s
 **What each checkpoint will look at**
 
 | Checkpoint | What we model | Where it comes from |
-|----|----|----|
+|----|--------|--------|
 | CP 1 | The chance a resident is infected, given a positive rapid test | Sensitivity and specificity (source 1); prevalence (course value below) |
 | CP 2 | The number of household contacts of one case who get infected | Household secondary attack rate for Omicron (source 2) |
 | CP 3 | The incubation period: days from infection until symptoms start | Mean incubation period for Omicron (source 3) |
@@ -139,10 +140,10 @@ For source 1, use the **overall** numbers for people **without symptoms**. For s
 -   **Household contacts per case:** 3 (a household of 4 people, with 1 case).
 
 ::: callout-tip
-## Finding your numbers (Scenario B)
+#### Finding your numbers (Scenario B)
 
 | Row in your Checkpoint 0 table | What it is called in the source |
-|----|----|
+|----|---------|
 | CP 1: prevalence | Course value on this card |
 | CP 1: sensitivity | "Average sensitivity" (source 1). Use the average across **all** evaluations, not the numbers for subgroups such as "general screening" or "suspected exposure". |
 | CP 1: specificity | "Average specificity" (source 1), also across all evaluations |
@@ -170,7 +171,7 @@ For source 1, look for the numbers "per 10,000 newborns" and the **false-positiv
 **What each checkpoint will look at**
 
 | Checkpoint | What we model | Where it comes from |
-|----|----|----|
+|----|---------|---------|
 | CP 1 | The chance a baby has CCHD, given a positive screen | Prevalence, sensitivity, and false-positive rate (source 1) |
 | CP 2 | The number of babies born with CCHD in the state in one year | Prevalence (source 1); births per year (course value below) |
 | CP 3 | Birth weight, in grams | Mean and SD for 2005 (source 2) |
@@ -180,10 +181,10 @@ For source 1, look for the numbers "per 10,000 newborns" and the **false-positiv
 -   **Births per year in the state:** 40,000.
 
 ::: callout-tip
-## Finding your numbers (Scenario C)
+#### Finding your numbers (Scenario C)
 
 | Row in your Checkpoint 0 table | What it is called in the source |
-|----|----|
+|----|---------|
 | CP 1: prevalence | The number of newborns out of 10,000 who have CCHD (source 1). Convert it to a decimal (see "per 10,000" in the word list above). |
 | CP 1: sensitivity | "Sensitivity" (source 1) |
 | CP 1: false-positive rate | "False-positive rate" (source 1). Write it as $P(T^+ \mid D^c)$, **not** as a specificity. |
@@ -193,8 +194,8 @@ For source 1, look for the numbers "per 10,000 newborns" and the **false-positiv
 :::
 :::
 
-::: callout-tip
-## Want to propose your own scenario?
+::: {.callout-caution collapse="true"}
+### Want to propose your own scenario?
 
 You may propose your own scenario **only with my approval**. Email me by `r w2d1 %>% format("%m/%d")` with:
 
@@ -222,7 +223,7 @@ Fill in the table below for your scenario. For each row:
 -   **Probability statement:** For the three Checkpoint 1 rows only, write the value as a probability. Define your events first, for example, $D$ = has the condition and $T^+$ = tests positive. Then write, for example, $P(T^+ \mid D) = 0.874$.
 
 | CP | What you are looking for (in plain words) | Value | Where I found it | Probability statement (CP 1 only) |
-|----|----|----|----|----|
+|---|------------|--------|---------|--------|
 | 1 | Out of everyone screened or tested, the fraction who **have** the condition |  |  |  |
 | 1 | Out of the people who **have** the condition, the fraction who test positive |  |  |  |
 | 1 | Out of the people who **do not have** the condition, the fraction who test negative (A and B) **or** test positive (C) |  |  |  |
@@ -265,12 +266,12 @@ These can change later. This step is to make sure your scenario works for all th
 
 ## Submission
 
-Submit a rendered HTML file (and your `.qmd`) with the three sections above. One submission per team.
+Submit a rendered HTML file (and your `.qmd`) with the three sections above. Make sure the qmd and html are named `lastname_firstinitial_checkpoint_00.qmd` and `lastname_firstinitial_checkpoint_00.html` or `lastname1_lastname2_checkpoint_00.qmd` and `lastname1_lastname2_checkpoint_00.html`. One submission per team. Either person in the pair can submit it. 
 
 ## Rubric (4 points)
 
 | Criterion | 1 point | 0 points |
-|----|----|----|
+|--------|----|-------|
 | Scenario is chosen (or approved) and described in your own words | Yes | Missing, or not in your own words |
 | Input table is complete, with the correct numbers from the sources or course values | Yes | Incomplete or incorrect |
 | Every value says where it was found, and the three CP 1 rows have correct probability statements | Yes | Missing locations or incorrect statements |

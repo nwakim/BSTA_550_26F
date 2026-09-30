@@ -1,0 +1,93 @@
+---
+title: "Checkpoint 1: When Is a Positive Really Positive?"
+author: "Your name here!"
+subtitle: "BSTA 550"
+date-modified: "today"
+format:
+  html:
+    link-external-newwindow: true
+    toc: true
+    embed-resources: true
+    number-sections: true
+    number-depth: 3
+    code-fold: true
+editor_options:
+  chunk_output_type: console
+---
+
+```{r}
+#| message: false
+#| echo: false
+
+# PLEASE DO NOT REMOVE THIS CODE CHUNK!!!
+### ADD YOUR LIBRARIES HERE!!! ####
+library(tidyverse)
+```
+
+::: callout-warning
+Note that this is the editing file. **There are detailed instructions on our course page for Checkpoint 1 that are not in this file.**
+:::
+
+## Your scenario {.unnumbered}
+
+Scenario (A, B, or C):
+
+## Set up the problem
+
+::: callout-important
+#### Task
+
+-   Define your events with notation, using the events for your scenario.
+-   Write each input value as a probability statement, and cite the source for each value.
+-   Draw a tree diagram **or** a 2×2 table for a hypothetical population of 100,000 people screened by your program.
+:::
+
+## Solve it analytically
+
+::: callout-important
+#### Task
+
+-   Use the Law of Total Probability to find $P(T^+)$.
+-   Use Bayes' rule to find the positive predictive value $P(D \mid T^+)$ and the negative predictive value $P(D^c \mid T^-)$.
+-   Write out each formula first, then compute (you may use R as a calculator).
+:::
+
+```{r}
+
+```
+
+## Simulate it
+
+::: callout-important
+#### Task
+
+-   Simulate a population of at least 100,000 people. Assign each person a disease status, then a test result that depends on their disease status.
+-   Estimate PPV and NPV from your simulation and compare them with your analytic answers.
+-   In 1–2 sentences, explain why the simulated and analytic values are close but not identical.
+:::
+
+```{r}
+
+```
+
+## Explore: how does prevalence matter?
+
+::: callout-important
+#### Task
+
+-   Compute the analytic PPV for prevalence values from 0.1% to 50%, keeping sensitivity and specificity fixed.
+-   Plot PPV (y-axis) against prevalence (x-axis), and mark your scenario's prevalence.
+-   In 2–3 sentences, describe what happens to PPV as prevalence changes. Then describe a group or setting your program might serve with a higher or lower prevalence, and how a positive result would mean something different there.
+:::
+
+```{r}
+
+```
+
+## Say it
+
+::: callout-important
+#### Task
+
+Write a short paragraph (4–6 sentences) for the letter or text message your program sends to every person with a positive result. Use natural frequencies instead of probability notation, and say what the next step is.
+:::

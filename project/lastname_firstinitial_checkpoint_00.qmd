@@ -1,0 +1,74 @@
+---
+title: "Checkpoint 0: Choose Your Scenario"
+author: "Your name here!"
+subtitle: "BSTA 550"
+date-modified: "today"
+format:
+  html:
+    link-external-newwindow: true
+    toc: true
+    embed-resources: true
+    number-sections: true
+    number-depth: 3
+    code-fold: true
+editor_options:
+  chunk_output_type: console
+---
+
+```{r}
+#| message: false
+#| echo: false
+
+# PLEASE DO NOT REMOVE THIS CODE CHUNK!!!
+### ADD YOUR LIBRARIES HERE!!! ####
+library(tidyverse)
+```
+
+::: callout-warning
+Note that this is the editing file. **There are detailed instructions on our course page for Checkpoint 0 that are not in this file.**
+:::
+
+## Team and scenario
+
+::: callout-important
+#### Task
+
+-   State whether you are working alone or with a partner (and your partner's name).
+-   State which scenario you chose (A, B, or C).
+-   In 3–5 sentences, and **in your own words**, describe the scenario: Who is the population? What is being tested, counted, or measured? What decision does the public health program need to make, and why does it matter for the population it serves?
+:::
+
+## Find your numbers in the sources
+
+::: callout-important
+#### Task
+
+Define your events, then fill in the table for your scenario. Use the **Finding your numbers** box on your scenario card. Write "course value" for numbers from the scenario card, and write probability statements for the three CP 1 rows only.
+:::
+
+**Events:**
+
+-   $D$ =
+-   $T^+$ =
+
+| CP | What you are looking for | Value | Where I found it | Probability statement (CP 1 only) |
+|----|----|----|----|----|
+| 1 | Prevalence |  |  |  |
+| 1 | Sensitivity |  |  |  |
+| 1 | Specificity (A and B) or false-positive rate (C) |  |  |  |
+| 2 | Chance of a "yes" for one screen, household contact, or baby |  |  | — |
+| 2 | Group size |  |  | — |
+| 3 | Mean, with units |  |  | — |
+| 3 | SD, with units |  |  | — |
+
+## Your guiding questions
+
+::: callout-important
+#### Task
+
+Write one question for each checkpoint that your analysis will answer. You may use the examples for your scenario, or change them.
+:::
+
+-   **CP 1:**
+-   **CP 2:**
+-   **CP 3:**

@@ -63,12 +63,12 @@ Every input value (prevalence, sensitivity, rate, mean, etc.) comes from your sc
 
 The checkpoints build, step by step, the work you need for the final project, so we complete the work over the quarter instead of all at the end. **If you receive feedback on something in a checkpoint, you are expected to fix it for the next checkpoint and the final project.**
 
-| Checkpoint Instructions | Points | Rubric | Due Date | Topics |
-|------------|------------|------------|------------|------------|
-| [Checkpoint 0](/project/Checkpoint_00_instructions.qmd) | 4 | [[{{< iconify material-symbols rubric-rounded size=30px >}}](/project/Checkpoint_00_rubric.xlsx)]{style="color:#f8f5f0;"} | `r cp0 %>% format("%m/%d")` | Choose your scenario + find input values in your source packet |
-| [Checkpoint 1](/project/Checkpoint_01_instructions.qmd) | 12 | [[{{< iconify material-symbols rubric-rounded size=30px >}}](/project/Checkpoint_01_rubric.xlsx)]{style="color:#f8f5f0;"} | `r cp1 %>% format("%m/%d")` | Conditional probability + Bayes' rule: when is a positive really positive? |
-| [Checkpoint 2](/project/Checkpoint_02_instructions.qmd) | 12 | [[{{< iconify material-symbols rubric-rounded size=30px >}}](/project/Checkpoint_02_rubric.xlsx)]{style="color:#f8f5f0;"} | `r cp2 %>% format("%m/%d")` | Discrete random variables: counting events |
-| [Checkpoint 3](/project/Checkpoint_03_instructions.qmd) | 12 | [[{{< iconify material-symbols rubric-rounded size=30px >}}](/project/Checkpoint_03_rubric.xlsx)]{style="color:#f8f5f0;"} | `r cp3 %>% format("%m/%d")` | Continuous random variables + the Central Limit Theorem |
+| Checkpoint Instructions | Points | Editing file | Rubric | Due Date | Topics |
+|------------|------------|------------|------------|------------|------------|
+| [Checkpoint 0](/project/Checkpoint_00_instructions.qmd) | 4 | [[{{< iconify mdi edit-box size=30px >}}](https://github.com/nwakim/BSTA_550_26F/blob/main/project/lastname_firstinitial_checkpoint_00.qmd)]{style="color:#f8f5f0;"} | [[{{< iconify material-symbols rubric-rounded size=30px >}}](/project/Checkpoint_00_rubric.xlsx)]{style="color:#f8f5f0;"} | `r cp0 %>% format("%m/%d")` | Choose your scenario + find input values in your source packet |
+| [Checkpoint 1](/project/Checkpoint_01_instructions.qmd) | 12 | [[{{< iconify mdi edit-box size=30px >}}](https://github.com/nwakim/BSTA_550_26F/blob/main/project/lastname_firstinitial_checkpoint_01.qmd)]{style="color:#f8f5f0;"} | [[{{< iconify material-symbols rubric-rounded size=30px >}}](/project/Checkpoint_01_rubric.xlsx)]{style="color:#f8f5f0;"} | `r cp1 %>% format("%m/%d")` | Conditional probability + Bayes' rule: when is a positive really positive? |
+| [Checkpoint 2](/project/Checkpoint_02_instructions.qmd) | 12 | [[{{< iconify mdi edit-box size=30px >}}](https://github.com/nwakim/BSTA_550_26F/blob/main/project/lastname_firstinitial_checkpoint_02.qmd)]{style="color:#f8f5f0;"} | [[{{< iconify material-symbols rubric-rounded size=30px >}}](/project/Checkpoint_02_rubric.xlsx)]{style="color:#f8f5f0;"} | `r cp2 %>% format("%m/%d")` | Discrete random variables: counting events |
+| [Checkpoint 3](/project/Checkpoint_03_instructions.qmd) | 12 | [[{{< iconify mdi edit-box size=30px >}}](https://github.com/nwakim/BSTA_550_26F/blob/main/project/lastname_firstinitial_checkpoint_03.qmd)]{style="color:#f8f5f0;"} | [[{{< iconify material-symbols rubric-rounded size=30px >}}](/project/Checkpoint_03_rubric.xlsx)]{style="color:#f8f5f0;"} | `r cp3 %>% format("%m/%d")` | Continuous random variables + the Central Limit Theorem |
 
 All checkpoints are submitted as a **rendered Quarto HTML file** (with `code-fold: true`) plus your `.qmd` file.
 

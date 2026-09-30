@@ -1,0 +1,106 @@
+---
+title: "Checkpoint 3: Averages and the Central Limit Theorem"
+author: "Your name here!"
+subtitle: "BSTA 550"
+date-modified: "today"
+format:
+  html:
+    link-external-newwindow: true
+    toc: true
+    embed-resources: true
+    number-sections: true
+    number-depth: 3
+    code-fold: true
+editor_options:
+  chunk_output_type: console
+---
+
+```{r}
+#| message: false
+#| echo: false
+
+# PLEASE DO NOT REMOVE THIS CODE CHUNK!!!
+### ADD YOUR LIBRARIES HERE!!! ####
+library(tidyverse)
+```
+
+::: callout-warning
+Note that this is the editing file. **There are detailed instructions on our course page for Checkpoint 3 that are not in this file.**
+:::
+
+## Your scenario {.unnumbered}
+
+Scenario (A, B, or C):
+
+## Define your random variable
+
+::: callout-important
+#### Task
+
+-   Write $Y$ in words, including its units, using the definition for your scenario.
+-   State the support of $Y$.
+:::
+
+## Justify the distribution
+
+::: callout-important
+#### Task
+
+-   State the distribution for your scenario and its parameter(s), citing where each value came from.
+-   Explain why this distribution is a reasonable choice, and where it might not match the real quantity.
+-   Plot the PDF of your distribution.
+:::
+
+```{r}
+
+```
+
+## Solve it analytically
+
+::: callout-important
+#### Task
+
+-   Find $E(Y)$ and $\text{Var}(Y)$.
+-   Calculate **two** probabilities or quantiles that answer practical questions for your program. Show the setup (integral or CDF) for at least one of them, then compute with R.
+:::
+
+```{r}
+
+```
+
+## Simulate the Central Limit Theorem
+
+::: callout-important
+#### Task
+
+-   For $n = 5$, $30$, and $100$, simulate at least 5,000 sample means.
+-   For each $n$, plot a histogram of the sample means with the normal curve predicted by the CLT overlaid.
+-   Compare the mean and SD of your simulated sample means with the CLT's predictions.
+-   In 2–3 sentences, describe how quickly the distribution of $\bar{Y}_n$ looks normal, and how the shape (skewness) of $Y$ affects this.
+:::
+
+```{r}
+
+```
+
+## Answer a question about an average
+
+::: callout-important
+#### Task
+
+-   Use the CLT to answer a practical question about $\bar{Y}_n$, using the $n$ for your scenario.
+-   Check it with your simulation.
+-   Compare it with the probability that a **single** observation is beyond the same cutoff, and explain why the two answers differ.
+:::
+
+```{r}
+
+```
+
+## Say it
+
+::: callout-important
+#### Task
+
+Write a short paragraph (4–6 sentences) for the program manager or health department that explains the difference between what happens to *one* person and what happens *on average* across many people. Why does this difference matter when the program reports averages to the public?
+:::

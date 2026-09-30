@@ -267,6 +267,10 @@ These can change later. This step is to make sure your scenario works for all th
 
 Submit a rendered HTML file (and your `.qmd`) with the three sections above. Make sure the qmd and html are named `lastname_firstinitial_checkpoint_00.qmd` and `lastname_firstinitial_checkpoint_00.html` or `lastname1_lastname2_checkpoint_00.qmd` and `lastname1_lastname2_checkpoint_00.html`. One submission per team. Either person in the pair can submit it. 
 
+[You can download the `.qmd` editing file for this checkpoint here.](https://github.com/nwakim/BSTA_550_26F/blob/main/project/lastname_firstinitial_checkpoint_00.qmd) The link takes you to GitHub, where you can click the download button (the arrow pointing down) near the top right of the file.
+
+The editing file has the headings and tasks, but not the detailed instructions on this page. **Please do not remove anything from the editing file.** You will only add your work to it.
+
 ## Rubric (4 points)
 
 | Criterion | 1 point | 0 points |

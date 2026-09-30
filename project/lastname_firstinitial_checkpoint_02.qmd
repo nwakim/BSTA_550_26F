@@ -1,0 +1,99 @@
+---
+title: "Checkpoint 2: Counting Events"
+author: "Your name here!"
+subtitle: "BSTA 550"
+date-modified: "today"
+format:
+  html:
+    link-external-newwindow: true
+    toc: true
+    embed-resources: true
+    number-sections: true
+    number-depth: 3
+    code-fold: true
+editor_options:
+  chunk_output_type: console
+---
+
+```{r}
+#| message: false
+#| echo: false
+
+# PLEASE DO NOT REMOVE THIS CODE CHUNK!!!
+### ADD YOUR LIBRARIES HERE!!! ####
+library(tidyverse)
+```
+
+::: callout-warning
+Note that this is the editing file. **There are detailed instructions on our course page for Checkpoint 2 that are not in this file.**
+:::
+
+## Your scenario {.unnumbered}
+
+Scenario (A, B, or C):
+
+## Define your random variable
+
+::: callout-important
+#### Task
+
+-   Write $X$ in words, including its units and time frame, using the definition for your scenario.
+-   List the possible values (the support) of $X$.
+:::
+
+## Justify the distribution
+
+::: callout-important
+#### Task
+
+-   State the distribution for your scenario and its parameter(s), citing where each value came from.
+-   List the assumptions of that distribution, and explain whether each is reasonable for your scenario.
+-   Identify the assumption **most likely to fail** in real life, and explain why.
+:::
+
+## Solve it analytically
+
+::: callout-important
+#### Task
+
+-   Find $E(X)$, $\text{Var}(X)$, and $\text{SD}(X)$ using formulas from class.
+-   Calculate **two** probabilities that answer your program's planning question. Show the formula (PMF or CDF) for each, then compute with R.
+:::
+
+```{r}
+
+```
+
+## Simulate it
+
+::: callout-important
+#### Task
+
+-   Generate at least 10,000 draws of $X$ with R.
+-   Make a plot comparing the empirical distribution (from your simulation) with the theoretical PMF.
+-   Compare the simulated mean, variance, and your two probabilities with the analytic values in a small table.
+:::
+
+```{r}
+
+```
+
+## Stretch (optional, +1 bonus)
+
+::: callout-important
+#### Task
+
+Break the assumption you identified above and show how the answer changes.
+:::
+
+```{r}
+
+```
+
+## Say it
+
+::: callout-important
+#### Task
+
+Write a short paragraph (4–6 sentences) for the program manager who needs to plan around this count. What is typical? What is unusual, and how often does it happen? What would you warn them about, given the assumption most likely to fail?
+:::

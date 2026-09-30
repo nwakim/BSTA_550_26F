@@ -138,7 +138,11 @@ Write a short paragraph (4–6 sentences) **for the program manager or health de
 
 ## Submission
 
-Submit a rendered HTML file (use `code-fold: true`) and your `.qmd`. One submission per team.
+Submit a rendered HTML file (use `code-fold: true`) and your `.qmd`. Make sure the qmd and html are named `lastname_firstinitial_checkpoint_03.qmd` and `lastname_firstinitial_checkpoint_03.html` or `lastname1_lastname2_checkpoint_03.qmd` and `lastname1_lastname2_checkpoint_03.html`. One submission per team. Either person in the pair can submit it.
+
+[You can download the `.qmd` editing file for this checkpoint here.](https://github.com/nwakim/BSTA_550_26F/blob/main/project/lastname_firstinitial_checkpoint_03.qmd) The link takes you to GitHub, where you can click the download button (the arrow pointing down) near the top right of the file.
+
+The editing file has the headings and tasks, but not the detailed instructions on this page. **Please do not remove anything from the editing file.** You will only add your work to it.
 
 ## Rubric (12 points)
 

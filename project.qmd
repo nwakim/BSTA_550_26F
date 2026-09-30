@@ -81,10 +81,6 @@ In the final project, you will revise your three checkpoints based on feedback a
 1.  **Technical appendix:** Your revised Checkpoints 1–3 in a single rendered Quarto file.
 2.  **Public health brief:** A 2-page brief (or a 5-minute recorded explanation) for the manager of the public health program in your scenario. It should answer: *What does probability tell us about this program, and what should the manager keep in mind when making decisions?*
 
-The following links will give you the needed instructions, rubric, and template to complete the final project.
+The [Final Project Instructions](/project/Final_Project_instructions.qmd) describe both pieces, what each section of the brief should include, and the rubric.
 
 [{{< iconify fa6-solid sheet-plastic size=30px >}} Final Project Instructions](/project/Final_Project_instructions.qmd)
-
-[{{< iconify material-symbols rubric-rounded size=30px >}} Final Project Rubric](/project/Final_project_rubric.xlsx)
-
-[{{< iconify mdi edit-box size=30px >}} Final Project Template](/project/Final_Project_template.qmd)

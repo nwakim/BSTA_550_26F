@@ -171,5 +171,5 @@ source(here("class_dates.R"))
 | [ ]{.week-row} |  |  |  |  |  |  |  |  |  |  |  |
 | 11 | `r w11d1 %>% format("%m/%d")` |  |  |  |  | Catch-up day |  |  |  |  |  |
 |  | [**`r hw7 %>% format("%m/%d")`**]{.pract-row} |  |  |  |  | **Optional HW 7 due 11 pm** |  |  |  |  |  |
-|  | **`r proj %>% format("%m/%d")`** |  |  |  |  | [**Final Project: Clinician Brief due 11pm**]{.proj-row} |  |  |  |  |  |
+|  | **`r proj %>% format("%m/%d")`** |  |  |  |  | [**Final Project: Public Health Brief due 11pm**]{.proj-row} |  |  |  |  |  |
 :::

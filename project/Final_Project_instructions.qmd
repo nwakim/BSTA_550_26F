@@ -1,224 +1,198 @@
 ---
-title: "Final Project Instructions"
-author: "Nicky Wakim"
-subtitle: "PUBH 523/623"
+title: "Final Project: Public Health Brief"
 date-modified: "today"
-format: 
+categories: [""]
+format:
   html:
     link-external-newwindow: true
     toc: true
-    self-contained: true
-    embed-resources: true
-    number-sections: true
-    number-depth: 4
-    code-annotations: hover
-    page-layout: full
-    highlight-style: ayu
-    code-block-bg: "#f8f9fa" 
-    code-block-border-left: "#5BAFF8"
-  pdf: default 
-editor_options: 
+  pdf: default
+editor_options:
   chunk_output_type: console
-execute:
-  freeze: auto 
 ---
 
-::: callout-warning
-These instructions are ready to go! (Nicky 8/28/2026)
+```{css, echo=FALSE}
+.title{
+  font-size: 30px;
+  color: #006a4e;
+  background-color: #fff;
+  padding: 0px;
+}
+```
+
+```{r setup, include=FALSE}
+library(here)
+source(here("class_dates.R"))
+```
+
+::: callout-important
+**Due `r proj %>% format("%m/%d")`**. See [Project Central](/project.qmd) for the full project overview. Make sure you have addressed the feedback from all of your checkpoints.
 :::
 
+## Goal
 
-::: {.callout-note}
-Please turn in your final **.pptx** file and **.pdf** version on Brightspace, using the naming convention `lastname_firstinit_final_project.pptx` and `lastname_firstinit_final_project.pdf`.
+All quarter, you have used probability and simulation to study one public health program. In the final project, you will pull that work together and **translate it for the person who runs the program**: a program manager who needs to make decisions but has never taken a probability class and will never see your code.
 
-Most of this project is about **translating your work into plain language** and **polishing your visuals** so they can stand alone for a specific audience.
-:::
+Your brief should answer one question: ***What does probability tell us about this program, and what should the manager keep in mind when making decisions?***
 
-## Purpose
+## What you will submit
 
-Across Labs 1–4 you turned the raw Well-Being and Basic Needs Survey (WBNS) into a cleaned dataset, built a composite score, summarized it in a table, and visualized it. In this final project, you will translate that work for a reader who has never seen your code: a **one-page information sheet**, built from the provided PowerPoint template, that presents your project focus, your key findings, and why they matter.
+You will submit **two pieces**. One submission per team.
 
-::: {.callout-tip}
-Here are two sites that have examples of style and content:
+| Piece | What it is | Who it is for | Format |
+|----|----|----|----|
+| **1. Public health brief** | A 2-page summary of your findings, **or** a 5-minute recorded explanation | The manager of the program in your scenario | PDF (brief), **or** a video link plus a PDF of your slides (recording) |
+| **2. Technical appendix** | Your revised Checkpoints 1–3 combined into one Quarto file | Me (and any statistician who wants to check your work) | Rendered HTML (with `code-fold: true`) plus your `.qmd` |
 
-- [Venngage statistical infographic templates](https://venngage.com/templates/infographics/statistical): you can use these as inspiration for *styling and layout*.
-- [Multnomah County Health Data and Reports](https://multco.us/info/health-data-reports): you can use these as inspiration for *content, structure, and language*.
-  - A lot of these are very long, but I think it's helpful for you to see what a public health department puts out for the public!
-:::
+Name your files `lastname_firstinit_final_brief.pdf` and `lastname_firstinit_final_appendix.html` (and `.qmd`). If you work in a pair, use both last names. Submit everything on Brightspace.
 
-## What your information sheet should include
+## Part 1: The public health brief
 
-Use the provided PowerPoint template (`final_project_template.pptx`) as your starting point. It is sized for a normal sheet of paper (8.5" × 11", one slide) and laid out with the sections below already placed for you. More information on each section appears below.
+### Who you are writing for
 
-You will replace the placeholder text and placeholder image boxes with your own content. **You're welcome to adjust the layout and style**, but the following information should appear somewhere on your page:
+Your reader is the manager of the program in your scenario:
 
-1. **Title + Author + Headline takeaway** (@sec-title): a short title and one plain-language sentence that captures your single most important finding. 
-    - If someone only reads one line on your whole page, this should be it.
-2. **Background / Why it matters** (@sec-background): 1-3 sentences on what the WBNS is and why your topic matters, drawing on what you wrote for Lab 1 (motivation for the study, why basic needs matter).
-3. **Population / Who we looked at** (@sec-pop):a plain-language description of your population and sample size — no code, no variable names like `FPL_LT50` (e.g. "adults living below the poverty line who received free groceries or meals in the past year").
-4. **Findings** (@sec-findings): 2-3 short findings, each pairing **one image** (a polished plot or table, exported from R, see below) with **1-3 sentences of plain-language description** for each finding. Structure them so they build on each other:
-   - **Finding 1: One main variable on its own.** Describe what you found for a single main variable by itself (not yet in relation to anything else) — for example, the overall distribution of your composite score, or what share of your population fell into each category of your other main variable.
-   - **Finding 2: the relationship between your two main variables.** This is the heart of your project question. Show how your composite score compares across the groups of your other main variable (this is exactly what your Lab 3 grouped summary and Lab 4 visualization already show you).
-   - **Finding 3 (optional): one main variable alongside one additional variable.** If you have room, take one main variable and break it down by one of the suggested additional variables from your Lab 2 table (e.g., a demographic variable) to add texture to your story.
+-   **Scenario A:** the manager of the county's mobile mammography van program.
+-   **Scenario B:** the manager of the county health department's COVID-19 testing and contact tracing team.
+-   **Scenario C:** the manager of the state's newborn screening program.
 
-   Your tables and plots are hopefully already completed from Labs 3/4. At this point, you should focus on choosing which findings to present, polishing the table/visual, and describing the finding in plain language. 
-5. **So what? / What does this mean?** (@sec-so-what): a few sentences connecting your findings back to your original question: why does this matter, and what might it suggest for programs or policy?
-6. **Data source and limitations** (@sec-data-source): a short citation of the WBNS, and at least one honest limitation of your analysis (e.g., small sample size after filtering, self-reported data, cross-sectional so no causal claims).
+This person knows their program well. They know what a mammogram, a rapid test, or a pulse oximetry screen is. They do **not** know what $P(D \mid T^+)$, a Binomial distribution, or the Central Limit Theorem is, and they do not need to. They need to know what your results mean for the decisions they make.
 
-The sections below will give more detail on what is expected in each section.
+### Format
 
-### Title + Author + Headline takeaway {#sec-title}
+Choose **one** format:
 
-This should appear at the top of your information sheet and be the first (and maybe only) thing a reader sees.
+-   **Written brief:** at most **2 pages** (8.5" × 11"), exported as a PDF. You may make it in Quarto, Word, PowerPoint, Google Docs, Canva, or any other tool.
+-   **Recorded explanation:** a video of **5 minutes or less** where you walk through slides. Submit a link to the video (make sure I can view it) and a PDF of your slides. If you work in a pair, both partners should speak.
 
-- **Title:** Keep it descriptive, there's no need for a clever tile. In fact, a clever title is often distracting. A plain title like "Food Security Among Free Food Recipients" does the job. A reader should know what your page is about before they've read a single full sentence.
-- **Author:** Include your name here.
-- **Headline takeaway:** One sentence, in plain language, that states your single most important finding. 
-    - This is the sentence you'd want someone to remember if they only read one line on the whole page. 
-    - **This will most likely pertain to the relationship between your two main variables and Finding 2.**
-    - Write it the way you'd say it out loud to a person, not like the results line of a hypothesis test
-        - e.g., "Most adults who received free groceries or meals also reported experiencing food insecurity," not "Food insecurity was observed in X% of the sample"
+Both formats need the same seven sections, described below. You are welcome to change the layout and style.
+
+### What your brief should include
+
+1.  [**Title and headline takeaway**](#sec-title)
+2.  [**The program and the question**](#sec-program)
+3.  [**Where the numbers come from**](#sec-numbers)
+4.  [**Finding 1: What a positive result means**](#sec-findings) (from Checkpoint 1)
+5.  [**Finding 2: Planning for the count**](#sec-findings) (from Checkpoint 2)
+6.  [**Finding 3: One person versus the average**](#sec-findings) (from Checkpoint 3)
+7.  [**What to keep in mind**](#sec-keep-in-mind)
+
+A short **sources** line goes at the bottom of the brief (see [Sources](#sec-sources)).
+
+#### Title and headline takeaway {#sec-title}
+
+-   **Title:** Keep it plain and descriptive. A reader should know what the brief is about before they read a full sentence. For example: "What Probability Tells Us About Our Mobile Mammography Program." Include your name(s) under the title.
+-   **Headline takeaway:** One sentence, in plain language, that states the most important thing you want the manager to remember. If the manager only reads one line, this is it.
 
 ::: callout-tip
-#### Tip
-
-It's often easier to write this section (title and headline) *last*, after you've written your findings, that way you can easily summarize your findings. 
+Write the title and headline **last**, after you have written your findings. It is much easier to summarize findings you have already written.
 :::
 
-### Background / why it matters {#sec-background}
+#### The program and the question {#sec-program}
 
-This goes under **"Why This Matters"** on the left side of the page, just below the title banner. 
+In 2–4 sentences, describe the program (who it serves, and what test, count, or measurement it deals with) and the decisions the manager has to make. You can start from the scenario description you wrote in Checkpoint 0.
 
-In 1-3 sentences:
+#### Where the numbers come from {#sec-numbers}
 
-- Briefly explain what the Well-Being and Basic Needs Survey is (a survey of adults' experiences with finances, poverty, hardship, housing, and safety-net programs)
-  - A quick sentence is enough, this isn't the focus
-- Spend the rest of the space on why *your specific topic* matters. Pull from what you wrote in Lab 1 about your motivation for choosing this project
-  - Why should a reader care about food security, LGBTQ+ healthcare trust, or mental health and benefit receipt (whichever is your project)?
+In 2–3 sentences, explain in plain language where your input values come from: the published studies in your source packet and the course values on your scenario card. You do not need to list every number here. The point is to show the reader that your results rest on real, published estimates.
 
-::: callout-tip
-Write it as if you're explaining your project to a relative with no public health background. 
-:::
+#### Findings {#sec-findings}
 
-### Population / who we looked at {#sec-pop}
+You will have **three findings**, one from each checkpoint. Each finding has three parts:
 
-This goes under **"Who We Looked At"** on the right side, parallel to the background section. 
+-   **A short headline:** a few words that name the point, like a newspaper subheading. For example: "Most Abnormal Reads Are Not Cancer."
+-   **One visual:** a polished plot or table from your checkpoint (see [Polishing your visuals](#sec-visuals)).
+-   **A 2–4 sentence caption:** state the key number, then say what it means for the program.
 
-In 1-3 sentences, plainly state:
+Here is what each finding should cover:
 
-- Who qualified for your study population (the filtering criteria from Lab 2)
-    - Again, this should be in plain English, not variable names. Instead of "FPL_LT50 == 1," write something like "adults living below the federal poverty line."
-- Your final sample size, after all of your data cleaning in Labs 2-3
-    - This is very important! Giving a sense of the sample helps with context!
+| Finding | Checkpoint | What it should tell the manager | Good visuals to consider |
+|----|----|----|----|
+| **1. What a positive result means** | CP 1 | Out of the people who get a positive result, how many actually have the condition? How would this change in a group with a higher or lower prevalence? | A natural frequency diagram (e.g., "out of 10,000 people screened...") or your PPV-versus-prevalence plot |
+| **2. Planning for the count** | CP 2 | What is a typical day, household, or year? How often does an unusual one happen, and what does that mean for planning? | Your PMF plot, with the planning threshold marked |
+| **3. One person versus the average** | CP 3 | How different is what happens to *one* person from what happens *on average* across many people? | The distribution of a single observation next to the distribution of the average |
 
-::: callout-tip
-Avoid any variable names or question codes (`FOOD_INSEC`, `Q27`, etc.).
-:::
+Use **natural frequencies** instead of probability notation wherever you can. For example, a Finding 1 caption might read:
 
-### Findings {#sec-findings}
-
-Use the 2-3 findings to build your story in order (see the structure above): 
-
-1. Finding 1 introduces one main variable on its own 
-2. Finding 2 shows the relationship between your two main variables (this is your core result) 
-3. Finding 3 (optional) adds one additional variable for texture 
-
-Each finding box in the template has **two** pieces of text, not one:
-
-- A **short headline** above the image (a few words, not a full sentence)
-    - Think of it like a newspaper subhead that names the point of that finding at a glance, e.g. "Access Difficulty Varies by Food Security Status."
-- A **1-3 sentence caption** below each image that spells the finding out in plain language.
-
-For example, a Finding 1 headline/caption pair might look like:
-
-> **Headline:** Most Respondents Reported Food Insecurity
+> **Headline:** Most Abnormal Reads Are Not Cancer
 >
-> **Caption:** Among adults who received free groceries or meals in the past year, approximately 75\% also reported experiencing food insecurity in the past 12 months.
+> **Caption:** Out of every 1,000 women screened on the van, about 83 will have an abnormal read, but only about 6 of those 83 will have breast cancer. This means that most women who are called back will get good news at their follow-up appointment.
 
-(If you're on Project 3, a Finding 1 caption might instead read something like: "72% of respondents reported feeling nervous or hopeless at least some of the time in the past 30 days.")
+::: callout-note
+## Be honest about uncertainty
 
-For every caption, state the number, then say what it means, not "the mean composite score was 14.3," but something closer to "most people in our sample reported relatively easy access to free food." 
+Your numbers come from models built on published estimates, not from the program's own data. Use words like "about," "we expect," and "roughly" rather than stating results as exact facts. For example, "we expect about 24 babies with CCHD each year," not "there will be 24 babies with CCHD."
+:::
+
+#### What to keep in mind {#sec-keep-in-mind}
+
+In 3–5 sentences (or bullet points), tell the manager what your findings mean for their decisions. For example: how to talk with people who get a positive result, how much capacity to plan for, or how to read the averages the program reports.
+
+Include **at least one assumption** from your checkpoints that might not hold in real life (for example, the assumption most likely to fail from Checkpoint 2), and explain in plain language how it could change your advice.
 
 ::: callout-tip
-Keep your language **descriptive, not causal**: say what you found (e.g., "respondents who reported X also more often reported Y"), not that one thing caused, drove, or explains another. A single survey snapshot can't support that kind of claim. Words like "associated with" or "related to" also imply statistical testing you haven't done here, so we need to stick to desriptive language. 
+You do not need to make formal policy recommendations. Describe what your results suggest and what is worth a closer look. Be careful not to claim more than your models can support.
 :::
 
-### So what? / What does this mean?
+#### Sources {#sec-sources}
 
-This section will appear near the bottom of your information sheet.
+Add a short line at the bottom of the brief that cites the published sources you used from your source packet. A short format is fine (e.g., "Lee CI, et al. *Radiology*. 2023."), since the full citations are in your technical appendix.
 
-In 1-3 sentences, connect your findings back to your original project question: why does this matter, and what might it suggest for programs or policy? 
+### Polishing your visuals {#sec-visuals}
 
-You don't need to make formal policy recommendations, just describe the implication in plain language, and keep it as descriptive as your findings (avoid claiming your data proves a program should change; describe what your findings might suggest is worth a closer look).
+The plots from your checkpoints were made for me. In the brief, they need to stand on their own for a manager. Before you add each one, revise it so that it has:
 
-### Data source and limitations
+-   A plain-language, descriptive title (e.g., "Follow-up appointments needed after a van day of 40 screens," not "PMF of X")
+-   Axis labels in plain language, with units (no $X$, $Y$, or variable names from your code)
+-   Only the information the reader needs. Remove simulation-versus-theory comparisons, extra lines, and default legends that do not help the reader.
+-   A deliberate color choice that is consistent across your visuals, and a clean theme (e.g., `theme_minimal()` instead of the default gray background)
 
-This is the small-print line at the very bottom of the page. In one or two sentences:
+To save a `ggplot` as an image:
 
-- Cite the WBNS
-  - Check out the [website where we got the data](https://www.icpsr.umich.edu/web/HMCA/studies/39691/datadocumentation) (in Lab 1), and click on "Cite this study" near the top of the page.
-- Name at least one honest limitation of your analysis
-  - For example, your sample size after filtering, the fact that responses are self-reported, or that the survey is cross-sectional (a single point in time), so your findings describe what respondents reported together, not what caused what.
-
-## Tips for exporting and polishing your visuals
-
-### Getting your images out of R
-
-Everything you place into the PowerPoint template is a static image (`.png` or `.jpg`). There's no R code in a PowerPoint file, so you'll export your finished plots and tables from your Lab 3/4 and then place the image files into your powerpoint.
-
-This will require you to write some more code or adjust your previously saved images. Adjustments are usually needed to make sure it is legible within the powerpoint.
-
-::: tip-callout
-It might be nice to create a new folder within your project folder called `images` to hold all of your exported images.
-:::
-
-**Saving a `ggplot`:**
-
-```r
-ggsave("plots/ease_food_by_insecurity.png", plot = my_plot,
-       width = 5, height = 4, units = "in", dpi = 300)
+```{r}
+#| eval: false
+ggsave(here("project", "images", "finding_2.png"), plot = my_plot,
+       width = 5, height = 3.5, units = "in", dpi = 300)
 ```
 
-- Save at `dpi = 300` or higher so it looks crisp on a printed page.
-- Match the `width`/`height` roughly to the space you have in the template so you don't have to stretch or squish it later
+Save at `dpi = 300` so the image looks crisp on a printed page, and set the `width` and `height` to roughly the size of the space in your brief so you do not have to stretch or squish it. Then open the image and check that the text is still readable at that size.
 
-**Saving a `gtsummary`/`gt` table as an image:**
-
-```r
-pacman::p_load(
-  gtsummary, 
-  gt, 
-  webshot2
-  )
-
-my_table <- tbl_summary(wbns_06_cat, by = FOOD_INSEC) |>
-  as_gt()
-  
-gtsave(data = my_table, file = here("project", "images", "food_ins_table.png"))
-```
-
-`gtsave()` needs the `webshot2` package installed the first time (`install.packages("webshot2")`). If you'd rather not install anything new, you can also just take a screenshot of the rendered table from your Viewer pane — that works fine for a one-pager.
-
-::: {.callout-tip}
-Make sure to open the image file afterward and check that it's actually readable once you place it in your powerpoint. Text that looked fine on your screen can turn out tiny once you fit it into the appropriate space on a powerpoint.
+::: callout-tip
+**Simpler is better.** A clear bar chart with one highlighted bar is often easier to understand than a detailed plot. Ask yourself: what is the one thing I want the manager to see in this visual?
 :::
 
+## Part 2: The technical appendix
 
-### Polishing plots and tables before you export them
+The technical appendix is your full statistical work, revised and combined into one document.
 
-The plots and table you made for Lab 3/4 may not be publication ready. They may still have default `ggplot` gray backgrounds, variable names as axis labels, or titles like "Boxplot of trust_courtesy_respect by Q27." Before exporting, revise each one so it can stand on its own for a general audience:
+-   Combine your Checkpoints 1–3 into **one** Quarto file with a section for each checkpoint.
+-   **Revise each checkpoint using my feedback.** Fix any calculation errors, missing work, or unclear explanations.
+-   At the top of the file, include a short **revision notes** list that says what you changed in each checkpoint (for example, "CP 2: corrected $P(X > 6)$, which used the wrong inequality").
+-   Include a **references** section at the end with the full citation for each source you used.
+-   Render to HTML with `code-fold: true`, and make sure the file renders without errors.
 
-- A plain-language, descriptive title (not a variable name or "Var1 x Var2")
-- Axis or column labels in plain language (no raw variable names or question codes)
-- A deliberate color choice, ideally consistent across your visuals
-- Clean theme to appear nicely on your powerpoint
-
-A `tbl_summary()` table is great for a report but can be dense on a one-pager, maybe you select one variable to run through `tbl_summary()` or consider whether a simple bar chart is more appropriate. **Always keep in mind, simpler presentations with minimum needed information will be easier for you audience to digest!**
+The numbers in your brief should **match** the numbers in your technical appendix. If you rounded a number in the brief, round it from the value in your appendix.
 
 ## Before you submit
 
-Read your finished page as if you were a stranger seeing it for the first time: does it read cleanly top to bottom, does every visual have a caption, and is there anything left over that still sounds like it was written for this class instead of for a general audience (leftover variable names, stats without interpretation, placeholder text from the template)?
+Read your brief as if you were the program manager seeing it for the first time:
 
-Confirm your files are named `lastname_firstinit_final_project.pptx` and `lastname_firstinit_final_project.pdf` before uploading to Brightspace.
+-   Does it read cleanly from top to bottom?
+-   Does every visual have a headline and a caption?
+-   Is there anything left that still sounds like it was written for this class instead of for the manager (probability notation, distribution names, variable names, or numbers without an explanation)?
+-   Do the numbers in the brief match your technical appendix?
 
-Check the rubric for all needed items for the final project!
+For a recording, watch it once all the way through before you submit, and check that the link works when you are logged out.
+
+## Rubric
+
+| Criterion | 3 | 2 | 1 |
+|----|----|----|----|
+| **Accurate results** (numbers in the brief and appendix are correct and match each other) | Correct and consistent throughout | Small errors or mismatches | Major errors |
+| **Revisions** (appendix addresses checkpoint feedback; revision notes included) | All feedback addressed and documented | Most feedback addressed | Little feedback addressed, or no revision notes |
+| **Context** (program, question, and sources are clear) | Reader understands the program, the decisions, and where the numbers come from | Some context is missing or unclear | Little or no context |
+| **Findings** (three findings, each with a headline, visual, and caption) | All three findings are clear, and each connects to the program | One finding is missing a piece or is unclear | Findings are missing or disconnected from the program |
+| **Plain language** (written for the manager, using natural frequencies) | No unexplained jargon or notation; numbers are always interpreted | Some jargon, notation, or uninterpreted numbers | Written mostly for a statistician |
+| **What to keep in mind** (implications and at least one assumption) | Practical, honest, and does not overreach | Vague or overreaches a little | Missing or misleading |
+| **Visuals** (polished and able to stand on their own) | Clear, legible, and consistent | Readable but not fully polished | Hard to read, or missing |
+| **Format** (length, sources line, file names, renders or plays correctly) | Meets all requirements | Minor issues | Major issues |

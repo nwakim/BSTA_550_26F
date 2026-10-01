@@ -1,0 +1,15 @@
+{
+  "hash": "7780182444c30a1e69f52abf1204b9b6",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Checkpoint 1: When Is a Positive Really Positive?\"\nauthor: \"Your name here!\"\nsubtitle: \"BSTA 550\"\ndate-modified: \"today\"\nformat:\n  html:\n    link-external-newwindow: true\n    toc: true\n    embed-resources: true\n    number-sections: true\n    number-depth: 3\n    code-fold: true\neditor_options:\n  chunk_output_type: console\n---\n\n\n::: {.cell}\n\n:::\n\n\n::: callout-warning\nNote that this is the editing file. **There are detailed instructions on our course page for Checkpoint 1 that are not in this file.**\n:::\n\n## Your scenario {.unnumbered}\n\nScenario (A, B, or C):\n\n## Set up the problem\n\n::: callout-important\n#### Task\n\n-   Define your events with notation, using the events for your scenario.\n-   Write each input value as a probability statement, and cite the source for each value.\n-   Draw a tree diagram **or** a 2×2 table for a hypothetical population of 100,000 people screened by your program.\n:::\n\n## Solve it analytically\n\n::: callout-important\n#### Task\n\n-   Use the Law of Total Probability to find $P(T^+)$.\n-   Use Bayes' rule to find the positive predictive value $P(D \\mid T^+)$ and the negative predictive value $P(D^c \\mid T^-)$.\n-   Write out each formula first, then compute (you may use R as a calculator).\n:::\n\n\n::: {.cell}\n\n:::\n\n\n## Simulate it\n\n::: callout-important\n#### Task\n\n-   Simulate a population of at least 100,000 people. Assign each person a disease status, then a test result that depends on their disease status.\n-   Estimate PPV and NPV from your simulation and compare them with your analytic answers.\n-   In 1–2 sentences, explain why the simulated and analytic values are close but not identical.\n:::\n\n\n::: {.cell}\n\n:::\n\n\n## Explore: how does prevalence matter?\n\n::: callout-important\n#### Task\n\n-   Compute the analytic PPV for prevalence values from 0.1% to 50%, keeping sensitivity and specificity fixed.\n-   Plot PPV (y-axis) against prevalence (x-axis), and mark your scenario's prevalence.\n-   In 2–3 sentences, describe what happens to PPV as prevalence changes. Then describe a group or setting your program might serve with a higher or lower prevalence, and how a positive result would mean something different there.\n:::\n\n\n::: {.cell}\n\n:::\n\n\n## Say it\n\n::: callout-important\n#### Task\n\nWrite a short paragraph (4–6 sentences) for the letter or text message your program sends to every person with a positive result. Use natural frequencies instead of probability notation, and say what the next step is.\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

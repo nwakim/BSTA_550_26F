@@ -1,0 +1,15 @@
+{
+  "hash": "02ccfc656d4a547e41552f66b8b7d7ad",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Checkpoint 2: Counting Events\"\nauthor: \"Your name here!\"\nsubtitle: \"BSTA 550\"\ndate-modified: \"today\"\nformat:\n  html:\n    link-external-newwindow: true\n    toc: true\n    embed-resources: true\n    number-sections: true\n    number-depth: 3\n    code-fold: true\neditor_options:\n  chunk_output_type: console\n---\n\n\n::: {.cell}\n\n:::\n\n\n::: callout-warning\nNote that this is the editing file. **There are detailed instructions on our course page for Checkpoint 2 that are not in this file.**\n:::\n\n## Your scenario {.unnumbered}\n\nScenario (A, B, or C):\n\n## Define your random variable\n\n::: callout-important\n#### Task\n\n-   Write $X$ in words, including its units and time frame, using the definition for your scenario.\n-   List the possible values (the support) of $X$.\n:::\n\n## Justify the distribution\n\n::: callout-important\n#### Task\n\n-   State the distribution for your scenario and its parameter(s), citing where each value came from.\n-   List the assumptions of that distribution, and explain whether each is reasonable for your scenario.\n-   Identify the assumption **most likely to fail** in real life, and explain why.\n:::\n\n## Solve it analytically\n\n::: callout-important\n#### Task\n\n-   Find $E(X)$, $\\text{Var}(X)$, and $\\text{SD}(X)$ using formulas from class.\n-   Calculate **two** probabilities that answer your program's planning question. Show the formula (PMF or CDF) for each, then compute with R.\n:::\n\n\n::: {.cell}\n\n:::\n\n\n## Simulate it\n\n::: callout-important\n#### Task\n\n-   Generate at least 10,000 draws of $X$ with R.\n-   Make a plot comparing the empirical distribution (from your simulation) with the theoretical PMF.\n-   Compare the simulated mean, variance, and your two probabilities with the analytic values in a small table.\n:::\n\n\n::: {.cell}\n\n:::\n\n\n## Stretch (optional, +1 bonus)\n\n::: callout-important\n#### Task\n\nBreak the assumption you identified above and show how the answer changes.\n:::\n\n\n::: {.cell}\n\n:::\n\n\n## Say it\n\n::: callout-important\n#### Task\n\nWrite a short paragraph (4–6 sentences) for the program manager who needs to plan around this count. What is typical? What is unusual, and how often does it happen? What would you warn them about, given the assumption most likely to fail?\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

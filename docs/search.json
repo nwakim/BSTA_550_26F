@@ -24889,7 +24889,7 @@
     "href": "project.html#checkpoints",
     "title": "Project Central",
     "section": "Checkpoints",
-    "text": "Checkpoints\nThe checkpoints build, step by step, the work you need for the final project, so we complete the work over the quarter instead of all at the end. If you receive feedback on something in a checkpoint, you are expected to fix it for the next checkpoint and the final project.\n\n\n\nCheckpoint Instructions\nPoints\nRubric\nDue Date\nTopics\n\n\n\n\nCheckpoint 0\n4\n\n10/11\nChoose your scenario + find input values in your source packet\n\n\nCheckpoint 1\n12\n\n10/18\nConditional probability + Bayes’ rule: when is a positive really positive?\n\n\nCheckpoint 2\n12\n\n11/15\nDiscrete random variables: counting events\n\n\nCheckpoint 3\n12\n\n11/29\nContinuous random variables + the Central Limit Theorem\n\n\n\nAll checkpoints are submitted as a rendered Quarto HTML file (with code-fold: true) plus your .qmd file."
+    "text": "Checkpoints\nThe checkpoints build, step by step, the work you need for the final project, so we complete the work over the quarter instead of all at the end. If you receive feedback on something in a checkpoint, you are expected to fix it for the next checkpoint and the final project.\n\n\n\nCheckpoint Instructions\nPoints\nEditing file\nRubric\nDue Date\nTopics\n\n\n\n\nCheckpoint 0\n4\n\n\n10/11\nChoose your scenario + find input values in your source packet\n\n\nCheckpoint 1\n12\n\n\n10/18\nConditional probability + Bayes’ rule: when is a positive really positive?\n\n\nCheckpoint 2\n12\n\n\n11/15\nDiscrete random variables: counting events\n\n\nCheckpoint 3\n12\n\n\n11/29\nContinuous random variables + the Central Limit Theorem\n\n\n\nAll checkpoints are submitted as a rendered Quarto HTML file (with code-fold: true) plus your .qmd file."
   },
   {
     "objectID": "project.html#final-project-clinician-brief",
@@ -24917,7 +24917,7 @@
     "href": "project/Checkpoint_00_instructions.html#submission",
     "title": "Checkpoint 0: Choose Your Scenario",
     "section": "Submission",
-    "text": "Submission\nSubmit a rendered HTML file (and your .qmd) with the three sections above. Make sure the qmd and html are named lastname_firstinitial_checkpoint_00.qmd and lastname_firstinitial_checkpoint_00.html or lastname1_lastname2_checkpoint_00.qmd and lastname1_lastname2_checkpoint_00.html. One submission per team. Either person in the pair can submit it."
+    "text": "Submission\nSubmit a rendered HTML file (and your .qmd) with the three sections above. Make sure the qmd and html are named lastname_firstinitial_checkpoint_00.qmd and lastname_firstinitial_checkpoint_00.html or lastname1_lastname2_checkpoint_00.qmd and lastname1_lastname2_checkpoint_00.html. One submission per team. Either person in the pair can submit it.\nYou can download the .qmd editing file for this checkpoint here. The link takes you to GitHub, where you can click the download button (the arrow pointing down) near the top right of the file.\nThe editing file has the headings and tasks, but not the detailed instructions on this page. Please do not remove anything from the editing file. You will only add your work to it."
   },
   {
     "objectID": "project/Checkpoint_00_instructions.html#rubric-4-points",
@@ -25260,7 +25260,7 @@
     "href": "project/Checkpoint_01_instructions.html#submission",
     "title": "Checkpoint 1: When Is a Positive Really Positive?",
     "section": "Submission",
-    "text": "Submission\nSubmit a rendered HTML file (use code-fold: true) and your .qmd. One submission per team."
+    "text": "Submission\nSubmit a rendered HTML file (use code-fold: true) and your .qmd. Make sure the qmd and html are named lastname_firstinitial_checkpoint_01.qmd and lastname_firstinitial_checkpoint_01.html or lastname1_lastname2_checkpoint_01.qmd and lastname1_lastname2_checkpoint_01.html. One submission per team. Either person in the pair can submit it.\nYou can download the .qmd editing file for this checkpoint here. The link takes you to GitHub, where you can click the download button (the arrow pointing down) near the top right of the file.\nThe editing file has the headings and tasks, but not the detailed instructions on this page. Please do not remove anything from the editing file. You will only add your work to it."
   },
   {
     "objectID": "project/Checkpoint_01_instructions.html#rubric-12-points",
@@ -25288,7 +25288,7 @@
     "href": "project/Checkpoint_02_instructions.html#submission",
     "title": "Checkpoint 2: Counting Events",
     "section": "Submission",
-    "text": "Submission\nSubmit a rendered HTML file (use code-fold: true) and your .qmd. One submission per team."
+    "text": "Submission\nSubmit a rendered HTML file (use code-fold: true) and your .qmd. Make sure the qmd and html are named lastname_firstinitial_checkpoint_02.qmd and lastname_firstinitial_checkpoint_02.html or lastname1_lastname2_checkpoint_02.qmd and lastname1_lastname2_checkpoint_02.html. One submission per team. Either person in the pair can submit it.\nYou can download the .qmd editing file for this checkpoint here. The link takes you to GitHub, where you can click the download button (the arrow pointing down) near the top right of the file.\nThe editing file has the headings and tasks, but not the detailed instructions on this page. Please do not remove anything from the editing file. You will only add your work to it."
   },
   {
     "objectID": "project/Checkpoint_02_instructions.html#rubric-12-points",
@@ -25316,7 +25316,7 @@
     "href": "project/Checkpoint_03_instructions.html#submission",
     "title": "Checkpoint 3: Averages and the Central Limit Theorem",
     "section": "Submission",
-    "text": "Submission\nSubmit a rendered HTML file (use code-fold: true) and your .qmd. One submission per team."
+    "text": "Submission\nSubmit a rendered HTML file (use code-fold: true) and your .qmd. Make sure the qmd and html are named lastname_firstinitial_checkpoint_03.qmd and lastname_firstinitial_checkpoint_03.html or lastname1_lastname2_checkpoint_03.qmd and lastname1_lastname2_checkpoint_03.html. One submission per team. Either person in the pair can submit it.\nYou can download the .qmd editing file for this checkpoint here. The link takes you to GitHub, where you can click the download button (the arrow pointing down) near the top right of the file.\nThe editing file has the headings and tasks, but not the detailed instructions on this page. Please do not remove anything from the editing file. You will only add your work to it."
   },
   {
     "objectID": "project/Checkpoint_03_instructions.html#rubric-12-points",
@@ -25401,5 +25401,194 @@
     "title": "Checkpoint 2: Counting Events",
     "section": "Your scenario",
     "text": "Your scenario\nUse the Checkpoint 2 rows from your Checkpoint 0 table, with any corrections from my feedback.\n\nScenario AScenario BScenario C\n\n\n\nCommunity breast cancer screening program\n\nRandom variable: \\(X\\) = number of screens read as abnormal out of the 40 screens on one van day.\nDistribution: Binomial, with \\(n = 40\\) (course value) and \\(p\\) = the abnormal interpretation rate from Lee et al. (2023).\nPlanning question: Each woman with an abnormal read needs a follow-up diagnostic appointment. How many appointments should the program reserve after each van day?\n\n\n\n\n\nCounty COVID-19 testing and contact tracing\n\nRandom variable: \\(X\\) = number of the 3 household contacts of one case who get infected.\nDistribution: Binomial, with \\(n = 3\\) (course value) and \\(p\\) = the household secondary attack rate for Omicron from Madewell et al. (2022).\nPlanning question: How many household contacts per case should the department plan to support with isolation guidance and test kits?\n\n\n\n\n\nState newborn heart screening program\n\nRandom variable: \\(X\\) = number of babies born with CCHD in the state in one year.\nDistribution: Binomial, with \\(n = 40{,}000\\) births (course value) and \\(p\\) = the prevalence of CCHD from the Cochrane review. Because \\(n\\) is large and \\(p\\) is small, you may also use a Poisson distribution with \\(\\lambda = np\\). If you do, explain why the Poisson is a good approximation here.\nPlanning question: How many babies with CCHD should the state’s pediatric heart specialists be ready to see in a year, and how unusual would a very busy year be?"
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_00.html",
+    "href": "project/lastname_firstinitial_checkpoint_00.html",
+    "title": "Checkpoint 0: Choose Your Scenario",
+    "section": "",
+    "text": "Warning\n\n\n\nNote that this is the editing file. There are detailed instructions on our course page for Checkpoint 0 that are not in this file."
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_00.html#team-and-scenario",
+    "href": "project/lastname_firstinitial_checkpoint_00.html#team-and-scenario",
+    "title": "Checkpoint 0: Choose Your Scenario",
+    "section": "1 Team and scenario",
+    "text": "1 Team and scenario\n\n\n\n\n\n\nImportantTask\n\n\n\n\nState whether you are working alone or with a partner (and your partner’s name).\nState which scenario you chose (A, B, or C).\nIn 3–5 sentences, and in your own words, describe the scenario: Who is the population? What is being tested, counted, or measured? What decision does the public health program need to make, and why does it matter for the population it serves?"
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_00.html#find-your-numbers-in-the-sources",
+    "href": "project/lastname_firstinitial_checkpoint_00.html#find-your-numbers-in-the-sources",
+    "title": "Checkpoint 0: Choose Your Scenario",
+    "section": "2 Find your numbers in the sources",
+    "text": "2 Find your numbers in the sources\n\n\n\n\n\n\nImportantTask\n\n\n\nDefine your events, then fill in the table for your scenario. Use the Finding your numbers box on your scenario card. Write “course value” for numbers from the scenario card, and write probability statements for the three CP 1 rows only.\n\n\nEvents:\n\n\\(D\\) =\n\\(T^+\\) =\n\n\n\n\n\n\n\n\n\n\n\nCP\nWhat you are looking for\nValue\nWhere I found it\nProbability statement (CP 1 only)\n\n\n\n\n1\nPrevalence\n\n\n\n\n\n1\nSensitivity\n\n\n\n\n\n1\nSpecificity (A and B) or false-positive rate (C)\n\n\n\n\n\n2\nChance of a “yes” for one screen, household contact, or baby\n\n\n—\n\n\n2\nGroup size\n\n\n—\n\n\n3\nMean, with units\n\n\n—\n\n\n3\nSD, with units\n\n\n—"
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_00.html#your-guiding-questions",
+    "href": "project/lastname_firstinitial_checkpoint_00.html#your-guiding-questions",
+    "title": "Checkpoint 0: Choose Your Scenario",
+    "section": "3 Your guiding questions",
+    "text": "3 Your guiding questions\n\n\n\n\n\n\nImportantTask\n\n\n\nWrite one question for each checkpoint that your analysis will answer. You may use the examples for your scenario, or change them.\n\n\n\nCP 1:\nCP 2:\nCP 3:"
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_02.html",
+    "href": "project/lastname_firstinitial_checkpoint_02.html",
+    "title": "Checkpoint 2: Counting Events",
+    "section": "",
+    "text": "Warning\n\n\n\nNote that this is the editing file. There are detailed instructions on our course page for Checkpoint 2 that are not in this file."
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_02.html#your-scenario",
+    "href": "project/lastname_firstinitial_checkpoint_02.html#your-scenario",
+    "title": "Checkpoint 2: Counting Events",
+    "section": "Your scenario",
+    "text": "Your scenario\nScenario (A, B, or C):"
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_02.html#define-your-random-variable",
+    "href": "project/lastname_firstinitial_checkpoint_02.html#define-your-random-variable",
+    "title": "Checkpoint 2: Counting Events",
+    "section": "1 Define your random variable",
+    "text": "1 Define your random variable\n\n\n\n\n\n\nImportantTask\n\n\n\n\nWrite \\(X\\) in words, including its units and time frame, using the definition for your scenario.\nList the possible values (the support) of \\(X\\)."
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_02.html#justify-the-distribution",
+    "href": "project/lastname_firstinitial_checkpoint_02.html#justify-the-distribution",
+    "title": "Checkpoint 2: Counting Events",
+    "section": "2 Justify the distribution",
+    "text": "2 Justify the distribution\n\n\n\n\n\n\nImportantTask\n\n\n\n\nState the distribution for your scenario and its parameter(s), citing where each value came from.\nList the assumptions of that distribution, and explain whether each is reasonable for your scenario.\nIdentify the assumption most likely to fail in real life, and explain why."
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_02.html#solve-it-analytically",
+    "href": "project/lastname_firstinitial_checkpoint_02.html#solve-it-analytically",
+    "title": "Checkpoint 2: Counting Events",
+    "section": "3 Solve it analytically",
+    "text": "3 Solve it analytically\n\n\n\n\n\n\nImportantTask\n\n\n\n\nFind \\(E(X)\\), \\(\\text{Var}(X)\\), and \\(\\text{SD}(X)\\) using formulas from class.\nCalculate two probabilities that answer your program’s planning question. Show the formula (PMF or CDF) for each, then compute with R."
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_02.html#simulate-it",
+    "href": "project/lastname_firstinitial_checkpoint_02.html#simulate-it",
+    "title": "Checkpoint 2: Counting Events",
+    "section": "4 Simulate it",
+    "text": "4 Simulate it\n\n\n\n\n\n\nImportantTask\n\n\n\n\nGenerate at least 10,000 draws of \\(X\\) with R.\nMake a plot comparing the empirical distribution (from your simulation) with the theoretical PMF.\nCompare the simulated mean, variance, and your two probabilities with the analytic values in a small table."
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_02.html#stretch-optional-1-bonus",
+    "href": "project/lastname_firstinitial_checkpoint_02.html#stretch-optional-1-bonus",
+    "title": "Checkpoint 2: Counting Events",
+    "section": "5 Stretch (optional, +1 bonus)",
+    "text": "5 Stretch (optional, +1 bonus)\n\n\n\n\n\n\nImportantTask\n\n\n\nBreak the assumption you identified above and show how the answer changes."
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_02.html#say-it",
+    "href": "project/lastname_firstinitial_checkpoint_02.html#say-it",
+    "title": "Checkpoint 2: Counting Events",
+    "section": "6 Say it",
+    "text": "6 Say it\n\n\n\n\n\n\nImportantTask\n\n\n\nWrite a short paragraph (4–6 sentences) for the program manager who needs to plan around this count. What is typical? What is unusual, and how often does it happen? What would you warn them about, given the assumption most likely to fail?"
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_01.html",
+    "href": "project/lastname_firstinitial_checkpoint_01.html",
+    "title": "Checkpoint 1: When Is a Positive Really Positive?",
+    "section": "",
+    "text": "Warning\n\n\n\nNote that this is the editing file. There are detailed instructions on our course page for Checkpoint 1 that are not in this file."
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_01.html#your-scenario",
+    "href": "project/lastname_firstinitial_checkpoint_01.html#your-scenario",
+    "title": "Checkpoint 1: When Is a Positive Really Positive?",
+    "section": "Your scenario",
+    "text": "Your scenario\nScenario (A, B, or C):"
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_01.html#set-up-the-problem",
+    "href": "project/lastname_firstinitial_checkpoint_01.html#set-up-the-problem",
+    "title": "Checkpoint 1: When Is a Positive Really Positive?",
+    "section": "1 Set up the problem",
+    "text": "1 Set up the problem\n\n\n\n\n\n\nImportantTask\n\n\n\n\nDefine your events with notation, using the events for your scenario.\nWrite each input value as a probability statement, and cite the source for each value.\nDraw a tree diagram or a 2×2 table for a hypothetical population of 100,000 people screened by your program."
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_01.html#solve-it-analytically",
+    "href": "project/lastname_firstinitial_checkpoint_01.html#solve-it-analytically",
+    "title": "Checkpoint 1: When Is a Positive Really Positive?",
+    "section": "2 Solve it analytically",
+    "text": "2 Solve it analytically\n\n\n\n\n\n\nImportantTask\n\n\n\n\nUse the Law of Total Probability to find \\(P(T^+)\\).\nUse Bayes’ rule to find the positive predictive value \\(P(D \\mid T^+)\\) and the negative predictive value \\(P(D^c \\mid T^-)\\).\nWrite out each formula first, then compute (you may use R as a calculator)."
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_01.html#simulate-it",
+    "href": "project/lastname_firstinitial_checkpoint_01.html#simulate-it",
+    "title": "Checkpoint 1: When Is a Positive Really Positive?",
+    "section": "3 Simulate it",
+    "text": "3 Simulate it\n\n\n\n\n\n\nImportantTask\n\n\n\n\nSimulate a population of at least 100,000 people. Assign each person a disease status, then a test result that depends on their disease status.\nEstimate PPV and NPV from your simulation and compare them with your analytic answers.\nIn 1–2 sentences, explain why the simulated and analytic values are close but not identical."
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_01.html#explore-how-does-prevalence-matter",
+    "href": "project/lastname_firstinitial_checkpoint_01.html#explore-how-does-prevalence-matter",
+    "title": "Checkpoint 1: When Is a Positive Really Positive?",
+    "section": "4 Explore: how does prevalence matter?",
+    "text": "4 Explore: how does prevalence matter?\n\n\n\n\n\n\nImportantTask\n\n\n\n\nCompute the analytic PPV for prevalence values from 0.1% to 50%, keeping sensitivity and specificity fixed.\nPlot PPV (y-axis) against prevalence (x-axis), and mark your scenario’s prevalence.\nIn 2–3 sentences, describe what happens to PPV as prevalence changes. Then describe a group or setting your program might serve with a higher or lower prevalence, and how a positive result would mean something different there."
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_01.html#say-it",
+    "href": "project/lastname_firstinitial_checkpoint_01.html#say-it",
+    "title": "Checkpoint 1: When Is a Positive Really Positive?",
+    "section": "5 Say it",
+    "text": "5 Say it\n\n\n\n\n\n\nImportantTask\n\n\n\nWrite a short paragraph (4–6 sentences) for the letter or text message your program sends to every person with a positive result. Use natural frequencies instead of probability notation, and say what the next step is."
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_03.html",
+    "href": "project/lastname_firstinitial_checkpoint_03.html",
+    "title": "Checkpoint 3: Averages and the Central Limit Theorem",
+    "section": "",
+    "text": "Warning\n\n\n\nNote that this is the editing file. There are detailed instructions on our course page for Checkpoint 3 that are not in this file."
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_03.html#your-scenario",
+    "href": "project/lastname_firstinitial_checkpoint_03.html#your-scenario",
+    "title": "Checkpoint 3: Averages and the Central Limit Theorem",
+    "section": "Your scenario",
+    "text": "Your scenario\nScenario (A, B, or C):"
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_03.html#define-your-random-variable",
+    "href": "project/lastname_firstinitial_checkpoint_03.html#define-your-random-variable",
+    "title": "Checkpoint 3: Averages and the Central Limit Theorem",
+    "section": "1 Define your random variable",
+    "text": "1 Define your random variable\n\n\n\n\n\n\nImportantTask\n\n\n\n\nWrite \\(Y\\) in words, including its units, using the definition for your scenario.\nState the support of \\(Y\\)."
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_03.html#justify-the-distribution",
+    "href": "project/lastname_firstinitial_checkpoint_03.html#justify-the-distribution",
+    "title": "Checkpoint 3: Averages and the Central Limit Theorem",
+    "section": "2 Justify the distribution",
+    "text": "2 Justify the distribution\n\n\n\n\n\n\nImportantTask\n\n\n\n\nState the distribution for your scenario and its parameter(s), citing where each value came from.\nExplain why this distribution is a reasonable choice, and where it might not match the real quantity.\nPlot the PDF of your distribution."
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_03.html#solve-it-analytically",
+    "href": "project/lastname_firstinitial_checkpoint_03.html#solve-it-analytically",
+    "title": "Checkpoint 3: Averages and the Central Limit Theorem",
+    "section": "3 Solve it analytically",
+    "text": "3 Solve it analytically\n\n\n\n\n\n\nImportantTask\n\n\n\n\nFind \\(E(Y)\\) and \\(\\text{Var}(Y)\\).\nCalculate two probabilities or quantiles that answer practical questions for your program. Show the setup (integral or CDF) for at least one of them, then compute with R."
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_03.html#simulate-the-central-limit-theorem",
+    "href": "project/lastname_firstinitial_checkpoint_03.html#simulate-the-central-limit-theorem",
+    "title": "Checkpoint 3: Averages and the Central Limit Theorem",
+    "section": "4 Simulate the Central Limit Theorem",
+    "text": "4 Simulate the Central Limit Theorem\n\n\n\n\n\n\nImportantTask\n\n\n\n\nFor \\(n = 5\\), \\(30\\), and \\(100\\), simulate at least 5,000 sample means.\nFor each \\(n\\), plot a histogram of the sample means with the normal curve predicted by the CLT overlaid.\nCompare the mean and SD of your simulated sample means with the CLT’s predictions.\nIn 2–3 sentences, describe how quickly the distribution of \\(\\bar{Y}_n\\) looks normal, and how the shape (skewness) of \\(Y\\) affects this."
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_03.html#answer-a-question-about-an-average",
+    "href": "project/lastname_firstinitial_checkpoint_03.html#answer-a-question-about-an-average",
+    "title": "Checkpoint 3: Averages and the Central Limit Theorem",
+    "section": "5 Answer a question about an average",
+    "text": "5 Answer a question about an average\n\n\n\n\n\n\nImportantTask\n\n\n\n\nUse the CLT to answer a practical question about \\(\\bar{Y}_n\\), using the \\(n\\) for your scenario.\nCheck it with your simulation.\nCompare it with the probability that a single observation is beyond the same cutoff, and explain why the two answers differ."
+  },
+  {
+    "objectID": "project/lastname_firstinitial_checkpoint_03.html#say-it",
+    "href": "project/lastname_firstinitial_checkpoint_03.html#say-it",
+    "title": "Checkpoint 3: Averages and the Central Limit Theorem",
+    "section": "6 Say it",
+    "text": "6 Say it\n\n\n\n\n\n\nImportantTask\n\n\n\nWrite a short paragraph (4–6 sentences) for the program manager or health department that explains the difference between what happens to one person and what happens on average across many people. Why does this difference matter when the program reports averages to the public?"
   }
 ]

@@ -1,0 +1,15 @@
+{
+  "hash": "b9a5c05e6707e914660f0de5db6e8773",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Checkpoint 0: Choose Your Scenario\"\nauthor: \"Your name here!\"\nsubtitle: \"BSTA 550\"\ndate-modified: \"today\"\nformat:\n  html:\n    link-external-newwindow: true\n    toc: true\n    embed-resources: true\n    number-sections: true\n    number-depth: 3\n    code-fold: true\neditor_options:\n  chunk_output_type: console\n---\n\n\n::: {.cell}\n\n:::\n\n\n::: callout-warning\nNote that this is the editing file. **There are detailed instructions on our course page for Checkpoint 0 that are not in this file.**\n:::\n\n## Team and scenario\n\n::: callout-important\n#### Task\n\n-   State whether you are working alone or with a partner (and your partner's name).\n-   State which scenario you chose (A, B, or C).\n-   In 3–5 sentences, and **in your own words**, describe the scenario: Who is the population? What is being tested, counted, or measured? What decision does the public health program need to make, and why does it matter for the population it serves?\n:::\n\n## Find your numbers in the sources\n\n::: callout-important\n#### Task\n\nDefine your events, then fill in the table for your scenario. Use the **Finding your numbers** box on your scenario card. Write \"course value\" for numbers from the scenario card, and write probability statements for the three CP 1 rows only.\n:::\n\n**Events:**\n\n-   $D$ =\n-   $T^+$ =\n\n| CP | What you are looking for | Value | Where I found it | Probability statement (CP 1 only) |\n|----|----|----|----|----|\n| 1 | Prevalence |  |  |  |\n| 1 | Sensitivity |  |  |  |\n| 1 | Specificity (A and B) or false-positive rate (C) |  |  |  |\n| 2 | Chance of a \"yes\" for one screen, household contact, or baby |  |  | — |\n| 2 | Group size |  |  | — |\n| 3 | Mean, with units |  |  | — |\n| 3 | SD, with units |  |  | — |\n\n## Your guiding questions\n\n::: callout-important\n#### Task\n\nWrite one question for each checkpoint that your analysis will answer. You may use the examples for your scenario, or change them.\n:::\n\n-   **CP 1:**\n-   **CP 2:**\n-   **CP 3:**\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

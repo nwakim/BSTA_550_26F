@@ -133,13 +133,15 @@ This course is an introduction to the methods and concepts of probability theory
 ::: {.info-card .card-blue}
 ### Office Hours
 
-**[Nicky](https://ohsu.webex.com/meet/wakim)**
+**Nicky**
 
-[{{< iconify icon-park-solid time size=24px >}}]{.icon} TBD
+[{{< iconify icon-park-solid time size=24px >}}]{.icon} [Tu 11:30 AM - 12:30 PM](https://ohsu.webex.com/meet/wakim)
 
-**TA**
+**Madi (TA)**
 
-[{{< iconify icon-park-solid time size=24px >}}]{.icon} TBD
+[{{< iconify icon-park-solid time size=24px >}}]{.icon} [W 3:15 - 4:15 PM](https://pdx.zoom.us/j/88334628156)
+
+[{{< iconify icon-park-solid time size=24px >}}]{.icon} [Th 3:00 - 4:00 PM](https://pdx.zoom.us/j/85361724787)
 :::
 :::
 

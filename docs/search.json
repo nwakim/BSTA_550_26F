@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "BSTA 550: Introduction to Probability",
     "section": "",
-    "text": "BSTA 550: Introduction to Probability\nFall 2026\n\nWelcome to Biostatistics and Probability!\nThis course is an introduction to the methods and concepts of probability theory, including conditional probability and independence, combinatorics, discrete and continuous random variables, probability distributions, joint distributions, expectation, transformations of random variables, and the central limit theorem. Students will apply probability concepts and develop statistical reasoning through simulations in R.\n\nOneDrive Folder Syllabus Schedule\n\n\n\n\n\n\nInstructor\n Dr. Nicky Wakim\n Vanport 622A\n wakim@ohsu.edu\n\n\n\n\nOffice Hours\nNicky\n TBD\nTA\n TBD\n\n\n\n\nCourse details\n Mondays, Wednesdays\n 09/28 - 12/07\n 10:30 AM - 12 PM\n In-person, VPT 264\n\n\n\n\nContacting me\n E-mail is the best way to reach me. I try to respond to all course-related e-mails within 24 hours, Monday-Friday.\n\n\n\n\n\n View the source on GitHub"
+    "text": "BSTA 550: Introduction to Probability\nFall 2026\n\nWelcome to Biostatistics and Probability!\nThis course is an introduction to the methods and concepts of probability theory, including conditional probability and independence, combinatorics, discrete and continuous random variables, probability distributions, joint distributions, expectation, transformations of random variables, and the central limit theorem. Students will apply probability concepts and develop statistical reasoning through simulations in R.\n\nOneDrive Folder Syllabus Schedule\n\n\n\n\n\n\nInstructor\n Dr. Nicky Wakim\n Vanport 622A\n wakim@ohsu.edu\n\n\n\n\nOffice Hours\nNicky\n Tu 11:30 AM - 12:30 PM\nMadi (TA)\n W 3:15 - 4:15 PM\n Th 3:00 - 4:00 PM\n\n\n\n\nCourse details\n Mondays, Wednesdays\n 09/28 - 12/07\n 10:30 AM - 12 PM\n In-person, VPT 264\n\n\n\n\nContacting me\n E-mail is the best way to reach me. I try to respond to all course-related e-mails within 24 hours, Monday-Friday.\n\n\n\n\n\n View the source on GitHub"
   },
   {
     "objectID": "schedule.html",
@@ -1712,7 +1712,7 @@
     "href": "instructors.html",
     "title": "Instructor: Nicole (Nicky) Wakim, PhD",
     "section": "",
-    "text": "Email: wakim@ohsu.edu\nOffice: VPT 622A\n\nPronouns: she/her/hers\nYou are welcome to address me as Nicky (pronounced “nik-EE”), Dr. Wakim (pronounced “wah-KEEM”), Dr. W, Dr. Nicky, Professor, Professor Wakim, or any combination of the prior.\nBest method to contact: Office hours or email for general course questions.\n\n\n\n\n\n\n\n\n\n\nBrief professor statement: As a professor, my main goal is to instill a growth mindset into my students. Growth mindset means we are NOT stuck in our abilities or knowledge, and that we all can grow with effort, feedback, and learning from mistakes! This course aims to be as transparent as possible. I want you to understand my motivation for assessments, questions, and lessons. I also want those assessments to be clear, so please ask for clarification whenever needed."
+    "text": "Email: wakim@ohsu.edu\nOffice: VPT 622A\n\nPronouns: she/her/hers\nYou are welcome to address me as Nicky (pronounced “NIH-kee”), Dr. Wakim (pronounced “wah-KEEM”), Dr. W, Dr. Nicky, Professor, Professor Wakim, or any combination of the prior.\nBest method to contact: Office hours or email for general course questions.\nBrief professor statement: As a professor, my main goal is to instill a growth mindset into my students. Growth mindset means we are NOT stuck in our abilities or knowledge, and that we all can grow with effort, feedback, and learning from mistakes! This course aims to be as transparent as possible. I want you to understand my motivation for assessments, questions, and lessons. I also want those assessments to be clear, so please ask for clarification whenever needed."
   },
   {
     "objectID": "instructors.html#instructor-nicole-nicky-wakim-phd",
@@ -25590,5 +25590,12 @@
     "title": "Checkpoint 3: Averages and the Central Limit Theorem",
     "section": "6 Say it",
     "text": "6 Say it\n\n\n\n\n\n\nImportantTask\n\n\n\nWrite a short paragraph (4–6 sentences) for the program manager or health department that explains the difference between what happens to one person and what happens on average across many people. Why does this difference matter when the program reports averages to the public?"
+  },
+  {
+    "objectID": "instructors.html#office-hours",
+    "href": "instructors.html#office-hours",
+    "title": "Instructor: Nicole (Nicky) Wakim, PhD",
+    "section": "Office Hours",
+    "text": "Office Hours\n\n\n\nDay\nTime\nWho\nLink\n\n\n\n\nTuesdays\n11:30 AM - 12:30 PM PT\nNicky\nWebex\n\n\nWednesdays\n3:15 - 4:15 PM PT\nMadi (TA)\nZoom\n\n\nThursdays\n3:00 - 4:00 PM PT\nMadi (TA)\nZoom\n\n\n\nYou don’t need to stay for the whole hour. Drop in for whatever part works for you! If none of these times work, email me and we’ll figure something out."
   }
 ]

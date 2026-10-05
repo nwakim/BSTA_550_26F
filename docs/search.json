@@ -18694,21 +18694,21 @@
     "href": "lessons/03_Lang_prob/03_Lang_prob_key_info.html",
     "title": "Key Info",
     "section": "",
-    "text": "Q: Can we still turn in exit tickets even if its not the same day? For example I was here the first day but forgot to do the exit ticket, if I did it today would it still count towards my grade?\n\nYes! I check them for “attendance” after 7 (sometimes more) days after the class\n\nFor muddy points, it really helps if you can asked a specific question about what you found confusing\n\nI can then address it in a more targeted way"
+    "text": "Office hours are set!\n\nPlease email me if these do not work for you!\n\nI will be out of town next week!\n\nAsync class in place of 10/12 class\nVirtual class in place of 10/14 class\n\nDo you all prefer virtual sync or virtual async?\n\n\nExit tickets\n\nNot required, but if you have questions, please ask!!"
   },
   {
     "objectID": "lessons/03_Lang_prob/03_Lang_prob_key_info.html#announcements",
     "href": "lessons/03_Lang_prob/03_Lang_prob_key_info.html#announcements",
     "title": "Key Info",
     "section": "",
-    "text": "Q: Can we still turn in exit tickets even if its not the same day? For example I was here the first day but forgot to do the exit ticket, if I did it today would it still count towards my grade?\n\nYes! I check them for “attendance” after 7 (sometimes more) days after the class\n\nFor muddy points, it really helps if you can asked a specific question about what you found confusing\n\nI can then address it in a more targeted way"
+    "text": "Office hours are set!\n\nPlease email me if these do not work for you!\n\nI will be out of town next week!\n\nAsync class in place of 10/12 class\nVirtual class in place of 10/14 class\n\nDo you all prefer virtual sync or virtual async?\n\n\nExit tickets\n\nNot required, but if you have questions, please ask!!"
   },
   {
     "objectID": "lessons/03_Lang_prob/03_Lang_prob_key_info.html#key-dates",
     "href": "lessons/03_Lang_prob/03_Lang_prob_key_info.html#key-dates",
     "title": "Key Info",
     "section": "Key Dates",
-    "text": "Key Dates\n\nHW 1 Assignment due this Thursday at 11pm"
+    "text": "Key Dates\n\nHW 1 Assignment due this Sunday at 11pm\nCheckpoint 0 due this Sunday at 11pm!\n\nPlease try to take a look by Wednesday’s class and let me know if you have questions about the project set up for the quarter!"
   },
   {
     "objectID": "homework/HW_02.html#from-old-hw-1",
@@ -25884,5 +25884,12 @@
     "title": "Lesson 3: Language of Probability",
     "section": "Checking Example 3 with simulation",
     "text": "Checking Example 3 with simulation\n\nAfter solving with the Venn diagram: simulate the four disjoint pieces (a partition of the sample space) and check the given facts\n\n\n1cells &lt;- c(\"both\", \"this only\", \"next only\", \"neither\")\n2med_sims &lt;- expand_grid(sim = 1:reps) |&gt;\n3  mutate(cell = sample(cells, n(), replace = TRUE,\n                       prob = c(0.6, 0.2, 0.1, 0.1)))\nmed_sims |&gt;\n4  summarise(p_this = mean(cell %in% c(\"both\", \"this only\")),\n            p_next = mean(cell %in% c(\"both\", \"next only\")),\n            p_neither = mean(cell == \"neither\"),\n5            p_exactly_one = mean(cell %in% c(\"this only\", \"next only\")))\n\n\n1\n\nThe four pieces of the Venn diagram. They are disjoint and together make up the whole sample space, so they form a partition.\n\n2\n\nOne row per simulation. With only one thing to simulate per week pair, expand_grid() just needs sim.\n\n3\n\nEach simulation lands in exactly one piece, with the probabilities from our Venn diagram.\n\n4\n\n%in% checks if cell is any of the listed pieces. “Took it this week” is the union of two disjoint pieces, so by Axiom 3 its probability is their sum.\n\n5\n\nOur answer: “exactly one week” is the union of the two “only” pieces.\n\n\n\n\n# A tibble: 1 × 4\n  p_this p_next p_neither p_exactly_one\n   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;\n1  0.797  0.696     0.105         0.297\n\n\n \n\nThe first three columns should be close to the 0.8, 0.7, and 0.1 we were given. If they are, our partition is right, and the last column checks our answer."
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_key_info.html#last-class",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_key_info.html#last-class",
+    "title": "Key Info",
+    "section": "Last class",
+    "text": "Last class\n\nMore intro on simulations!\nBrief intro to random variables\nFour step simulation process\n\nIn class, I will often show only one step"
   }
 ]

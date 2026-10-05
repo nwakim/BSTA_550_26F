@@ -10,13 +10,25 @@ editor_options:
 
 ## Announcements
 
-- Q: Can we still turn in exit tickets even if its not the same day? For example I was here the first day but forgot to do the exit ticket, if I did it today would it still count towards my grade?
-  - Yes! I check them for "attendance" after 7 (sometimes more) days after the class
-
-- For muddy points, it really helps if you can asked a specific question about what you found confusing
-  - I can then address it in a more targeted way
+- Office hours are set!
+  - Please email me if these do not work for you!
+- I will be out of town next week! 
+  - Async class in place of 10/12 class
+  - Virtual class in place of 10/14 class
+    - Do you all prefer virtual sync or virtual async?
+- Exit tickets
+  - Not required, but if you have questions, please ask!!
 
 
 ## Key Dates
 
-- HW 1 Assignment due this Thursday at 11pm
+- HW 1 Assignment due this Sunday at 11pm
+- Checkpoint 0 due this Sunday at 11pm!
+  - Please try to take a look by Wednesday's class and let me know if you have questions about the project set up for the quarter!
+  
+## Last class
+
+- More intro on simulations!
+- Brief intro to random variables
+- Four step simulation process
+  - In class, I will often show only one step

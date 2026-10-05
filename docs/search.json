@@ -18519,14 +18519,14 @@
     "href": "lessons/03_Lang_prob/03_Lang_prob.html#set-theory-12",
     "title": "Lesson 3: Language of Probability",
     "section": "Set Theory (1/2)",
-    "text": "Set Theory (1/2)\n\n\n \n\n\nDefinition: Union\n\n\nThe union of events \\(A\\) and \\(B\\), denoted by \\(A \\cup B\\), contains all outcomes that are in \\(A\\) or \\(B\\) or both\n\n\n\n\nDefinition: Intersection\n\n\nThe intersection of events \\(A\\) and \\(B\\), denoted by \\(A \\cap B\\), contains all outcomes that are both in \\(A\\) and \\(B\\).\n\n\n\nVenn diagrams"
+    "text": "Set Theory (1/2)\n\n\n\n\nDefinition: Union\n\n\nThe union of events \\(A\\) and \\(B\\), denoted by \\(A \\cup B\\), contains all outcomes that are in \\(A\\) or \\(B\\) or both\n\n\n\nBlank Venn diagramSAB\n\n\n\n\n\nDefinition: Intersection\n\n\nThe intersection of events \\(A\\) and \\(B\\), denoted by \\(A \\cap B\\), contains all outcomes that are both in \\(A\\) and \\(B\\).\n\n\n\nBlank Venn diagramSAB"
   },
   {
     "objectID": "lessons/03_Lang_prob/03_Lang_prob.html#set-theory-22",
     "href": "lessons/03_Lang_prob/03_Lang_prob.html#set-theory-22",
     "title": "Lesson 3: Language of Probability",
     "section": "Set Theory (2/2)",
-    "text": "Set Theory (2/2)\n\n\n \n\n\nDefinition: Complement\n\n\nThe complement of event \\(A\\), denoted by \\(A^C\\) or \\(A'\\), contains all outcomes in the sample space \\(S\\) that are not in \\(A\\) .\n\n\n\n\nDefinition: Mutually Exclusive\n\n\nEvents \\(A\\) and \\(B\\) are mutually exclusive, or disjoint, if they have no outcomes in common. In this case \\(A \\cap B = \\emptyset\\), where \\(\\emptyset\\) is the empty set.\n\n\n\nVenn diagrams"
+    "text": "Set Theory (2/2)\n\n\n\n\nDefinition: Complement\n\n\nThe complement of event \\(A\\), denoted by \\(A^C\\) or \\(A'\\), contains all outcomes in the sample space \\(S\\) that are not in \\(A\\) .\n\n\n\nBlank Venn diagramSAB\n\n\n\n\n\nDefinition: Mutually Exclusive\n\n\nEvents \\(A\\) and \\(B\\) are mutually exclusive, or disjoint, if they have no outcomes in common. In this case \\(A \\cap B = \\emptyset\\), where \\(\\emptyset\\) is the empty set.\n\n\n\nBlank Venn diagramSAB"
   },
   {
     "objectID": "lessons/03_Lang_prob/03_Lang_prob.html#probability-axioms",
@@ -18547,35 +18547,35 @@
     "href": "lessons/03_Lang_prob/03_Lang_prob.html#proposition-1-proof",
     "title": "Lesson 3: Language of Probability",
     "section": "Proposition 1 Proof",
-    "text": "Proposition 1 Proof\n\n\n\n\nProposition 1\n\n\nFor any event \\(A\\), \\(\\mathbb{P}(A)= 1 - \\mathbb{P}(A^C)\\)\n\n\n\n\n\nUse Axioms!\n\n\nA1: \\(0\\leq\\mathbb{P}(A)\\leq 1\\)\nA2: \\(\\mathbb{P}(S)=1\\)\nA3: For disjoint \\(A_i\\),\n\\(\\mathbb{P}\\Big( \\bigcup \\limits_{i=1}^{\\infty}A_i\\Big) =  \\sum_{i=1}^{\\infty}\\mathbb{P}(A_i)\\)"
+    "text": "Proposition 1 Proof\n\n\n\n\nProposition 1\n\n\nFor any event \\(A\\), \\(\\mathbb{P}(A)= 1 - \\mathbb{P}(A^C)\\)\n\n\nBlank Venn diagramSA\n\n\n\nUse Axioms!\n\n\nA1: \\(0\\leq\\mathbb{P}(A)\\leq 1\\)\nA2: \\(\\mathbb{P}(S)=1\\)\nA3: For disjoint \\(A_i\\),\n\\(\\mathbb{P}\\Big( \\bigcup \\limits_{i=1}^{\\infty}A_i\\Big) =  \\sum_{i=1}^{\\infty}\\mathbb{P}(A_i)\\)"
   },
   {
     "objectID": "lessons/03_Lang_prob/03_Lang_prob.html#proposition-2-proof",
     "href": "lessons/03_Lang_prob/03_Lang_prob.html#proposition-2-proof",
     "title": "Lesson 3: Language of Probability",
     "section": "Proposition 2 Proof",
-    "text": "Proposition 2 Proof\n\n\n\n\nProposition 2\n\n\n\\(\\mathbb{P}(\\emptyset)=0\\)\n\n\n\n\n\nUse Axioms!\n\n\nA1: \\(0\\leq\\mathbb{P}(A)\\leq 1\\)\nA2: \\(\\mathbb{P}(S)=1\\)\nA3: For disjoint \\(A_i\\),\n\\(\\mathbb{P}\\Big( \\bigcup \\limits_{i=1}^{\\infty}A_i\\Big) =  \\sum_{i=1}^{\\infty}\\mathbb{P}(A_i)\\)"
+    "text": "Proposition 2 Proof\n\n\n\n\nProposition 2\n\n\n\\(\\mathbb{P}(\\emptyset)=0\\)\n\n\nBlank Venn diagramSA\n\n\n\nUse Axioms!\n\n\nA1: \\(0\\leq\\mathbb{P}(A)\\leq 1\\)\nA2: \\(\\mathbb{P}(S)=1\\)\nA3: For disjoint \\(A_i\\),\n\\(\\mathbb{P}\\Big( \\bigcup \\limits_{i=1}^{\\infty}A_i\\Big) =  \\sum_{i=1}^{\\infty}\\mathbb{P}(A_i)\\)"
   },
   {
     "objectID": "lessons/03_Lang_prob/03_Lang_prob.html#proposition-3-proof",
     "href": "lessons/03_Lang_prob/03_Lang_prob.html#proposition-3-proof",
     "title": "Lesson 3: Language of Probability",
     "section": "Proposition 3 Proof",
-    "text": "Proposition 3 Proof\n\n\n\n\nProposition 3\n\n\nIf \\(A \\subseteq B\\), then \\(\\mathbb{P}(A) \\leq \\mathbb{P}(B)\\)\n\n\n\n\n\nUse Axioms!\n\n\nA1: \\(0\\leq\\mathbb{P}(A)\\leq 1\\)\nA2: \\(\\mathbb{P}(S)=1\\)\nA3: For disjoint \\(A_i\\),\n\\(\\mathbb{P}\\Big( \\bigcup \\limits_{i=1}^{\\infty}A_i\\Big) =  \\sum_{i=1}^{\\infty}\\mathbb{P}(A_i)\\)"
+    "text": "Proposition 3 Proof\n\n\n\n\nProposition 3\n\n\nIf \\(A \\subseteq B\\), then \\(\\mathbb{P}(A) \\leq \\mathbb{P}(B)\\)\n\n\nBlank Venn diagramSBA\n\n\n\nUse Axioms!\n\n\nA1: \\(0\\leq\\mathbb{P}(A)\\leq 1\\)\nA2: \\(\\mathbb{P}(S)=1\\)\nA3: For disjoint \\(A_i\\),\n\\(\\mathbb{P}\\Big( \\bigcup \\limits_{i=1}^{\\infty}A_i\\Big) =  \\sum_{i=1}^{\\infty}\\mathbb{P}(A_i)\\)"
   },
   {
     "objectID": "lessons/03_Lang_prob/03_Lang_prob.html#proposition-4-visual-proof",
     "href": "lessons/03_Lang_prob/03_Lang_prob.html#proposition-4-visual-proof",
     "title": "Lesson 3: Language of Probability",
     "section": "Proposition 4 Visual Proof",
-    "text": "Proposition 4 Visual Proof\n\n\nProposition 4\n\n\n\\(\\mathbb{P}(A \\cup B) = \\mathbb{P}(A) + \\mathbb{P}(B) - \\mathbb{P}(A \\cap B)\\)"
+    "text": "Proposition 4 Visual Proof\n\n\nProposition 4\n\n\n\\(\\mathbb{P}(A \\cup B) = \\mathbb{P}(A) + \\mathbb{P}(B) - \\mathbb{P}(A \\cap B)\\)\n\n\nFour blank Venn diagrams laid out as P(A or B) = P(A) + P(B) - P(A and B)ℙ(A ∪ B)SAB=ℙ(A)SAB+ℙ(B)SAB−ℙ(A ∩ B)SAB"
   },
   {
     "objectID": "lessons/03_Lang_prob/03_Lang_prob.html#proposition-5-visual-proof",
     "href": "lessons/03_Lang_prob/03_Lang_prob.html#proposition-5-visual-proof",
     "title": "Lesson 3: Language of Probability",
     "section": "Proposition 5 Visual Proof",
-    "text": "Proposition 5 Visual Proof\n\n\nProposition 5\n\n\n\\(\\mathbb{P}(A \\cup B \\cup C) = \\mathbb{P}(A) + \\mathbb{P}(B) + \\mathbb{P}(C) - \\mathbb{P}(A \\cap B) - \\mathbb{P}(A \\cap C) - \\mathbb{P}(B \\cap C) + \\mathbb{P}(A \\cap B \\cap C)\\)"
+    "text": "Proposition 5 Visual Proof\n\n\nProposition 5\n\n\n\\(\\mathbb{P}(A \\cup B \\cup C) = \\mathbb{P}(A) + \\mathbb{P}(B) + \\mathbb{P}(C) - \\mathbb{P}(A \\cap B) - \\mathbb{P}(A \\cap C) - \\mathbb{P}(B \\cap C) + \\mathbb{P}(A \\cap B \\cap C)\\)\n\n\nBlank Venn diagrams laid out as the inclusion-exclusion formula for three eventsℙ(A ∪ B ∪ C)SABC=+ℙ(A)SABC+ℙ(B)SABC+ℙ(C)SABC−ℙ(A ∩ B)SABC−ℙ(A ∩ C)SABC−ℙ(B ∩ C)SABC+ℙ(A ∩ B ∩ C)SABC"
   },
   {
     "objectID": "lessons/03_Lang_prob/03_Lang_prob.html#some-final-remarks-on-these-proposition",
@@ -18624,14 +18624,14 @@
     "href": "lessons/03_Lang_prob/03_Lang_prob.html#partitions",
     "title": "Lesson 3: Language of Probability",
     "section": "Partitions",
-    "text": "Partitions\n\n\n\n\nDefinition: Partition\n\n\nA set of events \\(\\{A_i\\}_{i=1}^{n}\\) create a partition of \\(A\\), if\n\nthe \\(A_i\\)’s are disjoint (mutually exclusive) and\n\\(\\bigcup \\limits_{i=1}^n A_i = A\\)\n\n\n\n\n\nExample 2\n\n\n\nIf \\(A \\subset B\\), then \\(\\{A, B \\cap A^C\\}\\) is a partition of \\(B\\).\nIf \\(S = \\bigcup \\limits_{i=1}^n A_i\\), and the \\(A_i\\)’s are disjoint, then the \\(A_i\\)’s are a partition of the sample space.\n\n\n\n\n\n\nCreating partitions is sometimes used to help calculate probabilities, since by Axiom 3 we can add the probabilities of disjoint events."
+    "text": "Partitions\n\n\n\n\nDefinition: Partition\n\n\nA set of events \\(\\{A_i\\}_{i=1}^{n}\\) create a partition of \\(A\\), if\n\nthe \\(A_i\\)’s are disjoint (mutually exclusive) and\n\\(\\bigcup \\limits_{i=1}^n A_i = A\\)\n\n\n\n\n\nNote\n\n\n\nIf \\(A \\subset B\\), then \\(\\{A, B \\cap A^C\\}\\) is a set of partitions of \\(B\\).\nIf \\(S = \\bigcup \\limits_{i=1}^n A_i\\), and the \\(A_i\\)’s are disjoint, then the \\(A_i\\)’s are a partition of the sample space.\n\n\n\n\nBlank sample space SSBlank diagramSBABlank diagramSBlank diagramSAB\n\nCreating partitions is sometimes used to help calculate probabilities, since by Axiom 3 we can add the probabilities of disjoint events."
   },
   {
     "objectID": "lessons/03_Lang_prob/03_Lang_prob.html#weekly-medications",
     "href": "lessons/03_Lang_prob/03_Lang_prob.html#weekly-medications",
     "title": "Lesson 3: Language of Probability",
     "section": "Weekly medications",
-    "text": "Weekly medications\n\n\n\n\nExample 3\n\n\nIf a subject has an\n\n80% chance of taking their medication this week,\n70% chance of taking their medication next week, and\n10% chance of not taking their medication either week,\n\nthen find the probability of them taking their medication exactly one of the two weeks.\n\n\n\nHint: Draw a Venn diagram labelling each of the parts to find the probability."
+    "text": "Weekly medications\n\n\n\n\nExample 2\n\n\nIf a subject has an\n\n80% chance of taking their medication this week,\n70% chance of taking their medication next week, and\n10% chance of not taking their medication either week,\n\nthen find the probability of them taking their medication exactly one of the two weeks.\n\n\n\nHint: Draw a Venn diagram labelling each of the parts to find the probability."
   },
   {
     "objectID": "lessons/02_Simulations/02_Simulations_key_info.html#key-dates",
@@ -18820,7 +18820,7 @@
     "href": "lessons/03_Lang_prob/03_Lang_prob.html#how-can-we-code-some-of-these-12",
     "title": "Lesson 3: Language of Probability",
     "section": "How can we code some of these? (1/2)",
-    "text": "How can we code some of these? (1/2)\n\n\nExample: Simulating Two Rolls of a Fair Four-Sided Die\n\n\nWe’re going to roll two four-sided dice. This time, let’s say event A is rolling matching numbers and event B is rolling at least one 2.\n\n\n\nFirst, we simulate rolling two four-sided dice 10,000 times\n\n\nset.seed(1002)\nrolls = replicate(10000, sample(x = 1:4, size = 2, replace = TRUE))\n\n\nNow, we can create logical vectors for events A and B\n\n\nevent_A = ( rolls[1, ] == rolls[2, ] )\nhead(event_A, 10)\n\n [1] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE\n\nevent_B = ( rolls[1, ] == 2 | rolls[2, ] == 2 )\nhead(event_B, 10)\n\n [1] FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE FALSE"
+    "text": "How can we code some of these? (1/2)\n\n\nExample 1: Simulating Two Rolls of a Fair Four-Sided Die\n\n\nWe’re going to roll two four-sided dice. This time, let’s say event A is rolling matching numbers and event B is rolling at least one 2.\n\n\n\nFirst, we simulate rolling two four-sided dice 10,000 times\n\n\nset.seed(1002)\nrolls = replicate(10000, sample(x = 1:4, size = 2, replace = TRUE))\n\n\nNow, we can create logical vectors for events A and B\n\n\nevent_A = ( rolls[1, ] == rolls[2, ] )\nhead(event_A, 10)\n\n [1] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE\n\nevent_B = ( rolls[1, ] == 2 | rolls[2, ] == 2 )\nhead(event_B, 10)\n\n [1] FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE FALSE"
   },
   {
     "objectID": "lessons/03_Lang_prob/03_Lang_prob.html#how-can-we-code-some-of-these-22",
@@ -25597,5 +25597,292 @@
     "title": "Instructor: Nicole (Nicky) Wakim, PhD",
     "section": "Office Hours",
     "text": "Office Hours\n\n\n\nDay\nTime\nWho\nLink\n\n\n\n\nTuesdays\n11:30 AM - 12:30 PM PT\nNicky\nWebex\n\n\nWednesdays\n3:15 - 4:15 PM PT\nMadi (TA)\nZoom\n\n\nThursdays\n3:00 - 4:00 PM PT\nMadi (TA)\nZoom\n\n\n\nYou don’t need to stay for the whole hour. Drop in for whatever part works for you! If none of these times work, email me and we’ll figure something out."
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob.html#some-final-remarks-on-these-propositions",
+    "href": "lessons/03_Lang_prob/03_Lang_prob.html#some-final-remarks-on-these-propositions",
+    "title": "Lesson 3: Language of Probability",
+    "section": "Some final remarks on these propositions",
+    "text": "Some final remarks on these propositions\n\nNotice how we spliced events into multiple disjoint events\n\nIt is often easier to work with disjoint events\n\n\n \n\nIf we want to calculate the probability for one event, we may need to get creative with how we manipulate other events and the sample space\n\nHelps us use any incomplete information we have"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob.html#section",
+    "href": "lessons/03_Lang_prob/03_Lang_prob.html#section",
+    "title": "Lesson 3: Language of Probability",
+    "section": "",
+    "text": "Example 2: Blood Pressures (BPs)\n\n\nSuppose you have \\(n\\) subjects in a study. Let \\(H_i\\) be the event that person \\(i\\) has high BP, for \\(i=1\\ldots n\\).\nUse set theory notation to denote the following events:\n\nEvent subject \\(i\\) does not have high BP\nEvent all \\(n\\) subjects have high BP\nEvent at least one subject has high BP\nEvent all of them do not have high BP\nEvent at least one subject does not have high BP"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob.html#section-1",
+    "href": "lessons/03_Lang_prob/03_Lang_prob.html#section-1",
+    "title": "Lesson 3: Language of Probability",
+    "section": "",
+    "text": "Example 2: Blood Pressures (BPs)\n\n\nSuppose you have \\(n\\) subjects in a study. Let \\(H_i\\) be the event that person \\(i\\) has high BP, for \\(i=1\\ldots n\\).\nUse set theory notation to denote the following events:\n\n\n\n\n\n\n\nEvent subject \\(i\\) does not have high BP\n\n\n\n\n\n\n\n\n\n\n\nEvent all \\(n\\) subjects have high BP\n\n\n\n\nBlank Venn diagramSH1H2\n\n\n\n\n\n\nEvent at least one subject has high BP\n\n\n\n\nBlank Venn diagramSH1H2"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob.html#section-2",
+    "href": "lessons/03_Lang_prob/03_Lang_prob.html#section-2",
+    "title": "Lesson 3: Language of Probability",
+    "section": "",
+    "text": "Example 2: Blood Pressures (BPs)\n\n\nSuppose you have \\(n\\) subjects in a study. Let \\(H_i\\) be the event that person \\(i\\) has high BP, for \\(i=1\\ldots n\\).\nUse set theory notation to denote the following events:\n\n\n\n\n\n\n\nEvent all of them do not have high BP\n\n\n\n\nBlank Venn diagramSH1H2\n\n\n\n\n\n\nEvent at least one subject does not have high BP\n\n\n\nBlank Venn diagramSH1H2"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob.html#section-3",
+    "href": "lessons/03_Lang_prob/03_Lang_prob.html#section-3",
+    "title": "Lesson 3: Language of Probability",
+    "section": "",
+    "text": "Example 3: Weekly medications\n\n\nIf a subject has an\n\n80% chance of taking their medication this week,\n70% chance of taking their medication next week, and\n10% chance of not taking their medication either week,\n\nthen find the probability of them taking their medication exactly one of the two weeks.\n\n\nHint: Draw a Venn diagram labelling each of the parts to find the probability.\n\nBlank Venn diagram for taking medication this week (A) and next week (B)SAB"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#where-are-we",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#where-are-we",
+    "title": "Lesson 3: Language of Probability",
+    "section": "Where are we?",
+    "text": "Where are we?"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#set-theory-12",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#set-theory-12",
+    "title": "Lesson 3: Language of Probability",
+    "section": "Set Theory (1/2)",
+    "text": "Set Theory (1/2)\n\n\n\n\nDefinition: Union\n\n\nThe union of events \\(A\\) and \\(B\\), denoted by \\(A \\cup B\\), contains all outcomes that are in \\(A\\) or \\(B\\) or both\n\n\n\nBlank Venn diagramSAB\n\n\n\n\n\nDefinition: Intersection\n\n\nThe intersection of events \\(A\\) and \\(B\\), denoted by \\(A \\cap B\\), contains all outcomes that are both in \\(A\\) and \\(B\\).\n\n\n\nBlank Venn diagramSAB"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#set-theory-22",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#set-theory-22",
+    "title": "Lesson 3: Language of Probability",
+    "section": "Set Theory (2/2)",
+    "text": "Set Theory (2/2)\n\n\n\n\nDefinition: Complement\n\n\nThe complement of event \\(A\\), denoted by \\(A^C\\) or \\(A'\\), contains all outcomes in the sample space \\(S\\) that are not in \\(A\\) .\n\n\n\nBlank Venn diagramSAB\n\n\n\n\n\nDefinition: Mutually Exclusive\n\n\nEvents \\(A\\) and \\(B\\) are mutually exclusive, or disjoint, if they have no outcomes in common. In this case \\(A \\cap B = \\emptyset\\), where \\(\\emptyset\\) is the empty set.\n\n\n\nBlank Venn diagramSAB"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#how-can-we-code-some-of-these-14",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#how-can-we-code-some-of-these-14",
+    "title": "Lesson 3: Language of Probability",
+    "section": "How can we code some of these? (1/4)",
+    "text": "How can we code some of these? (1/4)\n\n\nExample 1: Simulating Two Rolls of a Fair Four-Sided Die\n\n\nWe’re going to roll two four-sided dice. This time, let’s say event A is rolling matching numbers, event B is rolling at least one 2, and event C is the sum of the dice is 5\n\n\n\n\n\nFirst, we simulate rolling two four-sided dice. We start small, with only 5 simulations, so we can see every roll\n\n\n1set.seed(1022)\n2reps &lt;- 5\nn_dice &lt;- 2\n3rolls &lt;- expand_grid(sim = 1:reps, die = 1:n_dice) |&gt;\n4  mutate(roll = sample(1:4, n(), replace = TRUE))\n\n\n1\n\nSet the seed once, so we get the same “random” rolls every time the slides are made.\n\n2\n\nSave the number of simulations and the number of dice as named values, so they are easy to change later.\n\n3\n\nSame setup as Lesson 2: one row for every combination of simulation and die. The pipe |&gt; passes the table to the next line.\n\n4\n\nmutate() adds a column called roll. n() is the number of rows, so every row gets one random roll from 1 to 4.\n\n\n\n\n\n\n\n\n1rolls\n\n\n1\n\nTyping a name prints it. Each simulation (sim) has two rows, one for each die.\n\n\n\n\n# A tibble: 10 × 3\n     sim   die  roll\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;\n 1     1     1     4\n 2     1     2     3\n 3     2     1     2\n 4     2     2     1\n 5     3     1     1\n 6     3     2     4\n 7     4     1     2\n 8     4     2     2\n 9     5     1     3\n10     5     2     3"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#how-can-we-code-some-of-these-24",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#how-can-we-code-some-of-these-24",
+    "title": "Lesson 3: Language of Probability",
+    "section": "How can we code some of these? (2/4)",
+    "text": "How can we code some of these? (2/4)\n\n\nExample 1: Simulating Two Rolls of a Fair Four-Sided Die\n\n\nWe’re going to roll two four-sided dice. This time, let’s say event A is rolling matching numbers, event B is rolling at least one 2, and event C is the sum of the dice is 5\n\n\n\n\n\nNow, we make one row per simulation, with a TRUE/FALSE column for each event\n\n\n1event_sims &lt;- rolls |&gt;\n2  group_by(sim) |&gt;\n3  summarise(A = n_distinct(roll) == 1,\n4            B = any(roll == 2),\n5            C = sum(roll) == 5)\n\n\n1\n\nStart with rolls and save the result as event_sims.\n\n2\n\nGroup the rows by simulation, so the next line works on the two dice of each simulation together.\n\n3\n\nn_distinct() counts the different values. The dice match exactly when there is only 1 distinct value, so A is TRUE for matching rolls.\n\n4\n\nroll == 2 checks each die. any() is TRUE if at least one of them is a 2.\n\n5\n\nsum() adds the two dice, and == 5 checks if the total is 5.\n\n\n\n\n\n\n\n\n1event_sims\n\n\n1\n\nOne row per simulation. TRUE means the event happened in that simulation.\n\n\n\n\n# A tibble: 5 × 4\n    sim A     B     C    \n  &lt;int&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt;\n1     1 FALSE FALSE FALSE\n2     2 FALSE TRUE  FALSE\n3     3 FALSE FALSE TRUE \n4     4 TRUE  TRUE  FALSE\n5     5 TRUE  FALSE FALSE"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#how-can-we-code-some-of-these-34",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#how-can-we-code-some-of-these-34",
+    "title": "Lesson 3: Language of Probability",
+    "section": "How can we code some of these? (3/4)",
+    "text": "How can we code some of these? (3/4)\n\n\n\n\nUnion\n\n\n\\(A \\cup B\\)\nA | B\n\n1event_sims$A | event_sims$B\n\n\n1\n\n$ pulls one column out of a table. | means “or”: the result is TRUE when A happens, B happens, or both.\n\n\n\n\n[1] FALSE  TRUE FALSE  TRUE  TRUE\n\n\n\n\n\n\nComplement\n\n\n\\(A^c\\) or \\(A'\\)\n!A\n\n1!event_sims$A\n\n\n1\n\n! means “not”: it flips every TRUE to FALSE and every FALSE to TRUE.\n\n\n\n\n[1]  TRUE  TRUE  TRUE FALSE FALSE\n\n\n\n\n\n\n\nIntersection\n\n\n\\(A \\cap B\\)\nA & B\n\n1event_sims$A & event_sims$B\n\n\n1\n\n& means “and”: the result is TRUE only when A and B both happen.\n\n\n\n\n[1] FALSE FALSE FALSE  TRUE FALSE\n\n\n\n\n\n\nMutually Exclusive\n\n\n\\(A \\cap C = \\emptyset\\)\nany(A & C) is FALSE\n\n1any(event_sims$A & event_sims$C)\n\n\n1\n\nA & C is TRUE when the dice match and sum to 5. any() checks if that ever happens. Matching dice always have an even sum, so it never does: A and C are mutually exclusive.\n\n\n\n\n[1] FALSE"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#how-can-we-code-some-of-these-44",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#how-can-we-code-some-of-these-44",
+    "title": "Lesson 3: Language of Probability",
+    "section": "How can we code some of these? (4/4)",
+    "text": "How can we code some of these? (4/4)\n\n\nExample 1: Simulating Two Rolls of a Fair Four-Sided Die\n\n\nWe’re going to roll two four-sided dice. This time, let’s say event A is rolling matching numbers, event B is rolling at least one 2, and event C is the sum of the dice is 5\n\n\n\n\n\nSame code, now with 10,000 simulations\n\n\n1reps &lt;- 10000\n2rolls &lt;- expand_grid(sim = 1:reps, die = 1:n_dice) |&gt;\n  mutate(roll = sample(1:4, n(), replace = TRUE))\nevent_sims &lt;- rolls |&gt;\n  group_by(sim) |&gt;\n  summarise(A = n_distinct(roll) == 1,\n            B = any(roll == 2),\n            C = sum(roll) == 5)\n\n\n1\n\nThe only change: 10,000 simulations instead of 5.\n\n2\n\nThe rest is the same code as before.\n\n\n\n\n\n\n\n\nEstimate the probabilities\n\n\n1event_sims |&gt;\n  summarise(p_A = mean(A),\n            p_B = mean(B),\n2            p_A_and_B = mean(A & B),\n            p_A_or_B = mean(A | B))\n\n\n1\n\nmean() of a TRUE/FALSE column is a proportion: TRUE counts as 1 and FALSE as 0. So mean(A) is the proportion of simulations where A happened.\n\n2\n\nWe can use & and | right inside mean().\n\n\n\n\n# A tibble: 1 × 4\n    p_A   p_B p_A_and_B p_A_or_B\n  &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 0.255 0.437    0.0676    0.624\n\n\nExact: \\(\\frac{4}{16} = 0.25\\), \\(\\frac{7}{16} = 0.4375\\), \\(\\frac{1}{16} = 0.0625\\), \\(\\frac{10}{16} = 0.625\\)"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#probability-axioms",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#probability-axioms",
+    "title": "Lesson 3: Language of Probability",
+    "section": "Probability Axioms",
+    "text": "Probability Axioms\n\n\n\n\nAxiom 1\n\n\nFor every event \\(A\\), \\(0\\leq\\mathbb{P}(A)\\leq 1\\). Probability is between 0 and 1.\n\n\n\n\nAxiom 2\n\n\nFor the sample space \\(S\\), \\(\\mathbb{P}(S)=1\\).\n\n\n\n\nAxiom 3\n\n\nIf \\(A_1, A_2, A_3, \\ldots\\), is a collection of disjoint events, then \\[\\mathbb{P}\\Big( \\bigcup \\limits_{i=1}^{\\infty}A_i\\Big) =  \\sum_{i=1}^{\\infty}\\mathbb{P}(A_i).\\] The probability of at least one \\(A_i\\) is the sum of the individual probabilities of each."
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#some-probability-properties",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#some-probability-properties",
+    "title": "Lesson 3: Language of Probability",
+    "section": "Some probability properties",
+    "text": "Some probability properties\nUsing the Axioms, we can prove all other probability properties! Events A, B, and C are not necessarily disjoint!\n\n\n\n\nProposition 1\n\n\nFor any event \\(A\\), \\(\\mathbb{P}(A)= 1 - \\mathbb{P}(A^C)\\)\n\n\n\n\nProposition 2\n\n\n\\(\\mathbb{P}(\\emptyset)=0\\)\n\n\n\n\nProposition 3\n\n\nIf \\(A \\subseteq B\\), then \\(\\mathbb{P}(A) \\leq \\mathbb{P}(B)\\)\n\n\n\n\n\nProposition 4\n\n\n\\[\\mathbb{P}(A \\cup B) = \\mathbb{P}(A) + \\mathbb{P}(B) - \\mathbb{P}(A \\cap B)\\] where \\(A\\) and \\(B\\) are not necessarily disjoint\n\n\n\n\nProposition 5\n\n\n\\(\\begin{aligned} \\mathbb{P}(A \\cup B & \\cup C) = \\mathbb{P}(A) + \\mathbb{P}(B) + \\\\ & \\mathbb{P}(C) - \\mathbb{P}(A \\cap B) - \\mathbb{P}(A \\cap C) - \\\\ & \\mathbb{P}(B \\cap C) + \\mathbb{P}(A \\cap B \\cap C) \\end{aligned}\\)"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#proposition-1-proof",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#proposition-1-proof",
+    "title": "Lesson 3: Language of Probability",
+    "section": "Proposition 1 Proof",
+    "text": "Proposition 1 Proof\n\n\n\n\nProposition 1\n\n\nFor any event \\(A\\), \\(\\mathbb{P}(A)= 1 - \\mathbb{P}(A^C)\\)\n\n\nBlank Venn diagramSA\n\n\n\nUse Axioms!\n\n\nA1: \\(0\\leq\\mathbb{P}(A)\\leq 1\\)\nA2: \\(\\mathbb{P}(S)=1\\)\nA3: For disjoint \\(A_i\\),\n\\(\\mathbb{P}\\Big( \\bigcup \\limits_{i=1}^{\\infty}A_i\\Big) =  \\sum_{i=1}^{\\infty}\\mathbb{P}(A_i)\\)"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#proposition-1-in-our-dice-simulation",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#proposition-1-in-our-dice-simulation",
+    "title": "Lesson 3: Language of Probability",
+    "section": "Proposition 1 in our dice simulation",
+    "text": "Proposition 1 in our dice simulation\n\n\nProposition 1\n\n\nFor any event \\(A\\), \\(\\mathbb{P}(A)= 1 - \\mathbb{P}(A^C)\\)\n\n\n\n\nTwo dice: B is “at least one 2”, so \\(B^C\\) is “no 2s”\n\n1event_sims |&gt;\n  summarise(p_B = mean(B),\n2            p_B_comp = mean(!B),\n3            p_B_prop_1= 1 - mean(!B))\n\n\n1\n\nBack to our 10,000 simulations of two dice.\n\n2\n\n!B is the complement, \\(B^C\\).\n\n3\n\nProposition 1 says one minus its probability gives \\(\\mathbb{P}(B)\\).\n\n\n\n\n# A tibble: 1 × 3\n    p_B p_B_comp p_B_prop_1\n  &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;\n1 0.437    0.563      0.437\n\n\nExact: \\(1 - \\mathbb{P}(B^C) = 1 - \\left(\\frac{3}{4}\\right)^2 = \\frac{7}{16} = 0.4375\\)"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#proposition-2-proof",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#proposition-2-proof",
+    "title": "Lesson 3: Language of Probability",
+    "section": "Proposition 2 Proof",
+    "text": "Proposition 2 Proof\n\n\n\n\nProposition 2\n\n\n\\(\\mathbb{P}(\\emptyset)=0\\)\n\n\nBlank Venn diagramSA\n\n\n\nUse Axioms!\n\n\nA1: \\(0\\leq\\mathbb{P}(A)\\leq 1\\)\nA2: \\(\\mathbb{P}(S)=1\\)\nA3: For disjoint \\(A_i\\),\n\\(\\mathbb{P}\\Big( \\bigcup \\limits_{i=1}^{\\infty}A_i\\Big) =  \\sum_{i=1}^{\\infty}\\mathbb{P}(A_i)\\)"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#proposition-3-proof",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#proposition-3-proof",
+    "title": "Lesson 3: Language of Probability",
+    "section": "Proposition 3 Proof",
+    "text": "Proposition 3 Proof\n\n\n\n\nProposition 3\n\n\nIf \\(A \\subseteq B\\), then \\(\\mathbb{P}(A) \\leq \\mathbb{P}(B)\\)\n\n\nBlank Venn diagramSBA\n\n\n\nUse Axioms!\n\n\nA1: \\(0\\leq\\mathbb{P}(A)\\leq 1\\)\nA2: \\(\\mathbb{P}(S)=1\\)\nA3: For disjoint \\(A_i\\),\n\\(\\mathbb{P}\\Big( \\bigcup \\limits_{i=1}^{\\infty}A_i\\Big) =  \\sum_{i=1}^{\\infty}\\mathbb{P}(A_i)\\)"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#proposition-4-visual-proof",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#proposition-4-visual-proof",
+    "title": "Lesson 3: Language of Probability",
+    "section": "Proposition 4 Visual Proof",
+    "text": "Proposition 4 Visual Proof\n\n\nProposition 4\n\n\n\\(\\mathbb{P}(A \\cup B) = \\mathbb{P}(A) + \\mathbb{P}(B) - \\mathbb{P}(A \\cap B)\\)\n\n\nFour blank Venn diagrams laid out as P(A or B) = P(A) + P(B) - P(A and B)ℙ(A ∪ B)SAB=ℙ(A)SAB+ℙ(B)SAB−ℙ(A ∩ B)SAB"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#proposition-4-in-our-dice-simulation",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#proposition-4-in-our-dice-simulation",
+    "title": "Lesson 3: Language of Probability",
+    "section": "Proposition 4 in our dice simulation",
+    "text": "Proposition 4 in our dice simulation\n\n\nProposition 4\n\n\n\\(\\mathbb{P}(A \\cup B) = \\mathbb{P}(A) + \\mathbb{P}(B) - \\mathbb{P}(A \\cap B)\\)\n\n\n\nA is matching numbers and B is at least one 2, so they overlap at (2, 2)\n\n\n1event_sims |&gt;\n2  summarise(p_A_or_B = mean(A | B),\n3            add_subtract = mean(A) + mean(B) - mean(A & B))\n\n\n1\n\nBack to our 10,000 simulations of two dice.\n\n2\n\nThe left side of Proposition 4: the proportion of simulations where A or B happened.\n\n3\n\nThe right side: add the two proportions, then subtract the overlap once.\n\n\n\n\n# A tibble: 1 × 2\n  p_A_or_B add_subtract\n     &lt;dbl&gt;        &lt;dbl&gt;\n1    0.624        0.624\n\n\n \n\nExact: \\(\\frac{4}{16} + \\frac{7}{16} - \\frac{1}{16} = \\frac{10}{16} = 0.625\\)\nThe two columns match exactly, not just approximately"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#proposition-5-visual-proof",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#proposition-5-visual-proof",
+    "title": "Lesson 3: Language of Probability",
+    "section": "Proposition 5 Visual Proof",
+    "text": "Proposition 5 Visual Proof\n\n\nProposition 5\n\n\n\\(\\mathbb{P}(A \\cup B \\cup C) = \\mathbb{P}(A) + \\mathbb{P}(B) + \\mathbb{P}(C) - \\mathbb{P}(A \\cap B) - \\mathbb{P}(A \\cap C) - \\mathbb{P}(B \\cap C) + \\mathbb{P}(A \\cap B \\cap C)\\)\n\n\nBlank Venn diagrams laid out as the inclusion-exclusion formula for three eventsℙ(A ∪ B ∪ C)SABC=+ℙ(A)SABC+ℙ(B)SABC+ℙ(C)SABC−ℙ(A ∩ B)SABC−ℙ(A ∩ C)SABC−ℙ(B ∩ C)SABC+ℙ(A ∩ B ∩ C)SABC"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#some-final-remarks-on-these-propositions",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#some-final-remarks-on-these-propositions",
+    "title": "Lesson 3: Language of Probability",
+    "section": "Some final remarks on these propositions",
+    "text": "Some final remarks on these propositions\n\nNotice how we spliced events into multiple disjoint events\n\nIt is often easier to work with disjoint events\n\n\n \n\nIf we want to calculate the probability for one event, we may need to get creative with how we manipulate other events and the sample space\n\nHelps us use any incomplete information we have"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#de-morgans-laws",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#de-morgans-laws",
+    "title": "Lesson 3: Language of Probability",
+    "section": "De Morgan’s Laws",
+    "text": "De Morgan’s Laws\n\n\nTheorem: De Morgan’s 1st Law\n\n\nFor a collection of events (sets) \\(A_1, A_2, A_3, \\ldots\\)\n\\[\\bigcap\\limits_{i=1}^{n}A_i^C = \\Big(\\bigcup\\limits_{i=1}^{n}A_i\\Big)^C\\]\n\n\n“all not A = \\((\\)at least one event A\\()^C\\)” or “intersection of the complements is the complement of the union”\n\n\nTheorem: De Morgan’s 2nd Law\n\n\nFor a collection of events (sets) \\(A_1, A_2, A_3, \\ldots\\)\n\\[\\bigcup\\limits_{i=1}^{n}A_i^C = \\Big(\\bigcap\\limits_{i=1}^{n}A_i\\Big)^C\\]\n\n\n“at least one event not A = \\((\\)all A\\()^C\\)” or “union of complements is complement of the intersection”"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#section",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#section",
+    "title": "Lesson 3: Language of Probability",
+    "section": "",
+    "text": "Example 2: Blood Pressures (BPs)\n\n\nSuppose you have \\(n\\) subjects in a study. Let \\(H_i\\) be the event that person \\(i\\) has high BP, for \\(i=1\\ldots n\\).\nUse set theory notation to denote the following events:\n\nEvent subject \\(i\\) does not have high BP\nEvent all \\(n\\) subjects have high BP\nEvent at least one subject has high BP\nEvent all of them do not have high BP\nEvent at least one subject does not have high BP"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#section-1",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#section-1",
+    "title": "Lesson 3: Language of Probability",
+    "section": "",
+    "text": "Example 2: Blood Pressures (BPs)\n\n\nSuppose you have \\(n\\) subjects in a study. Let \\(H_i\\) be the event that person \\(i\\) has high BP, for \\(i=1\\ldots n\\).\nUse set theory notation to denote the following events:\n\n\n\n\n\n\n\nEvent subject \\(i\\) does not have high BP\n\n\n\n\n\n\n\n\n\n\n\nEvent all \\(n\\) subjects have high BP\n\n\n\n\nBlank Venn diagramSH1H2\n\n\n\n\n\n\nEvent at least one subject has high BP\n\n\n\n\nBlank Venn diagramSH1H2"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#section-2",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#section-2",
+    "title": "Lesson 3: Language of Probability",
+    "section": "",
+    "text": "Example 2: Blood Pressures (BPs)\n\n\nSuppose you have \\(n\\) subjects in a study. Let \\(H_i\\) be the event that person \\(i\\) has high BP, for \\(i=1\\ldots n\\).\nUse set theory notation to denote the following events:\n\n\n\n\n\n\n\nEvent all of them do not have high BP\n\n\n\n\nBlank Venn diagramSH1H2\n\n\n\n\n\n\nEvent at least one subject does not have high BP\n\n\n\nBlank Venn diagramSH1H2"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#de-morgans-laws-in-simulation-12",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#de-morgans-laws-in-simulation-12",
+    "title": "Lesson 3: Language of Probability",
+    "section": "De Morgan’s Laws in simulation (1/2)",
+    "text": "De Morgan’s Laws in simulation (1/2)\nSimulate \\(n = 6\\) subjects, each with a 30% chance of high BP, with 10,000 reps\n\n1n_subjects &lt;- 6\np_high &lt;- 0.3\n2subjects &lt;- expand_grid(sim = 1:reps, subject = 1:n_subjects) |&gt;\n3  mutate(status = sample(c(\"high\", \"normal\"), n(), replace = TRUE,\n                         prob = c(p_high, 1 - p_high)))\nbp_sims &lt;- subjects |&gt;\n  group_by(sim) |&gt;\n4  summarise(all_not_high = all(status != \"high\"),    # Q2\n5            not_any_high = !any(status == \"high\"),   # Q3\n6            any_not_high = any(status != \"high\"),    # Q4\n            not_all_high = !all(status == \"high\"))   # Q5\nhead(bp_sims, 3)\n\n\n1\n\nSave the number of subjects and the chance of high BP as named values, so they are easy to change.\n\n2\n\nSame pattern as the dice: one row for every combination of simulation and subject.\n\n3\n\nLike the unfair coin in Lesson 1: prob gives each label its own chance, here 30% “high” and 70% “normal”.\n\n4\n\nall() is TRUE only if every subject in the simulation meets the condition. This is \\(\\bigcap H_i^C\\), “all do not have high BP”.\n\n5\n\n!any() is “not (at least one has high BP)”, which is \\(\\big(\\bigcup H_i\\big)^C\\). De Morgan’s 1st Law says columns 4 and 5 are the same event.\n\n6\n\nThe same for De Morgan’s 2nd Law: \\(\\bigcup H_i^C\\) (“at least one does not have high BP”) and \\(\\big(\\bigcap H_i\\big)^C\\) (“not all have high BP”).\n\n\n\n\n# A tibble: 3 × 5\n    sim all_not_high not_any_high any_not_high not_all_high\n  &lt;int&gt; &lt;lgl&gt;        &lt;lgl&gt;        &lt;lgl&gt;        &lt;lgl&gt;       \n1     1 FALSE        FALSE        TRUE         TRUE        \n2     2 FALSE        FALSE        TRUE         TRUE        \n3     3 FALSE        FALSE        TRUE         TRUE"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#de-morgans-laws-in-simulation-22",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#de-morgans-laws-in-simulation-22",
+    "title": "Lesson 3: Language of Probability",
+    "section": "De Morgan’s Laws in simulation (2/2)",
+    "text": "De Morgan’s Laws in simulation (2/2)\n\nCheck that each pair of columns agrees in every simulation\n\n\n1bp_sims |&gt;\n2  summarise(law_1_agree = mean(all_not_high == not_any_high),\n            law_2_agree = mean(any_not_high == not_all_high),\n3            p_at_least_one_high = 1 - mean(all_not_high))\n\n\n1\n\nStart with the 10,000 simulations, one row each.\n\n2\n\n== compares the two columns row by row. A proportion of 1 means they agree in all 10,000 simulations.\n\n3\n\n“At least one has high BP” is a union, which is hard to count directly. De Morgan plus Proposition 1 turns it into 1 minus an intersection: “all do not have high BP”.\n\n\n\n\n# A tibble: 1 × 3\n  law_1_agree law_2_agree p_at_least_one_high\n        &lt;dbl&gt;       &lt;dbl&gt;               &lt;dbl&gt;\n1           1           1               0.876\n\n\n \n\nExact: \\(1 - (0.7)^6 \\approx 0.8824\\)\nWe can find the probability of “all do not have high BP” more easily in the coming chapters"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#remarks-on-de-morgans-laws",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#remarks-on-de-morgans-laws",
+    "title": "Lesson 3: Language of Probability",
+    "section": "Remarks on De Morgan’s Laws",
+    "text": "Remarks on De Morgan’s Laws\n\nThese laws also hold for infinite collections of events.\n \nDraw Venn diagrams to convince yourself that these are true!\n \nThese laws are very useful when calculating probabilities.\n\nThis is because calculating the probability of the intersection of events is often much easier than the union of events.\nThis is not obvious right now, but we will see in the coming chapters why."
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#partitions",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#partitions",
+    "title": "Lesson 3: Language of Probability",
+    "section": "Partitions",
+    "text": "Partitions\n\n\n\n\nDefinition: Partition\n\n\nA set of events \\(\\{A_i\\}_{i=1}^{n}\\) create a partition of \\(A\\), if\n\nthe \\(A_i\\)’s are disjoint (mutually exclusive) and\n\\(\\bigcup \\limits_{i=1}^n A_i = A\\)\n\n\n\n\n\nNote\n\n\n\nIf \\(A \\subset B\\), then \\(\\{A, B \\cap A^C\\}\\) is a set of partitions of \\(B\\).\nIf \\(S = \\bigcup \\limits_{i=1}^n A_i\\), and the \\(A_i\\)’s are disjoint, then the \\(A_i\\)’s are a partition of the sample space.\n\n\n\n\nBlank sample space SSBlank diagramSBABlank diagramSBlank diagramSAB\n\nCreating partitions is sometimes used to help calculate probabilities, since by Axiom 3 we can add the probabilities of disjoint events."
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#section-3",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#section-3",
+    "title": "Lesson 3: Language of Probability",
+    "section": "",
+    "text": "Example 3: Weekly medications\n\n\nIf a subject has an\n\n80% chance of taking their medication this week,\n70% chance of taking their medication next week, and\n10% chance of not taking their medication either week,\n\nthen find the probability of them taking their medication exactly one of the two weeks.\n\n\nHint: Draw a Venn diagram labelling each of the parts to find the probability.\n\nBlank Venn diagram for taking medication this week (A) and next week (B)SAB"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob_.html#checking-example-3-with-simulation",
+    "href": "lessons/03_Lang_prob/03_Lang_prob_.html#checking-example-3-with-simulation",
+    "title": "Lesson 3: Language of Probability",
+    "section": "Checking Example 3 with simulation",
+    "text": "Checking Example 3 with simulation\n\nAfter solving with the Venn diagram: simulate the four disjoint pieces (a partition of the sample space) and check the given facts\n\n\n1cells &lt;- c(\"both\", \"this only\", \"next only\", \"neither\")\n2med_sims &lt;- expand_grid(sim = 1:reps) |&gt;\n3  mutate(cell = sample(cells, n(), replace = TRUE,\n                       prob = c(0.6, 0.2, 0.1, 0.1)))\nmed_sims |&gt;\n4  summarise(p_this = mean(cell %in% c(\"both\", \"this only\")),\n            p_next = mean(cell %in% c(\"both\", \"next only\")),\n            p_neither = mean(cell == \"neither\"),\n5            p_exactly_one = mean(cell %in% c(\"this only\", \"next only\")))\n\n\n1\n\nThe four pieces of the Venn diagram. They are disjoint and together make up the whole sample space, so they form a partition.\n\n2\n\nOne row per simulation. With only one thing to simulate per week pair, expand_grid() just needs sim.\n\n3\n\nEach simulation lands in exactly one piece, with the probabilities from our Venn diagram.\n\n4\n\n%in% checks if cell is any of the listed pieces. “Took it this week” is the union of two disjoint pieces, so by Axiom 3 its probability is their sum.\n\n5\n\nOur answer: “exactly one week” is the union of the two “only” pieces.\n\n\n\n\n# A tibble: 1 × 4\n  p_this p_next p_neither p_exactly_one\n   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;\n1  0.797  0.696     0.105         0.297\n\n\n \n\nThe first three columns should be close to the 0.8, 0.7, and 0.1 we were given. If they are, our partition is right, and the last column checks our answer."
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob.html#how-can-we-code-some-of-these-14",
+    "href": "lessons/03_Lang_prob/03_Lang_prob.html#how-can-we-code-some-of-these-14",
+    "title": "Lesson 3: Language of Probability",
+    "section": "How can we code some of these? (1/4)",
+    "text": "How can we code some of these? (1/4)\n\n\nExample 1: Simulating Two Rolls of a Fair Four-Sided Die\n\n\nWe’re going to roll two four-sided dice. This time, let’s say event A is rolling matching numbers, event B is rolling at least one 2, and event C is the sum of the dice is 5\n\n\n\n\n\nFirst, we simulate rolling two four-sided dice. We start small, with only 5 simulations, so we can see every roll\n\n\n1set.seed(1022)\n2reps &lt;- 5\nn_dice &lt;- 2\n3rolls &lt;- expand_grid(sim = 1:reps, die = 1:n_dice) |&gt;\n4  mutate(roll = sample(1:4, n(), replace = TRUE))\n\n\n1\n\nSet the seed once, so we get the same “random” rolls every time the slides are made.\n\n2\n\nSave the number of simulations and the number of dice as named values, so they are easy to change later.\n\n3\n\nSame setup as Lesson 2: one row for every combination of simulation and die. The pipe |&gt; passes the table to the next line.\n\n4\n\nmutate() adds a column called roll. n() is the number of rows, so every row gets one random roll from 1 to 4.\n\n\n\n\n\n\n\n\n1rolls\n\n\n1\n\nTyping a name prints it. Each simulation (sim) has two rows, one for each die.\n\n\n\n\n# A tibble: 10 × 3\n     sim   die  roll\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;\n 1     1     1     4\n 2     1     2     3\n 3     2     1     2\n 4     2     2     1\n 5     3     1     1\n 6     3     2     4\n 7     4     1     2\n 8     4     2     2\n 9     5     1     3\n10     5     2     3"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob.html#how-can-we-code-some-of-these-24",
+    "href": "lessons/03_Lang_prob/03_Lang_prob.html#how-can-we-code-some-of-these-24",
+    "title": "Lesson 3: Language of Probability",
+    "section": "How can we code some of these? (2/4)",
+    "text": "How can we code some of these? (2/4)\n\n\nExample 1: Simulating Two Rolls of a Fair Four-Sided Die\n\n\nWe’re going to roll two four-sided dice. This time, let’s say event A is rolling matching numbers, event B is rolling at least one 2, and event C is the sum of the dice is 5\n\n\n\n\n\nNow, we make one row per simulation, with a TRUE/FALSE column for each event\n\n\n1event_sims &lt;- rolls |&gt;\n2  group_by(sim) |&gt;\n3  summarise(A = n_distinct(roll) == 1,\n4            B = any(roll == 2),\n5            C = sum(roll) == 5)\n\n\n1\n\nStart with rolls and save the result as event_sims.\n\n2\n\nGroup the rows by simulation, so the next line works on the two dice of each simulation together.\n\n3\n\nn_distinct() counts the different values. The dice match exactly when there is only 1 distinct value, so A is TRUE for matching rolls.\n\n4\n\nroll == 2 checks each die. any() is TRUE if at least one of them is a 2.\n\n5\n\nsum() adds the two dice, and == 5 checks if the total is 5.\n\n\n\n\n\n\n\n\n1event_sims\n\n\n1\n\nOne row per simulation. TRUE means the event happened in that simulation.\n\n\n\n\n# A tibble: 5 × 4\n    sim A     B     C    \n  &lt;int&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt;\n1     1 FALSE FALSE FALSE\n2     2 FALSE TRUE  FALSE\n3     3 FALSE FALSE TRUE \n4     4 TRUE  TRUE  FALSE\n5     5 TRUE  FALSE FALSE"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob.html#how-can-we-code-some-of-these-34",
+    "href": "lessons/03_Lang_prob/03_Lang_prob.html#how-can-we-code-some-of-these-34",
+    "title": "Lesson 3: Language of Probability",
+    "section": "How can we code some of these? (3/4)",
+    "text": "How can we code some of these? (3/4)\n\n\n\n\nUnion\n\n\n\\(A \\cup B\\)\nA | B\n\n1event_sims$A | event_sims$B\n\n\n1\n\n$ pulls one column out of a table. | means “or”: the result is TRUE when A happens, B happens, or both.\n\n\n\n\n[1] FALSE  TRUE FALSE  TRUE  TRUE\n\n\n\n\n\n\nComplement\n\n\n\\(A^c\\) or \\(A'\\)\n!A\n\n1!event_sims$A\n\n\n1\n\n! means “not”: it flips every TRUE to FALSE and every FALSE to TRUE.\n\n\n\n\n[1]  TRUE  TRUE  TRUE FALSE FALSE\n\n\n\n\n\n\n\nIntersection\n\n\n\\(A \\cap B\\)\nA & B\n\n1event_sims$A & event_sims$B\n\n\n1\n\n& means “and”: the result is TRUE only when A and B both happen.\n\n\n\n\n[1] FALSE FALSE FALSE  TRUE FALSE\n\n\n\n\n\n\nMutually Exclusive\n\n\n\\(A \\cap C = \\emptyset\\)\nany(A & C) is FALSE\n\n1any(event_sims$A & event_sims$C)\n\n\n1\n\nA & C is TRUE when the dice match and sum to 5. any() checks if that ever happens. Matching dice always have an even sum, so it never does: A and C are mutually exclusive.\n\n\n\n\n[1] FALSE"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob.html#how-can-we-code-some-of-these-44",
+    "href": "lessons/03_Lang_prob/03_Lang_prob.html#how-can-we-code-some-of-these-44",
+    "title": "Lesson 3: Language of Probability",
+    "section": "How can we code some of these? (4/4)",
+    "text": "How can we code some of these? (4/4)\n\n\nExample 1: Simulating Two Rolls of a Fair Four-Sided Die\n\n\nWe’re going to roll two four-sided dice. This time, let’s say event A is rolling matching numbers, event B is rolling at least one 2, and event C is the sum of the dice is 5\n\n\n\n\n\nSame code, now with 10,000 simulations\n\n\n1reps &lt;- 10000\n2rolls &lt;- expand_grid(sim = 1:reps, die = 1:n_dice) |&gt;\n  mutate(roll = sample(1:4, n(), replace = TRUE))\nevent_sims &lt;- rolls |&gt;\n  group_by(sim) |&gt;\n  summarise(A = n_distinct(roll) == 1,\n            B = any(roll == 2),\n            C = sum(roll) == 5)\n\n\n1\n\nThe only change: 10,000 simulations instead of 5.\n\n2\n\nThe rest is the same code as before.\n\n\n\n\n\n\n\n\nEstimate the probabilities\n\n\n1event_sims |&gt;\n  summarise(p_A = mean(A),\n            p_B = mean(B),\n2            p_A_and_B = mean(A & B),\n            p_A_or_B = mean(A | B))\n\n\n1\n\nmean() of a TRUE/FALSE column is a proportion: TRUE counts as 1 and FALSE as 0. So mean(A) is the proportion of simulations where A happened.\n\n2\n\nWe can use & and | right inside mean().\n\n\n\n\n# A tibble: 1 × 4\n    p_A   p_B p_A_and_B p_A_or_B\n  &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 0.255 0.437    0.0676    0.624\n\n\nExact: \\(\\frac{4}{16} = 0.25\\), \\(\\frac{7}{16} = 0.4375\\), \\(\\frac{1}{16} = 0.0625\\), \\(\\frac{10}{16} = 0.625\\)"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob.html#proposition-1-in-our-dice-simulation",
+    "href": "lessons/03_Lang_prob/03_Lang_prob.html#proposition-1-in-our-dice-simulation",
+    "title": "Lesson 3: Language of Probability",
+    "section": "Proposition 1 in our dice simulation",
+    "text": "Proposition 1 in our dice simulation\n\n\nProposition 1\n\n\nFor any event \\(A\\), \\(\\mathbb{P}(A)= 1 - \\mathbb{P}(A^C)\\)\n\n\n\n\nTwo dice: B is “at least one 2”, so \\(B^C\\) is “no 2s”\n\n1event_sims |&gt;\n  summarise(p_B = mean(B),\n2            p_B_comp = mean(!B),\n3            p_B_prop_1= 1 - mean(!B))\n\n\n1\n\nBack to our 10,000 simulations of two dice.\n\n2\n\n!B is the complement, \\(B^C\\).\n\n3\n\nProposition 1 says one minus its probability gives \\(\\mathbb{P}(B)\\).\n\n\n\n\n# A tibble: 1 × 3\n    p_B p_B_comp p_B_prop_1\n  &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;\n1 0.437    0.563      0.437\n\n\nExact: \\(1 - \\mathbb{P}(B^C) = 1 - \\left(\\frac{3}{4}\\right)^2 = \\frac{7}{16} = 0.4375\\)"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob.html#proposition-4-in-our-dice-simulation",
+    "href": "lessons/03_Lang_prob/03_Lang_prob.html#proposition-4-in-our-dice-simulation",
+    "title": "Lesson 3: Language of Probability",
+    "section": "Proposition 4 in our dice simulation",
+    "text": "Proposition 4 in our dice simulation\n\n\nProposition 4\n\n\n\\(\\mathbb{P}(A \\cup B) = \\mathbb{P}(A) + \\mathbb{P}(B) - \\mathbb{P}(A \\cap B)\\)\n\n\n\nA is matching numbers and B is at least one 2, so they overlap at (2, 2)\n\n\n1event_sims |&gt;\n2  summarise(p_A_or_B = mean(A | B),\n3            add_subtract = mean(A) + mean(B) - mean(A & B))\n\n\n1\n\nBack to our 10,000 simulations of two dice.\n\n2\n\nThe left side of Proposition 4: the proportion of simulations where A or B happened.\n\n3\n\nThe right side: add the two proportions, then subtract the overlap once.\n\n\n\n\n# A tibble: 1 × 2\n  p_A_or_B add_subtract\n     &lt;dbl&gt;        &lt;dbl&gt;\n1    0.624        0.624\n\n\n \n\nExact: \\(\\frac{4}{16} + \\frac{7}{16} - \\frac{1}{16} = \\frac{10}{16} = 0.625\\)\nThe two columns match exactly, not just approximately"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob.html#de-morgans-laws-in-simulation-12",
+    "href": "lessons/03_Lang_prob/03_Lang_prob.html#de-morgans-laws-in-simulation-12",
+    "title": "Lesson 3: Language of Probability",
+    "section": "De Morgan’s Laws in simulation (1/2)",
+    "text": "De Morgan’s Laws in simulation (1/2)\nSimulate \\(n = 6\\) subjects, each with a 30% chance of high BP, with 10,000 reps\n\n1n_subjects &lt;- 6\np_high &lt;- 0.3\n2subjects &lt;- expand_grid(sim = 1:reps, subject = 1:n_subjects) |&gt;\n3  mutate(status = sample(c(\"high\", \"normal\"), n(), replace = TRUE,\n                         prob = c(p_high, 1 - p_high)))\nbp_sims &lt;- subjects |&gt;\n  group_by(sim) |&gt;\n4  summarise(all_not_high = all(status != \"high\"),    # Q2\n5            not_any_high = !any(status == \"high\"),   # Q3\n6            any_not_high = any(status != \"high\"),    # Q4\n            not_all_high = !all(status == \"high\"))   # Q5\nhead(bp_sims, 3)\n\n\n1\n\nSave the number of subjects and the chance of high BP as named values, so they are easy to change.\n\n2\n\nSame pattern as the dice: one row for every combination of simulation and subject.\n\n3\n\nLike the unfair coin in Lesson 1: prob gives each label its own chance, here 30% “high” and 70% “normal”.\n\n4\n\nall() is TRUE only if every subject in the simulation meets the condition. This is \\(\\bigcap H_i^C\\), “all do not have high BP”.\n\n5\n\n!any() is “not (at least one has high BP)”, which is \\(\\big(\\bigcup H_i\\big)^C\\). De Morgan’s 1st Law says columns 4 and 5 are the same event.\n\n6\n\nThe same for De Morgan’s 2nd Law: \\(\\bigcup H_i^C\\) (“at least one does not have high BP”) and \\(\\big(\\bigcap H_i\\big)^C\\) (“not all have high BP”).\n\n\n\n\n# A tibble: 3 × 5\n    sim all_not_high not_any_high any_not_high not_all_high\n  &lt;int&gt; &lt;lgl&gt;        &lt;lgl&gt;        &lt;lgl&gt;        &lt;lgl&gt;       \n1     1 FALSE        FALSE        TRUE         TRUE        \n2     2 FALSE        FALSE        TRUE         TRUE        \n3     3 FALSE        FALSE        TRUE         TRUE"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob.html#de-morgans-laws-in-simulation-22",
+    "href": "lessons/03_Lang_prob/03_Lang_prob.html#de-morgans-laws-in-simulation-22",
+    "title": "Lesson 3: Language of Probability",
+    "section": "De Morgan’s Laws in simulation (2/2)",
+    "text": "De Morgan’s Laws in simulation (2/2)\n\nCheck that each pair of columns agrees in every simulation\n\n\n1bp_sims |&gt;\n2  summarise(law_1_agree = mean(all_not_high == not_any_high),\n            law_2_agree = mean(any_not_high == not_all_high),\n3            p_at_least_one_high = 1 - mean(all_not_high))\n\n\n1\n\nStart with the 10,000 simulations, one row each.\n\n2\n\n== compares the two columns row by row. A proportion of 1 means they agree in all 10,000 simulations.\n\n3\n\n“At least one has high BP” is a union, which is hard to count directly. De Morgan plus Proposition 1 turns it into 1 minus an intersection: “all do not have high BP”.\n\n\n\n\n# A tibble: 1 × 3\n  law_1_agree law_2_agree p_at_least_one_high\n        &lt;dbl&gt;       &lt;dbl&gt;               &lt;dbl&gt;\n1           1           1               0.876\n\n\n \n\nExact: \\(1 - (0.7)^6 \\approx 0.8824\\)\nWe can find the probability of “all do not have high BP” more easily in the coming chapters"
+  },
+  {
+    "objectID": "lessons/03_Lang_prob/03_Lang_prob.html#checking-example-3-with-simulation",
+    "href": "lessons/03_Lang_prob/03_Lang_prob.html#checking-example-3-with-simulation",
+    "title": "Lesson 3: Language of Probability",
+    "section": "Checking Example 3 with simulation",
+    "text": "Checking Example 3 with simulation\n\nAfter solving with the Venn diagram: simulate the four disjoint pieces (a partition of the sample space) and check the given facts\n\n\n1cells &lt;- c(\"both\", \"this only\", \"next only\", \"neither\")\n2med_sims &lt;- expand_grid(sim = 1:reps) |&gt;\n3  mutate(cell = sample(cells, n(), replace = TRUE,\n                       prob = c(0.6, 0.2, 0.1, 0.1)))\nmed_sims |&gt;\n4  summarise(p_this = mean(cell %in% c(\"both\", \"this only\")),\n            p_next = mean(cell %in% c(\"both\", \"next only\")),\n            p_neither = mean(cell == \"neither\"),\n5            p_exactly_one = mean(cell %in% c(\"this only\", \"next only\")))\n\n\n1\n\nThe four pieces of the Venn diagram. They are disjoint and together make up the whole sample space, so they form a partition.\n\n2\n\nOne row per simulation. With only one thing to simulate per week pair, expand_grid() just needs sim.\n\n3\n\nEach simulation lands in exactly one piece, with the probabilities from our Venn diagram.\n\n4\n\n%in% checks if cell is any of the listed pieces. “Took it this week” is the union of two disjoint pieces, so by Axiom 3 its probability is their sum.\n\n5\n\nOur answer: “exactly one week” is the union of the two “only” pieces.\n\n\n\n\n# A tibble: 1 × 4\n  p_this p_next p_neither p_exactly_one\n   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;\n1  0.797  0.696     0.105         0.297\n\n\n \n\nThe first three columns should be close to the 0.8, 0.7, and 0.1 we were given. If they are, our partition is right, and the last column checks our answer."
   }
 ]

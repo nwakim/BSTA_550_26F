@@ -11148,7 +11148,7 @@
     "href": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#independence-of-3-events",
     "title": "Lesson 4: Rules of probability",
     "section": "Independence of 3 Events",
-    "text": "Independence of 3 Events\n\n\nDefinition: Independence of 3 Events\n\n\nEvents \\(A\\), \\(B\\), and \\(C\\) are mutually independent if\n\n\n\\(\\mathbb{P}(A \\cap B) = \\mathbb{P}(A) \\cdot \\mathbb{P}(B)\\)\n\\(\\mathbb{P}(A \\cap C) = \\mathbb{P}(A) \\cdot \\mathbb{P}(C)\\)\n\\(\\mathbb{P}(B \\cap C) = \\mathbb{P}(B) \\cdot \\mathbb{P}(C)\\)\n\n\\(\\mathbb{P}(A \\cap B \\cap C) = \\mathbb{P}(A) \\cdot \\mathbb{P}(B) \\cdot \\mathbb{P}(C)\\)\n\n\n\nRemark:\nOn your homework you will show that \\((1) \\not \\Rightarrow (2)\\) and \\((2) \\not \\Rightarrow (1)\\)."
+    "text": "Independence of 3 Events\n\n\nDefinition: Independence of 3 Events\n\n\nEvents \\(A\\), \\(B\\), and \\(C\\) are mutually independent if\n\n\n\\(\\mathbb{P}(A \\cap B) = \\mathbb{P}(A) \\cdot \\mathbb{P}(B)\\)\n\\(\\mathbb{P}(A \\cap C) = \\mathbb{P}(A) \\cdot \\mathbb{P}(C)\\)\n\\(\\mathbb{P}(B \\cap C) = \\mathbb{P}(B) \\cdot \\mathbb{P}(C)\\)\n\n\\(\\mathbb{P}(A \\cap B \\cap C) = \\mathbb{P}(A) \\cdot \\mathbb{P}(B) \\cdot \\mathbb{P}(C)\\)\n\n\n\n\nCondition 1 says each pair is independent: \\(A \\mathrel{\\unicode{x2AEB}} B\\), \\(A \\mathrel{\\unicode{x2AEB}} C\\), and \\(B \\mathrel{\\unicode{x2AEB}} C\\)\nConditions 1 and 2 together mean \\(A\\), \\(B\\), and \\(C\\) are mutually independent\n\nRemark:\nOn your homework you will show that \\((1) \\not \\Rightarrow (2)\\) and \\((2) \\not \\Rightarrow (1)\\)."
   },
   {
     "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#probability-at-least-one-smoker",
@@ -11169,7 +11169,7 @@
     "href": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#general-process-for-probability-word-problems",
     "title": "Lesson 4: Rules of probability",
     "section": "General Process for Probability Word Problems",
-    "text": "General Process for Probability Word Problems\n\nClearly define your events of interest\nTranslate question to probability using defined events OR Venn Diagram\nAsk yourself:\n\nAre we sampling with or without replacement?\nDoes order matter?\n\nUse axioms, properties, partitions, facts, etc. to define the end probability calculation into smaller parts\n\nIf probabilities are given to you, Venn Diagrams may help you parse out the events and probability calculations\nIf you need to find probabilities with counting, pictures or diagrams might help here\n\nWrite out a concluding statement that gives the probability context\n(For own check) Make sure the calculated probability follows the axioms. Is is between 0 and 1?"
+    "text": "General Process for Probability Word Problems\n\nClearly define your events of interest and mathematically define the goal probability\nTranslate question to probability using defined events OR Venn Diagram\nAsk yourself:\n\nAre we sampling with or without replacement?\nDoes order matter? (Are the objects distinguishable?)\n\nUse axioms, properties, partitions, facts, etc. to define the end probability calculation into smaller parts\n\nIf probabilities are given to you, Venn Diagrams may help you parse out the events and probability calculations\nIf you need to find probabilities with counting, pictures or diagrams might help here\n\nWrite out a concluding statement that gives the probability context\n(For own check) Make sure the calculated probability follows the axioms. Is it between 0 and 1?"
   },
   {
     "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#lets-revisit-our-deck-of-cards",
@@ -11183,14 +11183,14 @@
     "href": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#conditional-probability-facts-12",
     "title": "Lesson 4: Rules of probability",
     "section": "Conditional Probability facts (1/2)",
-    "text": "Conditional Probability facts (1/2)\n\n\n\n\nFact 1: General Multiplication Rule\n\n\n\\[\\mathbb{P}(A\\cap B)=\\mathbb{P}(A)\\cdot\\mathbb{P}(B|A)\\]\n\n\n\n\n\nFact 2: Conditional Probability Definition\n\n\n\\[\\mathbb{P}(A|B)=\\frac{\\mathbb{P}(A\\cap B)}{\\mathbb{P}(B)}\\]"
+    "text": "Conditional Probability facts (1/2)\n\n\n\n\nFact 1: General Multiplication Rule\n\n\n\\[\\mathbb{P}(A\\cap B)=\\mathbb{P}(A)\\cdot\\mathbb{P}(B|A) \\\\ \\text{ and } \\\\ \\mathbb{P}(A\\cap B)=\\mathbb{P}(B)\\cdot\\mathbb{P}(A|B)\\]\n\n\nFact 1 in words: the probability that \\(A\\) and \\(B\\) both happen is the probability that \\(A\\) happens times the probability that \\(B\\) happens given \\(A\\) happened (or the same with \\(A\\) and \\(B\\) switched)\n\n\n\nFact 2: Conditional Probability Definition\n\n\n\\[\\mathbb{P}(A|B)=\\frac{\\mathbb{P}(A\\cap B)}{\\mathbb{P}(B)} \\text{ and } \\mathbb{P}(B|A)=\\frac{\\mathbb{P}(A\\cap B)}{\\mathbb{P}(A)}\\]\n\n\nFact 2 in words: the conditional probability of \\(A\\) given \\(B\\) is the probability that \\(A\\) happens when we already know \\(B\\) happened"
   },
   {
     "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#conditional-probability-facts-22",
     "href": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#conditional-probability-facts-22",
     "title": "Lesson 4: Rules of probability",
     "section": "Conditional Probability facts (2/2)",
-    "text": "Conditional Probability facts (2/2)\n\n\n\n\nFact 3\n\n\nIf \\(A\\) and \\(B\\) are independent events (\\(A \\unicode{x2AEB}B\\)), then \\[\\mathbb{P}(A|B) = \\mathbb{P}(A)\\]\n\n\n\n\n\nFact 4\n\n\n\\(\\mathbb{P}(A|B)\\) is a probability, meaning that it satisfies the probability axioms. In particular, \\[\\mathbb{P}(A|B) + \\mathbb{P}(A^C|B) = 1\\]"
+    "text": "Conditional Probability facts (2/2)\n\n\n\n\nFact 3\n\n\nIf \\(A\\) and \\(B\\) are independent events (\\(A \\unicode{x2AEB}B\\)), then \\[\\mathbb{P}(A|B) = \\mathbb{P}(A) \\text{ and } \\mathbb{P}(B|A) = \\mathbb{P}(B)\\]\n\n\nFact 3 in words: if \\(A\\) and \\(B\\) are independent, knowing that \\(B\\) happened does not change the probability that \\(A\\) happens\n\n\n\nFact 4\n\n\n\\(\\mathbb{P}(A|B)\\) is a probability, meaning that it satisfies the probability axioms. In particular, \\[\\mathbb{P}(A|B) + \\mathbb{P}(A^C|B) = 1 \\\\ \\text{ and } \\\\ \\mathbb{P}(B|A) + \\mathbb{P}(B^C|A) = 1\\]\n\n\nFact 4 in words: given that \\(B\\) happened, the probability that \\(A\\) happens and the probability that \\(A\\) does not happen add up to 1"
   },
   {
     "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#monty-hall-problem",
@@ -11204,7 +11204,7 @@
     "href": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#conditional-probability-with-two-dice",
     "title": "Lesson 4: Rules of probability",
     "section": "Conditional probability with two dice",
-    "text": "Conditional probability with two dice\n\n\n\n\nExample 3\n\n\nTwo dice (green and blue) are rolled. If the dice do not show the same face, what is the probability that one of the dice is a 1?"
+    "text": "Conditional probability with two dice\n\n\nExample 3\n\n\nTwo dice (green and blue) are rolled. If the dice do not show the same face, what is the probability that one of the dice is a 1?"
   },
   {
     "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#introduction",
@@ -11218,7 +11218,7 @@
     "href": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#bayes-rule-for-two-events",
     "title": "Lesson 4: Rules of probability",
     "section": "Bayes’ Rule for two events",
-    "text": "Bayes’ Rule for two events\n\nWe can use the conditional probability (\\(\\mathbb{P}(A|B)\\)) to get information on the flipped conditional probability (\\(\\mathbb{P}(B|A)\\))\n\n\n\n\n\nTheorem: Bayes’ Rule (for two events)\n\n\nFor any two events \\(A\\) and \\(B\\) with nonzero probabilties,\n\\[\\mathbb{P}(A| B) =\n\\frac{\\mathbb{P}(A) \\cdot \\mathbb{P}(B|A)}\n{\\mathbb{P}(B)}\\]"
+    "text": "Bayes’ Rule for two events\n\nWe can use the conditional probability (\\(\\mathbb{P}(A|B)\\)) to get information on the flipped conditional probability (\\(\\mathbb{P}(B|A)\\))\n\n\n\n\n\nTheorem: Bayes’ Rule (for two events)\n\n\nFor any two events \\(A\\) and \\(B\\) with nonzero probabilities,\n\\[\\mathbb{P}(A| B) =\n\\frac{\\mathbb{P}(A) \\cdot \\mathbb{P}(B|A)}\n{\\mathbb{P}(B)}\\]"
   },
   {
     "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#calculating-probability-with-higher-order-multiplication-rule",
@@ -18897,7 +18897,7 @@
     "href": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#example-of-two-dice-simulating-in-r-12",
     "title": "Lesson 4: Rules of probability",
     "section": "Example of two dice: simulating in R (1/2)",
-    "text": "Example of two dice: simulating in R (1/2)\n\n\nExample 1\n\n\nTwo dice (green and blue) are rolled. Let \\(A =\\) event a total of 7 appears, and \\(B =\\) event green die is a six. Are events \\(A\\) and \\(B\\) independent?\n\n\n\nset.seed(1002)\nreps = 10000\nrolls = replicate(reps, sample(x = 1:6, size = 2, replace = TRUE))\nrolls[, 1:10]\n\n     [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]\n[1,]    4    5    5    5    6    5    2    4    3     4\n[2,]    1    4    6    3    1    1    5    5    6     3\n\nevent_A = ( rolls[1, ] + rolls[2, ] == 7 )\nhead(event_A, 10)\n\n [1] FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE  TRUE\n\nevent_B = ( rolls[1, ] == 6 )\nhead(event_B, 10)\n\n [1] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE"
+    "text": "Example of two dice: simulating in R (1/2)\n\n\nExample 1\n\n\nTwo dice (green and blue) are rolled. Let \\(A =\\) event a total of 7 appears, and \\(B =\\) event green die is a six. Are events \\(A\\) and \\(B\\) independent?\n\n\n\n\n\nFirst, a small simulation with 10 rolls of the two dice\n\n\n1set.seed(1002)\n2reps &lt;- 10\n\n3dice &lt;- expand_grid(sim = 1:reps) |&gt;\n4  mutate(green = sample(1:6, n(), replace = TRUE),\n         blue = sample(1:6, n(), replace = TRUE))\n\n5dice_events &lt;- dice |&gt;\n6  mutate(A = green + blue == 7,\n7         B = green == 6)\n\n\n1\n\nSet the seed once, so we get the same “random” rolls every time the slides are made.\n\n2\n\nSave the number of simulations as reps, so it is easy to change later.\n\n3\n\nOne row for every simulation. Each simulation is one roll of the pair of dice.\n\n4\n\nEach die is a box with tickets 1 to 6. sample() draws one ticket for every row (n() is the number of rows). replace = TRUE means any number can show up on both dice.\n\n5\n\nStart with the table of dice and save the result as dice_events.\n\n6\n\nA is TRUE when the total of the two dice is 7. The == asks “is it equal to?”\n\n7\n\nB is TRUE when the green die is a six.\n\n\n\n\n\n\n\n\n1dice_events\n\n\n1\n\nTyping a name prints the table. Each row is one simulation.\n\n\n\n\n# A tibble: 10 × 5\n     sim green  blue A     B    \n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;lgl&gt; &lt;lgl&gt;\n 1     1     4     5 FALSE FALSE\n 2     2     1     1 FALSE FALSE\n 3     3     5     2 TRUE  FALSE\n 4     4     4     5 FALSE FALSE\n 5     5     5     4 FALSE FALSE\n 6     6     6     5 FALSE TRUE \n 7     7     5     3 FALSE FALSE\n 8     8     3     6 FALSE FALSE\n 9     9     6     4 FALSE TRUE \n10    10     1     3 FALSE FALSE"
   },
   {
     "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#example-of-two-dice-simulating-in-r-12-1",
@@ -25891,5 +25891,320 @@
     "title": "Key Info",
     "section": "Last class",
     "text": "Last class\n\nMore intro on simulations!\nBrief intro to random variables\nFour step simulation process\n\nIn class, I will often show only one step"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html",
+    "title": "Lesson 4: Rules of probability",
+    "section": "",
+    "text": "Define independence of 2-3 events and decide whether two or more events are independent\nDefine key facts for conditional probabilities and calculate conditional probabilities.\nCalculate the probability of an event using Bayes’ Theorem, Higher Order Multiplication Rule, and the Law of Total Probabilities\n\n\n\n\n\n\n\n\n\n\n\n\nClearly define your events of interest and mathematically define the goal probability\nTranslate question to probability using defined events OR Venn Diagram\nAsk yourself:\n\nAre we sampling with or without replacement?\nDoes order matter? (Are the objects distinguishable?)\n\nUse axioms, properties, partitions, facts, etc. to define the end probability calculation into smaller parts\n\nIf probabilities are given to you, Venn Diagrams may help you parse out the events and probability calculations\nIf you need to find probabilities with counting, pictures or diagrams might help here\n\nWrite out a concluding statement that gives the probability context\n(For own check) Make sure the calculated probability follows the axioms. Is it between 0 and 1?"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#general-process-for-probability-word-problems",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#general-process-for-probability-word-problems",
+    "title": "Lesson 4: Rules of probability",
+    "section": "General Process for Probability Word Problems",
+    "text": "General Process for Probability Word Problems\n\nClearly define your events of interest and mathematically define the goal probability\nTranslate question to probability using defined events OR Venn Diagram\nAsk yourself:\n\nAre we sampling with or without replacement?\nDoes order matter? (Are the objects distinguishable?)\n\nUse axioms, properties, partitions, facts, etc. to define the end probability calculation into smaller parts\n\nIf probabilities are given to you, Venn Diagrams may help you parse out the events and probability calculations\nIf you need to find probabilities with counting, pictures or diagrams might help here\n\nWrite out a concluding statement that gives the probability context\n(For own check) Make sure the calculated probability follows the axioms. Is it between 0 and 1?"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#independent-events",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#independent-events",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Independent Events",
+    "text": "Independent Events\n\n\nDefinition: Independence\n\n\nEvents \\(A\\) and \\(B\\) are independent if \\[\\mathbb{P}(A \\cap B) = \\mathbb{P}(A) \\cdot  \\mathbb{P}(B).\\]\n\n\nNotation: For shorthand, we sometimes write \\(A \\mathrel{\\unicode{x2AEB}} B,\\) to denote that \\(A\\) and \\(B\\) are independent events.\n \n\nAlso note: \\[\\begin{aligned} \\mathbb{P}(A \\cap B) = \\mathbb{P}(A) \\cdot  \\mathbb{P}(B) & \\implies A \\mathrel{\\unicode{x2AEB}} B \\\\\nA \\mathrel{\\unicode{x2AEB}} B & \\implies \\mathbb{P}(A \\cap B) = \\mathbb{P}(A) \\cdot  \\mathbb{P}(B) \\end{aligned}\\]"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#example-of-two-dice",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#example-of-two-dice",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Example of two dice",
+    "text": "Example of two dice\n\n\nExample 1\n\n\nTwo dice (green and blue) are rolled. Let \\(A =\\) event a total of 7 appears, and \\(B =\\) event green die is a six. Are events \\(A\\) and \\(B\\) independent?"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#example-of-two-dice-simulating-in-r-12",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#example-of-two-dice-simulating-in-r-12",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Example of two dice: simulating in R (1/2)",
+    "text": "Example of two dice: simulating in R (1/2)\n\n\nExample 1\n\n\nTwo dice (green and blue) are rolled. Let \\(A =\\) event a total of 7 appears, and \\(B =\\) event green die is a six. Are events \\(A\\) and \\(B\\) independent?\n\n\n\n\n\nFirst, a small simulation with 10 rolls of the two dice\n\n\n1set.seed(1002)\n2reps &lt;- 10\n\n3dice &lt;- expand_grid(sim = 1:reps) |&gt;\n4  mutate(green = sample(1:6, n(), replace = TRUE),\n         blue = sample(1:6, n(), replace = TRUE))\n\n5dice_events &lt;- dice |&gt;\n6  mutate(A = green + blue == 7,\n7         B = green == 6)\n\n\n1\n\nSet the seed once, so we get the same “random” rolls every time the slides are made.\n\n2\n\nSave the number of simulations as reps, so it is easy to change later.\n\n3\n\nOne row for every simulation. Each simulation is one roll of the pair of dice.\n\n4\n\nEach die is a box with tickets 1 to 6. sample() draws one ticket for every row (n() is the number of rows). replace = TRUE means any number can show up on both dice.\n\n5\n\nStart with the table of dice and save the result as dice_events.\n\n6\n\nA is TRUE when the total of the two dice is 7. The == asks “is it equal to?”\n\n7\n\nB is TRUE when the green die is a six.\n\n\n\n\n\n\n\n\n1dice_events\n\n\n1\n\nTyping a name prints the table. Each row is one simulation.\n\n\n\n\n# A tibble: 10 × 5\n     sim green  blue A     B    \n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;lgl&gt; &lt;lgl&gt;\n 1     1     4     5 FALSE FALSE\n 2     2     1     1 FALSE FALSE\n 3     3     5     2 TRUE  FALSE\n 4     4     4     5 FALSE FALSE\n 5     5     5     4 FALSE FALSE\n 6     6     6     5 FALSE TRUE \n 7     7     5     3 FALSE FALSE\n 8     8     3     6 FALSE FALSE\n 9     9     6     4 FALSE TRUE \n10    10     1     3 FALSE FALSE"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#example-of-two-dice-simulating-in-r-22",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#example-of-two-dice-simulating-in-r-22",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Example of two dice: simulating in R (2/2)",
+    "text": "Example of two dice: simulating in R (2/2)\n\n\nExample 1\n\n\nTwo dice (green and blue) are rolled. Let \\(A =\\) event a total of 7 appears, and \\(B =\\) event green die is a six. Are events \\(A\\) and \\(B\\) independent?\n\n\n\n\nSame code, now with 10,000 simulations\n1reps &lt;- 10000\n2dice &lt;- expand_grid(sim = 1:reps) |&gt;\n  mutate(green = sample(1:6, n(), replace = TRUE),\n         blue = sample(1:6, n(), replace = TRUE))\ndice_events &lt;- dice |&gt;\n  mutate(A = green + blue == 7,\n         B = green == 6)\n\n\n\n1\n\nThe only change: 10,000 simulations instead of 10.\n\n2\n\nSame as before: roll the two dice and check events A and B in each simulation.\n\n\n\n\n\n\nThen we compare \\(\\mathbb{P}(A) \\cdot \\mathbb{P}(B)\\) with \\(\\mathbb{P}(A \\cap B)\\)\n\n1dice_events |&gt;\n2  summarise(p_A = mean(A),\n            p_B = mean(B),\n3            p_A_times_p_B = p_A * p_B,\n4            p_A_and_B = mean(A & B))\n\n\n1\n\nStart with the table of events.\n\n2\n\nmean() of a TRUE/FALSE column is the proportion of simulations where the event happened. R treats TRUE as 1 and FALSE as 0.\n\n3\n\n\\(\\mathbb{P}(A) \\cdot \\mathbb{P}(B)\\): we can use columns we just made inside the same summarise().\n\n4\n\n\\(\\mathbb{P}(A \\cap B)\\): & is “and”, so this is the proportion of simulations where both events happened.\n\n\n\n\n# A tibble: 1 × 4\n    p_A   p_B p_A_times_p_B p_A_and_B\n  &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;\n1 0.169 0.170        0.0286    0.0274\n\n\n\n \n \n \n \n\n\nThe last two columns are close to each other (and to \\(\\frac{1}{36} \\approx 0.0278\\)), which is what independence looks like\n\nDo not need to be exactly the same!"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#independence-of-3-events",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#independence-of-3-events",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Independence of 3 Events",
+    "text": "Independence of 3 Events\n\n\nDefinition: Independence of 3 Events\n\n\nEvents \\(A\\), \\(B\\), and \\(C\\) are mutually independent if\n\n\n\\(\\mathbb{P}(A \\cap B) = \\mathbb{P}(A) \\cdot \\mathbb{P}(B)\\)\n\\(\\mathbb{P}(A \\cap C) = \\mathbb{P}(A) \\cdot \\mathbb{P}(C)\\)\n\\(\\mathbb{P}(B \\cap C) = \\mathbb{P}(B) \\cdot \\mathbb{P}(C)\\)\n\n\\(\\mathbb{P}(A \\cap B \\cap C) = \\mathbb{P}(A) \\cdot \\mathbb{P}(B) \\cdot \\mathbb{P}(C)\\)\n\n\n\n\nCondition 1 says each pair is independent: \\(A \\mathrel{\\unicode{x2AEB}} B\\), \\(A \\mathrel{\\unicode{x2AEB}} C\\), and \\(B \\mathrel{\\unicode{x2AEB}} C\\)\nConditions 1 and 2 together mean \\(A\\), \\(B\\), and \\(C\\) are mutually independent\n\nRemark:\nOn your homework you will show that \\((1) \\not \\Rightarrow (2)\\) and \\((2) \\not \\Rightarrow (1)\\)."
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#probability-at-least-one-smoker",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#probability-at-least-one-smoker",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Probability at least one smoker",
+    "text": "Probability at least one smoker\n\n\n\n\nExample 2\n\n\nSuppose you take a random sample of \\(n\\) people, in which each person is a smoker or non-smoker independently of the others. Let\n\n\\(A_i =\\) event person \\(i\\) is a smoker, for \\(i=1, \\ldots ,n\\), and\n\\(p_i =\\) probability person \\(i\\) is a smoker, for \\(i=1, \\ldots ,n\\).\n\nFind the probability that at least one person in the random sample is a smoker."
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#probability-at-least-one-smoker-simulating-in-r",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#probability-at-least-one-smoker-simulating-in-r",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Probability at least one smoker: simulating in R",
+    "text": "Probability at least one smoker: simulating in R\n\nSuppose every person has the same chance of smoking, \\(p = 0.2\\), and we sample \\(n = 5\\) people. Does the simulation agree with your answer to Example 2?\n\n\n1set.seed(2026)\n2reps &lt;- 10000\nn_people &lt;- 5\np_smoker &lt;- 0.2\n\n3people &lt;- expand_grid(sim = 1:reps, person = 1:n_people) |&gt;\n4  mutate(smoker = sample(c(TRUE, FALSE), n(), replace = TRUE,\n                         prob = c(p_smoker, 1 - p_smoker)))\n\n5smoker_sims &lt;- people |&gt;\n  group_by(sim) |&gt;\n6  summarise(any_smoker = any(smoker))\n\n7smoker_sims |&gt;\n  summarise(prob_at_least_one = mean(any_smoker))\n\n\n1\n\nSet a new seed for this example.\n\n2\n\nSave the number of simulations, the number of people, and the chance of smoking as named values, so they are easy to change.\n\n3\n\nOne row for every combination of simulation (a sample of 5 people) and person.\n\n4\n\nLike the unfair coin in Lesson 1: prob gives each outcome its own chance, here 20% smoker and 80% non-smoker. Each person is drawn separately, which is what makes them independent.\n\n5\n\nHandle each simulation (each sample of people) separately.\n\n6\n\nany() is TRUE if at least one person in the sample is a smoker.\n\n7\n\nThe proportion of samples with at least one smoker.\n\n\n\n\n# A tibble: 1 × 1\n  prob_at_least_one\n              &lt;dbl&gt;\n1             0.682"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#building-geometric-series",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#building-geometric-series",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Building geometric series",
+    "text": "Building geometric series\n\n\nExample 3\n\n\n\\(A, B,\\) and \\(C\\) toss a fair coin in order. The first to throw heads wins. What are their respective chances of winning?\n\n\nLet\n\n\\(A_H\\) and \\(A_T\\) be the events player A tosses heads and tails, respectively.\nSimilarly define \\(B_H\\), \\(B_T\\), \\(C_H\\), and \\(C_T\\)."
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#lets-revisit-our-deck-of-cards",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#lets-revisit-our-deck-of-cards",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Let’s revisit our deck of cards",
+    "text": "Let’s revisit our deck of cards\n\n\n\n\nExample 1\n\n\nSuppose we randomly draw 2 cards from a standard deck of cards. What is the probability that we draw a spade then a heart?\n\n\nLet\n\nLet \\(A =\\) event \\(1^{st}\\) card is spades\nLet \\(B =\\) event \\(2^{nd}\\) card is heart"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#conditional-probability-facts-12",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#conditional-probability-facts-12",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Conditional Probability facts (1/2)",
+    "text": "Conditional Probability facts (1/2)\n\n\n\n\nFact 1: General Multiplication Rule\n\n\n\\[\\mathbb{P}(A\\cap B)=\\mathbb{P}(A)\\cdot\\mathbb{P}(B|A) \\\\ \\text{ and } \\\\ \\mathbb{P}(A\\cap B)=\\mathbb{P}(B)\\cdot\\mathbb{P}(A|B)\\]\n\n\nFact 1 in words: the probability that \\(A\\) and \\(B\\) both happen is the probability that \\(A\\) happens times the probability that \\(B\\) happens given \\(A\\) happened (or the same with \\(A\\) and \\(B\\) switched)\n\n\n\nFact 2: Conditional Probability Definition\n\n\n\\[\\mathbb{P}(A|B)=\\frac{\\mathbb{P}(A\\cap B)}{\\mathbb{P}(B)} \\text{ and } \\mathbb{P}(B|A)=\\frac{\\mathbb{P}(A\\cap B)}{\\mathbb{P}(A)}\\]\n\n\nFact 2 in words: the conditional probability of \\(A\\) given \\(B\\) is the probability that \\(A\\) happens when we already know \\(B\\) happened"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#conditional-probability-facts-22",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#conditional-probability-facts-22",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Conditional Probability facts (2/2)",
+    "text": "Conditional Probability facts (2/2)\n\n\n\n\nFact 3\n\n\nIf \\(A\\) and \\(B\\) are independent events (\\(A \\unicode{x2AEB}B\\)), then \\[\\mathbb{P}(A|B) = \\mathbb{P}(A) \\text{ and } \\mathbb{P}(B|A) = \\mathbb{P}(B)\\]\n\n\nFact 3 in words: if \\(A\\) and \\(B\\) are independent, knowing that \\(B\\) happened does not change the probability that \\(A\\) happens\n\n\n\nFact 4\n\n\n\\(\\mathbb{P}(A|B)\\) is a probability, meaning that it satisfies the probability axioms. In particular, \\[\\mathbb{P}(A|B) + \\mathbb{P}(A^C|B) = 1 \\\\ \\text{ and } \\\\ \\mathbb{P}(B|A) + \\mathbb{P}(B^C|A) = 1\\]\n\n\nFact 4 in words: given that \\(B\\) happened, the probability that \\(A\\) happens and the probability that \\(A\\) does not happen add up to 1"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#conditional-probability-with-two-dice",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#conditional-probability-with-two-dice",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Conditional probability with two dice",
+    "text": "Conditional probability with two dice\n\n\nExample 3\n\n\nTwo dice (green and blue) are rolled. If the dice do not show the same face, what is the probability that one of the dice is a 1?"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#conditional-probability-with-two-dice-simulations-12",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#conditional-probability-with-two-dice-simulations-12",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Conditional probability with two dice: simulations (1/2)",
+    "text": "Conditional probability with two dice: simulations (1/2)\n\n\nExample 3\n\n\nTwo dice (green and blue) are rolled. If the dice do not show the same face, what is the probability that one of the dice is a 1?\n\n\nReuse the 10,000 rolls, but with new events: \\(A\\) = one die is a 1, and \\(B\\) = the dice do not match\n\n\n\n1cond_sims &lt;- dice |&gt;\n2  mutate(A = green == 1 | blue == 1,\n3         B = green != blue)\n\n\n1\n\nStart with the same dice table from Example 1 and save the result as cond_sims.\n\n2\n\n| is “or”, so A is TRUE when the green die is a 1 or the blue die is a 1 (or both).\n\n3\n\n!= is “is not equal to”, so B is TRUE when the two dice show different numbers.\n\n\n\n\n\n\n\n\n4head(cond_sims, 10)\n\n\n4\n\nhead() prints the first 10 rows.\n\n\n\n\n# A tibble: 10 × 5\n     sim green  blue A     B    \n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;lgl&gt; &lt;lgl&gt;\n 1     1     1     2 TRUE  TRUE \n 2     2     3     2 FALSE TRUE \n 3     3     1     4 TRUE  TRUE \n 4     4     5     4 FALSE TRUE \n 5     5     2     5 FALSE TRUE \n 6     6     1     5 TRUE  TRUE \n 7     7     6     3 FALSE TRUE \n 8     8     3     5 FALSE TRUE \n 9     9     6     4 FALSE TRUE \n10    10     1     6 TRUE  TRUE"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#conditional-probability-with-two-dice-simulations-22",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#conditional-probability-with-two-dice-simulations-22",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Conditional probability with two dice: simulations (2/2)",
+    "text": "Conditional probability with two dice: simulations (2/2)\n\n\nExample 3\n\n\nTwo dice (green and blue) are rolled. If the dice do not show the same face, what is the probability that one of the dice is a 1?\n\n\n\n\nOne way to think about it: Calculate each from all simulations and then divide\n\n1cond_sims |&gt;\n2  summarise(p_A_and_B = mean(A & B),\n3            p_B = mean(B),\n4            p_A_given_B = p_A_and_B / p_B)\n\n\n1\n\nStart with the table of events.\n\n2\n\n\\(\\mathbb{P}(A \\cap B)\\): the proportion of simulations where both events happened.\n\n3\n\n\\(\\mathbb{P}(B)\\): the proportion of simulations where the dice do not match.\n\n4\n\n\\(\\mathbb{P}(A|B) = \\mathbb{P}(A \\cap B) / \\mathbb{P}(B)\\), which is Fact 2.\n\n\n\n\n# A tibble: 1 × 3\n  p_A_and_B   p_B p_A_given_B\n      &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;\n1     0.277 0.831       0.333\n\n\n\n\n\nAnother way to think about it: given \\(B\\), we only look at the simulations where \\(B\\) happened\n\n1cond_sims |&gt;\n2  filter(B) |&gt;\n3  summarise(p_A_given_B = mean(A))\n\n\n1\n\nStart with the table of events.\n\n2\n\nfilter(B) keeps only the rows where B is TRUE.\n\n3\n\nAmong those rows, the proportion where A happened.\n\n\n\n\n# A tibble: 1 × 1\n  p_A_given_B\n        &lt;dbl&gt;\n1       0.333\n\n\n\n \n\nBoth ways are close to \\(\\frac{1}{3}\\)"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#monty-hall-problem",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#monty-hall-problem",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Monty Hall Problem",
+    "text": "Monty Hall Problem\nSurvivor Season 42\nWith the Wiki page on it!"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#monty-hall-problem-simulating-in-r",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#monty-hall-problem-simulating-in-r",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Monty Hall Problem: simulating in R",
+    "text": "Monty Hall Problem: simulating in R\nThree doors: a car is behind one, goats behind the other two. You pick a door, the host opens a different door with a goat, and you choose whether to stay or switch\n\n1set.seed(1003)\n2reps &lt;- 10000\n\n3monty &lt;- expand_grid(sim = 1:reps) |&gt;\n4  mutate(car = sample(1:3, n(), replace = TRUE),\n5         pick = sample(1:3, n(), replace = TRUE),\n6         stay_wins = car == pick,\n7         switch_wins = car != pick)\n\n8monty |&gt;\n  summarise(p_stay = mean(stay_wins),\n            p_switch = mean(switch_wins))\n\n\n1\n\nSet a new seed for this example.\n\n2\n\nSave the number of simulations as reps.\n\n3\n\nOne row for every simulation (every game).\n\n4\n\nThe car is behind a random door from 1 to 3.\n\n5\n\nYou pick a random door from 1 to 3.\n\n6\n\nIf you stay, you win exactly when your first pick has the car.\n\n7\n\nIf you switch, the host has already removed a goat door, so you win exactly when your first pick was wrong.\n\n8\n\nThe proportion of games won by each strategy.\n\n\n\n\n# A tibble: 1 × 2\n  p_stay p_switch\n   &lt;dbl&gt;    &lt;dbl&gt;\n1  0.335    0.665\n\n\nSwitching wins about \\(\\frac{2}{3}\\) of the time. Why? Switching wins exactly when our first pick was wrong, and that has probability \\(\\frac{2}{3}\\)"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#bayes-rule-for-two-events",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#bayes-rule-for-two-events",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Bayes’ Rule for two events",
+    "text": "Bayes’ Rule for two events\n\nWe can use the conditional probability (\\(\\mathbb{P}(A|B)\\)) to get information on the flipped conditional probability (\\(\\mathbb{P}(B|A)\\))\n\n\n\n\n\nTheorem: Bayes’ Rule (for two events)\n\n\nFor any two events \\(A\\) and \\(B\\) with nonzero probabilities,\n\\[\\mathbb{P}(A| B) =\n\\frac{\\mathbb{P}(A) \\cdot \\mathbb{P}(B|A)}\n{\\mathbb{P}(B)}\\]"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#calculating-probability-with-higher-order-multiplication-rule",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#calculating-probability-with-higher-order-multiplication-rule",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Calculating probability with Higher Order Multiplication Rule",
+    "text": "Calculating probability with Higher Order Multiplication Rule\n\n\n\n\nExample 4\n\n\nSuppose we draw 5 cards from a standard shuffled deck of 52 cards. What is the probability of a flush, that is all the cards are of the same suit (including straight flushes)?\n\n\n\n\n\nHigher Order Multiplication Rule\n\n\n\\[\\begin{aligned} \\mathbb{P}(A_1\\cap & A_2 \\cap  \\ldots \\cap A_n)= \\\\ & \\mathbb{P}(A_1)\\cdot\\mathbb{P}(A_2|A_1) \\cdot \\\\\n& \\mathbb{P}(A_3|A_1A_2)\\ldots \\cdot\\mathbb{P}(A_n|A_1A_2\\ldots A_{n-1})\n\\end{aligned}\\]"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#calculating-probability-with-law-of-total-probability",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#calculating-probability-with-law-of-total-probability",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Calculating probability with Law of Total Probability",
+    "text": "Calculating probability with Law of Total Probability\n\n\n\n\nExample 5\n\n\nSuppose 1% of people assigned female at birth (AFAB) and 5% of people assigned male at birth (AMAB) are color-blind. Assume person born is equally likely AFAB or AMAB (not including intersex). What is the probability that a person chosen at random is color-blind?\n\n\n\n\n\nLaw of Total Probability for 2 Events\n\n\nFor events \\(A\\) and \\(B\\),\n\\[%\\left(\n\\begin{array}{ccl}\n\\mathbb{P}(B)&=&\\mathbb{P}(B \\cap A) + \\mathbb{P}(B \\cap A^C)\\\\\n           &=& \\mathbb{P}(B|A) \\cdot \\mathbb{P}(A)+ \\mathbb{P}(B | A^C)\\cdot \\mathbb{P}(A^C)\n\\end{array}\n%\\right)\\]"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#general-law-of-total-probability",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#general-law-of-total-probability",
+    "title": "Lesson 4: Rules of probability",
+    "section": "General Law of Total Probability",
+    "text": "General Law of Total Probability\n\n\nLaw of Total Probability (general)\n\n\nIf \\(\\{A_i\\}_{i=1}^{n} = \\{A_1, A_2, \\ldots, A_n\\}\\) form a partition of the sample space, then for event \\(B\\),\n\\[%\\left(\n\\begin{array}{ccl}\n\\mathbb{P}(B)&=& \\sum_{i=1}^{n} \\mathbb{P}(B \\cap A_i)\\\\\n           &=& \\sum_{i=1}^{n} \\mathbb{P}(B|A_i) \\cdot \\mathbb{P}(A_i)\n\\end{array}\n%\\right)\\]\n\n\nBlank sample space boxS"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#calculating-probability-with-generalized-law-of-total-probability",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#calculating-probability-with-generalized-law-of-total-probability",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Calculating probability with generalized Law of Total Probability",
+    "text": "Calculating probability with generalized Law of Total Probability"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#calculating-probability-with-generalized-law-of-total-probability-1",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#calculating-probability-with-generalized-law-of-total-probability-1",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Calculating probability with generalized Law of Total Probability",
+    "text": "Calculating probability with generalized Law of Total Probability\n\n\n\n\nExample 3\n\n\nIndividuals are diagnosed with a particular type of cancer that can take on three different disease forms,* \\(D_1\\), \\(D_2\\), and \\(D_3\\). It is known that amongst people diagnosed with this particular type of cancer,\n\n20% of people will eventually be diagnosed with form \\(D_1\\),\n30% with form \\(D_2\\), and\n50% with form \\(D_3\\).\n\nThe probability of requiring chemotherapy (\\(C\\)) differs among the three forms of disease:\n\n80% with \\(D_1\\),\n30% with \\(D_2\\), and\n10% with \\(D_3\\).\n\nBased solely on the preliminary test of being diagnosed with the cancer, what is the probability of requiring chemotherapy (the event C)?\n\n\n\nSkipping in class! Let me know if you would like me to post solutions to this if you work through it!"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#lets-revisit-the-color-blind-example",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#lets-revisit-the-color-blind-example",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Let’s revisit the color-blind example",
+    "text": "Let’s revisit the color-blind example\n\n\n\n\nExample 4\n\n\nRecall the color-blind example (Example 2), where\n\na person is AMAB with probability 0.5,\nAMAB people are color-blind with probability 0.05, and\nall people are color-blind with probability 0.03.\n\nAssuming people are AMAB or AFAB, find the probability that a color-blind person is AMAB."
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#calculate-probability-with-both-rules",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#calculate-probability-with-both-rules",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Calculate probability with both rules",
+    "text": "Calculate probability with both rules\n\n\n\n\nExample 6\n\n\nSuppose\n\n1% of people who are AFAB aged 40-50 years have breast cancer,\nan AFAB person with breast cancer has a 90% chance of a positive test from a mammogram, and\nan AFAB person has a 10% chance of a false-positive result from a mammogram.\n\nWhat is the probability that an AFAB person has breast cancer given that they just had a positive test?"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#calculate-probability-with-both-rules-simulating-in-r",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#calculate-probability-with-both-rules-simulating-in-r",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Calculate probability with both rules: simulating in R",
+    "text": "Calculate probability with both rules: simulating in R\nWe simulate using only the information given in the problem:\n\n1set.seed(2027)\n2reps &lt;- 100000\n3p_cancer &lt;- 0.01; p_pos_if_cancer &lt;- 0.9; p_pos_if_no_cancer &lt;- 0.1\n\n4people &lt;- expand_grid(sim = 1:reps) |&gt;\n5  mutate(cancer = sample(c(TRUE, FALSE), n(), replace = TRUE,\n                         prob = c(p_cancer, 1 - p_cancer)),\n6         pos_if_cancer = sample(c(TRUE, FALSE), n(), replace = TRUE,\n                                prob = c(p_pos_if_cancer, 1 - p_pos_if_cancer)),\n7         pos_if_no_cancer = sample(c(TRUE, FALSE), n(), replace = TRUE,\n                                   prob = c(p_pos_if_no_cancer, 1 - p_pos_if_no_cancer)),\n8         positive = if_else(cancer, pos_if_cancer, pos_if_no_cancer))\n\n9people |&gt;\n  filter(positive) |&gt;\n10  summarise(prob_cancer_given_pos = mean(cancer))\n\n\n1\n\nSet a new seed for this example.\n\n2\n\nSave the number of simulations as reps. We use 100,000 because breast cancer with a positive test is fairly rare.\n\n3\n\nSave the three probabilities from the problem as named values, so they are easy to change.\n\n4\n\nOne row per simulated AFAB person aged 40-50 years.\n\n5\n\nDoes this person have breast cancer? Like the unfair coin in Lesson 1, prob gives TRUE (cancer) a 1% chance and FALSE a 99% chance.\n\n6\n\nWhat the mammogram would show if this person has cancer: positive with probability 0.9.\n\n7\n\nWhat the mammogram would show if this person does not have cancer: a false positive with probability 0.1.\n\n8\n\nNew function: if_else(condition, value_if_TRUE, value_if_FALSE) picks a value for each row. If the person has cancer, we keep pos_if_cancer. Otherwise we keep pos_if_no_cancer. This is how the test result depends on cancer status.\n\n9\n\n“Given a positive test” means we only keep the people with a positive test. filter(positive) keeps the rows where positive is TRUE.\n\n10\n\nAmong the positive tests, the proportion that have cancer. This should be close to our answer of 0.0833.\n\n\n\n\n# A tibble: 1 × 1\n  prob_cancer_given_pos\n                  &lt;dbl&gt;\n1                0.0879"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#bayes-rule",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#bayes-rule",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Bayes’ Rule",
+    "text": "Bayes’ Rule\n\n\nTheorem: Bayes’ Rule\n\n\nIf \\(\\{A_i\\}_{i=1}^{n}\\) form a partition of the sample space \\(S\\), with \\(\\mathbb{P}(A_i)&gt;0\\) for \\(i=1\\ldots n\\) and \\(\\mathbb{P}(B)&gt;0\\), then\n\\[\\mathbb{P}(A_j | B) =\n\\frac{\\mathbb{P}(B|A_j) \\cdot \\mathbb{P}(A_j)}\n{\\sum_{i=1}^{n} \\mathbb{P}(B|A_i) \\cdot \\mathbb{P}(A_i)}\\]"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#where-are-we",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#where-are-we",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Where are we?",
+    "text": "Where are we?"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#probability-at-least-one-smoker-for-extra-reference-on-own",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#probability-at-least-one-smoker-for-extra-reference-on-own",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Probability at least one smoker (for extra reference on own)",
+    "text": "Probability at least one smoker (for extra reference on own)\n\n\n\n\nExample 2\n\n\nSuppose you take a random sample of \\(n\\) people, in which each person is a smoker or non-smoker independently of the others. Let\n\n\\(A_i =\\) event person \\(i\\) is a smoker, for \\(i=1, \\ldots ,n\\), and\n\\(p_i =\\) probability person \\(i\\) is a smoker, for \\(i=1, \\ldots ,n\\).\n\nFind the probability that at least one person in the random sample is a smoker."
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#probability-at-least-one-smoker-simulating-in-r-for-extra-reference-on-own",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#probability-at-least-one-smoker-simulating-in-r-for-extra-reference-on-own",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Probability at least one smoker: simulating in R (for extra reference on own)",
+    "text": "Probability at least one smoker: simulating in R (for extra reference on own)\n\nSuppose every person has the same chance of smoking, \\(p = 0.2\\), and we sample \\(n = 5\\) people. Does the simulation agree with your answer to Example 2?\n\n\n1set.seed(2026)\n2reps &lt;- 10000\nn_people &lt;- 5\np_smoker &lt;- 0.2\n\n3people &lt;- expand_grid(sim = 1:reps, person = 1:n_people) |&gt;\n4  mutate(smoker = sample(c(TRUE, FALSE), n(), replace = TRUE,\n                         prob = c(p_smoker, 1 - p_smoker)))\n\n5smoker_sims &lt;- people |&gt;\n  group_by(sim) |&gt;\n6  summarise(any_smoker = any(smoker))\n\n7smoker_sims |&gt;\n  summarise(prob_at_least_one = mean(any_smoker))\n\n\n1\n\nSet a new seed for this example.\n\n2\n\nSave the number of simulations, the number of people, and the chance of smoking as named values, so they are easy to change.\n\n3\n\nOne row for every combination of simulation (a sample of 5 people) and person.\n\n4\n\nLike the unfair coin in Lesson 1: prob gives each outcome its own chance, here 20% smoker and 80% non-smoker. Each person is drawn separately, which is what makes them independent.\n\n5\n\nHandle each simulation (each sample of people) separately.\n\n6\n\nany() is TRUE if at least one person in the sample is a smoker.\n\n7\n\nThe proportion of samples with at least one smoker.\n\n\n\n\n# A tibble: 1 × 1\n  prob_at_least_one\n              &lt;dbl&gt;\n1             0.682"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#probability-at-least-one-smoker-extra-reference-on-own",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#probability-at-least-one-smoker-extra-reference-on-own",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Probability at least one smoker (extra reference on own)",
+    "text": "Probability at least one smoker (extra reference on own)\n\n\n\n\nExample 2\n\n\nSuppose you take a random sample of \\(n\\) people, in which each person is a smoker or non-smoker independently of the others. Let\n\n\\(A_i =\\) event person \\(i\\) is a smoker, for \\(i=1, \\ldots ,n\\), and\n\\(p_i =\\) probability person \\(i\\) is a smoker, for \\(i=1, \\ldots ,n\\).\n\nFind the probability that at least one person in the random sample is a smoker.\n\n\n\n\n“At least one smoker” is the complement of “no smokers”\n\n\\[\\mathbb{P}(\\text{at least one smoker}) = 1 - \\mathbb{P}(A_1^C \\cap A_2^C \\cap \\cdots \\cap A_n^C)\\]\n\nThe people are independent, so their complements are too, and the probability of the intersection is a product\n\n\\[= 1 - \\mathbb{P}(A_1^C) \\cdot \\mathbb{P}(A_2^C) \\cdots \\mathbb{P}(A_n^C) = 1 - \\prod_{i=1}^{n} (1 - p_i)\\]\n\nIf everyone has the same chance \\(p\\) of smoking, this is \\(1 - (1 - p)^n\\)"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#probability-at-least-one-smoker-simulating-in-r-extra-reference-on-own",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#probability-at-least-one-smoker-simulating-in-r-extra-reference-on-own",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Probability at least one smoker: simulating in R (extra reference on own)",
+    "text": "Probability at least one smoker: simulating in R (extra reference on own)\nSuppose every person has the same chance of smoking, \\(p = 0.2\\), and we sample \\(n = 5\\) people. The formula gives \\(1 - (1 - 0.2)^5 = 0.672\\). Does the simulation agree?\n\n1set.seed(2026)\n2reps &lt;- 10000\nn_people &lt;- 5\np_smoker &lt;- 0.2\n\n3people &lt;- expand_grid(sim = 1:reps, person = 1:n_people) |&gt;\n4  mutate(smoker = sample(c(TRUE, FALSE), n(), replace = TRUE,\n                         prob = c(p_smoker, 1 - p_smoker)))\n\n5smoker_sims &lt;- people |&gt;\n  group_by(sim) |&gt;\n6  summarise(any_smoker = any(smoker))\n\n7smoker_sims |&gt;\n  summarise(prob_at_least_one = mean(any_smoker))\n\n\n1\n\nSet a new seed for this example.\n\n2\n\nSave the number of simulations, the number of people, and the chance of smoking as named values, so they are easy to change.\n\n3\n\nOne row for every combination of simulation (a sample of 5 people) and person.\n\n4\n\nLike the unfair coin in Lesson 1: prob gives each outcome its own chance, here 20% smoker and 80% non-smoker. Each person is drawn separately, which is what makes them independent.\n\n5\n\nHandle each simulation (each sample of people) separately.\n\n6\n\nany() is TRUE if at least one person in the sample is a smoker.\n\n7\n\nThe proportion of samples with at least one smoker.\n\n\n\n\n# A tibble: 1 × 1\n  prob_at_least_one\n              &lt;dbl&gt;\n1             0.682"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#section",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#section",
+    "title": "Lesson 4: Rules of probability",
+    "section": "",
+    "text": "Example 6: using both rules!\n\n\nSuppose\n\n1% of people who are AFAB aged 40-50 years have breast cancer,\nan AFAB person with breast cancer has a 90% chance of a positive test from a mammogram, and\nan AFAB person has a 10% chance of a false-positive result from a mammogram.\n\nWhat is the probability that an AFAB person has breast cancer given that they just had a positive test?"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#example-6-simulating-in-r",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#example-6-simulating-in-r",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Example 6: simulating in R",
+    "text": "Example 6: simulating in R\nWe simulate which of the four pieces of the partition each AFAB person lands in, using the probabilities \\(\\mathbb{P}(B \\cap A) = 0.01 \\cdot 0.9\\), and so on\n\n1set.seed(2027)\n2reps &lt;- 100000\n\n3cells &lt;- c(\"cancer and +\", \"cancer and -\",\n           \"no cancer and +\", \"no cancer and -\")\n4cell_probs &lt;- c(0.01 * 0.9, 0.01 * 0.1,\n                0.99 * 0.1, 0.99 * 0.9)\n\n5mammo_sims &lt;- expand_grid(sim = 1:reps) |&gt;\n  mutate(cell = sample(cells, n(), replace = TRUE, prob = cell_probs))\n\n6mammo_sims |&gt;\n7  filter(cell %in% c(\"cancer and +\", \"no cancer and +\")) |&gt;\n8  summarise(prob_cancer_given_pos = mean(cell == \"cancer and +\"))\n\n\n1\n\nSet a new seed for this example.\n\n2\n\nSave the number of simulations as reps. We use 100,000 because breast cancer with a positive test is fairly rare.\n\n3\n\nThe four disjoint pieces of the sample space: cancer or not, and a positive (+) or negative (-) mammogram.\n\n4\n\nThe probability of each piece, from the multiplication rule: for example, \\(\\mathbb{P}(\\text{cancer} \\cap +) = \\mathbb{P}(\\text{cancer}) \\cdot \\mathbb{P}(+ | \\text{cancer})\\).\n\n5\n\nOne row per simulated person, who lands in exactly one piece.\n\n6\n\nStart with the simulated people.\n\n7\n\n“Given a positive test” means we only keep people with a positive test. %in% checks if cell is one of the listed pieces.\n\n8\n\nAmong the positive tests, the proportion that have cancer. This should be close to our answer of 0.0833.\n\n\n\n\n# A tibble: 1 × 1\n  prob_cancer_given_pos\n                  &lt;dbl&gt;\n1                0.0856"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#bayes-rule-expanded-to-n-partitions",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_.html#bayes-rule-expanded-to-n-partitions",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Bayes’ Rule expanded to \\(n\\) partitions",
+    "text": "Bayes’ Rule expanded to \\(n\\) partitions\n\n\nTheorem: Bayes’ Rule\n\n\nIf \\(\\{A_i\\}_{i=1}^{n}\\) form a partition of the sample space \\(S\\), with \\(\\mathbb{P}(A_i)&gt;0\\) for \\(i=1\\ldots n\\) and \\(\\mathbb{P}(B)&gt;0\\), then\n\\[\\mathbb{P}(A_j | B) =\n\\frac{\\mathbb{P}(B|A_j) \\cdot \\mathbb{P}(A_j)}\n{\\sum_{i=1}^{n} \\mathbb{P}(B|A_i) \\cdot \\mathbb{P}(A_i)}\\]\n\n\nBlank sample space boxS"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#example-of-two-dice-simulating-in-r-22",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#example-of-two-dice-simulating-in-r-22",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Example of two dice: simulating in R (2/2)",
+    "text": "Example of two dice: simulating in R (2/2)\n\n\nExample 1\n\n\nTwo dice (green and blue) are rolled. Let \\(A =\\) event a total of 7 appears, and \\(B =\\) event green die is a six. Are events \\(A\\) and \\(B\\) independent?\n\n\n\n\nSame code, now with 10,000 simulations\n1reps &lt;- 10000\n2dice &lt;- expand_grid(sim = 1:reps) |&gt;\n  mutate(green = sample(1:6, n(), replace = TRUE),\n         blue = sample(1:6, n(), replace = TRUE))\ndice_events &lt;- dice |&gt;\n  mutate(A = green + blue == 7,\n         B = green == 6)\n\n\n\n1\n\nThe only change: 10,000 simulations instead of 10.\n\n2\n\nSame as before: roll the two dice and check events A and B in each simulation.\n\n\n\n\n\n\nThen we compare \\(\\mathbb{P}(A) \\cdot \\mathbb{P}(B)\\) with \\(\\mathbb{P}(A \\cap B)\\)\n\n1dice_events |&gt;\n2  summarise(p_A = mean(A),\n            p_B = mean(B),\n3            p_A_times_p_B = p_A * p_B,\n4            p_A_and_B = mean(A & B))\n\n\n1\n\nStart with the table of events.\n\n2\n\nmean() of a TRUE/FALSE column is the proportion of simulations where the event happened. R treats TRUE as 1 and FALSE as 0.\n\n3\n\n\\(\\mathbb{P}(A) \\cdot \\mathbb{P}(B)\\): we can use columns we just made inside the same summarise().\n\n4\n\n\\(\\mathbb{P}(A \\cap B)\\): & is “and”, so this is the proportion of simulations where both events happened.\n\n\n\n\n# A tibble: 1 × 4\n    p_A   p_B p_A_times_p_B p_A_and_B\n  &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;\n1 0.169 0.170        0.0286    0.0274\n\n\n\n \n \n \n \n\n\nThe last two columns are close to each other (and to \\(\\frac{1}{36} \\approx 0.0278\\)), which is what independence looks like\n\nDo not need to be exactly the same!"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#probability-at-least-one-smoker-extra-reference-on-own",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#probability-at-least-one-smoker-extra-reference-on-own",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Probability at least one smoker (extra reference on own)",
+    "text": "Probability at least one smoker (extra reference on own)\n\n\n\n\nExample 2\n\n\nSuppose you take a random sample of \\(n\\) people, in which each person is a smoker or non-smoker independently of the others. Let\n\n\\(A_i =\\) event person \\(i\\) is a smoker, for \\(i=1, \\ldots ,n\\), and\n\\(p_i =\\) probability person \\(i\\) is a smoker, for \\(i=1, \\ldots ,n\\).\n\nFind the probability that at least one person in the random sample is a smoker.\n\n\n\n\n“At least one smoker” is the complement of “no smokers”\n\n\\[\\mathbb{P}(\\text{at least one smoker}) = 1 - \\mathbb{P}(A_1^C \\cap A_2^C \\cap \\cdots \\cap A_n^C)\\]\n\nThe people are independent, so their complements are too, and the probability of the intersection is a product\n\n\\[= 1 - \\mathbb{P}(A_1^C) \\cdot \\mathbb{P}(A_2^C) \\cdots \\mathbb{P}(A_n^C) = 1 - \\prod_{i=1}^{n} (1 - p_i)\\]\n\nIf everyone has the same chance \\(p\\) of smoking, this is \\(1 - (1 - p)^n\\)"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#probability-at-least-one-smoker-simulating-in-r-extra-reference-on-own",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#probability-at-least-one-smoker-simulating-in-r-extra-reference-on-own",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Probability at least one smoker: simulating in R (extra reference on own)",
+    "text": "Probability at least one smoker: simulating in R (extra reference on own)\nSuppose every person has the same chance of smoking, \\(p = 0.2\\), and we sample \\(n = 5\\) people. The formula gives \\(1 - (1 - 0.2)^5 = 0.672\\). Does the simulation agree?\n\n1set.seed(2026)\n2reps &lt;- 10000\nn_people &lt;- 5\np_smoker &lt;- 0.2\n\n3people &lt;- expand_grid(sim = 1:reps, person = 1:n_people) |&gt;\n4  mutate(smoker = sample(c(TRUE, FALSE), n(), replace = TRUE,\n                         prob = c(p_smoker, 1 - p_smoker)))\n\n5smoker_sims &lt;- people |&gt;\n  group_by(sim) |&gt;\n6  summarise(any_smoker = any(smoker))\n\n7smoker_sims |&gt;\n  summarise(prob_at_least_one = mean(any_smoker))\n\n\n1\n\nSet a new seed for this example.\n\n2\n\nSave the number of simulations, the number of people, and the chance of smoking as named values, so they are easy to change.\n\n3\n\nOne row for every combination of simulation (a sample of 5 people) and person.\n\n4\n\nLike the unfair coin in Lesson 1: prob gives each outcome its own chance, here 20% smoker and 80% non-smoker. Each person is drawn separately, which is what makes them independent.\n\n5\n\nHandle each simulation (each sample of people) separately.\n\n6\n\nany() is TRUE if at least one person in the sample is a smoker.\n\n7\n\nThe proportion of samples with at least one smoker.\n\n\n\n\n# A tibble: 1 × 1\n  prob_at_least_one\n              &lt;dbl&gt;\n1             0.682"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#conditional-probability-with-two-dice-simulations-12",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#conditional-probability-with-two-dice-simulations-12",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Conditional probability with two dice: simulations (1/2)",
+    "text": "Conditional probability with two dice: simulations (1/2)\n\n\nExample 3\n\n\nTwo dice (green and blue) are rolled. If the dice do not show the same face, what is the probability that one of the dice is a 1?\n\n\nReuse the 10,000 rolls, but with new events: \\(A\\) = one die is a 1, and \\(B\\) = the dice do not match\n\n\n\n1cond_sims &lt;- dice |&gt;\n2  mutate(A = green == 1 | blue == 1,\n3         B = green != blue)\n\n\n1\n\nStart with the same dice table from Example 1 and save the result as cond_sims.\n\n2\n\n| is “or”, so A is TRUE when the green die is a 1 or the blue die is a 1 (or both).\n\n3\n\n!= is “is not equal to”, so B is TRUE when the two dice show different numbers.\n\n\n\n\n\n\n\n\n4head(cond_sims, 10)\n\n\n4\n\nhead() prints the first 10 rows.\n\n\n\n\n# A tibble: 10 × 5\n     sim green  blue A     B    \n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;lgl&gt; &lt;lgl&gt;\n 1     1     1     2 TRUE  TRUE \n 2     2     3     2 FALSE TRUE \n 3     3     1     4 TRUE  TRUE \n 4     4     5     4 FALSE TRUE \n 5     5     2     5 FALSE TRUE \n 6     6     1     5 TRUE  TRUE \n 7     7     6     3 FALSE TRUE \n 8     8     3     5 FALSE TRUE \n 9     9     6     4 FALSE TRUE \n10    10     1     6 TRUE  TRUE"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#conditional-probability-with-two-dice-simulations-22",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#conditional-probability-with-two-dice-simulations-22",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Conditional probability with two dice: simulations (2/2)",
+    "text": "Conditional probability with two dice: simulations (2/2)\n\n\nExample 3\n\n\nTwo dice (green and blue) are rolled. If the dice do not show the same face, what is the probability that one of the dice is a 1?\n\n\n\n\nOne way to think about it: Calculate each from all simulations and then divide\n\n1cond_sims |&gt;\n2  summarise(p_A_and_B = mean(A & B),\n3            p_B = mean(B),\n4            p_A_given_B = p_A_and_B / p_B)\n\n\n1\n\nStart with the table of events.\n\n2\n\n\\(\\mathbb{P}(A \\cap B)\\): the proportion of simulations where both events happened.\n\n3\n\n\\(\\mathbb{P}(B)\\): the proportion of simulations where the dice do not match.\n\n4\n\n\\(\\mathbb{P}(A|B) = \\mathbb{P}(A \\cap B) / \\mathbb{P}(B)\\), which is Fact 2.\n\n\n\n\n# A tibble: 1 × 3\n  p_A_and_B   p_B p_A_given_B\n      &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;\n1     0.277 0.831       0.333\n\n\n\n\n\nAnother way to think about it: given \\(B\\), we only look at the simulations where \\(B\\) happened\n\n1cond_sims |&gt;\n2  filter(B) |&gt;\n3  summarise(p_A_given_B = mean(A))\n\n\n1\n\nStart with the table of events.\n\n2\n\nfilter(B) keeps only the rows where B is TRUE.\n\n3\n\nAmong those rows, the proportion where A happened.\n\n\n\n\n# A tibble: 1 × 1\n  p_A_given_B\n        &lt;dbl&gt;\n1       0.333\n\n\n\n \n\nBoth ways are close to \\(\\frac{1}{3}\\)"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#monty-hall-problem-simulating-in-r",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#monty-hall-problem-simulating-in-r",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Monty Hall Problem: simulating in R",
+    "text": "Monty Hall Problem: simulating in R\nThree doors: a car is behind one, goats behind the other two. You pick a door, the host opens a different door with a goat, and you choose whether to stay or switch\n\n1set.seed(1003)\n2reps &lt;- 10000\n\n3monty &lt;- expand_grid(sim = 1:reps) |&gt;\n4  mutate(car = sample(1:3, n(), replace = TRUE),\n5         pick = sample(1:3, n(), replace = TRUE),\n6         stay_wins = car == pick,\n7         switch_wins = car != pick)\n\n8monty |&gt;\n  summarise(p_stay = mean(stay_wins),\n            p_switch = mean(switch_wins))\n\n\n1\n\nSet a new seed for this example.\n\n2\n\nSave the number of simulations as reps.\n\n3\n\nOne row for every simulation (every game).\n\n4\n\nThe car is behind a random door from 1 to 3.\n\n5\n\nYou pick a random door from 1 to 3.\n\n6\n\nIf you stay, you win exactly when your first pick has the car.\n\n7\n\nIf you switch, the host has already removed a goat door, so you win exactly when your first pick was wrong.\n\n8\n\nThe proportion of games won by each strategy.\n\n\n\n\n# A tibble: 1 × 2\n  p_stay p_switch\n   &lt;dbl&gt;    &lt;dbl&gt;\n1  0.335    0.665\n\n\nSwitching wins about \\(\\frac{2}{3}\\) of the time. Why? Switching wins exactly when our first pick was wrong, and that has probability \\(\\frac{2}{3}\\)"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#general-law-of-total-probability",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#general-law-of-total-probability",
+    "title": "Lesson 4: Rules of probability",
+    "section": "General Law of Total Probability",
+    "text": "General Law of Total Probability\n\n\nLaw of Total Probability (general)\n\n\nIf \\(\\{A_i\\}_{i=1}^{n} = \\{A_1, A_2, \\ldots, A_n\\}\\) form a partition of the sample space, then for event \\(B\\),\n\\[%\\left(\n\\begin{array}{ccl}\n\\mathbb{P}(B)&=& \\sum_{i=1}^{n} \\mathbb{P}(B \\cap A_i)\\\\\n           &=& \\sum_{i=1}^{n} \\mathbb{P}(B|A_i) \\cdot \\mathbb{P}(A_i)\n\\end{array}\n%\\right)\\]\n\n\nBlank sample space boxS"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#calculate-probability-with-both-rules-simulating-in-r",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#calculate-probability-with-both-rules-simulating-in-r",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Calculate probability with both rules: simulating in R",
+    "text": "Calculate probability with both rules: simulating in R\nWe simulate using only the information given in the problem:\n\n1set.seed(2027)\n2reps &lt;- 100000\n3p_cancer &lt;- 0.01; p_pos_if_cancer &lt;- 0.9; p_pos_if_no_cancer &lt;- 0.1\n\n4people &lt;- expand_grid(sim = 1:reps) |&gt;\n5  mutate(cancer = sample(c(TRUE, FALSE), n(), replace = TRUE,\n                         prob = c(p_cancer, 1 - p_cancer)),\n6         pos_if_cancer = sample(c(TRUE, FALSE), n(), replace = TRUE,\n                                prob = c(p_pos_if_cancer, 1 - p_pos_if_cancer)),\n7         pos_if_no_cancer = sample(c(TRUE, FALSE), n(), replace = TRUE,\n                                   prob = c(p_pos_if_no_cancer, 1 - p_pos_if_no_cancer)),\n8         positive = if_else(cancer, pos_if_cancer, pos_if_no_cancer))\n\n9people |&gt;\n  filter(positive) |&gt;\n10  summarise(prob_cancer_given_pos = mean(cancer))\n\n\n1\n\nSet a new seed for this example.\n\n2\n\nSave the number of simulations as reps. We use 100,000 because breast cancer with a positive test is fairly rare.\n\n3\n\nSave the three probabilities from the problem as named values, so they are easy to change.\n\n4\n\nOne row per simulated AFAB person aged 40-50 years.\n\n5\n\nDoes this person have breast cancer? Like the unfair coin in Lesson 1, prob gives TRUE (cancer) a 1% chance and FALSE a 99% chance.\n\n6\n\nWhat the mammogram would show if this person has cancer: positive with probability 0.9.\n\n7\n\nWhat the mammogram would show if this person does not have cancer: a false positive with probability 0.1.\n\n8\n\nNew function: if_else(condition, value_if_TRUE, value_if_FALSE) picks a value for each row. If the person has cancer, we keep pos_if_cancer. Otherwise we keep pos_if_no_cancer. This is how the test result depends on cancer status.\n\n9\n\n“Given a positive test” means we only keep the people with a positive test. filter(positive) keeps the rows where positive is TRUE.\n\n10\n\nAmong the positive tests, the proportion that have cancer. This should be close to our answer of 0.0833.\n\n\n\n\n# A tibble: 1 × 1\n  prob_cancer_given_pos\n                  &lt;dbl&gt;\n1                0.0879"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#bayes-rule-expanded-to-n-partitions",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob.html#bayes-rule-expanded-to-n-partitions",
+    "title": "Lesson 4: Rules of probability",
+    "section": "Bayes’ Rule expanded to \\(n\\) partitions",
+    "text": "Bayes’ Rule expanded to \\(n\\) partitions\n\n\nTheorem: Bayes’ Rule\n\n\nIf \\(\\{A_i\\}_{i=1}^{n}\\) form a partition of the sample space \\(S\\), with \\(\\mathbb{P}(A_i)&gt;0\\) for \\(i=1\\ldots n\\) and \\(\\mathbb{P}(B)&gt;0\\), then\n\\[\\mathbb{P}(A_j | B) =\n\\frac{\\mathbb{P}(B|A_j) \\cdot \\mathbb{P}(A_j)}\n{\\sum_{i=1}^{n} \\mathbb{P}(B|A_i) \\cdot \\mathbb{P}(A_i)}\\]\n\n\nBlank sample space boxS"
   }
 ]

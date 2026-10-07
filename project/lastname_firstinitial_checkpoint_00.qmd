@@ -1,6 +1,6 @@
 ---
 title: "Checkpoint 0: Choose Your Scenario"
-author: "Your name here!"
+author: "Your name(s) here!"
 subtitle: "BSTA 550"
 date-modified: "today"
 format:
@@ -26,6 +26,9 @@ library(tidyverse)
 
 ::: callout-warning
 Note that this is the editing file. **There are detailed instructions on our course page for Checkpoint 0 that are not in this file.**
+
+-   Please do not remove anything from this file. Only add your work to it.
+-   Name your files `lastname_firstinitial_checkpoint_00.qmd` and `.html` (or `lastname1_lastname2_checkpoint_00.qmd` and `.html` for a pair). One submission per team.
 :::
 
 ## Team and scenario
@@ -38,12 +41,30 @@ Note that this is the editing file. **There are detailed instructions on our cou
 -   In 3–5 sentences, and **in your own words**, describe the scenario: Who is the population? What is being tested, counted, or measured? What decision does the public health program need to make, and why does it matter for the population it serves?
 :::
 
+**Working alone or with a partner:**
+
+**Scenario (A, B, or C):**
+
+**Description of the scenario:**
+
 ## Find your numbers in the sources
 
 ::: callout-important
 #### Task
 
-Define your events, then fill in the table for your scenario. Use the **Finding your numbers** box on your scenario card. Write "course value" for numbers from the scenario card, and write probability statements for the three CP 1 rows only.
+Define your events, then fill in the table for your scenario. Use the **Finding your numbers** box on your scenario card.
+
+-   **Value:** The number from the source, or the course value from your scenario card.
+-   **Where I found it:** The source (1, 2, or 3) and the section, table, or sentence (for example, "Source 1, Abstract, Results"). Write "course value" for numbers from the scenario card.
+-   **Probability statement:** For the three CP 1 rows only, write the value as a probability using your events, for example, $P(T^+ \mid D) = 0.874$.
+:::
+
+::: callout-warning
+#### Record only what the source says
+
+-   Copy the main estimate only. Do not include the 95% confidence interval.
+-   Do not calculate anything new yet (for example, the chance that someone with a positive test has the condition). That is the job of Checkpoint 1.
+-   Convert percents and "per 1,000" or "per 10,000" values to decimals in the probability statement column (e.g., 87.4% becomes 0.874, and 3 per 10,000 becomes 0.0003).
 :::
 
 **Events:**
@@ -53,20 +74,20 @@ Define your events, then fill in the table for your scenario. Use the **Finding 
 
 | CP | What you are looking for | Value | Where I found it | Probability statement (CP 1 only) |
 |----|----|----|----|----|
-| 1 | Prevalence |  |  |  |
-| 1 | Sensitivity |  |  |  |
-| 1 | Specificity (A and B) or false-positive rate (C) |  |  |  |
-| 2 | Chance of a "yes" for one screen, household contact, or baby |  |  | — |
-| 2 | Group size |  |  | — |
-| 3 | Mean, with units |  |  | — |
-| 3 | SD, with units |  |  | — |
+| 1 | Prevalence: out of everyone screened or tested, the fraction who **have** the condition |  |  |  |
+| 1 | Sensitivity: out of the people who **have** the condition, the fraction who test positive |  |  |  |
+| 1 | Specificity (A and B): out of the people who **do not have** the condition, the fraction who test negative. **Or** false-positive rate (C): out of the people who **do not have** the condition, the fraction who test positive |  |  |  |
+| 2 | Chance of a "yes" for one screen (A: read as abnormal), one household contact (B: gets infected), or one baby (C: born with CCHD) |  |  | — |
+| 2 | Group size: how many screens, household contacts, or babies are in the group |  |  | — |
+| 3 | Mean (average) of the time or measurement, with units |  |  | — |
+| 3 | SD of the time or measurement, with units |  |  | — |
 
 ## Your guiding questions
 
 ::: callout-important
 #### Task
 
-Write one question for each checkpoint that your analysis will answer. You may use the examples for your scenario, or change them.
+Write one question for each checkpoint that your analysis will answer. You may use the examples for your scenario, or change them (for example, a different cutoff). These can change later.
 :::
 
 -   **CP 1:**

@@ -25407,28 +25407,28 @@
     "href": "project/lastname_firstinitial_checkpoint_00.html",
     "title": "Checkpoint 0: Choose Your Scenario",
     "section": "",
-    "text": "Warning\n\n\n\nNote that this is the editing file. There are detailed instructions on our course page for Checkpoint 0 that are not in this file."
+    "text": "Warning\n\n\n\nNote that this is the editing file. There are detailed instructions on our course page for Checkpoint 0 that are not in this file.\n\nPlease do not remove anything from this file. Only add your work to it.\nName your files lastname_firstinitial_checkpoint_00.qmd and .html (or lastname1_lastname2_checkpoint_00.qmd and .html for a pair). One submission per team."
   },
   {
     "objectID": "project/lastname_firstinitial_checkpoint_00.html#team-and-scenario",
     "href": "project/lastname_firstinitial_checkpoint_00.html#team-and-scenario",
     "title": "Checkpoint 0: Choose Your Scenario",
     "section": "1 Team and scenario",
-    "text": "1 Team and scenario\n\n\n\n\n\n\nImportantTask\n\n\n\n\nState whether you are working alone or with a partner (and your partner’s name).\nState which scenario you chose (A, B, or C).\nIn 3–5 sentences, and in your own words, describe the scenario: Who is the population? What is being tested, counted, or measured? What decision does the public health program need to make, and why does it matter for the population it serves?"
+    "text": "1 Team and scenario\n\n\n\n\n\n\nImportantTask\n\n\n\n\nState whether you are working alone or with a partner (and your partner’s name).\nState which scenario you chose (A, B, or C).\nIn 3–5 sentences, and in your own words, describe the scenario: Who is the population? What is being tested, counted, or measured? What decision does the public health program need to make, and why does it matter for the population it serves?\n\n\n\nWorking alone or with a partner:\nScenario (A, B, or C):\nDescription of the scenario:"
   },
   {
     "objectID": "project/lastname_firstinitial_checkpoint_00.html#find-your-numbers-in-the-sources",
     "href": "project/lastname_firstinitial_checkpoint_00.html#find-your-numbers-in-the-sources",
     "title": "Checkpoint 0: Choose Your Scenario",
     "section": "2 Find your numbers in the sources",
-    "text": "2 Find your numbers in the sources\n\n\n\n\n\n\nImportantTask\n\n\n\nDefine your events, then fill in the table for your scenario. Use the Finding your numbers box on your scenario card. Write “course value” for numbers from the scenario card, and write probability statements for the three CP 1 rows only.\n\n\nEvents:\n\n\\(D\\) =\n\\(T^+\\) =\n\n\n\n\n\n\n\n\n\n\n\nCP\nWhat you are looking for\nValue\nWhere I found it\nProbability statement (CP 1 only)\n\n\n\n\n1\nPrevalence\n\n\n\n\n\n1\nSensitivity\n\n\n\n\n\n1\nSpecificity (A and B) or false-positive rate (C)\n\n\n\n\n\n2\nChance of a “yes” for one screen, household contact, or baby\n\n\n—\n\n\n2\nGroup size\n\n\n—\n\n\n3\nMean, with units\n\n\n—\n\n\n3\nSD, with units\n\n\n—"
+    "text": "2 Find your numbers in the sources\n\n\n\n\n\n\nImportantTask\n\n\n\nDefine your events, then fill in the table for your scenario. Use the Finding your numbers box on your scenario card.\n\nValue: The number from the source, or the course value from your scenario card.\nWhere I found it: The source (1, 2, or 3) and the section, table, or sentence (for example, “Source 1, Abstract, Results”). Write “course value” for numbers from the scenario card.\nProbability statement: For the three CP 1 rows only, write the value as a probability using your events, for example, \\(P(T^+ \\mid D) = 0.874\\).\n\n\n\n\n\n\n\n\n\nWarningRecord only what the source says\n\n\n\n\nCopy the main estimate only. Do not include the 95% confidence interval.\nDo not calculate anything new yet (for example, the chance that someone with a positive test has the condition). That is the job of Checkpoint 1.\nConvert percents and “per 1,000” or “per 10,000” values to decimals in the probability statement column (e.g., 87.4% becomes 0.874, and 3 per 10,000 becomes 0.0003).\n\n\n\nEvents:\n\n\\(D\\) =\n\\(T^+\\) =\n\n\n\n\n\n\n\n\n\n\n\nCP\nWhat you are looking for\nValue\nWhere I found it\nProbability statement (CP 1 only)\n\n\n\n\n1\nPrevalence: out of everyone screened or tested, the fraction who have the condition\n\n\n\n\n\n1\nSensitivity: out of the people who have the condition, the fraction who test positive\n\n\n\n\n\n1\nSpecificity (A and B): out of the people who do not have the condition, the fraction who test negative. Or false-positive rate (C): out of the people who do not have the condition, the fraction who test positive\n\n\n\n\n\n2\nChance of a “yes” for one screen (A: read as abnormal), one household contact (B: gets infected), or one baby (C: born with CCHD)\n\n\n—\n\n\n2\nGroup size: how many screens, household contacts, or babies are in the group\n\n\n—\n\n\n3\nMean (average) of the time or measurement, with units\n\n\n—\n\n\n3\nSD of the time or measurement, with units\n\n\n—"
   },
   {
     "objectID": "project/lastname_firstinitial_checkpoint_00.html#your-guiding-questions",
     "href": "project/lastname_firstinitial_checkpoint_00.html#your-guiding-questions",
     "title": "Checkpoint 0: Choose Your Scenario",
     "section": "3 Your guiding questions",
-    "text": "3 Your guiding questions\n\n\n\n\n\n\nImportantTask\n\n\n\nWrite one question for each checkpoint that your analysis will answer. You may use the examples for your scenario, or change them.\n\n\n\nCP 1:\nCP 2:\nCP 3:"
+    "text": "3 Your guiding questions\n\n\n\n\n\n\nImportantTask\n\n\n\nWrite one question for each checkpoint that your analysis will answer. You may use the examples for your scenario, or change them (for example, a different cutoff). These can change later.\n\n\n\nCP 1:\nCP 2:\nCP 3:"
   },
   {
     "objectID": "project/lastname_firstinitial_checkpoint_02.html",

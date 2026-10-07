@@ -270,12 +270,3 @@ Submit a rendered HTML file (and your `.qmd`) with the three sections above. Mak
 [You can download the `.qmd` editing file for this checkpoint here.](https://github.com/nwakim/BSTA_550_26F/blob/main/project/lastname_firstinitial_checkpoint_00.qmd) The link takes you to GitHub, where you can click the download button (the arrow pointing down) near the top right of the file.
 
 The editing file has the headings and tasks, but not the detailed instructions on this page. **Please do not remove anything from the editing file.** You will only add your work to it.
-
-## Rubric (4 points)
-
-| Criterion | 1 point | 0 points |
-|--------|----|-------|
-| Scenario is chosen (or approved) and described in your own words | Yes | Missing, or not in your own words |
-| Input table is complete, with the correct numbers from the sources or course values | Yes | Incomplete or incorrect |
-| Every value says where it was found, and the three CP 1 rows have correct probability statements | Yes | Missing locations or incorrect statements |
-| One guiding question for each checkpoint | Yes | Missing |

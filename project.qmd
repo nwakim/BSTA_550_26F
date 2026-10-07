@@ -36,8 +36,8 @@ I used Claude (Sonnet 5) to help me brainstorm project ideas for this class usin
 The checkpoints build, step by step, the work you need for the final project, so we complete the work over the quarter instead of all at the end. **If you receive feedback on something in a checkpoint, you are expected to fix it for the next checkpoint and the final project.**
 
 | Checkpoint Instructions | Points | Editing file | Rubric | Due Date | Topics |
-|----|----|----|----|----|----|
-| [Checkpoint 0](/project/Checkpoint_00_instructions.qmd) | 4 | [[{{< iconify mdi edit-box size=30px >}}](https://github.com/nwakim/BSTA_550_26F/blob/main/project/lastname_firstinitial_checkpoint_00.qmd)]{style="color:#f8f5f0;"} | [[{{< iconify material-symbols rubric-rounded size=30px >}}](/project/Checkpoint_00_rubric.xlsx)]{style="color:#f8f5f0;"} | `r cp0 %>% format("%m/%d")` | Choose your scenario + find input values in your source packet |
+|------------|------------|------------|------------|------------|------------|
+| [Checkpoint 0](/project/Checkpoint_00_instructions.qmd) | 16 | [[{{< iconify mdi edit-box size=30px >}}](https://github.com/nwakim/BSTA_550_26F/blob/main/project/lastname_firstinitial_checkpoint_00.qmd)]{style="color:#f8f5f0;"} | [[{{< iconify material-symbols rubric-rounded size=30px >}}](/project/Checkpoint_00_rubric.xlsx)]{style="color:#f8f5f0;"} | `r cp0 %>% format("%m/%d")` | Choose your scenario + find input values in your source packet |
 | [Checkpoint 1](/project/Checkpoint_01_instructions.qmd) | 12 | [[{{< iconify mdi edit-box size=30px >}}](https://github.com/nwakim/BSTA_550_26F/blob/main/project/lastname_firstinitial_checkpoint_01.qmd)]{style="color:#f8f5f0;"} | [[{{< iconify material-symbols rubric-rounded size=30px >}}](/project/Checkpoint_01_rubric.xlsx)]{style="color:#f8f5f0;"} | `r cp1 %>% format("%m/%d")` | Conditional probability + Bayes' rule: when is a positive really positive? |
 | [Checkpoint 2](/project/Checkpoint_02_instructions.qmd) | 12 | [[{{< iconify mdi edit-box size=30px >}}](https://github.com/nwakim/BSTA_550_26F/blob/main/project/lastname_firstinitial_checkpoint_02.qmd)]{style="color:#f8f5f0;"} | [[{{< iconify material-symbols rubric-rounded size=30px >}}](/project/Checkpoint_02_rubric.xlsx)]{style="color:#f8f5f0;"} | `r cp2 %>% format("%m/%d")` | Discrete random variables: counting events |
 | [Checkpoint 3](/project/Checkpoint_03_instructions.qmd) | 12 | [[{{< iconify mdi edit-box size=30px >}}](https://github.com/nwakim/BSTA_550_26F/blob/main/project/lastname_firstinitial_checkpoint_03.qmd)]{style="color:#f8f5f0;"} | [[{{< iconify material-symbols rubric-rounded size=30px >}}](/project/Checkpoint_03_rubric.xlsx)]{style="color:#f8f5f0;"} | `r cp3 %>% format("%m/%d")` | Continuous random variables + the Central Limit Theorem |
@@ -61,7 +61,7 @@ You may work **alone or in pairs**. If you work in a pair, you keep the same par
 Pick one of the three scenarios below. Each one comes with a fixed setting and a short packet of published sources, so you do not need to search for sources yourself. The full scenario cards are in [Checkpoint 0](/project/Checkpoint_00_instructions.qmd#scenario-cards). You may propose your own scenario only with my approval (see Checkpoint 0).
 
 | Scenario | CP 1: Conditional probability & Bayes | CP 2: Discrete RV | CP 3: Continuous RV & CLT |
-|----|----|----|----|
+|------------------|------------------|------------------|------------------|
 | A. Community breast cancer screening program | P(cancer \| abnormal mammogram) | Follow-up appointments needed after a van day of 40 screens | Size of a tumor found by screening |
 | B. County COVID-19 testing and contact tracing | P(infected \| positive rapid test) | Household contacts of a case who get infected | Incubation period |
 | C. State newborn heart screening program | P(heart defect \| positive pulse oximetry screen) | Babies born with a heart defect in the state in a year | Birth weight |

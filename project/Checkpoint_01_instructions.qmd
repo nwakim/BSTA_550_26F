@@ -129,12 +129,3 @@ Submit a rendered HTML file (use `code-fold: true`) and your `.qmd`. Make sure t
 [You can download the `.qmd` editing file for this checkpoint here.](https://github.com/nwakim/BSTA_550_26F/blob/main/project/lastname_firstinitial_checkpoint_01.qmd) The link takes you to GitHub, where you can click the download button (the arrow pointing down) near the top right of the file.
 
 The editing file has the headings and tasks, but not the detailed instructions on this page. **Please do not remove anything from the editing file.** You will only add your work to it.
-
-## Rubric (12 points)
-
-| Criterion | 3 | 2 | 1 |
-|----|----|----|----|
-| **Setup** (notation, input values, tree or table) | Clear and correct; inputs cited | Minor gaps in notation or citation | Major errors or missing |
-| **Analytic solution** (LTP, PPV, NPV) | Correct, with work shown | Small errors | Mostly incorrect or no work shown |
-| **Simulation** (code, comparison to analytic answer, prevalence plot) | Agrees with analytic answer; differences explained; plot is clear | Runs, but comparison or plot is weak | Missing or incorrect |
-| **Interpretation** (prevalence discussion, program message) | Accurate and in plain language | Somewhat technical or vague | Missing or misleading |

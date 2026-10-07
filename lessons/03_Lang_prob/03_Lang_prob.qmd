@@ -20,8 +20,10 @@ execute:
 ---
 
 ```{r setup, include=FALSE}
-library(here)
-library(tidyverse)
+pacman::p_load(
+  here, 
+  tidyverse
+  )
 source(here("class_dates.R"))
 ```
 

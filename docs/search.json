@@ -18834,21 +18834,21 @@
     "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_key_info.html",
     "title": "Key Info",
     "section": "",
-    "text": "No office hours from me this week - I have a standing appointment\n\nBut we will start next week!\n\nDrop deadline with 100% refund: this Friday, 10/10\nNew AI Video Tutorials! If anyone is looking for course materials on the responsible use of generative AI tools such as ChatGPT, I wanted to highlight that the OHSU library has released a new set of AI video tutorials!\n\nCreated by librarian David Carson, this series of short videos (3-4 minutes each) is based on the Kickstart Your Writing with AI workshop taught with writing specialist Zoe Speidel. Each video is standalone and can be viewed in any order, so faculty can share and reuse whichever are most relevant. The topics include effective prompting, AI and publishing, and how to cite or disclose AI. The videos are designed to be flexible resources and are available to embed directly into Sakai. This series is available on the Library’s Generative AI student guide."
+    "text": "Office hours are set!\n\nMadi has one today at 3:15-4:15pm and tomorrow 3-4pm\n\nI will be out of town next week!\n\nAsync class in place of 10/12 class\nVirtual class in place of 10/14 class\n\nI will try to make an async class for next week!\nDo not feel like you need to attend any class in real time next week!\n\n\nExit tickets\n\nNot required, but if you have questions, please ask!!\n\nCareer panel viewing hosted by ASA Oregon Chapter\n\nLocation TBD\nTime: October 27th at 4pm"
   },
   {
     "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_key_info.html#announcements",
     "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_key_info.html#announcements",
     "title": "Key Info",
     "section": "",
-    "text": "No office hours from me this week - I have a standing appointment\n\nBut we will start next week!\n\nDrop deadline with 100% refund: this Friday, 10/10\nNew AI Video Tutorials! If anyone is looking for course materials on the responsible use of generative AI tools such as ChatGPT, I wanted to highlight that the OHSU library has released a new set of AI video tutorials!\n\nCreated by librarian David Carson, this series of short videos (3-4 minutes each) is based on the Kickstart Your Writing with AI workshop taught with writing specialist Zoe Speidel. Each video is standalone and can be viewed in any order, so faculty can share and reuse whichever are most relevant. The topics include effective prompting, AI and publishing, and how to cite or disclose AI. The videos are designed to be flexible resources and are available to embed directly into Sakai. This series is available on the Library’s Generative AI student guide."
+    "text": "Office hours are set!\n\nMadi has one today at 3:15-4:15pm and tomorrow 3-4pm\n\nI will be out of town next week!\n\nAsync class in place of 10/12 class\nVirtual class in place of 10/14 class\n\nI will try to make an async class for next week!\nDo not feel like you need to attend any class in real time next week!\n\n\nExit tickets\n\nNot required, but if you have questions, please ask!!\n\nCareer panel viewing hosted by ASA Oregon Chapter\n\nLocation TBD\nTime: October 27th at 4pm"
   },
   {
     "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_key_info.html#key-dates",
     "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_key_info.html#key-dates",
     "title": "Key Info",
     "section": "Key Dates",
-    "text": "Key Dates\n\nHW 1 Assignment due this Sunday at 11pm"
+    "text": "Key Dates\n\nHW 1 Assignment due this Sunday at 11pm\nCheckpoint 0 due this Sunday at 11pm!\n\nAny questions about this?"
   },
   {
     "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_muddy_points.html",
@@ -26206,5 +26206,12 @@
     "title": "Lesson 4: Rules of probability",
     "section": "Bayes’ Rule expanded to \\(n\\) partitions",
     "text": "Bayes’ Rule expanded to \\(n\\) partitions\n\n\nTheorem: Bayes’ Rule\n\n\nIf \\(\\{A_i\\}_{i=1}^{n}\\) form a partition of the sample space \\(S\\), with \\(\\mathbb{P}(A_i)&gt;0\\) for \\(i=1\\ldots n\\) and \\(\\mathbb{P}(B)&gt;0\\), then\n\\[\\mathbb{P}(A_j | B) =\n\\frac{\\mathbb{P}(B|A_j) \\cdot \\mathbb{P}(A_j)}\n{\\sum_{i=1}^{n} \\mathbb{P}(B|A_i) \\cdot \\mathbb{P}(A_i)}\\]\n\n\nBlank sample space boxS"
+  },
+  {
+    "objectID": "lessons/04_Rules_of_prob/04_Rules_of_prob_key_info.html#last-class",
+    "href": "lessons/04_Rules_of_prob/04_Rules_of_prob_key_info.html#last-class",
+    "title": "Key Info",
+    "section": "Last class",
+    "text": "Last class\n\nLearned some of the basics for probability:\n\nSet theory definitions\nAxioms\nPropositions\nDe Morgan’s laws\n\nNeed to finish partitions and final example!"
   }
 ]

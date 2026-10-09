@@ -77,10 +77,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-713b0136666c1ca4047413a70816f99a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-ebccf0fbef503770ee9b85daf8f5af23.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-1ba413a364333740ae1971cd65110e19.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -207,7 +207,7 @@ window.Quarto = {
   <li><a href="#tasks" id="toc-tasks" class="nav-link" data-scroll-target="#tasks">Tasks</a>
   <ul class="collapse">
   <li><a href="#set-up-the-problem" id="toc-set-up-the-problem" class="nav-link" data-scroll-target="#set-up-the-problem">1. Set up the problem</a></li>
-  <li><a href="#solve-it-analytically" id="toc-solve-it-analytically" class="nav-link" data-scroll-target="#solve-it-analytically">2. Solve it analytically</a></li>
+  <li><a href="#solve-analytically" id="toc-solve-analytically" class="nav-link" data-scroll-target="#solve-analytically">2. Solve analytically</a></li>
   <li><a href="#simulate-it" id="toc-simulate-it" class="nav-link" data-scroll-target="#simulate-it">3. Simulate it</a></li>
   <li><a href="#explore-how-does-prevalence-matter" id="toc-explore-how-does-prevalence-matter" class="nav-link" data-scroll-target="#explore-how-does-prevalence-matter">4. Explore: how does prevalence matter?</a></li>
   <li><a href="#say-it" id="toc-say-it" class="nav-link" data-scroll-target="#say-it">5. Say it</a></li>
@@ -233,7 +233,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">October 7, 2026</p>
+      <p class="date-modified">October 9, 2026</p>
     </div>
   </div>
     
@@ -303,7 +303,7 @@ Important
 <h4 class="anchored" data-anchor-id="state-newborn-heart-screening-program">State newborn heart screening program</h4>
 <ul>
 <li><strong>Events:</strong> <span class="math inline">\(D\)</span> = has a critical congenital heart defect (CCHD); <span class="math inline">\(T^+\)</span> = the pulse oximetry screen is positive.</li>
-<li><strong>Inputs:</strong> prevalence, sensitivity, and false-positive rate from the Cochrane review. Your specificity is <span class="math inline">\(1 - (\text{false-positive rate})\)</span>.</li>
+<li><strong>Inputs:</strong> prevalence, sensitivity, and false-positive rate from the Cochrane review. Your false-positive rate is already <span class="math inline">\(P(T^+ \mid D^c)\)</span>, and your specificity is <span class="math inline">\(1 - (\text{false-positive rate})\)</span>.</li>
 <li><strong>Program question:</strong> What does a positive screen mean for a newborn’s family?</li>
 </ul>
 </section>
@@ -316,18 +316,38 @@ Important
 <section id="set-up-the-problem" class="level3">
 <h3 class="anchored" data-anchor-id="set-up-the-problem">1. Set up the problem</h3>
 <ul>
-<li>Define your events with notation, using the events for your scenario above.</li>
-<li>Write each input value as a probability statement, for example <span class="math inline">\(P(T^+ \mid D) = 0.874\)</span>. Cite the source for each value.</li>
-<li>Draw a tree diagram <strong>or</strong> a 2×2 table for a hypothetical population of 100,000 people screened by your program.</li>
+<li>Copy your events and your three Checkpoint 1 probability statements from Checkpoint 0, with any corrections from my feedback. Keep the source for each value.</li>
+<li>Add the one conditional probability you did not record in Checkpoint 0, using the complement rule:
+<ul>
+<li><strong>Scenarios A and B:</strong> the false-positive rate, <span class="math inline">\(P(T^+ \mid D^c) = 1 - P(T^- \mid D^c)\)</span>.</li>
+<li><strong>Scenario C:</strong> the specificity, <span class="math inline">\(P(T^- \mid D^c) = 1 - P(T^+ \mid D^c)\)</span>.</li>
+</ul></li>
+<li>Draw a tree diagram <strong>or</strong> a 2×2 table for a hypothetical population of 100,000 people screened by your program. Round each count to a whole number of people.</li>
 </ul>
 </section>
-<section id="solve-it-analytically" class="level3">
-<h3 class="anchored" data-anchor-id="solve-it-analytically">2. Solve it analytically</h3>
+<section id="solve-analytically" class="level3">
+<h3 class="anchored" data-anchor-id="solve-analytically">2. Solve analytically</h3>
 <ul>
 <li>Use the Law of Total Probability to find <span class="math inline">\(P(T^+)\)</span>.</li>
 <li>Use Bayes’ rule to find the <strong>positive predictive value</strong> <span class="math inline">\(P(D \mid T^+)\)</span> and the <strong>negative predictive value</strong> <span class="math inline">\(P(D^c \mid T^-)\)</span>.</li>
 <li>Show your work. You may use R as a calculator, but write out each formula first.</li>
 </ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Check yourself (Scenario A only, not graded)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Lee et al.&nbsp;(2023) report an abnormal interpretation rate of 8.3% and a PPV1 of 6.9% for DBT. Your <span class="math inline">\(P(T^+)\)</span> and <span class="math inline">\(P(D \mid T^+)\)</span> should be close to these values. If they are, Bayes’ rule just reproduced numbers from a published study!</p>
+</div>
+</div>
+</div>
 </section>
 <section id="simulate-it" class="level3">
 <h3 class="anchored" data-anchor-id="simulate-it">3. Simulate it</h3>
@@ -336,24 +356,13 @@ Important
 <li>Estimate PPV and NPV from your simulated population and compare them with your analytic answers.</li>
 <li>In 1–2 sentences, explain why the simulated and analytic values are close but not identical.</li>
 </ul>
-<p>Starter code (replace the placeholder input values with your own):</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">550</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>N    <span class="ot">&lt;-</span> <span class="fl">1e5</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>prev <span class="ot">&lt;-</span> <span class="fl">0.01</span>   <span class="co"># P(D): replace with your value</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>sens <span class="ot">&lt;-</span> <span class="fl">0.90</span>   <span class="co"># P(T+ | D): replace with your value</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>spec <span class="ot">&lt;-</span> <span class="fl">0.95</span>   <span class="co"># P(T- | D^c): replace with your value</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>disease  <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(N, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> prev)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>test_pos <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(disease <span class="sc">==</span> <span class="dv">1</span>,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">rbinom</span>(N, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> sens),</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">rbinom</span>(N, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="dv">1</span> <span class="sc">-</span> spec))</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>ppv_sim   <span class="ot">&lt;-</span> <span class="fu">mean</span>(disease[test_pos <span class="sc">==</span> <span class="dv">1</span>])</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>ppv_bayes <span class="ot">&lt;-</span> (sens <span class="sc">*</span> prev) <span class="sc">/</span> (sens <span class="sc">*</span> prev <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">-</span> spec) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> prev))</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">simulated =</span> ppv_sim, <span class="at">analytic =</span> ppv_bayes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p><strong>Where to start:</strong> Lesson 4 already has a simulation just like this one. Open the slide <a href="../lessons/04_Rules_of_prob/04_Rules_of_prob.html#/calculate-probability-with-both-rules-simulating-in-r">Calculate probability with both rules: simulating in R</a> (the mammogram example, Example 6), copy its code into your editing file, and adapt it:</p>
+<ul>
+<li>Replace the three probabilities with your scenario’s values. You need <span class="math inline">\(P(D)\)</span>, <span class="math inline">\(P(T^+ \mid D)\)</span>, and <span class="math inline">\(P(T^+ \mid D^c)\)</span>. For Scenarios A and B, <span class="math inline">\(P(T^+ \mid D^c)\)</span> is 1 minus your specificity. For Scenario C, it is your false-positive rate.</li>
+<li>Rename the variables so they match your scenario (for example, <code>infected</code> instead of <code>cancer</code> for Scenario B).</li>
+<li>The lesson code already finds the PPV: it keeps only the positive tests, then finds the proportion with the condition.</li>
+<li>For the NPV, do the opposite: keep only the <strong>negative</strong> tests, then find the proportion <strong>without</strong> the condition. In R, <code>!</code> means “not,” so <code>filter(!positive)</code> keeps the negative tests and <code>mean(!cancer)</code> is the proportion without cancer.</li>
+</ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -364,21 +373,108 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If your prevalence is very small (Scenario C has about 6 cases per 10,000 babies), a population of 100,000 has only a few dozen true cases, so your simulated PPV will bounce around. Try <span class="math inline">\(N = 10^6\)</span> and see whether your simulated values get closer to your analytic answers.</p>
+<p>If your prevalence is very small (Scenario C has about 6 cases per 10,000 babies), a population of 100,000 has only about 60 true cases, so your simulated PPV will bounce around. Try <code>reps &lt;- 1000000</code> and see whether your simulated values get closer to your analytic answers.</p>
 </div>
 </div>
 </section>
 <section id="explore-how-does-prevalence-matter" class="level3">
 <h3 class="anchored" data-anchor-id="explore-how-does-prevalence-matter">4. Explore: how does prevalence matter?</h3>
 <ul>
-<li>Compute the analytic PPV for prevalence values from 0.1% to 50%, keeping sensitivity and specificity fixed.</li>
+<li>Compute the analytic PPV for prevalence values from 0.01% to 50%, keeping sensitivity and specificity fixed.</li>
 <li>Plot PPV (y-axis) against prevalence (x-axis), and mark your scenario’s prevalence on the plot.</li>
 <li>In 2–3 sentences, describe what happens to PPV as prevalence changes. Then describe a group or setting your program might serve where the prevalence would be higher or lower than your scenario’s value (for example, women with a family history of breast cancer, residents tested during a COVID-19 surge, or babies whose prenatal ultrasound showed a possible heart problem). How would a positive result mean something different there?</li>
 </ul>
+<p><strong>Why no simulation here?</strong> You could simulate a new population for every prevalence value, but that would be thousands of simulations. Since your simulation in Task 3 showed that Bayes’ rule gives the right answer, here we use the formula.</p>
+<p>Starter code: copy each chunk into your editing file and fill in each <code>___</code>.</p>
+<p><strong>Step 1: Make a range of prevalence values and find the PPV for each one</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a>p_D <span class="ot">&lt;-</span> ___</span>
+<span id="annotated-cell-1-2"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a>p_pos_if_D <span class="ot">&lt;-</span> ___</span>
+<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a>p_pos_if_no_D <span class="ot">&lt;-</span> ___</span>
+<span id="annotated-cell-1-4"><a href="#annotated-cell-1-4" aria-hidden="true" tabindex="-1"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-1-5" class="code-annotation-target"><a href="#annotated-cell-1-5" aria-hidden="true" tabindex="-1"></a>ppv_by_prev <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">prev =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fl">0.0001</span>, <span class="at">to =</span> <span class="fl">0.5</span>, <span class="at">by =</span> <span class="fl">0.0001</span>)) <span class="sc">|&gt;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-1-6" class="code-annotation-target"><a href="#annotated-cell-1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ppv =</span> ___)</span>
+<span id="annotated-cell-1-7"><a href="#annotated-cell-1-7" aria-hidden="true" tabindex="-1"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-1-8" class="code-annotation-target"><a href="#annotated-cell-1-8" aria-hidden="true" tabindex="-1"></a>ppv_by_prev</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="1,2,3" data-code-annotation="1">The same three values you used in Tasks 2 and 3.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="5" data-code-annotation="2"><code>seq()</code> makes an evenly spaced sequence of numbers, <strong>from</strong> 0.0001 (0.01%) <strong>to</strong> 0.5 (50%), going up <strong>by</strong> 0.0001 each time. That is 5,000 prevalence values. <code>tibble()</code> puts them in a column called <code>prev</code>, one row per prevalence value.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="6" data-code-annotation="3">Write the Bayes’ rule formula for the PPV from Task 2, using <code>prev</code> wherever you had <span class="math inline">\(P(D)\)</span>. Because <code>prev</code> is a column, <code>mutate()</code> computes the PPV for every row (every prevalence value) at once.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="8" data-code-annotation="4">Print the result to check that it looks right: the PPV should go up as <code>prev</code> goes up.</span>
+</dd>
+</dl>
+</div>
+</div>
+<p><strong>Step 2: Find the PPV at your scenario’s prevalence</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a>my_ppv <span class="ot">&lt;-</span> ___</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">Your PPV from Task 2. You can type the number or reuse the object you saved there.</span>
+</dd>
+</dl>
+</div>
+</div>
+<p><strong>Step 3: Plot it</strong></p>
+<p>You do not need to write this code yourself. Run it once your Step 1 and Step 2 code works, then change the title to describe your scenario.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ppv_by_prev, <span class="fu">aes</span>(<span class="at">x =</span> prev, <span class="at">y =</span> ppv)) <span class="sc">+</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-3-2" class="code-annotation-target"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-3-3" class="code-annotation-target"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"point"</span>, <span class="at">x =</span> p_D, <span class="at">y =</span> my_ppv,</span>
+<span id="annotated-cell-3-4"><a href="#annotated-cell-3-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> <span class="st">"#E89543"</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-3-5" class="code-annotation-target"><a href="#annotated-cell-3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-3-6" class="code-annotation-target"><a href="#annotated-cell-3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"___"</span>,</span>
+<span id="annotated-cell-3-7"><a href="#annotated-cell-3-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Prevalence (log scale)"</span>,</span>
+<span id="annotated-cell-3-8"><a href="#annotated-cell-3-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"PPV, P(D | T+)"</span>) <span class="sc">+</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-3-9" class="code-annotation-target"><a href="#annotated-cell-3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">16</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1">Start a plot using the data <code>ppv_by_prev</code>. <code>aes()</code> says which columns go on which axis: prevalence on the x-axis and PPV on the y-axis.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="2" data-code-annotation="2">Draw a line connecting the points.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="3,4" data-code-annotation="3">Add one point at your scenario’s prevalence and PPV, in orange so it stands out.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="5" data-code-annotation="4">Put the x-axis on a log scale. All three scenarios have a prevalence below 1%, so on a regular axis your point would be squished against the left edge. On a log scale, each step to the right multiplies the prevalence by 10.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="6,7,8" data-code-annotation="5">Add a title and axis labels. Replace <code>___</code> with a short title for your scenario.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="9" data-code-annotation="6">Use a clean background and larger text.</span>
+</dd>
+</dl>
+</div>
+</div>
 </section>
 <section id="say-it" class="level3">
 <h3 class="anchored" data-anchor-id="say-it">5. Say it</h3>
 <p>Your program sends a letter or text message to every person with a positive result. Write a short paragraph (4–6 sentences) for that message. Explain what the result means using natural frequencies (e.g., “Out of 1,000 people who get a positive result, about ___ actually have…”) rather than probability notation, and say what the next step is (a follow-up appointment, a confirmatory test, or a heart ultrasound).</p>
+<p>Then answer your <strong>Checkpoint 1 guiding question</strong> from Checkpoint 0 in one sentence.</p>
 </section>
 </section>
 <section id="submission" class="level2">

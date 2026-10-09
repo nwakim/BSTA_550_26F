@@ -3,7 +3,7 @@ title: "Lesson 5: Equally Likely Outcomes and Counting"
 author: "Meike Niederhausen and Nicky Wakim"
 title-slide-attributes:
     data-background-color: "#006a4e"
-date: " `r library(here); source(here('class_dates.R')); w3d2` "
+date: " `r library(here); source(here('class_dates.R')); w3d1` "
 format: 
   revealjs:
     theme: "../simple_NW.scss"
@@ -13,28 +13,30 @@ format:
     width: 1955
     height: 1100
     footer: Lesson 5 Slides
+    highlight-style: arrow
+    code-annotations: hover
+execute:
+  echo: true
 ---
 
-## Learning Objectives
+# Learning Objectives
 
-1.  Define permutations and combinations
+1.  Define **permutations** and **combinations**
 
-2.  Characterize difference between sampling with and without replacement
+2.  Calculate the probability of sampling any combination of the following: *with or without replacement* and *order does or does not matter*
 
-3.  Characterize difference between sampling when order matters and when order does not matter
-
-4.  Calculate the probability of sampling any combination of the following: *with or without replacement* and *order does or does not matter*
+3.  Use a simulation to check a probability found by counting
 
 ## Where are we?
 
-```{r setup, include=FALSE}
+```{r setup}
+#| echo: false
 library(here)
 source(here("class_dates.R"))
+library(tidyverse)
 ```
 
-```{css}
-#| echo: false
-
+```{css, echo=FALSE}
 <style>
 #wrap { width: 600px; height: 390px; padding: 0; overflow: hidden; }
 #frame { width: 1300px; height: 600px; border: 1px solid black; }
@@ -49,8 +51,6 @@ source(here("class_dates.R"))
 ```{=html}
 <iframe id="frame" src="https://pudding.cool/2018/04/birthday-paradox/"></iframe>
 ```
-
-# Basic Counting Examples
 
 ## Basic Counting Examples (1/3)
 
@@ -140,7 +140,15 @@ How many ways to choose 6 subjects without replacement if the order doesn't matt
 :::::::::
 ::::::::::
 
-# Permutations and Combinations
+# Learning Objectives
+
+::: lob
+1.  Define **permutations** and **combinations**
+:::
+
+2.  Calculate the probability of sampling any combination of the following: *with or without replacement* and *order does or does not matter*
+
+3.  Use a simulation to check a probability found by counting
 
 ## Permutations and Combinations
 
@@ -168,6 +176,8 @@ $$nCr = \textrm{"n choose r"} = \binom{n}{r} = \frac{n!}{r!(n-r)!}$$
 :::
 :::::
 
+-   We will see combinations a lot in the binomial distribution
+
 ## Some combinations properties
 
 | Property |   | Proof |
@@ -176,7 +186,16 @@ $$nCr = \textrm{"n choose r"} = \binom{n}{r} = \frac{n!}{r!(n-r)!}$$
 | $$\binom{n}{1} = n$$ |  | $$\binom{n}{1} = \dfrac{n!}{1!(n-1)!}=\dfrac{n\cdot(n-1)\cdot(n-2)\cdots1}{1! \cdot (n-1)\cdot(n-2)\cdots1} = \dfrac{n\cdot(n-1)!}{1\cdot (n-1)!} = \dfrac{n}{1}=n$$ |
 | $$\binom{n}{0} = 1$$ |  | $$\binom{n}{0} = \dfrac{n!}{0!(n-0)!}=\dfrac{n!}{1\cdot n!} = 1$$ |
 
-# More Examples: order matters vs. not
+# Learning Objectives
+
+
+1.  Define **permutations** and **combinations**
+
+::: lob
+2.  Calculate the probability of sampling any combination of the following: *with or without replacement* and *order does or does not matter*
+:::
+
+3.  Use a simulation to check a probability found by counting
 
 ## Table of different cases
 
@@ -186,8 +205,8 @@ $$nCr = \textrm{"n choose r"} = \binom{n}{r} = \frac{n!}{r!(n-r)!}$$
 
     |   | with replacement | without replacement |
     |-------------------:|:----------------:|:--------------------------------:|
-    | **order matters** | $$n^r$$ | $$n\text{P}r = \frac{n!}{(n-r)!}$$ |
-    | **order doesn't matter** | $$ \binom{n+r-1}{r}$$ | $$n\text{C}r = \binom{n}{r} = \frac{n!}{r!(n-r)!}$$ |
+    | **order matters** | $$n^r$$ | $$n\text{P}r = \frac{n!}{(n-r)!}$$ (permutations) |
+    | **order doesn't matter** | $$ \binom{n+r-1}{r}$$ | $$n\text{C}r = \binom{n}{r} = \frac{n!}{r!(n-r)!}$$ (combinations) |
 
 ## Enumerating Events and Sample Space
 
@@ -205,7 +224,7 @@ $$ P(\text{two spades}) = \dfrac{{13 \choose 2}{39 \choose 0}}{{52 \choose 2}} $
 
 -   Note that $13 + 39 = 52$ and $2+ 0 = 2$. So the numerator's $n$'s add up to the denominator's $n$ and the numerator's $r$'s add up to the denominator's $r$'s
 
-## Another example: order matters vs. not (1/2)
+## 
 
 ::::::: columns
 :::::: {.column width="30%"}
@@ -228,7 +247,7 @@ Suppose we draw 2 cards from a standard deck without replacement. What is the pr
 
 :::::::
 
-## Another example: order matters vs. not (2/2)
+## 
 
 ::::::: columns
 :::::: {.column width="30%"}
@@ -247,25 +266,174 @@ Suppose we draw 2 cards from a standard deck without replacement. What is the pr
 ::::::
 
 :::::: {.column width="70%"}
-We can do a simulation!
+We can do a simulation! First, a tiny version with 5 simulations:
 
 ```{r}
 #| echo: true
+set.seed(1234) # <1>
+suits <- c("S", "H", "C", "D") # <2>
+deck <- rep(suits, each = 13) # <3>
 
-set.seed(1234)
-n_sim <- 1000000
-cards = c(rep("S", 13), 
-          rep("H", 13), 
-          rep("C", 13), 
-          rep("D", 13))
-draws <- replicate(n_sim, 
-                   sample(cards, 2, replace = FALSE))
-draws[, 1:10]
-
-spades_2 = sum( draws[1, ] == "S" & draws[2, ] == "S" )
-spades_2 / n_sim
+reps <- 5 # <4>
+hands <- expand_grid(sim = 1:reps, draw = 1:2) |> # <5>
+  group_by(sim) |> # <6>
+  mutate(card = sample(deck, n(), replace = FALSE)) |> # <7>
+  ungroup() # <8>
+hands
 ```
+
+1.  Set the seed once, so everyone gets the same random draws.
+2.  The four suits: spades (S), hearts (H), clubs (C), diamonds (D).
+3.  `rep()` repeats each suit 13 times (`each = 13`), so `deck` holds all 52 cards.
+4.  Save the number of simulations as `reps`, so it is easy to change later.
+5.  Make a table with one row for each card drawn: two draws for every simulation. The pipe `|>` passes it to the next line.
+6.  Do the next step separately within each simulation.
+7.  `mutate()` adds a column called `card`. For each simulation, `sample()` picks 2 cards from the deck. `replace = FALSE` means a card cannot be picked twice.
+8.  `ungroup()` turns the grouping off, so later steps use the whole table.
 
 ::::::
 
 :::::::
+
+## 
+
+::::::: columns
+:::::: {.column width="30%"}
+::::: example
+::: ex-title
+Example 2
+:::
+
+::: ex-cont
+Suppose we draw 2 cards from a standard deck without replacement. What is the probability that both are spades when
+
+1.  order matters?
+2.  order doesn't matter?
+:::
+:::::
+::::::
+
+:::::: {.column width="70%"}
+Same code, now with 100,000 simulations. Then check each simulated hand:
+
+```{r}
+#| echo: true
+set.seed(1234)
+reps <- 100000 # <1>
+hands <- expand_grid(sim = 1:reps, draw = 1:2) |>
+  group_by(sim) |>
+  mutate(card = sample(deck, n(), replace = FALSE)) |>
+  ungroup()
+
+spade_results <- hands |>
+  group_by(sim) |> # <2>
+  summarise(ordered = card[1] == "S" & card[2] == "S", # <3>
+            unordered = sum(card == "S") == 2) # <4>
+
+spade_results |>
+  summarise(prob_ordered = mean(ordered), # <5>
+            prob_unordered = mean(unordered))
+```
+
+1.  The only change: 100,000 simulations instead of 5.
+2.  Look at one simulated hand at a time.
+3.  Order matters: `TRUE` if the first card is a spade **and** the second card is a spade. `[1]` and `[2]` pick the first and second card.
+4.  Order doesn't matter: `TRUE` if exactly 2 of the 2 cards are spades. `sum()` counts the `TRUE`s.
+5.  `mean()` of a `TRUE`/`FALSE` column is the proportion of `TRUE`s, because `TRUE` counts as 1 and `FALSE` as 0.
+
+Exact answer: `choose(13, 2) / choose(52, 2)` = `r round(choose(13, 2) / choose(52, 2), 4)`
+
+::::::
+
+:::::::
+
+# Learning Objectives
+
+
+1.  Define **permutations** and **combinations**
+
+2.  Calculate the probability of sampling any combination of the following: *with or without replacement* and *order does or does not matter*
+
+::: lob
+3.  Use a simulation to check a probability found by counting
+:::
+
+## Birthday paradox revisited (1/3)
+
+::::: example
+::: ex-title
+Example 3
+:::
+
+::: ex-cont
+Suppose 23 people are in a room, and every day of the year is equally likely to be a birthday (ignore leap days). What is the probability that at least two people share a birthday?
+:::
+:::::
+
+ 
+
+```{r}
+#| echo: true
+set.seed(550) # <1>
+reps <- 100000 # <2>
+n_people <- 23 # <3>
+birthdays <- expand_grid(sim = 1:reps, person = 1:n_people) |> # <4>
+  mutate(birthday = sample(1:365, n(), replace = TRUE)) # <5>
+head(birthdays, 4)
+```
+
+1.  Set the seed so the results can be reproduced.
+2.  The number of simulated rooms.
+3.  The number of people in each room.
+4.  One row for each person in each simulated room.
+5.  Each person gets a random day from 1 to 365. `replace = TRUE` because two people can share a birthday.
+
+## Birthday paradox revisited (2/3)
+
+```{r}
+#| echo: true
+room_results <- birthdays |>
+  group_by(sim) |> # <1>
+  summarise(n_different = n_distinct(birthday)) |> # <2>
+  mutate(shared = n_different < n_people) # <3>
+
+room_results |>
+  summarise(prob_shared = mean(shared)) # <4>
+```
+
+1.  Look at one simulated room at a time.
+2.  `n_distinct()` counts how many different birthdays are in the room.
+3.  If fewer than 23 different birthdays, at least two people share one. `shared` is `TRUE` or `FALSE`.
+4.  `mean()` gives the proportion of rooms with a shared birthday.
+
+Exact answer: $$1 - \dfrac{365 \cdot 364 \cdots 343}{365^{23}} = `r round(1 - prod(365:343 / 365), 4)`$$
+
+## Birthday paradox revisited (3/3)
+
+Sensitivity analysis: what if there are 30 people in the room?
+
+```{r}
+#| echo: true
+#| code-line-numbers: "2"
+reps <- 100000
+n_people <- 30 # <1>
+birthdays <- expand_grid(sim = 1:reps, person = 1:n_people) |>
+  mutate(birthday = sample(1:365, n(), replace = TRUE))
+
+birthdays |>
+  group_by(sim) |>
+  summarise(n_different = n_distinct(birthday)) |>
+  mutate(shared = n_different < n_people) |>
+  summarise(prob_shared = mean(shared))
+```
+
+1.  The only change: 30 people instead of 23. The probability goes up.
+
+# Learning Objectives
+
+
+1.  Define **permutations** and **combinations**
+
+2.  Calculate the probability of sampling any combination of the following: *with or without replacement* and *order does or does not matter*
+
+3.  Use a simulation to check a probability found by counting

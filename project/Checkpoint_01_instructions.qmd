@@ -6,6 +6,9 @@ format:
   html:
     link-external-newwindow: true
     toc: true
+    highlight-style: ayu
+    code-block-bg: "#FFFAFA"
+    code-block-border-left: "#E89543"
   pdf: default
 editor_options:
   chunk_output_type: console
@@ -61,7 +64,7 @@ Use the input values from your [Checkpoint 0](/project/Checkpoint_00_instruction
 #### State newborn heart screening program
 
 -   **Events:** $D$ = has a critical congenital heart defect (CCHD); $T^+$ = the pulse oximetry screen is positive.
--   **Inputs:** prevalence, sensitivity, and false-positive rate from the Cochrane review. Your specificity is $1 - (\text{false-positive rate})$.
+-   **Inputs:** prevalence, sensitivity, and false-positive rate from the Cochrane review. Your false-positive rate is already $P(T^+ \mid D^c)$, and your specificity is $1 - (\text{false-positive rate})$.
 -   **Program question:** What does a positive screen mean for a newborn's family?
 :::
 
@@ -69,15 +72,23 @@ Use the input values from your [Checkpoint 0](/project/Checkpoint_00_instruction
 
 ### 1. Set up the problem
 
--   Define your events with notation, using the events for your scenario above.
--   Write each input value as a probability statement, for example $P(T^+ \mid D) = 0.874$. Cite the source for each value.
--   Draw a tree diagram **or** a 2×2 table for a hypothetical population of 100,000 people screened by your program.
+-   Copy your events and your three Checkpoint 1 probability statements from Checkpoint 0, with any corrections from my feedback. Keep the source for each value.
+-   Add the one conditional probability you did not record in Checkpoint 0, using the complement rule:
+    -   **Scenarios A and B:** the false-positive rate, $P(T^+ \mid D^c) = 1 - P(T^- \mid D^c)$.
+    -   **Scenario C:** the specificity, $P(T^- \mid D^c) = 1 - P(T^+ \mid D^c)$.
+-   Draw a tree diagram **or** a 2×2 table for a hypothetical population of 100,000 people screened by your program. Round each count to a whole number of people.
 
-### 2. Solve it analytically
+### 2. Solve analytically
 
 -   Use the Law of Total Probability to find $P(T^+)$.
 -   Use Bayes' rule to find the **positive predictive value** $P(D \mid T^+)$ and the **negative predictive value** $P(D^c \mid T^-)$.
 -   Show your work. You may use R as a calculator, but write out each formula first.
+
+::: {.callout-tip collapse="true"}
+#### Check yourself (Scenario A only, not graded)
+
+Lee et al. (2023) report an abnormal interpretation rate of 8.3% and a PPV1 of 6.9% for DBT. Your $P(T^+)$ and $P(D \mid T^+)$ should be close to these values. If they are, Bayes' rule just reproduced numbers from a published study!
+:::
 
 ### 3. Simulate it
 
@@ -85,42 +96,86 @@ Use the input values from your [Checkpoint 0](/project/Checkpoint_00_instruction
 -   Estimate PPV and NPV from your simulated population and compare them with your analytic answers.
 -   In 1–2 sentences, explain why the simulated and analytic values are close but not identical.
 
-Starter code (replace the placeholder input values with your own):
+**Where to start:** Lesson 4 already has a simulation just like this one. Open the slide [Calculate probability with both rules: simulating in R](/lessons/04_Rules_of_prob/04_Rules_of_prob.qmd#/calculate-probability-with-both-rules-simulating-in-r) (the mammogram example, Example 6), copy its code into your editing file, and adapt it:
 
-```{r}
-#| eval: false
-set.seed(550)
-N    <- 1e5
-prev <- 0.01   # P(D): replace with your value
-sens <- 0.90   # P(T+ | D): replace with your value
-spec <- 0.95   # P(T- | D^c): replace with your value
-
-disease  <- rbinom(N, size = 1, prob = prev)
-test_pos <- ifelse(disease == 1,
-                   rbinom(N, size = 1, prob = sens),
-                   rbinom(N, size = 1, prob = 1 - spec))
-
-ppv_sim   <- mean(disease[test_pos == 1])
-ppv_bayes <- (sens * prev) / (sens * prev + (1 - spec) * (1 - prev))
-
-c(simulated = ppv_sim, analytic = ppv_bayes)
-```
+-   Replace the three probabilities with your scenario's values. You need $P(D)$, $P(T^+ \mid D)$, and $P(T^+ \mid D^c)$. For Scenarios A and B, $P(T^+ \mid D^c)$ is 1 minus your specificity. For Scenario C, it is your false-positive rate.
+-   Rename the variables so they match your scenario (for example, `infected` instead of `cancer` for Scenario B).
+-   The lesson code already finds the PPV: it keeps only the positive tests, then finds the proportion with the condition.
+-   For the NPV, do the opposite: keep only the **negative** tests, then find the proportion **without** the condition. In R, `!` means "not," so `filter(!positive)` keeps the negative tests and `mean(!cancer)` is the proportion without cancer.
 
 ::: callout-tip
-## Rare conditions need big populations
+#### Rare conditions need big populations
 
-If your prevalence is very small (Scenario C has about 6 cases per 10,000 babies), a population of 100,000 has only a few dozen true cases, so your simulated PPV will bounce around. Try $N = 10^6$ and see whether your simulated values get closer to your analytic answers.
+If your prevalence is very small (Scenario C has about 6 cases per 10,000 babies), a population of 100,000 has only about 60 true cases, so your simulated PPV will bounce around. Try `reps <- 1000000` and see whether your simulated values get closer to your analytic answers.
 :::
 
 ### 4. Explore: how does prevalence matter?
 
--   Compute the analytic PPV for prevalence values from 0.1% to 50%, keeping sensitivity and specificity fixed.
+-   Compute the analytic PPV for prevalence values from 0.01% to 50%, keeping sensitivity and specificity fixed.
 -   Plot PPV (y-axis) against prevalence (x-axis), and mark your scenario's prevalence on the plot.
 -   In 2–3 sentences, describe what happens to PPV as prevalence changes. Then describe a group or setting your program might serve where the prevalence would be higher or lower than your scenario's value (for example, women with a family history of breast cancer, residents tested during a COVID-19 surge, or babies whose prenatal ultrasound showed a possible heart problem). How would a positive result mean something different there?
+
+**Why no simulation here?** You could simulate a new population for every prevalence value, but that would be thousands of simulations. Since your simulation in Task 3 showed that Bayes' rule gives the right answer, here we use the formula.
+
+Starter code: copy each chunk into your editing file and fill in each `___`.
+
+**Step 1: Make a range of prevalence values and find the PPV for each one**
+
+```{r}
+#| eval: false
+p_D <- ___ # <1>
+p_pos_if_D <- ___ # <1>
+p_pos_if_no_D <- ___ # <1>
+
+ppv_by_prev <- tibble(prev = seq(from = 0.0001, to = 0.5, by = 0.0001)) |> # <2>
+  mutate(ppv = ___) # <3>
+
+ppv_by_prev # <4>
+```
+
+1.  The same three values you used in Tasks 2 and 3.
+2.  `seq()` makes an evenly spaced sequence of numbers, **from** 0.0001 (0.01%) **to** 0.5 (50%), going up **by** 0.0001 each time. That is 5,000 prevalence values. `tibble()` puts them in a column called `prev`, one row per prevalence value.
+3.  Write the Bayes' rule formula for the PPV from Task 2, using `prev` wherever you had $P(D)$. Because `prev` is a column, `mutate()` computes the PPV for every row (every prevalence value) at once.
+4.  Print the result to check that it looks right: the PPV should go up as `prev` goes up.
+
+**Step 2: Find the PPV at your scenario's prevalence**
+
+```{r}
+#| eval: false
+my_ppv <- ___ # <1>
+```
+
+1.  Your PPV from Task 2. You can type the number or reuse the object you saved there.
+
+**Step 3: Plot it**
+
+You do not need to write this code yourself. Run it once your Step 1 and Step 2 code works, then change the title to describe your scenario.
+
+```{r}
+#| eval: false
+ggplot(ppv_by_prev, aes(x = prev, y = ppv)) + # <1>
+  geom_line() + # <2>
+  annotate("point", x = p_D, y = my_ppv, # <3>
+           color = "#E89543", size = 4) + # <3>
+  scale_x_log10() + # <4>
+  labs(title = "___", # <5>
+       x = "Prevalence (log scale)", # <5>
+       y = "PPV, P(D | T+)") + # <5>
+  theme_minimal(base_size = 16) # <6>
+```
+
+1.  Start a plot using the data `ppv_by_prev`. `aes()` says which columns go on which axis: prevalence on the x-axis and PPV on the y-axis.
+2.  Draw a line connecting the points.
+3.  Add one point at your scenario's prevalence and PPV, in orange so it stands out.
+4.  Put the x-axis on a log scale. All three scenarios have a prevalence below 1%, so on a regular axis your point would be squished against the left edge. On a log scale, each step to the right multiplies the prevalence by 10.
+5.  Add a title and axis labels. Replace `___` with a short title for your scenario.
+6.  Use a clean background and larger text.
 
 ### 5. Say it
 
 Your program sends a letter or text message to every person with a positive result. Write a short paragraph (4–6 sentences) for that message. Explain what the result means using natural frequencies (e.g., "Out of 1,000 people who get a positive result, about \_\_\_ actually have...") rather than probability notation, and say what the next step is (a follow-up appointment, a confirmatory test, or a heart ultrasound).
+
+Then answer your **Checkpoint 1 guiding question** from Checkpoint 0 in one sentence.
 
 ## Submission
 

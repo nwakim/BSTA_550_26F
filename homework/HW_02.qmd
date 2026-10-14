@@ -1,178 +1,543 @@
 ---
 title: "Homework 2"
 subtitle: "BSTA 550"
-description: "Due: `r library(here); source(here('class_dates.R')); hw2 %>% format('%m/%d')` at 11pm"
+author: "Your name here"
 date-modified: "today"
-format: 
+format:
   html:
-    link-external-newwindow: true
     toc: true
-  pdf: default 
-editor_options: 
+    embed-resources: true
+    link-external-newwindow: true
+  typst:
+    toc: true
+    papersize: us-letter
+    margin:
+      x: 1in
+      y: 1in
+editor_options:
   chunk_output_type: console
 ---
+
+<!--
+HOW TO USE THIS FILE
+- Put your name in the "author" line at the very top.
+- Type your answers after each "Answer:" line.
+- Put R code inside the gray code chunks (between ```{r} and ```).
+- You don't need to change anything between the --- lines at the top (YAML)
+  or any line starting with :::
+- Click the arrow next to "Render" and choose "Render HTML" or
+  "Render Typst" (Typst makes a PDF). Submit that file.
+-->
 
 ```{r}
 #| label: "setup"
 #| include: false
+
 knitr::opts_chunk$set(echo = TRUE)
 
-library(here)
-source(here("class_dates.R"))
+# Uses the course date file when it's available;
+# otherwise falls back to the due date below.
+if (requireNamespace("here", quietly = TRUE) &&
+    file.exists(here::here("class_dates.R"))) {
+  source(here::here("class_dates.R"))
+} else {
+  hw2 <- as.Date("2026-10-25")
+}
 ```
 
-## Directions
+::: {.callout-tip appearance="minimal"}
+**Due `r format(hw2, "%m/%d")` at 11pm**
+:::
 
-Please turn in this homework on Sakai. 
+## Assignment information
 
-Please submit your homework in pdf or html format. You can type your work on your computer or submit a photo of your written work or any other method that can be turned into a pdf. Please let me know if you greatly prefer to submit a physical copy. We can work out another way for you to turn in homework.
+### Directions
+
+**Please turn in this homework on Brightspace.** Please submit your homework as a pdf or html file. You can type your work in this file and render it, or submit a single file with photos of your written work or any other method that can be turned into a pdf. Please let me know if you prefer to submit a physical copy, we can arrange for a physical "turn in" during Monday's class.
+
+**Get the .qmd file:** You can download this homework as a `.qmd` file from [GitHub](https://github.com/nwakim/BSTA_550_26F/blob/main/homework/HW_02.qmd). On that page, click the download button ("Download raw file") near the top right of the file.
 
 *You must show all of your work to receive credit.*
 
 Extra problems do not need to be turned in!!
 
+::: {.callout-warning collapse="false"}
+#### If you are editing this file to turn in
+
+If you are editing this `.qmd` file, then you will see a section right below the YAML called "HOW TO USE THIS FILE." Please follow those instructions to make sure you are not deleting essential parts of this file. When you render, that section will not show up.
+:::
+
+::: {.callout-note collapse="false"}
+#### AI Use Statement
+
+**Using AI is not required in this class.** If you *did* use an AI tool (ChatGPT, Claude, Copilot, Gemini, an RStudio assistant, etc.) on this homework, add a brief AI Use Statement at the very top of your submission. Include:
+
+-   **Which tool(s)** you used
+-   **What for** (a sentence or two, with question numbers)
+-   **Where** it contributed to any written interpretations (if at all)
+-   *You do NOT need to link your conversation.*
+
+For example:
+
+> *AI Use Statement: Claude was used to explain an error message in Question 3. All statistical reasoning, code review, and conclusions are my own.*
+
+OR
+
+> *AI Use Statement: AI was not used in this assignment.*
+
+Before using AI, check the table of allowed uses in the [Generative AI Policy](https://nwakim.github.io/BSTA_550_26F/syllabus.html#generative-ai-policy). For homework, AI can help you *understand* (explain an error or a concept, check an answer you already worked out, give feedback on your own writing), but it should not do the problem for you. A half-finished answer that shows your thinking is always better than a polished one from AI!
+:::
+
 ## Questions
 
-1.  Suppose the following are the percentage of US adults with the following conditions:
+### 1. Health conditions in US adults
 
-    -   $A$: Hypertension 33%
+Suppose the following are the percentage of US adults with the following conditions:
 
-    -   $B$: Diabetes 9%
+-   $A$: Hypertension 33%
+-   $B$: Diabetes 9%
+-   $C$: Metabolic syndrome 24%
+-   $A$ or $B$: 39%
+-   $A$ or $C$: 45%
+-   $B$ or $C$: 28%
+-   $A$ or $B$ or $C$: 48%
 
-    -   $C$: Metabolic syndrome 24%
+#### Part a
 
-    -   $A$ or $B$: 39%
+Make a Venn diagram of the 3 conditions labeling the percentage (or probability) for *ALL* of the 8 "sections". *Hint: Start from the last condition and work your way up!*
 
-    -   $A$ or $C$: 45%
+***Answer:***
 
-    -   $B$ or $C$: 28%
+#### Part b
 
-    -   $A$ or $B$ or $C$: 48%
+For each of the following (1. - 7. below), ($i$) write out the event using unions, intersections, and/or complements of the events $A$, $B$, and $C$ (this is NOT finding the probability, that's in $ii$); ($ii$) find the probability of the event; and ($iii$) write a sentence explaining what the probability is of in terms of the context of the problem.
 
-    a.  Make a Venn diagram of the 3 conditions labeling the percentage (or probability) for *ALL* of the 8 "sections". *Hint: Start from the last condition and work your way up!*
-    b.  For each of the following (1. - 7. below), ($i$) write out the event using unions, intersections, and/or complements of the events $A$, $B$, and $C$ (this is NOT finding the probability, that's in $ii$); ($ii$) find the probability of the event; and ($iii$) write a sentence explaining what the probability is of in terms of the context of the problem.
-        1.  $\mathbb{P}$(event at least one of the 3)
+1.  $\mathbb{P}$(event at least one of the 3)
+2.  $\mathbb{P}$(event none)
+3.  $\mathbb{P}$(event $A$ only)
+4.  $\mathbb{P}$(event exactly one)
+5.  $\mathbb{P}$(event $A$ and $B$)
+6.  $\mathbb{P}$(event $A$ and $B$ but not $C$)
+7.  $\mathbb{P}$(event all 3)
 
-        2.  $\mathbb{P}$(event none)
+***Answer:***
 
-        3.  $\mathbb{P}$(event $A$ only)
+1.  At least one of the 3
+    -   (i) Event:
+    -   (ii) Probability:
+    -   (iii) Sentence:
+2.  None
+    -   (i) Event:
+    -   (ii) Probability:
+    -   (iii) Sentence:
+3.  $A$ only
+    -   (i) Event:
+    -   (ii) Probability:
+    -   (iii) Sentence:
+4.  Exactly one
+    -   (i) Event:
+    -   (ii) Probability:
+    -   (iii) Sentence:
+5.  $A$ and $B$
+    -   (i) Event:
+    -   (ii) Probability:
+    -   (iii) Sentence:
+6.  $A$ and $B$ but not $C$
+    -   (i) Event:
+    -   (ii) Probability:
+    -   (iii) Sentence:
+7.  All 3
+    -   (i) Event:
+    -   (ii) Probability:
+    -   (iii) Sentence:
 
-        4.  $\mathbb{P}$(event exactly one)
+### 2. Guessing on an exam
 
-        5.  $\mathbb{P}$(event $A$ and $B$)
+While taking a probability exam, you come to three questions that you have no clue how to answer. You would have known the answers if you had taken the time to study the night before instead of going to a party, but you did not make a good life choice, and you vow to never party on a school night again if you fail this exam. Each question on the exam is multiple choice with the correct answer being either a, b, c, d, or e. (Your guesses are independent.) What is the probability that:
 
-        6.  $\mathbb{P}$(event $A$ and $B$ but not $C$)
+#### Part a
 
-        7.  $\mathbb{P}$(event all 3)
+you randomly guess the right answer to all three questions?
 
-2.  **Guessing on an exam.** While taking a probability exam, you come to three questions that you have no clue how to answer. You would have known the answers if you had taken the time to study the night before instead of going to a party, but you did not make a good life choice, and you vow to never party on a school night again if you fail this exam. Each question on the exam is multiple choice with the correct answer being either a, b, c, d, or e. (Your guesses are independent.) What is the probability that:
+***Answer:***
 
-    a.  you randomly guess the right answer to all three questions?
+#### Part b
 
-    b.  you randomly guess the right answer to none of the three questions?
+you randomly guess the right answer to none of the three questions?
 
-    c.  you randomly guess the right answer to exactly one of the three questions?
+***Answer:***
 
-    d.  you randomly guess the right answer to exactly two of the three questions?
+#### Part c
 
-    e.  Do the probabilities in parts a–d sum to 1?
+you randomly guess the right answer to exactly one of the three questions?
 
-3.  Recall from class, that we defined events $A,B,$ and $C$ to mutually independent if both (1) and (2) below hold. This point of this exercise is to show that $(1)\nRightarrow (2),$ and $(2)\nRightarrow (1).$ $$\begin{array}{cc}
-        (1) & \mathbb{P}(A\cap B\cap C)=\mathbb{P}(A)\mathbb{P(}B)\mathbb{P(}C) \\ 
-        (2) & \mathbb{P}(A\cap B)=\mathbb{P}(A)\mathbb{P(}B) \\ 
-        & \mathbb{P}(A\cap C)=\mathbb{P}(A)\mathbb{P(}C) \\ 
-        & \mathbb{P}(B\cap C)=\mathbb{P}(B)\mathbb{P(}C)%
-        \end{array}%$$
+***Answer:***
 
-    a.  Suppose two different fair dice are rolled. Let events $A,B,$ and $C$ be defined in the following way: $$\begin{array}{cl}
-        A: & \text{Roll a total of 7} \\ 
-        B: & \text{First die is a 6} \\ 
-        C: & \text{Second die is a 2}%
-        \end{array}%$$
+#### Part d
 
-        Show that condition $(2)$ holds, but that condition $(1)$ does not.
+you randomly guess the right answer to exactly two of the three questions?
 
-    b.  Suppose two different fair dice are rolled. Let events $A,B,$ and $C$ be defined in the following way: $$\begin{array}{cl}
-        A: & \text{Roll a 1 or 2 on the first die} \\ 
-        B: & \text{Roll a 3, 4, or 5 on the second die} \\ 
-        C: & \text{Roll a total of 4, 11, or 12}%
-        \end{array}%$$
+***Answer:***
 
-        Show that condition $(1)$ holds, but that condition $(2)$ does not.
+#### Part e
 
-4.  **Parity of spinning.** A spinner has the left side (numbers 1, 2, 3, 4, and 5) colored red and the right side colored white (numbers 6, 7, 8, and 9), with all numbers equally likely.
+Do the probabilities in parts a–d sum to 1?
 
-    a.  What is the probability the spinner lands on an odd number?
+***Answer:***
 
-    b.  Given that the spinner landed on an odd number, what is the chance the spinner landed on a white number?
+### 3. Pairwise vs. mutual independence
 
-    c.  Given that the spinner landed on a white number, what is the chance it landed on an odd number?
+Recall from class that we defined events $A$, $B$, and $C$ to be mutually independent if both (1) and (2) below hold. The point of this exercise is to show that $(1)\nRightarrow (2)$ and $(2)\nRightarrow (1).$
 
-5.  **Weather.** The weather on any given day can either be sunny, cloudy, or partially cloudy. Each day is also classified as dry or rainy. The probability of a sunny day is 0.48, and the probability of a cloudy day is 0.39. The probability of having a sunny and dry day is 0.48. The probability of a cloudy and dry day is 0.14. The probability of a partially cloudy and dry day is 0.09.
+$$\begin{array}{cl}
+(1) & \mathbb{P}(A\cap B)=\mathbb{P}(A)\,\mathbb{P}(B) \\
+    & \mathbb{P}(A\cap C)=\mathbb{P}(A)\,\mathbb{P}(C) \\
+    & \mathbb{P}(B\cap C)=\mathbb{P}(B)\,\mathbb{P}(C) \\[6pt]
+(2) & \mathbb{P}(A\cap B\cap C)=\mathbb{P}(A)\,\mathbb{P}(B)\,\mathbb{P}(C)
+\end{array}$$
 
-    a.  Find the probability of a dry day.
+#### Part a
 
-    b.  Find the probability of a rainy day.
+Suppose two different fair dice are rolled. Let events $A$, $B$, and $C$ be defined in the following way:
 
-    c.  Find the probability of a sunny day given that it is a dry day.
+$$\begin{array}{cl}
+A: & \text{Roll a total of 7} \\
+B: & \text{First die is a 6} \\
+C: & \text{Second die is a 2}
+\end{array}$$
 
-    d.  Find the probability of a dry day given that it is a sunny day.
+Show that condition $(1)$ holds, but that condition $(2)$ does not.
 
-    e.  Find the probability of a cloudy day given that it is a rainy day.
+***Answer:***
 
-    f.  Find the probability that it is a rainy day given that it is a cloudy day
+#### Part b
 
-6. **Cookies.** Consider a jar of 9 chocolate chip and 11 peanut butter cookies. You randomly select 2 cookies to eat. All possible choices are equally likely.
+Suppose two different fair dice are rolled. Let events $A$, $B$, and $C$ be defined in the following way:
 
-    a. What is the probability that the 2 you select will both will be chocolate chip? *Calculate your answer "by hand."*
-    b. What is the probability that at least one of your cookies will be peanut butter? *Calculate your answer "by hand" then verify your answer by simulating the experiment in R at least 1000 times.*
-    c. What is the probability that last 2 cookies left in the jar (after 18 have been eaten) will be chocolate chip? (Is this answer the same or different than part a? Why or why not?) *Calculate your answer "by hand" then verify your answer by simulating the experiment in R at least 1000 times.*
+$$\begin{array}{cl}
+A: & \text{Roll a 1 or 2 on the first die} \\
+B: & \text{Roll a 3, 4, or 5 on the second die} \\
+C: & \text{Roll a total of 4, 11, or 12}
+\end{array}$$
 
-7. **Raffle tickets.** There are 30 raffle tickets in a bowl. Three winning tickets will be selected. Each ticket can win at most one prize. How many ways can the prizes be distributed if the following additional information is known?
-    
-    a. All 3 winners receive goldfish (the goldfish are indistinguishable).
-    b. The 1st winner receives a car, the 2nd a bicycle, and the 3rd a goldfish.
+Show that condition $(2)$ holds, but that condition $(1)$ does not.
 
-8.  A new drug is packaged to contain 30 pills in a bottle. Suppose that 98% of all bottles contain no defective pills, 1.5% contain one defective pill, and 0.5% contain two defective pills. Two pills from a bottle are randomly selected and tested. What is the probability that there are 2 defective pills in the bottle given that one of the two tested pills is defective?
+***Answer:***
 
-### Extra problems
+### 4. Parity of spinning
 
-1.  Judith has a penny, nickel, dime, and quarter in her pocket. So does Joe. They both reach into their pockets and choose a coin (all four coins are equally likely to be selected). Let X be the larger value (in cents) of the coins selected by Judith and Joe. For reference, the penny is 1 cent, nickel is 5 cents, dime is 10 cents, and quarter is 25 cents.
+A spinner has the left side (numbers 1, 2, 3, 4, and 5) colored red and the right side colored white (numbers 6, 7, 8, and 9), with all numbers equally likely.
 
-    a.  How many possible combinations is there for the pair of Judith's and Joe's selected coins? (Hint: we know to whom each coin belongs) 
+#### Part a
 
-    b.  Define the sample space for X in this experiment. 
+What is the probability the spinner lands on an odd number?
 
-    c.  Find the probability for each possible value of X. 
+***Answer:***
 
-    d.  Find the probability of the event that Judith's coin is worth more than Joe's.
+#### Part b
 
-2.  Read the Washington Post article *The amazing woman who can smell Parkinson's disease - before symptoms appear* (<http://www.washingtonpost.com/news/morning-mix/wp/2015/10/23/scottish-woman-detects-a-musky-smell-that-could-radically-improve-how-parkinsons-disease-is-diagnosed/>)
+Given that the spinner landed on an odd number, what is the chance the spinner landed on a white number?
 
-    Assuming Joy Milne does not have the ability to detect Parkinson's disease via smell, answer the following questions:
+***Answer:***
 
-    a.  What is the probability of her correctly detecting Parkinson's by smelling one t-shirt?
+#### Part c
 
-    b.  What is the probability of her correctly detecting Parkinson's in 12 out of 12 t-shirts?
+Given that the spinner landed on a white number, what is the chance it landed on an odd number?
 
-3.  Calculus Review
+***Answer:***
 
-    a.  $$\int_0^yc(x+y)dx$$
+#### Part d
 
-    b.  $$\frac{d}{dx}\bigg(\frac{4}{9}x^2y^2+\frac{5}{9}xy^4\bigg)$$
+Check your answers to Parts a–c by simulating 10,000 spins in R. Use the four steps of a simulation from Lesson 2. The two dice simulations in Lesson 4 (Examples 1 and 3) are good models to follow.
 
-    c.  $$\frac{d}{dy}\bigg(\frac{4}{9}x^2y^2+\frac{5}{9}xy^4\bigg)$$
+**Step 1: Set up.** This chunk is done for you. Run it before the others.
 
-    d.  $$\int_0^y2e^{-x}e^{-y}dx$$
+```{r}
+#| label: "q4-setup"
+#| message: false
 
-    e.  $$\int_0^\infty xye^{-(x+y)}dy$$
+library(tidyverse)
 
-    f.  $$\int_x^{2x} 2e^{-(x+3y)}dy$$
+set.seed(4444)     # so you get the same "random" spins each time you render
+reps <- 10000      # number of simulated spins
+```
 
-    g.  Find the area of the region bounded by the graphs of $f(x)=2-x^2$ and $g(x)=x$ by integrating with respect to $x$.
+**Step 2: Simulate.** Make a table with one row per simulation, and add a column called `spin` with a random number from 1 to 9 in each row.
 
-    h.  Find the area of the region bounded by the graphs of $f(x)=2-x^2$ and $g(x)=x$ by integrating with respect to $y$.
+-   *Hint:* `expand_grid(sim = 1:reps)` makes one row per simulation. Then `mutate()` and `sample(1:9, n(), replace = TRUE)` give every row one spin.
 
-    i.  Find the area of the region bounded by the graphs of $x=3-y^2$ and $y=x-1$ by integrating with respect to $x$.
+***Answer:***
 
-    j.  Find the area of the region bounded by the graphs of $x=3-y^2$ and $y=x-1$ by integrating with respect to $y$.
+```{r}
+#| label: "q4-simulate"
+
+# Your code here
+
+```
+
+**Step 3: Define the events.** Add two `TRUE`/`FALSE` columns to your table:
+
+-   `odd`, which is `TRUE` when the spin is odd. *Hint:* `spin %in% c(1, 3, 5, 7, 9)` asks "is the spin one of these numbers?"
+-   `white`, which is `TRUE` when the spin is on the white side (6, 7, 8, or 9).
+
+***Answer:***
+
+```{r}
+#| label: "q4-events"
+
+# Your code here
+
+```
+
+**Step 4: Summarize.** Approximate the three probabilities from Parts a–c.
+
+-   Part a: the proportion of spins that are odd. Use `mean()` on the `odd` column.
+-   Parts b and c: "given" means we only keep the spins where the given event happened. Use `filter()` to keep those rows, then take the `mean()` of the other event (like the second way in Lesson 4, Example 3).
+
+***Answer:***
+
+```{r}
+#| label: "q4-summarize"
+
+# Your code here
+
+```
+
+Are your simulated probabilities close to your answers in Parts a–c? (They do not need to match exactly!)
+
+***Answer:***
+
+### 5. Cookies
+
+Consider a jar of 9 chocolate chip and 11 peanut butter cookies. You randomly select 2 cookies to eat. All possible choices are equally likely.
+
+#### Part a
+
+What is the probability that the 2 you select will both be chocolate chip? *Calculate your answer "by hand."*
+
+***Answer:***
+
+#### Part b
+
+What is the probability that at least one of your cookies will be peanut butter? *Calculate your answer "by hand," then verify your answer by simulating the experiment in R 10,000 times (steps below).*
+
+***Answer (by hand):***
+
+**Simulation for Part b.** Use the four steps of a simulation from Lesson 2. The card-drawing simulation in Lesson 5 (Example 2, drawing 2 cards without replacement) is a good model to follow.
+
+**Step 1: Set up.** This chunk is done for you. Run it before the others.
+
+```{r}
+#| label: "q5-setup"
+#| message: false
+
+library(tidyverse)
+
+set.seed(6666)     # so you get the same "random" draws each time you render
+reps <- 10000      # number of simulations
+
+# The jar: rep() repeats "CC" 9 times and "PB" 11 times,
+# and c() puts them together into one jar of 20 cookies
+jar <- c(rep("CC", 9), rep("PB", 11))
+jar
+```
+
+**Step 2: Simulate.** Make a table with one row for each cookie drawn: 2 draws in every simulation. Within each simulation, draw 2 cookies from `jar` *without* replacement and save them in a column called `cookie`.
+
+-   *Hint:* Start with `expand_grid(sim = 1:reps, draw = 1:2)`, then `group_by(sim)` so each simulation gets its own draws, then `mutate()` with `sample(jar, n(), replace = FALSE)`. Finish with `ungroup()`.
+-   *Tip:* Try it with `reps <- 5` first and print the table to see what it looks like. Then change back to 10,000.
+
+***Answer:***
+
+```{r}
+#| label: "q5b-simulate"
+
+# Your code here
+
+```
+
+**Step 3: Summarize.** For each simulation, check whether at least one of the 2 cookies is peanut butter. Then find the proportion of simulations where that happened.
+
+-   *Hint:* `group_by(sim)` and `summarise()` let you look at one simulation at a time. `any(cookie == "PB")` is `TRUE` if at least one cookie in that simulation is peanut butter (we used `any()` for "at least one smoker" in Lesson 4).
+-   Then `mean()` of that `TRUE`/`FALSE` column is the proportion of simulations where it happened.
+
+***Answer:***
+
+```{r}
+#| label: "q5b-summarize"
+
+# Your code here
+
+```
+
+Is your simulated probability close to your "by hand" answer? (It does not need to match exactly!)
+
+***Answer:***
+
+#### Part c
+
+What is the probability that the last 2 cookies left in the jar (after 18 have been eaten) will be chocolate chip? (Is this answer the same or different than Part a? Why or why not?) *Calculate your answer "by hand," then verify your answer by simulating the experiment in R 10,000 times (steps below).*
+
+***Answer (by hand, and same or different than Part a):***
+
+**Simulation for Part c.** Use the same `jar` and `reps` from Part b. This time, each simulation eats the *whole jar* in a random order.
+
+**Step 2: Simulate.** Make a table with one row for each cookie: 20 draws in every simulation. Within each simulation, draw all 20 cookies from `jar` without replacement.
+
+-   *Hint:* This is the same code as Part b, but with `draw = 1:20` instead of `draw = 1:2`.
+
+***Answer:***
+
+```{r}
+#| label: "q5c-simulate"
+
+# Your code here
+
+```
+
+**Step 3: Summarize.** The last 2 cookies left in the jar are the 19th and 20th cookies drawn. For each simulation, check whether both of them are chocolate chip. Then find the proportion of simulations where that happened.
+
+-   *Hint:* Inside `summarise()`, `cookie[19]` is the 19th cookie and `cookie[20]` is the 20th cookie (Lesson 5 used `card[1]` and `card[2]` the same way). Use `&` for "and."
+
+***Answer:***
+
+```{r}
+#| label: "q5c-summarize"
+
+# Your code here
+
+```
+
+Is your simulated probability close to your "by hand" answer? (It does not need to match exactly!)
+
+***Answer:***
+
+### 6. Raffle tickets
+
+There are 30 raffle tickets in a bowl. Three winning tickets will be selected. Each ticket can win at most one prize. How many ways can the prizes be distributed if the following additional information is known?
+
+#### Part a
+
+All 3 winners receive goldfish (the goldfish are indistinguishable).
+
+***Answer:***
+
+#### Part b
+
+The 1st winner receives a car, the 2nd a bicycle, and the 3rd a goldfish.
+
+***Answer:***
+
+### 7. Defective pills
+
+A new drug is packaged to contain 30 pills in a bottle. Suppose that 98% of all bottles contain no defective pills, 1.5% contain one defective pill, and 0.5% contain two defective pills. Two pills from a bottle are randomly selected and tested. What is the probability that there are 2 defective pills in the bottle given that exactly one of the two tested pills is defective?
+
+***Answer:***
+
+## Extra problems
+
+**You do NOT need to complete the extra problems!**
+
+### 1. Weather
+
+The weather on any given day can either be sunny, cloudy, or partially cloudy. Each day is also classified as dry or rainy. The probability of a sunny day is 0.48, and the probability of a cloudy day is 0.39. The probability of having a sunny and dry day is 0.48. The probability of a cloudy and dry day is 0.14. The probability of a partially cloudy and dry day is 0.09.
+
+#### Part a
+
+Find the probability of a dry day.
+
+#### Part b
+
+Find the probability of a rainy day.
+
+#### Part c
+
+Find the probability of a sunny day given that it is a dry day.
+
+#### Part d
+
+Find the probability of a dry day given that it is a sunny day.
+
+#### Part e
+
+Find the probability of a cloudy day given that it is a rainy day.
+
+#### Part f
+
+Find the probability that it is a rainy day given that it is a cloudy day.
+
+### 2. Coins
+
+Judith has a penny, nickel, dime, and quarter in her pocket. So does Joe. They both reach into their pockets and choose a coin (all four coins are equally likely to be selected). Let $X$ be the larger value (in cents) of the coins selected by Judith and Joe. For reference, the penny is 1 cent, nickel is 5 cents, dime is 10 cents, and quarter is 25 cents.
+
+#### Part a
+
+How many possible combinations are there for the pair of Judith's and Joe's selected coins? (Hint: we know to whom each coin belongs)
+
+#### Part b
+
+Define the sample space for $X$ in this experiment.
+
+#### Part c
+
+Find the probability for each possible value of $X$.
+
+#### Part d
+
+Find the probability of the event that Judith's coin is worth more than Joe's.
+
+### 3. Smelling Parkinson's disease
+
+Read the Washington Post article *The amazing woman who can smell Parkinson's disease - before symptoms appear* (<http://www.washingtonpost.com/news/morning-mix/wp/2015/10/23/scottish-woman-detects-a-musky-smell-that-could-radically-improve-how-parkinsons-disease-is-diagnosed/>)
+
+Assuming Joy Milne does not have the ability to detect Parkinson's disease via smell, answer the following questions:
+
+#### Part a
+
+What is the probability of her correctly detecting Parkinson's by smelling one t-shirt?
+
+#### Part b
+
+What is the probability of her correctly detecting Parkinson's in 12 out of 12 t-shirts?
+
+### 4. Calculus review
+
+#### Part a
+
+$$\int_0^yc(x+y)dx$$
+
+#### Part b
+
+$$\frac{d}{dx}\bigg(\frac{4}{9}x^2y^2+\frac{5}{9}xy^4\bigg)$$
+
+#### Part c
+
+$$\frac{d}{dy}\bigg(\frac{4}{9}x^2y^2+\frac{5}{9}xy^4\bigg)$$
+
+#### Part d
+
+$$\int_0^y2e^{-x}e^{-y}dx$$
+
+#### Part e
+
+$$\int_0^\infty xye^{-(x+y)}dy$$
+
+#### Part f
+
+$$\int_x^{2x} 2e^{-(x+3y)}dy$$
+
+#### Part g
+
+Find the area of the region bounded by the graphs of $f(x)=2-x^2$ and $g(x)=x$ by integrating with respect to $x$.
+
+#### Part h
+
+Find the area of the region bounded by the graphs of $f(x)=2-x^2$ and $g(x)=x$ by integrating with respect to $y$.
+
+#### Part i
+
+Find the area of the region bounded by the graphs of $x=3-y^2$ and $y=x-1$ by integrating with respect to $x$.
+
+#### Part j
+
+Find the area of the region bounded by the graphs of $x=3-y^2$ and $y=x-1$ by integrating with respect to $y$.

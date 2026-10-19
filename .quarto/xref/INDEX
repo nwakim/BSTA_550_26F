@@ -194,5 +194,26 @@
   },
   "lessons/06_Calculus_review/06_Calculus_review_muddy_points.qmd": {
     "06_Calculus_review_muddy_points.html": "e916843f"
+  },
+  "lessons/07_pmfs/07_pmfs.qmd": {
+    "07_pmfs.html": "6cca85de"
+  },
+  "quiz.qmd": {
+    "quiz.html": "4a42a920"
+  },
+  "lessons/07_pmfs/07_pmfs_key_info.qmd": {
+    "07_pmfs_key_info.html": "e35b16d8"
+  },
+  "lessons/08_pdfs/08_pdfs.qmd": {
+    "08_pdfs.html": "1621027e"
+  },
+  "lessons/09_CDFs/09_CDFs.qmd": {
+    "09_CDFs.html": "a6fd3178"
+  },
+  "lessons/07_pmfs/07_pmfs_.qmd": {
+    "07_pmfs_.html": "fcb7da61"
+  },
+  "lessons/08_pdfs/08_pdfs_.qmd": {
+    "08_pdfs_.html": "7928b3e2"
   }
 }

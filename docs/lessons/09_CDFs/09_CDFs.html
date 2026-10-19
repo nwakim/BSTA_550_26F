@@ -6,11 +6,11 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.25">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Nicky Wakim">
-  <meta name="dcterms.date" content="2025-10-22">
+  <meta name="dcterms.date" content="2026-10-21">
   <title>Introduction to Probability – Lesson 9: Cumulative distribution functions (CDFs)</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -18,10 +18,16 @@
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -96,7 +102,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-2e74a31c1bd85ff20c819e764b562f47.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-3333d45258dffb4a9947a865be2a043d.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -199,12 +205,12 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Nicky Wakim 
+Nicky Wakim
 </div>
 </div>
 </div>
 
-  <p class="date">2025-10-22</p>
+  <p class="date">2026-10-21</p>
 </section>
 <section>
 <section id="learning-objectives" class="title-slide slide level1 center">
@@ -374,19 +380,19 @@ Nicky Wakim
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>n <span class="ot">=</span> <span class="dv">8</span></span>
-<span id="cb1-2"><a></a>p <span class="ot">=</span> <span class="fl">0.25</span></span>
-<span id="cb1-3"><a></a></span>
-<span id="cb1-4"><a></a>falls_cdf <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb1-5"><a></a>  <span class="at">x =</span> <span class="dv">0</span><span class="sc">:</span>n,</span>
-<span id="cb1-6"><a></a>  <span class="at">c_prob =</span> <span class="fu">pbinom</span>(x, <span class="at">size =</span> n, <span class="at">prob =</span> p)</span>
-<span id="cb1-7"><a></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a>n <span class="ot">=</span> <span class="dv">8</span></span>
+<span id="cb1-2"><a aria-label="2"></a>p <span class="ot">=</span> <span class="fl">0.25</span></span>
+<span id="cb1-3"><a aria-label="3"></a></span>
+<span id="cb1-4"><a aria-label="4"></a>falls_cdf <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1-5"><a aria-label="5"></a>  <span class="at">x =</span> <span class="dv">0</span><span class="sc">:</span>n,</span>
+<span id="cb1-6"><a aria-label="6"></a>  <span class="at">c_prob =</span> <span class="fu">pbinom</span>(x, <span class="at">size =</span> n, <span class="at">prob =</span> p)</span>
+<span id="cb1-7"><a aria-label="7"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column">
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>falls_cdf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a>falls_cdf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9 × 2
       x c_prob
@@ -397,8 +403,8 @@ Nicky Wakim
 4     3  0.886
 5     4  0.973
 6     5  0.996
-7     6  1.00 
-8     7  1.00 
+7     6  1.000
+8     7  1.000
 9     8  1    </code></pre>
 </div>
 </div>
@@ -418,19 +424,19 @@ Nicky Wakim
 </div>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb4-2"><a></a>  falls_cdf,</span>
-<span id="cb4-3"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> c_prob)</span>
-<span id="cb4-4"><a></a>       ) <span class="sc">+</span></span>
-<span id="cb4-5"><a></a>  <span class="fu">geom_step</span>(</span>
-<span id="cb4-6"><a></a>    <span class="at">size =</span> <span class="dv">1</span>, </span>
-<span id="cb4-7"><a></a>    <span class="at">color =</span> <span class="st">"black"</span></span>
-<span id="cb4-8"><a></a>    ) <span class="sc">+</span></span>
-<span id="cb4-9"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb4-10"><a></a>    <span class="at">x =</span> <span class="st">"Number of Falls"</span>,</span>
-<span id="cb4-11"><a></a>    <span class="at">y =</span> <span class="st">"Cumulative Probability"</span>,</span>
-<span id="cb4-12"><a></a>    <span class="at">title =</span> <span class="st">"CDF of X"</span></span>
-<span id="cb4-13"><a></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb4-2"><a aria-label="2"></a>  falls_cdf,</span>
+<span id="cb4-3"><a aria-label="3"></a>  <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> c_prob)</span>
+<span id="cb4-4"><a aria-label="4"></a>       ) <span class="sc">+</span></span>
+<span id="cb4-5"><a aria-label="5"></a>  <span class="fu">geom_step</span>(</span>
+<span id="cb4-6"><a aria-label="6"></a>    <span class="at">size =</span> <span class="dv">1</span>, </span>
+<span id="cb4-7"><a aria-label="7"></a>    <span class="at">color =</span> <span class="st">"black"</span></span>
+<span id="cb4-8"><a aria-label="8"></a>    ) <span class="sc">+</span></span>
+<span id="cb4-9"><a aria-label="9"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-10"><a aria-label="10"></a>    <span class="at">x =</span> <span class="st">"Number of Falls"</span>,</span>
+<span id="cb4-11"><a aria-label="11"></a>    <span class="at">y =</span> <span class="st">"Cumulative Probability"</span>,</span>
+<span id="cb4-12"><a aria-label="12"></a>    <span class="at">title =</span> <span class="st">"CDF of X"</span></span>
+<span id="cb4-13"><a aria-label="13"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div>
@@ -456,30 +462,30 @@ Nicky Wakim
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">set.seed</span>(<span class="dv">4764</span>)</span>
-<span id="cb5-2"><a></a>reps <span class="ot">=</span> <span class="dv">10000</span></span>
-<span id="cb5-3"><a></a></span>
-<span id="cb5-4"><a></a>sims <span class="ot">=</span> <span class="fu">rbinom</span>(<span class="at">n =</span> reps, </span>
-<span id="cb5-5"><a></a>              <span class="at">size =</span> n, </span>
-<span id="cb5-6"><a></a>              <span class="at">prob =</span> p)</span>
-<span id="cb5-7"><a></a></span>
-<span id="cb5-8"><a></a>sims <span class="sc">%&gt;%</span> <span class="fu">head</span>(., <span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">4764</span>)</span>
+<span id="cb5-2"><a aria-label="2"></a>reps <span class="ot">=</span> <span class="dv">10000</span></span>
+<span id="cb5-3"><a aria-label="3"></a></span>
+<span id="cb5-4"><a aria-label="4"></a>sims <span class="ot">=</span> <span class="fu">rbinom</span>(<span class="at">n =</span> reps, </span>
+<span id="cb5-5"><a aria-label="5"></a>              <span class="at">size =</span> n, </span>
+<span id="cb5-6"><a aria-label="6"></a>              <span class="at">prob =</span> p)</span>
+<span id="cb5-7"><a aria-label="7"></a></span>
+<span id="cb5-8"><a aria-label="8"></a>sims <span class="sc">%&gt;%</span> <span class="fu">head</span>(., <span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 2 1 2 1 3 3 2 2 4 2 3 0 2 0</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>falls2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">0</span><span class="sc">:</span>n) <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a></a>  <span class="fu">mutate</span>(<span class="at">c_prob =</span> <span class="fu">sum</span>(sims <span class="sc">&lt;=</span> x) <span class="sc">/</span> reps)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a>falls2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">0</span><span class="sc">:</span>n) <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a aria-label="2"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a aria-label="3"></a>  <span class="fu">mutate</span>(<span class="at">c_prob =</span> <span class="fu">sum</span>(sims <span class="sc">&lt;=</span> x) <span class="sc">/</span> reps)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(falls2, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> c_prob)) <span class="sc">+</span></span>
-<span id="cb8-2"><a></a>  <span class="fu">geom_step</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb8-3"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb8-4"><a></a>    <span class="at">title =</span> <span class="st">"Approximate CDF of X"</span>,</span>
-<span id="cb8-5"><a></a>    <span class="at">x =</span> <span class="st">"Number of adults (x)"</span>,</span>
-<span id="cb8-6"><a></a>    <span class="at">y =</span> <span class="st">"Approximate Cumulative Probability"</span></span>
-<span id="cb8-7"><a></a>  ) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a><span class="fu">ggplot</span>(falls2, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> c_prob)) <span class="sc">+</span></span>
+<span id="cb8-2"><a aria-label="2"></a>  <span class="fu">geom_step</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb8-3"><a aria-label="3"></a>  <span class="fu">labs</span>(</span>
+<span id="cb8-4"><a aria-label="4"></a>    <span class="at">title =</span> <span class="st">"Approximate CDF of X"</span>,</span>
+<span id="cb8-5"><a aria-label="5"></a>    <span class="at">x =</span> <span class="st">"Number of adults (x)"</span>,</span>
+<span id="cb8-6"><a aria-label="6"></a>    <span class="at">y =</span> <span class="st">"Approximate Cumulative Probability"</span></span>
+<span id="cb8-7"><a aria-label="7"></a>  ) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -877,7 +883,7 @@ Nicky Wakim
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],

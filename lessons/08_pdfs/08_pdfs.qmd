@@ -4,7 +4,7 @@ author: "Meike Niederhausen and Nicky Wakim"
 date: " `r library(here); source(here('class_dates.R')); w4d1` "
 title-slide-attributes:
     data-background-color: "#006a4e"
-format: 
+format:
   revealjs:
     theme: "../simple_NW.scss"
     slide-number: true
@@ -13,23 +13,58 @@ format:
     height: 1100
     footer: Lesson 8 Slides
     html-math-method: mathjax
+    highlight-style: arrow
+    code-annotations: hover
+execute:
+  echo: true
+  warning: false
+  message: false
 ---
 
-```{r setup, include=FALSE}
+```{r setup}
+#| echo: false
+
 library(here)
 library(tidyverse)
 source(here("class_dates.R"))
 
-theme_set(theme_minimal(base_size = 28))
-theme_update(plot.title = element_text(size = 28, hjust = 0.5))
-knitr::opts_chunk$set(warning=FALSE, message=FALSE, echo = TRUE)
+# Density used for the plots comparing discrete and continuous RVs
+dens_two_humps <- function(x) {
+  0.55 * dnorm(x, mean = 2.5, sd = 1) + 0.45 * dnorm(x, mean = 7, sd = 1.2)
+}
+
+# Plot of the uniform pdf f(x) = 2 on [2.5, 3], with an optional shaded region
+plot_unif <- function(shade_from = NA, shade_to = NA, a_label = FALSE) {
+  tick_values <- c(2.5, shade_from, shade_to, 3)
+  tick_values <- sort(unique(tick_values[!is.na(tick_values)]))
+  tick_labels <- as.character(tick_values)
+  if (a_label) tick_labels[tick_values == 2.5] <- "a"
+
+  g <- ggplot() +
+    geom_rect(aes(xmin = 2.5, xmax = 3, ymin = 0, ymax = 2), fill = "lightblue") +
+    geom_segment(aes(x = 2.3, xend = 3.2, y = 0, yend = 0)) +
+    scale_x_continuous(breaks = tick_values, labels = tick_labels, limits = c(2.3, 3.2)) +
+    scale_y_continuous(breaks = c(0, 1, 2), limits = c(0, 2.5)) +
+    labs(x = "x", y = expression(f[X](x))) +
+    theme_minimal(base_size = 20)
+
+  if (!is.na(shade_from) & !is.na(shade_to) & shade_from < shade_to) {
+    g <- g + geom_rect(aes(xmin = shade_from, xmax = shade_to, ymin = 0, ymax = 2),
+                       fill = "#E89543", alpha = 0.8)
+  }
+  if (!is.na(shade_from) & !is.na(shade_to) & shade_from == shade_to) {
+    g <- g + geom_segment(aes(x = shade_from, xend = shade_from, y = 0, yend = 2),
+                          color = "#E89543", linewidth = 2)
+  }
+  g
+}
 ```
 
 # Learning Objectives
 
 1.  Distinguish between discrete and continuous random variables.
 
-2.  Calculate probabilities for continuous random variables.
+2.  Calculate probabilities from pdfs for continuous random variables.
 
 3.  Use R to simulate known continuous distributions.
 
@@ -43,7 +78,7 @@ knitr::opts_chunk$set(warning=FALSE, message=FALSE, echo = TRUE)
 1.  Distinguish between discrete and continuous random variables.
 :::
 
-2.  Calculate probabilities for continuous random variables.
+2.  Calculate probabilities from pdfs for continuous random variables.
 
 3.  Use R to simulate known continuous distributions.
 
@@ -51,12 +86,12 @@ knitr::opts_chunk$set(warning=FALSE, message=FALSE, echo = TRUE)
 
 ::: columns
 ::: {.column width="60%"}
--   For a **discrete** RV, the set of possible values is either finite
+-   For a [**discrete**]{style="color:#20c997;"} RV, the set of possible values is either finite
     or can be put into a countably infinite list.
 
-     
 
--   **Continuous** RVs take on values from continuous *intervals*, or
+
+-   [**Continuous**]{style="color:#d9534f;"} RVs take on values from continuous *intervals*, or
     unions of continuous intervals
 :::
 
@@ -78,12 +113,15 @@ Discrete RV $X$:
 #| fig-align: center
 #| echo: false
 
-library(ggplot2)
-data = data.frame(x = seq(0, 10, 1), y = seq(0, 0.5, 0.05))
-ggplot(data, aes(x = x, y = y)) +
+pmf_example <- tibble(x = c(1, 3, 6, 8), prob = c(0.2, 0.3, 0.2, 0.3))
+
+ggplot(pmf_example, aes(x = x, y = prob)) +
+  geom_segment(aes(xend = x, yend = 0), linewidth = 1.5) +
+  geom_point(size = 5) +
+  scale_x_continuous(breaks = 0:10, limits = c(0, 10)) +
+  scale_y_continuous(limits = c(0, 0.5)) +
   labs(x = "x", y = "Probability") +
-  theme_minimal() +
-  theme(text = element_text(size=28))
+  theme_minimal(base_size = 28)
 ```
 
 - pmf: $p_X(x) = P(X=x)$
@@ -97,12 +135,17 @@ Continuous RV $X$:
 #| fig-align: center
 #| echo: false
 
-library(ggplot2)
-data = data.frame(x = seq(0, 10, 1), y = seq(0, 1, 0.1))
-ggplot(data, aes(x = x, y = y)) +
+curve_df <- tibble(x = seq(0, 10, by = 0.02)) |>
+  mutate(density = dens_two_humps(x))
+
+ggplot(curve_df, aes(x = x, y = density)) +
+  geom_area(data = filter(curve_df, x >= 2, x <= 7),
+            fill = "#20c997", alpha = 0.5) +
+  geom_line(linewidth = 1.2) +
+  geom_vline(xintercept = c(2, 7), linetype = "dashed") +
+  scale_x_continuous(breaks = c(0, 2, 5, 7, 10), labels = c("0", "a", "5", "b", "10")) +
   labs(x = "x", y = "Density") +
-  theme_minimal() +
-  theme(text = element_text(size=28))
+  theme_minimal(base_size = 28)
 ```
 
 - density: $f_X(x)$
@@ -118,7 +161,7 @@ Probability density function
 :::
 
 ::: def-cont
-The probability distribution, or **probability density function (pdf)**,
+The probability distribution, or [**probability density function (pdf)**]{style="color:#E25D3B;"},
 of a continuous random variable $X$ is a function $f_X(x)$, such that
 for all real values $a,b$ with $a \leq b$,
 
@@ -126,23 +169,48 @@ $$\mathbb{P}(a \leq X \leq b) = \int_a^b f_X(x)dx$$
 :::
 :::
 
+::: columns
+::: {.column width="55%"}
 **Remarks:**
 
 1.  Note that $f_X(x) \neq \mathbb{P}(X=x)$!!!
 
-2.  In order for $f_X(x)$ to be a pdf, it needs to satisfy the
+2.  In order for $f_X(x)$ to be a [pdf]{style="color:#E25D3B;"}, it needs to satisfy the
     properties
 
     -   $f_X(x) \geq 0$ for all $x$
 
-    -   $\int_{-\infty}^{\infty} f_X(x)dx=1$
+    -   $\int_{-\infty}^{\infty} f_X(x)dx=1$: the total area under the curve is 1
+:::
+
+::: {.column width="45%"}
+```{r}
+#| fig-height: 6
+#| fig-width: 9
+#| fig-align: center
+#| echo: false
+
+pdf_df <- tibble(x = seq(1, 9, by = 0.02)) |>
+  mutate(u = (x - 1) / 8,
+         density = (0.5 * dbeta(u, 2, 6) + 0.5 * dbeta(u, 6, 2)) / 8)
+
+ggplot(pdf_df, aes(x = x, y = density)) +
+  geom_area(fill = "lightblue") +
+  geom_line(linewidth = 1.2) +
+  annotate("text", x = 5, y = 0.04, label = "Area = 1", size = 9) +
+  scale_x_continuous(breaks = c(1, 9), labels = c("c", "d"), limits = c(0, 10)) +
+  labs(x = "x", y = "Density") +
+  theme_minimal(base_size = 28)
+```
+:::
+:::
 
 # Learning Objectives
 
 1.  Distinguish between discrete and continuous random variables.
 
 ::: lob
-2.  Calculate probabilities for continuous random variables.
+2.  Calculate probabilities from pdfs for continuous random variables.
 :::
 
 3.  Use R to simulate known continuous distributions.
@@ -150,7 +218,7 @@ $$\mathbb{P}(a \leq X \leq b) = \int_a^b f_X(x)dx$$
 ## Let's demonstrate the PDF with an example (1/5)
 
 ::: columns
-::: {.column width="30%"}
+::: {.column width="40%"}
 ::: example
 ::: ex-title
 Example 1.1
@@ -159,81 +227,131 @@ Example 1.1
 ::: ex-cont
 Let $f_X(x)= 2$, for $a \leq x \leq 3$.
 
-1.  Find the value of $a$ so that $f_X(x)$ is a pdf.
+1.  Find the value of $a$ so that $f_X(x)$ is a valid pdf.
 :::
 :::
+:::
+
+::: {.column width="60%"}
+```{r}
+#| echo: false
+#| fig-width: 11
+#| fig-height: 6
+
+plot_unif(a_label = TRUE)
+```
 :::
 :::
 
 ## Let's demonstrate the PDF with an example (2/5)
 
 ::: columns
-::: {.column width="30%"}
+::: {.column width="40%"}
 ::: example
 ::: ex-title
 Example 1.2
 :::
 
 ::: ex-cont
-Let $f_X(x)= 2$, for $a \leq x \leq 3$.
+Let $f_X(x)= 2$, for $2.5 \leq x \leq 3$.
 
 2.  Find $\mathbb{P}(2.7 \leq X \leq 2.9)$.
 :::
 :::
+:::
+
+::: {.column width="60%"}
+```{r}
+#| echo: false
+#| fig-width: 11
+#| fig-height: 6
+
+plot_unif(shade_from = 2.7, shade_to = 2.9)
+```
 :::
 :::
 
 ## Let's demonstrate the PDF with an example (3/5)
 
 ::: columns
-::: {.column width="30%"}
+::: {.column width="40%"}
 ::: example
 ::: ex-title
 Example 1.3
 :::
 
 ::: ex-cont
-Let $f_X(x)= 2$, for $a \leq x \leq 3$.
+Let $f_X(x)= 2$, for $2.5 \leq x \leq 3$.
 
 3.  Find $\mathbb{P}(2.7 < X \leq 2.9)$.
 :::
 :::
+:::
+
+::: {.column width="60%"}
+```{r}
+#| echo: false
+#| fig-width: 11
+#| fig-height: 6
+
+plot_unif(shade_from = 2.7, shade_to = 2.9)
+```
 :::
 :::
 
 ## Let's demonstrate the PDF with an example (4/5)
 
 ::: columns
-::: {.column width="30%"}
+::: {.column width="40%"}
 ::: example
 ::: ex-title
 Example 1.4
 :::
 
 ::: ex-cont
-Let $f_X(x)= 2$, for $a \leq x \leq 3$.
+Let $f_X(x)= 2$, for $2.5 \leq x \leq 3$.
 
 4.  Find $\mathbb{P}(X = 2.9)$.
 :::
 :::
+:::
+
+::: {.column width="60%"}
+```{r}
+#| echo: false
+#| fig-width: 11
+#| fig-height: 6
+
+plot_unif(shade_from = 2.9, shade_to = 2.9)
+```
 :::
 :::
 
 ## Let's demonstrate the PDF with an example (5/5)
 
 ::: columns
-::: {.column width="30%"}
+::: {.column width="40%"}
 ::: example
 ::: ex-title
 Example 1.5
 :::
 
 ::: ex-cont
-Let $f_X(x)= 2$, for $a \leq x \leq 3$.
+Let $f_X(x)= 2$, for $2.5 \leq x \leq 3$.
 
 5.  Find $\mathbb{P}(X \leq 2.8)$.
 :::
 :::
+:::
+
+::: {.column width="60%"}
+```{r}
+#| echo: false
+#| fig-width: 11
+#| fig-height: 6
+
+plot_unif(shade_from = 2.5, shade_to = 2.8)
+```
 :::
 :::
 
@@ -241,39 +359,131 @@ Let $f_X(x)= 2$, for $a \leq x \leq 3$.
 
 1.  Distinguish between discrete and continuous random variables.
 
-2.  Calculate probabilities for continuous random variables.
+2.  Calculate probabilities from pdfs for continuous random variables.
 
 ::: lob
 3.  Use R to simulate known continuous distributions.
 :::
 
-## Use R to simulate known distributions
+## Use R to simulate known distributions (1/3)
 
 - We can use R to simulate continuous random variables and visualize their distributions
-- For example, we can simulate a *uniform* distribution between 2.5 and 3
+- For example, we can simulate a *uniform* distribution between 2.5 and 3: $f_X(x) = 2$ for $2.5 \leq x \leq 3$
 
+::: columns
+::: {.column width="45%"}
 ```{r}
-#| echo: true
-#| output-location: column
-#| fig-align: center
-#| fig-height: 6
-#| fig-width: 9
+set.seed(8) # <1>
+reps <- 10000 # <2>
 
-uniform = tibble(
-  x = runif(n=10000, min=2.5, max=3)
+uniform_sims <- tibble( # <3>
+  x = runif(n = reps, min = 2.5, max = 3) # <4>
 )
 
-ggplot(uniform, 
-       aes(x = x, 
-           y = after_stat(density))) +
-  geom_histogram( binwidth = 0.001) + 
-  geom_abline(intercept = 2, slope = 0) + 
-  labs(
-    title = "Probability density function (pdf) of X",
-    x = "x",
-    y = "pdf"
-  ) 
+head(uniform_sims) # <5>
 ```
+
+1. Set the random seed once, so everyone gets the same random numbers.
+2. Save the number of simulated values as `reps`, so it is easy to change later.
+3. `tibble()` makes a table, which we save as `uniform_sims`.
+4. `runif()` draws random values from a uniform distribution. `n` is how many values, and `min` and `max` are the ends of the interval.
+5. `head()` shows the first 6 rows. Every value is a decimal number between 2.5 and 3.
+
+:::
+::: {.column width="55%"}
+```{r}
+#| code-fold: true
+#| code-summary: "Plot the simulated values and the pdf"
+#| fig-align: center
+#| fig-width: 11
+#| fig-height: 6
+
+ggplot(uniform_sims, aes(x = x, y = after_stat(density))) + # <1>
+  geom_histogram(binwidth = 0.025, boundary = 2.5, # <2>
+                 color = "black", fill = "lightblue") + # <2>
+  geom_hline(yintercept = 2, color = "red", linewidth = 1.5) + # <3>
+  labs(title = "Probability density function (pdf) of X", # <4>
+       x = "x", # <4>
+       y = "Density") + # <4>
+  theme_minimal(base_size = 20) # <5>
+```
+
+1. `after_stat(density)` scales the bar heights so the total area of the bars is 1, like a pdf.
+2. Each bar covers a width of 0.025. `boundary = 2.5` starts the first bar exactly at 2.5.
+3. The red line is the true pdf, $f_X(x) = 2$.
+4. Add a title and axis labels.
+5. Use a clean theme with larger text.
+
+:::
+:::
+
+## Use R to simulate known distributions (2/3)
+
+::: columns
+::: {.column width="60%"}
+
+- We can use the simulated values to check our answers from Examples 1.2 to 1.5
+
+```{r}
+uniform_sims |> # <1>
+  summarise( # <2>
+    prob_between = mean(x >= 2.7 & x <= 2.9), # <3>
+    prob_equal   = mean(x == 2.9), # <4>
+    prob_at_most = mean(x <= 2.8) # <5>
+  )
+```
+
+1. Start with the 10,000 simulated values of `x`.
+2. `summarise()` collapses the table into one row with a column for each probability.
+3. `x >= 2.7 & x <= 2.9` is `TRUE` when `x` is at least 2.7 **and** at most 2.9. The mean of `TRUE`s and `FALSE`s is the proportion of `TRUE`s, which approximates $P(2.7 \leq X \leq 2.9)$.
+4. The proportion of simulated values exactly equal to 2.9, which approximates $P(X = 2.9)$.
+5. The proportion of simulated values at most 2.8, which approximates $P(X \leq 2.8)$.
+
+:::
+::: {.column width="40%"}
+
+  
+
+- Compare these to the answers we found with the integrals
+
+- Does the simulation agree that $P(X = 2.9) = 0$?
+:::
+:::
+
+## Use R to simulate known distributions (3/3)
+
+::: columns
+::: {.column width="60%"}
+
+- Why is $P(X = 2.9) = 0$? Let's round the simulated values and see what happens to the probability of getting 2.9
+
+```{r}
+uniform_sims |> # <1>
+  summarise( # <2>
+    round_1_digit  = mean(round(x, digits = 1) == 2.9), # <3>
+    round_2_digits = mean(round(x, digits = 2) == 2.9), # <3>
+    round_3_digits = mean(round(x, digits = 3) == 2.9), # <3>
+    no_rounding    = mean(x == 2.9) # <4>
+  )
+```
+
+1. Start with the 10,000 simulated values of `x`.
+2. Again, one row with a column for each probability.
+3. `round(x, digits = 1)` rounds each value to 1 decimal place, so any `x` between 2.85 and 2.95 becomes 2.9. We find the proportion of rounded values equal to 2.9.
+4. With no rounding, no simulated value lands exactly on 2.9.
+
+:::
+::: {.column width="40%"}
+
+  
+
+- The more we round, the smaller the "window" around 2.9
+
+- A window of width 0.1 has probability about $2 \times 0.1 = 0.2$ (density times width)
+
+- As the window shrinks to a single point, its probability shrinks to 0
+:::
+:::
 
 ## Use R to simulate any continuous distribution
 

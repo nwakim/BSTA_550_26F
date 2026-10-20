@@ -17,6 +17,8 @@ format:
     code-annotations: hover
 execute:
   echo: true
+editor_options: 
+  chunk_output_type: console
 ---
 
 # Learning Objectives
@@ -366,7 +368,7 @@ Example 3
 :::
 
 ::: ex-cont
-Suppose 23 people are in a room, and every day of the year is equally likely to be a birthday (ignore leap days). What is the probability that at least two people share a birthday?
+Suppose 8 people are in a room, and every day of the year is equally likely to be a birthday (ignore leap days). What is the probability that at least two people share a birthday?
 :::
 :::::
 
@@ -376,10 +378,10 @@ Suppose 23 people are in a room, and every day of the year is equally likely to 
 #| echo: true
 set.seed(550) # <1>
 reps <- 100000 # <2>
-n_people <- 23 # <3>
+n_people <- 8 # <3>
 birthdays <- expand_grid(sim = 1:reps, person = 1:n_people) |> # <4>
   mutate(birthday = sample(1:365, n(), replace = TRUE)) # <5>
-head(birthdays, 4)
+head(birthdays, 10)
 ```
 
 1.  Set the seed so the results can be reproduced.

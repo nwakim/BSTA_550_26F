@@ -79,9 +79,9 @@ main code.filename {
 
 ::: hw-table
 | Homework | Assignment | Assignment due (\@11pm) | Answers | Solutions & videos |
-|----|----|----|----|----|
+|---------------|---------------|---------------|---------------|---------------|
 | 0 | [[{{< iconify material-symbols assignment size=29px >}}](/homework/HW_00.qmd)]{style="color:#f8f5f0;"} | `r hw0 %>% format("%m/%d")` |  |  |
-| 1 | [[{{< iconify material-symbols assignment size=29px >}}](/homework/HW_01.qmd)]{style="color:#f8f5f0;"} | `r hw1 %>% format("%m/%d")` | [[{{< iconify ph key-fill size=29px >}}](/hw_answers/HW_01_ans.qmd)]{style="color:#f8f5f0;"} | [{{< iconify icon-park-twotone file-code size=29px >}}]{style="color:#f8f5f0;"} |
+| 1 | [[{{< iconify material-symbols assignment size=29px >}}](/homework/HW_01.qmd)]{style="color:#f8f5f0;"} | `r hw1 %>% format("%m/%d")` | [[{{< iconify ph key-fill size=29px >}}](/hw_answers/HW_01_ans.qmd)]{style="color:#f8f5f0;"} | [[{{< iconify icon-park-twotone file-code size=29px >}}](https://ohsuitg-my.sharepoint.com/:f:/r/personal/wakim_ohsu_edu/Documents/Teaching/Classes/BSTA_550_26F/student-files_BSTA-550-26F/hw_solns/hw_01?d=w8fdbb3959f2647559c197444d26a3de0&csf=1&web=1&e=e8S0UY)]{style="color:#f8f5f0;"} |
 | 2 | [[{{< iconify material-symbols assignment size=29px >}}](/homework/HW_02.qmd)]{style="color:#f8f5f0;"} | `r hw2 %>% format("%m/%d")` | [[{{< iconify ph key-fill size=29px >}}](/hw_answers/HW_02_ans.qmd)]{style="color:#f8f5f0;"} | [{{< iconify icon-park-twotone file-code size=29px >}}]{style="color:#f8f5f0;"} |
 | 3 | [[{{< iconify material-symbols assignment size=29px >}}](/homework/HW_03.qmd)]{style="color:#f8f5f0;"} | `r hw3 %>% format("%m/%d")` | [[{{< iconify ph key-fill size=29px >}}](/hw_answers/HW_03_ans.qmd)]{style="color:#f8f5f0;"} | [{{< iconify icon-park-twotone file-code size=29px >}}]{style="color:#f8f5f0;"} |
 | 4 | [[{{< iconify material-symbols assignment size=29px >}}](/homework/HW_04.qmd)]{style="color:#f8f5f0;"} | `r hw4 %>% format("%m/%d")` | [[{{< iconify ph key-fill size=29px >}}](/hw_answers/HW_04_ans.qmd)]{style="color:#f8f5f0;"} | [{{< iconify icon-park-twotone file-code size=29px >}}]{style="color:#f8f5f0;"} |
@@ -107,6 +107,6 @@ A total of **1 point** will be given for a complete homework. The following rubr
 
 ::: rubric
 |   | 1 point | 0 points |
-|----|----|----|
+|------------------------|------------------------|------------------------|
 | Completeness | 75% of the question parts are thoroughly worked out and have an answer. “Question parts” means the sub-questions labeled “Part \_." Answers can be incorrect or correct. For parts with longer processes and calculations, solution set up and calculations are required. | Less than 75% of question parts are thoroughly worked out. Attempts do not count as thoroughly worked out. |
 :::

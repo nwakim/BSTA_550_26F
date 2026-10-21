@@ -1,0 +1,530 @@
+---
+title: "Lesson 9: Cumulative distribution functions (CDFs)"
+author: "Nicky Wakim"
+date: " `r library(here); source(here('class_dates.R')); w4d2` "
+title-slide-attributes:
+    data-background-color: "#006a4e"
+format: 
+  revealjs:
+    theme: "../simple_NW.scss"
+    slide-number: true
+    show-slide-number: all
+    width: 1955
+    height: 1100
+    footer: Lesson 9 Slides
+    html-math-method: mathjax
+---
+
+# Learning Objectives
+
+1. Understand the definition of cumulative distribution functions (CDFs) for discrete and continuous random variables.
+2. Compute CDFs for given probability mass functions (pmfs). 
+3. Compute CDFs for given probability density functions (pdfs) and pdfs from CDFs.
+
+## Where are we?
+
+![](../img_slides/course_map.png){fig-align="center"}
+
+```{r setup, include=FALSE}
+library(here)
+library(tidyverse)
+source(here("class_dates.R"))
+library(ggplot2)
+
+
+theme_set(theme_minimal(base_size = 22))
+theme_update(plot.title = element_text(size = 22, hjust = 0.5))
+knitr::opts_chunk$set(warning=FALSE, message=FALSE, echo = TRUE)
+```
+
+# Learning Objectives
+
+::: lob
+1. Understand the definition of cumulative distribution functions (CDFs) for discrete and continuous random variables.
+:::
+
+2. Compute CDFs for given probability mass functions (pmfs). 
+3. Compute CDFs for given probability density functions (pdfs) and pdfs from CDFs.
+
+## What is a cumulative distribution function?
+
+::: columns
+
+::: {.column width="50%"}
+
+::: definition
+::: def-title
+Cumulative distribution function (CDF) for discrete random variable
+:::
+
+::: def-cont
+The **cumulative distribution function** (**cdf**) of a **discrete RV** $X$ with pmf $p_X(x)$, is defined for every value $x$ by $$F_X(x) = \mathbb{P}(X \leq x) = \sum \limits_{\{all\ y:\ y\leq x\}}p_X(y)$$
+:::
+:::
+
+-   $F(x)$ is increasing or flat (never decreasing)
+
+-   $\min\limits_x F(x) = 0$
+
+-   $\max\limits_xF(x)=1$
+
+-   CDF is a step function
+
+:::
+
+::: {.column width="50%"}
+
+::: definition
+::: def-title
+Cumulative distribution function (CDF) for continuous random variable
+:::
+
+::: def-cont
+The **cumulative distribution function (cdf)** of a **continuous RV** $X$, is the function $F_X(x)$, such that for all real values of
+$x$, $$F_X(x)= \mathbb{P}(X \leq x) = \int_{-\infty}^x f_X(s)ds$$
+:::
+:::
+
+**Remarks:** In general, $F_X(x)$ is increasing and
+
+-   $\lim_{x\rightarrow -\infty} F_X(x)= 0$
+
+-   $\lim_{x\rightarrow \infty} F_X(x)= 1$
+
+-   $P(X > a) = 1 - P(X \leq a) = 1 - F_X(a)$
+
+-   $P(a \leq X \leq b) = F_X(b) - F_X(a)$
+
+:::
+
+:::
+
+## How to define CDFs for discrete and continuous RVs?
+
+::: columns
+::: column
+Discrete RV $X$:
+
+```{r}
+#| fig-height: 6
+#| fig-width: 7
+#| fig-align: center
+#| echo: false
+
+ggplot() +
+  geom_step(aes(x = c(0,1,2,3,4,5), y = c(0, 0.1, 0.3, 0.6, 0.8, 1)), direction = "hv") +
+  labs(x = "x",
+     y = "Cumulative Probability")
+```
+
+- pmf: $p_X(x) = P(X=x)$
+- CDF: $F_X(x) = P(X \leq x) = \sum\limits_{\{all\ y:\ y\leq x\}} p_X(y)$
+:::
+::: column
+Continuous RV $X$:
+
+```{r}
+#| fig-height: 6
+#| fig-width: 7
+#| fig-align: center
+#| echo: false
+
+set.seed(123)
+
+data = tibble(
+  x = seq(-4, 4, length.out = 10000),
+  cdf = pnorm(x, mean = 0, sd = 1)
+)
+
+ggplot(data, aes(x = x, y = cdf)) +
+  geom_smooth(size = 1, color = "black") +
+labs(x = "x",
+     y = "Cumulative Probability")
+```
+
+- density: $f_X(x)$
+- probability: $P(a \leq X \leq b) = \int_a^b f_X(x)dx$
+- CDF: $F_X(x) = P(X \leq x) = \int_{-\infty}^x f_X(s)ds$
+:::
+:::
+
+# Learning Objective
+
+1. Understand the definition of cumulative distribution functions (CDFs) for discrete and continuous random variables.
+
+::: lob
+2. Compute CDFs for given probability mass functions (pmfs). 
+:::
+
+3. Compute CDFs for given probability density functions (pdfs) and pdfs from CDFs.
+
+## Falls in Older Adults Revisited (1/5)
+
+::: columns
+::: {.column width="100%"}
+::: example
+::: ex-title
+Example 1: Falls in Older Adults
+:::
+
+::: ex-cont
+A major public health concern is falls among older adults (age 65+). National data suggests that 25% of older adults will experience at least one fall within a given year. A community health program is tracking a random group of $n = 8$ older adults for one year. Assume the likelihood of falling is independent from person to person.
+
+Let $X$ be the random variable representing the number of individuals in this group who experience at least one fall.
+
+1. Write the CDF of $X$ and make a table of values.
+2. Use R to calculate the cumulative probability for each possible value of $X$.
+3. Plot the CDF of $X$.
+4. Simulate $X$ for 10000 groups and plot the approximated CDF.
+:::
+:::
+:::
+:::
+
+Recall our pmf: $$P(X = x) = \binom{8}{x} 0.25^x 0.75^{8-x},  x= 0, 1, 2, \dots, 8 $$
+
+## Falls in Older Adults Revisited (2/5)
+
+::: columns
+::: {.column width="100%"}
+::: example
+::: ex-title
+Example 1: Falls in Older Adults
+:::
+
+::: ex-cont
+1. Write the CDF of $X$.
+:::
+:::
+:::
+:::
+
+Recall our pmf: $$P(X = x) = \binom{8}{x} 0.25^x 0.75^{8-x},  x= 0, 1, 2, \dots, 8 $$
+
+
+$$F_X(x) = P(X \leq x) = \sum \limits_{k=0}^{x} \binom{8}{k} 0.25^y 0.75^{8-k}$$
+
+## Falls in Older Adults Revisited (3/5)
+
+::: columns
+::: {.column width="50%"}
+::: example
+::: ex-title
+Example 1: Falls in Older Adults
+:::
+
+::: ex-cont
+2. Use R to calculate the cumulative probability for each possible value of $X$.
+:::
+:::
+
+```{r}
+n = 8
+p = 0.25
+
+falls_cdf <- tibble(
+  x = 0:n,
+  c_prob = pbinom(x, size = n, prob = p)
+)
+```
+
+:::
+
+::: column
+
+ 
+
+ 
+
+```{r}
+falls_cdf
+```
+
+:::
+:::
+
+## Falls in Older Adults Revisited (4/5)
+
+::: example
+::: ex-title
+Example 1: Falls in Older Adults
+:::
+
+::: ex-cont
+3. Plot the CDF of $X$.
+:::
+:::
+
+```{r}
+#| fig-width: 9
+#| fig-height: 6
+#| output-location: column
+
+ggplot(
+  falls_cdf,
+  aes(x = x, y = c_prob)
+       ) +
+  geom_step(
+    size = 1, 
+    color = "black"
+    ) +
+  labs(
+    x = "Number of Falls",
+    y = "Cumulative Probability",
+    title = "CDF of X"
+    )
+```
+
+## Falls in Older Adults Revisited (4/5)
+
+::: columns
+::: {.column width="50%"}
+::: example
+::: ex-title
+Example 1: Falls in Older Adults
+:::
+
+::: ex-cont
+4. Simulate $X$ for 10000 groups and plot the approximated CDF.
+:::
+:::
+
+```{r}
+set.seed(4764)
+reps = 10000
+
+sims = rbinom(n = reps, 
+              size = n, 
+              prob = p)
+
+sims %>% head(., 14)
+
+falls2 <- tibble(x = 0:n) %>%
+  rowwise() %>%
+  mutate(c_prob = sum(sims <= x) / reps)
+```
+
+:::
+
+::: column
+```{r}
+#| fig-align: "center"
+#| fig-width: 9
+#| fig-height: 6
+
+ggplot(falls2, aes(x = x, y = c_prob)) +
+  geom_step(size = 1, color = "black") +
+  labs(
+    title = "Approximate CDF of X",
+    x = "Number of adults (x)",
+    y = "Approximate Cumulative Probability"
+  ) 
+```
+:::
+
+:::
+
+# Learning Objective
+
+1. Understand the definition of cumulative distribution functions (CDFs) for discrete and continuous random variables.
+2. Compute CDFs for given probability mass functions (pmfs). 
+
+::: lob
+3. Compute CDFs for given probability density functions (pdfs) and pdfs from CDFs.
+:::
+
+## Let's demonstrate the CDF with an example
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 2
+:::
+
+::: ex-cont
+Let $f_X(x)= 2$, for $2.5 \leq x \leq 3$. Find $F_X(x)$.
+:::
+:::
+:::
+:::
+
+## Derivatives of the CDF
+
+::: theorem
+::: thm-title
+Theorem 1
+:::
+
+::: thm-cont
+If $X$ is a continuous random variable with pdf $f_X(x)$ and cdf
+$F_X(x)$, then for all real values of $x$ at which $F'_X(x)$ exists,
+$$\frac{d}{dx} F_X(x)= F'_X(x) = f_X(x)$$
+:::
+:::
+
+## Finding the PDF from a CDF
+
+::: columns
+::: {.column width="38%"}
+::: example
+::: ex-title
+Example 3
+:::
+
+::: ex-cont
+Let $X$ be a RV with cdf $$F_X(x)= \left\{
+        \begin{array}{ll}
+            0 & \quad x < 2.5 \\
+            2x-5 & \quad 2.5 \leq x \leq 3 \\
+            1 & \quad x > 3
+        \end{array}
+    \right.$$ Find the pdf $f_X(x)$.
+:::
+:::
+:::
+:::
+
+## Let's go through another example (1/7)
+
+::: columns
+::: {.column width="100%"}
+::: example
+::: ex-title
+Example 4
+:::
+
+::: ex-cont
+Let $X$ be a RV with pdf $f_X(x)= 2e^{-2x}$, for $x>0$.
+
+1.  Show $f_X(x)$ is a pdf.
+
+2.  Find $\mathbb{P}(1 \leq X \leq 3)$.
+
+3.  Find $F_X(x)$.
+
+4.  Given $F_X(x)$, find $f_X(x)$.
+
+5.  Find $\mathbb{P}(X \geq 1 | X \leq 3)$.
+
+6.  Find the median of the distribution of $X$.
+:::
+:::
+:::
+:::
+
+## Let's go through another example (2/7)
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 4.1
+:::
+
+::: ex-cont
+Let $X$ be a RV with pdf $f_X(x)= 2e^{-2x}$, for $x>0$.
+
+1.  Show $f_X(x)$ is a pdf.
+:::
+:::
+:::
+:::
+
+## Let's go through another example (3/7)
+
+::: {.callout-important appearance="simple" icon="false"}
+Do this problem at home for extra practice.
+:::
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 4.2
+:::
+
+::: ex-cont
+Let $X$ be a RV with pdf $f_X(x)= 2e^{-2x}$, for $x>0$.
+
+2.  Find $\mathbb{P}(1 \leq X \leq 3)$.
+:::
+:::
+:::
+:::
+
+## Let's go through another example (4/7)
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 4.3
+:::
+
+::: ex-cont
+Let $X$ be a RV with pdf $f_X(x)= 2e^{-2x}$, for $x>0$.
+
+3.  Find $F_X(x)$.
+:::
+:::
+:::
+:::
+
+## Let's go through another example (5/7)
+
+::: {.callout-important appearance="simple" icon="false"}
+Do this problem at home for extra practice.
+:::
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 4.4
+:::
+
+::: ex-cont
+Let $X$ be a RV with pdf $f_X(x)= 2e^{-2x}$, for $x>0$.
+
+4.  Given $F_X(x)$, find $f_X(x)$.
+:::
+:::
+:::
+:::
+
+## Let's go through another example (6/7)
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 4.5
+:::
+
+::: ex-cont
+Let $X$ be a RV with pdf $f_X(x)= 2e^{-2x}$, for $x>0$.
+
+5.  Find $\mathbb{P}(X \geq 1 | X \leq 3)$.
+:::
+:::
+:::
+:::
+
+## Let's go through another example (7/7)
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 4.6
+:::
+
+::: ex-cont
+Let $X$ be a RV with pdf $f_X(x)= 2e^{-2x}$, for $x>0$.
+
+6.  Find the median of the distribution of $X$.
+:::
+:::
+:::
+:::

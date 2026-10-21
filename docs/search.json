@@ -19436,7 +19436,7 @@
     "href": "lessons/09_CDFs/09_CDFs.html#what-is-a-cumulative-distribution-function",
     "title": "Lesson 9: Cumulative distribution functions (CDFs)",
     "section": "What is a cumulative distribution function?",
-    "text": "What is a cumulative distribution function?\n\n\n\n\nCumulative distribution function (CDF) for discrete random variable\n\n\nThe cumulative distribution function (cdf) of a discrete RV \\(X\\) with pmf \\(p_X(x)\\), is defined for every value \\(x\\) by \\[F_X(x) = \\mathbb{P}(X \\leq x) = \\sum \\limits_{\\{all\\ y:\\ y\\leq x\\}}p_X(y)\\]\n\n\n\n\\(F(x)\\) is increasing or flat (never decreasing)\n\\(\\min\\limits_x F(x) = 0\\)\n\\(\\max\\limits_xF(x)=1\\)\nCDF is a step function\n\n\n\n\nCumulative distribution function (CDF) for continuous random variable\n\n\nThe cumulative distribution function (cdf) of a continuous RV \\(X\\), is the function \\(F_X(x)\\), such that for all real values of \\(x\\), \\[F_X(x)= \\mathbb{P}(X \\leq x) = \\int_{-\\infty}^x f_X(s)ds\\]\n\n\nRemarks: In general, \\(F_X(x)\\) is increasing and\n\n\\(\\lim_{x\\rightarrow -\\infty} F_X(x)= 0\\)\n\\(\\lim_{x\\rightarrow \\infty} F_X(x)= 1\\)\n\\(P(X &gt; a) = 1 - P(X \\leq a) = 1 - F_X(a)\\)\n\\(P(a \\leq X \\leq b) = F_X(b) - F_X(a)\\)"
+    "text": "What is a cumulative distribution function?\n\n\n\n\nCumulative distribution function (CDF) for discrete random variable\n\n\nThe cumulative distribution function (cdf) of a discrete RV \\(X\\) with pmf \\(p_X(x)\\), is defined for every value \\(x\\) by \\[F_X(x) = \\mathbb{P}(X \\leq x) = \\sum \\limits_{\\{all\\ y:\\ y\\leq x\\}}p_X(y)\\]\n\n\n\n\\(F(x)\\) is increasing or flat (never decreasing)\n\\(\\min\\limits_x F(x) = 0\\): the CDF starts at 0\n\\(\\max\\limits_xF(x)=1\\): at the largest \\(x\\), all the probabilities have been summed, so the total is 1\nThe CDF of a discrete RV is a step function\n\n\n\n\nCumulative distribution function (CDF) for continuous random variable\n\n\nThe cumulative distribution function (cdf) of a continuous RV \\(X\\), is the function \\(F_X(x)\\), such that for all real values of \\(x\\), \\[F_X(x)= \\mathbb{P}(X \\leq x) = \\int_{-\\infty}^x f_X(s)ds\\]\n\n\nIn general, \\(F_X(x)\\) is increasing and\n\n\\(\\lim_{x\\rightarrow -\\infty} F_X(x)= 0\\)\n\\(\\lim_{x\\rightarrow \\infty} F_X(x)= 1\\)\n\\(P(X &gt; a) = 1 - P(X \\leq a) = 1 - F_X(a)\\)\n\\(P(a \\leq X \\leq b) = F_X(b) - F_X(a)\\)"
   },
   {
     "objectID": "lessons/09_CDFs/09_CDFs.html#lets-demonstrate-the-cdf-with-an-example",
@@ -19450,7 +19450,7 @@
     "href": "lessons/09_CDFs/09_CDFs.html#derivatives-of-the-cdf",
     "title": "Lesson 9: Cumulative distribution functions (CDFs)",
     "section": "Derivatives of the CDF",
-    "text": "Derivatives of the CDF\n\n\nTheorem 1\n\n\nIf \\(X\\) is a continuous random variable with pdf \\(f_X(x)\\) and cdf \\(F_X(x)\\), then for all real values of \\(x\\) at which \\(F'_X(x)\\) exists, \\[\\frac{d}{dx} F_X(x)= F'_X(x) = f_X(x)\\]"
+    "text": "Derivatives of the CDF\n\n\nTheorem 1\n\n\nIf \\(X\\) is a continuous random variable with pdf \\(f_X(x)\\) and cdf \\(F_X(x)\\), then for all real values of \\(x\\) at which \\(F'_X(x)\\) exists, \\[\\frac{d}{dx} F_X(x)= F'_X(x) = f_X(x)\\]\n\n\n\nIntegrate the pdf to get the CDF\nTake the derivative of the CDF to get the pdf"
   },
   {
     "objectID": "lessons/09_CDFs/09_CDFs.html#finding-the-pdf-from-a-cdf",
@@ -19471,7 +19471,7 @@
     "href": "lessons/09_CDFs/09_CDFs.html#lets-go-through-another-example-27",
     "title": "Lesson 9: Cumulative distribution functions (CDFs)",
     "section": "Let’s go through another example (2/7)",
-    "text": "Let’s go through another example (2/7)\n\n\n\n\nExample 4.1\n\n\nLet \\(X\\) be a RV with pdf \\(f_X(x)= 2e^{-2x}\\), for \\(x&gt;0\\).\n\nShow \\(f_X(x)\\) is a pdf."
+    "text": "Let’s go through another example (2/7)\n\n\n\n\nExample 4.1\n\n\nLet \\(X\\) be a RV with pdf \\(f_X(x)= 2e^{-2x}\\), for \\(x&gt;0\\).\n\nShow \\(f_X(x)\\) is a pdf.\n\n\n\n\n\nTo show \\(f_X(x)\\) is a valid pdf, we need to show two things\n\n\n\n\\(f_X(x) \\geq 0\\) for all \\(x\\)\n\\(\\displaystyle\\int_{-\\infty}^{\\infty} f_X(x)\\,dx = 1\\)\n\nIf both hold, then \\(f_X(x)\\) is a pdf"
   },
   {
     "objectID": "lessons/09_CDFs/09_CDFs.html#lets-go-through-another-example-37",
@@ -19492,7 +19492,7 @@
     "href": "lessons/09_CDFs/09_CDFs.html#lets-go-through-another-example-57",
     "title": "Lesson 9: Cumulative distribution functions (CDFs)",
     "section": "Let’s go through another example (5/7)",
-    "text": "Let’s go through another example (5/7)\n\n\n\nDo this problem at home for extra practice.\n\n\n\n\n\n\n\nExample 4.4\n\n\nLet \\(X\\) be a RV with pdf \\(f_X(x)= 2e^{-2x}\\), for \\(x&gt;0\\).\n\nGiven \\(F_X(x)\\), find \\(f_X(x)\\)."
+    "text": "Let’s go through another example (5/7)\n\n\n\n\nExample 4.4\n\n\nLet \\(X\\) be a RV with pdf \\(f_X(x)= 2e^{-2x}\\), for \\(x&gt;0\\).\n\nGiven \\(F_X(x)\\), find \\(f_X(x)\\).\n\n\n\n\n\\[F_X(x) = \\begin{cases} 0 & x \\leq 0 \\\\ 1 - e^{-2x} & x &gt; 0 \\end{cases}\\]\nThe pdf is the derivative of the CDF: \\(f_X(x) = \\dfrac{d}{dx}F_X(x)\\).\nFor \\(x &gt; 0\\), use the chain rule on \\(e^{-2x}\\):\n\\[\\begin{aligned}\nf_X(x) &= \\frac{d}{dx}\\left(1 - e^{-2x}\\right) \\\\\n&= 0 - \\left(-2\\right)e^{-2x} \\\\\n&= 2e^{-2x}\n\\end{aligned}\\]\nFor \\(x \\leq 0\\), \\(F_X(x) = 0\\), so its derivative is 0.\n\\[f_X(x) = \\begin{cases} 2e^{-2x} & x &gt; 0 \\\\ 0 & x \\leq 0 \\end{cases}\\]\nThis matches the pdf we started with."
   },
   {
     "objectID": "lessons/09_CDFs/09_CDFs.html#lets-go-through-another-example-67",
@@ -19756,7 +19756,7 @@
   {
     "objectID": "lessons/08_pdfs/08_pdfs.html#where-are-we",
     "href": "lessons/08_pdfs/08_pdfs.html#where-are-we",
-    "title": "Lesson 8: Probability density functions (PDF’s)",
+    "title": "Lesson 8: Probability density functions (PDFs)",
     "section": "Where are we?",
     "text": "Where are we?"
   },
@@ -19919,21 +19919,21 @@
     "href": "lessons/09_CDFs/09_CDFs_key_info.html",
     "title": "Key Info and Announcements",
     "section": "",
-    "text": "Quiz 1 questions?\nCharles is still grading HW 2\n\nPosted solutions so you have as a reference during quiz\n\nIf links do not work on this site, there are two places where the files live:\n\nGithub page: https://github.com/nwakim/BSTA_550_25F\n\nLink also on this homepage\n\nOHSU OneDrive\n\nYou should have access to this folder\n\n\nIf you want to attend class virtually when we’re in-person, then you can use: https://pdx.zoom.us/j/82027616951\n\nHowever, I will not support virtual attendance when we’re in-person\nI will not be monitoring the chat or helping with technical issues"
+    "text": "Quiz 1 questions?\nIf links do not work on this site, there are two places where the files live:\n\nGithub page: https://github.com/nwakim/BSTA_550_25F\n\nLink also on this homepage\n\nOHSU OneDrive\n\nYou should have access to this folder\n\n\nCareer panels coming up!\nStudent group advising session on Friday!"
   },
   {
     "objectID": "lessons/09_CDFs/09_CDFs_key_info.html#key-info",
     "href": "lessons/09_CDFs/09_CDFs_key_info.html#key-info",
     "title": "Key Info and Announcements",
     "section": "",
-    "text": "Quiz 1 questions?\nCharles is still grading HW 2\n\nPosted solutions so you have as a reference during quiz\n\nIf links do not work on this site, there are two places where the files live:\n\nGithub page: https://github.com/nwakim/BSTA_550_25F\n\nLink also on this homepage\n\nOHSU OneDrive\n\nYou should have access to this folder\n\n\nIf you want to attend class virtually when we’re in-person, then you can use: https://pdx.zoom.us/j/82027616951\n\nHowever, I will not support virtual attendance when we’re in-person\nI will not be monitoring the chat or helping with technical issues"
+    "text": "Quiz 1 questions?\nIf links do not work on this site, there are two places where the files live:\n\nGithub page: https://github.com/nwakim/BSTA_550_25F\n\nLink also on this homepage\n\nOHSU OneDrive\n\nYou should have access to this folder\n\n\nCareer panels coming up!\nStudent group advising session on Friday!"
   },
   {
     "objectID": "lessons/09_CDFs/09_CDFs_key_info.html#announcements",
     "href": "lessons/09_CDFs/09_CDFs_key_info.html#announcements",
     "title": "Key Info and Announcements",
     "section": "Announcements",
-    "text": "Announcements\n\nHomework 3 due 10/26 at 11pm\nQuiz 1 opens on 10/22 at 3pm\n\nCloses 10/26 at 11pm"
+    "text": "Announcements\n\nHomework 2 due 10/25 at 11pm\nQuiz 1 opens on 10/21 at 3pm\n\nCloses 10/25 at 11pm"
   },
   {
     "objectID": "homework/HW_05.html#questions",
@@ -26548,14 +26548,14 @@
     "href": "lessons/08_pdfs/08_pdfs.html#use-r-to-simulate-known-distributions-13",
     "title": "Lesson 8: Probability density functions (PDFs)",
     "section": "Use R to simulate known distributions (1/3)",
-    "text": "Use R to simulate known distributions (1/3)\n\nWe can use R to simulate continuous random variables and visualize their distributions\nFor example, we can simulate a uniform distribution between 2.5 and 3: \\(f_X(x) = 2\\) for \\(2.5 \\leq x \\leq 3\\)\n\n\n\n\n1set.seed(8)\n2reps &lt;- 10000\n\n3uniform_sims &lt;- tibble(\n4  x = runif(n = reps, min = 2.5, max = 3)\n)\n\n5head(uniform_sims)\n\n\n1\n\nSet the random seed once, so everyone gets the same random numbers.\n\n2\n\nSave the number of simulated values as reps, so it is easy to change later.\n\n3\n\ntibble() makes a table, which we save as uniform_sims.\n\n4\n\nrunif() draws random values from a uniform distribution. n is how many values, and min and max are the ends of the interval.\n\n5\n\nhead() shows the first 6 rows. Every value is a decimal number between 2.5 and 3.\n\n\n\n\n# A tibble: 6 × 1\n      x\n  &lt;dbl&gt;\n1  2.73\n2  2.60\n3  2.90\n4  2.83\n5  2.66\n6  2.86\n\n\n\n\n\nPlot the simulated values and the pdf\n1ggplot(uniform_sims, aes(x = x, y = after_stat(density))) +\n2  geom_histogram(binwidth = 0.025, boundary = 2.5,\n                 color = \"black\", fill = \"lightblue\") +\n3  geom_hline(yintercept = 2, color = \"red\", linewidth = 1.5) +\n4  labs(title = \"Probability density function (pdf) of X\",\n       x = \"x\",\n       y = \"Density\") +\n5  theme_minimal(base_size = 20)\n\n\n\n1\n\nafter_stat(density) scales the bar heights so the total area of the bars is 1, like a pdf.\n\n2\n\nEach bar covers a width of 0.025. boundary = 2.5 starts the first bar exactly at 2.5.\n\n3\n\nThe red line is the true pdf, \\(f_X(x) = 2\\).\n\n4\n\nAdd a title and axis labels.\n\n5\n\nUse a clean theme with larger text."
+    "text": "Use R to simulate known distributions (1/3)\n\nWe can use R to simulate continuous random variables and visualize their distributions\nFor example, we can simulate a uniform distribution between 2.5 and 3: \\(f_X(x) = 2\\) for \\(2.5 \\leq x \\leq 3\\)\n\n\n\n\n1set.seed(8)\n2reps &lt;- 10000\n3uniform_sims &lt;- tibble(\n4  x = runif(n = reps, min = 2.5,\n            max = 3)\n  )\n5head(uniform_sims)\n\n\n1\n\nSet the random seed once, so everyone gets the same random numbers.\n\n2\n\nSave the number of simulated values as reps, so it is easy to change later.\n\n3\n\ntibble() makes a table, which we save as uniform_sims.\n\n4\n\nrunif() draws random values from a uniform distribution. n is how many values, and min and max are the ends of the interval.\n\n5\n\nhead() shows the first 6 rows. Every value is a decimal number between 2.5 and 3. Note the slides show a rounded value.\n\n\n\n\n# A tibble: 6 × 1\n      x\n  &lt;dbl&gt;\n1  2.73\n2  2.60\n3  2.90\n4  2.83\n5  2.66\n6  2.86\n\n\n\n\n\nPlot the simulated values and the pdf\n1ggplot(uniform_sims, aes(x = x, y = after_stat(density))) +\n2  geom_histogram(binwidth = 0.025, boundary = 2.5,\n                 color = \"black\", fill = \"lightblue\") +\n3  geom_hline(yintercept = 2, color = \"red\", linewidth = 1.5) +\n4  labs(title = \"Probability density function (pdf) of X\",\n       x = \"x\",\n       y = \"Density\") +\n5  theme_minimal(base_size = 20)\n\n\n\n1\n\nafter_stat(density) scales the bar heights so the total area of the bars is 1, like a pdf.\n\n2\n\nEach bar covers a width of 0.025. boundary = 2.5 starts the first bar exactly at 2.5.\n\n3\n\nThe red line is the true pdf, \\(f_X(x) = 2\\).\n\n4\n\nAdd a title and axis labels.\n\n5\n\nUse a clean theme with larger text."
   },
   {
     "objectID": "lessons/08_pdfs/08_pdfs.html#use-r-to-simulate-known-distributions-23",
     "href": "lessons/08_pdfs/08_pdfs.html#use-r-to-simulate-known-distributions-23",
     "title": "Lesson 8: Probability density functions (PDFs)",
     "section": "Use R to simulate known distributions (2/3)",
-    "text": "Use R to simulate known distributions (2/3)\n\n\n\nWe can use the simulated values to check our answers from Examples 1.2 to 1.5\n\n\n1uniform_sims |&gt;\n2  summarise(\n3    prob_between = mean(x &gt;= 2.7 & x &lt;= 2.9),\n4    prob_equal   = mean(x == 2.9),\n5    prob_at_most = mean(x &lt;= 2.8)\n  )\n\n\n1\n\nStart with the 10,000 simulated values of x.\n\n2\n\nsummarise() collapses the table into one row with a column for each probability.\n\n3\n\nx &gt;= 2.7 & x &lt;= 2.9 is TRUE when x is at least 2.7 and at most 2.9. The mean of TRUEs and FALSEs is the proportion of TRUEs, which approximates \\(P(2.7 \\leq X \\leq 2.9)\\).\n\n4\n\nThe proportion of simulated values exactly equal to 2.9, which approximates \\(P(X = 2.9)\\).\n\n5\n\nThe proportion of simulated values at most 2.8, which approximates \\(P(X \\leq 2.8)\\).\n\n\n\n\n# A tibble: 1 × 3\n  prob_between prob_equal prob_at_most\n         &lt;dbl&gt;      &lt;dbl&gt;        &lt;dbl&gt;\n1        0.396          0        0.598\n\n\n\n \n\nCompare these to the answers we found with the integrals\nDoes the simulation agree that \\(P(X = 2.9) = 0\\)?"
+    "text": "Use R to simulate known distributions (2/3)\n\n\n\nWe can use the simulated values to check our answers from Examples 1.2 to 1.5\n\n\n1uniform_sims |&gt;\n2  summarise(\n3    prob_between = mean(x &gt;= 2.7 & x &lt;= 2.9),\n4    prob_equal   = mean(x == 2.9),\n5    prob_at_most = mean(x &lt;= 2.8)\n  )\n\n\n1\n\nStart with the 10,000 simulated values of x.\n\n2\n\nsummarise() collapses the table into one row with a column for each probability.\n\n3\n\nx &gt;= 2.7 & x &lt;= 2.9 is TRUE when x is at least 2.7 and at most 2.9. The mean of TRUEs and FALSEs is the proportion of TRUEs, which approximates \\(P(2.7 \\leq X \\leq 2.9)\\).\n\n4\n\nThe proportion of simulated values exactly equal to 2.9, which approximates \\(P(X = 2.9)\\).\n\n5\n\nThe proportion of simulated values at most 2.8, which approximates \\(P(X \\leq 2.8)\\).\n\n\n\n\n# A tibble: 1 × 3\n  prob_between prob_equal prob_at_most\n         &lt;dbl&gt;      &lt;dbl&gt;        &lt;dbl&gt;\n1        0.396          0        0.598\n\n\n\n \n \n \n \n\nCompare these to the answers we found with the integrals\nDoes the simulation agree that \\(P(X = 2.9) = 0\\)?"
   },
   {
     "objectID": "lessons/08_pdfs/08_pdfs.html#use-r-to-simulate-known-distributions-33",
@@ -26745,5 +26745,397 @@
     "title": "Lesson 8: Probability density functions (PDF’s)",
     "section": "Use R to simulate any continuous distribution",
     "text": "Use R to simulate any continuous distribution\n\nWe will discuss other ways to simulate continuous distributions once we cover cumulative distribution functions (CDFs) and inverse CDFs"
+  },
+  {
+    "objectID": "lessons/08_pdfs/08_pdfs.html#section",
+    "href": "lessons/08_pdfs/08_pdfs.html#section",
+    "title": "Lesson 8: Probability density functions (PDFs)",
+    "section": "",
+    "text": "Example 1.1\n\n\nLet \\(f_X(x)= 2\\), for \\(a \\leq x \\leq 3\\).\n\nFind the value of \\(a\\) so that \\(f_X(x)\\) is a valid pdf."
+  },
+  {
+    "objectID": "lessons/08_pdfs/08_pdfs.html#section-1",
+    "href": "lessons/08_pdfs/08_pdfs.html#section-1",
+    "title": "Lesson 8: Probability density functions (PDFs)",
+    "section": "",
+    "text": "Example 1.2\n\n\nLet \\(f_X(x)= 2\\), for \\(2.5 \\leq x \\leq 3\\).\n\nFind \\(\\mathbb{P}(2.7 \\leq X \\leq 2.9)\\)."
+  },
+  {
+    "objectID": "lessons/08_pdfs/08_pdfs.html#section-2",
+    "href": "lessons/08_pdfs/08_pdfs.html#section-2",
+    "title": "Lesson 8: Probability density functions (PDFs)",
+    "section": "",
+    "text": "Example 1.3\n\n\nLet \\(f_X(x)= 2\\), for \\(2.5 \\leq x \\leq 3\\).\n\nFind \\(\\mathbb{P}(2.7 &lt; X \\leq 2.9)\\)."
+  },
+  {
+    "objectID": "lessons/08_pdfs/08_pdfs.html#section-3",
+    "href": "lessons/08_pdfs/08_pdfs.html#section-3",
+    "title": "Lesson 8: Probability density functions (PDFs)",
+    "section": "",
+    "text": "Example 1.4\n\n\nLet \\(f_X(x)= 2\\), for \\(2.5 \\leq x \\leq 3\\).\n\nFind \\(\\mathbb{P}(X = 2.9)\\)."
+  },
+  {
+    "objectID": "lessons/08_pdfs/08_pdfs.html#section-4",
+    "href": "lessons/08_pdfs/08_pdfs.html#section-4",
+    "title": "Lesson 8: Probability density functions (PDFs)",
+    "section": "",
+    "text": "Example 1.5\n\n\nLet \\(f_X(x)= 2\\), for \\(2.5 \\leq x \\leq 3\\).\n\nFind \\(\\mathbb{P}(X \\leq 2.8)\\)."
+  },
+  {
+    "objectID": "lessons/08_pdfs/08_pdfs.html#use-r-to-simulate-known-distributions-12",
+    "href": "lessons/08_pdfs/08_pdfs.html#use-r-to-simulate-known-distributions-12",
+    "title": "Lesson 8: Probability density functions (PDFs)",
+    "section": "Use R to simulate known distributions (1/2)",
+    "text": "Use R to simulate known distributions (1/2)\n\nWe can use R to simulate continuous random variables and visualize their distributions\nFor example, we can simulate a uniform distribution between 2.5 and 3: \\(f_X(x) = 2\\) for \\(2.5 \\leq x \\leq 3\\)\n\n\n\n\n1set.seed(8)\n2reps &lt;- 10000\n3uniform_sims &lt;- tibble(\n4  x = runif(n = reps, min = 2.5,\n            max = 3)\n  )\n5head(uniform_sims)\n\n\n1\n\nSet the random seed once, so everyone gets the same random numbers.\n\n2\n\nSave the number of simulated values as reps, so it is easy to change later.\n\n3\n\ntibble() makes a table, which we save as uniform_sims.\n\n4\n\nrunif() draws random values from a uniform distribution. n is how many values, and min and max are the ends of the interval.\n\n5\n\nhead() shows the first 6 rows. Every value is a decimal number between 2.5 and 3. Note the slides show a rounded value.\n\n\n\n\n# A tibble: 6 × 1\n      x\n  &lt;dbl&gt;\n1  2.73\n2  2.60\n3  2.90\n4  2.83\n5  2.66\n6  2.86\n\n\n\n\n\nPlot the simulated values and the pdf\n1ggplot(uniform_sims, aes(x = x, y = after_stat(density))) +\n2  geom_histogram(binwidth = 0.025, boundary = 2.5,\n                 color = \"black\", fill = \"lightblue\") +\n3  geom_hline(yintercept = 2, color = \"red\", linewidth = 1.5) +\n4  labs(title = \"Probability density function (pdf) of X\",\n       x = \"x\",\n       y = \"Density\") +\n5  theme_minimal(base_size = 20)\n\n\n\n1\n\nafter_stat(density) scales the bar heights so the total area of the bars is 1, like a pdf.\n\n2\n\nEach bar covers a width of 0.025. boundary = 2.5 starts the first bar exactly at 2.5.\n\n3\n\nThe red line is the true pdf, \\(f_X(x) = 2\\).\n\n4\n\nAdd a title and axis labels.\n\n5\n\nUse a clean theme with larger text."
+  },
+  {
+    "objectID": "lessons/08_pdfs/08_pdfs.html#use-r-to-simulate-known-distributions-22",
+    "href": "lessons/08_pdfs/08_pdfs.html#use-r-to-simulate-known-distributions-22",
+    "title": "Lesson 8: Probability density functions (PDFs)",
+    "section": "Use R to simulate known distributions (2/2)",
+    "text": "Use R to simulate known distributions (2/2)\n\n\n\nWe can use the simulated values to check our answers from Examples 1.2 to 1.5\n\n\n1uniform_sims |&gt;\n2  summarise(\n3    prob_between = mean(x &gt;= 2.7 & x &lt;= 2.9),\n4    prob_equal   = mean(x == 2.9),\n5    prob_at_most = mean(x &lt;= 2.8)\n  )\n\n\n1\n\nStart with the 10,000 simulated values of x.\n\n2\n\nsummarise() collapses the table into one row with a column for each probability.\n\n3\n\nx &gt;= 2.7 & x &lt;= 2.9 is TRUE when x is at least 2.7 and at most 2.9. The mean of TRUEs and FALSEs is the proportion of TRUEs, which approximates \\(P(2.7 \\leq X \\leq 2.9)\\).\n\n4\n\nThe proportion of simulated values exactly equal to 2.9, which approximates \\(P(X = 2.9)\\).\n\n5\n\nThe proportion of simulated values at most 2.8, which approximates \\(P(X \\leq 2.8)\\).\n\n\n\n\n# A tibble: 1 × 3\n  prob_between prob_equal prob_at_most\n         &lt;dbl&gt;      &lt;dbl&gt;        &lt;dbl&gt;\n1        0.396          0        0.598\n\n\n\n \n \n \n \n\nCompare these to the answers we found with the integrals\nDoes the simulation agree that \\(P(X = 2.9) = 0\\)?"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#falls-in-older-adults-revisited-17",
+    "href": "lessons/09_CDFs/09_CDFs.html#falls-in-older-adults-revisited-17",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Falls in Older Adults Revisited (1/7)",
+    "text": "Falls in Older Adults Revisited (1/7)\n\n\n\n\nExample 1: Falls in Older Adults\n\n\nA major public health concern is falls among older adults (age 65+). National data suggests that 25% of older adults will experience at least one fall within a given year. A community health program is tracking a random group of \\(n = 8\\) older adults for one year. Assume the likelihood of falling is independent from person to person.\nLet \\(X\\) be the random variable representing the number of individuals in this group who experience at least one fall.\n\nWrite the CDF of \\(X\\).\nUse R to calculate the cumulative probability for each possible value of \\(X\\).\nPlot the CDF of \\(X\\).\nSimulate \\(X\\) for 10000 groups and plot the approximated CDF.\nUse the CDF to find \\(P(X &gt; 2)\\) and \\(P(1 &lt; X \\leq 4)\\).\n\n\n\n\nRecall our pmf, since \\(X\\) is a binomial RV: \\[P(X = x) = \\binom{8}{x} 0.25^x 0.75^{8-x},  x= 0, 1, 2, \\dots, 8 \\]"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#falls-in-older-adults-revisited-27",
+    "href": "lessons/09_CDFs/09_CDFs.html#falls-in-older-adults-revisited-27",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Falls in Older Adults Revisited (2/7)",
+    "text": "Falls in Older Adults Revisited (2/7)\n\n\n\n\nExample 1: Falls in Older Adults\n\n\n\nWrite the CDF of \\(X\\).\n\n\n\n\nRecall our pmf: \\[P(X = x) = \\binom{8}{x} 0.25^x 0.75^{8-x},  x= 0, 1, 2, \\dots, 8 \\]\n\\[F_X(x) = P(X \\leq x) = \\sum \\limits_{k=0}^{x} \\binom{8}{k} 0.25^k 0.75^{8-k}\\]"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#falls-in-older-adults-revisited-37",
+    "href": "lessons/09_CDFs/09_CDFs.html#falls-in-older-adults-revisited-37",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Falls in Older Adults Revisited (3/7)",
+    "text": "Falls in Older Adults Revisited (3/7)\n\n\n\n\nExample 1: Falls in Older Adults\n\n\n\nUse R to calculate the cumulative probability for each possible value of \\(X\\).\n\n\n\n\n1n &lt;- 8\np &lt;- 0.25\n\n2falls_cdf &lt;- tibble(\n3  x = 0:n,\n4  c_prob = pbinom(x, size = n, prob = p)\n)\n\n\n1\n\nSave the two parameters: \\(n = 8\\) people and \\(p = 0.25\\) chance of a fall.\n\n2\n\ntibble() makes a table, which we save as falls_cdf.\n\n3\n\nThe first column, x, holds every possible value of \\(X\\): 0 through 8.\n\n4\n\npbinom() gives the cumulative probability \\(P(X \\leq x)\\) for every value in the x column. We used dbinom() in Lesson 7 for \\(P(X = x)\\).\n\n\n\n\n\n \n \n\n1falls_cdf\n\n\n1\n\nEach row is a value of \\(x\\) and its cumulative probability \\(F_X(x)\\). The last row is 1, because the pmf values for all \\(x\\) add up to 1.\n\n\n\n\n# A tibble: 9 × 2\n      x c_prob\n  &lt;int&gt;  &lt;dbl&gt;\n1     0  0.100\n2     1  0.367\n3     2  0.679\n4     3  0.886\n5     4  0.973\n6     5  0.996\n7     6  1.000\n8     7  1.000\n9     8  1"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#falls-in-older-adults-revisited-47",
+    "href": "lessons/09_CDFs/09_CDFs.html#falls-in-older-adults-revisited-47",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Falls in Older Adults Revisited (4/7)",
+    "text": "Falls in Older Adults Revisited (4/7)\n\n\n\n\nExample 1: Falls in Older Adults\n\n\n\nPlot the CDF of \\(X\\).\n\n\n\n\n\n\nPlot the CDF of X\n1ggplot(falls_cdf, aes(x = x, y = c_prob)) +\n2  geom_step(linewidth = 1, color = \"black\") +\n3  scale_x_continuous(breaks = 0:n) +\n  scale_y_continuous(limits = c(0, 1)) +\n4  labs(title = \"CDF of X\",\n       x = \"Number of Falls\",\n       y = \"Cumulative Probability\") +\n5  theme_minimal(base_size = 20)\n\n\n\n1\n\nPut x on the x-axis and the cumulative probability c_prob on the y-axis.\n\n2\n\ngeom_step() connects the points with steps: flat, then a jump up at each value of x.\n\n3\n\nPut a tick mark on every possible value, 0 through 8, and make the y-axis run from 0 to 1.\n\n4\n\nAdd a title and axis labels.\n\n5\n\nUse a clean theme with larger text."
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#falls-in-older-adults-revisited-57",
+    "href": "lessons/09_CDFs/09_CDFs.html#falls-in-older-adults-revisited-57",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Falls in Older Adults Revisited (5/7)",
+    "text": "Falls in Older Adults Revisited (5/7)\n\n\n\n\nExample 1: Falls in Older Adults\n\n\n\nSimulate \\(X\\) for 10000 groups and plot the approximated CDF.\n\n\n\n\n1set.seed(4764)\n2reps &lt;- 10000\n\n3falls_sims &lt;- tibble(X = rbinom(n = reps, size = n, prob = p))\n\n4falls_approx &lt;- falls_sims |&gt;\n5  group_by(X) |&gt;\n6  summarise(prop = n() / reps) |&gt;\n7  mutate(approx_cdf = cumsum(prop))\n\n\n1\n\nSet the random seed once, so everyone gets the same random numbers.\n\n2\n\nThe number of groups (simulations) we want.\n\n3\n\nrbinom() simulates the number of falls in each of the 10,000 groups, as in Lesson 7. n = reps is the number of values to draw, size is our \\(n\\) and prob is our \\(p\\).\n\n4\n\nStart with the simulated values of X.\n\n5\n\nGroup the simulations by the value of X.\n\n6\n\nn() counts the simulations in each group. Dividing by reps gives the proportion, which approximates the pmf.\n\n7\n\ncumsum() adds up the proportions as we go down the rows. Each row is now the approximate cumulative probability \\(P(X \\leq x)\\).\n\n\n\n\n\n \n\nThe approximate pmf and CDF:\n\n\n1falls_approx\n\n\n1\n\nEach row is a value of X, the proportion of simulations with that value (prop) and the running total (approx_cdf).\n\n\n\n\n# A tibble: 8 × 3\n      X   prop approx_cdf\n  &lt;int&gt;  &lt;dbl&gt;      &lt;dbl&gt;\n1     0 0.101       0.101\n2     1 0.268       0.370\n3     2 0.312       0.682\n4     3 0.207       0.889\n5     4 0.0834      0.972\n6     5 0.0243      0.997\n7     6 0.0029      1.000\n8     7 0.0003      1"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#falls-in-older-adults-revisited-67",
+    "href": "lessons/09_CDFs/09_CDFs.html#falls-in-older-adults-revisited-67",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Falls in Older Adults Revisited (6/7)",
+    "text": "Falls in Older Adults Revisited (6/7)\n\n\n\n\nExample 1: Falls in Older Adults\n\n\n\nSimulate \\(X\\) for 10000 groups and plot the approximated CDF.\n\n\n\n\nRed dots: the exact CDF from pbinom()\nSteps: the approximate CDF from the simulation\nAt home: try reps &lt;- 100 and see how it affects the approximate CDF\n\n\n\n\nPlot the approximate CDF of X\n1ggplot(falls_approx, aes(x = X, y = approx_cdf)) +\n  geom_step(linewidth = 1, color = \"black\") +\n2  geom_point(data = falls_cdf, aes(x = x, y = c_prob),\n             color = \"red\", size = 5) +\n3  scale_x_continuous(breaks = 0:n) +\n  scale_y_continuous(limits = c(0, 1)) +\n4  labs(title = \"Approximate CDF of X\",\n       x = \"Number of adults (x)\",\n       y = \"Cumulative Probability\") +\n5  theme_minimal(base_size = 20)\n\n\n\n1\n\nSteps for the approximate CDF from the simulation.\n\n2\n\nAdd the exact CDF values from the falls_cdf table as red dots.\n\n3\n\nPut a tick mark on every possible value, 0 through 8, and make the y-axis run from 0 to 1.\n\n4\n\nAdd a title and axis labels.\n\n5\n\nUse a clean theme with larger text."
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#falls-in-older-adults-revisited-77",
+    "href": "lessons/09_CDFs/09_CDFs.html#falls-in-older-adults-revisited-77",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Falls in Older Adults Revisited (7/7)",
+    "text": "Falls in Older Adults Revisited (7/7)\n\n\n\n\nExample 1: Falls in Older Adults\n\n\n\nUse the CDF to find \\(P(X &gt; 2)\\) and \\(P(1 &lt; X \\leq 4)\\).\n\n\n\n\n1falls_sims |&gt;\n2  summarise(\n3    greater_2_cdf = 1 - pbinom(2, size = n, prob = p),\n4    greater_2_sim = mean(X &gt; 2),\n5    between_cdf   = pbinom(4, size = n, prob = p) - pbinom(1, size = n, prob = p),\n6    between_sim   = mean(X &gt; 1 & X &lt;= 4)\n  )\n\n\n1\n\nStart with the 10,000 simulated values of X.\n\n2\n\nsummarise() collapses the table into one row with a column for each answer.\n\n3\n\n\\(P(X &gt; 2) = 1 - F_X(2)\\), using pbinom().\n\n4\n\nThe simulated proportion of groups with more than 2 falls. X &gt; 2 is TRUE or FALSE, and the mean is the proportion of TRUEs.\n\n5\n\n\\(P(1 &lt; X \\leq 4) = F_X(4) - F_X(1)\\).\n\n6\n\nThe simulated proportion of groups with more than 1 and at most 4 falls. & means “and”.\n\n\n\n\n# A tibble: 1 × 4\n  greater_2_cdf greater_2_sim between_cdf between_sim\n          &lt;dbl&gt;         &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;\n1         0.321         0.318       0.606       0.603\n\n\n\n \n\npbinom(2, size = n, prob = p, lower.tail = FALSE) also gives \\(P(X &gt; 2) = 1 - F_X(2)\\)\nThe CDF gives probabilities for ranges with a subtraction: \\(P(a &lt; X \\leq b) = F_X(b) - F_X(a)\\)"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#check-example-2-with-a-simulation",
+    "href": "lessons/09_CDFs/09_CDFs.html#check-example-2-with-a-simulation",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Check Example 2 with a simulation",
+    "text": "Check Example 2 with a simulation\n\n\n\nSimulate the uniform RV from Lesson 8 and compare the simulated CDF with \\(F_X(x) = 2x - 5\\)\n\n\n1set.seed(9)\n2reps &lt;- 10000\n\n3uniform_sims &lt;- tibble(x = runif(n = reps, min = 2.5, max = 3)) |&gt;\n4  mutate(exact_cdf = 2 * x - 5)\n\n\n1\n\nSet the random seed.\n\n2\n\nThe number of simulated values.\n\n3\n\nrunif() draws random values between 2.5 and 3, as in Lesson 8.\n\n4\n\nAdd a column with the exact CDF, \\(F_X(x) = 2x - 5\\), for each simulated value.\n\n\n\n\n\n\n\nPlot the simulated and exact CDFs\n1ggplot(uniform_sims, aes(x = x)) +\n2  stat_ecdf(linewidth = 2, color = \"black\") +\n3  geom_line(aes(y = exact_cdf), color = \"red\", linewidth = 1) +\n4  labs(title = \"Simulated CDF (black) and exact CDF (red)\",\n       x = \"x\",\n       y = \"Cumulative Probability\") +\n5  theme_minimal(base_size = 20)\n\n\n\n1\n\nStart with the simulated values on the x-axis.\n\n2\n\nstat_ecdf() draws the CDF of the simulated values: for each x, the proportion of simulated values at most x.\n\n3\n\nDraw the exact CDF, \\(2x - 5\\), on top in red.\n\n4\n\nAdd a title and axis labels.\n\n5\n\nUse a clean theme with larger text."
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#section",
+    "href": "lessons/09_CDFs/09_CDFs.html#section",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "",
+    "text": "Example 4 (continued)\n\n\nLet \\(X\\) be a RV with pdf \\(f_X(x)= 2e^{-2x}\\), for \\(x&gt;0\\), and CDF \\(F_X(x) = 1 - e^{-2x}\\). Simulate \\(X\\).\n\n\n\n\n1ggplot(exp_sims, aes(x = x)) +\n2  stat_ecdf(\n    linewidth = 2, color = \"black\"\n    ) +\n3  geom_line(\n    aes(y = 1 - exp(-2 * x)),\n    color = \"red\", linewidth = 1\n    ) +\n4  labs(\n    title = \"Simulated CDF (black) and \\nexact CDF (red)\",\n    x = \"x\",\n    y = \"Cumulative Probability\"\n    ) +\n5  theme_minimal(base_size = 26)\n\n\n\n1\n\nStart with the simulated values of x on the x-axis.\n\n2\n\nThe CDF of the simulated values.\n\n3\n\nThe exact CDF, \\(F_X(x) = 1 - e^{-2x}\\), in red.\n\n4\n\nAdd a title and axis labels.\n\n5\n\nUse a clean theme with larger text."
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#section-1",
+    "href": "lessons/09_CDFs/09_CDFs.html#section-1",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "",
+    "text": "Example 1: Falls in Older Adults\n\n\n\nSimulate \\(X\\) for 10000 groups and plot the approximated CDF.\n\n\n\n\n\n\nRed dots: the exact CDF from pbinom()\nSteps: the approximate CDF from the simulation\nAt home: try reps &lt;- 100 and see how it affects the approximate CDF\n\n\n\n\nPlot the approximate CDF of X\n1ggplot(falls_approx, aes(x = X, y = approx_cdf)) +\n  geom_step(linewidth = 1, color = \"black\") +\n2  geom_point(data = falls_cdf, aes(x = x, y = c_prob),\n             color = \"red\", size = 5) +\n3  scale_x_continuous(breaks = 0:n) +\n  scale_y_continuous(limits = c(0, 1)) +\n4  labs(title = \"Approximate CDF of X\",\n       x = \"Number of adults (x)\",\n       y = \"Cumulative Probability\") +\n5  theme_minimal(base_size = 20)\n\n\n\n1\n\nSteps for the approximate CDF from the simulation.\n\n2\n\nAdd the exact CDF values from the falls_cdf table as red dots.\n\n3\n\nPut a tick mark on every possible value, 0 through 8, and make the y-axis run from 0 to 1.\n\n4\n\nAdd a title and axis labels.\n\n5\n\nUse a clean theme with larger text."
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#section-2",
+    "href": "lessons/09_CDFs/09_CDFs.html#section-2",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "",
+    "text": "Example 1: Falls in Older Adults\n\n\n\nPlot the CDF of \\(X\\).\n\n\n\n\n\n1ggplot(falls_cdf, aes(x = x, y = c_prob)) +\n2  geom_step(linewidth = 1, color = \"black\") +\n3  scale_x_continuous(breaks = 0:n) +\n  scale_y_continuous(limits = c(0, 1)) +\n4  labs(title = \"CDF of X\",\n       x = \"Number of Falls\",\n       y = \"Cumulative Probability\") +\n5  theme_minimal(base_size = 20)\n\n\n\n1\n\nPut x on the x-axis and the cumulative probability c_prob on the y-axis.\n\n2\n\ngeom_step() connects the points with steps: flat, then a jump up at each value of x.\n\n3\n\nPut a tick mark on every possible value, 0 through 8, and make the y-axis run from 0 to 1.\n\n4\n\nAdd a title and axis labels.\n\n5\n\nUse a clean theme with larger text."
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#section-3",
+    "href": "lessons/09_CDFs/09_CDFs.html#section-3",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "",
+    "text": "Example 1: Falls in Older Adults\n\n\n\nSimulate \\(X\\) for 10000 groups and plot the approximated CDF.\n\n\n\n\n\n\n1set.seed(4764)\n2reps &lt;- 10000\n\n3falls_sims &lt;- tibble(\n  X = rbinom(n = reps, size = n, prob = p)\n  )\n\n4falls_approx &lt;- falls_sims |&gt;\n5  group_by(X) |&gt;\n6  summarise(prop = n() / reps) |&gt;\n7  mutate(approx_cdf = cumsum(prop))\n\n\n1\n\nSet the random seed once, so everyone gets the same random numbers.\n\n2\n\nThe number of groups (simulations) we want.\n\n3\n\nrbinom() simulates the number of falls in each of the 10,000 groups, as in Lesson 7. n = reps is the number of values to draw, size is our \\(n\\) and prob is our \\(p\\).\n\n4\n\nStart with the simulated values of X.\n\n5\n\nGroup the simulations by the value of X.\n\n6\n\nn() counts the simulations in each group. Dividing by reps gives the proportion, which approximates the pmf.\n\n7\n\ncumsum() adds up the proportions as we go down the rows. Each row is now the approximate cumulative probability \\(P(X \\leq x)\\).\n\n\n\n\n\n\n\n \n\nThe approximate pmf and CDF:\n\n\n1falls_approx\n\n\n1\n\nEach row is a value of X, the proportion of simulations with that value (prop) and the running total (approx_cdf).\n\n\n\n\n# A tibble: 8 × 3\n      X   prop approx_cdf\n  &lt;int&gt;  &lt;dbl&gt;      &lt;dbl&gt;\n1     0 0.101       0.101\n2     1 0.268       0.370\n3     2 0.312       0.682\n4     3 0.207       0.889\n5     4 0.0834      0.972\n6     5 0.0243      0.997\n7     6 0.0029      1.000\n8     7 0.0003      1"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#section-4",
+    "href": "lessons/09_CDFs/09_CDFs.html#section-4",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "",
+    "text": "Example 1: Falls in Older Adults\n\n\n\nSimulate \\(X\\) for 10000 groups and plot the approximated CDF.\n\n\n\n\n\n\nRed dots: the exact CDF from pbinom()\nSteps: the approximate CDF from the simulation\nAt home: try reps &lt;- 100 and see how it affects the approximate CDF\n\n\n\n\nPlot the approximate CDF of X\n1ggplot(falls_approx, aes(x = X, y = approx_cdf)) +\n  geom_step(linewidth = 1, color = \"black\") +\n2  geom_point(data = falls_cdf, aes(x = x, y = c_prob),\n             color = \"red\", size = 5) +\n3  scale_x_continuous(breaks = 0:n) +\n  scale_y_continuous(limits = c(0, 1)) +\n4  labs(title = \"Approximate CDF of X\",\n       x = \"Number of adults (x)\",\n       y = \"Cumulative Probability\") +\n5  theme_minimal(base_size = 20)\n\n\n\n1\n\nSteps for the approximate CDF from the simulation.\n\n2\n\nAdd the exact CDF values from the falls_cdf table as red dots.\n\n3\n\nPut a tick mark on every possible value, 0 through 8, and make the y-axis run from 0 to 1.\n\n4\n\nAdd a title and axis labels.\n\n5\n\nUse a clean theme with larger text."
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#section-5",
+    "href": "lessons/09_CDFs/09_CDFs.html#section-5",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "",
+    "text": "Example 1: Falls in Older Adults\n\n\n\nSimulate \\(X\\) for 10000 groups and plot the approximated CDF.\n\n\n\n\n\n\nRed dots: the exact CDF from pbinom()\nSteps: the approximate CDF from the simulation\nAt home: try reps &lt;- 100 and see how it affects the approximate CDF\n\n\n\n\nPlot the approximate CDF of X\n1ggplot(falls_approx, aes(x = X, y = approx_cdf)) +\n  geom_step(linewidth = 1, color = \"black\") +\n2  geom_point(data = falls_cdf, aes(x = x, y = c_prob),\n             color = \"red\", size = 5) +\n3  scale_x_continuous(breaks = 0:n) +\n  scale_y_continuous(limits = c(0, 1)) +\n4  labs(title = \"Approximate CDF of X\",\n       x = \"Number of adults (x)\",\n       y = \"Cumulative Probability\") +\n5  theme_minimal(base_size = 20)\n\n\n\n1\n\nSteps for the approximate CDF from the simulation.\n\n2\n\nAdd the exact CDF values from the falls_cdf table as red dots.\n\n3\n\nPut a tick mark on every possible value, 0 through 8, and make the y-axis run from 0 to 1.\n\n4\n\nAdd a title and axis labels.\n\n5\n\nUse a clean theme with larger text."
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#section-6",
+    "href": "lessons/09_CDFs/09_CDFs.html#section-6",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "",
+    "text": "Example 1: Falls in Older Adults\n\n\n\nUse the CDF to find \\(P(X &gt; 2)\\) and \\(P(1 &lt; X \\leq 4)\\).\n\n\n\n\n1falls_sims |&gt;\n2  summarise(\n3    greater_2_cdf = 1 - pbinom(2, size = n, prob = p),\n4    greater_2_sim = mean(X &gt; 2),\n5    between_cdf   = pbinom(4, size = n, prob = p) - pbinom(1, size = n, prob = p),\n6    between_sim   = mean(X &gt; 1 & X &lt;= 4)\n  )\n\n\n1\n\nStart with the 10,000 simulated values of X.\n\n2\n\nsummarise() collapses the table into one row with a column for each answer.\n\n3\n\n\\(P(X &gt; 2) = 1 - F_X(2)\\), using pbinom().\n\n4\n\nThe simulated proportion of groups with more than 2 falls. X &gt; 2 is TRUE or FALSE, and the mean is the proportion of TRUEs.\n\n5\n\n\\(P(1 &lt; X \\leq 4) = F_X(4) - F_X(1)\\).\n\n6\n\nThe simulated proportion of groups with more than 1 and at most 4 falls. & means “and”.\n\n\n\n\n# A tibble: 1 × 4\n  greater_2_cdf greater_2_sim between_cdf between_sim\n          &lt;dbl&gt;         &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;\n1         0.321         0.318       0.606       0.603\n\n\n\n \n\npbinom(2, size = n, prob = p, lower.tail = FALSE) also gives \\(P(X &gt; 2) = 1 - F_X(2)\\)\nThe CDF gives probabilities for ranges with a subtraction: \\(P(a &lt; X \\leq b) = F_X(b) - F_X(a)\\)"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs_.html",
+    "href": "lessons/09_CDFs/09_CDFs_.html",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "",
+    "text": "Understand the definition of cumulative distribution functions (CDFs) for discrete and continuous random variables.\nCompute CDFs for given probability mass functions (pmfs).\nCompute CDFs for given probability density functions (pdfs) and pdfs from CDFs."
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs_.html#what-is-a-cumulative-distribution-function",
+    "href": "lessons/09_CDFs/09_CDFs_.html#what-is-a-cumulative-distribution-function",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "What is a cumulative distribution function?",
+    "text": "What is a cumulative distribution function?\n\n\n\n\nCumulative distribution function (CDF) for discrete random variable\n\n\nThe cumulative distribution function (cdf) of a discrete RV \\(X\\) with pmf \\(p_X(x)\\), is defined for every value \\(x\\) by \\[F_X(x) = \\mathbb{P}(X \\leq x) = \\sum \\limits_{\\{all\\ y:\\ y\\leq x\\}}p_X(y)\\]\n\n\n\n\\(F(x)\\) is increasing or flat (never decreasing)\n\\(\\min\\limits_x F(x) = 0\\)\n\\(\\max\\limits_xF(x)=1\\)\nCDF is a step function\n\n\n\n\nCumulative distribution function (CDF) for continuous random variable\n\n\nThe cumulative distribution function (cdf) of a continuous RV \\(X\\), is the function \\(F_X(x)\\), such that for all real values of \\(x\\), \\[F_X(x)= \\mathbb{P}(X \\leq x) = \\int_{-\\infty}^x f_X(s)ds\\]\n\n\nRemarks: In general, \\(F_X(x)\\) is increasing and\n\n\\(\\lim_{x\\rightarrow -\\infty} F_X(x)= 0\\)\n\\(\\lim_{x\\rightarrow \\infty} F_X(x)= 1\\)\n\\(P(X &gt; a) = 1 - P(X \\leq a) = 1 - F_X(a)\\)\n\\(P(a \\leq X \\leq b) = F_X(b) - F_X(a)\\)"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs_.html#how-to-define-cdfs-for-discrete-and-continuous-rvs",
+    "href": "lessons/09_CDFs/09_CDFs_.html#how-to-define-cdfs-for-discrete-and-continuous-rvs",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "How to define CDFs for discrete and continuous RVs?",
+    "text": "How to define CDFs for discrete and continuous RVs?\n\n\nDiscrete RV \\(X\\):\n\n\n\n\n\n\n\n\n\n\npmf: \\(p_X(x) = P(X=x)\\)\nCDF: \\(F_X(x) = P(X \\leq x) = \\sum\\limits_{\\{all\\ y:\\ y\\leq x\\}} p_X(y)\\)\n\n\nContinuous RV \\(X\\):\n\n\n\n\n\n\n\n\n\n\ndensity: \\(f_X(x)\\)\nprobability: \\(P(a \\leq X \\leq b) = \\int_a^b f_X(x)dx\\)\nCDF: \\(F_X(x) = P(X \\leq x) = \\int_{-\\infty}^x f_X(s)ds\\)"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs_.html#falls-in-older-adults-revisited-15",
+    "href": "lessons/09_CDFs/09_CDFs_.html#falls-in-older-adults-revisited-15",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Falls in Older Adults Revisited (1/5)",
+    "text": "Falls in Older Adults Revisited (1/5)\n\n\n\n\nExample 1: Falls in Older Adults\n\n\nA major public health concern is falls among older adults (age 65+). National data suggests that 25% of older adults will experience at least one fall within a given year. A community health program is tracking a random group of \\(n = 8\\) older adults for one year. Assume the likelihood of falling is independent from person to person.\nLet \\(X\\) be the random variable representing the number of individuals in this group who experience at least one fall.\n\nWrite the CDF of \\(X\\) and make a table of values.\nUse R to calculate the cumulative probability for each possible value of \\(X\\).\nPlot the CDF of \\(X\\).\nSimulate \\(X\\) for 10000 groups and plot the approximated CDF.\n\n\n\n\n\nRecall our pmf: \\[P(X = x) = \\binom{8}{x} 0.25^x 0.75^{8-x},  x= 0, 1, 2, \\dots, 8 \\]"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs_.html#falls-in-older-adults-revisited-25",
+    "href": "lessons/09_CDFs/09_CDFs_.html#falls-in-older-adults-revisited-25",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Falls in Older Adults Revisited (2/5)",
+    "text": "Falls in Older Adults Revisited (2/5)\n\n\n\n\nExample 1: Falls in Older Adults\n\n\n\nWrite the CDF of \\(X\\).\n\n\n\n\n\nRecall our pmf: \\[P(X = x) = \\binom{8}{x} 0.25^x 0.75^{8-x},  x= 0, 1, 2, \\dots, 8 \\]\n\\[F_X(x) = P(X \\leq x) = \\sum \\limits_{k=0}^{x} \\binom{8}{k} 0.25^y 0.75^{8-k}\\]"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs_.html#falls-in-older-adults-revisited-35",
+    "href": "lessons/09_CDFs/09_CDFs_.html#falls-in-older-adults-revisited-35",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Falls in Older Adults Revisited (3/5)",
+    "text": "Falls in Older Adults Revisited (3/5)\n\n\n\n\nExample 1: Falls in Older Adults\n\n\n\nUse R to calculate the cumulative probability for each possible value of \\(X\\).\n\n\n\n\nn = 8\np = 0.25\n\nfalls_cdf &lt;- tibble(\n  x = 0:n,\n  c_prob = pbinom(x, size = n, prob = p)\n)\n\n\n \n \n\nfalls_cdf\n\n# A tibble: 9 × 2\n      x c_prob\n  &lt;int&gt;  &lt;dbl&gt;\n1     0  0.100\n2     1  0.367\n3     2  0.679\n4     3  0.886\n5     4  0.973\n6     5  0.996\n7     6  1.000\n8     7  1.000\n9     8  1"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs_.html#falls-in-older-adults-revisited-45",
+    "href": "lessons/09_CDFs/09_CDFs_.html#falls-in-older-adults-revisited-45",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Falls in Older Adults Revisited (4/5)",
+    "text": "Falls in Older Adults Revisited (4/5)\n\n\nExample 1: Falls in Older Adults\n\n\n\nPlot the CDF of \\(X\\).\n\n\n\n\nggplot(\n  falls_cdf,\n  aes(x = x, y = c_prob)\n       ) +\n  geom_step(\n    size = 1, \n    color = \"black\"\n    ) +\n  labs(\n    x = \"Number of Falls\",\n    y = \"Cumulative Probability\",\n    title = \"CDF of X\"\n    )"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs_.html#falls-in-older-adults-revisited-45-1",
+    "href": "lessons/09_CDFs/09_CDFs_.html#falls-in-older-adults-revisited-45-1",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Falls in Older Adults Revisited (4/5)",
+    "text": "Falls in Older Adults Revisited (4/5)\n\n\n\n\nExample 1: Falls in Older Adults\n\n\n\nSimulate \\(X\\) for 10000 groups and plot the approximated CDF.\n\n\n\n\nset.seed(4764)\nreps = 10000\n\nsims = rbinom(n = reps, \n              size = n, \n              prob = p)\n\nsims %&gt;% head(., 14)\n\n [1] 2 1 2 1 3 3 2 2 4 2 3 0 2 0\n\nfalls2 &lt;- tibble(x = 0:n) %&gt;%\n  rowwise() %&gt;%\n  mutate(c_prob = sum(sims &lt;= x) / reps)\n\n\n\nggplot(falls2, aes(x = x, y = c_prob)) +\n  geom_step(size = 1, color = \"black\") +\n  labs(\n    title = \"Approximate CDF of X\",\n    x = \"Number of adults (x)\",\n    y = \"Approximate Cumulative Probability\"\n  )"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs_.html#lets-demonstrate-the-cdf-with-an-example",
+    "href": "lessons/09_CDFs/09_CDFs_.html#lets-demonstrate-the-cdf-with-an-example",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Let’s demonstrate the CDF with an example",
+    "text": "Let’s demonstrate the CDF with an example\n\n\n\n\nExample 2\n\n\nLet \\(f_X(x)= 2\\), for \\(2.5 \\leq x \\leq 3\\). Find \\(F_X(x)\\)."
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs_.html#derivatives-of-the-cdf",
+    "href": "lessons/09_CDFs/09_CDFs_.html#derivatives-of-the-cdf",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Derivatives of the CDF",
+    "text": "Derivatives of the CDF\n\n\nTheorem 1\n\n\nIf \\(X\\) is a continuous random variable with pdf \\(f_X(x)\\) and cdf \\(F_X(x)\\), then for all real values of \\(x\\) at which \\(F'_X(x)\\) exists, \\[\\frac{d}{dx} F_X(x)= F'_X(x) = f_X(x)\\]"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs_.html#finding-the-pdf-from-a-cdf",
+    "href": "lessons/09_CDFs/09_CDFs_.html#finding-the-pdf-from-a-cdf",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Finding the PDF from a CDF",
+    "text": "Finding the PDF from a CDF\n\n\n\n\nExample 3\n\n\nLet \\(X\\) be a RV with cdf \\[F_X(x)= \\left\\{\n        \\begin{array}{ll}\n            0 & \\quad x &lt; 2.5 \\\\\n            2x-5 & \\quad 2.5 \\leq x \\leq 3 \\\\\n            1 & \\quad x &gt; 3\n        \\end{array}\n    \\right.\\] Find the pdf \\(f_X(x)\\)."
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs_.html#lets-go-through-another-example-17",
+    "href": "lessons/09_CDFs/09_CDFs_.html#lets-go-through-another-example-17",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Let’s go through another example (1/7)",
+    "text": "Let’s go through another example (1/7)\n\n\n\n\nExample 4\n\n\nLet \\(X\\) be a RV with pdf \\(f_X(x)= 2e^{-2x}\\), for \\(x&gt;0\\).\n\nShow \\(f_X(x)\\) is a pdf.\nFind \\(\\mathbb{P}(1 \\leq X \\leq 3)\\).\nFind \\(F_X(x)\\).\nGiven \\(F_X(x)\\), find \\(f_X(x)\\).\nFind \\(\\mathbb{P}(X \\geq 1 | X \\leq 3)\\).\nFind the median of the distribution of \\(X\\)."
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs_.html#lets-go-through-another-example-27",
+    "href": "lessons/09_CDFs/09_CDFs_.html#lets-go-through-another-example-27",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Let’s go through another example (2/7)",
+    "text": "Let’s go through another example (2/7)\n\n\n\n\nExample 4.1\n\n\nLet \\(X\\) be a RV with pdf \\(f_X(x)= 2e^{-2x}\\), for \\(x&gt;0\\).\n\nShow \\(f_X(x)\\) is a pdf."
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs_.html#lets-go-through-another-example-37",
+    "href": "lessons/09_CDFs/09_CDFs_.html#lets-go-through-another-example-37",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Let’s go through another example (3/7)",
+    "text": "Let’s go through another example (3/7)\n\n\n\n\n\n\nDo this problem at home for extra practice.\n\n\n\n\n\n\n\nExample 4.2\n\n\nLet \\(X\\) be a RV with pdf \\(f_X(x)= 2e^{-2x}\\), for \\(x&gt;0\\).\n\nFind \\(\\mathbb{P}(1 \\leq X \\leq 3)\\)."
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs_.html#lets-go-through-another-example-47",
+    "href": "lessons/09_CDFs/09_CDFs_.html#lets-go-through-another-example-47",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Let’s go through another example (4/7)",
+    "text": "Let’s go through another example (4/7)\n\n\n\n\nExample 4.3\n\n\nLet \\(X\\) be a RV with pdf \\(f_X(x)= 2e^{-2x}\\), for \\(x&gt;0\\).\n\nFind \\(F_X(x)\\)."
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs_.html#lets-go-through-another-example-57",
+    "href": "lessons/09_CDFs/09_CDFs_.html#lets-go-through-another-example-57",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Let’s go through another example (5/7)",
+    "text": "Let’s go through another example (5/7)\n\n\n\n\n\n\nDo this problem at home for extra practice.\n\n\n\n\n\n\n\nExample 4.4\n\n\nLet \\(X\\) be a RV with pdf \\(f_X(x)= 2e^{-2x}\\), for \\(x&gt;0\\).\n\nGiven \\(F_X(x)\\), find \\(f_X(x)\\)."
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs_.html#lets-go-through-another-example-67",
+    "href": "lessons/09_CDFs/09_CDFs_.html#lets-go-through-another-example-67",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Let’s go through another example (6/7)",
+    "text": "Let’s go through another example (6/7)\n\n\n\n\nExample 4.5\n\n\nLet \\(X\\) be a RV with pdf \\(f_X(x)= 2e^{-2x}\\), for \\(x&gt;0\\).\n\nFind \\(\\mathbb{P}(X \\geq 1 | X \\leq 3)\\)."
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs_.html#lets-go-through-another-example-77",
+    "href": "lessons/09_CDFs/09_CDFs_.html#lets-go-through-another-example-77",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Let’s go through another example (7/7)",
+    "text": "Let’s go through another example (7/7)\n\n\n\n\nExample 4.6\n\n\nLet \\(X\\) be a RV with pdf \\(f_X(x)= 2e^{-2x}\\), for \\(x&gt;0\\).\n\nFind the median of the distribution of \\(X\\)."
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html",
+    "href": "lessons/09_CDFs/09_CDFs.html",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "",
+    "text": "Understand the definition of cumulative distribution functions (CDFs) for discrete and continuous random variables.\nCompute CDFs for given probability mass functions (pmfs).\nCompute CDFs for given probability density functions (pdfs) and pdfs from CDFs."
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#simulating-from-a-cdf-the-inverse-cdf-method-13",
+    "href": "lessons/09_CDFs/09_CDFs.html#simulating-from-a-cdf-the-inverse-cdf-method-13",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Simulating from a CDF: the inverse CDF method (1/3)",
+    "text": "Simulating from a CDF: the inverse CDF method (1/3)\n\n\n\nSo far we simulated from distributions R already knows (runif(), rbinom())\nWhat if we only have a pdf or CDF, like Example 4 with \\(f_X(x) = 2e^{-2x}\\)?\n\n\n\nInverse CDF method\n\n\nIf \\(U\\) is a uniform random variable on \\([0, 1]\\) and \\(F_X\\) is a CDF, then \\(X = F_X^{-1}(U)\\) has CDF \\(F_X\\).\n\n\n\nFind the CDF \\(F_X(x)\\)\nSet \\(u = F_X(x)\\) and solve for \\(x\\), to get \\(x = F_X^{-1}(u)\\)\nSimulate \\(U\\) with runif() and plug it into \\(F_X^{-1}\\)\n\n\nWhy does it work? For any \\(x\\), \\[P(F_X^{-1}(U) \\leq x) = P(U \\leq F_X(x)) = F_X(x)\\] because \\(P(U \\leq u) = u\\) for a uniform \\(U\\) on \\([0, 1]\\).\n\n\n\n\n\n\n\n\n\n\n\n\nPick a random height \\(u\\) between 0 and 1, go across to the CDF, then down to \\(x\\)"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#simulating-from-a-cdf-the-inverse-cdf-method-23",
+    "href": "lessons/09_CDFs/09_CDFs.html#simulating-from-a-cdf-the-inverse-cdf-method-23",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Simulating from a CDF: the inverse CDF method (2/3)",
+    "text": "Simulating from a CDF: the inverse CDF method (2/3)\n\n\nExample 4 (continued)\n\n\nLet \\(X\\) be a RV with pdf \\(f_X(x)= 2e^{-2x}\\), for \\(x&gt;0\\), and CDF \\(F_X(x) = 1 - e^{-2x}\\). Simulate \\(X\\).\n\n\n\nSolve \\(u = 1 - e^{-2x}\\) for \\(x\\):\n\n \n \n \n\n\n\n1set.seed(2026)\n2reps &lt;- 10000\n3exp_sims &lt;- tibble(u = runif(n = reps, min = 0, max = 1)) |&gt;\n4  mutate(x = -log(1 - u) / 2)\n\n\n1\n\nSet the random seed once.\n\n2\n\nThe number of simulated values.\n\n3\n\nStep 3: simulate \\(U\\), a uniform random value between 0 and 1, for every simulation.\n\n4\n\nPlug each u into the inverse CDF. In R, log() is the natural log, \\(\\ln\\).\n\n\n\n\n\n\n5head(exp_sims)\n\n\n5\n\nLook at the first 6 rows: each x came from the u beside it.\n\n\n\n\n# A tibble: 6 × 2\n       u      x\n   &lt;dbl&gt;  &lt;dbl&gt;\n1 0.699  0.600 \n2 0.557  0.407 \n3 0.140  0.0755\n4 0.286  0.168 \n5 0.555  0.405 \n6 0.0251 0.0127"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#simulating-from-a-cdf-the-inverse-cdf-method-33",
+    "href": "lessons/09_CDFs/09_CDFs.html#simulating-from-a-cdf-the-inverse-cdf-method-33",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Simulating from a CDF: the inverse CDF method (3/3)",
+    "text": "Simulating from a CDF: the inverse CDF method (3/3)\n\nUse the simulated values to check our answers from Example 4\n\n\n1exp_sims |&gt;\n2  summarise(\n3    prob_1_to_3  = mean(x &gt;= 1 & x &lt;= 3),\n4    prob_cond    = mean(x &gt;= 1 & x &lt;= 3) / mean(x &lt;= 3),\n5    median_x     = median(x)\n  )\n\n\n1\n\nStart with the 10,000 simulated values of x.\n\n2\n\nOne row with a column for each answer.\n\n3\n\nThe proportion of simulated values between 1 and 3, which approximates \\(P(1 \\leq X \\leq 3) = e^{-2} - e^{-6} \\approx 0.1329\\) (Example 4.2).\n\n4\n\n\\(P(X \\geq 1 | X \\leq 3) = P(1 \\leq X \\leq 3) / P(X \\leq 3)\\), which approximates the answer to Example 4.5, about \\(0.1332\\).\n\n5\n\nmedian() finds the middle simulated value. The exact median from Example 4.6 is \\(\\ln(0.5) / (-2) \\approx 0.3466\\).\n\n\n\n\n# A tibble: 1 × 3\n  prob_1_to_3 prob_cond median_x\n        &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1       0.136     0.137    0.344\n\n\n \n\nThis works for any CDF we can invert: the same three steps, a different \\(F_X^{-1}\\)\nThe simulated values are a transformation of \\(U\\)\n\nWe will study transformations of random variables in the next lessons!"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#revisiting-falls",
+    "href": "lessons/09_CDFs/09_CDFs.html#revisiting-falls",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Revisiting Falls",
+    "text": "Revisiting Falls\n\n\nExample 1: Falls in Older Adults\n\n\nA major public health concern is falls among older adults (age 65+). National data suggests that 25% of older adults will experience at least one fall within a given year. A community health program is tracking a random group of \\(n = 8\\) older adults for one year. Assume the likelihood of falling is independent from person to person.\nLet \\(X\\) be the random variable representing the number of individuals in this group who experience at least one fall.\n\nWrite the CDF of \\(X\\).\nUse R to calculate the cumulative probability for each possible value of \\(X\\).\nPlot the CDF of \\(X\\).\nSimulate \\(X\\) for 10000 groups and plot the approximated CDF.\n\n\n\nRecall our pmf, since \\(X\\) is a binomial RV: \\[P(X = x) = \\binom{8}{x} 0.25^x 0.75^{8-x},  x= 0, 1, 2, \\dots, 8 \\]"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#revisiting-falls-1",
+    "href": "lessons/09_CDFs/09_CDFs.html#revisiting-falls-1",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Revisiting Falls 1",
+    "text": "Revisiting Falls 1\n\n\nExample 1: Falls in Older Adults\n\n\nA major public health concern is falls among older adults (age 65+). National data suggests that 25% of older adults will experience at least one fall within a given year. A community health program is tracking a random group of \\(n = 8\\) older adults for one year. Assume the likelihood of falling is independent from person to person.\nLet \\(X\\) be the random variable representing the number of individuals in this group who experience at least one fall.\n\nWrite the CDF of \\(X\\).\nUse R to calculate the cumulative probability for each possible value of \\(X\\).\nPlot the CDF of \\(X\\).\nSimulate \\(X\\) for 10000 groups and plot the approximated CDF.\n\n\n\nRecall our pmf, since \\(X\\) is a binomial RV: \\[P(X = x) = \\binom{8}{x} 0.25^x 0.75^{8-x},  x= 0, 1, 2, \\dots, 8 \\]"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#revisiting-falls-1-1",
+    "href": "lessons/09_CDFs/09_CDFs.html#revisiting-falls-1-1",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Revisiting Falls 1",
+    "text": "Revisiting Falls 1\n\n\nExample 1: Falls in Older Adults\n\n\n\nWrite the CDF of \\(X\\).\n\n\n\nRecall our pmf: \\[P(X = x) = \\binom{8}{x} 0.25^x 0.75^{8-x},  x= 0, 1, 2, \\dots, 8 \\]\n\\[F_X(x) = P(X \\leq x) = \\sum \\limits_{k=0}^{x} \\binom{8}{k} 0.25^k 0.75^{8-k}\\]"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#revisiting-falls-2",
+    "href": "lessons/09_CDFs/09_CDFs.html#revisiting-falls-2",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Revisiting Falls 2",
+    "text": "Revisiting Falls 2\n\n\nExample 1: Falls in Older Adults\n\n\n\nUse R to calculate the cumulative probability for each possible value of \\(X\\).\n\n\n\n\n\n\n1n &lt;- 8\np &lt;- 0.25\n\n2falls_cdf &lt;- tibble(\n3  x = 0:n,\n4  c_prob = pbinom(x, size = n, prob = p)\n)\n\n\n1\n\nSave the two parameters: \\(n = 8\\) people and \\(p = 0.25\\) chance of a fall.\n\n2\n\ntibble() makes a table, which we save as falls_cdf.\n\n3\n\nThe first column, x, holds every possible value of \\(X\\): 0 through 8.\n\n4\n\npbinom() gives the cumulative probability \\(P(X \\leq x)\\) for every value in the x column. We used dbinom() in Lesson 7 for \\(P(X = x)\\).\n\n\n\n\n\n\n\n\n1falls_cdf\n\n\n1\n\nEach row is a value of \\(x\\) and its cumulative probability \\(F_X(x)\\). The last row is 1, because the pmf values for all \\(x\\) add up to 1.\n\n\n\n\n# A tibble: 9 × 2\n      x c_prob\n  &lt;int&gt;  &lt;dbl&gt;\n1     0  0.100\n2     1  0.367\n3     2  0.679\n4     3  0.886\n5     4  0.973\n6     5  0.996\n7     6  1.000\n8     7  1.000\n9     8  1"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#revisiting-falls-3",
+    "href": "lessons/09_CDFs/09_CDFs.html#revisiting-falls-3",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Revisiting Falls 3",
+    "text": "Revisiting Falls 3\n\n\nExample 1: Falls in Older Adults\n\n\n\nPlot the CDF of \\(X\\).\n\n\n\n\n\n1ggplot(falls_cdf,\n       aes(x = x, y = c_prob)) +\n2  geom_step(\n    linewidth = 1,\n    color = \"black\"\n    ) +\n3  scale_x_continuous(breaks = 0:n) +\n  scale_y_continuous(limits = c(0, 1)) +\n4  labs(title = \"CDF of X\",\n       x = \"Number of Falls\",\n       y = \"Cumulative Probability\") +\n5  theme_minimal(base_size = 26)\n\n\n\n1\n\nPut x on the x-axis and the cumulative probability c_prob on the y-axis.\n\n2\n\ngeom_step() connects the points with steps: flat, then a jump up at each value of x.\n\n3\n\nPut a tick mark on every possible value, 0 through 8, and make the y-axis run from 0 to 1.\n\n4\n\nAdd a title and axis labels.\n\n5\n\nUse a clean theme with larger text."
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#revisiting-falls-4",
+    "href": "lessons/09_CDFs/09_CDFs.html#revisiting-falls-4",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Revisiting Falls 4",
+    "text": "Revisiting Falls 4\n\n\nExample 1: Falls in Older Adults\n\n\n\nSimulate \\(X\\) for 10000 groups and plot the approximated CDF.\n\n\n\n\n\n\n1set.seed(4764)\n2reps &lt;- 10000\n\n3falls_sims &lt;- tibble(\n  X = rbinom(n = reps, size = n, prob = p)\n  )\n\n4falls_approx &lt;- falls_sims |&gt;\n5  group_by(X) |&gt;\n6  summarise(prop = n() / reps) |&gt;\n7  mutate(approx_cdf = cumsum(prop))\n\n\n1\n\nSet the random seed once, so everyone gets the same random numbers.\n\n2\n\nThe number of groups (simulations) we want.\n\n3\n\nrbinom() simulates the number of falls in each of the 10,000 groups, as in Lesson 7. n = reps is the number of values to draw, size is our \\(n\\) and prob is our \\(p\\).\n\n4\n\nStart with the simulated values of X.\n\n5\n\nGroup the simulations by the value of X.\n\n6\n\nn() counts the simulations in each group. Dividing by reps gives the proportion, which approximates the pmf.\n\n7\n\ncumsum() adds up the proportions as we go down the rows. Each row is now the approximate cumulative probability \\(P(X \\leq x)\\).\n\n\n\n\n\n\n\n\nThe approximate pmf and CDF:\n\n\n1falls_approx\n\n\n1\n\nEach row is a value of X, the proportion of simulations with that value (prop) and the running total (approx_cdf).\n\n\n\n\n# A tibble: 8 × 3\n      X   prop approx_cdf\n  &lt;int&gt;  &lt;dbl&gt;      &lt;dbl&gt;\n1     0 0.101       0.101\n2     1 0.268       0.370\n3     2 0.312       0.682\n4     3 0.207       0.889\n5     4 0.0834      0.972\n6     5 0.0243      0.997\n7     6 0.0029      1.000\n8     7 0.0003      1"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#revisiting-falls-4-1",
+    "href": "lessons/09_CDFs/09_CDFs.html#revisiting-falls-4-1",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Revisiting Falls 4",
+    "text": "Revisiting Falls 4\n\n\nExample 1: Falls in Older Adults\n\n\n\nSimulate \\(X\\) for 10000 groups and plot the approximated CDF.\n\n\n\n\n\n\nRed dots: the exact CDF from pbinom()\nSteps: the approximate CDF from the simulation\nAt home: try reps &lt;- 100 and see how it affects the approximate CDF\n\n\n\n\nPlot the approximate CDF of X\n1ggplot(falls_approx, aes(x = X, y = approx_cdf)) +\n  geom_step(linewidth = 1, color = \"black\") +\n2  geom_point(data = falls_cdf, aes(x = x, y = c_prob),\n             color = \"red\", size = 5) +\n3  scale_x_continuous(breaks = 0:n) +\n  scale_y_continuous(limits = c(0, 1)) +\n4  labs(title = \"Approximate CDF of X\",\n       x = \"Number of adults (x)\",\n       y = \"Cumulative Probability\") +\n5  theme_minimal(base_size = 20)\n\n\n\n1\n\nSteps for the approximate CDF from the simulation.\n\n2\n\nAdd the exact CDF values from the falls_cdf table as red dots.\n\n3\n\nPut a tick mark on every possible value, 0 through 8, and make the y-axis run from 0 to 1.\n\n4\n\nAdd a title and axis labels.\n\n5\n\nUse a clean theme with larger text."
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#lets-go-through-another-example-37-reference",
+    "href": "lessons/09_CDFs/09_CDFs.html#lets-go-through-another-example-37-reference",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Let’s go through another example (3/7) [REFERENCE]",
+    "text": "Let’s go through another example (3/7) [REFERENCE]\n\n\n\n\nExample 4.2\n\n\nLet \\(X\\) be a RV with pdf \\(f_X(x)= 2e^{-2x}\\), for \\(x&gt;0\\).\n\nFind \\(\\mathbb{P}(1 \\leq X \\leq 3)\\).\n\n\n\n\nIntegrate the pdf from 1 to 3: \\[\\mathbb{P}(1 \\leq X \\leq 3) = \\int_1^3 2e^{-2x}\\,dx\\]\nUse a \\(u\\)-substitution: let \\(u = -2x\\). Then \\(du = -2\\,dx\\), so \\(2\\,dx = -du\\).\nNew bounds: when \\(x = 1\\), \\(u = -2\\); when \\(x = 3\\), \\(u = -6\\).\n\\[\\begin{aligned}\n\\int_1^3 2e^{-2x}\\,dx &= \\int_{-2}^{-6} e^{u}\\,(-du) \\\\\n&= -\\Big[e^{u}\\Big]_{u=-2}^{u=-6} \\\\\n&= -\\left(e^{-6} - e^{-2}\\right) \\\\\n&= e^{-2} - e^{-6} \\approx 0.1329\n\\end{aligned}\\]\nCheck with the antiderivative: \\(\\Big[-e^{-2x}\\Big]_{x=1}^{x=3} = -e^{-6} + e^{-2}\\)."
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#simulating-distributions-r-knows-vs.-does-not-know",
+    "href": "lessons/09_CDFs/09_CDFs.html#simulating-distributions-r-knows-vs.-does-not-know",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Simulating distributions R knows vs. does NOT know",
+    "text": "Simulating distributions R knows vs. does NOT know\n\nSo far we simulated from distributions R already knows (runif(), rbinom())\nWhat if we only have a pdf or CDF, like Example 4 with \\(f_X(x) = 2e^{-2x}\\)?\n\n \n\nHow do we simulate \\(X\\) knowing \\(f_X(x) = 2e^{-2x}\\)??\n\nBox method (sample()) won’t work\nWe do not have any handy rbinom() functions in R for it\n\n\n \n\nWe can simulate \\(X\\) with the inverse CDF method"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#simulating-from-a-cdf-inverse-cdf-method-13",
+    "href": "lessons/09_CDFs/09_CDFs.html#simulating-from-a-cdf-inverse-cdf-method-13",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Simulating from a CDF: inverse CDF method (1/3)",
+    "text": "Simulating from a CDF: inverse CDF method (1/3)\n\n\n\n\nInverse CDF method\n\n\nIf \\(U\\) is a uniform random variable on \\([0, 1]\\) and \\(F_X\\) is a CDF, then \\(X = F_X^{-1}(U)\\) has CDF \\(F_X\\).\n\n\n\nFind the CDF \\(F_X(x)\\) (if starting from a pdf of \\(X\\))\nSet \\(u = F_X(x)\\) and solve for \\(x\\), to get \\(x = F_X^{-1}(u)\\)\nSimulate \\(U\\) with runif() and plug it into \\(F_X^{-1}\\)\n\n\nWhy does it work? For any \\(x\\), \\[P(F_X^{-1}(U) \\leq x) = P(U \\leq F_X(x)) = F_X(x)\\] because \\(P(U \\leq u) = u\\) for a uniform \\(U\\) on \\([0, 1]\\)\n\n\n\n\n\nPick a random height \\(u\\) between 0 and 1, go across to the CDF, then down to \\(x\\)"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#simulating-from-a-cdf-inverse-cdf-method",
+    "href": "lessons/09_CDFs/09_CDFs.html#simulating-from-a-cdf-inverse-cdf-method",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Simulating from a CDF: inverse CDF method",
+    "text": "Simulating from a CDF: inverse CDF method\n\n\n\n\nInverse CDF method\n\n\nIf \\(U\\) is a uniform random variable on \\([0, 1]\\) and \\(F_X\\) is a CDF, then \\(X = F_X^{-1}(U)\\) has CDF \\(F_X\\).\n\n\n\nFind the CDF \\(F_X(x)\\) (if starting from a pdf of \\(X\\))\nSet \\(u = F_X(x)\\) and solve for \\(x\\), to get \\(x = F_X^{-1}(u)\\)\nSimulate \\(U\\) with runif() and plug it into \\(F_X^{-1}\\)\n\n\nWhy does it work? For any \\(x\\), \\[P(F_X^{-1}(U) \\leq x) = P(U \\leq F_X(x)) = F_X(x)\\] because \\(P(U \\leq u) = u\\) for a uniform \\(U\\) on \\([0, 1]\\)\n\n\n\n\n\nPick a random height \\(u\\) between 0 and 1, go across to the CDF, then down to \\(x\\)"
+  },
+  {
+    "objectID": "lessons/09_CDFs/09_CDFs.html#check-our-hand-calculated-answers-from-example-4",
+    "href": "lessons/09_CDFs/09_CDFs.html#check-our-hand-calculated-answers-from-example-4",
+    "title": "Lesson 9: Cumulative distribution functions (CDFs)",
+    "section": "Check our hand-calculated answers from Example 4",
+    "text": "Check our hand-calculated answers from Example 4\n\n1exp_sims |&gt;\n2  summarise(\n3    prob_1_to_3  = mean(x &gt;= 1 & x &lt;= 3),\n4    prob_cond    = mean(x &gt;= 1 & x &lt;= 3) / mean(x &lt;= 3),\n5    median_x     = median(x)\n  )\n\n\n1\n\nStart with the 10,000 simulated values of x.\n\n2\n\nOne row with a column for each answer.\n\n3\n\nThe proportion of simulated values between 1 and 3, which approximates \\(P(1 \\leq X \\leq 3) = e^{-2} - e^{-6} \\approx 0.1329\\) (Example 4.2).\n\n4\n\n\\(P(X \\geq 1 | X \\leq 3) = P(1 \\leq X \\leq 3) / P(X \\leq 3)\\), which approximates the answer to Example 4.5, about \\(0.1332\\).\n\n5\n\nmedian() finds the middle simulated value. The exact median from Example 4.6 is \\(\\ln(0.5) / (-2) \\approx 0.3466\\).\n\n\n\n\n# A tibble: 1 × 3\n  prob_1_to_3 prob_cond median_x\n        &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1       0.136     0.137    0.344\n\n\n \n\nThis works for any CDF we can invert: the same three steps, a different \\(F_X^{-1}\\)\nThe simulated values are a transformation of \\(U\\)\n\nWe will study transformations of random variables in the next lessons!"
   }
 ]

@@ -4,7 +4,7 @@ author: "Nicky Wakim"
 date: " `r library(here); source(here('class_dates.R')); w4d2` "
 title-slide-attributes:
     data-background-color: "#006a4e"
-format: 
+format:
   revealjs:
     theme: "../simple_NW.scss"
     slide-number: true
@@ -13,28 +13,31 @@ format:
     height: 1100
     footer: Lesson 9 Slides
     html-math-method: mathjax
+    highlight-style: arrow
+    code-annotations: hover
+execute:
+  echo: true
+  warning: false
+  message: false
 ---
 
 # Learning Objectives
 
 1. Understand the definition of cumulative distribution functions (CDFs) for discrete and continuous random variables.
-2. Compute CDFs for given probability mass functions (pmfs). 
+2. Compute CDFs for given probability mass functions (pmfs).
 3. Compute CDFs for given probability density functions (pdfs) and pdfs from CDFs.
+4. Simulate a CDF with inverse CDF method.
 
 ## Where are we?
 
 ![](../img_slides/course_map.png){fig-align="center"}
 
-```{r setup, include=FALSE}
+```{r setup}
+#| echo: false
+
 library(here)
 library(tidyverse)
 source(here("class_dates.R"))
-library(ggplot2)
-
-
-theme_set(theme_minimal(base_size = 22))
-theme_update(plot.title = element_text(size = 22, hjust = 0.5))
-knitr::opts_chunk$set(warning=FALSE, message=FALSE, echo = TRUE)
 ```
 
 # Learning Objectives
@@ -43,8 +46,9 @@ knitr::opts_chunk$set(warning=FALSE, message=FALSE, echo = TRUE)
 1. Understand the definition of cumulative distribution functions (CDFs) for discrete and continuous random variables.
 :::
 
-2. Compute CDFs for given probability mass functions (pmfs). 
+2. Compute CDFs for given probability mass functions (pmfs).
 3. Compute CDFs for given probability density functions (pdfs) and pdfs from CDFs.
+4. Simulate a CDF with inverse CDF method.
 
 ## What is a cumulative distribution function?
 
@@ -64,11 +68,11 @@ The **cumulative distribution function** (**cdf**) of a **discrete RV** $X$ with
 
 -   $F(x)$ is increasing or flat (never decreasing)
 
--   $\min\limits_x F(x) = 0$
+-   $\min\limits_x F(x) = 0$: the CDF starts at 0
 
--   $\max\limits_xF(x)=1$
+-   $\max\limits_xF(x)=1$: at the largest $x$, all the probabilities have been summed, so the total is 1
 
--   CDF is a step function
+-   The [**CDF**]{style="color:#E25D3B;"} of a discrete RV is a step function
 
 :::
 
@@ -85,7 +89,7 @@ $x$, $$F_X(x)= \mathbb{P}(X \leq x) = \int_{-\infty}^x f_X(s)ds$$
 :::
 :::
 
-**Remarks:** In general, $F_X(x)$ is increasing and
+In general, $F_X(x)$ is increasing and
 
 -   $\lim_{x\rightarrow -\infty} F_X(x)= 0$
 
@@ -111,10 +115,20 @@ Discrete RV $X$:
 #| fig-align: center
 #| echo: false
 
-ggplot() +
-  geom_step(aes(x = c(0,1,2,3,4,5), y = c(0, 0.1, 0.3, 0.6, 0.8, 1)), direction = "hv") +
-  labs(x = "x",
-     y = "Cumulative Probability")
+cdf_discrete <- tibble(x = 1:5,
+                       pmf = c(0.1, 0.2, 0.3, 0.2, 0.2)) |>
+  mutate(cdf = cumsum(pmf),
+         previous = lag(cdf, default = 0),
+         next_x = lead(x, default = 6))
+
+ggplot(cdf_discrete) +
+  geom_segment(aes(x = x, xend = next_x, y = cdf, yend = cdf), linewidth = 1) +
+  geom_segment(aes(x = 0, xend = 1, y = 0, yend = 0), linewidth = 1) +
+  geom_point(aes(x = x, y = cdf), size = 4) +
+  geom_point(aes(x = x, y = previous), size = 4, shape = 21, fill = "white") +
+  scale_x_continuous(breaks = 0:5, limits = c(0, 6)) +
+  labs(x = "x", y = "Cumulative Probability") +
+  theme_minimal(base_size = 22)
 ```
 
 - pmf: $p_X(x) = P(X=x)$
@@ -129,17 +143,13 @@ Continuous RV $X$:
 #| fig-align: center
 #| echo: false
 
-set.seed(123)
+cdf_continuous <- tibble(x = seq(-4, 4, length.out = 1000)) |>
+  mutate(cdf = pnorm(x, mean = 0, sd = 1))
 
-data = tibble(
-  x = seq(-4, 4, length.out = 10000),
-  cdf = pnorm(x, mean = 0, sd = 1)
-)
-
-ggplot(data, aes(x = x, y = cdf)) +
-  geom_smooth(size = 1, color = "black") +
-labs(x = "x",
-     y = "Cumulative Probability")
+ggplot(cdf_continuous, aes(x = x, y = cdf)) +
+  geom_line(linewidth = 1, color = "black") +
+  labs(x = "x", y = "Cumulative Probability") +
+  theme_minimal(base_size = 22)
 ```
 
 - density: $f_X(x)$
@@ -153,15 +163,14 @@ labs(x = "x",
 1. Understand the definition of cumulative distribution functions (CDFs) for discrete and continuous random variables.
 
 ::: lob
-2. Compute CDFs for given probability mass functions (pmfs). 
+2. Compute CDFs for given probability mass functions (pmfs).
 :::
 
 3. Compute CDFs for given probability density functions (pdfs) and pdfs from CDFs.
+4. Simulate a CDF with inverse CDF method.
 
-## Falls in Older Adults Revisited (1/5)
+## [Revisiting Falls 1]{.visually-hidden} 
 
-::: columns
-::: {.column width="100%"}
 ::: example
 ::: ex-title
 Example 1: Falls in Older Adults
@@ -172,21 +181,18 @@ A major public health concern is falls among older adults (age 65+). National da
 
 Let $X$ be the random variable representing the number of individuals in this group who experience at least one fall.
 
-1. Write the CDF of $X$ and make a table of values.
+1. Write the CDF of $X$.
 2. Use R to calculate the cumulative probability for each possible value of $X$.
 3. Plot the CDF of $X$.
 4. Simulate $X$ for 10000 groups and plot the approximated CDF.
 :::
 :::
-:::
-:::
 
-Recall our pmf: $$P(X = x) = \binom{8}{x} 0.25^x 0.75^{8-x},  x= 0, 1, 2, \dots, 8 $$
 
-## Falls in Older Adults Revisited (2/5)
+Recall our pmf, since $X$ is a binomial RV: $$P(X = x) = \binom{8}{x} 0.25^x 0.75^{8-x},  x= 0, 1, 2, \dots, 8 $$
 
-::: columns
-::: {.column width="100%"}
+## [Revisiting Falls 1]{.visually-hidden} 
+
 ::: example
 ::: ex-title
 Example 1: Falls in Older Adults
@@ -196,18 +202,14 @@ Example 1: Falls in Older Adults
 1. Write the CDF of $X$.
 :::
 :::
-:::
-:::
 
 Recall our pmf: $$P(X = x) = \binom{8}{x} 0.25^x 0.75^{8-x},  x= 0, 1, 2, \dots, 8 $$
 
 
-$$F_X(x) = P(X \leq x) = \sum \limits_{k=0}^{x} \binom{8}{k} 0.25^y 0.75^{8-k}$$
+$$F_X(x) = P(X \leq x) = \sum \limits_{k=0}^{x} \binom{8}{k} 0.25^k 0.75^{8-k}$$
 
-## Falls in Older Adults Revisited (3/5)
+## [Revisiting Falls 2]{.visually-hidden} 
 
-::: columns
-::: {.column width="50%"}
 ::: example
 ::: ex-title
 Example 1: Falls in Older Adults
@@ -218,32 +220,41 @@ Example 1: Falls in Older Adults
 :::
 :::
 
-```{r}
-n = 8
-p = 0.25
+::: columns
+::: {.column width="60%"}
 
-falls_cdf <- tibble(
-  x = 0:n,
-  c_prob = pbinom(x, size = n, prob = p)
+```{r}
+n <- 8 # <1>
+p <- 0.25 # <1>
+
+falls_cdf <- tibble( # <2>
+  x = 0:n, # <3>
+  c_prob = pbinom(x, size = n, prob = p) # <4>
 )
 ```
 
+1. Save the two parameters: $n = 8$ people and $p = 0.25$ chance of a fall.
+2. `tibble()` makes a table, which we save as `falls_cdf`.
+3. The first column, `x`, holds every possible value of $X$: 0 through 8.
+4. `pbinom()` gives the cumulative probability $P(X \leq x)$ for every value in the `x` column. We used `dbinom()` in Lesson 7 for $P(X = x)$.
+
 :::
 
-::: column
+::: {.column width="2%"}
+:::
 
- 
-
- 
+::: {.column width="38%"}
 
 ```{r}
-falls_cdf
+falls_cdf # <1>
 ```
 
+1. Each row is a value of $x$ and its cumulative probability $F_X(x)$. The last row is 1, because the pmf values for all $x$ add up to 1.
+
 :::
 :::
 
-## Falls in Older Adults Revisited (4/5)
+## [Revisiting Falls 3]{.visually-hidden} 
 
 ::: example
 ::: ex-title
@@ -256,29 +267,35 @@ Example 1: Falls in Older Adults
 :::
 
 ```{r}
+#| fig-align: center
 #| fig-width: 9
 #| fig-height: 6
 #| output-location: column
 
-ggplot(
-  falls_cdf,
-  aes(x = x, y = c_prob)
-       ) +
-  geom_step(
-    size = 1, 
-    color = "black"
-    ) +
-  labs(
-    x = "Number of Falls",
-    y = "Cumulative Probability",
-    title = "CDF of X"
-    )
+ggplot(falls_cdf, # <1>
+       aes(x = x, y = c_prob)) + # <1>
+  geom_step( # <2>
+    linewidth = 1,  # <2>
+    color = "black" # <2>
+    ) + # <2>
+  scale_x_continuous(breaks = 0:n) + # <3>
+  scale_y_continuous(limits = c(0, 1)) + # <3>
+  labs(title = "CDF of X", # <4>
+       x = "Number of Falls", # <4>
+       y = "Cumulative Probability") + # <4>
+  theme_minimal(base_size = 26) # <5>
 ```
 
-## Falls in Older Adults Revisited (4/5)
+1. Put `x` on the x-axis and the cumulative probability `c_prob` on the y-axis.
+2. `geom_step()` connects the points with steps: flat, then a jump up at each value of `x`.
+3. Put a tick mark on every possible value, 0 through 8, and make the y-axis run from 0 to 1.
+4. Add a title and axis labels.
+5. Use a clean theme with larger text.
 
-::: columns
-::: {.column width="50%"}
+
+
+## [Revisiting Falls 4]{.visually-hidden} 
+
 ::: example
 ::: ex-title
 Example 1: Falls in Older Adults
@@ -289,49 +306,110 @@ Example 1: Falls in Older Adults
 :::
 :::
 
+::: columns
+::: {.column width="60%"}
+
 ```{r}
-set.seed(4764)
-reps = 10000
+set.seed(4764) # <1>
+reps <- 10000 # <2>
 
-sims = rbinom(n = reps, 
-              size = n, 
-              prob = p)
+falls_sims <- tibble( # <3>
+  X = rbinom(n = reps, size = n, prob = p) # <3>
+  ) # <3>
 
-sims %>% head(., 14)
-
-falls2 <- tibble(x = 0:n) %>%
-  rowwise() %>%
-  mutate(c_prob = sum(sims <= x) / reps)
+falls_approx <- falls_sims |> # <4>
+  group_by(X) |> # <5>
+  summarise(prop = n() / reps) |> # <6>
+  mutate(approx_cdf = cumsum(prop)) # <7>
 ```
+
+1. Set the random seed once, so everyone gets the same random numbers.
+2. The number of groups (simulations) we want.
+3. `rbinom()` simulates the number of falls in each of the 10,000 groups, as in Lesson 7. `n = reps` is the number of values to draw, `size` is our $n$ and `prob` is our $p$.
+4. Start with the simulated values of `X`.
+5. Group the simulations by the value of `X`.
+6. `n()` counts the simulations in each group. Dividing by `reps` gives the proportion, which approximates the pmf.
+7. `cumsum()` adds up the proportions as we go down the rows. Each row is now the approximate cumulative probability $P(X \leq x)$.
 
 :::
 
-::: column
+::: {.column width="2%"}
+:::
+
+::: {.column width="38%"}
+
+- The approximate pmf and CDF:
+
 ```{r}
-#| fig-align: "center"
-#| fig-width: 9
+falls_approx # <1>
+```
+
+1. Each row is a value of `X`, the proportion of simulations with that value (`prop`) and the running total (`approx_cdf`).
+
+:::
+:::
+
+## [Revisiting Falls 4]{.visually-hidden} 
+
+::: example
+::: ex-title
+Example 1: Falls in Older Adults
+:::
+
+::: ex-cont
+4. Simulate $X$ for 10000 groups and plot the approximated CDF.
+:::
+:::
+
+
+::: columns
+::: {.column width="40%"}
+- Red dots: the exact CDF from `pbinom()`
+
+- Steps: the approximate CDF from the simulation
+
+- At home: try `reps <- 100` and see how it affects the approximate CDF
+:::
+
+::: {.column width="60%"}
+```{r}
+#| code-fold: true
+#| code-summary: "Plot the approximate CDF of X"
+#| fig-align: center
+#| fig-width: 11
 #| fig-height: 6
 
-ggplot(falls2, aes(x = x, y = c_prob)) +
-  geom_step(size = 1, color = "black") +
-  labs(
-    title = "Approximate CDF of X",
-    x = "Number of adults (x)",
-    y = "Approximate Cumulative Probability"
-  ) 
+ggplot(falls_approx, aes(x = X, y = approx_cdf)) + # <1>
+  geom_step(linewidth = 1, color = "black") + # <1>
+  geom_point(data = falls_cdf, aes(x = x, y = c_prob), # <2>
+             color = "red", size = 5) + # <2>
+  scale_x_continuous(breaks = 0:n) + # <3>
+  scale_y_continuous(limits = c(0, 1)) + # <3>
+  labs(title = "Approximate CDF of X", # <4>
+       x = "Number of adults (x)", # <4>
+       y = "Cumulative Probability") + # <4>
+  theme_minimal(base_size = 20) # <5>
 ```
-:::
 
+1. Steps for the approximate CDF from the simulation.
+2. Add the exact CDF values from the `falls_cdf` table as red dots.
+3. Put a tick mark on every possible value, 0 through 8, and make the y-axis run from 0 to 1.
+4. Add a title and axis labels.
+5. Use a clean theme with larger text.
+
+:::
 :::
 
 # Learning Objective
 
 1. Understand the definition of cumulative distribution functions (CDFs) for discrete and continuous random variables.
-2. Compute CDFs for given probability mass functions (pmfs). 
+2. Compute CDFs for given probability mass functions (pmfs).
 
 ::: lob
 3. Compute CDFs for given probability density functions (pdfs) and pdfs from CDFs.
 :::
+
+4. Simulate a CDF with inverse CDF method.
 
 ## Let's demonstrate the CDF with an example
 
@@ -362,6 +440,10 @@ $F_X(x)$, then for all real values of $x$ at which $F'_X(x)$ exists,
 $$\frac{d}{dx} F_X(x)= F'_X(x) = f_X(x)$$
 :::
 :::
+
+-   Integrate the pdf to get the [**CDF**]{style="color:#E25D3B;"}
+
+-   Take the derivative of the CDF to get the pdf
 
 ## Finding the PDF from a CDF
 
@@ -413,6 +495,27 @@ Let $X$ be a RV with pdf $f_X(x)= 2e^{-2x}$, for $x>0$.
 :::
 :::
 
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-width: 16
+#| fig-height: 5
+#| eval: false
+
+exp_df <- tibble(x = seq(0, 4, by = 0.01)) |>
+  mutate(pdf = 2 * exp(-2 * x),
+         cdf = 1 - exp(-2 * x)) |>
+  pivot_longer(cols = c(pdf, cdf), names_to = "curve", values_to = "value") |>
+  mutate(curve = factor(curve, levels = c("pdf", "cdf"),
+                        labels = c("pdf: f(x)", "CDF: F(x)")))
+
+ggplot(exp_df, aes(x = x, y = value, color = curve)) +
+  geom_line(linewidth = 1.5) +
+  scale_color_manual(values = c("pdf: f(x)" = "#006a4e", "CDF: F(x)" = "#E89543")) +
+  labs(x = "x", y = NULL, color = NULL) +
+  theme_minimal(base_size = 20)
+```
+
 ## Let's go through another example (2/7)
 
 ::: columns
@@ -428,14 +531,25 @@ Let $X$ be a RV with pdf $f_X(x)= 2e^{-2x}$, for $x>0$.
 1.  Show $f_X(x)$ is a pdf.
 :::
 :::
+
+::: axiom
+::: axiom-title
+To show $f_X(x)$ is a valid pdf, we need to show two things
+:::
+
+::: axiom-cont
+1.  $f_X(x) \geq 0$ for all $x$
+
+2.  $\displaystyle\int_{-\infty}^{\infty} f_X(x)\,dx = 1$
+
+If both hold, then $f_X(x)$ is a pdf
 :::
 :::
 
-## Let's go through another example (3/7)
-
-::: {.callout-important appearance="simple" icon="false"}
-Do this problem at home for extra practice.
 :::
+:::
+
+## Let's go through another example (3/7) [REFERENCE]
 
 ::: columns
 ::: {.column width="30%"}
@@ -451,7 +565,26 @@ Let $X$ be a RV with pdf $f_X(x)= 2e^{-2x}$, for $x>0$.
 :::
 :::
 :::
+
+::: {.column width="70%"}
+Integrate the pdf from 1 to 3:
+$$\mathbb{P}(1 \leq X \leq 3) = \int_1^3 2e^{-2x}\,dx$$
+
+Use a $u$-substitution: let $u = -2x$. Then $du = -2\,dx$, so $2\,dx = -du$.
+
+New bounds: when $x = 1$, $u = -2$; when $x = 3$, $u = -6$.
+
+$$\begin{aligned}
+\int_1^3 2e^{-2x}\,dx &= \int_{-2}^{-6} e^{u}\,(-du) \\
+&= -\Big[e^{u}\Big]_{u=-2}^{u=-6} \\
+&= -\left(e^{-6} - e^{-2}\right) \\
+&= e^{-2} - e^{-6} \approx 0.1329
+\end{aligned}$$
+
+Check with the antiderivative: $\Big[-e^{-2x}\Big]_{x=1}^{x=3} = -e^{-6} + e^{-2}$.
 :::
+:::
+
 
 ## Let's go through another example (4/7)
 
@@ -473,9 +606,6 @@ Let $X$ be a RV with pdf $f_X(x)= 2e^{-2x}$, for $x>0$.
 
 ## Let's go through another example (5/7)
 
-::: {.callout-important appearance="simple" icon="false"}
-Do this problem at home for extra practice.
-:::
 
 ::: columns
 ::: {.column width="30%"}
@@ -491,7 +621,29 @@ Let $X$ be a RV with pdf $f_X(x)= 2e^{-2x}$, for $x>0$.
 :::
 :::
 :::
+
+::: {.column width="70%"}
+$$F_X(x) = \begin{cases} 0 & x \leq 0 \\ 1 - e^{-2x} & x > 0 \end{cases}$$
+
+The pdf is the derivative of the CDF: $f_X(x) = \dfrac{d}{dx}F_X(x)$.
+
+For $x > 0$, use the chain rule on $e^{-2x}$:
+
+$$\begin{aligned}
+f_X(x) &= \frac{d}{dx}\left(1 - e^{-2x}\right) \\
+&= 0 - \left(-2\right)e^{-2x} \\
+&= 2e^{-2x}
+\end{aligned}$$
+
+For $x \leq 0$, $F_X(x) = 0$, so its derivative is 0.
+
+$$f_X(x) = \begin{cases} 2e^{-2x} & x > 0 \\ 0 & x \leq 0 \end{cases}$$
+
+This matches the pdf we started with.
 :::
+
+:::
+
 
 ## Let's go through another example (6/7)
 
@@ -508,6 +660,24 @@ Let $X$ be a RV with pdf $f_X(x)= 2e^{-2x}$, for $x>0$.
 5.  Find $\mathbb{P}(X \geq 1 | X \leq 3)$.
 :::
 :::
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-width: 7
+#| fig-height: 7
+
+pdf_exp <- tibble(x = seq(0, 4, by = 0.01)) |>
+  mutate(density = 2 * exp(-2 * x))
+
+ggplot(pdf_exp, aes(x = x, y = density)) +
+  geom_line(linewidth = 1.5, color = "black") +
+  scale_x_continuous(breaks = 0:4, limits = c(0, 4)) +
+  scale_y_continuous(breaks = c(0, 1), limits = c(0, 1)) +
+  labs(x = "x", y = expression(f[X](x))) +
+  theme_minimal(base_size = 30)
+```
+
 :::
 :::
 
@@ -526,5 +696,223 @@ Let $X$ be a RV with pdf $f_X(x)= 2e^{-2x}$, for $x>0$.
 6.  Find the median of the distribution of $X$.
 :::
 :::
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-width: 7
+#| fig-height: 6.5
+
+pdf_exp <- tibble(x = seq(0, 4, by = 0.01)) |>
+  mutate(density = 2 * exp(-2 * x))
+
+ggplot(pdf_exp, aes(x = x, y = density)) +
+  geom_line(linewidth = 1.5, color = "black") +
+  scale_x_continuous(breaks = 0:4, limits = c(0, 4)) +
+  scale_y_continuous(breaks = c(0, 1), limits = c(0, 1)) +
+  labs(x = "x", y = expression(f[X](x))) +
+  theme_minimal(base_size = 30)
+```
 :::
 :::
+
+# Learning Objective
+
+1. Understand the definition of cumulative distribution functions (CDFs) for discrete and continuous random variables.
+2. Compute CDFs for given probability mass functions (pmfs).
+3. Compute CDFs for given probability density functions (pdfs) and pdfs from CDFs.
+
+::: lob
+4. Simulate a CDF with inverse CDF method.
+:::
+
+## Simulating distributions R knows vs. does NOT know
+
+- So far we simulated from distributions R already knows (`runif()`, `rbinom()`)
+
+- What if we only have a pdf or CDF, like Example 4 with $f_X(x) = 2e^{-2x}$?
+
+ 
+
+- How do we simulate $X$ knowing $f_X(x) = 2e^{-2x}$??
+  - Box method (`sample()`) won't work
+  - We do not have any handy `rbinom()` functions in R for it
+  
+ 
+
+- We can simulate $X$ with the inverse CDF method
+
+
+## Simulating from a CDF: inverse CDF method
+
+::: columns
+::: {.column width="50%"}
+
+::: theorem
+::: thm-title
+Inverse CDF method
+:::
+
+::: thm-cont
+If $U$ is a uniform random variable on $[0, 1]$ and $F_X$ is a CDF, then $X = F_X^{-1}(U)$ has CDF $F_X$.
+:::
+:::
+
+1. Find the CDF $F_X(x)$ (if starting from a pdf of $X$)
+2. Set $u = F_X(x)$ and solve for $x$, to get $x = F_X^{-1}(u)$
+3. Simulate $U$ with `runif()` and plug it into $F_X^{-1}$
+
+- Why does it work? For any $x$, $$P(F_X^{-1}(U) \leq x) = P(U \leq F_X(x)) = F_X(x)$$ because $P(U \leq u) = u$ for a uniform $U$ on $[0, 1]$
+
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="48%"}
+
+- Pick a random height $u$ between 0 and 1, go across to the CDF, then down to $x$
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-width: 9
+#| fig-height: 6.5
+
+u_pick <- 0.7
+x_pick <- -log(1 - u_pick) / 2
+
+curve_df <- tibble(x = seq(0, 3, by = 0.01)) |>
+  mutate(cdf = 1 - exp(-2 * x))
+
+ggplot(curve_df, aes(x = x, y = cdf)) +
+  geom_line(linewidth = 1.5, color = "#E89543") +
+  geom_segment(aes(x = 0, xend = x_pick, y = u_pick, yend = u_pick),
+               linewidth = 1, color = "#006a4e",
+               arrow = arrow(length = unit(0.25, "cm"))) +
+  geom_segment(aes(x = x_pick, xend = x_pick, y = u_pick, yend = 0),
+               linewidth = 1, color = "#006a4e",
+               arrow = arrow(length = unit(0.25, "cm"))) +
+  scale_x_continuous(breaks = c(0, 1, 2, 3, x_pick),
+                     labels = c("0", "1", "2", "3", "x")) +
+  scale_y_continuous(breaks = c(0, 0.5, 1, u_pick),
+                     labels = c("0", "0.5", "1", "u")) +
+  labs(x = "x", y = "F(x)") +
+  theme_minimal(base_size = 30)
+```
+
+:::
+:::
+
+## [Simulating from a CDF: the inverse CDF method (2/3)]{.visually-hidden}
+
+::: example
+::: ex-title
+Example 4 (continued)
+:::
+
+::: ex-cont
+Let $X$ be a RV with pdf $f_X(x)= 2e^{-2x}$, for $x>0$, and CDF $F_X(x) = 1 - e^{-2x}$. Simulate $X$.
+:::
+:::
+
+- Solve $u = 1 - e^{-2x}$ for $x$: 
+
+ 
+
+ 
+
+ 
+
+::: columns
+::: {.column width="72%"}
+```{r}
+set.seed(2026) # <1>
+reps <- 10000 # <2>
+exp_sims <- tibble(u = runif(n = reps, min = 0, max = 1)) |> # <3>
+  mutate(x = -log(1 - u) / 2) # <4>
+```
+
+1. Set the random seed once.
+2. The number of simulated values.
+3. Step 3: simulate $U$, a uniform random value between 0 and 1, for every simulation.
+4. Plug each `u` into the inverse CDF. In R, `log()` is the natural log, $\ln$.
+
+:::
+
+::: {.column width="28%"}
+
+```{r}
+head(exp_sims) # <5>
+```
+
+5. Look at the first 6 rows: each `x` came from the `u` beside it.
+
+:::
+:::
+
+## 
+
+::: example
+::: ex-title
+Example 4 (continued)
+:::
+
+::: ex-cont
+Let $X$ be a RV with pdf $f_X(x)= 2e^{-2x}$, for $x>0$, and CDF $F_X(x) = 1 - e^{-2x}$. Simulate $X$.
+:::
+:::
+
+
+```{r}
+#| fig-align: center
+#| fig-width: 9
+#| fig-height: 8
+#| output-location: column
+
+ggplot(exp_sims, aes(x = x)) + # <1>
+  stat_ecdf( # <2>
+    linewidth = 2, color = "black" # <2>
+    ) + # <2>
+  geom_line( # <3>
+    aes(y = 1 - exp(-2 * x)), # <3>
+    color = "red", linewidth = 1 # <3>
+    ) + # <3>
+  labs( # <4>
+    title = "Simulated CDF (black) and \nexact CDF (red)", # <4>
+    x = "x", # <4>
+    y = "Cumulative Probability" # <4>
+    ) + # <4>
+  theme_minimal(base_size = 26) # <5>
+```
+
+1. Start with the simulated values of `x` on the x-axis.
+2. The CDF of the simulated values.
+3. The exact CDF, $F_X(x) = 1 - e^{-2x}$, in red.
+4. Add a title and axis labels.
+5. Use a clean theme with larger text.
+
+
+## Check our hand-calculated answers from Example 4
+
+```{r}
+exp_sims |> # <1>
+  summarise( # <2>
+    prob_1_to_3  = mean(x >= 1 & x <= 3), # <3>
+    prob_cond    = mean(x >= 1 & x <= 3) / mean(x <= 3), # <4>
+    median_x     = median(x) # <5>
+  )
+```
+
+1. Start with the 10,000 simulated values of `x`.
+2. One row with a column for each answer.
+3. The proportion of simulated values between 1 and 3, which approximates $P(1 \leq X \leq 3) = e^{-2} - e^{-6} \approx 0.1329$ (Example 4.2).
+4. $P(X \geq 1 | X \leq 3) = P(1 \leq X \leq 3) / P(X \leq 3)$, which approximates the answer to Example 4.5, about $0.1332$.
+5. `median()` finds the middle simulated value. The exact median from Example 4.6 is $\ln(0.5) / (-2) \approx 0.3466$.
+
+ 
+
+- This works for any CDF we can invert: the same three steps, a different $F_X^{-1}$
+
+- The simulated values are a **transformation** of $U$
+    - We will study transformations of random variables in the next lessons!

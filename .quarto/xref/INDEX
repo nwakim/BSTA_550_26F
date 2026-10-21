@@ -215,5 +215,11 @@
   },
   "lessons/08_pdfs/08_pdfs_.qmd": {
     "08_pdfs_.html": "7928b3e2"
+  },
+  "lessons/09_CDFs/09_CDFs_.qmd": {
+    "09_CDFs_.html": "f23093de"
+  },
+  "lessons/09_CDFs/09_CDFs_key_info.qmd": {
+    "09_CDFs_key_info.html": "2fdddac9"
   }
 }

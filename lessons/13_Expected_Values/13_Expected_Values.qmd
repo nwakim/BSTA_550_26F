@@ -3,7 +3,7 @@ title: "Lesson 13: Expected Values"
 author: "Meike Niederhausen and Nicky Wakim"
 title-slide-attributes:
     data-background-color: "#006a4e"
-date: "`r library(here); source(here('class_dates.R')); w7d1`"
+date: "`r library(here); source(here('class_dates.R')); w5d1`"
 format: 
   revealjs:
     theme: "../simple_NW.scss"
@@ -13,6 +13,10 @@ format:
     height: 1100
     footer: Lesson 13 Slides
     html-math-method: mathjax
+    highlight-style: arrow
+    code-annotations: hover
+execute:
+  echo: true
 ---
 
 ```{r setup, include=FALSE}
@@ -28,9 +32,9 @@ library(tidyverse)
 
 2. Calculate the expected value (mean) of a single discrete RV
 
-4. Calculate the expected value (mean) of a single continuous RV
+3. Calculate the expected value (mean) of a single continuous RV
 
-3. Calculate expected value for the sum of discrete or continuous RVs
+4. Calculate expected value for the sum of discrete or continuous RVs
 
 5. Calculate expected value for joint densities (continuous RVs)
 
@@ -80,7 +84,7 @@ Definition: Expected value of **discrete** RV
 :::
 
 ::: proof-cont
-The **expected value** of a **discrete RV** $X$ that takes on values $x_1, x_2, \ldots, x_n$ is $$\mathbb{E}[X] = \sum_{i=1}^n x_ip_X(x_i)$$ where $n$ can be $\infty$
+The [**expected value**]{style="color:#E89543;"} of a [**discrete RV**]{style="color:#20c997;"} $X$ that takes on values $x_1, x_2, \ldots, x_n$ is $$\mathbb{E}[X] = \sum_{i=1}^n x_ip_X(x_i)$$ where $n$ can be $\infty$
 :::
 :::
 :::
@@ -93,14 +97,14 @@ Definition: Expected value of **continuous** RV
 :::
 
 ::: thm-cont
-The **expected value** of a **continuous RV** $X$ is $$\mathbb{E}[X] = \displaystyle\int_{-\infty}^\infty xf_X(x) dx$$ where we adjust the integrand based on the bounds of $X$
+The [**expected value**]{style="color:#E89543;"} of a [**continuous RV**]{style="color:#d9534f;"} $X$ is $$\mathbb{E}[X] = \displaystyle\int_{-\infty}^\infty xf_X(x) dx$$ where we adjust the integrand based on the bounds of $X$
 :::
 :::
 :::
 
 :::
 
--   Expected values are not necessarily an actual outcome
+-   [**Expected values**]{style="color:#E89543;"} are not necessarily an actual outcome
     -   In previous example, we cannot roll a 3.5
     -   It could be that our expected value is not in the sample space ($E(X) \notin S$)
 
@@ -129,7 +133,7 @@ Example 2
 :::
 
 ::: ex-cont
-Suppose the die is 6-sided, but not fair. And the probabilities of each side is distributed as:
+Suppose the die is 6-sided, but not fair. And the probabilities of each side are distributed as:
 
 | $x$ | $p_X(x)$ |
 |-----|----------|
@@ -145,6 +149,86 @@ What value do you expect to get on a roll?
 :::
 :::
 :::
+
+## Let's simulate our not-so-fair die
+
+::: columns
+::: {.column width="60%"}
+
+- Same idea as Lesson 2: simulate many rolls, then summarize
+- `prob` gives the probability of each side, like the unfair coin in Lesson 1
+
+```{r}
+set.seed(1026) # <1>
+reps <- 10000 # <2>
+die_probs <- c(0.10, 0.05, 0.02, 0.30, 0.50, 0.03) # <3>
+
+X_sims <- tibble(sim = 1:reps) |> # <4>
+  mutate(X = sample(1:6, n(), replace = TRUE, # <5>
+                    prob = die_probs)) # <5>
+```
+
+1. Set the seed so we get the same random rolls every time we run the code.
+2. Save the number of simulations as `reps`, so it is easy to change later.
+3. The probability of rolling 1, 2, 3, 4, 5, and 6, from the table in Example 2.
+4. `tibble()` makes a table with one row per simulation, numbered 1 to 10,000. The pipe `|>` passes it to the next line.
+5. `mutate()` adds a column `X` with one roll per row. `prob = die_probs` makes 5 come up half the time, 4 about 30% of the time, and so on.
+
+:::
+::: {.column width="40%"}
+
+ 
+
+- Average of the 10,000 simulated rolls:
+
+```{r}
+X_sims |> # <1>
+  summarise(average = mean(X)) # <1>
+```
+
+1. Collapse the 10,000 simulated values of `X` into one number: their average.
+
+ 
+
+::: proof1
+::: proof-cont
+From Example 2, $\mathbb{E}[X] = 1(0.10) + 2(0.05) + 3(0.02) + 4(0.30) + 5(0.50) + 6(0.03) = 4.14$
+
+The simulated average is very close!
+:::
+:::
+
+:::
+:::
+
+## The running average settles at $\mathbb{E}[X]$
+
+- The [**expected value**]{style="color:#E89543;"} is the long-run average: after many rolls, the average of the rolls gets close to 4.14 (dashed line)
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show/Hide Code for the running average plot"
+#| fig-width: 16
+#| fig-height: 5.5
+
+X_sims |> # <1>
+  mutate(running_avg = cumsum(X) / sim) |> # <2>
+  ggplot(aes(x = sim, y = running_avg)) + # <3>
+  geom_line(color = "#006a4e", linewidth = 1) + # <4>
+  geom_hline(yintercept = 4.14, linetype = "dashed") + # <5>
+  labs(title = "Running Average of Simulated Rolls", # <6>
+       x = "Number of rolls", # <6>
+       y = "Average so far") + # <6>
+  theme_minimal(base_size = 20) # <7>
+```
+
+1. Start with the 10,000 simulated rolls.
+2. `cumsum(X)` adds up the rolls so far (the running total). Dividing by `sim`, the number of rolls so far, gives the average so far.
+3. Start a plot with the number of rolls on the x-axis and the average so far on the y-axis. Layers are added with `+`.
+4. Connect the averages with a line.
+5. Add a dashed horizontal line at the exact expected value, 4.14.
+6. Add a title and axis labels.
+7. Use a simple theme with larger text so the plot is readable on slides.
 
 ## Expected value of a Bernoulli distribution
 
@@ -340,7 +424,7 @@ Example 8
 :::
 
 ::: ex-cont
-What is the expected number of hearts in Example 1 if you draw 200 cards?
+What is the expected number of hearts in Example 7 if you draw 200 cards?
 :::
 :::
 
@@ -366,7 +450,7 @@ Theorem: Sum of random variables
 :::
 
 ::: def-cont
-For RVs (discrete or continuous) $X_i$ and constants $a_i$, $i=1,2,\dots, n$, $$\mathbb{E}\Bigg[\sum_{i=1}^n a_iX_i\Bigg] = \sum_{i=1}^n a_i\mathbb{E}[X_i] .$$ **Remark:** The theorem holds for infinitely RV's $X_i$ as well.
+For RVs (discrete or continuous) $X_i$ and constants $a_i$, $i=1,2,\dots, n$, $$\mathbb{E}\Bigg[\sum_{i=1}^n a_iX_i\Bigg] = \sum_{i=1}^n a_i\mathbb{E}[X_i] .$$ **Remark:** The theorem holds for infinitely many RVs $X_i$ as well.
 :::
 :::
 

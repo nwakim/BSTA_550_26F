@@ -3,7 +3,7 @@ title: "Lesson 14: Variance"
 author: "Meike Niederhausen and Nicky Wakim"
 title-slide-attributes:
     data-background-color: "#006a4e"
-date: "`r library(here); source(here('class_dates.R')); w7d2`"
+date: "`r library(here); source(here('class_dates.R')); w5d2`"
 format: 
   revealjs:
     theme: "../simple_NW.scss"
@@ -13,6 +13,10 @@ format:
     height: 1100
     footer: Lesson 14 Slides
     html-math-method: mathjax
+    highlight-style: arrow
+    code-annotations: hover
+execute:
+  echo: true
 ---
 
 ```{r setup, include=FALSE}
@@ -69,7 +73,7 @@ Expected value of function of **discrete** RV
 :::
 
 ::: proof-cont
-For any function $g$ and discrete RV $X$, the expected value of $g(X)$
+For any function $g$ and [**discrete RV**]{style="color:#20c997;"} $X$, the [**expected value**]{style="color:#E89543;"} of $g(X)$
 is $$\mathbb{E}[g(X)] = \sum_{\{all\ x\}}\ g(x) p_X(x)$$
 :::
 :::
@@ -83,7 +87,7 @@ Expected value of function of **continuous** RV
 :::
 
 ::: thm-cont
-For any function $g$ and continuous RV $X$, the expected value of $g(X)$
+For any function $g$ and [**continuous RV**]{style="color:#d9534f;"} $X$, the [**expected value**]{style="color:#E89543;"} of $g(X)$
 is $$\mathbb{E}[g(X)] = \displaystyle\int_{-\infty}^\infty g(x)f_X(x) dx$$
 :::
 :::
@@ -91,7 +95,7 @@ is $$\mathbb{E}[g(X)] = \displaystyle\int_{-\infty}^\infty g(x)f_X(x) dx$$
 
 :::
 
-- For example, if we have $g(x)=x^2$, then $$\mathbb{E}[X^2)] = \sum_{\{all\ x\}}\ x^2 p_X(x) \neq \left(\sum_{\{all\ x\}}\ x p_X(x)) \right)^2 = \left( \mathbb{E}[X] \right)^2$$
+- For example, if we have $g(x)=x^2$, then $$\mathbb{E}[X^2] = \sum_{\{all\ x\}}\ x^2 p_X(x) \neq \left(\sum_{\{all\ x\}}\ x p_X(x) \right)^2 = \left( \mathbb{E}[X] \right)^2$$
 
 ## Let's revisit the card example (1/2)
 
@@ -170,7 +174,7 @@ Definition: Variance of RV
 :::
 
 ::: def-cont
-The variance of a RV $X$, with (finite) expected value
+The [**variance**]{style="color:#E25D3B;"} of a RV $X$, with (finite) expected value
 $\mu_X=\mathbb{E}[X]$ is
 $$\sigma_X^2=Var(X)=\mathbb{E}[(X-\mu_X)^2] = \mathbb{E}[(X-\mathbb{E}[X])^2]$$
 :::
@@ -182,7 +186,7 @@ Definition: Standard deviation of RV
 :::
 
 ::: def-cont
-The standard deviation of a RV $X$ is
+The [**standard deviation**]{style="color:#E25D3B;"} of a RV $X$ is
 $$\sigma_X = SD(X) = \sqrt{\sigma_X^2}=\sqrt{Var(X)}.$$
 :::
 :::
@@ -195,11 +199,11 @@ $$\sigma_X = SD(X) = \sqrt{\sigma_X^2}=\sqrt{Var(X)}.$$
 
    
 
-For discrete RVs:
+For [**discrete RVs**]{style="color:#20c997;"}:
 
 $$
 \begin{align}
-Var(X) & = \\ & = \sum_{\{all\ x\}}(x-\mu_x)^2 p_{X}(x) \\ & = 
+Var(X) & = \sum_{\{all\ x\}}(x-\mu_X)^2 p_{X}(x) \\ & = 
 \mathbb{E}[(X-\mu_X)^2] \\ & = \mathbb{E}[(X-\mathbb{E}[X])^2] \\ &= \mathbb{E}[X^2]-(\mathbb{E}[X])^2
 \end{align}
 $$
@@ -213,7 +217,7 @@ $$
 
     
 
-For continuous RVs:
+For [**continuous RVs**]{style="color:#d9534f;"}:
 
 $$
 \begin{align}
@@ -254,13 +258,105 @@ The variance of a RV $X$, can be computed as $$\begin{align}
 
 ## Let's calculate the variance and prove it! (2/2)
 
-## Variance of an Uniform distribution
+## Let's simulate the card example
+
+::: columns
+::: {.column width="60%"}
+
+- Same steps as Lesson 2: one row per card, then one row per simulation
+- With replacement, each card's suit is equally likely
+
+```{r}
+set.seed(1028) # <1>
+reps <- 10000 # <2>
+n_cards <- 2 # <2>
+suits <- c("hearts", "diamonds", "clubs", "spades") # <3>
+
+draws <- expand_grid(sim = 1:reps, card = 1:n_cards) |> # <4>
+  mutate(suit = sample(suits, n(), replace = TRUE)) # <4>
+
+X_sims <- draws |> # <5>
+  group_by(sim) |> # <5>
+  summarise(X = sum(suit == "hearts")) # <5>
+```
+
+1. Set the seed so we get the same random draws every time we run the code.
+2. Save the settings: 10,000 simulations with 2 cards each.
+3. The four suits. Each suit is a quarter of the deck, so drawing with replacement is like picking a suit at random.
+4. Same as the dice in Lesson 2: one row per card, each with a randomly drawn suit.
+5. For each simulation, count the hearts. `suit == "hearts"` is `TRUE` or `FALSE`, and `sum()` counts each `TRUE` as 1.
+
+:::
+::: {.column width="40%"}
+
+ 
+
+- The first 20 simulated values of $X$:
+
+```{r}
+head(X_sims$X, 20) # <1>
+```
+
+1. `X_sims$X` pulls out the `X` column, and `head(..., 20)` shows its first 20 values.
+
+ 
+
+- $X$ can only be 0, 1, or 2, just like the Binomial with $n = 2$
+
+:::
+:::
+
+## The [**variance**]{style="color:#E25D3B;"} from our simulation
+
+::: columns
+::: {.column width="60%"}
+
+```{r}
+X_sims |> # <1>
+  summarise( # <1>
+    mean_X       = mean(X), # <2>
+    mean_X_sq    = mean(X^2), # <3>
+    variance     = mean((X - mean(X))^2), # <4>
+    var_shortcut = mean(X^2) - mean(X)^2, # <5>
+    std_dev      = sqrt(variance) # <6>
+  )
+```
+
+1. Collapse the 10,000 simulated values of `X` into one row of summaries.
+2. The average of `X`, which estimates $\mathbb{E}[X]$.
+3. The average of `X` squared, which estimates $\mathbb{E}[X^2]$ (Example 2, part 1).
+4. The definition of variance: the average squared distance from the mean, $\mathbb{E}[(X-\mathbb{E}[X])^2]$.
+5. The computation formula, $\mathbb{E}[X^2] - (\mathbb{E}[X])^2$. It matches the line above.
+6. `sqrt()` takes the square root of the variance to get the standard deviation. `summarise()` can use a column made earlier inside it.
+
+:::
+::: {.column width="40%"}
+
+ 
+
+::: proof1
+::: proof-cont
+Exact answers for the card example:
+
+- $\mathbb{E}[X] = \frac{1}{2}$
+- $\mathbb{E}[X^2] = \frac{5}{8} = 0.625$
+- $Var(X) = \frac{5}{8} - \left(\frac{1}{2}\right)^2 = \frac{3}{8} = 0.375$
+- $SD(X) = \sqrt{3/8} \approx 0.612$
+:::
+:::
+
+- Both formulas for the variance give the same number!
+
+:::
+:::
+
+## Variance of a Uniform distribution
 
 ::: columns
 ::: {.column width="30%"}
 ::: example
 ::: ex-title
-Example 2
+Example 3
 :::
 
 ::: ex-cont
@@ -279,7 +375,7 @@ In the homework:
 
 ::: example
 ::: ex-title
-Example 3
+Example 4
 :::
 
 ::: ex-cont
@@ -340,15 +436,15 @@ $$\mathbb{E}[XY] = \mathbb{E}[X]\mathbb{E}[Y].$$
 :::
 :::
 
-## Variance of sum of independent discrete RVs
+## Variance of sum of independent RVs
 
 ::: theorem
 ::: thm-title
-Theorem 9: Variance of sum of independent discrete RV's
+Theorem 9: Variance of sum of independent RVs
 :::
 
 ::: thm-cont
-For independent discrete RV's $X_i$ and constants $a_i$,
+For independent RVs (discrete or continuous) $X_i$ and constants $a_i$,
 $i=1,2,\dots, n$,
 $$Var\Bigg(\sum_{i=1}^n a_iX_i\Bigg) = \sum_{i=1}^n a_i^2Var(X_i).$$
 :::
@@ -366,7 +462,7 @@ Corollary 2
 :::
 
 ::: prop-cont
-For independent discrete RV's $X_i$, $i=1,2,\dots, n$,
+For independent RVs $X_i$, $i=1,2,\dots, n$,
 $$Var\Bigg(\sum_{i=1}^n X_i\Bigg) = \sum_{i=1}^n Var(X_i).$$
 :::
 :::
@@ -377,7 +473,7 @@ Corollary 3
 :::
 
 ::: prop-cont
-For independent identically distributed (i.i.d.) discrete RV's $X_i$,
+For independent identically distributed (i.i.d.) RVs $X_i$,
 $i=1,2,\dots, n$, $$Var\Bigg(\sum_{i=1}^n X_i\Bigg) = n Var(X_1).$$
 :::
 :::
@@ -388,7 +484,7 @@ $i=1,2,\dots, n$, $$Var\Bigg(\sum_{i=1}^n X_i\Bigg) = n Var(X_1).$$
 ::: {.column width="35%"}
 ::: example
 ::: ex-title
-Example 3.2
+Example 5
 :::
 
 ::: ex-cont
@@ -396,7 +492,7 @@ The ghost is trick-or-treating at a different house now. In this case it
 is known that the bag of candy has 10 chocolates, 20 lollipops, and 30
 laffy taffies. The ghost grabs a handful of five pieces of candy. What
 is the variance for the number of chocolates the ghost takes? Let's
-solve this for the cases ***with*** replacement.
+solve this for the case ***with*** replacement.
 :::
 :::
 
@@ -405,7 +501,7 @@ solve this for the cases ***with*** replacement.
 <font size=6ex>Recall probability with replacement:
 
 $$
-p_X(x) = {n \choose k}p^k(1-p)^{n-k}
+p_X(x) = {n \choose x}p^x(1-p)^{n-x}
 $$
 
 </font>
@@ -421,7 +517,7 @@ $$
 ::: {.column width="30%"}
 ::: example
 ::: ex-title
-Example 4
+Example 6
 :::
 
 ::: ex-cont
@@ -443,13 +539,13 @@ Problem to do at home if we don't have enough time.
 ::: {.column width="30%"}
 ::: example
 ::: ex-title
-Example 4
+Example 7
 :::
 
 ::: ex-cont
 A machine manufactures cubes with a side length that varies uniformly
 from 1 to 2 inches. Assume the sides of the base and height are equal.
-The cost to make a cube is 10 ¢ per cubic inch, and 5 ¢ cents for the
+The cost to make a cube is 10 ¢ per cubic inch, and 5 ¢ for the
 general cost per cube. Find the mean and standard deviation of the cost
 to make 10 cubes.
 :::
@@ -458,3 +554,5 @@ to make 10 cubes.
 :::
 
 ## Find the mean and sd from word problem (1/2)
+
+## Find the mean and sd from word problem (2/2)

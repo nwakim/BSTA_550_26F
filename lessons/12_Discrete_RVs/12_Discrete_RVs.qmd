@@ -1,9 +1,9 @@
 ---
-title: "Lesson 15: Some Important Discrete RVs"
+title: "Lesson 12: Some Important Discrete RVs"
 author: "Meike Niederhausen and Nicky Wakim"
 title-slide-attributes:
     data-background-color: "#006a4e"
-date: "`r library(here); source(here('class_dates.R')); w8d1`"
+date: "`r library(here); source(here('class_dates.R')); w6d1`"
 format: 
   revealjs:
     theme: "../simple_NW.scss"
@@ -11,7 +11,7 @@ format:
     show-slide-number: all
     width: 1955
     height: 1100
-    footer: Lesson 15 Slides
+    footer: Lesson 12 Slides
     html-math-method: mathjax
 editor: 
   markdown: 

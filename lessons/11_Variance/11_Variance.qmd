@@ -1,5 +1,5 @@
 ---
-title: "Lesson 14: Variance"
+title: "Lesson 11: Variance"
 author: "Meike Niederhausen and Nicky Wakim"
 title-slide-attributes:
     data-background-color: "#006a4e"
@@ -11,7 +11,7 @@ format:
     show-slide-number: all
     width: 1955
     height: 1100
-    footer: Lesson 14 Slides
+    footer: Lesson 11 Slides
     html-math-method: mathjax
     highlight-style: arrow
     code-annotations: hover
@@ -511,7 +511,7 @@ $$
 :::
 
 
-## Back to our hotel example from Lesson 13
+## Back to our hotel example from Lesson 10
 
 ::: columns
 ::: {.column width="30%"}

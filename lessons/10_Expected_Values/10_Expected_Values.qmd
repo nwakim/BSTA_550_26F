@@ -1,5 +1,5 @@
 ---
-title: "Lesson 13: Expected Values"
+title: "Lesson 10: Expected Values"
 author: "Meike Niederhausen and Nicky Wakim"
 title-slide-attributes:
     data-background-color: "#006a4e"
@@ -11,7 +11,7 @@ format:
     show-slide-number: all
     width: 1955
     height: 1100
-    footer: Lesson 13 Slides
+    footer: Lesson 10 Slides
     html-math-method: mathjax
     highlight-style: arrow
     code-annotations: hover

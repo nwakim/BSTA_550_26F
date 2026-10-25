@@ -1,7 +1,7 @@
 ---
-title: "Lesson 12: Independence and Conditioning"
+title: "Lesson 16: Independence and Conditioning"
 author: "Meike Niederhausen and Nicky Wakim"
-date: "`r library(here); source(here('class_dates.R')); w6d1`"
+date: "`r library(here); source(here('class_dates.R')); w8d1`"
 title-slide-attributes:
     data-background-color: "#006a4e"
 format: 
@@ -11,7 +11,7 @@ format:
     show-slide-number: all
     width: 1955
     height: 1100
-    footer: Lesson 12 Slides
+    footer: Lesson 16 Slides
     html-math-method: mathjax
 ---
 

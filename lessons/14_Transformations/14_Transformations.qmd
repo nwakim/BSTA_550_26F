@@ -1,9 +1,9 @@
 ---
-title: "Lesson 10: Transformations"
+title: "Lesson 14: Transformations"
 author: "Nicky Wakim"
 title-slide-attributes:
     data-background-color: "#006a4e"
-date: "`r library(here); source(here('class_dates.R')); w5d1`"
+date: "`r library(here); source(here('class_dates.R')); w7d1`"
 format: 
   revealjs:
     theme: "../simple_NW.scss"
@@ -11,7 +11,7 @@ format:
     show-slide-number: all
     width: 1955
     height: 1100
-    footer: Lesson 10 Slides
+    footer: Lesson 14 Slides
     html-math-method: mathjax
 ---
 

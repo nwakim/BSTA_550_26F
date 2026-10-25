@@ -1,7 +1,7 @@
 ---
-title: "Lesson 11: Joint distributions"
+title: "Lesson 15: Joint distributions"
 author: "Meike Niederhausen and Nicky Wakim"
-date: "`r library(here); source(here('class_dates.R')); w5d2`"
+date: "`r library(here); source(here('class_dates.R')); w7d2`"
 title-slide-attributes:
     data-background-color: "#006a4e"
 format: 
@@ -11,7 +11,7 @@ format:
     show-slide-number: all
     width: 1955
     height: 1100
-    footer: Lesson 11 Slides
+    footer: Lesson 15 Slides
     html-math-method: mathjax
 ---
 

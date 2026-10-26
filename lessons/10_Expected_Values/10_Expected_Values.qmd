@@ -381,6 +381,48 @@ $\displaystyle\int_a^b u dv = uv\bigg|^b_a - \displaystyle\int_a^b vdu$
 :::
 :::
 
+## Picking up our exponential simulation from Lesson 9
+
+- In Lesson 9 (Example 4), we simulated $X$ with pdf $f_X(x) = 2e^{-2x}$: Example 6 with $\lambda = 2$
+- Same code as Lesson 9, so we get the same 10,000 simulated values
+
+```{r}
+set.seed(2026) # <1>
+reps <- 10000 # <1>
+exp_sims <- tibble(u = runif(n = reps, min = 0, max = 1)) |> # <2>
+  mutate(x = -log(1 - u) / 2) # <2>
+```
+
+1. Same seed and number of simulations as Lesson 9, so `exp_sims` matches the values we saw there.
+2. Same as Lesson 9: simulate a uniform $U$ between 0 and 1, then plug it into the inverse CDF, $x = -\ln(1-u)/2$.
+
+::: columns
+::: column
+
+- New step: the average of the 10,000 simulated values
+
+```{r}
+exp_sims |> # <3>
+  summarise(average = mean(x)) # <3>
+```
+
+3. The only new code: collapse the simulated values of `x` into their average, just like the die rolls.
+
+:::
+::: column
+
+
+
+::: proof1
+::: proof-cont
+From Example 6, $\mathbb{E}[X] = \frac{1}{\lambda} = \frac{1}{2}$
+
+The simulated average is very close!
+:::
+:::
+:::
+:::
+
 
 
 # Learning Objectives

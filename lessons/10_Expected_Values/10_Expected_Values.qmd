@@ -334,7 +334,7 @@ Both examples are repeated random processes. They are fundamentally different th
 ## Expected Value of the Uniform Distribution
 
 ::: columns
-::: {.column width="40%"}
+::: {.column width="30%"}
 ::: example
 ::: ex-title
 Example 5
@@ -347,7 +347,7 @@ Find $\mathbb{E}[X]$.
 
 ```{r}
 #| echo: false
-#| fig-width: 7.5
+#| fig-width: 7
 #| fig-height: 5.5
 
 # Uniform pdf on [a, b], drawn with a = 1, b = 3 so the height is 1/(b - a) = 0.5
@@ -357,7 +357,7 @@ ggplot() +
   scale_x_continuous(breaks = c(1, 3), labels = c("a", "b"), limits = c(0.5, 3.5)) +
   scale_y_continuous(breaks = c(0, 0.5), labels = c("0", "1/(b-a)"), limits = c(0, 0.65)) +
   labs(x = "x", y = expression(f[X](x))) +
-  theme_minimal(base_size = 30)
+  theme_minimal(base_size = 36)
 ```
 
 :::

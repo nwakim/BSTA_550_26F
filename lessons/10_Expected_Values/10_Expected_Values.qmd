@@ -411,7 +411,7 @@ exp_sims |> # <3>
 :::
 ::: column
 
-
+ 
 
 ::: proof1
 ::: proof-cont

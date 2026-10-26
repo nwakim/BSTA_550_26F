@@ -92,8 +92,6 @@ The [**expected value**]{style="color:#E89543;"} of a [**continuous RV**]{style=
 
 ## Our good and fair friend, the 6-sided die
 
-::: columns
-::: {.column width="40%"}
 ::: example
 ::: ex-title
 Example 1
@@ -103,9 +101,8 @@ Example 1
 Suppose you roll a fair 6-sided die. What value do you expect to get?
 :::
 :::
-:::
 
-::: {.column width="60%"}
+
 Let $X$ be the value rolled. Since the die is fair, $p_X(x) = \frac{1}{6}$ for $x = 1, 2, \ldots, 6$.
 
 $$
@@ -115,12 +112,7 @@ $$
 &= \frac{1 + 2 + 3 + 4 + 5 + 6}{6} = \frac{21}{6} = 3.5
 \end{aligned}
 $$
-:::
-:::
 
--   [**Expected values**]{style="color:#E89543;"} are not necessarily an actual outcome
-    -   In this example, we cannot roll a 3.5
-    -   It could be that our expected value is not in the sample space ($E(X) \notin S$)
 -   3.5 is the long-run average: if we roll the die many, many times, the average of the rolls will be close to 3.5
 
 # Learning Objectives
@@ -166,9 +158,6 @@ What value do you expect to get on a roll?
 
 ## Let's simulate our not-so-fair die
 
-::: columns
-::: {.column width="60%"}
-
 - Same idea as Lesson 2: simulate many rolls, then summarize
 - `prob` gives the probability of each side, like the unfair coin in Lesson 1
 
@@ -188,19 +177,20 @@ X_sims <- tibble(sim = 1:reps) |> # <4>
 4. `tibble()` makes a table with one row per simulation, numbered 1 to 10,000. The pipe `|>` passes it to the next line.
 5. `mutate()` adds a column `X` with one roll per row. `prob = die_probs` makes 5 come up half the time, 4 about 30% of the time, and so on.
 
-:::
-::: {.column width="40%"}
-
- 
+::: columns
+::: column
 
 - Average of the 10,000 simulated rolls:
 
 ```{r}
-X_sims |> # <1>
-  summarise(average = mean(X)) # <1>
+X_sims |> # <6>
+  summarise(average = mean(X)) # <6>
 ```
 
-1. Collapse the 10,000 simulated values of `X` into one number: their average.
+6. Collapse the 10,000 simulated values of `X` into one number: their average.
+
+:::
+::: column 
 
  
 
@@ -211,7 +201,6 @@ From Example 2, $\mathbb{E}[X] = 1(0.10) + 2(0.05) + 3(0.02) + 4(0.30) + 5(0.50)
 The simulated average is very close!
 :::
 :::
-
 :::
 :::
 
@@ -222,18 +211,18 @@ The simulated average is very close!
 ```{r}
 #| code-fold: true
 #| code-summary: "Show/Hide Code for the running average plot"
-#| fig-width: 16
+#| fig-width: 10
 #| fig-height: 5.5
+#| fig-align: center
 
 X_sims |> # <1>
   mutate(running_avg = cumsum(X) / sim) |> # <2>
   ggplot(aes(x = sim, y = running_avg)) + # <3>
   geom_line(color = "#006a4e", linewidth = 1) + # <4>
   geom_hline(yintercept = 4.14, linetype = "dashed") + # <5>
-  labs(title = "Running Average of Simulated Rolls", # <6>
-       x = "Number of rolls", # <6>
+  labs(x = "Number of rolls", # <6>
        y = "Average so far") + # <6>
-  theme_minimal(base_size = 20) # <7>
+  theme_minimal(base_size = 26) # <7>
 ```
 
 1. Start with the 10,000 simulated rolls.

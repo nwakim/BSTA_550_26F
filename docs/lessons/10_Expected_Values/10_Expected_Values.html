@@ -267,8 +267,6 @@ Meike Niederhausen and Nicky Wakim
 </section>
 <section id="our-good-and-fair-friend-the-6-sided-die" class="slide level2">
 <h2>Our good and fair friend, the 6-sided die</h2>
-<div class="columns">
-<div class="column" style="width:40%;">
 <div class="example">
 <div class="ex-title">
 <p>Example 1</p>
@@ -277,7 +275,6 @@ Meike Niederhausen and Nicky Wakim
 <p>Suppose you roll a fair 6-sided die. What value do you expect to get?</p>
 </div>
 </div>
-</div><div class="column" style="width:60%;">
 <p>Let <span class="math inline">\(X\)</span> be the value rolled. Since the die is fair, <span class="math inline">\(p_X(x) = \frac{1}{6}\)</span> for <span class="math inline">\(x = 1, 2, \ldots, 6\)</span>.</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -286,13 +283,7 @@ Meike Niederhausen and Nicky Wakim
 &amp;= \frac{1 + 2 + 3 + 4 + 5 + 6}{6} = \frac{21}{6} = 3.5
 \end{aligned}
 \]</span></p>
-</div></div>
 <ul>
-<li><span style="color:#E89543;"><strong>Expected values</strong></span> are not necessarily an actual outcome
-<ul>
-<li>In this example, we cannot roll a 3.5</li>
-<li>It could be that our expected value is not in the sample space (<span class="math inline">\(E(X) \notin S\)</span>)</li>
-</ul></li>
 <li>3.5 is the long-run average: if we roll the die many, many times, the average of the rolls will be close to 3.5</li>
 </ul>
 </section></section>
@@ -364,58 +355,56 @@ Meike Niederhausen and Nicky Wakim
 </section>
 <section id="lets-simulate-our-not-so-fair-die" class="slide level2">
 <h2>Let’s simulate our not-so-fair die</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
 <ul>
 <li>Same idea as Lesson 2: simulate many rolls, then summarize</li>
 <li><code>prob</code> gives the probability of each side, like the unfair coin in Lesson 1</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">1026</span>)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2">2</button><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2" aria-label="2"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3">3</button><span id="annotated-cell-2-3" class="code-annotation-target"><a href="#annotated-cell-2-3" aria-label="3"></a>die_probs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.10</span>, <span class="fl">0.05</span>, <span class="fl">0.02</span>, <span class="fl">0.30</span>, <span class="fl">0.50</span>, <span class="fl">0.03</span>)</span>
-<span id="annotated-cell-2-4"><a href="#annotated-cell-2-4" aria-label="4"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="4">4</button><span id="annotated-cell-2-5" class="code-annotation-target"><a href="#annotated-cell-2-5" aria-label="5"></a>X_sims <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps) <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="5">5</button><span id="annotated-cell-2-6" class="code-annotation-target"><a href="#annotated-cell-2-6" aria-label="6"></a>  <span class="fu">mutate</span>(<span class="at">X =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="fu">n</span>(), <span class="at">replace =</span> <span class="cn">TRUE</span>,</span>
-<span id="annotated-cell-2-7"><a href="#annotated-cell-2-7" aria-label="7"></a>                    <span class="at">prob =</span> die_probs))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1" aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">1026</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2">2</button><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2" aria-label="2"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3">3</button><span id="annotated-cell-1-3" class="code-annotation-target"><a href="#annotated-cell-1-3" aria-label="3"></a>die_probs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.10</span>, <span class="fl">0.05</span>, <span class="fl">0.02</span>, <span class="fl">0.30</span>, <span class="fl">0.50</span>, <span class="fl">0.03</span>)</span>
+<span id="annotated-cell-1-4"><a href="#annotated-cell-1-4" aria-label="4"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="4">4</button><span id="annotated-cell-1-5" class="code-annotation-target"><a href="#annotated-cell-1-5" aria-label="5"></a>X_sims <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="5">5</button><span id="annotated-cell-1-6" class="code-annotation-target"><a href="#annotated-cell-1-6" aria-label="6"></a>  <span class="fu">mutate</span>(<span class="at">X =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="fu">n</span>(), <span class="at">replace =</span> <span class="cn">TRUE</span>,</span>
+<span id="annotated-cell-1-7"><a href="#annotated-cell-1-7" aria-label="7"></a>                    <span class="at">prob =</span> die_probs))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">Set the seed so we get the same random rolls every time we run the code.</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="1" data-code-annotation="1">Set the seed so we get the same random rolls every time we run the code.</span>
 </dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="2" data-code-annotation="2">Save the number of simulations as <code>reps</code>, so it is easy to change later.</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="2">Save the number of simulations as <code>reps</code>, so it is easy to change later.</span>
 </dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="3" data-code-annotation="3">The probability of rolling 1, 2, 3, 4, 5, and 6, from the table in Example 2.</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="3" data-code-annotation="3">The probability of rolling 1, 2, 3, 4, 5, and 6, from the table in Example 2.</span>
 </dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="5" data-code-annotation="4"><code>tibble()</code> makes a table with one row per simulation, numbered 1 to 10,000. The pipe <code>|&gt;</code> passes it to the next line.</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="5" data-code-annotation="4"><code>tibble()</code> makes a table with one row per simulation, numbered 1 to 10,000. The pipe <code>|&gt;</code> passes it to the next line.</span>
 </dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="6,7" data-code-annotation="5"><code>mutate()</code> adds a column <code>X</code> with one roll per row. <code>prob = die_probs</code> makes 5 come up half the time, 4 about 30% of the time, and so on.</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="6,7" data-code-annotation="5"><code>mutate()</code> adds a column <code>X</code> with one roll per row. <code>prob = die_probs</code> makes 5 come up half the time, 4 about 30% of the time, and so on.</span>
 </dd>
 </dl>
 </div>
 </div>
-</div><div class="column" style="width:40%;">
-<p>&nbsp;</p>
+<div class="columns">
+<div class="column">
 <ul>
 <li>Average of the 10,000 simulated rolls:</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1" aria-label="1"></a>X_sims <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="6">6</button><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1" aria-label="1"></a>X_sims <span class="sc">|&gt;</span></span>
 <span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-label="2"></a>  <span class="fu">summarise</span>(<span class="at">average =</span> <span class="fu">mean</span>(X))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="1,2" data-code-annotation="1">Collapse the 10,000 simulated values of <code>X</code> into one number: their average.</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="1,2" data-code-annotation="6">Collapse the 10,000 simulated values of <code>X</code> into one number: their average.</span>
 </dd>
 </dl>
 </div>
@@ -426,6 +415,7 @@ Meike Niederhausen and Nicky Wakim
 1    4.16</code></pre>
 </div>
 </div>
+</div><div class="column">
 <p>&nbsp;</p>
 <div class="proof1">
 <div class="proof-cont">
@@ -440,54 +430,53 @@ Meike Niederhausen and Nicky Wakim
 <ul>
 <li>The <span style="color:#E89543;"><strong>expected value</strong></span> is the long-run average: after many rolls, the average of the rolls gets close to 4.14 (dashed line)</li>
 </ul>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Show/Hide Code for the running average plot</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1" aria-label="1"></a>X_sims <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2">2</button><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2" aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">running_avg =</span> <span class="fu">cumsum</span>(X) <span class="sc">/</span> sim) <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3">3</button><span id="annotated-cell-1-3" class="code-annotation-target"><a href="#annotated-cell-1-3" aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> sim, <span class="at">y =</span> running_avg)) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="4">4</button><span id="annotated-cell-1-4" class="code-annotation-target"><a href="#annotated-cell-1-4" aria-label="4"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"#006a4e"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="5">5</button><span id="annotated-cell-1-5" class="code-annotation-target"><a href="#annotated-cell-1-5" aria-label="5"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">4.14</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="6">6</button><span id="annotated-cell-1-6" class="code-annotation-target"><a href="#annotated-cell-1-6" aria-label="6"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Running Average of Simulated Rolls"</span>,</span>
-<span id="annotated-cell-1-7"><a href="#annotated-cell-1-7" aria-label="7"></a>       <span class="at">x =</span> <span class="st">"Number of rolls"</span>,</span>
-<span id="annotated-cell-1-8"><a href="#annotated-cell-1-8" aria-label="8"></a>       <span class="at">y =</span> <span class="st">"Average so far"</span>) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="7">7</button><span id="annotated-cell-1-9" class="code-annotation-target"><a href="#annotated-cell-1-9" aria-label="9"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-label="1"></a>X_sims <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2">2</button><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2" aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">running_avg =</span> <span class="fu">cumsum</span>(X) <span class="sc">/</span> sim) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3">3</button><span id="annotated-cell-2-3" class="code-annotation-target"><a href="#annotated-cell-2-3" aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> sim, <span class="at">y =</span> running_avg)) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="4">4</button><span id="annotated-cell-2-4" class="code-annotation-target"><a href="#annotated-cell-2-4" aria-label="4"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"#006a4e"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="5">5</button><span id="annotated-cell-2-5" class="code-annotation-target"><a href="#annotated-cell-2-5" aria-label="5"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">4.14</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="6">6</button><span id="annotated-cell-2-6" class="code-annotation-target"><a href="#annotated-cell-2-6" aria-label="6"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Number of rolls"</span>,</span>
+<span id="annotated-cell-2-7"><a href="#annotated-cell-2-7" aria-label="7"></a>       <span class="at">y =</span> <span class="st">"Average so far"</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="7">7</button><span id="annotated-cell-2-8" class="code-annotation-target"><a href="#annotated-cell-2-8" aria-label="8"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">26</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="1" data-code-annotation="1">Start with the 10,000 simulated rolls.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">Start with the 10,000 simulated rolls.</span>
 </dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="2"><code>cumsum(X)</code> adds up the rolls so far (the running total). Dividing by <code>sim</code>, the number of rolls so far, gives the average so far.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="2" data-code-annotation="2"><code>cumsum(X)</code> adds up the rolls so far (the running total). Dividing by <code>sim</code>, the number of rolls so far, gives the average so far.</span>
 </dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="3" data-code-annotation="3">Start a plot with the number of rolls on the x-axis and the average so far on the y-axis. Layers are added with <code>+</code>.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="3" data-code-annotation="3">Start a plot with the number of rolls on the x-axis and the average so far on the y-axis. Layers are added with <code>+</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="4" data-code-annotation="4">Connect the averages with a line.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="4" data-code-annotation="4">Connect the averages with a line.</span>
 </dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="5" data-code-annotation="5">Add a dashed horizontal line at the exact expected value, 4.14.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="5" data-code-annotation="5">Add a dashed horizontal line at the exact expected value, 4.14.</span>
 </dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="6,7,8" data-code-annotation="6">Add a title and axis labels.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="6,7" data-code-annotation="6">Add a title and axis labels.</span>
 </dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="7">7</dt>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="9" data-code-annotation="7">Use a simple theme with larger text so the plot is readable on slides.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="8" data-code-annotation="7">Use a simple theme with larger text so the plot is readable on slides.</span>
 </dd>
 </dl>
 </div>
 
 </div>
-<img data-src="10_Expected_Values_files/figure-revealjs/unnamed-chunk-3-1.png" width="1536" class="r-stretch"></section>
+<img data-src="10_Expected_Values_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="expected-value-of-a-bernoulli-distribution" class="slide level2">
 <h2>Expected value of a Bernoulli distribution</h2>
 <div class="columns">

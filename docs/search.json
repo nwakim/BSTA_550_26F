@@ -28110,5 +28110,26 @@
     "title": "Lesson 15: Joint distributions",
     "section": "Double Integrals Mini Lesson (3/3)",
     "text": "Double Integrals Mini Lesson (3/3)\n\n\n\n\n\n\nDo this problem at home for extra practice. I’ll add the solution to the annotated notes!\n\n\n\n\n\n\n\nMini Lesson Example 3\n\n\nSolve the following integral: \\(\\displaystyle\\int_{2}^{3}\\displaystyle\\int_{0}^{1} e^{x+y} dydx\\)"
+  },
+  {
+    "objectID": "lessons/11_Variance/11_Variance.html#find-the-mean-and-sd-from-word-problem-13",
+    "href": "lessons/11_Variance/11_Variance.html#find-the-mean-and-sd-from-word-problem-13",
+    "title": "Lesson 11: Variance",
+    "section": "Find the mean and sd from word problem (1/3)",
+    "text": "Find the mean and sd from word problem (1/3)\n\n\n\n\nExample 7\n\n\nA machine manufactures cubes with a side length that varies uniformly from 1 to 2 inches. Assume the sides of the base and height are equal. The cost to make a cube is 10 ¢ per cubic inch, and 5 ¢ for the general cost per cube. Find the mean and standard deviation of the cost to make 10 cubes."
+  },
+  {
+    "objectID": "lessons/11_Variance/11_Variance.html#find-the-mean-and-sd-from-word-problem-23",
+    "href": "lessons/11_Variance/11_Variance.html#find-the-mean-and-sd-from-word-problem-23",
+    "title": "Lesson 11: Variance",
+    "section": "Find the mean and sd from word problem (2/3)",
+    "text": "Find the mean and sd from word problem (2/3)"
+  },
+  {
+    "objectID": "lessons/11_Variance/11_Variance.html#find-the-mean-and-sd-from-word-problem-33",
+    "href": "lessons/11_Variance/11_Variance.html#find-the-mean-and-sd-from-word-problem-33",
+    "title": "Lesson 11: Variance",
+    "section": "Find the mean and sd from word problem (3/3)",
+    "text": "Find the mean and sd from word problem (3/3)"
   }
 ]

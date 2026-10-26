@@ -58,22 +58,6 @@ library(tidyverse)
 5. Calculate expected value for joint densities (continuous RVs)
 
 
-## Our good and fair friend, the 6-sided die
-
-::: columns
-::: {.column width="40%"}
-::: example
-::: ex-title
-Example 1
-:::
-
-::: ex-cont
-Suppose you roll a fair 6-sided die. What value do you expect to get?
-:::
-:::
-:::
-:::
-
 ## What is an expected value?
 
 ::: columns
@@ -104,10 +88,40 @@ The [**expected value**]{style="color:#E89543;"} of a [**continuous RV**]{style=
 
 :::
 
--   [**Expected values**]{style="color:#E89543;"} are not necessarily an actual outcome
-    -   In previous example, we cannot roll a 3.5
-    -   It could be that our expected value is not in the sample space ($E(X) \notin S$)
 
+
+## Our good and fair friend, the 6-sided die
+
+::: columns
+::: {.column width="40%"}
+::: example
+::: ex-title
+Example 1
+:::
+
+::: ex-cont
+Suppose you roll a fair 6-sided die. What value do you expect to get?
+:::
+:::
+:::
+
+::: {.column width="60%"}
+Let $X$ be the value rolled. Since the die is fair, $p_X(x) = \frac{1}{6}$ for $x = 1, 2, \ldots, 6$.
+
+$$
+\begin{aligned}
+\mathbb{E}[X] &= \sum_{i=1}^{6} x_i\,p_X(x_i) \\
+&= 1\left(\tfrac{1}{6}\right) + 2\left(\tfrac{1}{6}\right) + 3\left(\tfrac{1}{6}\right) + 4\left(\tfrac{1}{6}\right) + 5\left(\tfrac{1}{6}\right) + 6\left(\tfrac{1}{6}\right) \\
+&= \frac{1 + 2 + 3 + 4 + 5 + 6}{6} = \frac{21}{6} = 3.5
+\end{aligned}
+$$
+:::
+:::
+
+-   [**Expected values**]{style="color:#E89543;"} are not necessarily an actual outcome
+    -   In this example, we cannot roll a 3.5
+    -   It could be that our expected value is not in the sample space ($E(X) \notin S$)
+-   3.5 is the long-run average: if we roll the die many, many times, the average of the rolls will be close to 3.5
 
 # Learning Objectives
 

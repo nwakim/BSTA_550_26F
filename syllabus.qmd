@@ -198,7 +198,7 @@ There are 4 checkpoints, each worth an equal share of the 32%. Each one is grade
 
 | Checkpoint | Points back on resubmission | Resubmission deadline |
 |------------|-----------------------------|-----------------------|
-| Checkpoints 0 and 1 | **Full credit** back | Checkpoint 0: we'll set aside class time to work on resubmissions. Checkpoint 1: deadline will be announced on Brightspace |
+| Checkpoints 0 and 1 | **Full credit** back | Checkpoint 0: we'll set aside class time to work on resubmissions. Checkpoint 1: resubmit on Brightspace by **11/4** |
 | Checkpoints 2 and 3 | **Half credit** back | Resubmit on Brightspace **within 1 week** of when feedback is published |
 
 For example, if you lose 4 points on Checkpoint 2 and fix everything in your resubmission, you'll earn back 2 points. Resubmit the same way as the original: on Brightspace, as a rendered HTML file plus your `.qmd` file.

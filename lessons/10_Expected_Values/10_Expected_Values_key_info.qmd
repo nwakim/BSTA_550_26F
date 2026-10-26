@@ -17,15 +17,15 @@ source(here("class_dates.R"))
 
 - Quiz 1 looks good! People got at most 1 question wrong
 - Have time dedicated today to look at resubmissions for checkpoint 0
-  - For future resubmissions, please put back on Brightspace within 1 week of published feedback
-  - For this checkpoint, we'll do full credit back!
-  - For future checkpoints, we'll do half credit back!
+  - For future resubmissions (checkpoint 2 and 3), please put back on Brightspace within 1 week of published feedback
+  - For checkpoint 0 and 1, we'll do full credit back!
+  - For future checkpoints (2 and 3), we'll do half credit back!
 
 
 ## Key Dates
 
 - Homework 3 due `r hw3 %>% format("%m/%d")` at 11pm
-- Homework 4 due `r hw3 %>% format("%m/%d")` at 11pm
-- Quiz 1 opens on `r q1_open %>% format("%m/%d")` at 3pm
-  - Closes `r q1_close %>% format("%m/%d")` at 11pm
+- Homework 4 due `r hw4 %>% format("%m/%d")` at 11pm
+- Quiz 2 opens on `r q2_open %>% format("%m/%d")` at 3pm
+  - Closes `r q2_close %>% format("%m/%d")` at 11pm
 

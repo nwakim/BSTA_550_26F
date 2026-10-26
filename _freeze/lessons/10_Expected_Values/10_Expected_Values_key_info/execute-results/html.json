@@ -1,8 +1,8 @@
 {
-  "hash": "3afd79621eebb45360c91a2bd13be418",
+  "hash": "2e54ac7c95687429fa42bb07b3ebfc9d",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Key Info\"\ndate-modified: \"today\"\nformat: \n  html:\n    link-external-newwindow: true\neditor_options: \n  chunk_output_type: console\n---\n\n\n\n## Announcements\n\n- Quiz 1 looks good! People got at most 1 question wrong\n- Have time dedicated today to look at resubmissions for checkpoint 0\n  - For future resubmissions, please put back on Brightspace within 1 week of published feedback\n  - For this checkpoint, we'll do full credit back!\n  - For future checkpoints, we'll do half credit back!\n\n\n## Key Dates\n\n- Homework 3 due 11/01 at 11pm\n- Homework 4 due 11/01 at 11pm\n- Quiz 1 opens on 10/21 at 3pm\n  - Closes 10/25 at 11pm\n\n",
+    "markdown": "---\ntitle: \"Key Info\"\ndate-modified: \"today\"\nformat: \n  html:\n    link-external-newwindow: true\neditor_options: \n  chunk_output_type: console\n---\n\n\n\n## Announcements\n\n- Quiz 1 looks good! People got at most 1 question wrong\n- Have time dedicated today to look at resubmissions for checkpoint 0\n  - For future resubmissions (checkpoint 2 and 3), please put back on Brightspace within 1 week of published feedback\n  - For checkpoint 0 and 1, we'll do full credit back!\n  - For future checkpoints (2 and 3), we'll do half credit back!\n\n\n## Key Dates\n\n- Homework 3 due 11/01 at 11pm\n- Homework 4 due 11/08 at 11pm\n- Quiz 2 opens on 11/04 at 3pm\n  - Closes 11/08 at 11pm\n\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

@@ -27886,5 +27886,40 @@
     "title": "Chapter 9: Independence and Conditioning (Joint Distributions)",
     "section": "Hypothetical 4-sided die",
     "text": "Hypothetical 4-sided die\n\n\nExample 3\n\n\n\nSuppose you have a 4-sided die, and you roll the 4-sided die until the first 4 appears.\nLet \\(X\\) be the number of rolls required until (and including) the first 4.\nAfter the first 4, you keep rolling it again until you roll a 3.\nLet \\(Y\\) be the number of rolls, after the first 4, required until (and including) the 3.\n\n\nFind \\(p_{X,Y}(x,y)\\).\nUsing \\(p_{X,Y}(x,y)\\), find \\(p_{Y}(y)\\).\nFind \\(p_{X}(x)\\).\nAre \\(X\\) and \\(Y\\) are independent? Why or why not?\nFind \\(F_{X,Y}(x,y)\\)."
+  },
+  {
+    "objectID": "lessons/10_Expected_Values/10_Expected_Values.html#picking-up-our-exponential-simulation-from-lesson-9",
+    "href": "lessons/10_Expected_Values/10_Expected_Values.html#picking-up-our-exponential-simulation-from-lesson-9",
+    "title": "Lesson 10: Expected Values",
+    "section": "Picking up our exponential simulation from Lesson 9",
+    "text": "Picking up our exponential simulation from Lesson 9\n\nIn Lesson 9 (Example 4), we simulated \\(X\\) with pdf \\(f_X(x) = 2e^{-2x}\\): Example 6 with \\(\\lambda = 2\\)\nSame code as Lesson 9, so we get the same 10,000 simulated values\n\n\n1set.seed(2026)\nreps &lt;- 10000\n2exp_sims &lt;- tibble(u = runif(n = reps, min = 0, max = 1)) |&gt;\n  mutate(x = -log(1 - u) / 2)\n\n\n1\n\nSame seed and number of simulations as Lesson 9, so exp_sims matches the values we saw there.\n\n2\n\nSame as Lesson 9: simulate a uniform \\(U\\) between 0 and 1, then plug it into the inverse CDF, \\(x = -\\ln(1-u)/2\\).\n\n\n\n\n\n\n\nNew step: the average of the 10,000 simulated values\n\n\n3exp_sims |&gt;\n  summarise(average = mean(x))\n\n\n3\n\nThe only new code: collapse the simulated values of x into their average, just like the die rolls.\n\n\n\n\n# A tibble: 1 × 1\n  average\n    &lt;dbl&gt;\n1   0.498\n\n\n\n \n\n\nFrom Example 6, \\(\\mathbb{E}[X] = \\frac{1}{\\lambda} = \\frac{1}{2}\\)\nThe simulated average is very close!"
+  },
+  {
+    "objectID": "lessons/10_Expected_Values/10_Expected_Values.html#lets-simulate-the-cost-of-hotel-rooms",
+    "href": "lessons/10_Expected_Values/10_Expected_Values.html#lets-simulate-the-cost-of-hotel-rooms",
+    "title": "Lesson 10: Expected Values",
+    "section": "Let’s simulate the cost of hotel rooms",
+    "text": "Let’s simulate the cost of hotel rooms\n\nAssume each room is equally likely to cost $180, $200, or $220, so the average price is $200\n\n\n\n\n1reps &lt;- 10000\nn_rooms &lt;- 30\n2room_prices &lt;- c(180, 200, 220)\n\n3rooms &lt;- expand_grid(sim = 1:reps, room = 1:n_rooms) |&gt;\n4  mutate(price = sample(room_prices, n(), replace = TRUE),\n5         cost = 1.1 * price)\n\n6cost_sims &lt;- rooms |&gt;\n  group_by(sim) |&gt;\n  summarise(total_cost = sum(cost))\n\n\n1\n\nSave the settings: 10,000 simulations of booking 30 rooms.\n\n2\n\nThe possible room prices. Their average is $200.\n\n3\n\nSame as the dice in Lesson 2: one row for every room in every simulation.\n\n4\n\nGive each room a random price from room_prices.\n\n5\n\nAdd the 10% tax: each room costs 1.1 times its price.\n\n6\n\nAdd up the 30 room costs in each simulation to get the total cost.\n\n\n\n\n\n\n\n\nrooms\n\n# A tibble: 300,000 × 4\n     sim  room price  cost\n   &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1     1     1   200   220\n 2     1     2   220   242\n 3     1     3   180   198\n 4     1     4   220   242\n 5     1     5   200   220\n 6     1     6   200   220\n 7     1     7   180   198\n 8     1     8   180   198\n 9     1     9   220   242\n10     1    10   180   198\n# ℹ 299,990 more rows"
+  },
+  {
+    "objectID": "lessons/10_Expected_Values/10_Expected_Values.html#section",
+    "href": "lessons/10_Expected_Values/10_Expected_Values.html#section",
+    "title": "Lesson 10: Expected Values",
+    "section": "",
+    "text": "Average total cost over the 10,000 simulations:\n\n\n7cost_sims |&gt;\n  summarise(average = mean(total_cost))\n\n\n7\n\nCollapse the 10,000 simulated total costs into their average.\n\n\n\n\n# A tibble: 1 × 1\n  average\n    &lt;dbl&gt;\n1   6599.\n\n\n \n\n\nFrom Example 8, \\(\\mathbb{E}\\left[\\sum_{i=1}^{30} 1.1X_i\\right] = 30(1.1)(200) = \\$6600\\)\n\n\n\nAny room prices with an average of $200 give the same expected total. Try changing room_prices!"
+  },
+  {
+    "objectID": "lessons/10_Expected_Values/10_Expected_Values.html#lets-simulate-the-cost-of-hotel-rooms-12",
+    "href": "lessons/10_Expected_Values/10_Expected_Values.html#lets-simulate-the-cost-of-hotel-rooms-12",
+    "title": "Lesson 10: Expected Values",
+    "section": "Let’s simulate the cost of hotel rooms (1/2)",
+    "text": "Let’s simulate the cost of hotel rooms (1/2)\n\nAssume each room is equally likely to cost $180, $200, or $220, so the average price is $200\n\n\n\n\n1reps &lt;- 10000\nn_rooms &lt;- 30\n2room_prices &lt;- c(180, 200, 220)\n\n3rooms &lt;- expand_grid(sim = 1:reps, room = 1:n_rooms) |&gt;\n4  mutate(price = sample(room_prices, n(), replace = TRUE),\n5         cost = 1.1 * price)\n\n6cost_sims &lt;- rooms |&gt;\n  group_by(sim) |&gt;\n  summarise(total_cost = sum(cost))\n\n\n1\n\nSave the settings: 10,000 simulations of booking 30 rooms.\n\n2\n\nThe possible room prices. Their average is $200.\n\n3\n\nSame as the dice in Lesson 2: one row for every room in every simulation.\n\n4\n\nGive each room a random price from room_prices.\n\n5\n\nAdd the 10% tax: each room costs 1.1 times its price.\n\n6\n\nAdd up the 30 room costs in each simulation to get the total cost.\n\n\n\n\n\n\n\n\nrooms\n\n# A tibble: 300,000 × 4\n     sim  room price  cost\n   &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1     1     1   200   220\n 2     1     2   220   242\n 3     1     3   180   198\n 4     1     4   220   242\n 5     1     5   200   220\n 6     1     6   200   220\n 7     1     7   180   198\n 8     1     8   180   198\n 9     1     9   220   242\n10     1    10   180   198\n# ℹ 299,990 more rows"
+  },
+  {
+    "objectID": "lessons/10_Expected_Values/10_Expected_Values.html#lets-simulate-the-cost-of-hotel-rooms-22",
+    "href": "lessons/10_Expected_Values/10_Expected_Values.html#lets-simulate-the-cost-of-hotel-rooms-22",
+    "title": "Lesson 10: Expected Values",
+    "section": "Let’s simulate the cost of hotel rooms (2/2)",
+    "text": "Let’s simulate the cost of hotel rooms (2/2)\n\nAverage total cost over the 10,000 simulations:\n\n\n7cost_sims |&gt;\n  summarise(average = mean(total_cost))\n\n\n7\n\nCollapse the 10,000 simulated total costs into their average.\n\n\n\n\n# A tibble: 1 × 1\n  average\n    &lt;dbl&gt;\n1   6599.\n\n\n \n\n\nFrom Example 8, \\(\\mathbb{E}\\left[\\sum_{i=1}^{30} 1.1X_i\\right] = 30(1.1)(200) = \\$6600\\)\n\n\n\nAny room prices with an average of $200 give the same expected total. Try changing room_prices!"
   }
 ]

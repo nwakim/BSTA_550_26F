@@ -220,7 +220,6 @@ Meike Niederhausen and Nicky Wakim
 <li><p>Calculate the expected value (mean) of a single discrete RV</p></li>
 <li><p>Calculate the expected value (mean) of a single continuous RV</p></li>
 <li><p>Calculate expected value for the sum of discrete or continuous RVs</p></li>
-<li><p>Calculate expected value for joint densities (continuous RVs)</p></li>
 </ol>
 </section>
 <section id="where-are-we" class="slide level2">
@@ -239,7 +238,6 @@ Meike Niederhausen and Nicky Wakim
 <li><p>Calculate the expected value (mean) of a single discrete RV</p></li>
 <li><p>Calculate the expected value (mean) of a single continuous RV</p></li>
 <li><p>Calculate expected value for the sum of discrete or continuous RVs</p></li>
-<li><p>Calculate expected value for joint densities (continuous RVs)</p></li>
 </ol>
 </section>
 <section id="what-is-an-expected-value" class="slide level2">
@@ -301,7 +299,6 @@ Meike Niederhausen and Nicky Wakim
 <ol start="3" type="1">
 <li><p>Calculate the expected value (mean) of a single continuous RV</p></li>
 <li><p>Calculate expected value for the sum of discrete or continuous RVs</p></li>
-<li><p>Calculate expected value for joint densities (continuous RVs)</p></li>
 </ol>
 </section>
 <section id="our-good-and-not-so-fair-friend-the-6-sided-die" class="slide level2">
@@ -398,13 +395,13 @@ Meike Niederhausen and Nicky Wakim
 <li>Average of the 10,000 simulated rolls:</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="6">6</button><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1" aria-label="1"></a>X_sims <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-label="2"></a>  <span class="fu">summarise</span>(<span class="at">average =</span> <span class="fu">mean</span>(X))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="6">6</button><span id="annotated-cell-5-1" class="code-annotation-target"><a href="#annotated-cell-5-1" aria-label="1"></a>X_sims <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-5-2"><a href="#annotated-cell-5-2" aria-label="2"></a>  <span class="fu">summarise</span>(<span class="at">average =</span> <span class="fu">mean</span>(X))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-3" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="1,2" data-code-annotation="6">Collapse the 10,000 simulated values of <code>X</code> into one number: their average.</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="1,2" data-code-annotation="6">Collapse the 10,000 simulated values of <code>X</code> into one number: their average.</span>
 </dd>
 </dl>
 </div>
@@ -531,8 +528,7 @@ Meike Niederhausen and Nicky Wakim
 </ol>
 </div>
 <ol start="4" type="1">
-<li><p>Calculate expected value for the sum of discrete or continuous RVs</p></li>
-<li><p>Calculate expected value for joint densities (continuous RVs)</p></li>
+<li>Calculate expected value for the sum of discrete or continuous RVs</li>
 </ol>
 </section>
 <section id="expected-value-of-the-uniform-distribution" class="slide level2">
@@ -579,6 +575,63 @@ Meike Niederhausen and Nicky Wakim
 </div>
 </div>
 </div></div>
+</section>
+<section id="picking-up-our-exponential-simulation-from-lesson-9" class="slide level2">
+<h2>Picking up our exponential simulation from Lesson 9</h2>
+<ul>
+<li>In Lesson 9 (Example 4), we simulated <span class="math inline">\(X\)</span> with pdf <span class="math inline">\(f_X(x) = 2e^{-2x}\)</span>: Example 6 with <span class="math inline">\(\lambda = 2\)</span></li>
+<li>Same code as Lesson 9, so we get the same 10,000 simulated values</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1" aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">2026</span>)</span>
+<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-label="2"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2">2</button><span id="annotated-cell-3-3" class="code-annotation-target"><a href="#annotated-cell-3-3" aria-label="3"></a>exp_sims <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">u =</span> <span class="fu">runif</span>(<span class="at">n =</span> reps, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">1</span>)) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-3-4"><a href="#annotated-cell-3-4" aria-label="4"></a>  <span class="fu">mutate</span>(<span class="at">x =</span> <span class="sc">-</span><span class="fu">log</span>(<span class="dv">1</span> <span class="sc">-</span> u) <span class="sc">/</span> <span class="dv">2</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="1,2" data-code-annotation="1">Same seed and number of simulations as Lesson 9, so <code>exp_sims</code> matches the values we saw there.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="3,4" data-code-annotation="2">Same as Lesson 9: simulate a uniform <span class="math inline">\(U\)</span> between 0 and 1, then plug it into the inverse CDF, <span class="math inline">\(x = -\ln(1-u)/2\)</span>.</span>
+</dd>
+</dl>
+</div>
+</div>
+<div class="columns">
+<div class="column">
+<ul>
+<li>New step: the average of the 10,000 simulated values</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="3">3</button><span id="annotated-cell-7-1" class="code-annotation-target"><a href="#annotated-cell-7-1" aria-label="1"></a>exp_sims <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-7-2"><a href="#annotated-cell-7-2" aria-label="2"></a>  <span class="fu">summarise</span>(<span class="at">average =</span> <span class="fu">mean</span>(x))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-7" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="1,2" data-code-annotation="3">The only new code: collapse the simulated values of <code>x</code> into their average, just like the die rolls.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  average
+    &lt;dbl&gt;
+1   0.498</code></pre>
+</div>
+</div>
+</div><div class="column">
+<p>&nbsp;</p>
+<div class="proof1">
+<div class="proof-cont">
+<p>From Example 6, <span class="math inline">\(\mathbb{E}[X] = \frac{1}{\lambda} = \frac{1}{2}\)</span></p>
+<p>The simulated average is very close!</p>
+</div>
+</div>
+</div></div>
 </section></section>
 <section>
 <section id="learning-objectives-4" class="title-slide slide level1 center">
@@ -593,9 +646,6 @@ Meike Niederhausen and Nicky Wakim
 <li>Calculate expected value for the sum of discrete or continuous RVs</li>
 </ol>
 </div>
-<ol start="5" type="1">
-<li>Calculate expected value for joint densities (continuous RVs)</li>
-</ol>
 </section>
 <section id="revisiting-our-two-card-draw" class="slide level2">
 <h2>Revisiting our two card draw</h2>
@@ -674,8 +724,112 @@ Meike Niederhausen and Nicky Wakim
 </div>
 </div>
 </div></div>
+</section>
+<section id="lets-simulate-the-cost-of-hotel-rooms-12" class="slide level2">
+<h2>Let’s simulate the cost of hotel rooms (1/2)</h2>
+<ul>
+<li>Assume each room is equally likely to cost $180, $200, or $220, so the average price is $200</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-9"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1">1</button><span id="annotated-cell-9-1" class="code-annotation-target"><a href="#annotated-cell-9-1" aria-label="1"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="annotated-cell-9-2"><a href="#annotated-cell-9-2" aria-label="2"></a>n_rooms <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2">2</button><span id="annotated-cell-9-3" class="code-annotation-target"><a href="#annotated-cell-9-3" aria-label="3"></a>room_prices <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">180</span>, <span class="dv">200</span>, <span class="dv">220</span>)</span>
+<span id="annotated-cell-9-4"><a href="#annotated-cell-9-4" aria-label="4"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="3">3</button><span id="annotated-cell-9-5" class="code-annotation-target"><a href="#annotated-cell-9-5" aria-label="5"></a>rooms <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps, <span class="at">room =</span> <span class="dv">1</span><span class="sc">:</span>n_rooms) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="4">4</button><span id="annotated-cell-9-6" class="code-annotation-target"><a href="#annotated-cell-9-6" aria-label="6"></a>  <span class="fu">mutate</span>(<span class="at">price =</span> <span class="fu">sample</span>(room_prices, <span class="fu">n</span>(), <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="5">5</button><span id="annotated-cell-9-7" class="code-annotation-target"><a href="#annotated-cell-9-7" aria-label="7"></a>         <span class="at">cost =</span> <span class="fl">1.1</span> <span class="sc">*</span> price)</span>
+<span id="annotated-cell-9-8"><a href="#annotated-cell-9-8" aria-label="8"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="6">6</button><span id="annotated-cell-9-9" class="code-annotation-target"><a href="#annotated-cell-9-9" aria-label="9"></a>cost_sims <span class="ot">&lt;-</span> rooms <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-9-10"><a href="#annotated-cell-9-10" aria-label="10"></a>  <span class="fu">group_by</span>(sim) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-9-11"><a href="#annotated-cell-9-11" aria-label="11"></a>  <span class="fu">summarise</span>(<span class="at">total_cost =</span> <span class="fu">sum</span>(cost))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="1,2" data-code-annotation="1">Save the settings: 10,000 simulations of booking 30 rooms.</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="3" data-code-annotation="2">The possible room prices. Their average is $200.</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="5" data-code-annotation="3">Same as the dice in Lesson 2: one row for every room in every simulation.</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="6" data-code-annotation="4">Give each room a random price from <code>room_prices</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="7" data-code-annotation="5">Add the 10% tax: each room costs 1.1 times its price.</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="9,10,11" data-code-annotation="6">Add up the 30 room costs in each simulation to get the total cost.</span>
+</dd>
+</dl>
+</div>
+</div>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:28%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a>rooms</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 300,000 × 4
+     sim  room price  cost
+   &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1     1     1   200   220
+ 2     1     2   220   242
+ 3     1     3   180   198
+ 4     1     4   220   242
+ 5     1     5   200   220
+ 6     1     6   200   220
+ 7     1     7   180   198
+ 8     1     8   180   198
+ 9     1     9   220   242
+10     1    10   180   198
+# ℹ 299,990 more rows</code></pre>
+</div>
+</div>
+</div></div>
+</section>
+<section id="lets-simulate-the-cost-of-hotel-rooms-22" class="slide level2">
+<h2>Let’s simulate the cost of hotel rooms (2/2)</h2>
+<ul>
+<li>Average total cost over the 10,000 simulations:</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="7">7</button><span id="annotated-cell-4-1" class="code-annotation-target"><a href="#annotated-cell-4-1" aria-label="1"></a>cost_sims <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-4-2"><a href="#annotated-cell-4-2" aria-label="2"></a>  <span class="fu">summarise</span>(<span class="at">average =</span> <span class="fu">mean</span>(total_cost))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-4" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="1,2" data-code-annotation="7">Collapse the 10,000 simulated total costs into their average.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  average
+    &lt;dbl&gt;
+1   6599.</code></pre>
+</div>
+</div>
+<p>&nbsp;</p>
+<div class="proof1">
+<div class="proof-cont">
+<p>From Example 8, <span class="math inline">\(\mathbb{E}\left[\sum_{i=1}^{30} 1.1X_i\right] = 30(1.1)(200) = \$6600\)</span></p>
+</div>
+</div>
+<ul>
+<li>Any room prices with an average of $200 give the same expected total. Try changing <code>room_prices</code>!</li>
+</ul>
 </section></section>
-<section>
 <section id="learning-objectives-5" class="title-slide slide level1 center">
 <h1>Learning Objectives</h1>
 <ol type="1">
@@ -683,60 +837,6 @@ Meike Niederhausen and Nicky Wakim
 <li><p>Calculate the expected value (mean) of a single discrete RV</p></li>
 <li><p>Calculate the expected value (mean) of a single continuous RV</p></li>
 <li><p>Calculate expected value for the sum of discrete or continuous RVs</p></li>
-</ol>
-<div class="lob">
-<ol start="5" type="1">
-<li>Calculate expected value for joint densities (continuous RVs)</li>
-</ol>
-</div>
-</section>
-<section id="expected-value-of-one-rv-from-joint-pdf" class="slide level2">
-<h2>Expected value of one RV from joint pdf</h2>
-<p>If you have a joint distribution <span class="math inline">\(f_{X,Y}(x,y)\)</span> and want to calculate <span class="math inline">\(\mathbb{E}[X]\)</span>, you have two options:</p>
-<ol type="1">
-<li><p>Find <span class="math inline">\(f_X(x)\)</span> and use it to calculate <span class="math inline">\(\mathbb{E}[X]\)</span>.</p></li>
-<li><p>Calculate <span class="math inline">\(\mathbb{E}[X]\)</span> using the joint density: <span class="math display">\[\mathbb{E}[X] = \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}x f_{X,Y}(x,y)dydx.\]</span></p></li>
-</ol>
-<p>You can do the same for <span class="math inline">\(\mathbb{E}[Y]\)</span>!</p>
-</section>
-<section id="option-1-find-marginal-first" class="slide level2">
-<h2>Option 1: Find marginal first</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
-<div class="example">
-<div class="ex-title">
-<p>Example 9</p>
-</div>
-<div class="ex-cont">
-<p>Let <span class="math inline">\(f_{X,Y}(x,y)= 2e^{-(x+y)}\)</span>, for <span class="math inline">\(0 \leq x \leq y\)</span>. Find <span class="math inline">\(\mathbb{E}[X]\)</span>.</p>
-</div>
-</div>
-</div><div class="column" style="width:70%;">
-<p>Do this one at home by finding <span class="math inline">\(f_X(x)\)</span> then <span class="math inline">\(\mathbb{E}[X] = \displaystyle\int_{-\infty}^\infty xf_X(x) dx\)</span>. See if you get the same result as next page’s answer!</p>
-</div></div>
-</section>
-<section id="option-2-expected-value-from-a-joint-distribution" class="slide level2">
-<h2>Option 2: Expected value from a joint distribution</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
-<div class="example">
-<div class="ex-title">
-<p>Example 9</p>
-</div>
-<div class="ex-cont">
-<p>Let <span class="math inline">\(f_{X,Y}(x,y)= 2e^{-(x+y)}\)</span>, for <span class="math inline">\(0 \leq x \leq y\)</span>. Find <span class="math inline">\(\mathbb{E}[X]\)</span>.</p>
-</div>
-</div>
-</div></div>
-</section></section>
-<section id="learning-objectives-6" class="title-slide slide level1 center">
-<h1>Learning Objectives</h1>
-<ol type="1">
-<li><p>Define the expected value for discrete and continuous RVs</p></li>
-<li><p>Calculate the expected value (mean) of a single discrete RV</p></li>
-<li><p>Calculate the expected value (mean) of a single continuous RV</p></li>
-<li><p>Calculate expected value for the sum of discrete or continuous RVs</p></li>
-<li><p>Calculate expected value for joint densities (continuous RVs)</p></li>
 </ol>
 
 

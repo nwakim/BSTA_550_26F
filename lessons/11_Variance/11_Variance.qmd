@@ -254,9 +254,108 @@ The variance of a RV $X$, can be computed as $$\begin{align}
 :::
 :::
 :::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="65%"}
+**Plan:** start from the definition of variance, expand the square, and use what we know about expected values
+
+ 
+
+Two facts from Lesson 10 that we will use:
+
+- $\mu_X = \mathbb{E}[X]$ is a constant number, not a random variable
+- For constants $a$ and $b$: $\mathbb{E}[aX + b] = a\mathbb{E}[X] + b$
+    - The expected value of a sum is the sum of the expected values
+    - Constants can come outside of the expected value
+:::
 :::
 
 ## Let's calculate the variance and prove it! (2/2)
+
+::: columns
+::: {.column width="30%"}
+::: proof1
+::: proof-title
+Lemma 6: "Computation formula" for Variance
+:::
+
+::: proof-cont
+The variance of a RV $X$, can be computed as $$\begin{align}
+\sigma_X^2 & =Var(X) \\ & = \mathbb{E}[X^2]-\mu_X^2 \\ & = \mathbb{E}[X^2] - (\mathbb{E}[X])^2
+\end{align}$$
+:::
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="65%"}
+::::: {.proof-step}
+:::: columns
+::: {.column width="55%"}
+$\displaystyle Var(X) = \mathbb{E}[(X-\mu_X)^2]$
+:::
+::: {.column width="45%"}
+definition of variance
+:::
+::::
+:::::
+
+::::: fragment
+:::: columns
+::: {.column width="55%"}
+$\displaystyle \phantom{Var(X)} = \mathbb{E}[X^2 - 2\mu_X X + \mu_X^2]$
+:::
+::: {.column width="45%"}
+expand the square
+:::
+::::
+:::::
+
+::::: fragment
+:::: columns
+::: {.column width="55%"}
+$\displaystyle \phantom{Var(X)} = \mathbb{E}[X^2] - 2\mu_X\mathbb{E}[X] + \mu_X^2$
+:::
+::: {.column width="45%"}
+split the sum; $\mu_X$ is constant
+:::
+::::
+:::::
+
+::::: fragment
+:::: columns
+::: {.column width="55%"}
+$\displaystyle \phantom{Var(X)} = \mathbb{E}[X^2] - 2\mu_X^2 + \mu_X^2$
+:::
+::: {.column width="45%"}
+$\mathbb{E}[X] = \mu_X$
+:::
+::::
+:::::
+
+::::: fragment
+:::: columns
+::: {.column width="55%"}
+$\displaystyle \phantom{Var(X)} = \mathbb{E}[X^2] - \mu_X^2$
+:::
+::: {.column width="45%"}
+combine the $\mu_X^2$ terms
+:::
+::::
+:::::
+
+ 
+
+::: fragment
+- This works for both discrete and continuous RVs!
+- Want to see it written out with sums for a discrete RV? See the [muddy points](11_Variance_muddy_points.qmd) for this lesson.
+:::
+:::
+:::
 
 ## Let's simulate the card example
 

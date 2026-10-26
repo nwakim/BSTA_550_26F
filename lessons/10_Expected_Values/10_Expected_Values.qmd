@@ -36,8 +36,6 @@ library(tidyverse)
 
 4. Calculate expected value for the sum of discrete or continuous RVs
 
-5. Calculate expected value for joint densities (continuous RVs)
-
 
 ## Where are we?
 
@@ -54,8 +52,6 @@ library(tidyverse)
 3. Calculate the expected value (mean) of a single continuous RV
 
 4. Calculate expected value for the sum of discrete or continuous RVs
-
-5. Calculate expected value for joint densities (continuous RVs)
 
 
 ## What is an expected value?
@@ -126,8 +122,6 @@ $$
 3. Calculate the expected value (mean) of a single continuous RV
 
 4. Calculate expected value for the sum of discrete or continuous RVs
-
-5. Calculate expected value for joint densities (continuous RVs)
 
 ## Our good and not-so-fair friend, the 6-sided die
 
@@ -329,8 +323,6 @@ Both examples are repeated random processes. They are fundamentally different th
 
 4. Calculate expected value for the sum of discrete or continuous RVs
 
-5. Calculate expected value for joint densities (continuous RVs)
-
 ## Expected Value of the Uniform Distribution
 
 ::: columns
@@ -402,8 +394,6 @@ $\displaystyle\int_a^b u dv = uv\bigg|^b_a - \displaystyle\int_a^b vdu$
 ::: lob
 4. Calculate expected value for the sum of discrete or continuous RVs
 :::
-
-5. Calculate expected value for joint densities (continuous RVs)
 
 ## Revisiting our two card draw
 
@@ -530,72 +520,4 @@ A tour group is planning a visit to the city of Minneapolis and needs to book 30
 3. Calculate the expected value (mean) of a single continuous RV
 
 4. Calculate expected value for the sum of discrete or continuous RVs
-
-::: lob
-5. Calculate expected value for joint densities (continuous RVs)
-:::
-
-## Expected value of one RV from joint pdf
-
-If you have a joint distribution $f_{X,Y}(x,y)$ and want to calculate $\mathbb{E}[X]$,
-you have two options:
-
-1.  Find $f_X(x)$ and use it to calculate $\mathbb{E}[X]$.
-
-2.  Calculate $\mathbb{E}[X]$ using the joint density:
-    $$\mathbb{E}[X] = \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}x f_{X,Y}(x,y)dydx.$$
-    
-    
-You can do the same for $\mathbb{E}[Y]$!
-
-## Option 1: Find marginal first
-
-::: columns
-::: {.column width="30%"}
-::: example
-::: ex-title
-Example 9
-:::
-::: ex-cont
-Let $f_{X,Y}(x,y)= 2e^{-(x+y)}$, for
-$0 \leq x \leq y$. Find $\mathbb{E}[X]$.
-:::
-:::
-
-
-:::
-
-::: {.column width="70%"}
-Do this one at home by finding $f_X(x)$ then $\mathbb{E}[X] = \displaystyle\int_{-\infty}^\infty xf_X(x) dx$. See if you get the same result as next page's answer!
-:::
-:::
-
-## Option 2: Expected value from a joint distribution
-
-::: columns
-::: {.column width="30%"}
-::: example
-::: ex-title
-Example 9
-:::
-
-::: ex-cont
-Let $f_{X,Y}(x,y)= 2e^{-(x+y)}$, for $0 \leq x \leq y$. Find
-$\mathbb{E}[X]$.
-:::
-:::
-:::
-:::
-
-# Learning Objectives
-
-1. Define the expected value for discrete and continuous RVs
-
-2. Calculate the expected value (mean) of a single discrete RV
-
-3. Calculate the expected value (mean) of a single continuous RV
-
-4. Calculate expected value for the sum of discrete or continuous RVs
-
-5. Calculate expected value for joint densities (continuous RVs)
 

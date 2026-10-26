@@ -33,7 +33,7 @@ I used Claude (Sonnet 5) to help me brainstorm project ideas for this class usin
 
 ## Checkpoints
 
-The checkpoints build, step by step, the work you need for the final project, so we complete the work over the quarter instead of all at the end. **If you receive feedback on something in a checkpoint, you are expected to fix it for the next checkpoint and the final project.**claude
+The checkpoints build, step by step, the work you need for the final project, so we complete the work over the quarter instead of all at the end. **If you receive feedback on something in a checkpoint, you are expected to fix it for the next checkpoint and the final project.**
 
 | Checkpoint Instructions | Points | Editing file | Rubric | Due Date | Topics |
 |------------|------------|------------|------------|------------|------------|

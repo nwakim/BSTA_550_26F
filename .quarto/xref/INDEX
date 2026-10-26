@@ -224,5 +224,11 @@
   },
   "lessons/09_CDFs/09_CDFs_muddy_points.qmd": {
     "09_CDFs_muddy_points.html": "949424b4"
+  },
+  "lessons/10_Expected_Values/10_Expected_Values.qmd": {
+    "10_Expected_Values.html": "cc56c909"
+  },
+  "lessons/11_Variance/11_Variance.qmd": {
+    "11_Variance.html": "f79d46a5"
   }
 }

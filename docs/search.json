@@ -4400,21 +4400,21 @@
     "href": "lessons/10_Expected_Values/10_Expected_Values_key_info.html",
     "title": "Key Info",
     "section": "",
-    "text": "Quiz 2 back: everyone got at least a 12/14! Woo!\n\nMost common mistake: Question 10 - the fact that \\(f_X(x)\\) can be greater than 1 is:\n\nWrong answer: Invalid, because a pdf (like a probability) can never be greater than 1\nCorrect answer: Valid, because the area under the curve from 0 to 1 is 1, even if the height of the function is greater than 1\n\n\nFeel free to use your no-questions-asked extensions on homework\n\nAnd remember that there is no grade penalty for turning in homework late\n\nCharles is not obligated to give you feedback though\n\n\nSadly, there is no audio in the class on 11/5\n\nNot sure if human error or computer issue"
+    "text": "Quiz 1 looks good! People got at most 1 question wrong\nHave time dedicated today to look at resubmissions for checkpoint 0\n\nFor future resubmissions, please put back on Brightspace within 1 week of published feedback\nFor this checkpoint, we’ll do full credit back!\nFor future checkpoints, we’ll do half credit back!"
   },
   {
     "objectID": "lessons/10_Expected_Values/10_Expected_Values_key_info.html#announcements",
     "href": "lessons/10_Expected_Values/10_Expected_Values_key_info.html#announcements",
     "title": "Key Info",
     "section": "",
-    "text": "Quiz 2 back: everyone got at least a 12/14! Woo!\n\nMost common mistake: Question 10 - the fact that \\(f_X(x)\\) can be greater than 1 is:\n\nWrong answer: Invalid, because a pdf (like a probability) can never be greater than 1\nCorrect answer: Valid, because the area under the curve from 0 to 1 is 1, even if the height of the function is greater than 1\n\n\nFeel free to use your no-questions-asked extensions on homework\n\nAnd remember that there is no grade penalty for turning in homework late\n\nCharles is not obligated to give you feedback though\n\n\nSadly, there is no audio in the class on 11/5\n\nNot sure if human error or computer issue"
+    "text": "Quiz 1 looks good! People got at most 1 question wrong\nHave time dedicated today to look at resubmissions for checkpoint 0\n\nFor future resubmissions, please put back on Brightspace within 1 week of published feedback\nFor this checkpoint, we’ll do full credit back!\nFor future checkpoints, we’ll do half credit back!"
   },
   {
     "objectID": "lessons/10_Expected_Values/10_Expected_Values_key_info.html#key-dates",
     "href": "lessons/10_Expected_Values/10_Expected_Values_key_info.html#key-dates",
     "title": "Key Info",
     "section": "Key Dates",
-    "text": "Key Dates"
+    "text": "Key Dates\n\nHomework 3 due 11/01 at 11pm\nHomework 4 due 11/01 at 11pm\nQuiz 1 opens on 10/21 at 3pm\n\nCloses 10/25 at 11pm"
   },
   {
     "objectID": "lessons/24_00_pre_Calculus_review/24_00_pre_Calculus_review.html#where-are-we",
@@ -28131,5 +28131,12 @@
     "title": "Lesson 11: Variance",
     "section": "Find the mean and sd from word problem (3/3)",
     "text": "Find the mean and sd from word problem (3/3)"
+  },
+  {
+    "objectID": "lessons/11_Variance/11_Variance.html#lets-calculate-the-variance-and-prove-it",
+    "href": "lessons/11_Variance/11_Variance.html#lets-calculate-the-variance-and-prove-it",
+    "title": "Lesson 11: Variance",
+    "section": "Let’s calculate the variance and prove it!",
+    "text": "Let’s calculate the variance and prove it!\n\n\n\n\nLemma 6: “Computation formula” for Variance\n\n\nThe variance of a RV \\(X\\), can be computed as \\[\\begin{align}\n\\sigma_X^2 & =Var(X) \\\\ & = \\mathbb{E}[X^2]-\\mu_X^2 \\\\ & = \\mathbb{E}[X^2] - (\\mathbb{E}[X])^2\n\\end{align}\\]\n\n\n \nTwo facts from Lesson 10:\n\n\\(\\mu_X = \\mathbb{E}[X]\\) is a constant\n\\(\\mathbb{E}[aX + b] = a\\mathbb{E}[X] + b\\)\n\n\n\n\nPlan: start from the definition, expand the square, and use what we know about expected values\n\n\n\n\\(\\displaystyle Var(X) = \\mathbb{E}[(X-\\mu_X)^2]\\)\n\ndefinition of variance\n\n\n\n\n\n\\(\\displaystyle \\phantom{Var(X)} = \\mathbb{E}[X^2 - 2\\mu_X X + \\mu_X^2]\\)\n\nexpand the square\n\n\n\n\n\n\\(\\displaystyle \\phantom{Var(X)} = \\mathbb{E}[X^2] - 2\\mu_X\\mathbb{E}[X] + \\mu_X^2\\)\n\nsplit the sum; \\(\\mu_X\\) is constant\n\n\n\n\n\n\\(\\displaystyle \\phantom{Var(X)} = \\mathbb{E}[X^2] - 2\\mu_X^2 + \\mu_X^2\\)\n\n\\(\\mathbb{E}[X] = \\mu_X\\)\n\n\n\n\n\n\\(\\displaystyle \\phantom{Var(X)} = \\mathbb{E}[X^2] - \\mu_X^2\\)\n\ncombine the \\(\\mu_X^2\\) terms\n\n\n \n\nThis works for both discrete and continuous RVs!\nWant to see it written out with sums for a discrete RV? See the muddy points for this lesson."
   }
 ]

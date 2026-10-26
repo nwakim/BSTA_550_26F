@@ -387,8 +387,8 @@ Var(X) &amp; =
 </div></div>
 </section>
 
-<section id="lets-calculate-the-variance-and-prove-it-12" class="slide level2">
-<h2>Let’s calculate the variance and prove it! (1/2)</h2>
+<section id="lets-calculate-the-variance-and-prove-it" class="slide level2">
+<h2>Let’s calculate the variance and prove it!</h2>
 <div class="columns">
 <div class="column" style="width:30%;">
 <div class="proof1">
@@ -401,10 +401,62 @@ Var(X) &amp; =
 \end{align}\]</span></p>
 </div>
 </div>
+<p>&nbsp;</p>
+<p><strong>Two facts from Lesson 10:</strong></p>
+<ul>
+<li><span class="math inline">\(\mu_X = \mathbb{E}[X]\)</span> is a constant</li>
+<li><span class="math inline">\(\mathbb{E}[aX + b] = a\mathbb{E}[X] + b\)</span></li>
+</ul>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:65%;">
+<p><strong>Plan:</strong> start from the definition, expand the square, and use what we know about expected values</p>
+<div class="proof-step">
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><span class="math inline">\(\displaystyle Var(X) = \mathbb{E}[(X-\mu_X)^2]\)</span></p>
+</div><div class="column" style="width:45%;">
+<p>definition of variance</p>
 </div></div>
-</section>
-<section id="lets-calculate-the-variance-and-prove-it-22" class="slide level2">
-<h2>Let’s calculate the variance and prove it! (2/2)</h2>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><span class="math inline">\(\displaystyle \phantom{Var(X)} = \mathbb{E}[X^2 - 2\mu_X X + \mu_X^2]\)</span></p>
+</div><div class="column" style="width:45%;">
+<p>expand the square</p>
+</div></div>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><span class="math inline">\(\displaystyle \phantom{Var(X)} = \mathbb{E}[X^2] - 2\mu_X\mathbb{E}[X] + \mu_X^2\)</span></p>
+</div><div class="column" style="width:45%;">
+<p>split the sum; <span class="math inline">\(\mu_X\)</span> is constant</p>
+</div></div>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><span class="math inline">\(\displaystyle \phantom{Var(X)} = \mathbb{E}[X^2] - 2\mu_X^2 + \mu_X^2\)</span></p>
+</div><div class="column" style="width:45%;">
+<p><span class="math inline">\(\mathbb{E}[X] = \mu_X\)</span></p>
+</div></div>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><span class="math inline">\(\displaystyle \phantom{Var(X)} = \mathbb{E}[X^2] - \mu_X^2\)</span></p>
+</div><div class="column" style="width:45%;">
+<p>combine the <span class="math inline">\(\mu_X^2\)</span> terms</p>
+</div></div>
+</div>
+<p>&nbsp;</p>
+<ul>
+<li>This works for both discrete and continuous RVs!</li>
+<li>Want to see it written out with sums for a discrete RV? See the <a href="../../lessons/11_Variance/11_Variance_muddy_points.html">muddy points</a> for this lesson.</li>
+</ul>
+</div></div>
 </section>
 <section id="lets-simulate-the-card-example" class="slide level2">
 <h2>Let’s simulate the card example</h2>

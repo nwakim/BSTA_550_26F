@@ -325,10 +325,9 @@ combine the $\mu_X^2$ terms
 
  
 
-::: fragment
 - This works for both discrete and continuous RVs!
 - Want to see it written out with sums for a discrete RV? See the [muddy points](11_Variance_muddy_points.qmd) for this lesson.
-:::
+
 :::
 :::
 

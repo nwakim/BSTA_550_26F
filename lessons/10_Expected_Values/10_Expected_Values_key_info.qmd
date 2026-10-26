@@ -8,11 +8,24 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r setup, include=FALSE}
+library(here)
+source(here("class_dates.R"))
+```
+
 ## Announcements
 
-- 
+- Quiz 1 looks good! People got at most 1 question wrong
+- Have time dedicated today to look at resubmissions for checkpoint 0
+  - For future resubmissions, please put back on Brightspace within 1 week of published feedback
+  - For this checkpoint, we'll do full credit back!
+  - For future checkpoints, we'll do half credit back!
+
 
 ## Key Dates
 
-- 
+- Homework 3 due `r hw3 %>% format("%m/%d")` at 11pm
+- Homework 4 due `r hw3 %>% format("%m/%d")` at 11pm
+- Quiz 1 opens on `r q1_open %>% format("%m/%d")` at 3pm
+  - Closes `r q1_close %>% format("%m/%d")` at 11pm
 

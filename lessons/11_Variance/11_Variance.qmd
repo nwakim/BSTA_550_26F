@@ -238,7 +238,7 @@ definition? $(X-\mu_X)^2$
 
 -   Why not use $\mathbb{E}[|X-\mu_X|]$?
 
-## Let's calculate the variance and prove it! (1/2)
+## Let's calculate the variance and prove it!
 
 ::: columns
 ::: {.column width="30%"}
@@ -253,10 +253,84 @@ The variance of a RV $X$, can be computed as $$\begin{align}
 \end{align}$$
 :::
 :::
-:::
+
+ 
+
+**Two facts from Lesson 10:**
+
+- $\mu_X = \mathbb{E}[X]$ is a constant
+- $\mathbb{E}[aX + b] = a\mathbb{E}[X] + b$
 :::
 
-## Let's calculate the variance and prove it! (2/2)
+::: {.column width="5%"}
+:::
+
+::: {.column width="65%"}
+**Plan:** start from the definition, expand the square, and use what we know about expected values
+
+::::: {.proof-step}
+:::: columns
+::: {.column width="55%"}
+$\displaystyle Var(X) = \mathbb{E}[(X-\mu_X)^2]$
+:::
+::: {.column width="45%"}
+definition of variance
+:::
+::::
+:::::
+
+::::: fragment
+:::: columns
+::: {.column width="55%"}
+$\displaystyle \phantom{Var(X)} = \mathbb{E}[X^2 - 2\mu_X X + \mu_X^2]$
+:::
+::: {.column width="45%"}
+expand the square
+:::
+::::
+:::::
+
+::::: fragment
+:::: columns
+::: {.column width="55%"}
+$\displaystyle \phantom{Var(X)} = \mathbb{E}[X^2] - 2\mu_X\mathbb{E}[X] + \mu_X^2$
+:::
+::: {.column width="45%"}
+split the sum; $\mu_X$ is constant
+:::
+::::
+:::::
+
+::::: fragment
+:::: columns
+::: {.column width="55%"}
+$\displaystyle \phantom{Var(X)} = \mathbb{E}[X^2] - 2\mu_X^2 + \mu_X^2$
+:::
+::: {.column width="45%"}
+$\mathbb{E}[X] = \mu_X$
+:::
+::::
+:::::
+
+::::: fragment
+:::: columns
+::: {.column width="55%"}
+$\displaystyle \phantom{Var(X)} = \mathbb{E}[X^2] - \mu_X^2$
+:::
+::: {.column width="45%"}
+combine the $\mu_X^2$ terms
+:::
+::::
+:::::
+
+ 
+
+::: fragment
+- This works for both discrete and continuous RVs!
+- Want to see it written out with sums for a discrete RV? See the [muddy points](11_Variance_muddy_points.qmd) for this lesson.
+:::
+:::
+:::
 
 ## Let's simulate the card example
 

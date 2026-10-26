@@ -230,5 +230,110 @@
   },
   "lessons/11_Variance/11_Variance.qmd": {
     "11_Variance.html": "f79d46a5"
+  },
+  "lessons/13_Cont_RVs/13_Cont_RVs_muddy_points.qmd": {
+    "13_Cont_RVs_muddy_points.html": "c641407f"
+  },
+  "lessons/13_Cont_RVs/13_Cont_RVs.qmd": {
+    "13_Cont_RVs.html": "38e5d7c2"
+  },
+  "lessons/13_Cont_RVs/13_Cont_RVs_key_info.qmd": {
+    "13_Cont_RVs_key_info.html": "da759c9f"
+  },
+  "lessons/12_Discrete_RVs/12_Discrete_RVs.qmd": {
+    "12_Discrete_RVs.html": "48548e6c"
+  },
+  "lessons/12_Discrete_RVs/12_Discrete_RVs_muddy_points.qmd": {
+    "12_Discrete_RVs_muddy_points.html": "b653740d"
+  },
+  "lessons/12_Discrete_RVs/12_Discrete_RVs_key_info.qmd": {
+    "12_Discrete_RVs_key_info.html": "bb8d7c09"
+  },
+  "lessons/15_Joint_distributions/Old_notes/25_Joint_densities.qmd": {
+    "25_Joint_densities.html": "a56e05e3"
+  },
+  "lessons/15_Joint_distributions/Old_notes/25_Joint_densities_key_info.qmd": {
+    "25_Joint_densities_key_info.html": "19988c64"
+  },
+  "lessons/15_Joint_distributions/Old_notes/25_Joint_densities_muddy_points.qmd": {
+    "25_Joint_densities_muddy_points.html": "39fab3c8"
+  },
+  "lessons/15_Joint_distributions/15_Joint_distributions_review_key_info.qmd": {
+    "15_Joint_distributions_review_key_info.html": "eed05ce8"
+  },
+  "lessons/15_Joint_distributions/15_Joint_distributions_muddy_points.qmd": {
+    "15_Joint_distributions_muddy_points.html": "a8416b4a"
+  },
+  "lessons/15_Joint_distributions/15_Joint_distributions_key_info.qmd": {
+    "15_Joint_distributions_key_info.html": "14bf8e86"
+  },
+  "lessons/15_Joint_distributions/15_Joint_distributions_review.qmd": {
+    "15_Joint_distributions_review.html": "5da3e213"
+  },
+  "lessons/15_Joint_distributions/15_Joint_distributions.qmd": {
+    "15_Joint_distributions.html": "14b8caff"
+  },
+  "lessons/15_Joint_distributions/15_Transformations.qmd": {
+    "15_Transformations.html": "6bf1a1a3"
+  },
+  "lessons/10_Expected_Values/old_notes/15_Expected_Values_of_Sums_of_rvs/36_Sums_of_Independent_Normal_rv/36_Sums_of_Independent_Normal_rv.qmd": {
+    "36_Sums_of_Independent_Normal_rv.html": "79410fa4"
+  },
+  "lessons/10_Expected_Values/old_notes/15_Expected_Values_of_Sums_of_rvs/36_Sums_of_Independent_Normal_rv/36_Sums_of_Independent_Normal_rv_key_info.qmd": {
+    "36_Sums_of_Independent_Normal_rv_key_info.html": "8dc5a84f"
+  },
+  "lessons/10_Expected_Values/old_notes/15_Expected_Values_of_Sums_of_rvs/11_Expected_Values_of_Sums_of_rvs.qmd": {
+    "11_Expected_Values_of_Sums_of_rvs.html": "b45c3b3d"
+  },
+  "lessons/10_Expected_Values/old_notes/15_Expected_Values_of_Sums_of_rvs/28_29_Joint_expected_value_Variance/28_29_Joint_expected_value_Variance.qmd": {
+    "28_29_Joint_expected_value_Variance.html": "c0dea80a"
+  },
+  "lessons/10_Expected_Values/old_notes/15_Expected_Values_of_Sums_of_rvs/28_29_Joint_expected_value_Variance/28_29_Joint_expected_value_Variance_muddy_points.qmd": {
+    "28_29_Joint_expected_value_Variance_muddy_points.html": "2a191dc2"
+  },
+  "lessons/10_Expected_Values/10_Expected_Values_key_info.qmd": {
+    "10_Expected_Values_key_info.html": "83af8206"
+  },
+  "lessons/10_Expected_Values/10_Expected_Values_muddy_points.qmd": {
+    "10_Expected_Values_muddy_points.html": "4cf5c1a2"
+  },
+  "lessons/14_Transformations/Old_notes/25_Joint_densities.qmd": {
+    "25_Joint_densities.html": "5a897ec6"
+  },
+  "lessons/14_Transformations/Old_notes/25_Joint_densities_key_info.qmd": {
+    "25_Joint_densities_key_info.html": "034e1976"
+  },
+  "lessons/14_Transformations/Old_notes/25_Joint_densities_muddy_points.qmd": {
+    "25_Joint_densities_muddy_points.html": "1f42c11b"
+  },
+  "lessons/14_Transformations/14_Transformations_key_info.qmd": {
+    "14_Transformations_key_info.html": "5dc4bd53"
+  },
+  "lessons/14_Transformations/14_Transformations.qmd": {
+    "14_Transformations.html": "7f19d976"
+  },
+  "lessons/11_Variance/11_Variance_key_info.qmd": {
+    "11_Variance_key_info.html": "91009d76"
+  },
+  "lessons/11_Variance/old_lessons/29_Variance_and_Sums_of_rv.qmd": {
+    "29_Variance_and_Sums_of_rv.html": "c70c7045"
+  },
+  "lessons/11_Variance/11_Variance_muddy_points.qmd": {
+    "11_Variance_muddy_points.html": "95430300"
+  },
+  "lessons/16_Independence_Conditioning/16_Independence_conditioning.qmd": {
+    "16_Independence_conditioning.html": "6cd83a9b"
+  },
+  "lessons/16_Independence_Conditioning/16_Independence_conditioning_key_info.qmd": {
+    "16_Independence_conditioning_key_info.html": "1cd934fa"
+  },
+  "lessons/16_Independence_Conditioning/16_Independence_conditioning_muddy_points.qmd": {
+    "16_Independence_conditioning_muddy_points.html": "a183ffc8"
+  },
+  "lessons/16_Independence_Conditioning/09_Joint_distributions.qmd": {
+    "09_Joint_distributions.html": "bc82499f"
+  },
+  "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.qmd": {
+    "18_Moment_Generating_Functions.html": "f8cfcb91"
   }
 }

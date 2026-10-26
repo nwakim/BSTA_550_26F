@@ -242,20 +242,6 @@ Meike Niederhausen and Nicky Wakim
 <li><p>Calculate expected value for joint densities (continuous RVs)</p></li>
 </ol>
 </section>
-<section id="our-good-and-fair-friend-the-6-sided-die" class="slide level2">
-<h2>Our good and fair friend, the 6-sided die</h2>
-<div class="columns">
-<div class="column" style="width:40%;">
-<div class="example">
-<div class="ex-title">
-<p>Example 1</p>
-</div>
-<div class="ex-cont">
-<p>Suppose you roll a fair 6-sided die. What value do you expect to get?</p>
-</div>
-</div>
-</div></div>
-</section>
 <section id="what-is-an-expected-value" class="slide level2">
 <h2>What is an expected value?</h2>
 <div class="columns">
@@ -278,12 +264,36 @@ Meike Niederhausen and Nicky Wakim
 </div>
 </div>
 </div></div>
+</section>
+<section id="our-good-and-fair-friend-the-6-sided-die" class="slide level2">
+<h2>Our good and fair friend, the 6-sided die</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="example">
+<div class="ex-title">
+<p>Example 1</p>
+</div>
+<div class="ex-cont">
+<p>Suppose you roll a fair 6-sided die. What value do you expect to get?</p>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<p>Let <span class="math inline">\(X\)</span> be the value rolled. Since the die is fair, <span class="math inline">\(p_X(x) = \frac{1}{6}\)</span> for <span class="math inline">\(x = 1, 2, \ldots, 6\)</span>.</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbb{E}[X] &amp;= \sum_{i=1}^{6} x_i\,p_X(x_i) \\
+&amp;= 1\left(\tfrac{1}{6}\right) + 2\left(\tfrac{1}{6}\right) + 3\left(\tfrac{1}{6}\right) + 4\left(\tfrac{1}{6}\right) + 5\left(\tfrac{1}{6}\right) + 6\left(\tfrac{1}{6}\right) \\
+&amp;= \frac{1 + 2 + 3 + 4 + 5 + 6}{6} = \frac{21}{6} = 3.5
+\end{aligned}
+\]</span></p>
+</div></div>
 <ul>
 <li><span style="color:#E89543;"><strong>Expected values</strong></span> are not necessarily an actual outcome
 <ul>
-<li>In previous example, we cannot roll a 3.5</li>
+<li>In this example, we cannot roll a 3.5</li>
 <li>It could be that our expected value is not in the sample space (<span class="math inline">\(E(X) \notin S\)</span>)</li>
 </ul></li>
+<li>3.5 is the long-run average: if we roll the die many, many times, the average of the rolls will be close to 3.5</li>
 </ul>
 </section></section>
 <section>

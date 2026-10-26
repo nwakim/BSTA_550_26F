@@ -194,6 +194,15 @@ There are 3 quizzes, each worth 8%. They're graded for correctness, with partial
 
 There are 4 checkpoints, each worth an equal share of the 32%. Each one is graded with a rubric that focuses on **accurate calculations** and **clear explanations of your reasoning and background**. You'll get feedback on each checkpoint, and I expect you to use it in your next checkpoint and your final brief. You get **one no-questions-asked, 3-day extension** for a checkpoint (see the late policy below).
 
+**Resubmissions:** checkpoints are meant for learning, so you can revise and resubmit them to earn back points:
+
+| Checkpoint | Points back on resubmission | Resubmission deadline |
+|------------|-----------------------------|-----------------------|
+| Checkpoints 0 and 1 | **Full credit** back | Checkpoint 0: we'll set aside class time to work on resubmissions. Checkpoint 1: deadline will be announced on Brightspace |
+| Checkpoints 2 and 3 | **Half credit** back | Resubmit on Brightspace **within 1 week** of when feedback is published |
+
+For example, if you lose 4 points on Checkpoint 2 and fix everything in your resubmission, you'll earn back 2 points. Resubmit the same way as the original: on Brightspace, as a rendered HTML file plus your `.qmd` file.
+
 #### Project Final Brief (14%)
 
 The final brief brings together your checkpoint work into a summary of your scenario. It's graded with a rubric that looks at **accurate results**, **clear context for your scenario**, and **communicating your findings to your audience**. Because it's due at the end of the quarter, feedback will be lighter, but feel free to email me with questions about your grade.

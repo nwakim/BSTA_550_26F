@@ -4400,21 +4400,21 @@
     "href": "lessons/10_Expected_Values/10_Expected_Values_key_info.html",
     "title": "Key Info",
     "section": "",
-    "text": "Grading HW 03 assignment today\nGroup evals will be taken off the assessment breakdown\nMid-quarter feedback will be put on HW 05"
+    "text": "Quiz 2 back: everyone got at least a 12/14! Woo!\n\nMost common mistake: Question 10 - the fact that \\(f_X(x)\\) can be greater than 1 is:\n\nWrong answer: Invalid, because a pdf (like a probability) can never be greater than 1\nCorrect answer: Valid, because the area under the curve from 0 to 1 is 1, even if the height of the function is greater than 1\n\n\nFeel free to use your no-questions-asked extensions on homework\n\nAnd remember that there is no grade penalty for turning in homework late\n\nCharles is not obligated to give you feedback though\n\n\nSadly, there is no audio in the class on 11/5\n\nNot sure if human error or computer issue"
   },
   {
     "objectID": "lessons/10_Expected_Values/10_Expected_Values_key_info.html#announcements",
     "href": "lessons/10_Expected_Values/10_Expected_Values_key_info.html#announcements",
     "title": "Key Info",
     "section": "",
-    "text": "Grading HW 03 assignment today\nGroup evals will be taken off the assessment breakdown\nMid-quarter feedback will be put on HW 05"
+    "text": "Quiz 2 back: everyone got at least a 12/14! Woo!\n\nMost common mistake: Question 10 - the fact that \\(f_X(x)\\) can be greater than 1 is:\n\nWrong answer: Invalid, because a pdf (like a probability) can never be greater than 1\nCorrect answer: Valid, because the area under the curve from 0 to 1 is 1, even if the height of the function is greater than 1\n\n\nFeel free to use your no-questions-asked extensions on homework\n\nAnd remember that there is no grade penalty for turning in homework late\n\nCharles is not obligated to give you feedback though\n\n\nSadly, there is no audio in the class on 11/5\n\nNot sure if human error or computer issue"
   },
   {
     "objectID": "lessons/10_Expected_Values/10_Expected_Values_key_info.html#key-dates",
     "href": "lessons/10_Expected_Values/10_Expected_Values_key_info.html#key-dates",
     "title": "Key Info",
     "section": "Key Dates",
-    "text": "Key Dates\n\nHW 04 assignment due Thursday\nHW 03 solutions due Sunday\n\nAnd we will have a presentation on this one!"
+    "text": "Key Dates"
   },
   {
     "objectID": "lessons/24_00_pre_Calculus_review/24_00_pre_Calculus_review.html#where-are-we",
@@ -27921,5 +27921,194 @@
     "title": "Lesson 10: Expected Values",
     "section": "Let’s simulate the cost of hotel rooms (2/2)",
     "text": "Let’s simulate the cost of hotel rooms (2/2)\n\nAverage total cost over the 10,000 simulations:\n\n\n7cost_sims |&gt;\n  summarise(average = mean(total_cost))\n\n\n7\n\nCollapse the 10,000 simulated total costs into their average.\n\n\n\n\n# A tibble: 1 × 1\n  average\n    &lt;dbl&gt;\n1   6599.\n\n\n \n\n\nFrom Example 8, \\(\\mathbb{E}\\left[\\sum_{i=1}^{30} 1.1X_i\\right] = 30(1.1)(200) = \\$6600\\)\n\n\n\nAny room prices with an average of $200 give the same expected total. Try changing room_prices!"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html",
+    "title": "Lesson 15: Joint distributions",
+    "section": "",
+    "text": "Define joint and marginal distributions for discrete and continuous random variables\nCalculate or find joint and marginal probabilities, pmf’s, and CDF’s for discrete random variables\nCalculate or find joint and marginal probabilities, pdf’s, and CDF’s for continuous random variables\nCalculate expected value for joint densities (continuous RVs)\nExtra practice on your own: solve double integrals in a mini lesson"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#what-is-a-joint-distribution",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#what-is-a-joint-distribution",
+    "title": "Lesson 15: Joint distributions",
+    "section": "What is a joint distribution?",
+    "text": "What is a joint distribution?\n\n\n\n\nDefinition: joint pmf\n\n\nThe joint pmf of a pair of discrete RV’s \\(X\\) and \\(Y\\) is \\[\\begin{aligned}\np_{X,Y}(x,y) = & \\mathbb{P}(X=x \\cap Y=y) \\\\ = & \\mathbb{P}(X=x, Y=y)\n\\end{aligned}\\]\n\n\n\n\n\nDefinition: joint pdf\n\n\nThe joint pdf for two continuous RVs (\\(X\\) and \\(Y\\)) is \\(f_{X,Y}(x,y)\\), such that we have the following joint probability: \\[\\begin{aligned}\n\\mathbb{P}(a \\leq X \\leq b, & c \\leq Y \\leq d) = \\\\ & \\int_a^b \\int_c^d f_{X,Y}(x,y)dydx\n\\end{aligned}\\]"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#important-properties-of-joint-distributions",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#important-properties-of-joint-distributions",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Important properties of joint distributions",
+    "text": "Important properties of joint distributions\n\n\n\n\nProperties of joint pmf’s\n\n\n\nA joint pmf \\(p_{X,Y}(x,y)\\) must satisfy the following properties:\n\n\\(0 \\geq p_{X,Y}(x,y) \\leq 1\\) for all \\(x, y\\)\n\n \n\n\\(\\sum \\limits_{\\{all\\ x\\}} \\sum \\limits_{\\{all\\ y\\}} p_{X,Y}(x,y)=1\\)\n\n\n\n\n\n\n\nProperties of joint pdf’s\n\n\n\nA joint pdf \\(f_{X,Y}(x,y)\\) must satisfy the following properties:\n\n\\(f_{X,Y}(x,y)\\geq 0\\) for all \\(x,y\\)\n\n \n\n\\(\\displaystyle\\int_{-\\infty}^{\\infty}\\displaystyle\\int_{-\\infty}^{\\infty} f_{X,Y}(x,y)dxdy=1\\)\n\n\n \n\nRemember that \\(f_{X,Y}(x,y)\\neq \\mathbb{P}(X=x, Y=y)\\)!!!"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#marginal-distributions",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#marginal-distributions",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Marginal distributions",
+    "text": "Marginal distributions\n\n\n\n\nMarginal pmf’s\n\n\nSuppose \\(X\\) and \\(Y\\) are discrete RV’s, with joint pmf \\(p_{X,Y}(x,y)\\). Then the marginal probability mass functions are\n\\[p_X(x) = \\sum \\limits_{\\{all\\ y\\}} p_{X,Y}(x,y)\\]\n\\[p_Y(y) = \\sum \\limits_{\\{all\\ x\\}} p_{X,Y}(x,y)\\]\n\n\n\n\n\nMarginal pdf’s\n\n\nSuppose \\(X\\) and \\(Y\\) are continuous RV’s, with joint pdf \\(f_{X,Y}(x,y)\\). Then the marginal probability density functions are \\[\\begin{aligned}\nf_X(x)&=& \\int_{-\\infty}^{\\infty} f_{X,Y}(x,y)dy\\\\\nf_Y(y)&=& \\int_{-\\infty}^{\\infty} f_{X,Y}(x,y)dx\n\\end{aligned}\\]"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-cumulative-distribution-functions-cdfs",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-cumulative-distribution-functions-cdfs",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Joint cumulative distribution functions (CDFs)",
+    "text": "Joint cumulative distribution functions (CDFs)\n\n\n\n\nJoint CDF for discrete RVs\n\n\nThe joint CDF of a pair of discrete RV’s \\(X\\) and \\(Y\\) is \\[\\begin{aligned}\nF_{X,Y}(x,y) = &\\mathbb{P}(X \\leq x\\ and\\ Y \\leq y) \\\\ = &\\mathbb{P}(X \\leq x, Y \\leq y)\n\\end{aligned}\\]\n\n\n\n\n\nJoint CDF for continuous RVs\n\n\nThe joint CDF of continuous random variables \\(X\\) and \\(Y\\), is the function \\(F_{X,Y}(x,y)\\), such that for all real values of \\(x\\) and \\(y\\), \\[\\begin{aligned}\nF_{X,Y}(x,y)= \\mathbb{P}(X \\leq x, & Y \\leq y) = \\\\\n& \\int_{-\\infty}^x\\int_{-\\infty}^y f_{X,Y}(s,t)dtds\n\\end{aligned}\\]"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-15",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-15",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Joint distribution for two discrete random variables (1/5)",
+    "text": "Joint distribution for two discrete random variables (1/5)\n\n\n\n\nExample 1\n\n\nLet \\(X\\) and \\(Y\\) be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.\n\nFind \\(p_{X,Y}(x,y)\\)\nFind \\(\\mathbb{P}(X+Y=3)\\)\nFind \\(\\mathbb{P}(Y = 1)\\)\nFind \\(\\mathbb{P}(Y \\leq 2)\\)\nFind the joint CDF \\(F_{X,Y}(x,y)\\) for the joint pmf \\(p_{X,Y}(x,y)\\)\nFind the marginal CDFs \\(F_{X}(x)\\) and \\(F_{Y}(y)\\)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-25",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-25",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Joint distribution for two discrete random variables (2/5)",
+    "text": "Joint distribution for two discrete random variables (2/5)\n\n\n\n\nExample 1\n\n\nLet \\(X\\) and \\(Y\\) be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.\n\nFind \\(p_{X,Y}(x,y)\\)\nFind \\(\\mathbb{P}(X+Y=3)\\)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-35",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-35",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Joint distribution for two discrete random variables (3/5)",
+    "text": "Joint distribution for two discrete random variables (3/5)\n\n\n\n\nExample 1\n\n\nLet \\(X\\) and \\(Y\\) be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.\n\nFind \\(\\mathbb{P}(Y = 1)\\)\nFind \\(\\mathbb{P}(Y \\leq 2)\\)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-45",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-45",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Joint distribution for two discrete random variables (4/5)",
+    "text": "Joint distribution for two discrete random variables (4/5)\n\n\n\n\nExample 1\n\n\nLet \\(X\\) and \\(Y\\) be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.\n\nFind the joint CDF \\(F_{X,Y}(x,y)\\) for the joint pmf \\(p_{X,Y}(x,y)\\)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-55",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-55",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Joint distribution for two discrete random variables (5/5)",
+    "text": "Joint distribution for two discrete random variables (5/5)\n\n\n\n\nExample 1\n\n\nLet \\(X\\) and \\(Y\\) be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.\n\nFind the marginal CDFs \\(F_{X}(x)\\) and \\(F_{Y}(y)\\)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#quick-remarks-on-the-joint-and-marginal-cdf",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#quick-remarks-on-the-joint-and-marginal-cdf",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Quick remarks on the joint and marginal CDF",
+    "text": "Quick remarks on the joint and marginal CDF\n\n\\(F_X(x)\\): right most columns of the CDF table (where the \\(Y\\) values are largest)\n\\(F_Y(y)\\): bottom row of the table (where X values are largest)\n\\(F_X(x)=\\lim\\limits_{y\\rightarrow\\infty}F_{X, Y}(x,y)\\)\n\\(F_Y(y)=\\lim\\limits_{x\\rightarrow\\infty}F_{X, Y}(x,y)\\)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#common-steps-for-joint-pdfs-and-cdfs",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#common-steps-for-joint-pdfs-and-cdfs",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Common steps for joint pdfs and CDFs",
+    "text": "Common steps for joint pdfs and CDFs\n\nSet up the domain of the pdf with a picture\n\n \n\nTranslate to needed integrands\n\nFor probability: shade in the area of interest, then translate\nFor expected value: translate domain\n\n\n \n\nSet up integral: \\(dxdy\\) or \\(dydx\\)?\n\n \n\nSolve integral!"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-2-joint-pdf-12",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-2-joint-pdf-12",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Example 2: Joint pdf (1/2)",
+    "text": "Example 2: Joint pdf (1/2)\n\n\n\n\nExample 2.1\n\n\nLet \\(f_{X,Y}(x,y)= \\frac32 y^2\\), for \\(0 \\leq x \\leq 2, \\ 0 \\leq y \\leq 1\\).\n\nFind \\(\\mathbb{P}(0 \\leq X \\leq 1, 0 \\leq Y \\leq \\frac12)\\)\n\n\n\n\nlibrary(tidyverse)\njoint1 = tibble(\n  x = seq(0, 2, 0.01), \n  y = seq(0, 1, 0.005)\n)\n\nx_y_plot1 = ggplot(joint1, aes(x = x, y = y)) +\n  labs(x = \"x\", y = \"y\") +\n  scale_x_continuous(breaks = c(0, 1, 2)) +\n  scale_y_continuous(breaks = c(0, 0.5, 1)) +\n  theme_bw() +\n  theme(text = element_text(size=30))\nx_y_plot1"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-2-joint-pdf-22",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-2-joint-pdf-22",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Example 2: Joint pdf (2/2)",
+    "text": "Example 2: Joint pdf (2/2)\n\n\n\n\nExample 2.2\n\n\nLet \\(f_{X,Y}(x,y)= \\frac32 y^2\\), for \\(0 \\leq x \\leq 2, \\ 0 \\leq y \\leq 1\\).\n\nFind \\(f_X(x)\\) and \\(f_Y(y)\\).\n\n\n\n\nx_y_plot1"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-with-more-complicated-pdf-12",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-with-more-complicated-pdf-12",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Example with more complicated pdf (1/2)",
+    "text": "Example with more complicated pdf (1/2)\n\n\n\n\n\n\nDo this problem at home for extra practice. I’ll add the solution to the annotated notes!\n\n\n\n\n\n\n\nExample 3.1\n\n\nLet \\(f_{X,Y}(x,y)= 2 e^{-(x+y)}\\), for \\(0 \\leq x \\leq y\\).\n\nFind \\(f_X(x)\\) and \\(f_Y(y)\\)."
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-with-more-complicated-pdf-22",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-with-more-complicated-pdf-22",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Example with more complicated pdf (2/2)",
+    "text": "Example with more complicated pdf (2/2)\n\n\n\n\n\n\nDo this problem at home for extra practice. I’ll add the solution to the annotated notes!\n\n\n\n\n\n\n\nExample 3.2\n\n\nLet \\(f_{X,Y}(x,y)= 2 e^{-(x+y)}\\), for \\(0 \\leq x \\leq y\\).\n\nFind \\(\\mathbb{P}(Y &lt; 3)\\)."
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#recall-finding-the-pdf-of-a-transformation",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#recall-finding-the-pdf-of-a-transformation",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Recall: Finding the pdf of a transformation",
+    "text": "Recall: Finding the pdf of a transformation\n\nLet \\(M\\) be a transformation of \\(X\\) and \\(Y\\): \\(M = g(X, Y)\\)\nWhen we have a transformation of \\(X\\) and \\(Y\\), \\(M\\), we need to follow the CDF method to find the pdf of \\(M\\)\n\nWe follow CDF method:\n\nStart with the joint pdf for \\(X\\) and \\(Y\\)\n\naka \\(f_{X,Y}(x, y)\\)\n\nTranslate the domain of \\(X\\) and \\(Y\\) to \\(M\\): find possible values of \\(M\\)\nFind the CDF of \\(M\\)\n\naka \\(F_M(m) = P(M \\leq m) = P(g(X, Y) \\leq m)\\)\n\nTake the derivative of the CDF of \\(M\\) with respect to \\(m\\) to find the pdf of \\(M\\)\n\naka \\(f_M(m) = \\dfrac{d}{dm}F_M(m)\\)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-of-a-joint-pdf-with-a-transformation-13",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-of-a-joint-pdf-with-a-transformation-13",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Example of a joint pdf with a transformation (1/3)",
+    "text": "Example of a joint pdf with a transformation (1/3)\n\n\n\n\nExample 4.1\n\n\nLet \\(X\\) and \\(Y\\) have constant density on the square \\(0 \\leq X \\leq 4, 0 \\leq Y \\leq 4\\).\n\nFind \\(\\mathbb{P}(|X-Y| &lt; 2)\\)\n\n\n\n\nlibrary(tidyverse)\njoint2 = tibble(\n  x = seq(0, 4, 0.5), \n  y = seq(0, 4, 0.5)\n)\n\nx_y_plot2 = ggplot(joint2, aes(x = x, y = y)) +\n  labs(x = \"x\", y = \"y\") +\n  scale_x_continuous(breaks = c(0, 2, 4)) +\n  scale_y_continuous(breaks = c(0, 2, 4)) +\n  theme_bw() +\n  theme(text = element_text(size=30))\nx_y_plot2"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-of-a-joint-pdf-with-a-transformation-23",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-of-a-joint-pdf-with-a-transformation-23",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Example of a joint pdf with a transformation (2/3)",
+    "text": "Example of a joint pdf with a transformation (2/3)\n\n\n\n\nExample 4.2\n\n\nLet \\(X\\) and \\(Y\\) have constant density on the square \\(0 \\leq X \\leq 4, 0 \\leq Y \\leq 4\\).\n\nLet \\(M = \\max(X,Y)\\). Find the pdf for \\(M\\), that is \\(f_M(m)\\)\n\n\n\n\nx_y_plot2"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-of-a-joint-pdf-with-a-transformation-33",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-of-a-joint-pdf-with-a-transformation-33",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Example of a joint pdf with a transformation (3/3)",
+    "text": "Example of a joint pdf with a transformation (3/3)\n\n\n\n\nExample 4.3\n\n\nLet \\(X\\) and \\(Y\\) have constant density on the square \\(0 \\leq X \\leq 4, 0 \\leq Y \\leq 4\\).\n\nLet \\(Z = \\min(X,Y)\\). Find the pdf for \\(Z\\), that is \\(f_Z(z)\\).\n\n\n\n\nx_y_plot2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDo this problem at home for extra practice. I’ll add the solution to the annotated notes!"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#last-example-for-home-more-complicated-transformation",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#last-example-for-home-more-complicated-transformation",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Last example for home: more complicated transformation",
+    "text": "Last example for home: more complicated transformation\n\n\n\n\nExample 5\n\n\nLet \\(X\\) and \\(Y\\) have joint density \\(f_{X,Y}(x,y)= \\frac85(x+y)\\) in the region \\(0 &lt; x &lt; 1,\\ \\frac12 &lt; y &lt;1\\). Find the pdf of the RV \\(Z\\), where \\(Z=XY\\).\n\n\n\njoint3 = tibble(\n  x = seq(0, 1, 0.5), \n  y = seq(0, 1, 0.5)\n)\n\nx_y_plot3 = ggplot(joint3, aes(x = x, y = y)) +\n  labs(x = \"x\", y = \"y\") +\n  scale_x_continuous(breaks = c(0, 0.5, 1)) +\n  scale_y_continuous(breaks = c(0, 0.5, 1)) +\n  theme_bw() +\n  theme(text = element_text(size=30))\nx_y_plot3"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#expected-value-of-one-rv-from-joint-pdf",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#expected-value-of-one-rv-from-joint-pdf",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Expected value of one RV from joint pdf",
+    "text": "Expected value of one RV from joint pdf\nIf you have a joint distribution \\(f_{X,Y}(x,y)\\) and want to calculate \\(\\mathbb{E}[X]\\), you have two options:\n\nFind \\(f_X(x)\\) and use it to calculate \\(\\mathbb{E}[X]\\).\nCalculate \\(\\mathbb{E}[X]\\) using the joint density: \\[\\mathbb{E}[X] = \\int_{-\\infty}^{\\infty}\\int_{-\\infty}^{\\infty}x f_{X,Y}(x,y)dydx.\\]\n\nYou can do the same for \\(\\mathbb{E}[Y]\\)!"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#option-1-find-marginal-first",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#option-1-find-marginal-first",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Option 1: Find marginal first",
+    "text": "Option 1: Find marginal first\n\n\n\n\nExample 6\n\n\nLet \\(f_{X,Y}(x,y)= 2e^{-(x+y)}\\), for \\(0 \\leq x \\leq y\\). Find \\(\\mathbb{E}[X]\\).\n\n\n\nDo this one at home by finding \\(f_X(x)\\) then \\(\\mathbb{E}[X] = \\displaystyle\\int_{-\\infty}^\\infty xf_X(x) dx\\). See if you get the same result as next page’s answer!"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#option-2-expected-value-from-a-joint-distribution",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#option-2-expected-value-from-a-joint-distribution",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Option 2: Expected value from a joint distribution",
+    "text": "Option 2: Expected value from a joint distribution\n\n\n\n\nExample 6\n\n\nLet \\(f_{X,Y}(x,y)= 2e^{-(x+y)}\\), for \\(0 \\leq x \\leq y\\). Find \\(\\mathbb{E}[X]\\)."
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#double-integrals-mini-lesson-13",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#double-integrals-mini-lesson-13",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Double Integrals Mini Lesson (1/3)",
+    "text": "Double Integrals Mini Lesson (1/3)\n\n\n\n\n\n\nDo this problem at home for extra practice. I’ll add the solution to the annotated notes!\n\n\n\n\n\n\n\nMini Lesson Example 1\n\n\nSolve the following integral: \\(\\displaystyle\\int_{2}^{3}\\displaystyle\\int_{0}^{1} xy dydx\\)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#double-integrals-mini-lesson-23",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#double-integrals-mini-lesson-23",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Double Integrals Mini Lesson (2/3)",
+    "text": "Double Integrals Mini Lesson (2/3)\n\n\n\n\n\n\nDo this problem at home for extra practice. I’ll add the solution to the annotated notes!\n\n\n\n\n\n\n\nMini Lesson Example 2\n\n\nSolve the following integral: \\(\\displaystyle\\int_{2}^{3}\\displaystyle\\int_{0}^{1} (x+y) dydx\\)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#double-integrals-mini-lesson-33",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#double-integrals-mini-lesson-33",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Double Integrals Mini Lesson (3/3)",
+    "text": "Double Integrals Mini Lesson (3/3)\n\n\n\n\n\n\nDo this problem at home for extra practice. I’ll add the solution to the annotated notes!\n\n\n\n\n\n\n\nMini Lesson Example 3\n\n\nSolve the following integral: \\(\\displaystyle\\int_{2}^{3}\\displaystyle\\int_{0}^{1} e^{x+y} dydx\\)"
   }
 ]

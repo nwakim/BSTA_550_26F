@@ -1,65 +1,417 @@
 ---
 title: "Homework 4"
 subtitle: "BSTA 550"
-description: "Due: `r library(here); source(here('class_dates.R')); hw4 %>% format('%m/%d')` at 11pm"
+author: "Your name here"
 date-modified: "today"
-format: 
+format:
   html:
-    link-external-newwindow: true
     toc: true
-  pdf: default 
-editor_options: 
+    embed-resources: true
+    link-external-newwindow: true
+  typst:
+    toc: true
+    papersize: us-letter
+    margin:
+      x: 1in
+      y: 1in
+editor_options:
   chunk_output_type: console
 ---
 
-## Directions
+<!--
+HOW TO USE THIS FILE
+- Put your name in the "author" line at the very top.
+- Type your answers after each "Answer:" line.
+- Put R code inside the gray code chunks (between ```{r} and ```).
+- You don't need to change anything between the --- lines at the top (YAML)
+  or any line starting with :::
+- Click the arrow next to "Render" and choose "Render HTML" or
+  "Render Typst" (Typst makes a PDF). Submit that file.
+-->
 
-**Please turn in this homework on Sakai.** Please submit your homework in pdf or html format. 
+```{r}
+#| label: "setup"
+#| include: false
 
-You can type your work on your computer or submit a photo of your written work or any other method that can be turned into a pdf. The Adobe Scan phone app is an easy way to scan photos and compile into a PDF. Please let me know if you greatly prefer to submit a physical copy. We can work out another way for you to turn in homework.
+knitr::opts_chunk$set(echo = TRUE)
+
+# Uses the course date file when it's available;
+# otherwise falls back to the due date below.
+if (requireNamespace("here", quietly = TRUE) &&
+    file.exists(here::here("class_dates.R"))) {
+  source(here::here("class_dates.R"))
+} else {
+  hw4 <- as.Date("2026-11-08")
+}
+```
+
+::: {.callout-tip appearance="minimal"}
+**Due `r format(hw4, "%m/%d")` at 11pm**
+:::
+
+## Assignment information
+
+### Directions
+
+**Please turn in this homework on Brightspace.** Please submit your homework as a pdf or html file. You can type your work in this file and render it, or submit a single file with photos of your written work or any other method that can be turned into a pdf. Please let me know if you prefer to submit a physical copy, we can arrange for a physical "turn in" during Monday's class.
+
+**Get the .qmd file:** You can download this homework as a `.qmd` file from [GitHub](https://github.com/nwakim/BSTA_550_26F/blob/main/homework/HW_04.qmd). On that page, click the download button ("Download raw file") near the top right of the file.
 
 *You must show all of your work to receive credit.*
 
 Extra problems do not need to be turned in!
 
+::: {.callout-warning collapse="false"}
+#### If you are editing this file to turn in
+
+If you are editing this `.qmd` file, then you will see a section right below the YAML called "HOW TO USE THIS FILE." Please follow those instructions to make sure you are not deleting essential parts of this file. When you render, that section will not show up.
+:::
+
+::: {.callout-note collapse="false"}
+#### AI Use Statement
+
+**Using AI is not required in this class.** If you *did* use an AI tool (ChatGPT, Claude, Copilot, Gemini, an RStudio assistant, etc.) on this homework, add a brief AI Use Statement at the very top of your submission. Include:
+
+-   **Which tool(s)** you used
+-   **What for** (a sentence or two, with question numbers)
+-   **Where** it contributed to any written interpretations (if at all)
+-   *You do NOT need to link your conversation.*
+
+For example:
+
+> *AI Use Statement: Claude was used to explain an error message in Question 3. All statistical reasoning, code review, and conclusions are my own.*
+
+OR
+
+> *AI Use Statement: AI was not used in this assignment.*
+
+Before using AI, check the table of allowed uses in the [Generative AI Policy](https://nwakim.github.io/BSTA_550_26F/syllabus.html#generative-ai-policy). For homework, AI can help you *understand* (explain an error or a concept, check an answer you already worked out, give feedback on your own writing), but it should not do the problem for you. A half-finished answer that shows your thinking is always better than a polished one from AI!
+:::
+
 ## Questions
 
-1.  Prove that for a r.v. $X$ and constants $a$ and $b$, that $$\mathrm{Var}[aX+b]=a^2\mathrm{Var}[X].$$
+**Load packages.** This chunk is done for you. Run it before any of the R code below.
 
-2.  Let $\overline{X}$ be the random variable for the sample mean, $\overline{X}=\frac{\sum_{i=1}^nX_i}{n}$, where the $X_i$ are i.i.d. random variables with common mean $\mu$ and variance $\sigma^2$.
+```{r}
+#| label: "load-packages"
+#| message: false
 
-    a.  Find $\mathbb{E}[\overline{X}]$.
+library(tidyverse)
+```
 
-    b.  Find $Var[\overline{X}]$.
+### 1. Asthma ER visits
 
-3.  Let $f_X(x)=\lambda e^{-\lambda x}$ for $x>0$, where $\lambda>0$.
+Suppose that for adults with asthma, the number of emergency room (ER) visits for asthma in a year, $X$, has the following pmf:
 
-    a.  Show $Var[X]=\frac{1}{\lambda^2}$. You may use the result from class for $\mathbb{E}[X]$ without first proving it.
+| $x$ | 0 | 1 | 2 | 3 |
+|:---:|:---:|:---:|:---:|:---:|
+| $p_X(x)$ | 0.50 | 0.30 | 0.15 | 0.05 |
 
-4.  A shipping company handles containers in three different sizes: (1) 27 $ft^3$ (3 x 3 x 3), (2) 125 $ft^3$, and (3) 512 $ft^3$. Let $X_i$ ($i = 1, 2, 3$) denote the number of type $i$ containers shipped during a given week. Suppose that $\mu_1 =200,\sigma_1=10,\mu_2 =250,\sigma_2=12,\mu_3 =100,\sigma_3=8$.
+and $p_X(x) = 0$ for any other value of $x$.
 
-    a.  Assuming that $X_1,X_2,X_3$ are independent, calculate the expected value and variance of the total volume shipped.
+#### Part a
 
-    b.  Would your calculations necessarily be correct if the $X_i$'s were not independent? Explain.
+Find $\mathbb{E}[X]$. In a sentence, explain what this number means in the context of the problem.
 
+***Answer:***
+
+#### Part b
+
+Find $\mathbb{E}[X^2]$. Is $\mathbb{E}[X^2]$ equal to $\left(\mathbb{E}[X]\right)^2$?
+
+***Answer:***
+
+#### Part c
+
+Find $Var(X)$ two ways: with the definition, $Var(X) = \mathbb{E}\left[(X - \mathbb{E}[X])^2\right]$, and with the computation formula, $Var(X) = \mathbb{E}[X^2] - \left(\mathbb{E}[X]\right)^2$. Then find $SD(X)$.
+
+***Answer:***
+
+#### Part d
+
+Suppose each ER visit costs a patient a \$250 copay, plus every patient pays a \$100 yearly fee. So the patient's yearly cost is $C = 250X + 100$. Find $\mathbb{E}[C]$ and $SD(C)$.
+
+-   *Hint:* You can use the results for $\mathbb{E}[aX+b]$ (Lesson 10) and $Var(aX+b)$ (Lesson 11, Lemma 7). You will prove the variance result in Question 4!
+
+***Answer:***
+
+#### Part e
+
+Simulate 10,000 adults with asthma to check your answers to Parts a–c.
+
+**Step 1: Set up.** This chunk is done for you. Run it before the others.
+
+```{r}
+#| label: "q1e-setup"
+
+set.seed(2222)    # so you get the same "random" adults each time
+reps <- 10000     # number of simulated adults
+
+# probability of 0, 1, 2, and 3 ER visits
+visit_probs <- c(0.50, 0.30, 0.15, 0.05)
+```
+
+**Step 2: Simulate.** Simulate the number of ER visits, $X$, for each of the 10,000 adults.
+
+-   *Hint:* Follow Lesson 10, Example 2 (the not-so-fair die). Start with `tibble(sim = 1:reps)`, then use `mutate()` and `sample()` with the possible values `0:3`, `replace = TRUE`, and `prob = visit_probs`.
+
+***Answer:***
+
+```{r}
+#| label: "q1e-simulate"
+
+# Your code here
+
+```
+
+**Step 3: Summarize.** Use `summarise()` to approximate $\mathbb{E}[X]$, $\mathbb{E}[X^2]$, $Var(X)$, and $SD(X)$ from your simulation.
+
+-   *Hint:* Follow the card example in Lesson 11 ("The variance from our simulation"). `mean(X)` approximates $\mathbb{E}[X]$, `mean(X^2)` approximates $\mathbb{E}[X^2]$, `mean((X - mean(X))^2)` approximates $Var(X)$, and `sqrt()` takes the square root.
+
+***Answer:***
+
+```{r}
+#| label: "q1e-summarize"
+
+# Your code here
+
+```
+
+Are your simulated answers close to your answers in Parts a–c? (They do not need to match exactly!)
+
+***Answer:***
+
+### 2. Medication absorption
+
+Suppose the proportion $X$ of a medication dose that is absorbed in the first hour has pdf $$f_X(x) = \begin{cases} 3x^2 & \text{if } 0 \leq x \leq 1 \\ 0 & \text{otherwise} \end{cases}$$
+
+#### Part a
+
+Find $\mathbb{E}[X]$. In a sentence, explain what this number means in the context of the problem.
+
+***Answer:***
+
+#### Part b
+
+Find $\mathbb{E}[X^2]$, then use it to find $Var(X)$ and $SD(X)$.
+
+***Answer:***
+
+#### Part c
+
+Simulate 10,000 values of $X$ with the inverse CDF method from Lesson 9, and use them to check your answers to Parts a and b.
+
+**Step 1: Find the inverse CDF.** First find the CDF, $F_X(x)$, for $0 \leq x \leq 1$. Then set $u = F_X(x)$ and solve for $x$.
+
+***Answer:***
+
+**Step 2: Simulate.** Simulate 10,000 values of $U$ with `runif()`, then plug each one into your inverse CDF from Step 1.
+
+-   *Hint:* Follow Lesson 10 ("Picking up our exponential simulation from Lesson 9"). Start with `tibble(u = runif(n = reps, min = 0, max = 1))`, then use `mutate()` to make a column `x` from `u`. In R, the cube root of `u` is `u^(1/3)`.
+
+***Answer:***
+
+```{r}
+#| label: "q2c-simulate"
+
+set.seed(3131)
+reps <- 10000
+
+# Your code here
+
+```
+
+**Step 3: Summarize.** Use `summarise()` to approximate $\mathbb{E}[X]$, $Var(X)$, and $SD(X)$ from your simulation, like in Question 1.
+
+***Answer:***
+
+```{r}
+#| label: "q2c-summarize"
+
+# Your code here
+
+```
+
+Are your simulated answers close to your answers in Parts a and b? (They do not need to match exactly!)
+
+***Answer:***
+
+### 3. Variance of an exponential RV
+
+Let $f_X(x)=\lambda e^{-\lambda x}$ for $x>0$, where $\lambda>0$.
+
+#### Part a
+
+Show $Var(X)=\dfrac{1}{\lambda^2}$. You may use the result from class for $\mathbb{E}[X]$ without first proving it.
+
+-   *Hint:* Start by finding $\mathbb{E}[X^2]$. You will need integration by parts (Lesson 10, Example 6) twice.
+
+***Answer:***
+
+#### Part b
+
+Now let $\lambda = 0.5$. Simulate 10,000 values of $X$ and check that your simulated mean and variance are close to $\mathbb{E}[X] = \dfrac{1}{\lambda}$ and $Var(X) = \dfrac{1}{\lambda^2}$.
+
+-   *Hint:* Use the code from Lesson 10 ("Picking up our exponential simulation from Lesson 9"), but change $\lambda$ from 2 to 0.5. With $\lambda = 0.5$, the inverse CDF is $x = -\ln(1-u)/0.5$. In R, $\ln$ is `log()`. Then use `summarise()` like in Question 1.
+
+***Answer:***
+
+```{r}
+#| label: "q3b-simulate"
+
+set.seed(5151)
+reps <- 10000
+
+# Your code here
+
+```
+
+### 4. Variance of a linear function
+
+Prove that for a random variable $X$ and constants $a$ and $b$, $$Var(aX+b)=a^2Var(X).$$
+
+-   *Hint:* Use the computation formula from Lesson 11 with $aX+b$ in place of $X$: $Var(aX+b) = \mathbb{E}\left[(aX+b)^2\right] - \left(\mathbb{E}[aX+b]\right)^2$. Then expand the squares and use $\mathbb{E}[aX+b] = a\mathbb{E}[X] + b$ from Lesson 10.
+
+***Answer:***
+
+### 5. The sample mean
+
+Let $\overline{X}$ be the random variable for the sample mean, $\overline{X}=\dfrac{\sum_{i=1}^nX_i}{n}$, where the $X_i$ are i.i.d. random variables with common mean $\mu$ and variance $\sigma^2$.
+
+#### Part a
+
+Find $\mathbb{E}[\overline{X}]$.
+
+***Answer:***
+
+#### Part b
+
+Find $Var(\overline{X})$.
+
+***Answer:***
+
+### 6. Shipping containers
+
+A shipping company handles containers in three different sizes: (1) 27 $ft^3$ (3 x 3 x 3), (2) 125 $ft^3$, and (3) 512 $ft^3$. Let $X_i$ ($i = 1, 2, 3$) denote the number of type $i$ containers shipped during a given week. Suppose that $\mu_1 =200,\sigma_1=10,\mu_2 =250,\sigma_2=12,\mu_3 =100,\sigma_3=8$.
+
+#### Part a
+
+Assuming that $X_1,X_2,X_3$ are independent, calculate the expected value and variance of the total volume shipped.
+
+-   *Hint:* First write the total volume, $V$, as a sum of $X_1$, $X_2$, and $X_3$.
+
+***Answer:***
+
+#### Part b
+
+Would your calculations necessarily be correct if the $X_i$'s were not independent? Explain.
+
+***Answer:***
+
+### 7. Waiting for the bus
+
+Suppose your waiting time for a bus in the morning is uniformly distributed on \[0, 8\] (minutes), whereas waiting time in the evening is uniformly distributed on \[0, 10\] (minutes) independent of morning waiting time. *Make sure to FIRST set up an equation for calculating the total waiting time in each question before calculating the mean and variance of the total waiting time.* *You may use results from class for the expected value and variance of uniform RVs without proving them.*
+
+#### Part a
+
+If you take the bus each morning and evening for a week (7 days), what is your total expected waiting time?
+
+***Answer:***
+
+#### Part b
+
+What is the variance of your total waiting time?
+
+***Answer:***
+
+#### Part c
+
+What are the expected value and variance of the difference between morning and evening waiting times on a given day?
+
+***Answer:***
+
+#### Part d
+
+What are the expected value and variance of the difference between total morning waiting time and total evening waiting time for a particular week?
+
+***Answer:***
+
+#### Part e
+
+Simulate 10,000 weeks of bus rides to check your answers to Parts a, b, and d.
+
+**Step 1: Set up.** This chunk is done for you. Run it before the others.
+
+```{r}
+#| label: "q7e-setup"
+
+set.seed(6161)  # so you get the same "random" weeks each time
+reps <- 10000   # number of simulated weeks
+n_days <- 7     # number of days in a week
+```
+
+**Step 2: Simulate.** Make one row for every day in every week. On each day, simulate a morning waiting time and an evening waiting time.
+
+-   *Hint:* Follow the hotel rooms example in Lesson 10. Start with `expand_grid(sim = 1:reps, day = 1:n_days)`, then use `mutate()` to make a `morning` column with `runif(n(), min = 0, max = 8)` and an `evening` column with `runif(n(), min = 0, max = 10)`. Here `n()` is the number of rows, so you get one waiting time per day.
+-   *Tip:* Try `reps <- 5` first and print your table to see what it looks like. Then change it back to `reps <- 10000`.
+
+***Answer:***
+
+```{r}
+#| label: "q7e-simulate"
+
+# Your code here
+
+```
+
+**Step 3: Find the weekly totals.** For each simulated week, find the total waiting time and the difference between the total morning and total evening waiting times.
+
+-   *Hint:* Use `group_by(sim)`, then `summarise()` with `total = sum(morning + evening)` and `difference = sum(morning) - sum(evening)`.
+
+***Answer:***
+
+```{r}
+#| label: "q7e-weekly"
+
+# Your code here
+
+```
+
+**Step 4: Summarize.** Approximate the expected value and variance of the total waiting time and of the difference.
+
+-   *Hint:* Use `summarise()` with `mean()` and `mean((total - mean(total))^2)`, like in Question 1.
+
+***Answer:***
+
+```{r}
+#| label: "q7e-summarize"
+
+# Your code here
+
+```
+
+Are your simulated answers close to your answers in Parts a, b, and d? (They do not need to match exactly!)
+
+***Answer:***
 
 ## Extra problems
 
-1.  There is a bowl containing 30 cashews, 20 pecans, 25 almonds, and 25 walnuts. I am going to randomly pick and eat 3 nuts (without replacement). Find the expected value of the number of cashews by defining the number of cashews as a sum of random variables. (This one takes a little while if we don't rely on the
+**You do NOT need to complete the extra problems!**
 
+### 1. A bowl of nuts
 
-2.  Let $\hat{p}$ be the random variable for the sample proportion, $\hat{p}=\frac{X}{n}$, where $X$ is the number of successes in a random sample of size $n$. Assume the probability of success is $p$.
+There is a bowl containing 30 cashews, 20 pecans, 25 almonds, and 25 walnuts. I am going to randomly pick and eat 3 nuts (without replacement). Find the expected value of the number of cashews by defining the number of cashews as a sum of random variables.
 
-    a.  Find $\mathbb{E}[\hat{p}]$.
+-   *Hint:* Let $X_i = 1$ if the $i$th nut I eat is a cashew and $X_i = 0$ if not, for $i = 1, 2, 3$. What is $\mathbb{P}(X_i = 1)$?
 
-    b.  Find $Var[\hat{p}]$.
+### 2. The sample proportion
 
-3.  Suppose your waiting time for a bus in the morning is uniformly distributed on \[0, 8\] (minutes), whereas waiting time in the evening is uniformly distributed on \[0, 10\] (minutes) independent of morning waiting time. *Make sure to FIRST set up an equation for calculating the total waiting time in each question before calculating the mean and variance of the total waiting time.* *You may use results from class for the expected value and variance of uniform r.v.'s without proving them.*
+Let $\hat{p}$ be the random variable for the sample proportion, $\hat{p}=\dfrac{X}{n}$, where $X$ is the number of successes in a random sample of size $n$. Assume the probability of success is $p$.
 
-    a.  If you take the bus each morning and evening for a week (7 days), what is your total expected waiting time?
+#### Part a
 
-    b.  What is the variance of your total waiting time?
+Find $\mathbb{E}[\hat{p}]$.
 
-    c.  What are the expected value and variance of the difference between morning and evening waiting times on a given day?
+#### Part b
 
-    d.  What are the expected value and variance of the difference between total morning waiting time and total evening waiting time for a particular week?
+Find $Var(\hat{p})$.

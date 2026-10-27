@@ -1,0 +1,30 @@
+---
+title: "Key Info"
+date: "12/2/2024"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Announcements
+
+- Homework 7 presentations due soon!
+  - I will check your HW 7 solutions ASAP!
+  
+- Depending on how far we get today and Wednesday, I might cancel the 12/9 class
+
+- Anything else?
+
+## Key Dates
+
+- Thursday: HW 8 assignment due
+- Sunday: HW 7 presentations due at 11pm
+
+
+  
+
+
+

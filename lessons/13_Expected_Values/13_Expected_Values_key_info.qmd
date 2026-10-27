@@ -1,0 +1,26 @@
+---
+title: "Key Info"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Announcements
+
+- Quiz 2 back: everyone got at least a 12/14! Woo!
+  - Most common mistake: Question 10 - the fact that $f_X(x)$ can be greater than 1 is:
+    - **Wrong answer**: Invalid, because a pdf (like a probability) can never be greater than 1
+    - **Correct answer**: Valid, because the *area* under the curve from 0 to 1 is 1, even if the *height* of the function is greater than 1
+- Feel free to use your no-questions-asked extensions on homework
+  - And remember that there is no **grade** penalty for turning in homework late
+    - Charles is not obligated to give you feedback though
+- Sadly, there is no audio in the class on 11/5
+  - Not sure if human error or computer issue
+
+## Key Dates
+
+- HW 6 due this Sunday
+

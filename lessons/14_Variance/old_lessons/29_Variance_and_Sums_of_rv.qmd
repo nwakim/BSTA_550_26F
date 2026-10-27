@@ -1,0 +1,240 @@
+---
+title: "Chapter 29: Variance of Continuous Random Variables"
+author: "Meike Niederhausen and Nicky Wakim"
+title-slide-attributes:
+    data-background-color: "#006a4e"
+date: "11/11/2024"
+format: 
+  revealjs:
+    theme: "../simple_NW.scss"
+    slide-number: true
+    show-slide-number: all
+    width: 1955
+    height: 1100
+    footer: Chapter 29 Slides
+    html-math-method: mathjax
+---
+
+## Learning Objectives
+
+1.  Calculate expected value of functions of RVs
+
+2.  Calculate variance of RVs
+
+## Expected value of a function of a continuous RV
+
+::: columns
+::: {.column width="40%"}
+**How do we calculate the expected value of a function of a discrete RV
+or joint RVs?**
+
+   
+
+For discrete RVs:
+
+$$\mathbb{E}[g(X)] = \sum_{\{all\ x\}}\ g(x) p_X(x).$$
+$$\mathbb{E}[g(X, Y)] = \sum_{\{all\ x\}}\sum_{\{all\ y\}}\ g(x,y) p_{X,Y}(x,y).$$
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="50%"}
+**How do we calculate the expected value of a function of a continuous
+RV or joint RVs?**
+
+   
+
+For continuous RVs:
+:::
+:::
+
+## Important properties of expected values of functions of continuous RVs
+
+::: columns
+::: {.column width="50%"}
+::: proposition
+::: prop-title
+Function of RV with two constants
+:::
+
+::: prop-cont
+$\mathbb{E}[aX+b] =a\mathbb{E}[X]+b$
+:::
+:::
+
+::: proposition
+::: prop-title
+Function of two RVs added
+:::
+
+::: prop-cont
+$\mathbb{E}[X+Y] =\mathbb{E}[X]+\mathbb{E}[Y]$
+:::
+:::
+
+::: proposition
+::: prop-title
+Expected value of sum of independent RVs pt 1
+:::
+
+::: prop-cont
+If $X_1, X_2, \ldots X_n$ are continuous RVs and $a_1, a_2, \ldots a_n$
+are constants, then
+$$\mathbb{E}\Bigg[\sum_{i=1}^{n} a_i X_i\Bigg] = \sum_{i=1}^{n}a_i\mathbb{E}[X_i]$$
+:::
+:::
+:::
+
+::: {.column width="50%"}
+::: proposition
+::: prop-title
+Expected value of multiplication of function of independent RVs
+:::
+
+::: prop-cont
+If $X$ and $Y$ are independent continuous RVs, and $g$ and $h$ are
+functions, then
+$$\mathbb{E}[g(X)h(Y)] =\mathbb{E}[g(X)]\mathbb{E}[h(Y)]$$
+:::
+:::
+
+::: proposition
+::: prop-title
+Expected value of multiplication of independent RVs
+:::
+
+::: prop-cont
+If $X$ and $Y$ are independent continuous RVs, then
+$$\mathbb{E}[XY] = \mathbb{E}[X] \mathbb{E}[Y] $$
+:::
+:::
+:::
+:::
+
+## Variance of continuous RVs
+
+::: columns
+::: {.column width="40%"}
+**How do we calculate the variance of a discrete RV?**
+
+   
+
+For discrete RVs:
+
+$$
+\begin{align}
+Var(X) & =
+\mathbb{E}[(X-\mu_X)^2] \\ & = \mathbb{E}[(X-\mathbb{E}[X])^2] \\ &= \mathbb{E}[X^2]-(\mathbb{E}[X])^2 \\ & = \sum_{\{all\ x\}}(x-\mu_x)^2 p_{X}(x)
+\end{align}
+$$
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="45%"}
+**How do we calculate the variance of a continuous RV?**
+
+    
+
+For continuous RVs:
+:::
+:::
+
+## Variance of an Uniform distribution
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 2
+:::
+
+::: ex-cont
+Let $f_X(x)= \frac{1}{b-a}$, for $a \leq x \leq b$. Find $Var[X]$.
+:::
+:::
+:::
+:::
+
+## Variance of exponential distribution
+
+::: columns
+::: {.column width="30%"}
+
+In the homework:
+
+::: example
+::: ex-title
+Example 3
+:::
+
+::: ex-cont
+Let $f_X(x)= \lambda e^{-\lambda x}$, for $x > 0$ and $\lambda> 0$. Find
+$Var[X]$.
+:::
+:::
+:::
+:::
+
+## Important properties of variances of continuous RVs
+
+::: columns
+::: {.column width="50%"}
+::: proposition
+::: prop-title
+Function of RV with two constants
+:::
+
+::: prop-cont
+$$Var[aX+b] = a^2Var[X]$$
+:::
+:::
+:::
+
+::: {.column width="50%"}
+::: proposition
+::: prop-title
+Variance of sum of independent RVs pt 1
+:::
+
+::: prop-cont
+If $X_1, X_2, \ldots X_n$ are independent continuous RVs and
+$a_1, a_2, \ldots a_n$ are constants, then
+$$Var\Bigg(\sum_{i=1}^{n} a_i X_i\Bigg) =\sum_{i=1}^{n} a^2_i Var(X_i)$$
+:::
+:::
+
+::: proposition
+::: prop-title
+Variance of sum of independent RVs pt 2
+:::
+
+::: prop-cont
+If $X_1, X_2, \ldots X_n$ are independent continuous RVs, then
+$$Var\Bigg(\sum_{i=1}^{n} X_i\Bigg) = \sum_{i=1}^{n} Var(X_i)$$
+:::
+:::
+:::
+:::
+
+## Find the mean and sd from word problem
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 4
+:::
+
+::: ex-cont
+A machine manufactures cubes with a side length that varies uniformly
+from 1 to 2 inches. Assume the sides of the base and height are equal.
+The cost to make a cube is 10 ¢ per cubic inch, and 5 ¢ cents for the
+general cost per cube. Find the mean and standard deviation of the cost
+to make 10 cubes.
+:::
+:::
+:::
+:::

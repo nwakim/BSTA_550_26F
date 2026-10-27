@@ -1,0 +1,341 @@
+---
+title: "Chapter 25: Joint densities"
+author: "Meike Niederhausen and Nicky Wakim"
+date: "11/20/2024"
+title-slide-attributes:
+    data-background-color: "#006a4e"
+format: 
+  revealjs:
+    theme: "../simple_NW.scss"
+    slide-number: true
+    show-slide-number: all
+    width: 1955
+    height: 1100
+    footer: Chapter 25 Slides
+    html-math-method: mathjax
+---
+
+## Learning Objectives
+
+1.  Solve double integrals in our mini lesson!
+
+2.  Calculate probabilities for a pair of continuous random variables
+
+3.  Calculate a *joint and marginal* probability density function (pdf)
+
+4.  Calculate a *joint and marginal* cumulative distribution function (CDF) from a pdf
+
+## Double Integrals Mini Lesson (1/3)
+
+::: {.callout-important appearance="simple" icon="false"}
+Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+:::
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Mini Lesson Example 1
+:::
+
+::: ex-cont
+Solve the following integral: $\displaystyle\int_{2}^{3}\displaystyle\int_{0}^{1} xy dydx$
+:::
+:::
+:::
+:::
+
+## Double Integrals Mini Lesson (2/3)
+
+::: {.callout-important appearance="simple" icon="false"}
+Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+:::
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Mini Lesson Example 2
+:::
+
+::: ex-cont
+Solve the following integral: $\displaystyle\int_{2}^{3}\displaystyle\int_{0}^{1} (x+y) dydx$
+:::
+:::
+:::
+:::
+
+## Double Integrals Mini Lesson (3/3)
+
+::: {.callout-important appearance="simple" icon="false"}
+Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+:::
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Mini Lesson Example 3
+:::
+
+::: ex-cont
+Solve the following integral: $\displaystyle\int_{2}^{3}\displaystyle\int_{0}^{1} e^{x+y} dydx$
+:::
+:::
+:::
+:::
+
+## How to define the joint pdf for continuous RVs?
+
+::: columns
+::: {.column width="37%"}
+
+For a single continuous RV $X$ is a function $f_X(x)$, such that for all real values $a,b$ with $a \leq b$, $$\mathbb{P}(a \leq X \leq b) = \int_a^b f_X(x)dx$$
+
+:::
+
+::: {.column width="62%"}
+
+For two continuous RVs ($X$ and $Y$), we can define the **joint pdf**, $f_{X,Y}(x,y)$, such that for all real values $a,b, c, d$ with $a \leq b$ and $c \leq d$, $$\mathbb{P}(a \leq X \leq b, c \leq Y \leq d) = \int_a^b \int_c^d f_{X,Y}(x,y)dydx$$
+
+:::
+
+
+:::
+
+## Important properties of the joint pdf
+
+1.  Note that $f_{X,Y}(x,y)\neq \mathbb{P}(X=x, Y=y)$!!!
+
+2.  In order for $f_{X,Y}(x,y)$ to be a pdf, it needs to satisfy the properties
+
+    -   $f_{X,Y}(x,y)\geq 0$ for all $x,y$
+
+    -   $\displaystyle\int_{-\infty}^{\infty}\displaystyle\int_{-\infty}^{\infty} f_{X,Y}(x,y)dxdy=1$
+
+## What is the joint cumulative distribution function?
+
+::: definition
+::: def-title
+Definition: Joint cumulative distribution function (Joint CDF)
+:::
+
+::: def-cont
+The **joint cumulative distribution function (cdf)** of continuous random variables $X$ and $Y$, is the function $F_{X,Y}(x,y)$, such that for all real values of $x$ and $y$, $$F_{X,Y}(x,y)= \mathbb{P}(X \leq x, Y \leq y) = \int_{-\infty}^x\int_{-\infty}^y f_{X,Y}(s,t)dtds$$
+:::
+:::
+
+**Remarks:**
+
+-   The definition above for $F_{X,Y}(x,y)$ is a **function** of $x$ and $y$.
+
+-   The joint cdf at the point $(a,b)$, is $$F_{X,Y}(a,b) = \mathbb{P}(X \leq a, Y \leq b) = \int_{-\infty}^a\int_{-\infty}^b f_{X,Y}(s,t)dtds$$
+
+## What are the marginal pdf's?
+
+::: definition
+::: def-title
+Definition: Marginal pdf's
+:::
+
+::: def-cont
+Suppose $X$ and $Y$ are continuous r.v.'s, with joint pdf $f_{X,Y}(x,y)$. Then the **marginal probability density functions** are $$\begin{aligned}
+f_X(x)&=& \int_{-\infty}^{\infty} f_{X,Y}(x,y)dy\\
+f_Y(y)&=& \int_{-\infty}^{\infty} f_{X,Y}(x,y)dx
+\end{aligned}$$
+:::
+:::
+
+## Common steps for solving problems
+
+1. Set up the domain of the pdf with a picture
+
+2. Translate to needed integrands
+
+    - For probability: shade in the area of interest, then translate
+    - For expected value: translate domain
+
+3. Set up integral: $dxdy$ or $dydx$?
+
+4. Solve integral!
+
+## Example of joint pdf
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 1.1
+:::
+
+::: ex-cont
+Let $f_{X,Y}(x,y)= \frac32 y^2$, for $0 \leq x \leq 2, \ 0 \leq y \leq 1$.
+
+1.  Find $\mathbb{P}(0 \leq X \leq 1, 0 \leq Y \leq \frac12)$.
+:::
+:::
+:::
+:::
+
+## Example of joint pdf
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 1.2
+:::
+
+::: ex-cont
+Let $f_{X,Y}(x,y)= \frac32 y^2$, for $0 \leq x \leq 2, \ 0 \leq y \leq 1$.
+
+2.  Find $f_X(x)$ and $f_Y(y)$.
+:::
+:::
+:::
+:::
+
+## Example of a *more complicated* joint pdf
+
+::: {.callout-important appearance="simple" icon="false"}
+Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+:::
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 2.1
+:::
+
+::: ex-cont
+Let $f_{X,Y}(x,y)= 2 e^{-(x+y)}$, for $0 \leq x \leq y$.
+
+1.  Find $f_X(x)$ and $f_Y(y)$.
+:::
+:::
+:::
+:::
+
+## Example of a *more complicated* joint pdf
+
+::: {.callout-important appearance="simple" icon="false"}
+Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+:::
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 2.2
+:::
+
+::: ex-cont
+Let $f_{X,Y}(x,y)= 2 e^{-(x+y)}$, for $0 \leq x \leq y$.
+
+2.  Find $\mathbb{P}(Y < 3)$.
+:::
+:::
+:::
+:::
+
+## Let's complicate this even more!
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 3.1
+:::
+
+::: ex-cont
+Let $X$ and $Y$ have constant density on the square $0 \leq X \leq 4, 0 \leq Y \leq 4$.
+
+1.  Find $\mathbb{P}(|X-Y| < 2)$
+:::
+:::
+:::
+:::
+
+## Finding the pdf of a transformation
+
+- Let $M$ be a transformation of $X$ and $Y$
+
+- When we have a transformation of $X$ and $Y$, $M$, we need to follow a specific process to find the pdf of $M$
+
+We follow this process:
+
+1. Start with the joint pdf for $X$ and $Y$ 
+
+    - aka $f_{X,Y}(x, y)$
+
+2. Translate the domain of $X$ and $Y$ to $M$
+
+3. Find the CDF of $M$ 
+
+    - aka $F_M(m)$ or $P(M \leq m)$
+
+4. Take the derivative of the CDF of $M$ to find the pdf of $M$ 
+
+    - aka $f_M(m) = \dfrac{d}{dm}F_M(m)$
+
+
+## Let's complicate this even more!
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 3.2
+:::
+
+::: ex-cont
+Let $X$ and $Y$ have constant density on the square $0 \leq X \leq 4, 0 \leq Y \leq 4$.
+
+2.  Let $M = \max(X,Y)$. Find the pdf for $M$, that is $f_M(m)$.
+:::
+:::
+:::
+:::
+
+## Let's complicate this even more!
+
+::: {.callout-important appearance="simple" icon="false"}
+Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+:::
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 3.3
+:::
+
+::: ex-cont
+Let $X$ and $Y$ have constant density on the square $0 \leq X \leq 4, 0 \leq Y \leq 4$.
+
+3.  Let $Z = \min(X,Y)$. Find the pdf for $Z$, that is $f_Z(z)$.
+:::
+:::
+:::
+:::
+
+## Let's complicate this even further!
+
+::: {.callout-important appearance="simple" icon="false"}
+Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+:::
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 4
+:::
+
+::: ex-cont
+Let $X$ and $Y$ have joint density $f_{X,Y}(x,y)= \frac85(x+y)$ in the region $0 < x < 1,\ \frac12 < y <1$. Find the pdf of the r.v. $Z$, where $Z=XY$.
+:::
+:::
+:::
+:::

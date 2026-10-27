@@ -1,0 +1,80 @@
+---
+title: "Chapter 36: Sums of Independent Normal RVs"
+author: "Meike Niederhausen and Nicky Wakim"
+date: "12/2/2024"
+title-slide-attributes:
+    data-background-color: "#006a4e"
+format: 
+  revealjs:
+    theme: "../simple_NW.scss"
+    slide-number: true
+    show-slide-number: all
+    width: 1955
+    height: 1100
+    footer: Chapter 36 Slides
+    html-math-method: mathjax
+---
+
+## Learning Objectives
+
+1.  Calculate probability of a sample mean using a Normally distributed population
+
+## Sum of Normal RVs
+
+::: theorem
+::: thm-title
+Theorem 1
+:::
+::: thm-cont
+Let $X\sim N(\mu, \sigma^2)$, and let $Y=aX+b$, where
+$a$ and $b$ are constants. Then $$Y \sim N(a\mu+b, a^2\sigma^2)$$
+:::
+:::
+
+::: theorem
+::: thm-title
+Theorem 2
+:::
+::: thm-cont
+Let $X_i \sim N(\mu_i, \sigma_i^2)$ be independent
+normal rv's, for $i=1,2,\ldots,n$. Then
+$$\sum_{i=1}^n X_i \sim N\Bigg(\sum_{i=1}^n \mu_i , \sum_{i=1}^n \sigma^2_i\Bigg)$$
+:::
+:::
+
+## Special Cases
+
+1.  Let $X_i \sim N(\mu, \sigma^2)$ be iid normal rv's, for
+    $i=1,2,\ldots,n$. Then $$\sum_{i=1}^n X_i \sim N\big(n\mu, n \sigma^2\big)$$
+
+2.  Let $X_i \sim N(\mu, \sigma^2)$ be iid normal rv's, for
+    $i=1,2,\ldots,n$. Then
+    $$\bar{X}=\frac{\sum_{i=1}^n X_i}{n} \sim N\big(\mu, \sigma^2 / n\big)$$
+
+3.  Let $X\sim N(\mu_X,\sigma_X^2)$, and $Y\sim N(\mu_Y,\sigma_Y^2)$.
+    Then $$X-Y \sim N\big(\mu_X - \mu_Y, \sigma^2_X + \sigma^2_Y \big)$$
+
+## Detecting and solving sums of Normal RVs from a word problem
+
+::: columns
+::: {.column width="40%"}
+::: example
+::: ex-title
+Example 1
+:::
+::: ex-cont
+Glaucoma is an eye disease that is manifested by high
+intraocular pressure (IOP). The distribution of IOP in the general
+population is approximately normal with mean 16 mmHg and standard
+deviation 3 mmHg.
+
+1.  Suppose a patient has 40 IOP readings. What is the probability that
+    their average reading is greater than 20.32 mmHg, assuming their
+    eyes are healthy?
+
+2.  Repeat the previous question for a patient with 10 IOP readings.
+:::
+:::
+
+:::
+:::

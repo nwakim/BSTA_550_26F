@@ -1,0 +1,340 @@
+---
+title: "Lesson 10: Transformations"
+author: "Nicky Wakim"
+title-slide-attributes:
+    data-background-color: "#006a4e"
+date: "`r library(here); source(here('class_dates.R')); w5d1`"
+format: 
+  revealjs:
+    theme: "../simple_NW.scss"
+    slide-number: true
+    show-slide-number: all
+    width: 1955
+    height: 1100
+    footer: Lesson 10 Slides
+    html-math-method: mathjax
+---
+
+```{r setup, include=FALSE}
+library(here)
+source(here("class_dates.R"))
+
+library(tidyverse)
+library(kableExtra)
+
+theme_set(theme_bw(base_size = 28))
+
+```
+
+# Learning Objectives
+
+1. Find the pdf of a linear rescaling of a random variable
+2. Find the pdf of a nonlinear transformation of a random variable using the CDF method
+
+## Distributions of transformations of random variables {#cdf-method}
+
+- Often make transformations of RVs
+- A function of a random variable is a random variable
+    - If $X$ is a random variable and $g$ is a function then $Y=g(X)$ is a random variable
+    - Since $g(X)$ is a random variable it has a distribution
+- Distribution of $g(X)$ will have a different shape than the distribution of $X$
+- Two types:
+    - Linear rescalings: $g(u) = a + bu$
+    - Nonlinear transformations: e.g. $g(u) = u^2$, $g(u) = \log(u)$
+
+# Learning Objectives
+
+::: lob
+1. Find the pdf of a linear rescaling of a random variable
+:::
+2. Find the pdf of a nonlinear transformation of a random variable using the CDF method
+
+
+## Linear rescaling
+
+::: definition
+::: def-title
+Definition: Linear Rescaling
+:::
+::: def-cont
+A **linear rescaling** is a transformation of the form $g(u) = a + bu$, where $a$ and $b$ are constants
+:::
+:::
+
+- Thus, if we have a random variable, $X$, then a linear rescaling of $X$ could be $M = g(X) = a + bX$
+
+- For example, converting temperature from Celsius to Fahrenheit using $g(u) = 32 + 1.8u$ is a linear rescaling.
+
+## Example of linear rescaling (1/4) {#sim-linear-rescaling}
+
+::: example
+::: ex-title
+Example 1: Linear rescaling of $U$
+:::
+::: ex-cont
+Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2$. Define $V=1-U$
+
+1.  What are the possible values of $V$?
+2.  Is $V$ the same random variable as $U$?
+3.  Find $P(V \le -0.5)$.
+4.  Find the pdf of $V$.
+5.  Does $V$ have the same distribution as $U$?
+:::
+:::
+
+## Example of linear rescaling (2/4) {#sim-linear-rescaling}
+
+::: example
+::: ex-title
+Example 1: Linear rescaling of $U$
+:::
+::: ex-cont
+Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2$. Define $V=1-U$
+
+1.  What are the possible values of $V$?
+2.  Is $V$ the same random variable as $U$?
+:::
+:::
+
+## Example of linear rescaling (3/4) {#sim-linear-rescaling}
+
+::: example
+::: ex-title
+Example 1: Linear rescaling of $U$
+:::
+::: ex-cont
+Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2$. Define $V=1-U$
+
+3.  Find $P(V \le -0.5)$.
+:::
+:::
+
+## Example of linear rescaling (4/4) {#sim-linear-rescaling}
+
+::: example
+::: ex-title
+Example 1: Linear rescaling of $U$
+:::
+::: ex-cont
+Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2$. Define $V=1-U$
+
+4.  Find the pdf of $V$.
+5.  Does $V$ have the same distribution as $U$?
+:::
+:::
+
+## Summary of linear rescaling
+
+-   A linear rescaling of a random variable does not change the basic shape of its distribution, just the range of possible values.
+
+    - It can flip it, widen it, condense it, and/or shift it
+
+-   Remember, do NOT confuse a random variable with its distribution
+    -   The random variable is the numerical quantity being measured
+    -   The distribution is the long run pattern of variation of many observed values of the random variable
+
+# Learning Objectives
+
+1. Find the pdf of a linear rescaling of a random variable
+
+::: lob
+2. Find the pdf of a nonlinear transformation of a random variable using the CDF method
+:::
+
+
+## Nonlinear transformations
+
+- What happens when we make a **nonlinear transformation**, like a logarithmic or square root transformation?
+- Nonlinear transformations do *not* necessarily preserve the distribution shape
+
+- Examples of nonlinear transformations:
+    -   $g(u) = u^2$
+    -   $g(u) = \sqrt{u}$
+    -   $g(u) = \log(u)$
+    -   $g(u) = e^u$
+    -   $g(u) = \dfrac{1}{u}$
+
+## Finding the pdf of a transformation
+
+- Let $M$ be a transformation of $X$: $M = g(X)$
+
+- When we have a transformation of $X$, $M$, we need to follow the **CDF method** to find the pdf of $M$
+
+We follow **CDF method**:
+
+1. Start with the pdf for $X$
+
+    - aka $f_{X}(x)$
+
+2. Translate the domain of $X$ to $M$: find the possible values of $M$
+
+3. Find the CDF of $M$ 
+
+    - aka $F_M(m) = P(M \leq m) = P(g(X) \leq m)$
+    - Will require manipulating $g(X) \leq m$ in terms of $X$ (aka $X$ alone on the left side)
+
+4. Take the derivative of the CDF of $M$ with respect to $m$ to find the pdf of $M$ 
+
+    - aka $f_M(m) = \dfrac{d}{dm}F_M(m)$
+
+## Example of nonlinear transformation (1/4)
+
+::: example
+::: ex-title
+Example 2: Nonlinear transformation of $U$
+:::
+::: ex-cont
+Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2$. Define $V=\log(U)$
+
+1.  What are the possible values of $V$?
+2.  Find the CDF of $V$
+3.  Find the pdf of $V$
+:::
+:::
+
+## Example of nonlinear transformation (2/4)
+
+::: example
+::: ex-title
+Example 2: Nonlinear transformation of $U$
+:::
+::: ex-cont
+Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2$. Define $V=\log(U)$
+
+1.  What are the possible values of $V$?
+:::
+:::
+
+::: columns
+::: {.column width="40%"}
+```{r}
+#| fig-height: 7
+#| fig-width: 8
+
+domain_u_v = tibble(
+  u = seq(1, 2, 0.01), 
+  v = log(u)
+)
+
+ggplot(domain_u_v, aes(x = u, y = v)) +
+  geom_line() +
+  labs(
+    title = "Transformation: V = log(U)",
+    x = "u",
+    y = "log(u)"
+  )
+```
+:::
+::: column
+:::
+:::
+
+## Example of nonlinear transformation (3/4)
+
+::: example
+::: ex-title
+Example 2: Nonlinear transformation of $U$
+:::
+::: ex-cont
+Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2$. Define $V=\log(U)$
+
+2.  Find the CDF of $V$
+:::
+:::
+
+## Example of nonlinear transformation (4/4)
+
+::: example
+::: ex-title
+Example 2: Nonlinear transformation of $U$
+:::
+::: ex-cont
+Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2$. Define $V=\log(U)$
+
+3.  Find the pdf of $V$
+:::
+:::
+
+## Example of nonlinear transformation: domain (1/4)
+
+::: example
+::: ex-title
+Example 3: Nonlinear transformation of $X$
+:::
+::: ex-cont
+Let $X$ be a random variable with $f_X(x)= \dfrac{1}{2}$ for $-1\leq x \leq 1$. Define $Y=X^2$
+ 
+1.  What are the possible values of $Y$?
+2.  Find the CDF of $Y$
+3.  Find the pdf of $Y$
+:::
+:::
+
+## Example of nonlinear transformation: domain (2/4)
+
+::: example
+::: ex-title
+Example 3: Nonlinear transformation of $X$
+:::
+::: ex-cont
+Let $X$ be a random variable with $f_X(x)= \dfrac{1}{2}$ for $-1\leq x \leq 1$. Define $Y=X^2$
+ 
+1.  What are the possible values of $Y$?
+:::
+:::
+
+::: columns
+::: {.column width="40%"}
+```{r}
+#| fig-height: 7
+#| fig-width: 8
+
+domain_x_y = tibble(
+  x = seq(-1.5, 1.5, 0.01), 
+  y = x^2
+)
+
+ggplot(domain_x_y, aes(x = x, y = y)) +
+  geom_line() +
+  labs(
+    title = "Transformation: Y = X^2",
+    x = "x",
+    y = "x^2"
+  )
+```
+:::
+::: column
+:::
+:::
+
+## Example of nonlinear transformation: domain (3/4)
+
+::: example
+::: ex-title
+Example 3: Nonlinear transformation of $X$
+:::
+::: ex-cont
+Let $X$ be a random variable with $f_X(x)= \dfrac{1}{2}$ for $-1\leq x \leq 1$. Define $Y=X^2$
+ 
+2.  Find the CDF of $Y$
+:::
+:::
+
+## Example of nonlinear transformation: domain (4/4)
+
+::: example
+::: ex-title
+Example 3: Nonlinear transformation of $X$
+:::
+::: ex-cont
+Let $X$ be a random variable with $f_X(x)= \dfrac{1}{2}$ for $-1\leq x \leq 1$. Define $Y=X^2$
+ 
+3.  Find the pdf of $Y$
+:::
+:::
+
+## Summary of nonlinear transformations
+
+-   Nonlinear transformations can change the shape of a distribution
+-  Always use the CDF method to find the pdf of a nonlinear transformation of a random variable
+-  Remember to carefully determine the possible values of the transformed random variable

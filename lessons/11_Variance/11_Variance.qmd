@@ -615,6 +615,23 @@ general cost per cube. Find the mean and standard deviation of the cost
 to make 10 cubes.
 :::
 :::
+
+:::
+:::
+
+::: {.absolute bottom="70" right="0" width="620"}
+::: {.theorem style="font-size: 60%;"}
+::: thm-title
+Side work: $f_X(x) = 1$ for $1 \leq x \leq 2$
+:::
+::: thm-cont
+$$
+\begin{align}
+\mathbb{E}[X_i^3] & = \int_1^2 x^3 \cdot 1 \, dx = \frac{x^4}{4}\bigg|_1^2 = \frac{16-1}{4} = \frac{15}{4} \\
+\mathbb{E}[X_i^6] & = \int_1^2 x^6 \cdot 1 \, dx = \frac{x^7}{7}\bigg|_1^2 = \frac{128-1}{7} = \frac{127}{7}
+\end{align}
+$$
+:::
 :::
 :::
 

@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Meike Niederhausen and Nicky Wakim">
-  <meta name="dcterms.date" content="2026-10-21">
+  <meta name="dcterms.date" content="2026-10-19">
   <title>Introduction to Probability – Lesson 8: Probability density functions (PDFs)</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -210,7 +210,7 @@ Meike Niederhausen and Nicky Wakim
 </div>
 </div>
 
-  <p class="date">2026-10-21</p>
+  <p class="date">2026-10-19</p>
 </section>
 <section>
 <section id="learning-objectives" class="title-slide slide level1 center">
@@ -301,7 +301,7 @@ Meike Niederhausen and Nicky Wakim
 </div>
 </div>
 <div class="columns">
-<div class="column" style="width:58%;">
+<div class="column" style="width:55%;">
 <p><strong>Remarks:</strong></p>
 <ol type="1">
 <li><p>Note that <span class="math inline">\(f_X(x) \neq \mathbb{P}(X=x)\)</span>!!!</p></li>
@@ -311,7 +311,7 @@ Meike Niederhausen and Nicky Wakim
 <li><p><span class="math inline">\(\int_{-\infty}^{\infty} f_X(x)dx=1\)</span>: the total area under the curve is 1</p></li>
 </ul></li>
 </ol>
-</div><div class="column" style="width:42%;">
+</div><div class="column" style="width:45%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -481,8 +481,8 @@ Meike Niederhausen and Nicky Wakim
 </ol>
 </div>
 </section>
-<section id="use-r-to-simulate-known-distributions-12" class="slide level2">
-<h2>Use R to simulate known distributions (1/2)</h2>
+<section id="use-r-to-simulate-known-distributions-13" class="slide level2">
+<h2>Use R to simulate known distributions (1/3)</h2>
 <ul>
 <li>We can use R to simulate continuous random variables and visualize their distributions</li>
 <li>For example, we can simulate a <em>uniform</em> distribution between 2.5 and 3: <span class="math inline">\(f_X(x) = 2\)</span> for <span class="math inline">\(2.5 \leq x \leq 3\)</span></li>
@@ -492,11 +492,12 @@ Meike Niederhausen and Nicky Wakim
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1" aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">8</span>)</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2">2</button><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2" aria-label="2"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3">3</button><span id="annotated-cell-1-3" class="code-annotation-target"><a href="#annotated-cell-1-3" aria-label="3"></a>uniform_sims <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="4">4</button><span id="annotated-cell-1-4" class="code-annotation-target"><a href="#annotated-cell-1-4" aria-label="4"></a>  <span class="at">x =</span> <span class="fu">runif</span>(<span class="at">n =</span> reps, <span class="at">min =</span> <span class="fl">2.5</span>,</span>
-<span id="annotated-cell-1-5"><a href="#annotated-cell-1-5" aria-label="5"></a>            <span class="at">max =</span> <span class="dv">3</span>)</span>
-<span id="annotated-cell-1-6"><a href="#annotated-cell-1-6" aria-label="6"></a>  )</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="5">5</button><span id="annotated-cell-1-7" class="code-annotation-target"><a href="#annotated-cell-1-7" aria-label="7"></a><span class="fu">head</span>(uniform_sims)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3" aria-label="3"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3">3</button><span id="annotated-cell-1-4" class="code-annotation-target"><a href="#annotated-cell-1-4" aria-label="4"></a>uniform_sims <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="4">4</button><span id="annotated-cell-1-5" class="code-annotation-target"><a href="#annotated-cell-1-5" aria-label="5"></a>  <span class="at">x =</span> <span class="fu">runif</span>(<span class="at">n =</span> reps, <span class="at">min =</span> <span class="fl">2.5</span>, <span class="at">max =</span> <span class="dv">3</span>)</span>
+<span id="annotated-cell-1-6"><a href="#annotated-cell-1-6" aria-label="6"></a>)</span>
+<span id="annotated-cell-1-7"><a href="#annotated-cell-1-7" aria-label="7"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="5">5</button><span id="annotated-cell-1-8" class="code-annotation-target"><a href="#annotated-cell-1-8" aria-label="8"></a><span class="fu">head</span>(uniform_sims)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
@@ -509,15 +510,15 @@ Meike Niederhausen and Nicky Wakim
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="3" data-code-annotation="3"><code>tibble()</code> makes a table, which we save as <code>uniform_sims</code>.</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="4" data-code-annotation="3"><code>tibble()</code> makes a table, which we save as <code>uniform_sims</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="4,5" data-code-annotation="4"><code>runif()</code> draws random values from a uniform distribution. <code>n</code> is how many values, and <code>min</code> and <code>max</code> are the ends of the interval.</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="5" data-code-annotation="4"><code>runif()</code> draws random values from a uniform distribution. <code>n</code> is how many values, and <code>min</code> and <code>max</code> are the ends of the interval.</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="7" data-code-annotation="5"><code>head()</code> shows the first 6 rows. Every value is a decimal number between 2.5 and 3. Note the slides show a rounded value.</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="8" data-code-annotation="5"><code>head()</code> shows the first 6 rows. Every value is a decimal number between 2.5 and 3.</span>
 </dd>
 </dl>
 </div>
@@ -580,8 +581,8 @@ Meike Niederhausen and Nicky Wakim
 </div>
 </div></div>
 </section>
-<section id="use-r-to-simulate-known-distributions-22" class="slide level2">
-<h2>Use R to simulate known distributions (2/2)</h2>
+<section id="use-r-to-simulate-known-distributions-23" class="slide level2">
+<h2>Use R to simulate known distributions (2/3)</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
 <ul>
@@ -627,14 +628,68 @@ Meike Niederhausen and Nicky Wakim
 </div>
 </div><div class="column" style="width:40%;">
 <p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 <ul>
 <li><p>Compare these to the answers we found with the integrals</p></li>
 <li><p>Does the simulation agree that <span class="math inline">\(P(X = 2.9) = 0\)</span>?</p></li>
 </ul>
 </div></div>
+</section>
+<section id="use-r-to-simulate-known-distributions-33" class="slide level2">
+<h2>Use R to simulate known distributions (3/3)</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>Why is <span class="math inline">\(P(X = 2.9) = 0\)</span>? Let’s round the simulated values and see what happens to the probability of getting 2.9</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-6"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1">1</button><span id="annotated-cell-6-1" class="code-annotation-target"><a href="#annotated-cell-6-1" aria-label="1"></a>uniform_sims <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2">2</button><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2" aria-label="2"></a>  <span class="fu">summarise</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="3">3</button><span id="annotated-cell-6-3" class="code-annotation-target"><a href="#annotated-cell-6-3" aria-label="3"></a>    <span class="at">round_1_digit  =</span> <span class="fu">mean</span>(<span class="fu">round</span>(x, <span class="at">digits =</span> <span class="dv">1</span>) <span class="sc">==</span> <span class="fl">2.9</span>),</span>
+<span id="annotated-cell-6-4"><a href="#annotated-cell-6-4" aria-label="4"></a>    <span class="at">round_2_digits =</span> <span class="fu">mean</span>(<span class="fu">round</span>(x, <span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">==</span> <span class="fl">2.9</span>),</span>
+<span id="annotated-cell-6-5"><a href="#annotated-cell-6-5" aria-label="5"></a>    <span class="at">round_3_digits =</span> <span class="fu">mean</span>(<span class="fu">round</span>(x, <span class="at">digits =</span> <span class="dv">3</span>) <span class="sc">==</span> <span class="fl">2.9</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="4">4</button><span id="annotated-cell-6-6" class="code-annotation-target"><a href="#annotated-cell-6-6" aria-label="6"></a>    <span class="at">no_rounding    =</span> <span class="fu">mean</span>(x <span class="sc">==</span> <span class="fl">2.9</span>)</span>
+<span id="annotated-cell-6-7"><a href="#annotated-cell-6-7" aria-label="7"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="1" data-code-annotation="1">Start with the 10,000 simulated values of <code>x</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="2" data-code-annotation="2">Again, one row with a column for each probability.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="3,4,5" data-code-annotation="3"><code>round(x, digits = 1)</code> rounds each value to 1 decimal place, so any <code>x</code> between 2.85 and 2.95 becomes 2.9. We find the proportion of rounded values equal to 2.9.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="6" data-code-annotation="4">With no rounding, no simulated value lands exactly on 2.9.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 4
+  round_1_digit round_2_digits round_3_digits no_rounding
+          &lt;dbl&gt;          &lt;dbl&gt;          &lt;dbl&gt;       &lt;dbl&gt;
+1         0.199         0.0203         0.0021           0</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<p>&nbsp;</p>
+<ul>
+<li><p>The more we round, the smaller the “window” around 2.9</p></li>
+<li><p>A window of width 0.1 has probability about <span class="math inline">\(2 \times 0.1 = 0.2\)</span> (density times width)</p></li>
+<li><p>As the window shrinks to a single point, its probability shrinks to 0</p></li>
+</ul>
+</div></div>
+</section>
+<section id="use-r-to-simulate-any-continuous-distribution" class="slide level2">
+<h2>Use R to simulate any continuous distribution</h2>
+<ul>
+<li>We will discuss other ways to simulate continuous distributions once we cover cumulative distribution functions (CDFs) and inverse CDFs</li>
+</ul>
 
 
 </section></section>

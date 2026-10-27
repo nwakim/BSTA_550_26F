@@ -21760,14 +21760,14 @@
     "href": "lessons/13_Expected_Values/13_Expected_Values.html#what-is-an-expected-value",
     "title": "Lesson 13: Expected Values",
     "section": "What is an expected value?",
-    "text": "What is an expected value?\n\n\n\n\nDefinition: Expected value of discrete RV\n\n\nThe expected value of a discrete RV \\(X\\) that takes on values \\(x_1, x_2, \\ldots, x_n\\) is \\[\\mathbb{E}[X] = \\sum_{i=1}^n x_ip_X(x_i)\\] where \\(n\\) can be \\(\\infty\\)\n\n\n\n\n\nDefinition: Expected value of continuous RV\n\n\nThe expected value of a continuous RV \\(X\\) is \\[\\mathbb{E}[X] = \\displaystyle\\int_{-\\infty}^\\infty xf_X(x) dx\\] where we adjust the integrand based on the bounds of \\(X\\)\n\n\n\n\nExpected values are not necessarily an actual outcome\n\nIn previous example, we cannot roll a 3.5\nIt could be that our expected value is not in the sample space (\\(E(X) \\notin S\\))"
+    "text": "What is an expected value?\n\n\n\n\nDefinition: Expected value of discrete RV\n\n\nThe expected value of a discrete RV \\(X\\) that takes on values \\(x_1, x_2, \\ldots, x_n\\) is \\[\\mathbb{E}[X] = \\sum_{i=1}^n x_ip_X(x_i)\\] where \\(n\\) can be \\(\\infty\\)\n\n\n\n\n\nDefinition: Expected value of continuous RV\n\n\nThe expected value of a continuous RV \\(X\\) is \\[\\mathbb{E}[X] = \\displaystyle\\int_{-\\infty}^\\infty xf_X(x) dx\\] where we adjust the integrand based on the bounds of \\(X\\)\n\n\n\n\n\nExpected values are not necessarily an actual outcome\n\nIn previous example, we cannot roll a 3.5\nIt could be that our expected value is not in the sample space (\\(E(X) \\notin S\\))"
   },
   {
     "objectID": "lessons/13_Expected_Values/13_Expected_Values.html#our-good-and-not-so-fair-friend-the-6-sided-die",
     "href": "lessons/13_Expected_Values/13_Expected_Values.html#our-good-and-not-so-fair-friend-the-6-sided-die",
     "title": "Lesson 13: Expected Values",
     "section": "Our good and not-so-fair friend, the 6-sided die",
-    "text": "Our good and not-so-fair friend, the 6-sided die\n\n\n\n\nExample 2\n\n\nSuppose the die is 6-sided, but not fair. And the probabilities of each side is distributed as:\n\n\n\n\\(x\\)\n\\(p_X(x)\\)\n\n\n\n\n1\n0.10\n\n\n2\n0.05\n\n\n3\n0.02\n\n\n4\n0.30\n\n\n5\n0.50\n\n\n6\n0.03\n\n\n\nWhat value do you expect to get on a roll?"
+    "text": "Our good and not-so-fair friend, the 6-sided die\n\n\n\n\nExample 2\n\n\nSuppose the die is 6-sided, but not fair. And the probabilities of each side are distributed as:\n\n\n\n\\(x\\)\n\\(p_X(x)\\)\n\n\n\n\n1\n0.10\n\n\n2\n0.05\n\n\n3\n0.02\n\n\n4\n0.30\n\n\n5\n0.50\n\n\n6\n0.03\n\n\n\nWhat value do you expect to get on a roll?"
   },
   {
     "objectID": "lessons/13_Expected_Values/13_Expected_Values.html#expected-value-of-a-bernoulli-distribution",
@@ -21802,7 +21802,7 @@
     "href": "lessons/13_Expected_Values/13_Expected_Values.html#what-if-we-draw-a-lot-of-cards",
     "title": "Lesson 13: Expected Values",
     "section": "What if we draw A LOT of cards?",
-    "text": "What if we draw A LOT of cards?\n\n\n\n\nExample 2\n\n\nWhat is the expected number of hearts in Example 1 if you draw 200 cards?\n\n\n\n\nRecall Binomial RV with \\(n=200\\):\n\\[p_X(x) = {200 \\choose x}p^x(1-p)^{200-x}\\] \\[\\text{  for } x = 0, 1, 2, ..., 200\\]"
+    "text": "What if we draw A LOT of cards?\n\n\n\n\nExample 8\n\n\nWhat is the expected number of hearts in Example 7 if you draw 200 cards?\n\n\n\n\nRecall Binomial RV with \\(n=200\\):\n\\[p_X(x) = {200 \\choose x}p^x(1-p)^{200-x}\\] \\[\\text{  for } x = 0, 1, 2, ..., 200\\]"
   },
   {
     "objectID": "lessons/13_Expected_Values/13_Expected_Values.html#sum-of-discrete-rvs",
@@ -23018,9 +23018,9 @@
   {
     "objectID": "lessons/14_Variance/14_Variance.html",
     "href": "lessons/14_Variance/14_Variance.html",
-    "title": "Lesson 16: Variance",
+    "title": "Lesson 14: Variance",
     "section": "",
-    "text": "Calculate the variance and standard deviation of discrete random variables\nCalculate the variance of sums of discrete random variables\nCalculate the variance of functions of discrete random variables\nCalculate expected value of functions of RVs\nCalculate variance of RVs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExample 1\n\n\nLet \\(g\\) be a function and let \\(g(x) = ax+b\\), for real-valued constants \\(a\\) and \\(b\\). What is \\(\\mathbb{E}[g(X)]\\)?\n\n\n\n\n\n\n\n\n\nDefinition: Expected value of function of RV\n\n\nFor any function \\(g\\) and discrete r.v. \\(X\\), the expected value of \\(g(X)\\) is \\[\\mathbb{E}[g(X)] = \\sum_{\\{all\\ x\\}}\\ g(x) p_X(x).\\]\n\n\n\n\n\n\n\n\n\nExample 2\n\n\nSuppose you draw 2 cards from a standard deck of cards with replacement. Let \\(X\\) be the number of hearts you draw.\n\nFind \\(\\mathbb{E}[X^2]\\).\n\n\n\n\n\nRecall Binomial RV with \\(n=2\\):\n\\[p_X(x) = {2 \\choose x}p^x(1-p)^{2-x} \\text{  for } x = 0, 1, 2\\]\n\n\n\n\n\n\n\n\n\n\n\n\nExample 2\n\n\nSuppose you draw 2 cards from a standard deck of cards with replacement. Let \\(X\\) be the number of hearts you draw.\n\nFind \\(\\mathbb{E}\\big[\\big(X-\\frac{1}{2}\\big)^2\\big]\\).\n\n\n\n\n\nRecall Binomial RV with \\(n=2\\):\n\\[p_X(x) = {2 \\choose x}p^x(1-p)^{2-x} \\text{  for } x = 0, 1, 2\\]\n\n\n\n\n\n\n\n\n\n\nDefinition: Variance of RV\n\n\nThe variance of a r.v. \\(X\\), with (finite) expected value \\(\\mu_X=\\mathbb{E}[X]\\) is \\[\\sigma_X^2=Var(X)=\\mathbb{E}[(X-\\mu_X)^2] = \\mathbb{E}[(X-\\mathbb{E}[X])^2]\\]\n\n\n\n\nDefinition: Standard deviation of RV\n\n\nThe standard deviation of a r.v. \\(X\\) is \\[\\sigma_X = SD(X) = \\sqrt{\\sigma_X^2}=\\sqrt{Var(X)}.\\]\n\n\n\n\n\nQuestions: Why do we square the difference in the variance definition? \\((X-\\mu_X)^2\\)\n\nWhy not define the measure of spread as \\(\\mathbb{E}[X-\\mu_X] = \\mathbb{E}[X-\\mathbb{E}[X]]\\)?\nWhy not use \\(\\mathbb{E}[|X-\\mu_X|]\\)?\n\n\n\n\n\n\n\n\nLemma 6: “Computation formula” for Variance\n\n\nThe variance of a r.v. \\(X\\), can be computed as \\[\\begin{align}\n\\sigma_X^2 & =Var(X) \\\\ & = \\mathbb{E}[X^2]-\\mu_X^2 \\\\ & = \\mathbb{E}[X^2] - (\\mathbb{E}[X])^2\n\\end{align}\\]"
+    "text": "Define and calculate the expected value for a function of discrete and continuous RVs\nDefine and calculate variance for a single random variable\nDefine and calculate variance for multiple random variables"
   },
   {
     "objectID": "lessons/14_Variance/14_Variance.html#lets-start-building-the-variance-through-expected-values-of-functions",
@@ -23034,7 +23034,7 @@
     "href": "lessons/14_Variance/14_Variance.html#what-is-the-expected-value-of-a-function",
     "title": "Lesson 14: Variance",
     "section": "What is the expected value of a function?",
-    "text": "What is the expected value of a function?\n\n\n\n\nExpected value of function of discrete RV\n\n\nFor any function \\(g\\) and discrete RV \\(X\\), the expected value of \\(g(X)\\) is \\[\\mathbb{E}[g(X)] = \\sum_{\\{all\\ x\\}}\\ g(x) p_X(x)\\]\n\n\n\n\n\nExpected value of function of continuous RV\n\n\nFor any function \\(g\\) and continuous RV \\(X\\), the expected value of \\(g(X)\\) is \\[\\mathbb{E}[g(X)] = \\displaystyle\\int_{-\\infty}^\\infty g(x)f_X(x) dx\\]\n\n\n\n\nFor example, if we have \\(g(x)=x^2\\), then \\[\\mathbb{E}[X^2)] = \\sum_{\\{all\\ x\\}}\\ x^2 p_X(x) \\neq \\left(\\sum_{\\{all\\ x\\}}\\ x p_X(x)) \\right)^2 = \\left( \\mathbb{E}[X] \\right)^2\\]"
+    "text": "What is the expected value of a function?\n\n\n\n\nExpected value of function of discrete RV\n\n\nFor any function \\(g\\) and discrete RV \\(X\\), the expected value of \\(g(X)\\) is \\[\\mathbb{E}[g(X)] = \\sum_{\\{all\\ x\\}}\\ g(x) p_X(x)\\]\n\n\n\n\n\nExpected value of function of continuous RV\n\n\nFor any function \\(g\\) and continuous RV \\(X\\), the expected value of \\(g(X)\\) is \\[\\mathbb{E}[g(X)] = \\displaystyle\\int_{-\\infty}^\\infty g(x)f_X(x) dx\\]\n\n\n\n\n\nFor example, if we have \\(g(x)=x^2\\), then \\[\\mathbb{E}[X^2] = \\sum_{\\{all\\ x\\}}\\ x^2 p_X(x) \\neq \\left(\\sum_{\\{all\\ x\\}}\\ x p_X(x) \\right)^2 = \\left( \\mathbb{E}[X] \\right)^2\\]"
   },
   {
     "objectID": "lessons/14_Variance/14_Variance.html#lets-revisit-the-card-example-12",
@@ -23060,9 +23060,9 @@
   {
     "objectID": "lessons/14_Variance/14_Variance.html#questions",
     "href": "lessons/14_Variance/14_Variance.html#questions",
-    "title": "Lesson 16: Variance",
-    "section": "",
-    "text": "Questions: Why do we square the difference in the variance definition? \\((X-\\mu_X)^2\\)\n\nWhy not define the measure of spread as \\(\\mathbb{E}[X-\\mu_X] = \\mathbb{E}[X-\\mathbb{E}[X]]\\)?\nWhy not use \\(\\mathbb{E}[|X-\\mu_X|]\\)?"
+    "title": "Lesson 14: Variance",
+    "section": "Questions",
+    "text": "Questions\nQuestions: Why do we square the difference in the variance definition? \\((X-\\mu_X)^2\\)\n\nWhy not define the measure of spread as \\(\\mathbb{E}[X-\\mu_X] = \\mathbb{E}[X-\\mathbb{E}[X]]\\)?\nWhy not use \\(\\mathbb{E}[|X-\\mu_X|]\\)?"
   },
   {
     "objectID": "lessons/14_Variance/14_Variance.html#lets-calculate-the-variance-and-prove-it",
@@ -23097,7 +23097,7 @@
     "href": "lessons/14_Variance/14_Variance.html#corollaries",
     "title": "Lesson 14: Variance",
     "section": "Corollaries",
-    "text": "Corollaries\n\n\nCorollary 2\n\n\nFor independent discrete RV’s \\(X_i\\), \\(i=1,2,\\dots, n\\), \\[Var\\Bigg(\\sum_{i=1}^n X_i\\Bigg) = \\sum_{i=1}^n Var(X_i).\\]\n\n\n\n\nCorollary 3\n\n\nFor independent identically distributed (i.i.d.) discrete RV’s \\(X_i\\), \\(i=1,2,\\dots, n\\), \\[Var\\Bigg(\\sum_{i=1}^n X_i\\Bigg) = n Var(X_1).\\]"
+    "text": "Corollaries\n\n\nCorollary 2\n\n\nFor independent RVs \\(X_i\\), \\(i=1,2,\\dots, n\\), \\[Var\\Bigg(\\sum_{i=1}^n X_i\\Bigg) = \\sum_{i=1}^n Var(X_i).\\]\n\n\n\n\nCorollary 3\n\n\nFor independent identically distributed (i.i.d.) RVs \\(X_i\\), \\(i=1,2,\\dots, n\\), \\[Var\\Bigg(\\sum_{i=1}^n X_i\\Bigg) = n Var(X_1).\\]"
   },
   {
     "objectID": "lessons/14_Variance/14_Variance.html#lets-look-at-a-ghost-problem-with-replacement",
@@ -23146,7 +23146,7 @@
     "href": "lessons/14_Variance/14_Variance.html#variance-of-exponential-distribution",
     "title": "Lesson 14: Variance",
     "section": "Variance of exponential distribution",
-    "text": "Variance of exponential distribution\n\n\nIn the homework:\n\n\nExample 3\n\n\nLet \\(f_X(x)= \\lambda e^{-\\lambda x}\\), for \\(x &gt; 0\\) and \\(\\lambda&gt; 0\\). Find \\(Var[X]\\)."
+    "text": "Variance of exponential distribution\n\n\nIn the homework:\n\n\nExample 4\n\n\nLet \\(f_X(x)= \\lambda e^{-\\lambda x}\\), for \\(x &gt; 0\\) and \\(\\lambda&gt; 0\\). Find \\(Var[X]\\)."
   },
   {
     "objectID": "lessons/14_Variance/14_Variance.html#important-properties-of-variances-of-continuous-rvs",
@@ -23713,7 +23713,7 @@
     "href": "lessons/13_Expected_Values/13_Expected_Values.html#sums-of-random-variables",
     "title": "Lesson 13: Expected Values",
     "section": "Sums of Random Variables",
-    "text": "Sums of Random Variables\n\n\nTheorem: Sum of random variables\n\n\nFor RVs (discrete or continuous) \\(X_i\\) and constants \\(a_i\\), \\(i=1,2,\\dots, n\\), \\[\\mathbb{E}\\Bigg[\\sum_{i=1}^n a_iX_i\\Bigg] = \\sum_{i=1}^n a_i\\mathbb{E}[X_i] .\\] Remark: The theorem holds for infinitely RV’s \\(X_i\\) as well.\n\n\n\nFor two RVs, \\(X\\) and \\(Y\\):\n\nWe can say \\(E[X+Y] = E[X] + E[Y]\\)\n… and constant numbers \\(a\\) and \\(b\\), we can also say \\(E[aX+bY] = aE[X] + bE[Y]\\)\nWe can also also say \\(E[X-Y] = E[X] - E[Y]\\), since \\(b=-1\\)"
+    "text": "Sums of Random Variables\n\n\nTheorem: Sum of random variables\n\n\nFor RVs (discrete or continuous) \\(X_i\\) and constants \\(a_i\\), \\(i=1,2,\\dots, n\\), \\[\\mathbb{E}\\Bigg[\\sum_{i=1}^n a_iX_i\\Bigg] = \\sum_{i=1}^n a_i\\mathbb{E}[X_i] .\\] Remark: The theorem holds for infinitely many RVs \\(X_i\\) as well.\n\n\n\nFor two RVs, \\(X\\) and \\(Y\\):\n\nWe can say \\(E[X+Y] = E[X] + E[Y]\\)\n… and constant numbers \\(a\\) and \\(b\\), we can also say \\(E[aX+bY] = aE[X] + bE[Y]\\)\nWe can also also say \\(E[X-Y] = E[X] - E[Y]\\), since \\(b=-1\\)"
   },
   {
     "objectID": "lessons/13_Expected_Values/13_Expected_Values.html#corollaries-from-theorem",
@@ -23769,21 +23769,21 @@
     "href": "lessons/14_Variance/14_Variance.html#variance-of-discrete-and-continuous-rvs",
     "title": "Lesson 14: Variance",
     "section": "Variance of discrete and continuous RVs",
-    "text": "Variance of discrete and continuous RVs\n\n\nHow do we calculate the variance of a discrete RV?\n   \nFor discrete RVs:\n\\[\n\\begin{align}\nVar(X) & = \\\\ & = \\sum_{\\{all\\ x\\}}(x-\\mu_x)^2 p_{X}(x) \\\\ & =\n\\mathbb{E}[(X-\\mu_X)^2] \\\\ & = \\mathbb{E}[(X-\\mathbb{E}[X])^2] \\\\ &= \\mathbb{E}[X^2]-(\\mathbb{E}[X])^2\n\\end{align}\n\\]\n\n\n\nHow do we calculate the variance of a continuous RV?\n    \nFor continuous RVs:\n\\[\n\\begin{align}\nVar(X) & =\n\\displaystyle\\int_{-\\infty}^\\infty (x-\\mu_X)^2f_X(x) dx \\\\ & = \\mathbb{E}[(X-\\mu_X)^2] \\\\ & = \\mathbb{E}[(X-\\mathbb{E}[X])^2] \\\\ &= \\mathbb{E}[X^2]-(\\mathbb{E}[X])^2 \\end{align}\n\\]"
+    "text": "Variance of discrete and continuous RVs\n\n\nHow do we calculate the variance of a discrete RV?\n   \nFor discrete RVs:\n\\[\n\\begin{align}\nVar(X) & = \\sum_{\\{all\\ x\\}}(x-\\mu_X)^2 p_{X}(x) \\\\ & =\n\\mathbb{E}[(X-\\mu_X)^2] \\\\ & = \\mathbb{E}[(X-\\mathbb{E}[X])^2] \\\\ &= \\mathbb{E}[X^2]-(\\mathbb{E}[X])^2\n\\end{align}\n\\]\n\n\n\nHow do we calculate the variance of a continuous RV?\n    \nFor continuous RVs:\n\\[\n\\begin{align}\nVar(X) & =\n\\displaystyle\\int_{-\\infty}^\\infty (x-\\mu_X)^2f_X(x) dx \\\\ & = \\mathbb{E}[(X-\\mu_X)^2] \\\\ & = \\mathbb{E}[(X-\\mathbb{E}[X])^2] \\\\ &= \\mathbb{E}[X^2]-(\\mathbb{E}[X])^2 \\end{align}\n\\]"
   },
   {
     "objectID": "lessons/14_Variance/14_Variance.html#ghost-problem-with-replacement",
     "href": "lessons/14_Variance/14_Variance.html#ghost-problem-with-replacement",
     "title": "Lesson 14: Variance",
     "section": "Ghost problem: with replacement",
-    "text": "Ghost problem: with replacement\n\n\n\n\nExample 3.2\n\n\nThe ghost is trick-or-treating at a different house now. In this case it is known that the bag of candy has 10 chocolates, 20 lollipops, and 30 laffy taffies. The ghost grabs a handful of five pieces of candy. What is the variance for the number of chocolates the ghost takes? Let’s solve this for the cases with replacement.\n\n\n\n\nRecall probability with replacement:\n\\[\np_X(x) = {n \\choose k}p^k(1-p)^{n-k}\n\\]"
+    "text": "Ghost problem: with replacement\n\n\n\n\nExample 5\n\n\nThe ghost is trick-or-treating at a different house now. In this case it is known that the bag of candy has 10 chocolates, 20 lollipops, and 30 laffy taffies. The ghost grabs a handful of five pieces of candy. What is the variance for the number of chocolates the ghost takes? Let’s solve this for the case with replacement.\n\n\n\n\nRecall probability with replacement:\n\\[\np_X(x) = {n \\choose x}p^x(1-p)^{n-x}\n\\]"
   },
   {
     "objectID": "lessons/14_Variance/14_Variance.html#back-to-our-hotel-example-from-lesson-13",
     "href": "lessons/14_Variance/14_Variance.html#back-to-our-hotel-example-from-lesson-13",
     "title": "Lesson 14: Variance",
     "section": "Back to our hotel example from Lesson 13",
-    "text": "Back to our hotel example from Lesson 13\n\n\n\n\nExample 4\n\n\nA tour group is planning a visit to the city of Minneapolis and needs to book 30 hotel rooms. The average price of a room is $200 with standard deviation $10. In addition, there is a 10% tourism tax for each room. What is the standard deviation of the cost for the 30 hotel rooms? Assume rooms are independent.\n\n\nProblem to do at home if we don’t have enough time."
+    "text": "Back to our hotel example from Lesson 13\n\n\n\n\nExample 6\n\n\nA tour group is planning a visit to the city of Minneapolis and needs to book 30 hotel rooms. The average price of a room is $200 with standard deviation $10. In addition, there is a 10% tourism tax for each room. What is the standard deviation of the cost for the 30 hotel rooms? Assume rooms are independent.\n\n\nProblem to do at home if we don’t have enough time."
   },
   {
     "objectID": "lessons/13_Expected_Values/old_notes/15_Expected_Values_of_Sums_of_rvs/28_29_Joint_expected_value_Variance/28_29_Joint_expected_value_Variance_muddy_points.html",
@@ -23958,7 +23958,7 @@
     "href": "lessons/14_Variance/14_Variance.html#find-the-mean-and-sd-from-word-problem-12",
     "title": "Lesson 14: Variance",
     "section": "Find the mean and sd from word problem (1/2)",
-    "text": "Find the mean and sd from word problem (1/2)\n\n\n\n\nExample 4\n\n\nA machine manufactures cubes with a side length that varies uniformly from 1 to 2 inches. Assume the sides of the base and height are equal. The cost to make a cube is 10 ¢ per cubic inch, and 5 ¢ cents for the general cost per cube. Find the mean and standard deviation of the cost to make 10 cubes."
+    "text": "Find the mean and sd from word problem (1/2)\n\n\n\n\nExample 7\n\n\nA machine manufactures cubes with a side length that varies uniformly from 1 to 2 inches. Assume the sides of the base and height are equal. The cost to make a cube is 10 ¢ per cubic inch, and 5 ¢ for the general cost per cube. Find the mean and standard deviation of the cost to make 10 cubes."
   },
   {
     "objectID": "lessons/14_Variance/14_Variance.html#find-the-mean-and-sd-from-word-problem-12-1",
@@ -26548,14 +26548,14 @@
     "href": "lessons/08_pdfs/08_pdfs.html#use-r-to-simulate-known-distributions-13",
     "title": "Lesson 8: Probability density functions (PDFs)",
     "section": "Use R to simulate known distributions (1/3)",
-    "text": "Use R to simulate known distributions (1/3)\n\nWe can use R to simulate continuous random variables and visualize their distributions\nFor example, we can simulate a uniform distribution between 2.5 and 3: \\(f_X(x) = 2\\) for \\(2.5 \\leq x \\leq 3\\)\n\n\n\n\n1set.seed(8)\n2reps &lt;- 10000\n3uniform_sims &lt;- tibble(\n4  x = runif(n = reps, min = 2.5,\n            max = 3)\n  )\n5head(uniform_sims)\n\n\n1\n\nSet the random seed once, so everyone gets the same random numbers.\n\n2\n\nSave the number of simulated values as reps, so it is easy to change later.\n\n3\n\ntibble() makes a table, which we save as uniform_sims.\n\n4\n\nrunif() draws random values from a uniform distribution. n is how many values, and min and max are the ends of the interval.\n\n5\n\nhead() shows the first 6 rows. Every value is a decimal number between 2.5 and 3. Note the slides show a rounded value.\n\n\n\n\n# A tibble: 6 × 1\n      x\n  &lt;dbl&gt;\n1  2.73\n2  2.60\n3  2.90\n4  2.83\n5  2.66\n6  2.86\n\n\n\n\n\nPlot the simulated values and the pdf\n1ggplot(uniform_sims, aes(x = x, y = after_stat(density))) +\n2  geom_histogram(binwidth = 0.025, boundary = 2.5,\n                 color = \"black\", fill = \"lightblue\") +\n3  geom_hline(yintercept = 2, color = \"red\", linewidth = 1.5) +\n4  labs(title = \"Probability density function (pdf) of X\",\n       x = \"x\",\n       y = \"Density\") +\n5  theme_minimal(base_size = 20)\n\n\n\n1\n\nafter_stat(density) scales the bar heights so the total area of the bars is 1, like a pdf.\n\n2\n\nEach bar covers a width of 0.025. boundary = 2.5 starts the first bar exactly at 2.5.\n\n3\n\nThe red line is the true pdf, \\(f_X(x) = 2\\).\n\n4\n\nAdd a title and axis labels.\n\n5\n\nUse a clean theme with larger text."
+    "text": "Use R to simulate known distributions (1/3)\n\nWe can use R to simulate continuous random variables and visualize their distributions\nFor example, we can simulate a uniform distribution between 2.5 and 3: \\(f_X(x) = 2\\) for \\(2.5 \\leq x \\leq 3\\)\n\n\n\n\n1set.seed(8)\n2reps &lt;- 10000\n\n3uniform_sims &lt;- tibble(\n4  x = runif(n = reps, min = 2.5, max = 3)\n)\n\n5head(uniform_sims)\n\n\n1\n\nSet the random seed once, so everyone gets the same random numbers.\n\n2\n\nSave the number of simulated values as reps, so it is easy to change later.\n\n3\n\ntibble() makes a table, which we save as uniform_sims.\n\n4\n\nrunif() draws random values from a uniform distribution. n is how many values, and min and max are the ends of the interval.\n\n5\n\nhead() shows the first 6 rows. Every value is a decimal number between 2.5 and 3.\n\n\n\n\n# A tibble: 6 × 1\n      x\n  &lt;dbl&gt;\n1  2.73\n2  2.60\n3  2.90\n4  2.83\n5  2.66\n6  2.86\n\n\n\n\n\nPlot the simulated values and the pdf\n1ggplot(uniform_sims, aes(x = x, y = after_stat(density))) +\n2  geom_histogram(binwidth = 0.025, boundary = 2.5,\n                 color = \"black\", fill = \"lightblue\") +\n3  geom_hline(yintercept = 2, color = \"red\", linewidth = 1.5) +\n4  labs(title = \"Probability density function (pdf) of X\",\n       x = \"x\",\n       y = \"Density\") +\n5  theme_minimal(base_size = 20)\n\n\n\n1\n\nafter_stat(density) scales the bar heights so the total area of the bars is 1, like a pdf.\n\n2\n\nEach bar covers a width of 0.025. boundary = 2.5 starts the first bar exactly at 2.5.\n\n3\n\nThe red line is the true pdf, \\(f_X(x) = 2\\).\n\n4\n\nAdd a title and axis labels.\n\n5\n\nUse a clean theme with larger text."
   },
   {
     "objectID": "lessons/08_pdfs/08_pdfs.html#use-r-to-simulate-known-distributions-23",
     "href": "lessons/08_pdfs/08_pdfs.html#use-r-to-simulate-known-distributions-23",
     "title": "Lesson 8: Probability density functions (PDFs)",
     "section": "Use R to simulate known distributions (2/3)",
-    "text": "Use R to simulate known distributions (2/3)\n\n\n\nWe can use the simulated values to check our answers from Examples 1.2 to 1.5\n\n\n1uniform_sims |&gt;\n2  summarise(\n3    prob_between = mean(x &gt;= 2.7 & x &lt;= 2.9),\n4    prob_equal   = mean(x == 2.9),\n5    prob_at_most = mean(x &lt;= 2.8)\n  )\n\n\n1\n\nStart with the 10,000 simulated values of x.\n\n2\n\nsummarise() collapses the table into one row with a column for each probability.\n\n3\n\nx &gt;= 2.7 & x &lt;= 2.9 is TRUE when x is at least 2.7 and at most 2.9. The mean of TRUEs and FALSEs is the proportion of TRUEs, which approximates \\(P(2.7 \\leq X \\leq 2.9)\\).\n\n4\n\nThe proportion of simulated values exactly equal to 2.9, which approximates \\(P(X = 2.9)\\).\n\n5\n\nThe proportion of simulated values at most 2.8, which approximates \\(P(X \\leq 2.8)\\).\n\n\n\n\n# A tibble: 1 × 3\n  prob_between prob_equal prob_at_most\n         &lt;dbl&gt;      &lt;dbl&gt;        &lt;dbl&gt;\n1        0.396          0        0.598\n\n\n\n \n \n \n \n\nCompare these to the answers we found with the integrals\nDoes the simulation agree that \\(P(X = 2.9) = 0\\)?"
+    "text": "Use R to simulate known distributions (2/3)\n\n\n\nWe can use the simulated values to check our answers from Examples 1.2 to 1.5\n\n\n1uniform_sims |&gt;\n2  summarise(\n3    prob_between = mean(x &gt;= 2.7 & x &lt;= 2.9),\n4    prob_equal   = mean(x == 2.9),\n5    prob_at_most = mean(x &lt;= 2.8)\n  )\n\n\n1\n\nStart with the 10,000 simulated values of x.\n\n2\n\nsummarise() collapses the table into one row with a column for each probability.\n\n3\n\nx &gt;= 2.7 & x &lt;= 2.9 is TRUE when x is at least 2.7 and at most 2.9. The mean of TRUEs and FALSEs is the proportion of TRUEs, which approximates \\(P(2.7 \\leq X \\leq 2.9)\\).\n\n4\n\nThe proportion of simulated values exactly equal to 2.9, which approximates \\(P(X = 2.9)\\).\n\n5\n\nThe proportion of simulated values at most 2.8, which approximates \\(P(X \\leq 2.8)\\).\n\n\n\n\n# A tibble: 1 × 3\n  prob_between prob_equal prob_at_most\n         &lt;dbl&gt;      &lt;dbl&gt;        &lt;dbl&gt;\n1        0.396          0        0.598\n\n\n\n \n\nCompare these to the answers we found with the integrals\nDoes the simulation agree that \\(P(X = 2.9) = 0\\)?"
   },
   {
     "objectID": "lessons/08_pdfs/08_pdfs.html#use-r-to-simulate-known-distributions-33",
@@ -28152,5 +28152,75 @@
     "title": "Muddy Points",
     "section": "",
     "text": "Here’s a pretty good video on integration by parts!\nHere’s the Calc review muddy points with a few words on integration by parts.\n\n\n\nGot a little help from Chatgpt:\nThink back to our discrete example with the die. Our expected value was the weighted average of all the possible outcomes (weighted by their probability). So our expected value for discrete RVs will always be that weighted average: \\[\\mathbb{E}[X] = \\sum_{i=1}^n x_ip_X(x_i)\\]\nFor continuous RVs, they can take infinite possible values, so we cannot sum across the pdf the same way. We still want the weighted average, so we need to find a way to “sum” the weighted outcomes for the continuous RV, which translates to an integral.\nHere’s a fairly good explanation on StackExchange..)\n\n\n\nFinal example: Let \\(f_{X,Y}(x,y)= 2e^{-(x+y)}\\), for \\(0 \\leq x \\leq y\\). Find \\(\\mathbb{E}[X]\\).\nLet’s start with a plot for the domain. We have \\(0 \\leq x \\leq y\\), so we know that \\(x\\geq0\\) and because \\(y\\geq x\\), then \\(y\\geq0\\), so we’ll have a plot of all positive values of \\(x\\) and \\(y\\):\n\n\n\n\n\n\n\n\n\nOkay, now let’s add the information that \\(y \\geq x\\). We can look at the line, \\(y=x\\), and identify the area on the side of the line that upholds \\(y \\geq x\\):\n\n\n\n\n\n\n\n\n\nThe area above the line is where \\(y\\geq x\\):\n\n\n\n\n\n\n\n\n\nSo we need to find the bounds for the orange region in terms of \\(x\\) and \\(y\\).\nWhichever random variable is on the inner integral will need to incorporate the \\(y=x\\) line. If we integrate over \\(y\\) first, we will integrate from \\(y=x\\) to \\(y=\\infty\\). Once we have incorporated the line into our first integral, then we no longer need to worry about the \\(y=x\\) line. For \\(x\\), we can integrate from \\(x=0\\) to \\(x=\\infty\\)."
+  },
+  {
+    "objectID": "lessons/14_Variance/14_Variance.html#lets-simulate-the-card-example",
+    "href": "lessons/14_Variance/14_Variance.html#lets-simulate-the-card-example",
+    "title": "Lesson 14: Variance",
+    "section": "Let’s simulate the card example",
+    "text": "Let’s simulate the card example\n\n\n\nSame steps as Lesson 2: one row per card, then one row per simulation\nWith replacement, each card’s suit is equally likely\n\n\n1set.seed(1028)\n2reps &lt;- 10000\nn_cards &lt;- 2\n3suits &lt;- c(\"hearts\", \"diamonds\", \"clubs\", \"spades\")\n\n4draws &lt;- expand_grid(sim = 1:reps, card = 1:n_cards) |&gt;\n  mutate(suit = sample(suits, n(), replace = TRUE))\n\n5X_sims &lt;- draws |&gt;\n  group_by(sim) |&gt;\n  summarise(X = sum(suit == \"hearts\"))\n\n\n1\n\nSet the seed so we get the same random draws every time we run the code.\n\n2\n\nSave the settings: 10,000 simulations with 2 cards each.\n\n3\n\nThe four suits. Each suit is a quarter of the deck, so drawing with replacement is like picking a suit at random.\n\n4\n\nSame as the dice in Lesson 2: one row per card, each with a randomly drawn suit.\n\n5\n\nFor each simulation, count the hearts. suit == \"hearts\" is TRUE or FALSE, and sum() counts each TRUE as 1.\n\n\n\n\n\n \n\nThe first 20 simulated values of \\(X\\):\n\n\n1head(X_sims$X, 20)\n\n\n1\n\nX_sims$X pulls out the X column, and head(..., 20) shows its first 20 values.\n\n\n\n\n [1] 0 0 0 0 0 0 0 0 1 1 0 1 0 0 1 0 1 0 0 1\n\n\n \n\n\\(X\\) can only be 0, 1, or 2, just like the Binomial with \\(n = 2\\)"
+  },
+  {
+    "objectID": "lessons/14_Variance/14_Variance.html#the-variance-from-our-simulation",
+    "href": "lessons/14_Variance/14_Variance.html#the-variance-from-our-simulation",
+    "title": "Lesson 14: Variance",
+    "section": "The variance from our simulation",
+    "text": "The variance from our simulation\n\n\n\n1X_sims |&gt;\n  summarise(\n2    mean_X       = mean(X),\n3    mean_X_sq    = mean(X^2),\n4    variance     = mean((X - mean(X))^2),\n5    var_shortcut = mean(X^2) - mean(X)^2,\n6    std_dev      = sqrt(variance)\n  )\n\n\n1\n\nCollapse the 10,000 simulated values of X into one row of summaries.\n\n2\n\nThe average of X, which estimates \\(\\mathbb{E}[X]\\).\n\n3\n\nThe average of X squared, which estimates \\(\\mathbb{E}[X^2]\\) (Example 2, part 1).\n\n4\n\nThe definition of variance: the average squared distance from the mean, \\(\\mathbb{E}[(X-\\mathbb{E}[X])^2]\\).\n\n5\n\nThe computation formula, \\(\\mathbb{E}[X^2] - (\\mathbb{E}[X])^2\\). It matches the line above.\n\n6\n\nsqrt() takes the square root of the variance to get the standard deviation. summarise() can use a column made earlier inside it.\n\n\n\n\n# A tibble: 1 × 5\n  mean_X mean_X_sq variance var_shortcut std_dev\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;\n1  0.494     0.622    0.378        0.378   0.615\n\n\n\n \n\n\nExact answers for the card example:\n\n\\(\\mathbb{E}[X] = \\frac{1}{2}\\)\n\\(\\mathbb{E}[X^2] = \\frac{5}{8} = 0.625\\)\n\\(Var(X) = \\frac{5}{8} - \\left(\\frac{1}{2}\\right)^2 = \\frac{3}{8} = 0.375\\)\n\\(SD(X) = \\sqrt{3/8} \\approx 0.612\\)\n\n\n\n\nBoth formulas for the variance give the same number!"
+  },
+  {
+    "objectID": "lessons/14_Variance/14_Variance.html#variance-of-a-uniform-distribution",
+    "href": "lessons/14_Variance/14_Variance.html#variance-of-a-uniform-distribution",
+    "title": "Lesson 14: Variance",
+    "section": "Variance of a Uniform distribution",
+    "text": "Variance of a Uniform distribution\n\n\n\n\nExample 3\n\n\nLet \\(f_X(x)= \\frac{1}{b-a}\\), for \\(a \\leq x \\leq b\\). Find \\(Var[X]\\)."
+  },
+  {
+    "objectID": "lessons/14_Variance/14_Variance.html#variance-of-sum-of-independent-rvs",
+    "href": "lessons/14_Variance/14_Variance.html#variance-of-sum-of-independent-rvs",
+    "title": "Lesson 14: Variance",
+    "section": "Variance of sum of independent RVs",
+    "text": "Variance of sum of independent RVs\n\n\nTheorem 9: Variance of sum of independent RVs\n\n\nFor independent RVs (discrete or continuous) \\(X_i\\) and constants \\(a_i\\), \\(i=1,2,\\dots, n\\), \\[Var\\Bigg(\\sum_{i=1}^n a_iX_i\\Bigg) = \\sum_{i=1}^n a_i^2Var(X_i).\\]\n\n\nSimpler version:\n\\[Var(a_1 X + a_2 Y) = Var(a_1X) + Var(a_2 Y) = a_1^2 Var(X) + a_2^2 Var(Y)\\]"
+  },
+  {
+    "objectID": "lessons/14_Variance/14_Variance.html#find-the-mean-and-sd-from-word-problem-22",
+    "href": "lessons/14_Variance/14_Variance.html#find-the-mean-and-sd-from-word-problem-22",
+    "title": "Lesson 14: Variance",
+    "section": "Find the mean and sd from word problem (2/2)",
+    "text": "Find the mean and sd from word problem (2/2)"
+  },
+  {
+    "objectID": "lessons/13_Expected_Values/13_Expected_Values.html",
+    "href": "lessons/13_Expected_Values/13_Expected_Values.html",
+    "title": "Lesson 13: Expected Values",
+    "section": "",
+    "text": "Define the expected value for discrete and continuous RVs\nCalculate the expected value (mean) of a single discrete RV\nCalculate the expected value (mean) of a single continuous RV\nCalculate expected value for the sum of discrete or continuous RVs\nCalculate expected value for joint densities (continuous RVs)"
+  },
+  {
+    "objectID": "lessons/13_Expected_Values/13_Expected_Values.html#lets-simulate-our-not-so-fair-die",
+    "href": "lessons/13_Expected_Values/13_Expected_Values.html#lets-simulate-our-not-so-fair-die",
+    "title": "Lesson 13: Expected Values",
+    "section": "Let’s simulate our not-so-fair die",
+    "text": "Let’s simulate our not-so-fair die\n\n\n\nSame idea as Lesson 2: simulate many rolls, then summarize\nprob gives the probability of each side, like the unfair coin in Lesson 1\n\n\n1set.seed(1026)\n2reps &lt;- 10000\n3die_probs &lt;- c(0.10, 0.05, 0.02, 0.30, 0.50, 0.03)\n\n4X_sims &lt;- tibble(sim = 1:reps) |&gt;\n5  mutate(X = sample(1:6, n(), replace = TRUE,\n                    prob = die_probs))\n\n\n1\n\nSet the seed so we get the same random rolls every time we run the code.\n\n2\n\nSave the number of simulations as reps, so it is easy to change later.\n\n3\n\nThe probability of rolling 1, 2, 3, 4, 5, and 6, from the table in Example 2.\n\n4\n\ntibble() makes a table with one row per simulation, numbered 1 to 10,000. The pipe |&gt; passes it to the next line.\n\n5\n\nmutate() adds a column X with one roll per row. prob = die_probs makes 5 come up half the time, 4 about 30% of the time, and so on.\n\n\n\n\n\n \n\nAverage of the 10,000 simulated rolls:\n\n\n1X_sims |&gt;\n  summarise(average = mean(X))\n\n\n1\n\nCollapse the 10,000 simulated values of X into one number: their average.\n\n\n\n\n# A tibble: 1 × 1\n  average\n    &lt;dbl&gt;\n1    4.16\n\n\n \n\n\nFrom Example 2, \\(\\mathbb{E}[X] = 1(0.10) + 2(0.05) + 3(0.02) + 4(0.30) + 5(0.50) + 6(0.03) = 4.14\\)\nThe simulated average is very close!"
+  },
+  {
+    "objectID": "lessons/13_Expected_Values/13_Expected_Values.html#the-running-average-settles-at-mathbbex",
+    "href": "lessons/13_Expected_Values/13_Expected_Values.html#the-running-average-settles-at-mathbbex",
+    "title": "Lesson 13: Expected Values",
+    "section": "The running average settles at \\(\\mathbb{E}[X]\\)",
+    "text": "The running average settles at \\(\\mathbb{E}[X]\\)\n\nThe expected value is the long-run average: after many rolls, the average of the rolls gets close to 4.14 (dashed line)\n\n\n\nShow/Hide Code for the running average plot\n1X_sims |&gt;\n2  mutate(running_avg = cumsum(X) / sim) |&gt;\n3  ggplot(aes(x = sim, y = running_avg)) +\n4  geom_line(color = \"#006a4e\", linewidth = 1) +\n5  geom_hline(yintercept = 4.14, linetype = \"dashed\") +\n6  labs(title = \"Running Average of Simulated Rolls\",\n       x = \"Number of rolls\",\n       y = \"Average so far\") +\n7  theme_minimal(base_size = 20)\n\n\n\n1\n\nStart with the 10,000 simulated rolls.\n\n2\n\ncumsum(X) adds up the rolls so far (the running total). Dividing by sim, the number of rolls so far, gives the average so far.\n\n3\n\nStart a plot with the number of rolls on the x-axis and the average so far on the y-axis. Layers are added with +.\n\n4\n\nConnect the averages with a line.\n\n5\n\nAdd a dashed horizontal line at the exact expected value, 4.14.\n\n6\n\nAdd a title and axis labels.\n\n7\n\nUse a simple theme with larger text so the plot is readable on slides."
+  },
+  {
+    "objectID": "lessons/13_Expected_Values/13_Expected_Values.html#bullseye",
+    "href": "lessons/13_Expected_Values/13_Expected_Values.html#bullseye",
+    "title": "Lesson 13: Expected Values",
+    "section": "Bullseye! 🎯",
+    "text": "Bullseye! 🎯\n\n\n\n\nExample 5\n\n\nSuppose I throw darts at a dartboard until I hit the bullseye, and that my probability of hitting the bullseye is \\(p\\). Suppose further that all of my throws are independent, and that the probability of a bullseye never changes, no matter how many times I throw a dart. How many times should I expect to have to throw the dart until I hit the bullseye?"
+  },
+  {
+    "objectID": "lessons/13_Expected_Values/13_Expected_Values.html#some-remarks-on-last-two-examples",
+    "href": "lessons/13_Expected_Values/13_Expected_Values.html#some-remarks-on-last-two-examples",
+    "title": "Lesson 13: Expected Values",
+    "section": "Some remarks on last two examples",
+    "text": "Some remarks on last two examples\nBoth examples are repeated random processes. They are fundamentally different though:\n\nThe bullseye example is “with replacement” since the probability of success remains constant.\nThe ghost trick-or-treating example is without replacement, and thus the probability of success changes with each trial."
   }
 ]

@@ -153,6 +153,27 @@ $$p_X(x) = {2 \choose x}p^x(1-p)^{2-x} \text{  for } x = 0, 1, 2$$
 :::
 :::
 :::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="60%" style="font-size: 80%;"}
+With $g(x) = \left(x-\frac{1}{2}\right)^2$ and $p = \mathbb{P}(\text{heart}) = \frac{1}{4}$:
+
+$$
+\begin{align}
+\mathbb{E}\left[\left(X-\tfrac{1}{2}\right)^2\right] & = \sum_{\{all\ x\}} \left(x-\tfrac{1}{2}\right)^2 p_X(x) \\
+& = \sum_{x=0}^{2} \left(x-\tfrac{1}{2}\right)^2 {2 \choose x} 0.25^x \, 0.75^{2-x} \\
+& = \left(0-\tfrac{1}{2}\right)^2 \tbinom{2}{0} 0.25^0 \, 0.75^2 + \left(1-\tfrac{1}{2}\right)^2 \tbinom{2}{1} 0.25^1 \, 0.75^1 \\
+& \quad + \left(2-\tfrac{1}{2}\right)^2 \tbinom{2}{2} 0.25^2 \, 0.75^0 \\
+& = \tfrac{9}{64} + \tfrac{6}{64} + \tfrac{9}{64} = \tfrac{24}{64} = \tfrac{3}{8}
+\end{align}
+$$
+
+ 
+
+**Another way:**
+:::
 :::
 
 

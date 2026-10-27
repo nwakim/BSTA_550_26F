@@ -279,7 +279,6 @@ definition of variance
 ::::
 :::::
 
-::::: fragment
 :::: columns
 ::: {.column width="55%"}
 $\displaystyle \phantom{Var(X)} = \mathbb{E}[X^2 - 2\mu_X X + \mu_X^2]$
@@ -288,9 +287,7 @@ $\displaystyle \phantom{Var(X)} = \mathbb{E}[X^2 - 2\mu_X X + \mu_X^2]$
 expand the square
 :::
 ::::
-:::::
 
-::::: fragment
 :::: columns
 ::: {.column width="55%"}
 $\displaystyle \phantom{Var(X)} = \mathbb{E}[X^2] - 2\mu_X\mathbb{E}[X] + \mu_X^2$
@@ -299,9 +296,7 @@ $\displaystyle \phantom{Var(X)} = \mathbb{E}[X^2] - 2\mu_X\mathbb{E}[X] + \mu_X^
 split the sum; $\mu_X$ is constant
 :::
 ::::
-:::::
 
-::::: fragment
 :::: columns
 ::: {.column width="55%"}
 $\displaystyle \phantom{Var(X)} = \mathbb{E}[X^2] - 2\mu_X^2 + \mu_X^2$
@@ -310,9 +305,7 @@ $\displaystyle \phantom{Var(X)} = \mathbb{E}[X^2] - 2\mu_X^2 + \mu_X^2$
 $\mathbb{E}[X] = \mu_X$
 :::
 ::::
-:::::
 
-::::: fragment
 :::: columns
 ::: {.column width="55%"}
 $\displaystyle \phantom{Var(X)} = \mathbb{E}[X^2] - \mu_X^2$
@@ -321,7 +314,6 @@ $\displaystyle \phantom{Var(X)} = \mathbb{E}[X^2] - \mu_X^2$
 combine the $\mu_X^2$ terms
 :::
 ::::
-:::::
 
  
 
@@ -438,27 +430,6 @@ Let $f_X(x)= \frac{1}{b-a}$, for $a \leq x \leq b$. Find $Var[X]$.
 :::
 :::
 :::
-
-## Variance of exponential distribution
-
-::: columns
-::: {.column width="30%"}
-
-In the homework:
-
-::: example
-::: ex-title
-Example 4
-:::
-
-::: ex-cont
-Let $f_X(x)= \lambda e^{-\lambda x}$, for $x > 0$ and $\lambda> 0$. Find
-$Var[X]$.
-:::
-:::
-:::
-:::
-
 
 # Learning Objectives 
 

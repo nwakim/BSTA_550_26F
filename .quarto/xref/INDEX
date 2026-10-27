@@ -42,7 +42,8 @@
     "Lab_03_instructions.html": "952c876b"
   },
   "project/Final_Project_instructions.qmd": {
-    "Final_Project_instructions.html": "cf670ede"
+    "Final_Project_instructions.html": "cf670ede",
+    "Final_Project_instructions.tex": "71801967"
   },
   "project/lastname_firstinit_lab_04.qmd": {
     "lastname_firstinit_lab_04.html": "cec564bd"
@@ -84,16 +85,19 @@
     "HW_03_ans.html": "fe72c8dd"
   },
   "hw_answers/HW_05_ans.qmd": {
-    "HW_05_ans.html": "bdf274ca"
+    "HW_05_ans.html": "bdf274ca",
+    "HW_05_ans.tex": "bc23572a"
   },
   "hw_answers/HW_04_ans.qmd": {
     "HW_04_ans.html": "9d5e0651"
   },
   "hw_answers/HW_06_ans.qmd": {
-    "HW_06_ans.html": "157f166b"
+    "HW_06_ans.html": "157f166b",
+    "HW_06_ans.tex": "0a5f746f"
   },
   "hw_answers/HW_07_ans.qmd": {
-    "HW_07_ans.html": "d9e19497"
+    "HW_07_ans.html": "d9e19497",
+    "HW_07_ans.tex": "037a425d"
   },
   "homework/HW_03.qmd": {
     "HW_03.html": "5c8ba17a"
@@ -148,10 +152,12 @@
     "Checkpoint_01_instructions.tex": "19af5541"
   },
   "project/Checkpoint_03_instructions.qmd": {
-    "Checkpoint_03_instructions.html": "62dd3351"
+    "Checkpoint_03_instructions.html": "62dd3351",
+    "Checkpoint_03_instructions.tex": "1e8a3529"
   },
   "project/Checkpoint_02_instructions.qmd": {
-    "Checkpoint_02_instructions.html": "714d873c"
+    "Checkpoint_02_instructions.html": "714d873c",
+    "Checkpoint_02_instructions.tex": "1f5bf949"
   },
   "project/lastname_firstinitial_checkpoint_00.qmd": {
     "lastname_firstinitial_checkpoint_00.html": "e40e87ad"

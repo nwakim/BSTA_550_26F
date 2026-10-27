@@ -324,6 +324,21 @@ Meike Niederhausen and Nicky Wakim
 </font><p><font size="6ex"></font></p>
 </div>
 </div>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="font-size: 80%;">
+<p>With <span class="math inline">\(g(x) = \left(x-\frac{1}{2}\right)^2\)</span> and <span class="math inline">\(p = \mathbb{P}(\text{heart}) = \frac{1}{4}\)</span>:</p>
+<p><span class="math display">\[
+\begin{align}
+\mathbb{E}\left[\left(X-\tfrac{1}{2}\right)^2\right] &amp; = \sum_{\{all\ x\}} \left(x-\tfrac{1}{2}\right)^2 p_X(x) \\
+&amp; = \sum_{x=0}^{2} \left(x-\tfrac{1}{2}\right)^2 {2 \choose x} 0.25^x \, 0.75^{2-x} \\
+&amp; = \left(0-\tfrac{1}{2}\right)^2 \tbinom{2}{0} 0.25^0 \, 0.75^2 + \left(1-\tfrac{1}{2}\right)^2 \tbinom{2}{1} 0.25^1 \, 0.75^1 \\
+&amp; \quad + \left(2-\tfrac{1}{2}\right)^2 \tbinom{2}{2} 0.25^2 \, 0.75^0 \\
+&amp; = \tfrac{9}{64} + \tfrac{6}{64} + \tfrac{9}{64} = \tfrac{24}{64} = \tfrac{3}{8}
+\end{align}
+\]</span></p>
+<p>&nbsp;</p>
+<p><strong>Another way:</strong></p>
 </div></div>
 </section></section>
 <section>
@@ -418,7 +433,6 @@ Var(X) &amp; =
 </div><div class="column" style="width:45%;">
 <p>definition of variance</p>
 </div></div>
-</div>
 <div class="columns">
 <div class="column" style="width:55%;">
 <p><span class="math inline">\(\displaystyle \phantom{Var(X)} = \mathbb{E}[X^2 - 2\mu_X X + \mu_X^2]\)</span></p>
@@ -443,6 +457,7 @@ Var(X) &amp; =
 </div><div class="column" style="width:45%;">
 <p>combine the <span class="math inline">\(\mu_X^2\)</span> terms</p>
 </div></div>
+</div>
 <p>&nbsp;</p>
 <ul>
 <li>This works for both discrete and continuous RVs!</li>

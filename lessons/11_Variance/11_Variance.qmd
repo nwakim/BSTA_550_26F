@@ -298,7 +298,6 @@ $\displaystyle Var(X) = \mathbb{E}[(X-\mu_X)^2]$
 definition of variance
 :::
 ::::
-:::::
 
 :::: columns
 ::: {.column width="55%"}
@@ -334,6 +333,7 @@ $\displaystyle \phantom{Var(X)} = \mathbb{E}[X^2] - \mu_X^2$
 ::: {.column width="45%"}
 combine the $\mu_X^2$ terms
 :::
+::::
 ::::
 
  

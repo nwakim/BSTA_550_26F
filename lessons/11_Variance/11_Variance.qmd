@@ -107,8 +107,8 @@ Example 2
 :::
 
 ::: ex-cont
-Suppose you draw 2 cards from a standard deck of cards *with*
-replacement. Let $X$ be the number of hearts you draw.
+Suppose you draw 1 card from a standard deck of cards. Let $X = 1$ if
+the card is a heart and $X = 0$ if it is not.
 
 1.  Find $\mathbb{E}[X^2]$.
 :::
@@ -116,9 +116,16 @@ replacement. Let $X$ be the number of hearts you draw.
 
 ::: example
 ::: ex-cont
-<font size=6ex>Recall Binomial RV with $n=2$:
+<font size=6ex>Recall Bernoulli RV (Lesson 10, Example 3):
 
-$$p_X(x) = {2 \choose x}p^x(1-p)^{2-x} \text{  for } x = 0, 1, 2$$
+$$X = \left\{
+        \begin{array}{ll}
+            1 & \quad \mathrm{with\ probability}\ p \\
+            0 & \quad \mathrm{with\ probability}\ 1-p
+        \end{array}
+    \right.$$
+
+$\mathbb{E}[X] = p$. Here, $p = \mathbb{P}(\text{heart}) = \frac{1}{4}$
 
 </font>
 :::
@@ -136,18 +143,25 @@ Example 2
 :::
 
 ::: ex-cont
-Suppose you draw 2 cards from a standard deck of cards *with*
-replacement. Let $X$ be the number of hearts you draw.
+Suppose you draw 1 card from a standard deck of cards. Let $X = 1$ if
+the card is a heart and $X = 0$ if it is not.
 
-2.  Find $\mathbb{E}\big[\big(X-\frac{1}{2}\big)^2\big]$.
+2.  Find $\mathbb{E}\big[\big(X-\frac{1}{4}\big)^2\big]$.
 :::
 :::
 
 ::: example
 ::: ex-cont
-<font size=6ex>Recall Binomial RV with $n=2$:
+<font size=6ex>Recall Bernoulli RV (Lesson 10, Example 3):
 
-$$p_X(x) = {2 \choose x}p^x(1-p)^{2-x} \text{  for } x = 0, 1, 2$$
+$$X = \left\{
+        \begin{array}{ll}
+            1 & \quad \mathrm{with\ probability}\ p \\
+            0 & \quad \mathrm{with\ probability}\ 1-p
+        \end{array}
+    \right.$$
+
+$\mathbb{E}[X] = p$. Here, $p = \mathbb{P}(\text{heart}) = \frac{1}{4}$
 
 </font>
 :::
@@ -158,15 +172,13 @@ $$p_X(x) = {2 \choose x}p^x(1-p)^{2-x} \text{  for } x = 0, 1, 2$$
 :::
 
 ::: {.column width="60%" style="font-size: 80%;"}
-With $g(x) = \left(x-\frac{1}{2}\right)^2$ and $p = \mathbb{P}(\text{heart}) = \frac{1}{4}$:
+With $g(x) = \left(x-\frac{1}{4}\right)^2$ and $p = \frac{1}{4}$:
 
 $$
 \begin{align}
-\mathbb{E}\left[\left(X-\tfrac{1}{2}\right)^2\right] & = \sum_{\{all\ x\}} \left(x-\tfrac{1}{2}\right)^2 p_X(x) \\
-& = \sum_{x=0}^{2} \left(x-\tfrac{1}{2}\right)^2 {2 \choose x} 0.25^x \, 0.75^{2-x} \\
-& = \left(0-\tfrac{1}{2}\right)^2 \tbinom{2}{0} 0.25^0 \, 0.75^2 + \left(1-\tfrac{1}{2}\right)^2 \tbinom{2}{1} 0.25^1 \, 0.75^1 \\
-& \quad + \left(2-\tfrac{1}{2}\right)^2 \tbinom{2}{2} 0.25^2 \, 0.75^0 \\
-& = \tfrac{9}{64} + \tfrac{6}{64} + \tfrac{9}{64} = \tfrac{24}{64} = \tfrac{3}{8}
+\mathbb{E}\left[\left(X-\tfrac{1}{4}\right)^2\right] & = \sum_{\{all\ x\}} \left(x-\tfrac{1}{4}\right)^2 p_X(x) \\
+& = \left(0-\tfrac{1}{4}\right)^2 \left(1-p\right) + \left(1-\tfrac{1}{4}\right)^2 p \\
+& = \tfrac{1}{16} \cdot \tfrac{3}{4} + \tfrac{9}{16} \cdot \tfrac{1}{4} = \tfrac{3}{64} + \tfrac{9}{64} = \tfrac{12}{64} = \tfrac{3}{16}
 \end{align}
 $$
 
@@ -349,13 +361,13 @@ combine the $\mu_X^2$ terms
 ::: columns
 ::: {.column width="60%"}
 
-- Same steps as Lesson 2: one row per card, then one row per simulation
-- With replacement, each card's suit is equally likely
+- Same steps as Lesson 2's dice, now with `n_cards <- 1`
+- Each suit is a quarter of the deck, so each suit is equally likely
 
 ```{r}
 set.seed(1028) # <1>
 reps <- 10000 # <2>
-n_cards <- 2 # <2>
+n_cards <- 1 # <2>
 suits <- c("hearts", "diamonds", "clubs", "spades") # <3>
 
 draws <- expand_grid(sim = 1:reps, card = 1:n_cards) |> # <4>
@@ -367,10 +379,10 @@ X_sims <- draws |> # <5>
 ```
 
 1. Set the seed so we get the same random draws every time we run the code.
-2. Save the settings: 10,000 simulations with 2 cards each.
-3. The four suits. Each suit is a quarter of the deck, so drawing with replacement is like picking a suit at random.
+2. Save the settings: 10,000 simulations with 1 card each. Changing `n_cards` is all it takes to draw more cards.
+3. The four suits. Each suit is a quarter of the deck, so drawing a card is like picking a suit at random.
 4. Same as the dice in Lesson 2: one row per card, each with a randomly drawn suit.
-5. For each simulation, count the hearts. `suit == "hearts"` is `TRUE` or `FALSE`, and `sum()` counts each `TRUE` as 1.
+5. For each simulation, count the hearts. `suit == "hearts"` is `TRUE` or `FALSE`, and `sum()` counts each `TRUE` as 1. With one card, `X` is 1 for a heart and 0 otherwise.
 
 :::
 ::: {.column width="40%"}
@@ -387,7 +399,7 @@ head(X_sims$X, 20) # <1>
 
  
 
-- $X$ can only be 0, 1, or 2, just like the Binomial with $n = 2$
+- $X$ can only be 0 or 1, just like a Bernoulli RV
 
 :::
 :::
@@ -411,7 +423,7 @@ X_sims |> # <1>
 1. Collapse the 10,000 simulated values of `X` into one row of summaries.
 2. The average of `X`, which estimates $\mathbb{E}[X]$.
 3. The average of `X` squared, which estimates $\mathbb{E}[X^2]$ (Example 2, part 1).
-4. The definition of variance: the average squared distance from the mean, $\mathbb{E}[(X-\mathbb{E}[X])^2]$.
+4. The definition of variance: the average squared distance from the mean, $\mathbb{E}[(X-\mathbb{E}[X])^2]$ (Example 2, part 2).
 5. The computation formula, $\mathbb{E}[X^2] - (\mathbb{E}[X])^2$. It matches the line above.
 6. `sqrt()` takes the square root of the variance to get the standard deviation. `summarise()` can use a column made earlier inside it.
 
@@ -424,10 +436,10 @@ X_sims |> # <1>
 ::: proof-cont
 Exact answers for the card example:
 
-- $\mathbb{E}[X] = \frac{1}{2}$
-- $\mathbb{E}[X^2] = \frac{5}{8} = 0.625$
-- $Var(X) = \frac{5}{8} - \left(\frac{1}{2}\right)^2 = \frac{3}{8} = 0.375$
-- $SD(X) = \sqrt{3/8} \approx 0.612$
+- $\mathbb{E}[X] = \frac{1}{4}$
+- $\mathbb{E}[X^2] = \frac{1}{4} = 0.25$
+- $Var(X) = \frac{1}{4} - \left(\frac{1}{4}\right)^2 = \frac{3}{16} = 0.1875$
+- $SD(X) = \sqrt{3/16} \approx 0.433$
 :::
 :::
 
@@ -587,6 +599,8 @@ solve this for the case ***with*** replacement.
 $$
 p_Y(y) = p^y(1-p)^{1-y} \text{ for } y = 0, 1
 $$
+
+From Example 2: $\mathbb{E}[Y] = \mathbb{E}[Y^2] = p$
 
 </font>
 :::

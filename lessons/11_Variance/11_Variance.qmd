@@ -171,7 +171,7 @@ $\mathbb{E}[X] = p$. Here, $p = \mathbb{P}(\text{heart}) = \frac{1}{4}$
 ::: {.column width="5%"}
 :::
 
-::: {.column width="60%" style="font-size: 80%;"}
+::: {.column width="60%" style="font-size: 100%;"}
 With $g(x) = \left(x-\frac{1}{4}\right)^2$ and $p = \frac{1}{4}$:
 
 $$
@@ -356,10 +356,10 @@ combine the $\mu_X^2$ terms
 :::
 :::
 
-## Let's simulate the card example
+## Let's simulate the card example (1/2)
 
 ::: columns
-::: {.column width="60%"}
+::: {.column width="65%"}
 
 - Same steps as Lesson 2's dice, now with `n_cards <- 1`
 - Each suit is a quarter of the deck, so each suit is equally likely
@@ -385,7 +385,10 @@ X_sims <- draws |> # <5>
 5. For each simulation, count the hearts. `suit == "hearts"` is `TRUE` or `FALSE`, and `sum()` counts each `TRUE` as 1. With one card, `X` is 1 for a heart and 0 otherwise.
 
 :::
-::: {.column width="40%"}
+
+::: {.column width="2%"}
+:::
+::: {.column width="33%"}
 
  
 
@@ -404,10 +407,12 @@ head(X_sims$X, 20) # <1>
 :::
 :::
 
-## The [**variance**]{style="color:#E25D3B;"} from our simulation
+## Let's simulate the card example (2/2)
+
+- Let's calculate some of the values we've shown by hand 
 
 ::: columns
-::: {.column width="60%"}
+::: {.column width="58%"}
 
 ```{r}
 X_sims |> # <1>
@@ -427,8 +432,18 @@ X_sims |> # <1>
 5. The computation formula, $\mathbb{E}[X^2] - (\mathbb{E}[X])^2$. It matches the line above.
 6. `sqrt()` takes the square root of the variance to get the standard deviation. `summarise()` can use a column made earlier inside it.
 
+
+- Both formulas for the variance give the same number!
+
+:::
+
+::: {.column width="2%"}
 :::
 ::: {.column width="40%"}
+
+ 
+
+ 
 
  
 
@@ -442,8 +457,6 @@ Exact answers for the card example:
 - $SD(X) = \sqrt{3/16} \approx 0.433$
 :::
 :::
-
-- Both formulas for the variance give the same number!
 
 :::
 :::

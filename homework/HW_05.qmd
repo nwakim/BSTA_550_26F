@@ -101,7 +101,7 @@ library(tidyverse)
 
 ### Lesson 11: Variance
 
-Questions 1–7 practice variance (Lesson 11). Questions 1, 2, 5, 6, and 7 revisit setups from Homework 4, so you can reuse your expected values from there.
+Questions 1–7 practice expected values of functions of RVs and variance (Lesson 11). Questions 1, 2, 5, 6, and 7 revisit setups from Homework 4, so you can reuse your expected values from there.
 
 ### 1. Asthma ER visits (revisited)
 
@@ -111,15 +111,21 @@ Suppose that for adults with asthma, the number of emergency room (ER) visits fo
 |:---:|:---:|:---:|:---:|:---:|
 | $p_X(x)$ | 0.50 | 0.30 | 0.15 | 0.05 |
 
-and $p_X(x) = 0$ for any other value of $x$. In Homework 4, you found $\mathbb{E}[X]$ and $\mathbb{E}[X^2]$.
+and $p_X(x) = 0$ for any other value of $x$. In Homework 4, you found $\mathbb{E}[X]$.
 
 #### Part a
+
+Find $\mathbb{E}[X^2]$. Is $\mathbb{E}[X^2]$ equal to $\left(\mathbb{E}[X]\right)^2$?
+
+***Answer:***
+
+#### Part b
 
 Find $Var(X)$ two ways: with the definition, $Var(X) = \mathbb{E}\left[(X - \mathbb{E}[X])^2\right]$, and with the computation formula, $Var(X) = \mathbb{E}[X^2] - \left(\mathbb{E}[X]\right)^2$. Then find $SD(X)$.
 
 ***Answer:***
 
-#### Part b
+#### Part c
 
 Suppose each ER visit costs a patient a \$250 copay, plus every patient pays a \$100 yearly fee. So the patient's yearly cost is $C = 250X + 100$. Find $SD(C)$.
 
@@ -127,14 +133,14 @@ Suppose each ER visit costs a patient a \$250 copay, plus every patient pays a \
 
 ***Answer:***
 
-#### Part c
+#### Part d
 
-Simulate 10,000 adults with asthma to check your answers to Part a.
+Simulate 10,000 adults with asthma to check your answers to Parts a and b.
 
 **Step 1: Set up.** This chunk is done for you. Run it before the others.
 
 ```{r}
-#| label: "q1c-setup"
+#| label: "q1d-setup"
 
 set.seed(2222)    # so you get the same "random" adults each time
 reps <- 10000     # number of simulated adults
@@ -150,49 +156,55 @@ visit_probs <- c(0.50, 0.30, 0.15, 0.05)
 ***Answer:***
 
 ```{r}
-#| label: "q1c-simulate"
+#| label: "q1d-simulate"
 
 # Your code here
 
 ```
 
-**Step 3: Summarize.** Use `summarise()` to approximate $Var(X)$ and $SD(X)$ from your simulation.
+**Step 3: Summarize.** Use `summarise()` to approximate $\mathbb{E}[X^2]$, $Var(X)$, and $SD(X)$ from your simulation.
 
--   *Hint:* Follow the card example in Lesson 11 ("The variance from our simulation"). `mean((X - mean(X))^2)` approximates $Var(X)$, and `sqrt()` takes the square root.
+-   *Hint:* Follow the card example in Lesson 11 ("The variance from our simulation"). `mean(X^2)` approximates $\mathbb{E}[X^2]$, `mean((X - mean(X))^2)` approximates $Var(X)$, and `sqrt()` takes the square root.
 
 ***Answer:***
 
 ```{r}
-#| label: "q1c-summarize"
+#| label: "q1d-summarize"
 
 # Your code here
 
 ```
 
-Are your simulated answers close to your answers in Part a? (They do not need to match exactly!)
+Are your simulated answers close to your answers in Parts a and b? (They do not need to match exactly!)
 
 ***Answer:***
 
 ### 2. Medication absorption (revisited)
 
-Suppose the proportion $X$ of a medication dose that is absorbed in the first hour has pdf $$f_X(x) = \begin{cases} 3x^2 & \text{if } 0 \leq x \leq 1 \\ 0 & \text{otherwise} \end{cases}$$ In Homework 4, you found $\mathbb{E}[X]$ and $\mathbb{E}[X^2]$.
+Suppose the proportion $X$ of a medication dose that is absorbed in the first hour has pdf $$f_X(x) = \begin{cases} 3x^2 & \text{if } 0 \leq x \leq 1 \\ 0 & \text{otherwise} \end{cases}$$ In Homework 4, you found $\mathbb{E}[X]$.
 
 #### Part a
 
-Find $Var(X)$ and $SD(X)$.
+Find $\mathbb{E}[X^2]$.
 
 ***Answer:***
 
 #### Part b
 
-Simulate 10,000 values of $X$ with the inverse CDF method from Lesson 9, and use them to check your answers to Part a.
+Find $Var(X)$ and $SD(X)$.
 
--   *Hint:* You can reuse your simulation from Homework 4 ($x = u^{1/3}$). Then use `summarise()` like in Question 1.
+***Answer:***
+
+#### Part c
+
+Simulate 10,000 values of $X$ with the inverse CDF method from Lesson 9, and use them to check your answers to Parts a and b.
+
+-   *Hint:* You can reuse your simulation from Homework 4 ($x = u^{1/3}$). Then use `summarise()` to approximate $\mathbb{E}[X^2]$, $Var(X)$, and $SD(X)$, like in Question 1.
 
 ***Answer:***
 
 ```{r}
-#| label: "q2b-simulate"
+#| label: "q2c-simulate"
 
 set.seed(3131)
 reps <- 10000
@@ -201,7 +213,7 @@ reps <- 10000
 
 ```
 
-Are your simulated answers close to your answers in Part a? (They do not need to match exactly!)
+Are your simulated answers close to your answers in Parts a and b? (They do not need to match exactly!)
 
 ***Answer:***
 

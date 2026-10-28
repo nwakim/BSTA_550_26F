@@ -117,26 +117,20 @@ Find $\mathbb{E}[X]$. In a sentence, explain what this number means in the conte
 
 #### Part b
 
-Find $\mathbb{E}[X^2]$. Is $\mathbb{E}[X^2]$ equal to $\left(\mathbb{E}[X]\right)^2$?
-
-***Answer:***
-
-#### Part c
-
 Suppose each ER visit costs a patient a \$250 copay, plus every patient pays a \$100 yearly fee. So the patient's yearly cost is $C = 250X + 100$. Find $\mathbb{E}[C]$.
 
 -   *Hint:* You can use the result for $\mathbb{E}[aX+b]$ from Lesson 10.
 
 ***Answer:***
 
-#### Part d
+#### Part c
 
-Simulate 10,000 adults with asthma to check your answers to Parts a and b.
+Simulate 10,000 adults with asthma to check your answer to Part a.
 
 **Step 1: Set up.** This chunk is done for you. Run it before the others.
 
 ```{r}
-#| label: "q1d-setup"
+#| label: "q1c-setup"
 
 set.seed(2222)    # so you get the same "random" adults each time
 reps <- 10000     # number of simulated adults
@@ -152,26 +146,26 @@ visit_probs <- c(0.50, 0.30, 0.15, 0.05)
 ***Answer:***
 
 ```{r}
-#| label: "q1d-simulate"
+#| label: "q1c-simulate"
 
 # Your code here
 
 ```
 
-**Step 3: Summarize.** Use `summarise()` to approximate $\mathbb{E}[X]$ and $\mathbb{E}[X^2]$ from your simulation.
+**Step 3: Summarize.** Use `summarise()` to approximate $\mathbb{E}[X]$ from your simulation.
 
--   *Hint:* `mean(X)` approximates $\mathbb{E}[X]$ and `mean(X^2)` approximates $\mathbb{E}[X^2]$.
+-   *Hint:* `mean(X)` approximates $\mathbb{E}[X]$.
 
 ***Answer:***
 
 ```{r}
-#| label: "q1d-summarize"
+#| label: "q1c-summarize"
 
 # Your code here
 
 ```
 
-Are your simulated answers close to your answers in Parts a and b? (They do not need to match exactly!)
+Is your simulated answer close to your answer in Part a? (They do not need to match exactly!)
 
 ***Answer:***
 
@@ -187,13 +181,7 @@ Find $\mathbb{E}[X]$. In a sentence, explain what this number means in the conte
 
 #### Part b
 
-Find $\mathbb{E}[X^2]$.
-
-***Answer:***
-
-#### Part c
-
-Simulate 10,000 values of $X$ with the inverse CDF method from Lesson 9, and use them to check your answers to Parts a and b.
+Simulate 10,000 values of $X$ with the inverse CDF method from Lesson 9, and use them to check your answer to Part a.
 
 **Step 1: Find the inverse CDF.** First find the CDF, $F_X(x)$, for $0 \leq x \leq 1$. Then set $u = F_X(x)$ and solve for $x$.
 
@@ -206,7 +194,7 @@ Simulate 10,000 values of $X$ with the inverse CDF method from Lesson 9, and use
 ***Answer:***
 
 ```{r}
-#| label: "q2c-simulate"
+#| label: "q2b-simulate"
 
 set.seed(3131)
 reps <- 10000
@@ -215,18 +203,18 @@ reps <- 10000
 
 ```
 
-**Step 3: Summarize.** Use `summarise()` to approximate $\mathbb{E}[X]$ and $\mathbb{E}[X^2]$ from your simulation, like in Question 1.
+**Step 3: Summarize.** Use `summarise()` to approximate $\mathbb{E}[X]$ from your simulation, like in Question 1.
 
 ***Answer:***
 
 ```{r}
-#| label: "q2c-summarize"
+#| label: "q2b-summarize"
 
 # Your code here
 
 ```
 
-Are your simulated answers close to your answers in Parts a and b? (They do not need to match exactly!)
+Is your simulated answer close to your answer in Part a? (They do not need to match exactly!)
 
 ***Answer:***
 

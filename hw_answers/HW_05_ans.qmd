@@ -2,36 +2,291 @@
 title: "Homework 5 Answers"
 subtitle: "BSTA 550"
 date-modified: "today"
-format: 
-  html: 
-    link-external-newwindow: true
+format:
+  html:
     toc: true
-  pdf: default 
-editor_options: 
+    embed-resources: true
+    link-external-newwindow: true
+editor_options:
   chunk_output_type: console
 ---
 
+```{=html}
+<style>
+div.answer { background-color: #f8eded; border-left: 4px solid #8B0000; border-radius: 5px; padding: 1em 1.25em; margin-bottom: 1em; }
+</style>
+```
+
+Below are some select answers from the homework.
+
+```{r}
+#| label: "setup"
+#| include: false
+
+knitr::opts_chunk$set(echo = FALSE, message = FALSE)
+library(tidyverse)
+```
+
 ## Questions
 
-1. (a) parameters: $\sum_{i=1}^m n_i$ and $p$
-   (b) Not given
-   (c) $$p(1-p)\sum_{i=1}^m n_i$$
+### 1. Asthma ER visits (revisited)
 
+#### Part a
 
-2. (a) Exponential distribution 
-   (b) $\lambda = 240$
-   (c) Not given
+Find $\mathbb{E}[X^2]$. Is $\mathbb{E}[X^2]$ equal to $\left(\mathbb{E}[X]\right)^2$?
 
+::: answer
+Not given
+:::
 
-3. 0.252
+#### Part b
 
-4. Not given
-    
-5. $f_Z(z) = nF_X(z)^{n-1}f_X(z)$
+Find $Var(X)$ two ways, then find $SD(X)$.
 
-6.
+::: answer
+$Var(X) = 0.7875$ and $SD(X) \approx 0.887$ ER visits
+:::
 
-  - (b) $P(X<Y) = 0.099995$
-  - (d) $f_Z(z) = \dfrac{11-2z}{5}e^{-2z}$ for $0 \leq z \leq 5$
-        
-7. 2 cases: when $0< z < 1$ and $1 \leq z \leq 2$
+#### Part c
+
+Find $SD(C)$, where $C = 250X + 100$.
+
+::: answer
+Not given
+:::
+
+#### Part d
+
+Simulate 10,000 adults with asthma to check your answers to Parts a and b.
+
+::: answer
+```{r}
+#| label: "q1d-simulate"
+
+set.seed(2222)
+reps <- 10000
+visit_probs <- c(0.50, 0.30, 0.15, 0.05)
+
+er_sims <- tibble(sim = 1:reps) |>
+  mutate(X = sample(0:3, n(), replace = TRUE, prob = visit_probs))
+
+er_summary <- er_sims |>
+  summarise(mean_X2 = mean(X^2),
+            variance = mean((X - mean(X))^2),
+            std_dev = sqrt(variance))
+```
+
+-   $\mathbb{E}[X^2] \approx$ `r round(er_summary$mean_X2, 3)`
+-   $Var(X) \approx$ `r round(er_summary$variance, 3)`
+-   $SD(X) \approx$ `r round(er_summary$std_dev, 3)`
+
+Answers will vary slightly, but should be close to your answers in Parts a and b.
+:::
+
+### 2. Medication absorption (revisited)
+
+#### Part a
+
+Find $\mathbb{E}[X^2]$.
+
+::: answer
+Not given
+:::
+
+#### Part b
+
+Find $Var(X)$ and $SD(X)$.
+
+::: answer
+Not given
+:::
+
+#### Part c
+
+Simulate 10,000 values of $X$ with the inverse CDF method from Lesson 9, and use them to check your answers to Parts a and b.
+
+::: answer
+```{r}
+#| label: "q2c-simulate"
+
+set.seed(3131)
+reps <- 10000
+
+absorb_sims <- tibble(u = runif(n = reps, min = 0, max = 1)) |>
+  mutate(x = u^(1/3))
+
+absorb_summary <- absorb_sims |>
+  summarise(mean_x2 = mean(x^2),
+            variance = mean((x - mean(x))^2),
+            std_dev = sqrt(variance))
+```
+
+Answers will vary slightly. The simulated $\mathbb{E}[X^2]$, variance, and standard deviation should be close to your answers in Parts a and b.
+:::
+
+### 3. Variance of an exponential RV
+
+Let $f_X(x)=\lambda e^{-\lambda x}$ for $x>0$, where $\lambda>0$.
+
+#### Part a
+
+Show $Var(X)=\dfrac{1}{\lambda^2}$.
+
+::: answer
+Not given
+:::
+
+#### Part b
+
+Now let $\lambda = 0.5$. Simulate 10,000 values of $X$ and check that your simulated mean and variance are close to $\mathbb{E}[X] = \dfrac{1}{\lambda}$ and $Var(X) = \dfrac{1}{\lambda^2}$.
+
+::: answer
+```{r}
+#| label: "q3b-simulate"
+
+set.seed(5151)
+reps <- 10000
+
+exp_sims <- tibble(u = runif(n = reps, min = 0, max = 1)) |>
+  mutate(x = -log(1 - u) / 0.5)
+
+exp_summary <- exp_sims |>
+  summarise(mean_x = mean(x),
+            variance = mean((x - mean(x))^2))
+```
+
+-   Simulated mean $\approx$ `r round(exp_summary$mean_x, 3)` (exact: $\mathbb{E}[X] = 1/0.5 = 2$)
+-   Simulated variance $\approx$ `r round(exp_summary$variance, 3)` (exact: $Var(X) = 1/0.5^2 = 4$)
+
+Answers will vary slightly, but should be close to 2 and 4.
+:::
+
+### 4. Variance of a linear function
+
+Prove that for a random variable $X$ and constants $a$ and $b$, $$Var(aX+b)=a^2Var(X).$$
+
+::: answer
+Not given
+:::
+
+### 5. The sample mean (revisited)
+
+Find $Var(\overline{X})$.
+
+::: answer
+Not given
+:::
+
+### 6. Shipping containers (revisited)
+
+#### Part a
+
+Assuming that $X_1,X_2,X_3$ are independent, calculate the variance of the total volume shipped.
+
+::: answer
+$Var(V) = 19{,}100{,}116 \ (\text{ft}^3)^2$
+:::
+
+#### Part b
+
+Would your calculation necessarily be correct if the $X_i$'s were not independent? Explain.
+
+::: answer
+Not given
+:::
+
+### 7. Waiting for the bus (revisited)
+
+#### Part a
+
+What is the variance of your total waiting time for a week?
+
+::: answer
+Not given
+:::
+
+#### Part b
+
+What is the variance of the difference between morning and evening waiting times on a given day?
+
+::: answer
+$\dfrac{41}{3} \approx 13.667 \text{ minutes}^2$
+:::
+
+#### Part c
+
+What is the variance of the difference between total morning waiting time and total evening waiting time for a particular week?
+
+::: answer
+Not given
+:::
+
+#### Part d
+
+Simulate 10,000 weeks of bus rides to check your answers to Parts a and c.
+
+::: answer
+```{r}
+#| label: "q7d-simulate"
+
+set.seed(6161)
+reps <- 10000
+n_days <- 7
+
+bus_weeks <- expand_grid(sim = 1:reps, day = 1:n_days) |>
+  mutate(morning = runif(n(), min = 0, max = 8),
+         evening = runif(n(), min = 0, max = 10)) |>
+  group_by(sim) |>
+  summarise(total = sum(morning + evening),
+            difference = sum(morning) - sum(evening))
+```
+
+Answers will vary slightly. The simulated variances of the total and the difference should be close to your answers in Parts a and c.
+:::
+
+### 8. Sum of binomials
+
+::: answer
+-   Part a: parameters: $\sum_{i=1}^m n_i$ and $p$
+-   Part b: Not given
+-   Part c: $p(1-p)\sum_{i=1}^m n_i$
+:::
+
+### 9. Voters at a polling station
+
+::: answer
+-   Part a: Exponential distribution
+-   Part b: $\lambda = 240$
+-   Part c: Not given
+:::
+
+### 10. Pizza delivery
+
+::: answer
+0.252
+:::
+
+### 11. Smoking policy and education
+
+::: answer
+Not given
+:::
+
+### 12. Maximum of i.i.d. RVs
+
+::: answer
+$f_Z(z) = nF_X(z)^{n-1}f_X(z)$
+:::
+
+### 13. Minimum of a uniform and an exponential
+
+::: answer
+-   Part b: $P(X<Y) = 0.099995$
+-   Part d: $f_Z(z) = \dfrac{11-2z}{5}e^{-2z}$ for $0 \leq z \leq 5$
+:::
+
+### 14. CDF of a ratio
+
+::: answer
+2 cases: when $0< z < 1$ and $1 \leq z \leq 2$
+:::

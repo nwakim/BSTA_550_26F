@@ -49,7 +49,7 @@ $\mathbb{E}[X] = 0.75$ ER visits
 
 #### Part b
 
-Find $\mathbb{E}[X^2]$. Is $\mathbb{E}[X^2]$ equal to $\left(\mathbb{E}[X]\right)^2$?
+Suppose each ER visit costs a patient a \$250 copay, plus every patient pays a \$100 yearly fee. So the patient's yearly cost is $C = 250X + 100$. Find $\mathbb{E}[C]$.
 
 ::: answer
 Not given
@@ -57,27 +57,11 @@ Not given
 
 #### Part c
 
-Find $Var(X)$ two ways: with the definition, $Var(X) = \mathbb{E}\left[(X - \mathbb{E}[X])^2\right]$, and with the computation formula, $Var(X) = \mathbb{E}[X^2] - \left(\mathbb{E}[X]\right)^2$. Then find $SD(X)$.
-
-::: answer
-$Var(X) = 0.7875$ and $SD(X) \approx 0.887$ ER visits
-:::
-
-#### Part d
-
-Suppose each ER visit costs a patient a \$250 copay, plus every patient pays a \$100 yearly fee. So the patient's yearly cost is $C = 250X + 100$. Find $\mathbb{E}[C]$ and $SD(C)$.
-
-::: answer
-Not given
-:::
-
-#### Part e
-
-Simulate 10,000 adults with asthma to check your answers to Parts a–c.
+Simulate 10,000 adults with asthma to check your answer to Part a.
 
 ::: answer
 ```{r}
-#| label: "q1e-simulate"
+#| label: "q1c-simulate"
 
 set.seed(2222)
 reps <- 10000
@@ -87,16 +71,12 @@ er_sims <- tibble(sim = 1:reps) |>
   mutate(X = sample(0:3, n(), replace = TRUE, prob = visit_probs))
 
 er_summary <- er_sims |>
-  summarise(mean_X = mean(X),
-            variance = mean((X - mean(X))^2),
-            std_dev = sqrt(variance))
+  summarise(mean_X = mean(X))
 ```
 
 -   $\mathbb{E}[X] \approx$ `r round(er_summary$mean_X, 3)`
--   $Var(X) \approx$ `r round(er_summary$variance, 3)`
--   $SD(X) \approx$ `r round(er_summary$std_dev, 3)`
 
-Answers will vary slightly, but should be close to your answers in Parts a and c.
+Answers will vary slightly, but should be close to your answer in Part a.
 :::
 
 ### 2. Medication absorption
@@ -113,19 +93,11 @@ $\mathbb{E}[X] = \dfrac{3}{4} = 0.75$
 
 #### Part b
 
-Find $\mathbb{E}[X^2]$, then use it to find $Var(X)$ and $SD(X)$.
-
-::: answer
-Not given
-:::
-
-#### Part c
-
-Simulate 10,000 values of $X$ with the inverse CDF method from Lesson 9, and use them to check your answers to Parts a and b.
+Simulate 10,000 values of $X$ with the inverse CDF method from Lesson 9, and use them to check your answer to Part a.
 
 ::: answer
 ```{r}
-#| label: "q2c-simulate"
+#| label: "q2b-simulate"
 
 set.seed(3131)
 reps <- 10000
@@ -137,95 +109,38 @@ absorb_sims <- tibble(u = runif(n = reps, min = 0, max = 1)) |>
 -   Inverse CDF: $x = u^{1/3}$
 -   $\mathbb{E}[X] \approx$ `r round(mean(absorb_sims$x), 3)`
 
-Answers will vary slightly. The simulated mean should be close to your answer in Part a, and the simulated variance and standard deviation should be close to your answers in Part b.
+Answers will vary slightly, but should be close to your answer in Part a.
 :::
 
-### 3. Variance of an exponential RV
+### 3. The sample mean
 
-Let $f_X(x)=\lambda e^{-\lambda x}$ for $x>0$, where $\lambda>0$.
-
-#### Part a
-
-Show $Var(X)=\dfrac{1}{\lambda^2}$. You may use the result from class for $\mathbb{E}[X]$ without first proving it.
-
-::: answer
-Not given
-:::
-
-#### Part b
-
-Now let $\lambda = 0.5$. Simulate 10,000 values of $X$ and check that your simulated mean and variance are close to $\mathbb{E}[X] = \dfrac{1}{\lambda}$ and $Var(X) = \dfrac{1}{\lambda^2}$.
-
-::: answer
-```{r}
-#| label: "q3b-simulate"
-
-set.seed(5151)
-reps <- 10000
-
-exp_sims <- tibble(u = runif(n = reps, min = 0, max = 1)) |>
-  mutate(x = -log(1 - u) / 0.5)
-
-exp_summary <- exp_sims |>
-  summarise(mean_x = mean(x),
-            variance = mean((x - mean(x))^2))
-```
-
--   Simulated mean $\approx$ `r round(exp_summary$mean_x, 3)` (exact: $\mathbb{E}[X] = 1/0.5 = 2$)
--   Simulated variance $\approx$ `r round(exp_summary$variance, 3)` (exact: $Var(X) = 1/0.5^2 = 4$)
-
-Answers will vary slightly, but should be close to 2 and 4.
-:::
-
-### 4. Variance of a linear function
-
-Prove that for a random variable $X$ and constants $a$ and $b$, $$Var(aX+b)=a^2Var(X).$$
-
-::: answer
-Not given
-:::
-
-### 5. The sample mean
-
-Let $\overline{X}$ be the random variable for the sample mean, $\overline{X}=\dfrac{\sum_{i=1}^nX_i}{n}$, where the $X_i$ are i.i.d. random variables with common mean $\mu$ and variance $\sigma^2$.
-
-#### Part a
-
-Find $\mathbb{E}[\overline{X}]$.
+Let $\overline{X}$ be the random variable for the sample mean, $\overline{X}=\dfrac{\sum_{i=1}^nX_i}{n}$, where the $X_i$ are i.i.d. random variables with common mean $\mu$. Find $\mathbb{E}[\overline{X}]$.
 
 ::: answer
 $\mathbb{E}[\overline{X}] = \mu$
 :::
 
-#### Part b
+### 4. Shipping containers
 
-Find $Var(\overline{X})$.
-
-::: answer
-Not given
-:::
-
-### 6. Shipping containers
-
-A shipping company handles containers in three different sizes: (1) 27 $ft^3$ (3 x 3 x 3), (2) 125 $ft^3$, and (3) 512 $ft^3$. Let $X_i$ ($i = 1, 2, 3$) denote the number of type $i$ containers shipped during a given week. Suppose that $\mu_1 =200,\sigma_1=10,\mu_2 =250,\sigma_2=12,\mu_3 =100,\sigma_3=8$.
+A shipping company handles containers in three different sizes: (1) 27 $ft^3$ (3 x 3 x 3), (2) 125 $ft^3$, and (3) 512 $ft^3$. Let $X_i$ ($i = 1, 2, 3$) denote the number of type $i$ containers shipped during a given week. Suppose that $\mu_1 =200,\mu_2 =250,\mu_3 =100$.
 
 #### Part a
 
-Assuming that $X_1,X_2,X_3$ are independent, calculate the expected value and variance of the total volume shipped.
+Assuming that $X_1,X_2,X_3$ are independent, calculate the expected value of the total volume shipped.
 
 ::: answer
-$\mathbb{E}[V] = 87{,}850 \text{ ft}^3$ and $Var(V) = 19{,}100{,}116 \ (\text{ft}^3)^2$
+$\mathbb{E}[V] = 87{,}850 \text{ ft}^3$
 :::
 
 #### Part b
 
-Would your calculations necessarily be correct if the $X_i$'s were not independent? Explain.
+Would your calculation necessarily be correct if the $X_i$'s were not independent? Explain.
 
 ::: answer
 Not given
 :::
 
-### 7. Waiting for the bus
+### 5. Waiting for the bus
 
 Suppose your waiting time for a bus in the morning is uniformly distributed on \[0, 8\] (minutes), whereas waiting time in the evening is uniformly distributed on \[0, 10\] (minutes) independent of morning waiting time.
 
@@ -239,35 +154,27 @@ If you take the bus each morning and evening for a week (7 days), what is your t
 
 #### Part b
 
-What is the variance of your total waiting time?
+What is the expected value of the difference between morning and evening waiting times on a given day?
 
 ::: answer
-Not given
+$-1$ minute
 :::
 
 #### Part c
 
-What are the expected value and variance of the difference between morning and evening waiting times on a given day?
-
-::: answer
-Expected value: $-1$ minute. Variance: $\dfrac{41}{3} \approx 13.667 \text{ minutes}^2$
-:::
-
-#### Part d
-
-What are the expected value and variance of the difference between total morning waiting time and total evening waiting time for a particular week?
+What is the expected value of the difference between total morning waiting time and total evening waiting time for a particular week?
 
 ::: answer
 Not given
 :::
 
-#### Part e
+#### Part d
 
-Simulate 10,000 weeks of bus rides to check your answers to Parts a, b, and d.
+Simulate 10,000 weeks of bus rides to check your answers to Parts a and c.
 
 ::: answer
 ```{r}
-#| label: "q7e-simulate"
+#| label: "q5d-simulate"
 
 set.seed(6161)
 reps <- 10000
@@ -285,5 +192,5 @@ bus_weeks <- bus_days |>
 
 -   Simulated expected total waiting time $\approx$ `r round(mean(bus_weeks$total), 2)` minutes
 
-Answers will vary slightly. The simulated mean of the total should be close to your answer in Part a, and the other simulated values should be close to your answers in Parts b and d.
+Answers will vary slightly. The simulated mean of the total should be close to your answer in Part a, and the simulated mean of the difference should be close to your answer in Part c.
 :::

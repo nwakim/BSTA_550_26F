@@ -13,6 +13,12 @@ editor_options:
 ---
 
 
+**Lessons covered:**
+
+-   Lesson 12: Important discrete RVs
+-   Lesson 13: Important continuous RVs
+-   Lesson 16: Independence and Conditioning
+
 ## Directions
 
 **Please turn in this homework on Sakai.** Please submit your homework in pdf or html format. 

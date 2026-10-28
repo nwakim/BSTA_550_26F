@@ -51,6 +51,10 @@ if (requireNamespace("here", quietly = TRUE) &&
 
 ## Assignment information
 
+**Lessons covered:**
+
+-   Lesson 10: Expected Values
+
 ### Directions
 
 **Please turn in this homework on Brightspace.** Please submit your homework as a pdf or html file. You can type your work in this file and render it, or submit a single file with photos of your written work or any other method that can be turned into a pdf. Please let me know if you prefer to submit a physical copy, we can arrange for a physical "turn in" during Monday's class.

@@ -12,6 +12,10 @@ editor_options:
   chunk_output_type: console
 ---
 
+### Lessons covered
+
+-   Lesson 18: Moment Generating Functions
+
 ## Directions
 
 **Please turn in this homework on Sakai.** Please submit your homework in pdf or html format.

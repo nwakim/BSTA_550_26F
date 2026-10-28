@@ -683,20 +683,25 @@ $$
 
 ## Find the mean and sd from word problem (3/3)
 
-## Let's simulate the cost of 10 cubes
+## Let's simulate the cost of 10 cubes: simulate
 
 - Same steps as the card simulation, with `runif()` from Lesson 8 for the Uniform(1, 2) side lengths
 
 ::: columns
-::: {.column width="60%"}
+::: {.column width="53%"}
 
 ```{r}
 reps <- 10000 # <1>
 n_cubes <- 10 # <1>
 
-cubes <- expand_grid(sim = 1:reps, cube = 1:n_cubes) |> # <2>
-  mutate(side = runif(n(), min = 1, max = 2), # <3>
-         cost = 5 + 10 * side^3) # <4>
+cubes <- expand_grid( # <2>
+  sim = 1:reps,  # <2>
+  cube = 1:n_cubes # <2>
+  ) |> # <2>
+  mutate(
+    side = runif(n(), min = 1, max = 2), # <3>
+    cost = 5 + 10 * side^3 # <4>
+    ) 
 
 cost_sims <- cubes |> # <5>
   group_by(sim) |> # <5>
@@ -710,7 +715,19 @@ cost_sims <- cubes |> # <5>
 5. Add up the 10 cube costs in each simulation to get the total cost, $C$.
 
 :::
-::: {.column width="40%"}
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="45%"}
+
+```{r}
+cubes
+```
+:::
+:::
+
+## Let's simulate the cost of 10 cubes: summarize 
 
 - Mean and SD of the total cost:
 
@@ -728,8 +745,5 @@ cost_sims |> # <6>
 ::: proof1
 ::: proof-cont
 From Example 7: $\mathbb{E}[C] = 425$¢ and $SD(C) = \sqrt{4080.36} \approx 63.9$¢
-:::
-:::
-
 :::
 :::

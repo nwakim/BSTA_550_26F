@@ -27710,21 +27710,21 @@
     "href": "lessons/11_Variance/11_Variance_key_info.html",
     "title": "Key Info and Announcements",
     "section": "",
-    "text": "Homework 5\n\nCharles said it looks good! Impressed with everyone’s work on questions 3 and 4!\n\nQuestion for today’s exit ticket\n\nHow would you feel if we cancelled class on 12/1 and covered MGFs only in one class?\n\nMain reason I cover MGFs is to prepare you for the next course (BSSTA 551), but I talked to Jessica and she does not think they are needed for her class…\n\n\n\n\n\nWe have had a little delay with onboarding new peer-tutors this year, but Charles Parker will be available starting November 17th to support folks with biostatistics!\nUnlike TAs, tutors are not closely associated with any particular course sections or professors, nor do they have any grading responsibilities. Consider meeting with a tutor when you feel stuck on a project, need help with R coding, want to review course concepts, or simply complete assignments in a social learning environment. There is no cost to use tutoring. ​\nCharles is looking forward to working with you in a one-to-one or group setting, depending on your needs. Starting November 17th, you will be able to schedule to meet with them. \nYou can contact the Academic Success Center with questions learningsupport@ohsu.edu.​"
+    "text": "Quiz 1 looks good! People got at most 1 question wrong\nCheckpoint 0 resubs are back\nI know it’s annoying when lessons span two days…\n\nIf we don’t make it through variance today, I will likely push some lessons back"
   },
   {
     "objectID": "lessons/11_Variance/11_Variance_key_info.html#announcements",
     "href": "lessons/11_Variance/11_Variance_key_info.html#announcements",
     "title": "Key Info and Announcements",
     "section": "",
-    "text": "Homework 5\n\nCharles said it looks good! Impressed with everyone’s work on questions 3 and 4!\n\nQuestion for today’s exit ticket\n\nHow would you feel if we cancelled class on 12/1 and covered MGFs only in one class?\n\nMain reason I cover MGFs is to prepare you for the next course (BSSTA 551), but I talked to Jessica and she does not think they are needed for her class…\n\n\n\n\n\nWe have had a little delay with onboarding new peer-tutors this year, but Charles Parker will be available starting November 17th to support folks with biostatistics!\nUnlike TAs, tutors are not closely associated with any particular course sections or professors, nor do they have any grading responsibilities. Consider meeting with a tutor when you feel stuck on a project, need help with R coding, want to review course concepts, or simply complete assignments in a social learning environment. There is no cost to use tutoring. ​\nCharles is looking forward to working with you in a one-to-one or group setting, depending on your needs. Starting November 17th, you will be able to schedule to meet with them. \nYou can contact the Academic Success Center with questions learningsupport@ohsu.edu.​"
+    "text": "Quiz 1 looks good! People got at most 1 question wrong\nCheckpoint 0 resubs are back\nI know it’s annoying when lessons span two days…\n\nIf we don’t make it through variance today, I will likely push some lessons back"
   },
   {
     "objectID": "lessons/11_Variance/11_Variance_key_info.html#key-dates",
     "href": "lessons/11_Variance/11_Variance_key_info.html#key-dates",
     "title": "Key Info and Announcements",
     "section": "Key Dates",
-    "text": "Key Dates\n\nHomework 6 due 11/16\nHomework 7 due 11/23"
+    "text": "Key Dates\n\nHomework 3 due 11/01 at 11pm\nCheckpoint 1 resubmission due 11/4! (on Brightspace)\nHomework 4 due 11/08 at 11pm\nQuiz 2 opens on 11/04 at 3pm\n\nCloses 11/08 at 11pm"
   },
   {
     "objectID": "lessons/11_Variance/11_Variance_muddy_points.html",
@@ -28243,5 +28243,26 @@
     "title": "Lesson 11: Variance",
     "section": "Let’s simulate the card example (2/2)",
     "text": "Let’s simulate the card example (2/2)\n\nLet’s calculate some of the values we’ve shown by hand\n\n\n\n\n1X_sims |&gt;\n  summarise(\n2    mean_X       = mean(X),\n3    mean_X_sq    = mean(X^2),\n4    variance     = mean((X - mean(X))^2),\n5    var_shortcut = mean(X^2) - mean(X)^2,\n6    std_dev      = sqrt(variance)\n  )\n\n\n1\n\nCollapse the 10,000 simulated values of X into one row of summaries.\n\n2\n\nThe average of X, which estimates \\(\\mathbb{E}[X]\\).\n\n3\n\nThe average of X squared, which estimates \\(\\mathbb{E}[X^2]\\) (Example 2, part 1).\n\n4\n\nThe definition of variance: the average squared distance from the mean, \\(\\mathbb{E}[(X-\\mathbb{E}[X])^2]\\) (Example 2, part 2).\n\n5\n\nThe computation formula, \\(\\mathbb{E}[X^2] - (\\mathbb{E}[X])^2\\). It matches the line above.\n\n6\n\nsqrt() takes the square root of the variance to get the standard deviation. summarise() can use a column made earlier inside it.\n\n\n\n\n# A tibble: 1 × 5\n  mean_X mean_X_sq variance var_shortcut std_dev\n   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;\n1  0.249     0.249    0.187        0.187   0.432\n\n\n\nBoth formulas for the variance give the same number!\n\n\n\n\n \n \n \n\n\nExact answers for the card example:\n\n\\(\\mathbb{E}[X] = \\frac{1}{4}\\)\n\\(\\mathbb{E}[X^2] = \\frac{1}{4} = 0.25\\)\n\\(Var(X) = \\frac{1}{4} - \\left(\\frac{1}{4}\\right)^2 = \\frac{3}{16} = 0.1875\\)\n\\(SD(X) = \\sqrt{3/16} \\approx 0.433\\)"
+  },
+  {
+    "objectID": "lessons/11_Variance/11_Variance.html#lets-simulate-the-cost-of-10-cubes",
+    "href": "lessons/11_Variance/11_Variance.html#lets-simulate-the-cost-of-10-cubes",
+    "title": "Lesson 11: Variance",
+    "section": "Let’s simulate the cost of 10 cubes",
+    "text": "Let’s simulate the cost of 10 cubes\n\nSame steps as the card simulation, with runif() from Lesson 8 for the Uniform(1, 2) side lengths\n\n\n\n\n1reps &lt;- 10000\nn_cubes &lt;- 10\n\n2cubes &lt;- expand_grid(\n  sim = 1:reps,\n  cube = 1:n_cubes\n  ) |&gt;\n  mutate(\n3    side = runif(n(), min = 1, max = 2),\n4    cost = 5 + 10 * side^3\n    ) \n\n5cost_sims &lt;- cubes |&gt;\n  group_by(sim) |&gt;\n  summarise(total_cost = sum(cost))\n\n\n1\n\nSave the settings: 10,000 simulations of making 10 cubes.\n\n2\n\nOne row for every cube in every simulation.\n\n3\n\nGive each cube a random side length between 1 and 2 inches.\n\n4\n\nThe cost of each cube in cents: 5¢ plus 10¢ per cubic inch of volume, side^3.\n\n5\n\nAdd up the 10 cube costs in each simulation to get the total cost, \\(C\\).\n\n\n\n\n\n\n\n\ncubes\n\n# A tibble: 100,000 × 4\n     sim  cube  side  cost\n   &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1     1     1  1.47  36.5\n 2     1     2  1.45  35.5\n 3     1     3  1.10  18.4\n 4     1     4  1.99  84.3\n 5     1     5  1.88  71.4\n 6     1     6  1.78  61.3\n 7     1     7  1.09  17.9\n 8     1     8  1.10  18.4\n 9     1     9  1.41  33.2\n10     1    10  1.67  52.0\n# ℹ 99,990 more rows\n\n\n\nMean and SD of the total cost:\n\n\n6cost_sims |&gt;\n  summarise(\n    average = mean(total_cost),\n7    std_dev = sd(total_cost)\n  )\n\n\n6\n\nCollapse the 10,000 simulated total costs into one row of summaries, starting with their average.\n\n7\n\nsd() finds the standard deviation, like in Lesson 2.\n\n\n\n\n# A tibble: 1 × 2\n  average std_dev\n    &lt;dbl&gt;   &lt;dbl&gt;\n1    425.    63.7\n\n\n\n\nFrom Example 7: \\(\\mathbb{E}[C] = 425\\)¢ and \\(SD(C) = \\sqrt{4080.36} \\approx 63.9\\)¢"
+  },
+  {
+    "objectID": "lessons/11_Variance/11_Variance.html#lets-simulate-the-cost-of-10-cubes-simulate",
+    "href": "lessons/11_Variance/11_Variance.html#lets-simulate-the-cost-of-10-cubes-simulate",
+    "title": "Lesson 11: Variance",
+    "section": "Let’s simulate the cost of 10 cubes: simulate",
+    "text": "Let’s simulate the cost of 10 cubes: simulate\n\nSame steps as the card simulation, with runif() from Lesson 8 for the Uniform(1, 2) side lengths\n\n\n\n\n1reps &lt;- 10000\nn_cubes &lt;- 10\n\n2cubes &lt;- expand_grid(\n  sim = 1:reps,\n  cube = 1:n_cubes\n  ) |&gt;\n  mutate(\n3    side = runif(n(), min = 1, max = 2),\n4    cost = 5 + 10 * side^3\n    ) \n\n5cost_sims &lt;- cubes |&gt;\n  group_by(sim) |&gt;\n  summarise(total_cost = sum(cost))\n\n\n1\n\nSave the settings: 10,000 simulations of making 10 cubes.\n\n2\n\nOne row for every cube in every simulation.\n\n3\n\nGive each cube a random side length between 1 and 2 inches.\n\n4\n\nThe cost of each cube in cents: 5¢ plus 10¢ per cubic inch of volume, side^3.\n\n5\n\nAdd up the 10 cube costs in each simulation to get the total cost, \\(C\\).\n\n\n\n\n\n\n\n\ncubes\n\n# A tibble: 100,000 × 4\n     sim  cube  side  cost\n   &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1     1     1  1.47  36.5\n 2     1     2  1.45  35.5\n 3     1     3  1.10  18.4\n 4     1     4  1.99  84.3\n 5     1     5  1.88  71.4\n 6     1     6  1.78  61.3\n 7     1     7  1.09  17.9\n 8     1     8  1.10  18.4\n 9     1     9  1.41  33.2\n10     1    10  1.67  52.0\n# ℹ 99,990 more rows"
+  },
+  {
+    "objectID": "lessons/11_Variance/11_Variance.html#lets-simulate-the-cost-of-10-cubes-summarize",
+    "href": "lessons/11_Variance/11_Variance.html#lets-simulate-the-cost-of-10-cubes-summarize",
+    "title": "Lesson 11: Variance",
+    "section": "Let’s simulate the cost of 10 cubes: summarize",
+    "text": "Let’s simulate the cost of 10 cubes: summarize\n\nMean and SD of the total cost:\n\n\n6cost_sims |&gt;\n  summarise(\n    average = mean(total_cost),\n7    std_dev = sd(total_cost)\n  )\n\n\n6\n\nCollapse the 10,000 simulated total costs into one row of summaries, starting with their average.\n\n7\n\nsd() finds the standard deviation, like in Lesson 2.\n\n\n\n\n# A tibble: 1 × 2\n  average std_dev\n    &lt;dbl&gt;   &lt;dbl&gt;\n1    425.    63.7\n\n\n\n\nFrom Example 7: \\(\\mathbb{E}[C] = 425\\)¢ and \\(SD(C) = \\sqrt{4080.36} \\approx 63.9\\)¢"
   }
 ]

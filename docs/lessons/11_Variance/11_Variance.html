@@ -484,38 +484,38 @@ Var(X) &amp; =
 <li>Each suit is a quarter of the deck, so each suit is equally likely</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1" aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">1028</span>)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2">2</button><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2" aria-label="2"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3" aria-label="3"></a>n_cards <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3">3</button><span id="annotated-cell-1-4" class="code-annotation-target"><a href="#annotated-cell-1-4" aria-label="4"></a>suits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"hearts"</span>, <span class="st">"diamonds"</span>, <span class="st">"clubs"</span>, <span class="st">"spades"</span>)</span>
-<span id="annotated-cell-1-5"><a href="#annotated-cell-1-5" aria-label="5"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="4">4</button><span id="annotated-cell-1-6" class="code-annotation-target"><a href="#annotated-cell-1-6" aria-label="6"></a>draws <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps, <span class="at">card =</span> <span class="dv">1</span><span class="sc">:</span>n_cards) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-1-7"><a href="#annotated-cell-1-7" aria-label="7"></a>  <span class="fu">mutate</span>(<span class="at">suit =</span> <span class="fu">sample</span>(suits, <span class="fu">n</span>(), <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
-<span id="annotated-cell-1-8"><a href="#annotated-cell-1-8" aria-label="8"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="5">5</button><span id="annotated-cell-1-9" class="code-annotation-target"><a href="#annotated-cell-1-9" aria-label="9"></a>X_sims <span class="ot">&lt;-</span> draws <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-1-10"><a href="#annotated-cell-1-10" aria-label="10"></a>  <span class="fu">group_by</span>(sim) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-1-11"><a href="#annotated-cell-1-11" aria-label="11"></a>  <span class="fu">summarise</span>(<span class="at">X =</span> <span class="fu">sum</span>(suit <span class="sc">==</span> <span class="st">"hearts"</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">1028</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2">2</button><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2" aria-label="2"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="annotated-cell-2-3"><a href="#annotated-cell-2-3" aria-label="3"></a>n_cards <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3">3</button><span id="annotated-cell-2-4" class="code-annotation-target"><a href="#annotated-cell-2-4" aria-label="4"></a>suits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"hearts"</span>, <span class="st">"diamonds"</span>, <span class="st">"clubs"</span>, <span class="st">"spades"</span>)</span>
+<span id="annotated-cell-2-5"><a href="#annotated-cell-2-5" aria-label="5"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="4">4</button><span id="annotated-cell-2-6" class="code-annotation-target"><a href="#annotated-cell-2-6" aria-label="6"></a>draws <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps, <span class="at">card =</span> <span class="dv">1</span><span class="sc">:</span>n_cards) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-2-7"><a href="#annotated-cell-2-7" aria-label="7"></a>  <span class="fu">mutate</span>(<span class="at">suit =</span> <span class="fu">sample</span>(suits, <span class="fu">n</span>(), <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="annotated-cell-2-8"><a href="#annotated-cell-2-8" aria-label="8"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="5">5</button><span id="annotated-cell-2-9" class="code-annotation-target"><a href="#annotated-cell-2-9" aria-label="9"></a>X_sims <span class="ot">&lt;-</span> draws <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-2-10"><a href="#annotated-cell-2-10" aria-label="10"></a>  <span class="fu">group_by</span>(sim) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-2-11"><a href="#annotated-cell-2-11" aria-label="11"></a>  <span class="fu">summarise</span>(<span class="at">X =</span> <span class="fu">sum</span>(suit <span class="sc">==</span> <span class="st">"hearts"</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="1" data-code-annotation="1">Set the seed so we get the same random draws every time we run the code.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">Set the seed so we get the same random draws every time we run the code.</span>
 </dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="2,3" data-code-annotation="2">Save the settings: 10,000 simulations with 1 card each. Changing <code>n_cards</code> is all it takes to draw more cards.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="2,3" data-code-annotation="2">Save the settings: 10,000 simulations with 1 card each. Changing <code>n_cards</code> is all it takes to draw more cards.</span>
 </dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="4" data-code-annotation="3">The four suits. Each suit is a quarter of the deck, so drawing a card is like picking a suit at random.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="4" data-code-annotation="3">The four suits. Each suit is a quarter of the deck, so drawing a card is like picking a suit at random.</span>
 </dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="6,7" data-code-annotation="4">Same as the dice in Lesson 2: one row per card, each with a randomly drawn suit.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="6,7" data-code-annotation="4">Same as the dice in Lesson 2: one row per card, each with a randomly drawn suit.</span>
 </dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="9,10,11" data-code-annotation="5">For each simulation, count the hearts. <code>suit == "hearts"</code> is <code>TRUE</code> or <code>FALSE</code>, and <code>sum()</code> counts each <code>TRUE</code> as 1. With one card, <code>X</code> is 1 for a heart and 0 otherwise.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="9,10,11" data-code-annotation="5">For each simulation, count the hearts. <code>suit == "hearts"</code> is <code>TRUE</code> or <code>FALSE</code>, and <code>sum()</code> counts each <code>TRUE</code> as 1. With one card, <code>X</code> is 1 for a heart and 0 otherwise.</span>
 </dd>
 </dl>
 </div>
@@ -528,12 +528,12 @@ Var(X) &amp; =
 <li>The first 20 simulated values of <span class="math inline">\(X\)</span>:</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-label="1"></a><span class="fu">head</span>(X_sims<span class="sc">$</span>X, <span class="dv">20</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1" aria-label="1"></a><span class="fu">head</span>(X_sims<span class="sc">$</span>X, <span class="dv">20</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1"><code>X_sims$X</code> pulls out the <code>X</code> column, and <code>head(..., 20)</code> shows its first 20 values.</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1"><code>X_sims$X</code> pulls out the <code>X</code> column, and <code>head(..., 20)</code> shows its first 20 values.</span>
 </dd>
 </dl>
 </div>
@@ -555,39 +555,39 @@ Var(X) &amp; =
 <div class="columns">
 <div class="column" style="width:58%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1">1</button><span id="annotated-cell-4-1" class="code-annotation-target"><a href="#annotated-cell-4-1" aria-label="1"></a>X_sims <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-4-2"><a href="#annotated-cell-4-2" aria-label="2"></a>  <span class="fu">summarise</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2">2</button><span id="annotated-cell-4-3" class="code-annotation-target"><a href="#annotated-cell-4-3" aria-label="3"></a>    <span class="at">mean_X       =</span> <span class="fu">mean</span>(X),</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="3">3</button><span id="annotated-cell-4-4" class="code-annotation-target"><a href="#annotated-cell-4-4" aria-label="4"></a>    <span class="at">mean_X_sq    =</span> <span class="fu">mean</span>(X<span class="sc">^</span><span class="dv">2</span>),</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="4">4</button><span id="annotated-cell-4-5" class="code-annotation-target"><a href="#annotated-cell-4-5" aria-label="5"></a>    <span class="at">variance     =</span> <span class="fu">mean</span>((X <span class="sc">-</span> <span class="fu">mean</span>(X))<span class="sc">^</span><span class="dv">2</span>),</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="5">5</button><span id="annotated-cell-4-6" class="code-annotation-target"><a href="#annotated-cell-4-6" aria-label="6"></a>    <span class="at">var_shortcut =</span> <span class="fu">mean</span>(X<span class="sc">^</span><span class="dv">2</span>) <span class="sc">-</span> <span class="fu">mean</span>(X)<span class="sc">^</span><span class="dv">2</span>,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="6">6</button><span id="annotated-cell-4-7" class="code-annotation-target"><a href="#annotated-cell-4-7" aria-label="7"></a>    <span class="at">std_dev      =</span> <span class="fu">sqrt</span>(variance)</span>
-<span id="annotated-cell-4-8"><a href="#annotated-cell-4-8" aria-label="8"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-1" class="code-annotation-target"><a href="#annotated-cell-5-1" aria-label="1"></a>X_sims <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-5-2"><a href="#annotated-cell-5-2" aria-label="2"></a>  <span class="fu">summarise</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="2">2</button><span id="annotated-cell-5-3" class="code-annotation-target"><a href="#annotated-cell-5-3" aria-label="3"></a>    <span class="at">mean_X       =</span> <span class="fu">mean</span>(X),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="3">3</button><span id="annotated-cell-5-4" class="code-annotation-target"><a href="#annotated-cell-5-4" aria-label="4"></a>    <span class="at">mean_X_sq    =</span> <span class="fu">mean</span>(X<span class="sc">^</span><span class="dv">2</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="4">4</button><span id="annotated-cell-5-5" class="code-annotation-target"><a href="#annotated-cell-5-5" aria-label="5"></a>    <span class="at">variance     =</span> <span class="fu">mean</span>((X <span class="sc">-</span> <span class="fu">mean</span>(X))<span class="sc">^</span><span class="dv">2</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="5">5</button><span id="annotated-cell-5-6" class="code-annotation-target"><a href="#annotated-cell-5-6" aria-label="6"></a>    <span class="at">var_shortcut =</span> <span class="fu">mean</span>(X<span class="sc">^</span><span class="dv">2</span>) <span class="sc">-</span> <span class="fu">mean</span>(X)<span class="sc">^</span><span class="dv">2</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="6">6</button><span id="annotated-cell-5-7" class="code-annotation-target"><a href="#annotated-cell-5-7" aria-label="7"></a>    <span class="at">std_dev      =</span> <span class="fu">sqrt</span>(variance)</span>
+<span id="annotated-cell-5-8"><a href="#annotated-cell-5-8" aria-label="8"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="1,2" data-code-annotation="1">Collapse the 10,000 simulated values of <code>X</code> into one row of summaries.</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="1,2" data-code-annotation="1">Collapse the 10,000 simulated values of <code>X</code> into one row of summaries.</span>
 </dd>
-<dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="3" data-code-annotation="2">The average of <code>X</code>, which estimates <span class="math inline">\(\mathbb{E}[X]\)</span>.</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="3" data-code-annotation="2">The average of <code>X</code>, which estimates <span class="math inline">\(\mathbb{E}[X]\)</span>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="4" data-code-annotation="3">The average of <code>X</code> squared, which estimates <span class="math inline">\(\mathbb{E}[X^2]\)</span> (Example 2, part 1).</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="4" data-code-annotation="3">The average of <code>X</code> squared, which estimates <span class="math inline">\(\mathbb{E}[X^2]\)</span> (Example 2, part 1).</span>
 </dd>
-<dt data-target-cell="annotated-cell-4" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="5" data-code-annotation="4">The definition of variance: the average squared distance from the mean, <span class="math inline">\(\mathbb{E}[(X-\mathbb{E}[X])^2]\)</span> (Example 2, part 2).</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="5" data-code-annotation="4">The definition of variance: the average squared distance from the mean, <span class="math inline">\(\mathbb{E}[(X-\mathbb{E}[X])^2]\)</span> (Example 2, part 2).</span>
 </dd>
-<dt data-target-cell="annotated-cell-4" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="6" data-code-annotation="5">The computation formula, <span class="math inline">\(\mathbb{E}[X^2] - (\mathbb{E}[X])^2\)</span>. It matches the line above.</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="6" data-code-annotation="5">The computation formula, <span class="math inline">\(\mathbb{E}[X^2] - (\mathbb{E}[X])^2\)</span>. It matches the line above.</span>
 </dd>
-<dt data-target-cell="annotated-cell-4" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="7" data-code-annotation="6"><code>sqrt()</code> takes the square root of the variance to get the standard deviation. <code>summarise()</code> can use a column made earlier inside it.</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="7" data-code-annotation="6"><code>sqrt()</code> takes the square root of the variance to get the standard deviation. <code>summarise()</code> can use a column made earlier inside it.</span>
 </dd>
 </dl>
 </div>
@@ -796,6 +796,114 @@ p_Y(y) = p^y(1-p)^{1-y} \text{ for } y = 0, 1
 </section>
 <section id="find-the-mean-and-sd-from-word-problem-33" class="slide level2">
 <h2>Find the mean and sd from word problem (3/3)</h2>
+</section>
+<section id="lets-simulate-the-cost-of-10-cubes-simulate" class="slide level2">
+<h2>Let’s simulate the cost of 10 cubes: simulate</h2>
+<ul>
+<li>Same steps as the card simulation, with <code>runif()</code> from Lesson 8 for the Uniform(1, 2) side lengths</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:53%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1">1</button><span id="annotated-cell-7-1" class="code-annotation-target"><a href="#annotated-cell-7-1" aria-label="1"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="annotated-cell-7-2"><a href="#annotated-cell-7-2" aria-label="2"></a>n_cubes <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3" aria-label="3"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2">2</button><span id="annotated-cell-7-4" class="code-annotation-target"><a href="#annotated-cell-7-4" aria-label="4"></a>cubes <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
+<span id="annotated-cell-7-5"><a href="#annotated-cell-7-5" aria-label="5"></a>  <span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps,</span>
+<span id="annotated-cell-7-6"><a href="#annotated-cell-7-6" aria-label="6"></a>  <span class="at">cube =</span> <span class="dv">1</span><span class="sc">:</span>n_cubes</span>
+<span id="annotated-cell-7-7"><a href="#annotated-cell-7-7" aria-label="7"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-7-8"><a href="#annotated-cell-7-8" aria-label="8"></a>  <span class="fu">mutate</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="3">3</button><span id="annotated-cell-7-9" class="code-annotation-target"><a href="#annotated-cell-7-9" aria-label="9"></a>    <span class="at">side =</span> <span class="fu">runif</span>(<span class="fu">n</span>(), <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">2</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="4">4</button><span id="annotated-cell-7-10" class="code-annotation-target"><a href="#annotated-cell-7-10" aria-label="10"></a>    <span class="at">cost =</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">10</span> <span class="sc">*</span> side<span class="sc">^</span><span class="dv">3</span></span>
+<span id="annotated-cell-7-11"><a href="#annotated-cell-7-11" aria-label="11"></a>    ) </span>
+<span id="annotated-cell-7-12"><a href="#annotated-cell-7-12" aria-label="12"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="5">5</button><span id="annotated-cell-7-13" class="code-annotation-target"><a href="#annotated-cell-7-13" aria-label="13"></a>cost_sims <span class="ot">&lt;-</span> cubes <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-7-14"><a href="#annotated-cell-7-14" aria-label="14"></a>  <span class="fu">group_by</span>(sim) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-7-15"><a href="#annotated-cell-7-15" aria-label="15"></a>  <span class="fu">summarise</span>(<span class="at">total_cost =</span> <span class="fu">sum</span>(cost))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="1,2" data-code-annotation="1">Save the settings: 10,000 simulations of making 10 cubes.</span>
+</dd>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="4,5,6,7" data-code-annotation="2">One row for every cube in every simulation.</span>
+</dd>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="9" data-code-annotation="3">Give each cube a random side length between 1 and 2 inches.</span>
+</dd>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="10" data-code-annotation="4">The cost of each cube in cents: 5¢ plus 10¢ per cubic inch of volume, <code>side^3</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="13,14,15" data-code-annotation="5">Add up the 10 cube costs in each simulation to get the total cost, <span class="math inline">\(C\)</span>.</span>
+</dd>
+</dl>
+</div>
+</div>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:45%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a>cubes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 100,000 × 4
+     sim  cube  side  cost
+   &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1     1     1  1.47  36.5
+ 2     1     2  1.45  35.5
+ 3     1     3  1.10  18.4
+ 4     1     4  1.99  84.3
+ 5     1     5  1.88  71.4
+ 6     1     6  1.78  61.3
+ 7     1     7  1.09  17.9
+ 8     1     8  1.10  18.4
+ 9     1     9  1.41  33.2
+10     1    10  1.67  52.0
+# ℹ 99,990 more rows</code></pre>
+</div>
+</div>
+</div></div>
+</section>
+<section id="lets-simulate-the-cost-of-10-cubes-summarize" class="slide level2">
+<h2>Let’s simulate the cost of 10 cubes: summarize</h2>
+<ul>
+<li>Mean and SD of the total cost:</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="6">6</button><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1" aria-label="1"></a>cost_sims <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-1-2"><a href="#annotated-cell-1-2" aria-label="2"></a>  <span class="fu">summarise</span>(</span>
+<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3" aria-label="3"></a>    <span class="at">average =</span> <span class="fu">mean</span>(total_cost),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="7">7</button><span id="annotated-cell-1-4" class="code-annotation-target"><a href="#annotated-cell-1-4" aria-label="4"></a>    <span class="at">std_dev =</span> <span class="fu">sd</span>(total_cost)</span>
+<span id="annotated-cell-1-5"><a href="#annotated-cell-1-5" aria-label="5"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-1" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="1,2,3" data-code-annotation="6">Collapse the 10,000 simulated total costs into one row of summaries, starting with their average.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="4" data-code-annotation="7"><code>sd()</code> finds the standard deviation, like in Lesson 2.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  average std_dev
+    &lt;dbl&gt;   &lt;dbl&gt;
+1    425.    63.7</code></pre>
+</div>
+</div>
+<div class="proof1">
+<div class="proof-cont">
+<p>From Example 7: <span class="math inline">\(\mathbb{E}[C] = 425\)</span>¢ and <span class="math inline">\(SD(C) = \sqrt{4080.36} \approx 63.9\)</span>¢</p>
+</div>
+</div>
 
 
 </section></section>

@@ -1,0 +1,15 @@
+{
+  "hash": "d01161da763f040050e2cae166e98a26",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Key Info and Announcements\"\ndate-modified: \"today\"\nformat: \n  html:\n    link-external-newwindow: true\neditor_options: \n  chunk_output_type: console\n---\n\n\n\n## Announcements\n\n- Quiz 1 looks good! People got at most 1 question wrong\n- Checkpoint 0 resubs are back\n- I know it's annoying when lessons span two days...\n  - If we don't make it through variance today, I will likely push some lessons back\n\n\n## Key Dates\n\n- Homework 3 due 11/01 at 11pm\n- Checkpoint 1 resubmission due 11/4! (on Brightspace)\n- Homework 4 due 11/08 at 11pm\n- Quiz 2 opens on 11/04 at 3pm\n  - Closes 11/08 at 11pm\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

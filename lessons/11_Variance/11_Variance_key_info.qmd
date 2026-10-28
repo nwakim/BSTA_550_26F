@@ -8,27 +8,25 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r setup, include=FALSE}
+library(here)
+source(here("class_dates.R"))
+```
+
 ## Announcements
 
-- Homework 5
-  - Charles said it looks good! Impressed with everyone's work on questions 3 and 4!
-- Question for today's exit ticket
-  - How would you feel if we cancelled class on 12/1 and covered MGFs only in one class?
-    - Main reason I cover MGFs is to prepare you for the next course (BSSTA 551), but I talked to Jessica and she does not think they are needed for her class...
-
-### Free Biostatistics Peer Tutoring Available Starting November 17th! 
-
-We have had a little delay with onboarding new peer-tutors this year, but **Charles Parker** will be available starting **November 17th** to support folks with biostatistics! 
-
-Unlike TAs, tutors are not closely associated with any particular course sections or professors, nor do they have any grading responsibilities. Consider meeting with a tutor when you feel stuck on a project, need help with R coding, want to review course concepts, or simply complete assignments in a social learning environment. There is no cost to use tutoring. ​
-
-Charles is looking forward to working with you in a one-to-one or group setting, depending on your needs. **Starting November 17th, [you will be able to schedule to meet with them.](https://traccloud.go-redrock.com/ohsu)   **
-
-You can contact  the Academic Success Center with questions learningsupport@ohsu.edu.​
+- Quiz 1 looks good! People got at most 1 question wrong
+- Checkpoint 0 resubs are back
+- I know it's annoying when lessons span two days...
+  - If we don't make it through variance today, I will likely push some lessons back
 
 
 ## Key Dates
 
-- Homework 6 due 11/16
-- Homework 7 due 11/23
+- Homework 3 due `r hw3 %>% format("%m/%d")` at 11pm
+- Checkpoint 1 resubmission due 11/4! (on Brightspace)
+- Homework 4 due `r hw4 %>% format("%m/%d")` at 11pm
+- Quiz 2 opens on `r q2_open %>% format("%m/%d")` at 3pm
+  - Closes `r q2_close %>% format("%m/%d")` at 11pm
+
 

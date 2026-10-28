@@ -4207,11 +4207,9 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#asthma-er-visits" id="toc-asthma-er-visits" class="nav-link" data-scroll-target="#asthma-er-visits">1. Asthma ER visits</a></li>
   <li><a href="#medication-absorption" id="toc-medication-absorption" class="nav-link" data-scroll-target="#medication-absorption">2. Medication absorption</a></li>
-  <li><a href="#variance-of-an-exponential-rv" id="toc-variance-of-an-exponential-rv" class="nav-link" data-scroll-target="#variance-of-an-exponential-rv">3. Variance of an exponential RV</a></li>
-  <li><a href="#variance-of-a-linear-function" id="toc-variance-of-a-linear-function" class="nav-link" data-scroll-target="#variance-of-a-linear-function">4. Variance of a linear function</a></li>
-  <li><a href="#the-sample-mean" id="toc-the-sample-mean" class="nav-link" data-scroll-target="#the-sample-mean">5. The sample mean</a></li>
-  <li><a href="#shipping-containers" id="toc-shipping-containers" class="nav-link" data-scroll-target="#shipping-containers">6. Shipping containers</a></li>
-  <li><a href="#waiting-for-the-bus" id="toc-waiting-for-the-bus" class="nav-link" data-scroll-target="#waiting-for-the-bus">7. Waiting for the bus</a></li>
+  <li><a href="#the-sample-mean" id="toc-the-sample-mean" class="nav-link" data-scroll-target="#the-sample-mean">3. The sample mean</a></li>
+  <li><a href="#shipping-containers" id="toc-shipping-containers" class="nav-link" data-scroll-target="#shipping-containers">4. Shipping containers</a></li>
+  <li><a href="#waiting-for-the-bus" id="toc-waiting-for-the-bus" class="nav-link" data-scroll-target="#waiting-for-the-bus">5. Waiting for the bus</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -4234,7 +4232,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">October 27, 2026</p>
+      <p class="date-modified">October 28, 2026</p>
     </div>
   </div>
     
@@ -4284,35 +4282,19 @@ div.answer { background-color: #f8eded; border-left: 4px solid #8B0000; border-r
 </section>
 <section id="part-b" class="level4">
 <h4 class="anchored" data-anchor-id="part-b">Part b</h4>
-<p>Find <span class="math inline">\(\mathbb{E}[X^2]\)</span>. Is <span class="math inline">\(\mathbb{E}[X^2]\)</span> equal to <span class="math inline">\(\left(\mathbb{E}[X]\right)^2\)</span>?</p>
+<p>Suppose each ER visit costs a patient a $250 copay, plus every patient pays a $100 yearly fee. So the patient’s yearly cost is <span class="math inline">\(C = 250X + 100\)</span>. Find <span class="math inline">\(\mathbb{E}[C]\)</span>.</p>
 <div class="answer">
 <p>Not given</p>
 </div>
 </section>
 <section id="part-c" class="level4">
 <h4 class="anchored" data-anchor-id="part-c">Part c</h4>
-<p>Find <span class="math inline">\(Var(X)\)</span> two ways: with the definition, <span class="math inline">\(Var(X) = \mathbb{E}\left[(X - \mathbb{E}[X])^2\right]\)</span>, and with the computation formula, <span class="math inline">\(Var(X) = \mathbb{E}[X^2] - \left(\mathbb{E}[X]\right)^2\)</span>. Then find <span class="math inline">\(SD(X)\)</span>.</p>
-<div class="answer">
-<p><span class="math inline">\(Var(X) = 0.7875\)</span> and <span class="math inline">\(SD(X) \approx 0.887\)</span> ER visits</p>
-</div>
-</section>
-<section id="part-d" class="level4">
-<h4 class="anchored" data-anchor-id="part-d">Part d</h4>
-<p>Suppose each ER visit costs a patient a $250 copay, plus every patient pays a $100 yearly fee. So the patient’s yearly cost is <span class="math inline">\(C = 250X + 100\)</span>. Find <span class="math inline">\(\mathbb{E}[C]\)</span> and <span class="math inline">\(SD(C)\)</span>.</p>
-<div class="answer">
-<p>Not given</p>
-</div>
-</section>
-<section id="part-e" class="level4">
-<h4 class="anchored" data-anchor-id="part-e">Part e</h4>
-<p>Simulate 10,000 adults with asthma to check your answers to Parts a–c.</p>
+<p>Simulate 10,000 adults with asthma to check your answer to Part a.</p>
 <div class="answer">
 <ul>
 <li><span class="math inline">\(\mathbb{E}[X] \approx\)</span> 0.751</li>
-<li><span class="math inline">\(Var(X) \approx\)</span> 0.791</li>
-<li><span class="math inline">\(SD(X) \approx\)</span> 0.89</li>
 </ul>
-<p>Answers will vary slightly, but should be close to your answers in Parts a and c.</p>
+<p>Answers will vary slightly, but should be close to your answer in Part a.</p>
 </div>
 </section>
 </section>
@@ -4328,127 +4310,73 @@ div.answer { background-color: #f8eded; border-left: 4px solid #8B0000; border-r
 </section>
 <section id="part-b-1" class="level4">
 <h4 class="anchored" data-anchor-id="part-b-1">Part b</h4>
-<p>Find <span class="math inline">\(\mathbb{E}[X^2]\)</span>, then use it to find <span class="math inline">\(Var(X)\)</span> and <span class="math inline">\(SD(X)\)</span>.</p>
-<div class="answer">
-<p>Not given</p>
-</div>
-</section>
-<section id="part-c-1" class="level4">
-<h4 class="anchored" data-anchor-id="part-c-1">Part c</h4>
-<p>Simulate 10,000 values of <span class="math inline">\(X\)</span> with the inverse CDF method from Lesson 9, and use them to check your answers to Parts a and b.</p>
+<p>Simulate 10,000 values of <span class="math inline">\(X\)</span> with the inverse CDF method from Lesson 9, and use them to check your answer to Part a.</p>
 <div class="answer">
 <ul>
 <li>Inverse CDF: <span class="math inline">\(x = u^{1/3}\)</span></li>
 <li><span class="math inline">\(\mathbb{E}[X] \approx\)</span> 0.748</li>
 </ul>
-<p>Answers will vary slightly. The simulated mean should be close to your answer in Part a, and the simulated variance and standard deviation should be close to your answers in Part b.</p>
+<p>Answers will vary slightly, but should be close to your answer in Part a.</p>
 </div>
 </section>
-</section>
-<section id="variance-of-an-exponential-rv" class="level3">
-<h3 class="anchored" data-anchor-id="variance-of-an-exponential-rv">3. Variance of an exponential RV</h3>
-<p>Let <span class="math inline">\(f_X(x)=\lambda e^{-\lambda x}\)</span> for <span class="math inline">\(x&gt;0\)</span>, where <span class="math inline">\(\lambda&gt;0\)</span>.</p>
-<section id="part-a-2" class="level4">
-<h4 class="anchored" data-anchor-id="part-a-2">Part a</h4>
-<p>Show <span class="math inline">\(Var(X)=\dfrac{1}{\lambda^2}\)</span>. You may use the result from class for <span class="math inline">\(\mathbb{E}[X]\)</span> without first proving it.</p>
-<div class="answer">
-<p>Not given</p>
-</div>
-</section>
-<section id="part-b-2" class="level4">
-<h4 class="anchored" data-anchor-id="part-b-2">Part b</h4>
-<p>Now let <span class="math inline">\(\lambda = 0.5\)</span>. Simulate 10,000 values of <span class="math inline">\(X\)</span> and check that your simulated mean and variance are close to <span class="math inline">\(\mathbb{E}[X] = \dfrac{1}{\lambda}\)</span> and <span class="math inline">\(Var(X) = \dfrac{1}{\lambda^2}\)</span>.</p>
-<div class="answer">
-<ul>
-<li>Simulated mean <span class="math inline">\(\approx\)</span> 1.998 (exact: <span class="math inline">\(\mathbb{E}[X] = 1/0.5 = 2\)</span>)</li>
-<li>Simulated variance <span class="math inline">\(\approx\)</span> 4.009 (exact: <span class="math inline">\(Var(X) = 1/0.5^2 = 4\)</span>)</li>
-</ul>
-<p>Answers will vary slightly, but should be close to 2 and 4.</p>
-</div>
-</section>
-</section>
-<section id="variance-of-a-linear-function" class="level3">
-<h3 class="anchored" data-anchor-id="variance-of-a-linear-function">4. Variance of a linear function</h3>
-<p>Prove that for a random variable <span class="math inline">\(X\)</span> and constants <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, <span class="math display">\[Var(aX+b)=a^2Var(X).\]</span></p>
-<div class="answer">
-<p>Not given</p>
-</div>
 </section>
 <section id="the-sample-mean" class="level3">
-<h3 class="anchored" data-anchor-id="the-sample-mean">5. The sample mean</h3>
-<p>Let <span class="math inline">\(\overline{X}\)</span> be the random variable for the sample mean, <span class="math inline">\(\overline{X}=\dfrac{\sum_{i=1}^nX_i}{n}\)</span>, where the <span class="math inline">\(X_i\)</span> are i.i.d. random variables with common mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>.</p>
-<section id="part-a-3" class="level4">
-<h4 class="anchored" data-anchor-id="part-a-3">Part a</h4>
-<p>Find <span class="math inline">\(\mathbb{E}[\overline{X}]\)</span>.</p>
+<h3 class="anchored" data-anchor-id="the-sample-mean">3. The sample mean</h3>
+<p>Let <span class="math inline">\(\overline{X}\)</span> be the random variable for the sample mean, <span class="math inline">\(\overline{X}=\dfrac{\sum_{i=1}^nX_i}{n}\)</span>, where the <span class="math inline">\(X_i\)</span> are i.i.d. random variables with common mean <span class="math inline">\(\mu\)</span>. Find <span class="math inline">\(\mathbb{E}[\overline{X}]\)</span>.</p>
 <div class="answer">
 <p><span class="math inline">\(\mathbb{E}[\overline{X}] = \mu\)</span></p>
 </div>
 </section>
-<section id="part-b-3" class="level4">
-<h4 class="anchored" data-anchor-id="part-b-3">Part b</h4>
-<p>Find <span class="math inline">\(Var(\overline{X})\)</span>.</p>
-<div class="answer">
-<p>Not given</p>
-</div>
-</section>
-</section>
 <section id="shipping-containers" class="level3">
-<h3 class="anchored" data-anchor-id="shipping-containers">6. Shipping containers</h3>
-<p>A shipping company handles containers in three different sizes: (1) 27 <span class="math inline">\(ft^3\)</span> (3 x 3 x 3), (2) 125 <span class="math inline">\(ft^3\)</span>, and (3) 512 <span class="math inline">\(ft^3\)</span>. Let <span class="math inline">\(X_i\)</span> (<span class="math inline">\(i = 1, 2, 3\)</span>) denote the number of type <span class="math inline">\(i\)</span> containers shipped during a given week. Suppose that <span class="math inline">\(\mu_1 =200,\sigma_1=10,\mu_2 =250,\sigma_2=12,\mu_3 =100,\sigma_3=8\)</span>.</p>
-<section id="part-a-4" class="level4">
-<h4 class="anchored" data-anchor-id="part-a-4">Part a</h4>
-<p>Assuming that <span class="math inline">\(X_1,X_2,X_3\)</span> are independent, calculate the expected value and variance of the total volume shipped.</p>
+<h3 class="anchored" data-anchor-id="shipping-containers">4. Shipping containers</h3>
+<p>A shipping company handles containers in three different sizes: (1) 27 <span class="math inline">\(ft^3\)</span> (3 x 3 x 3), (2) 125 <span class="math inline">\(ft^3\)</span>, and (3) 512 <span class="math inline">\(ft^3\)</span>. Let <span class="math inline">\(X_i\)</span> (<span class="math inline">\(i = 1, 2, 3\)</span>) denote the number of type <span class="math inline">\(i\)</span> containers shipped during a given week. Suppose that <span class="math inline">\(\mu_1 =200,\mu_2 =250,\mu_3 =100\)</span>.</p>
+<section id="part-a-2" class="level4">
+<h4 class="anchored" data-anchor-id="part-a-2">Part a</h4>
+<p>Assuming that <span class="math inline">\(X_1,X_2,X_3\)</span> are independent, calculate the expected value of the total volume shipped.</p>
 <div class="answer">
-<p><span class="math inline">\(\mathbb{E}[V] = 87{,}850 \text{ ft}^3\)</span> and <span class="math inline">\(Var(V) = 19{,}100{,}116 \ (\text{ft}^3)^2\)</span></p>
+<p><span class="math inline">\(\mathbb{E}[V] = 87{,}850 \text{ ft}^3\)</span></p>
 </div>
 </section>
-<section id="part-b-4" class="level4">
-<h4 class="anchored" data-anchor-id="part-b-4">Part b</h4>
-<p>Would your calculations necessarily be correct if the <span class="math inline">\(X_i\)</span>’s were not independent? Explain.</p>
+<section id="part-b-2" class="level4">
+<h4 class="anchored" data-anchor-id="part-b-2">Part b</h4>
+<p>Would your calculation necessarily be correct if the <span class="math inline">\(X_i\)</span>’s were not independent? Explain.</p>
 <div class="answer">
 <p>Not given</p>
 </div>
 </section>
 </section>
 <section id="waiting-for-the-bus" class="level3">
-<h3 class="anchored" data-anchor-id="waiting-for-the-bus">7. Waiting for the bus</h3>
+<h3 class="anchored" data-anchor-id="waiting-for-the-bus">5. Waiting for the bus</h3>
 <p>Suppose your waiting time for a bus in the morning is uniformly distributed on [0, 8] (minutes), whereas waiting time in the evening is uniformly distributed on [0, 10] (minutes) independent of morning waiting time.</p>
-<section id="part-a-5" class="level4">
-<h4 class="anchored" data-anchor-id="part-a-5">Part a</h4>
+<section id="part-a-3" class="level4">
+<h4 class="anchored" data-anchor-id="part-a-3">Part a</h4>
 <p>If you take the bus each morning and evening for a week (7 days), what is your total expected waiting time?</p>
 <div class="answer">
 <p>63 minutes</p>
 </div>
 </section>
-<section id="part-b-5" class="level4">
-<h4 class="anchored" data-anchor-id="part-b-5">Part b</h4>
-<p>What is the variance of your total waiting time?</p>
+<section id="part-b-3" class="level4">
+<h4 class="anchored" data-anchor-id="part-b-3">Part b</h4>
+<p>What is the expected value of the difference between morning and evening waiting times on a given day?</p>
+<div class="answer">
+<p><span class="math inline">\(-1\)</span> minute</p>
+</div>
+</section>
+<section id="part-c-1" class="level4">
+<h4 class="anchored" data-anchor-id="part-c-1">Part c</h4>
+<p>What is the expected value of the difference between total morning waiting time and total evening waiting time for a particular week?</p>
 <div class="answer">
 <p>Not given</p>
 </div>
 </section>
-<section id="part-c-2" class="level4">
-<h4 class="anchored" data-anchor-id="part-c-2">Part c</h4>
-<p>What are the expected value and variance of the difference between morning and evening waiting times on a given day?</p>
-<div class="answer">
-<p>Expected value: <span class="math inline">\(-1\)</span> minute. Variance: <span class="math inline">\(\dfrac{41}{3} \approx 13.667 \text{ minutes}^2\)</span></p>
-</div>
-</section>
-<section id="part-d-1" class="level4">
-<h4 class="anchored" data-anchor-id="part-d-1">Part d</h4>
-<p>What are the expected value and variance of the difference between total morning waiting time and total evening waiting time for a particular week?</p>
-<div class="answer">
-<p>Not given</p>
-</div>
-</section>
-<section id="part-e-1" class="level4">
-<h4 class="anchored" data-anchor-id="part-e-1">Part e</h4>
-<p>Simulate 10,000 weeks of bus rides to check your answers to Parts a, b, and d.</p>
+<section id="part-d" class="level4">
+<h4 class="anchored" data-anchor-id="part-d">Part d</h4>
+<p>Simulate 10,000 weeks of bus rides to check your answers to Parts a and c.</p>
 <div class="answer">
 <ul>
 <li>Simulated expected total waiting time <span class="math inline">\(\approx\)</span> 63.03 minutes</li>
 </ul>
-<p>Answers will vary slightly. The simulated mean of the total should be close to your answer in Part a, and the other simulated values should be close to your answers in Parts b and d.</p>
+<p>Answers will vary slightly. The simulated mean of the total should be close to your answer in Part a, and the simulated mean of the difference should be close to your answer in Part c.</p>
 </div>
 
 

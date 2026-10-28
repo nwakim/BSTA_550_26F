@@ -4247,11 +4247,9 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#asthma-er-visits" id="toc-asthma-er-visits" class="nav-link" data-scroll-target="#asthma-er-visits">1. Asthma ER visits</a></li>
   <li><a href="#medication-absorption" id="toc-medication-absorption" class="nav-link" data-scroll-target="#medication-absorption">2. Medication absorption</a></li>
-  <li><a href="#variance-of-an-exponential-rv" id="toc-variance-of-an-exponential-rv" class="nav-link" data-scroll-target="#variance-of-an-exponential-rv">3. Variance of an exponential RV</a></li>
-  <li><a href="#variance-of-a-linear-function" id="toc-variance-of-a-linear-function" class="nav-link" data-scroll-target="#variance-of-a-linear-function">4. Variance of a linear function</a></li>
-  <li><a href="#the-sample-mean" id="toc-the-sample-mean" class="nav-link" data-scroll-target="#the-sample-mean">5. The sample mean</a></li>
-  <li><a href="#shipping-containers" id="toc-shipping-containers" class="nav-link" data-scroll-target="#shipping-containers">6. Shipping containers</a></li>
-  <li><a href="#waiting-for-the-bus" id="toc-waiting-for-the-bus" class="nav-link" data-scroll-target="#waiting-for-the-bus">7. Waiting for the bus</a></li>
+  <li><a href="#the-sample-mean" id="toc-the-sample-mean" class="nav-link" data-scroll-target="#the-sample-mean">3. The sample mean</a></li>
+  <li><a href="#shipping-containers" id="toc-shipping-containers" class="nav-link" data-scroll-target="#shipping-containers">4. Shipping containers</a></li>
+  <li><a href="#waiting-for-the-bus" id="toc-waiting-for-the-bus" class="nav-link" data-scroll-target="#waiting-for-the-bus">5. Waiting for the bus</a></li>
   </ul></li>
   <li><a href="#extra-problems" id="toc-extra-problems" class="nav-link" data-scroll-target="#extra-problems">Extra problems</a>
   <ul class="collapse">
@@ -4285,7 +4283,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">October 27, 2026</p>
+      <p class="date-modified">October 28, 2026</p>
     </div>
   </div>
     
@@ -4410,25 +4408,15 @@ HOW TO USE THIS FILE
 </section>
 <section id="part-b" class="level4">
 <h4 class="anchored" data-anchor-id="part-b">Part b</h4>
-<p>Find <span class="math inline">\(\mathbb{E}[X^2]\)</span>. Is <span class="math inline">\(\mathbb{E}[X^2]\)</span> equal to <span class="math inline">\(\left(\mathbb{E}[X]\right)^2\)</span>?</p>
+<p>Suppose each ER visit costs a patient a $250 copay, plus every patient pays a $100 yearly fee. So the patient’s yearly cost is <span class="math inline">\(C = 250X + 100\)</span>. Find <span class="math inline">\(\mathbb{E}[C]\)</span>.</p>
+<ul>
+<li><em>Hint:</em> You can use the result for <span class="math inline">\(\mathbb{E}[aX+b]\)</span> from Lesson 10.</li>
+</ul>
 <p><strong><em>Answer:</em></strong></p>
 </section>
 <section id="part-c" class="level4">
 <h4 class="anchored" data-anchor-id="part-c">Part c</h4>
-<p>Find <span class="math inline">\(Var(X)\)</span> two ways: with the definition, <span class="math inline">\(Var(X) = \mathbb{E}\left[(X - \mathbb{E}[X])^2\right]\)</span>, and with the computation formula, <span class="math inline">\(Var(X) = \mathbb{E}[X^2] - \left(\mathbb{E}[X]\right)^2\)</span>. Then find <span class="math inline">\(SD(X)\)</span>.</p>
-<p><strong><em>Answer:</em></strong></p>
-</section>
-<section id="part-d" class="level4">
-<h4 class="anchored" data-anchor-id="part-d">Part d</h4>
-<p>Suppose each ER visit costs a patient a $250 copay, plus every patient pays a $100 yearly fee. So the patient’s yearly cost is <span class="math inline">\(C = 250X + 100\)</span>. Find <span class="math inline">\(\mathbb{E}[C]\)</span> and <span class="math inline">\(SD(C)\)</span>.</p>
-<ul>
-<li><em>Hint:</em> You can use the results for <span class="math inline">\(\mathbb{E}[aX+b]\)</span> (Lesson 10) and <span class="math inline">\(Var(aX+b)\)</span> (Lesson 11, Lemma 7). You will prove the variance result in Question 4!</li>
-</ul>
-<p><strong><em>Answer:</em></strong></p>
-</section>
-<section id="part-e" class="level4">
-<h4 class="anchored" data-anchor-id="part-e">Part e</h4>
-<p>Simulate 10,000 adults with asthma to check your answers to Parts a–c.</p>
+<p>Simulate 10,000 adults with asthma to check your answer to Part a.</p>
 <p><strong>Step 1: Set up.</strong> This chunk is done for you. Run it before the others.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2222</span>)    <span class="co"># so you get the same &quot;random&quot; adults each time</span></span>
@@ -4445,15 +4433,15 @@ HOW TO USE THIS FILE
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><strong>Step 3: Summarize.</strong> Use <code>summarise()</code> to approximate <span class="math inline">\(\mathbb{E}[X]\)</span>, <span class="math inline">\(\mathbb{E}[X^2]\)</span>, <span class="math inline">\(Var(X)\)</span>, and <span class="math inline">\(SD(X)\)</span> from your simulation.</p>
+<p><strong>Step 3: Summarize.</strong> Use <code>summarise()</code> to approximate <span class="math inline">\(\mathbb{E}[X]\)</span> from your simulation.</p>
 <ul>
-<li><em>Hint:</em> Follow the card example in Lesson 11 (“The variance from our simulation”). <code>mean(X)</code> approximates <span class="math inline">\(\mathbb{E}[X]\)</span>, <code>mean(X^2)</code> approximates <span class="math inline">\(\mathbb{E}[X^2]\)</span>, <code>mean((X - mean(X))^2)</code> approximates <span class="math inline">\(Var(X)\)</span>, and <code>sqrt()</code> takes the square root.</li>
+<li><em>Hint:</em> <code>mean(X)</code> approximates <span class="math inline">\(\mathbb{E}[X]\)</span>.</li>
 </ul>
 <p><strong><em>Answer:</em></strong></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Are your simulated answers close to your answers in Parts a–c? (They do not need to match exactly!)</p>
+<p>Is your simulated answer close to your answer in Part a? (They do not need to match exactly!)</p>
 <p><strong><em>Answer:</em></strong></p>
 </section>
 </section>
@@ -4467,12 +4455,7 @@ HOW TO USE THIS FILE
 </section>
 <section id="part-b-1" class="level4">
 <h4 class="anchored" data-anchor-id="part-b-1">Part b</h4>
-<p>Find <span class="math inline">\(\mathbb{E}[X^2]\)</span>, then use it to find <span class="math inline">\(Var(X)\)</span> and <span class="math inline">\(SD(X)\)</span>.</p>
-<p><strong><em>Answer:</em></strong></p>
-</section>
-<section id="part-c-1" class="level4">
-<h4 class="anchored" data-anchor-id="part-c-1">Part c</h4>
-<p>Simulate 10,000 values of <span class="math inline">\(X\)</span> with the inverse CDF method from Lesson 9, and use them to check your answers to Parts a and b.</p>
+<p>Simulate 10,000 values of <span class="math inline">\(X\)</span> with the inverse CDF method from Lesson 9, and use them to check your answer to Part a.</p>
 <p><strong>Step 1: Find the inverse CDF.</strong> First find the CDF, <span class="math inline">\(F_X(x)\)</span>, for <span class="math inline">\(0 \leq x \leq 1\)</span>. Then set <span class="math inline">\(u = F_X(x)\)</span> and solve for <span class="math inline">\(x\)</span>.</p>
 <p><strong><em>Answer:</em></strong></p>
 <p><strong>Step 2: Simulate.</strong> Simulate 10,000 values of <span class="math inline">\(U\)</span> with <code>runif()</code>, then plug each one into your inverse CDF from Step 1.</p>
@@ -4486,111 +4469,63 @@ HOW TO USE THIS FILE
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><strong>Step 3: Summarize.</strong> Use <code>summarise()</code> to approximate <span class="math inline">\(\mathbb{E}[X]\)</span>, <span class="math inline">\(Var(X)\)</span>, and <span class="math inline">\(SD(X)\)</span> from your simulation, like in Question 1.</p>
+<p><strong>Step 3: Summarize.</strong> Use <code>summarise()</code> to approximate <span class="math inline">\(\mathbb{E}[X]\)</span> from your simulation, like in Question 1.</p>
 <p><strong><em>Answer:</em></strong></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Are your simulated answers close to your answers in Parts a and b? (They do not need to match exactly!)</p>
+<p>Is your simulated answer close to your answer in Part a? (They do not need to match exactly!)</p>
 <p><strong><em>Answer:</em></strong></p>
 </section>
-</section>
-<section id="variance-of-an-exponential-rv" class="level3">
-<h3 class="anchored" data-anchor-id="variance-of-an-exponential-rv">3. Variance of an exponential RV</h3>
-<p>Let <span class="math inline">\(f_X(x)=\lambda e^{-\lambda x}\)</span> for <span class="math inline">\(x&gt;0\)</span>, where <span class="math inline">\(\lambda&gt;0\)</span>.</p>
-<section id="part-a-2" class="level4">
-<h4 class="anchored" data-anchor-id="part-a-2">Part a</h4>
-<p>Show <span class="math inline">\(Var(X)=\dfrac{1}{\lambda^2}\)</span>. You may use the result from class for <span class="math inline">\(\mathbb{E}[X]\)</span> without first proving it.</p>
-<ul>
-<li><em>Hint:</em> Start by finding <span class="math inline">\(\mathbb{E}[X^2]\)</span>. You will need integration by parts (Lesson 10, Example 6) twice.</li>
-</ul>
-<p><strong><em>Answer:</em></strong></p>
-</section>
-<section id="part-b-2" class="level4">
-<h4 class="anchored" data-anchor-id="part-b-2">Part b</h4>
-<p>Now let <span class="math inline">\(\lambda = 0.5\)</span>. Simulate 10,000 values of <span class="math inline">\(X\)</span> and check that your simulated mean and variance are close to <span class="math inline">\(\mathbb{E}[X] = \dfrac{1}{\lambda}\)</span> and <span class="math inline">\(Var(X) = \dfrac{1}{\lambda^2}\)</span>.</p>
-<ul>
-<li><em>Hint:</em> Use the code from Lesson 10 (“Picking up our exponential simulation from Lesson 9”), but change <span class="math inline">\(\lambda\)</span> from 2 to 0.5. With <span class="math inline">\(\lambda = 0.5\)</span>, the inverse CDF is <span class="math inline">\(x = -\ln(1-u)/0.5\)</span>. In R, <span class="math inline">\(\ln\)</span> is <code>log()</code>. Then use <code>summarise()</code> like in Question 1.</li>
-</ul>
-<p><strong><em>Answer:</em></strong></p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5151</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-</section>
-<section id="variance-of-a-linear-function" class="level3">
-<h3 class="anchored" data-anchor-id="variance-of-a-linear-function">4. Variance of a linear function</h3>
-<p>Prove that for a random variable <span class="math inline">\(X\)</span> and constants <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, <span class="math display">\[Var(aX+b)=a^2Var(X).\]</span></p>
-<ul>
-<li><em>Hint:</em> Use the computation formula from Lesson 11 with <span class="math inline">\(aX+b\)</span> in place of <span class="math inline">\(X\)</span>: <span class="math inline">\(Var(aX+b) = \mathbb{E}\left[(aX+b)^2\right] - \left(\mathbb{E}[aX+b]\right)^2\)</span>. Then expand the squares and use <span class="math inline">\(\mathbb{E}[aX+b] = a\mathbb{E}[X] + b\)</span> from Lesson 10.</li>
-</ul>
-<p><strong><em>Answer:</em></strong></p>
 </section>
 <section id="the-sample-mean" class="level3">
-<h3 class="anchored" data-anchor-id="the-sample-mean">5. The sample mean</h3>
-<p>Let <span class="math inline">\(\overline{X}\)</span> be the random variable for the sample mean, <span class="math inline">\(\overline{X}=\dfrac{\sum_{i=1}^nX_i}{n}\)</span>, where the <span class="math inline">\(X_i\)</span> are i.i.d. random variables with common mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>.</p>
-<section id="part-a-3" class="level4">
-<h4 class="anchored" data-anchor-id="part-a-3">Part a</h4>
-<p>Find <span class="math inline">\(\mathbb{E}[\overline{X}]\)</span>.</p>
+<h3 class="anchored" data-anchor-id="the-sample-mean">3. The sample mean</h3>
+<p>Let <span class="math inline">\(\overline{X}\)</span> be the random variable for the sample mean, <span class="math inline">\(\overline{X}=\dfrac{\sum_{i=1}^nX_i}{n}\)</span>, where the <span class="math inline">\(X_i\)</span> are i.i.d. random variables with common mean <span class="math inline">\(\mu\)</span>. Find <span class="math inline">\(\mathbb{E}[\overline{X}]\)</span>.</p>
 <p><strong><em>Answer:</em></strong></p>
-</section>
-<section id="part-b-3" class="level4">
-<h4 class="anchored" data-anchor-id="part-b-3">Part b</h4>
-<p>Find <span class="math inline">\(Var(\overline{X})\)</span>.</p>
-<p><strong><em>Answer:</em></strong></p>
-</section>
 </section>
 <section id="shipping-containers" class="level3">
-<h3 class="anchored" data-anchor-id="shipping-containers">6. Shipping containers</h3>
-<p>A shipping company handles containers in three different sizes: (1) 27 <span class="math inline">\(ft^3\)</span> (3 x 3 x 3), (2) 125 <span class="math inline">\(ft^3\)</span>, and (3) 512 <span class="math inline">\(ft^3\)</span>. Let <span class="math inline">\(X_i\)</span> (<span class="math inline">\(i = 1, 2, 3\)</span>) denote the number of type <span class="math inline">\(i\)</span> containers shipped during a given week. Suppose that <span class="math inline">\(\mu_1 =200,\sigma_1=10,\mu_2 =250,\sigma_2=12,\mu_3 =100,\sigma_3=8\)</span>.</p>
-<section id="part-a-4" class="level4">
-<h4 class="anchored" data-anchor-id="part-a-4">Part a</h4>
-<p>Assuming that <span class="math inline">\(X_1,X_2,X_3\)</span> are independent, calculate the expected value and variance of the total volume shipped.</p>
+<h3 class="anchored" data-anchor-id="shipping-containers">4. Shipping containers</h3>
+<p>A shipping company handles containers in three different sizes: (1) 27 <span class="math inline">\(ft^3\)</span> (3 x 3 x 3), (2) 125 <span class="math inline">\(ft^3\)</span>, and (3) 512 <span class="math inline">\(ft^3\)</span>. Let <span class="math inline">\(X_i\)</span> (<span class="math inline">\(i = 1, 2, 3\)</span>) denote the number of type <span class="math inline">\(i\)</span> containers shipped during a given week. Suppose that <span class="math inline">\(\mu_1 =200,\mu_2 =250,\mu_3 =100\)</span>.</p>
+<section id="part-a-2" class="level4">
+<h4 class="anchored" data-anchor-id="part-a-2">Part a</h4>
+<p>Assuming that <span class="math inline">\(X_1,X_2,X_3\)</span> are independent, calculate the expected value of the total volume shipped.</p>
 <ul>
 <li><em>Hint:</em> First write the total volume, <span class="math inline">\(V\)</span>, as a sum of <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, and <span class="math inline">\(X_3\)</span>.</li>
 </ul>
 <p><strong><em>Answer:</em></strong></p>
 </section>
-<section id="part-b-4" class="level4">
-<h4 class="anchored" data-anchor-id="part-b-4">Part b</h4>
-<p>Would your calculations necessarily be correct if the <span class="math inline">\(X_i\)</span>’s were not independent? Explain.</p>
+<section id="part-b-2" class="level4">
+<h4 class="anchored" data-anchor-id="part-b-2">Part b</h4>
+<p>Would your calculation necessarily be correct if the <span class="math inline">\(X_i\)</span>’s were not independent? Explain.</p>
 <p><strong><em>Answer:</em></strong></p>
 </section>
 </section>
 <section id="waiting-for-the-bus" class="level3">
-<h3 class="anchored" data-anchor-id="waiting-for-the-bus">7. Waiting for the bus</h3>
-<p>Suppose your waiting time for a bus in the morning is uniformly distributed on [0, 8] (minutes), whereas waiting time in the evening is uniformly distributed on [0, 10] (minutes) independent of morning waiting time. <em>Make sure to FIRST set up an equation for calculating the total waiting time in each question before calculating the mean and variance of the total waiting time.</em> <em>You may use results from class for the expected value and variance of uniform RVs without proving them.</em></p>
-<section id="part-a-5" class="level4">
-<h4 class="anchored" data-anchor-id="part-a-5">Part a</h4>
+<h3 class="anchored" data-anchor-id="waiting-for-the-bus">5. Waiting for the bus</h3>
+<p>Suppose your waiting time for a bus in the morning is uniformly distributed on [0, 8] (minutes), whereas waiting time in the evening is uniformly distributed on [0, 10] (minutes) independent of morning waiting time. <em>Make sure to FIRST set up an equation for the total waiting time in each question before calculating its expected value.</em> <em>You may use results from class for the expected value of uniform RVs without proving them.</em></p>
+<section id="part-a-3" class="level4">
+<h4 class="anchored" data-anchor-id="part-a-3">Part a</h4>
 <p>If you take the bus each morning and evening for a week (7 days), what is your total expected waiting time?</p>
 <p><strong><em>Answer:</em></strong></p>
 </section>
-<section id="part-b-5" class="level4">
-<h4 class="anchored" data-anchor-id="part-b-5">Part b</h4>
-<p>What is the variance of your total waiting time?</p>
+<section id="part-b-3" class="level4">
+<h4 class="anchored" data-anchor-id="part-b-3">Part b</h4>
+<p>What is the expected value of the difference between morning and evening waiting times on a given day?</p>
 <p><strong><em>Answer:</em></strong></p>
 </section>
-<section id="part-c-2" class="level4">
-<h4 class="anchored" data-anchor-id="part-c-2">Part c</h4>
-<p>What are the expected value and variance of the difference between morning and evening waiting times on a given day?</p>
+<section id="part-c-1" class="level4">
+<h4 class="anchored" data-anchor-id="part-c-1">Part c</h4>
+<p>What is the expected value of the difference between total morning waiting time and total evening waiting time for a particular week?</p>
 <p><strong><em>Answer:</em></strong></p>
 </section>
-<section id="part-d-1" class="level4">
-<h4 class="anchored" data-anchor-id="part-d-1">Part d</h4>
-<p>What are the expected value and variance of the difference between total morning waiting time and total evening waiting time for a particular week?</p>
-<p><strong><em>Answer:</em></strong></p>
-</section>
-<section id="part-e-1" class="level4">
-<h4 class="anchored" data-anchor-id="part-e-1">Part e</h4>
-<p>Simulate 10,000 weeks of bus rides to check your answers to Parts a, b, and d.</p>
+<section id="part-d" class="level4">
+<h4 class="anchored" data-anchor-id="part-d">Part d</h4>
+<p>Simulate 10,000 weeks of bus rides to check your answers to Parts a and c.</p>
 <p><strong>Step 1: Set up.</strong> This chunk is done for you. Run it before the others.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">6161</span>)  <span class="co"># so you get the same &quot;random&quot; weeks each time</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span>   <span class="co"># number of simulated weeks</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>n_days <span class="ot">&lt;-</span> <span class="dv">7</span>     <span class="co"># number of days in a week</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">6161</span>)  <span class="co"># so you get the same &quot;random&quot; weeks each time</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span>   <span class="co"># number of simulated weeks</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>n_days <span class="ot">&lt;-</span> <span class="dv">7</span>     <span class="co"># number of days in a week</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Step 2: Simulate.</strong> Make one row for every day in every week. On each day, simulate a morning waiting time and an evening waiting time.</p>
 <ul>
@@ -4599,7 +4534,7 @@ HOW TO USE THIS FILE
 </ul>
 <p><strong><em>Answer:</em></strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Step 3: Find the weekly totals.</strong> For each simulated week, find the total waiting time and the difference between the total morning and total evening waiting times.</p>
 <ul>
@@ -4607,17 +4542,17 @@ HOW TO USE THIS FILE
 </ul>
 <p><strong><em>Answer:</em></strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><strong>Step 4: Summarize.</strong> Approximate the expected value and variance of the total waiting time and of the difference.</p>
+<p><strong>Step 4: Summarize.</strong> Approximate the expected value of the total waiting time and of the difference.</p>
 <ul>
-<li><em>Hint:</em> Use <code>summarise()</code> with <code>mean()</code> and <code>mean((total - mean(total))^2)</code>, like in Question 1.</li>
+<li><em>Hint:</em> Use <code>summarise()</code> with <code>mean()</code>, like in Question 1.</li>
 </ul>
 <p><strong><em>Answer:</em></strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Are your simulated answers close to your answers in Parts a, b, and d? (They do not need to match exactly!)</p>
+<p>Are your simulated answers close to your answers in Parts a and c? (They do not need to match exactly!)</p>
 <p><strong><em>Answer:</em></strong></p>
 </section>
 </section>
@@ -4634,17 +4569,9 @@ HOW TO USE THIS FILE
 </section>
 <section id="the-sample-proportion" class="level3">
 <h3 class="anchored" data-anchor-id="the-sample-proportion">2. The sample proportion</h3>
-<p>Let <span class="math inline">\(\hat{p}\)</span> be the random variable for the sample proportion, <span class="math inline">\(\hat{p}=\dfrac{X}{n}\)</span>, where <span class="math inline">\(X\)</span> is the number of successes in a random sample of size <span class="math inline">\(n\)</span>. Assume the probability of success is <span class="math inline">\(p\)</span>.</p>
-<section id="part-a-6" class="level4">
-<h4 class="anchored" data-anchor-id="part-a-6">Part a</h4>
-<p>Find <span class="math inline">\(\mathbb{E}[\hat{p}]\)</span>.</p>
-</section>
-<section id="part-b-6" class="level4">
-<h4 class="anchored" data-anchor-id="part-b-6">Part b</h4>
-<p>Find <span class="math inline">\(Var(\hat{p})\)</span>.</p>
+<p>Let <span class="math inline">\(\hat{p}\)</span> be the random variable for the sample proportion, <span class="math inline">\(\hat{p}=\dfrac{X}{n}\)</span>, where <span class="math inline">\(X\)</span> is the number of successes in a random sample of size <span class="math inline">\(n\)</span>. Assume the probability of success is <span class="math inline">\(p\)</span>. Find <span class="math inline">\(\mathbb{E}[\hat{p}]\)</span>.</p>
 
 
-</section>
 </section>
 </section>
 

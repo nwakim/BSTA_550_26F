@@ -563,10 +563,10 @@ solve this for the case ***with*** replacement.
 
 ::: example
 ::: ex-cont
-<font size=6ex>Recall probability for Bernoulli: @claude please fix math below
+<font size=6ex>Recall probability for Bernoulli:
 
 $$
-p_Y(y) = {n \choose x}p^x(1-p)^{n-x}
+p_Y(y) = p^y(1-p)^{1-y} \text{ for } y = 0, 1
 $$
 
 </font>

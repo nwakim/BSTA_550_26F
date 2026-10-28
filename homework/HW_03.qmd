@@ -51,7 +51,7 @@ if (requireNamespace("here", quietly = TRUE) &&
 
 ## Assignment information
 
-**Lessons covered:**
+### Lessons covered
 
 -   Lesson 7: pmfs
 -   Lesson 8: pdfs

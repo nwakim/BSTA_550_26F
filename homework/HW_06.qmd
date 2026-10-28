@@ -13,7 +13,7 @@ editor_options:
 ---
 
 
-**Lessons covered:**
+### Lessons covered
 
 -   Lesson 12: Important discrete RVs
 -   Lesson 13: Important continuous RVs

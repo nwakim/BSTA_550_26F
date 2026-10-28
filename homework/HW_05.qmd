@@ -51,7 +51,7 @@ if (requireNamespace("here", quietly = TRUE) &&
 
 ## Assignment information
 
-**Lessons covered:**
+### Lessons covered
 
 -   Lesson 11: Variance
 -   Lesson 12: Important discrete RVs

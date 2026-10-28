@@ -51,7 +51,7 @@ if (requireNamespace("here", quietly = TRUE) &&
 
 ## Assignment information
 
-**Lessons covered:**
+### Lessons covered
 
 -   Lesson 10: Expected Values
 

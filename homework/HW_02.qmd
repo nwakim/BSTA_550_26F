@@ -51,7 +51,7 @@ if (requireNamespace("here", quietly = TRUE) &&
 
 ## Assignment information
 
-**Lessons covered:**
+### Lessons covered
 
 -   Lesson 4: Rules of Probability
 -   Lesson 5: Equally Likely Outcomes

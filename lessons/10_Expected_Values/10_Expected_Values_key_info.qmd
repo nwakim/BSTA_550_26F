@@ -20,11 +20,15 @@ source(here("class_dates.R"))
   - For future resubmissions (checkpoint 2 and 3), please put back on Brightspace within 1 week of published feedback
   - For checkpoint 0 and 1, we'll do full credit back!
   - For future checkpoints (2 and 3), we'll do half credit back!
+- Checkpoint 0 resubs are back
+- I know it's annoying when lessons span two days...
+  - If we don't make it through variance today, I will likely push some lessons back
 
 
 ## Key Dates
 
 - Homework 3 due `r hw3 %>% format("%m/%d")` at 11pm
+- Checkpoint 1 resubmission due 11/4! (on Brightspace)
 - Homework 4 due `r hw4 %>% format("%m/%d")` at 11pm
 - Quiz 2 opens on `r q2_open %>% format("%m/%d")` at 3pm
   - Closes `r q2_close %>% format("%m/%d")` at 11pm

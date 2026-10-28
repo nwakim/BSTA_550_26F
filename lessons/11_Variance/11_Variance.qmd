@@ -480,7 +480,7 @@ Proof will be exercise in homework. It's fun! In a mathy kinda way.
 ## Important results for ***independent*** RVs
 
 ::: columns
-::: {.column width="48%"}
+::: {.column width="50%"}
 ::: theorem
 ::: thm-title
 Theorem 8
@@ -493,10 +493,7 @@ $$\mathbb{E}[g(X)h(Y)] = \mathbb{E}[g(X)]\mathbb{E}[h(Y)].$$
 :::
 :::
 
-::: {.column width="4%"}
-:::
-
-::: {.column width="48%"}
+::: {.column width="50%"}
 ::: proposition
 ::: prop-title
 Corollary 1
@@ -510,8 +507,8 @@ $$\mathbb{E}[XY] = \mathbb{E}[X]\mathbb{E}[Y].$$
 :::
 :::
 
-::: {style="font-size: 75%;"}
-**Why Theorem 8 works** (discrete RVs; use integrals for continuous RVs). Independence means $p_{X,Y}(x,y) = p_X(x)p_Y(y)$, just like $\mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B)$:
+::: {style="font-size: 90%;"}
+**Why Theorem 8 works (discrete example)**. Independence means $p_{X,Y}(x,y) = p_X(x)p_Y(y)$, just like $\mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B)$:
 
 $$
 \begin{align}

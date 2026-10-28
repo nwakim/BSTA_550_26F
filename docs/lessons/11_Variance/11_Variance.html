@@ -642,6 +642,8 @@ Var(X) &amp; =
 </section>
 <section id="important-results-for-independent-rvs" class="slide level2">
 <h2>Important results for <strong><em>independent</em></strong> RVs</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <div class="theorem">
 <div class="thm-title">
 <p>Theorem 8</p>
@@ -650,6 +652,7 @@ Var(X) &amp; =
 <p>For independent RV’s <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, and functions <span class="math inline">\(g\)</span> and <span class="math inline">\(h\)</span>, <span class="math display">\[\mathbb{E}[g(X)h(Y)] = \mathbb{E}[g(X)]\mathbb{E}[h(Y)].\]</span></p>
 </div>
 </div>
+</div><div class="column" style="width:50%;">
 <div class="proposition">
 <div class="prop-title">
 <p>Corollary 1</p>
@@ -657,6 +660,18 @@ Var(X) &amp; =
 <div class="prop-cont">
 <p>For independent RV’s <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, <span class="math display">\[\mathbb{E}[XY] = \mathbb{E}[X]\mathbb{E}[Y].\]</span></p>
 </div>
+</div>
+</div></div>
+<div style="font-size: 90%;">
+<p><strong>Why Theorem 8 works (discrete example)</strong>. Independence means <span class="math inline">\(p_{X,Y}(x,y) = p_X(x)p_Y(y)\)</span>, just like <span class="math inline">\(\mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B)\)</span>:</p>
+<p><span class="math display">\[
+\begin{align}
+\mathbb{E}[g(X)h(Y)] &amp; = \sum_{\{all\ x\}} \sum_{\{all\ y\}} g(x)h(y)\, p_{X,Y}(x,y) &amp; &amp; \text{expected value of a function} \\
+&amp; = \sum_{\{all\ x\}} \sum_{\{all\ y\}} g(x)h(y)\, p_X(x)p_Y(y) &amp; &amp; \text{use independence} \\
+&amp; = \left(\sum_{\{all\ x\}} g(x)p_X(x)\right)\left(\sum_{\{all\ y\}} h(y)p_Y(y)\right) &amp; &amp; \text{the } x \text{ and } y \text{ parts separate} \\
+&amp; = \mathbb{E}[g(X)]\,\mathbb{E}[h(Y)] &amp; &amp;
+\end{align}
+\]</span></p>
 </div>
 </section>
 <section id="variance-of-sum-of-independent-rvs" class="slide level2">
@@ -705,9 +720,9 @@ Var(X) &amp; =
 </div>
 <div class="example">
 <div class="ex-cont">
-<p><font size="6ex">Recall probability with replacement:</font></p><font size="6ex">
+<p><font size="6ex">Recall probability for Bernoulli:</font></p><font size="6ex">
 <p><span class="math display">\[
-p_X(x) = {n \choose x}p^x(1-p)^{n-x}
+p_Y(y) = p^y(1-p)^{1-y} \text{ for } y = 0, 1
 \]</span></p>
 </font><p><font size="6ex"></font></p>
 </div>

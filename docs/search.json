@@ -27339,7 +27339,7 @@
     "href": "lessons/11_Variance/11_Variance.html#important-results-for-independent-rvs",
     "title": "Lesson 11: Variance",
     "section": "Important results for independent RVs",
-    "text": "Important results for independent RVs\n\n\nTheorem 8\n\n\nFor independent RV’s \\(X\\) and \\(Y\\), and functions \\(g\\) and \\(h\\), \\[\\mathbb{E}[g(X)h(Y)] = \\mathbb{E}[g(X)]\\mathbb{E}[h(Y)].\\]\n\n\n\n\nCorollary 1\n\n\nFor independent RV’s \\(X\\) and \\(Y\\), \\[\\mathbb{E}[XY] = \\mathbb{E}[X]\\mathbb{E}[Y].\\]"
+    "text": "Important results for independent RVs\n\n\n\n\nTheorem 8\n\n\nFor independent RV’s \\(X\\) and \\(Y\\), and functions \\(g\\) and \\(h\\), \\[\\mathbb{E}[g(X)h(Y)] = \\mathbb{E}[g(X)]\\mathbb{E}[h(Y)].\\]\n\n\n\n\n\nCorollary 1\n\n\nFor independent RV’s \\(X\\) and \\(Y\\), \\[\\mathbb{E}[XY] = \\mathbb{E}[X]\\mathbb{E}[Y].\\]\n\n\n\n\nWhy Theorem 8 works (discrete example). Independence means \\(p_{X,Y}(x,y) = p_X(x)p_Y(y)\\), just like \\(\\mathbb{P}(A \\cap B) = \\mathbb{P}(A)\\mathbb{P}(B)\\):\n\\[\n\\begin{align}\n\\mathbb{E}[g(X)h(Y)] & = \\sum_{\\{all\\ x\\}} \\sum_{\\{all\\ y\\}} g(x)h(y)\\, p_{X,Y}(x,y) & & \\text{expected value of a function} \\\\\n& = \\sum_{\\{all\\ x\\}} \\sum_{\\{all\\ y\\}} g(x)h(y)\\, p_X(x)p_Y(y) & & \\text{use independence} \\\\\n& = \\left(\\sum_{\\{all\\ x\\}} g(x)p_X(x)\\right)\\left(\\sum_{\\{all\\ y\\}} h(y)p_Y(y)\\right) & & \\text{the } x \\text{ and } y \\text{ parts separate} \\\\\n& = \\mathbb{E}[g(X)]\\,\\mathbb{E}[h(Y)] & &\n\\end{align}\n\\]"
   },
   {
     "objectID": "lessons/11_Variance/11_Variance.html#variance-of-sum-of-independent-rvs",
@@ -27360,7 +27360,7 @@
     "href": "lessons/11_Variance/11_Variance.html#ghost-problem-with-replacement",
     "title": "Lesson 11: Variance",
     "section": "Ghost problem: with replacement",
-    "text": "Ghost problem: with replacement\n\n\n\n\nExample 5\n\n\nThe ghost is trick-or-treating at a different house now. In this case it is known that the bag of candy has 10 chocolates, 20 lollipops, and 30 laffy taffies. The ghost grabs a handful of five pieces of candy. What is the variance for the number of chocolates the ghost takes? Let’s solve this for the case with replacement.\n\n\n\n\nRecall probability with replacement:\n\\[\np_X(x) = {n \\choose x}p^x(1-p)^{n-x}\n\\]"
+    "text": "Ghost problem: with replacement\n\n\n\n\nExample 5\n\n\nThe ghost is trick-or-treating at a different house now. In this case it is known that the bag of candy has 10 chocolates, 20 lollipops, and 30 laffy taffies. The ghost grabs a handful of five pieces of candy. What is the variance for the number of chocolates the ghost takes? Let’s solve this for the case with replacement.\n\n\n\n\nRecall probability for Bernoulli:\n\\[\np_Y(y) = p^y(1-p)^{1-y} \\text{ for } y = 0, 1\n\\]"
   },
   {
     "objectID": "lessons/11_Variance/11_Variance.html#back-to-our-hotel-example-from-lesson-10",

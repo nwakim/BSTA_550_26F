@@ -123,26 +123,20 @@ Find $\mathbb{E}[X^2]$. Is $\mathbb{E}[X^2]$ equal to $\left(\mathbb{E}[X]\right
 
 #### Part c
 
-Find $Var(X)$ two ways: with the definition, $Var(X) = \mathbb{E}\left[(X - \mathbb{E}[X])^2\right]$, and with the computation formula, $Var(X) = \mathbb{E}[X^2] - \left(\mathbb{E}[X]\right)^2$. Then find $SD(X)$.
+Suppose each ER visit costs a patient a \$250 copay, plus every patient pays a \$100 yearly fee. So the patient's yearly cost is $C = 250X + 100$. Find $\mathbb{E}[C]$.
+
+-   *Hint:* You can use the result for $\mathbb{E}[aX+b]$ from Lesson 10.
 
 ***Answer:***
 
 #### Part d
 
-Suppose each ER visit costs a patient a \$250 copay, plus every patient pays a \$100 yearly fee. So the patient's yearly cost is $C = 250X + 100$. Find $\mathbb{E}[C]$ and $SD(C)$.
-
--   *Hint:* You can use the results for $\mathbb{E}[aX+b]$ (Lesson 10) and $Var(aX+b)$ (Lesson 11, Lemma 7). You will prove the variance result in Question 4!
-
-***Answer:***
-
-#### Part e
-
-Simulate 10,000 adults with asthma to check your answers to Parts a–c.
+Simulate 10,000 adults with asthma to check your answers to Parts a and b.
 
 **Step 1: Set up.** This chunk is done for you. Run it before the others.
 
 ```{r}
-#| label: "q1e-setup"
+#| label: "q1d-setup"
 
 set.seed(2222)    # so you get the same "random" adults each time
 reps <- 10000     # number of simulated adults
@@ -158,26 +152,26 @@ visit_probs <- c(0.50, 0.30, 0.15, 0.05)
 ***Answer:***
 
 ```{r}
-#| label: "q1e-simulate"
+#| label: "q1d-simulate"
 
 # Your code here
 
 ```
 
-**Step 3: Summarize.** Use `summarise()` to approximate $\mathbb{E}[X]$, $\mathbb{E}[X^2]$, $Var(X)$, and $SD(X)$ from your simulation.
+**Step 3: Summarize.** Use `summarise()` to approximate $\mathbb{E}[X]$ and $\mathbb{E}[X^2]$ from your simulation.
 
--   *Hint:* Follow the card example in Lesson 11 ("The variance from our simulation"). `mean(X)` approximates $\mathbb{E}[X]$, `mean(X^2)` approximates $\mathbb{E}[X^2]$, `mean((X - mean(X))^2)` approximates $Var(X)$, and `sqrt()` takes the square root.
+-   *Hint:* `mean(X)` approximates $\mathbb{E}[X]$ and `mean(X^2)` approximates $\mathbb{E}[X^2]$.
 
 ***Answer:***
 
 ```{r}
-#| label: "q1e-summarize"
+#| label: "q1d-summarize"
 
 # Your code here
 
 ```
 
-Are your simulated answers close to your answers in Parts a–c? (They do not need to match exactly!)
+Are your simulated answers close to your answers in Parts a and b? (They do not need to match exactly!)
 
 ***Answer:***
 
@@ -193,7 +187,7 @@ Find $\mathbb{E}[X]$. In a sentence, explain what this number means in the conte
 
 #### Part b
 
-Find $\mathbb{E}[X^2]$, then use it to find $Var(X)$ and $SD(X)$.
+Find $\mathbb{E}[X^2]$.
 
 ***Answer:***
 
@@ -221,7 +215,7 @@ reps <- 10000
 
 ```
 
-**Step 3: Summarize.** Use `summarise()` to approximate $\mathbb{E}[X]$, $Var(X)$, and $SD(X)$ from your simulation, like in Question 1.
+**Step 3: Summarize.** Use `summarise()` to approximate $\mathbb{E}[X]$ and $\mathbb{E}[X^2]$ from your simulation, like in Question 1.
 
 ***Answer:***
 
@@ -236,67 +230,19 @@ Are your simulated answers close to your answers in Parts a and b? (They do not 
 
 ***Answer:***
 
-### 3. Variance of an exponential RV
+### 3. The sample mean
 
-Let $f_X(x)=\lambda e^{-\lambda x}$ for $x>0$, where $\lambda>0$.
+Let $\overline{X}$ be the random variable for the sample mean, $\overline{X}=\dfrac{\sum_{i=1}^nX_i}{n}$, where the $X_i$ are i.i.d. random variables with common mean $\mu$. Find $\mathbb{E}[\overline{X}]$.
+
+***Answer:***
+
+### 4. Shipping containers
+
+A shipping company handles containers in three different sizes: (1) 27 $ft^3$ (3 x 3 x 3), (2) 125 $ft^3$, and (3) 512 $ft^3$. Let $X_i$ ($i = 1, 2, 3$) denote the number of type $i$ containers shipped during a given week. Suppose that $\mu_1 =200,\mu_2 =250,\mu_3 =100$.
 
 #### Part a
 
-Show $Var(X)=\dfrac{1}{\lambda^2}$. You may use the result from class for $\mathbb{E}[X]$ without first proving it.
-
--   *Hint:* Start by finding $\mathbb{E}[X^2]$. You will need integration by parts (Lesson 10, Example 6) twice.
-
-***Answer:***
-
-#### Part b
-
-Now let $\lambda = 0.5$. Simulate 10,000 values of $X$ and check that your simulated mean and variance are close to $\mathbb{E}[X] = \dfrac{1}{\lambda}$ and $Var(X) = \dfrac{1}{\lambda^2}$.
-
--   *Hint:* Use the code from Lesson 10 ("Picking up our exponential simulation from Lesson 9"), but change $\lambda$ from 2 to 0.5. With $\lambda = 0.5$, the inverse CDF is $x = -\ln(1-u)/0.5$. In R, $\ln$ is `log()`. Then use `summarise()` like in Question 1.
-
-***Answer:***
-
-```{r}
-#| label: "q3b-simulate"
-
-set.seed(5151)
-reps <- 10000
-
-# Your code here
-
-```
-
-### 4. Variance of a linear function
-
-Prove that for a random variable $X$ and constants $a$ and $b$, $$Var(aX+b)=a^2Var(X).$$
-
--   *Hint:* Use the computation formula from Lesson 11 with $aX+b$ in place of $X$: $Var(aX+b) = \mathbb{E}\left[(aX+b)^2\right] - \left(\mathbb{E}[aX+b]\right)^2$. Then expand the squares and use $\mathbb{E}[aX+b] = a\mathbb{E}[X] + b$ from Lesson 10.
-
-***Answer:***
-
-### 5. The sample mean
-
-Let $\overline{X}$ be the random variable for the sample mean, $\overline{X}=\dfrac{\sum_{i=1}^nX_i}{n}$, where the $X_i$ are i.i.d. random variables with common mean $\mu$ and variance $\sigma^2$.
-
-#### Part a
-
-Find $\mathbb{E}[\overline{X}]$.
-
-***Answer:***
-
-#### Part b
-
-Find $Var(\overline{X})$.
-
-***Answer:***
-
-### 6. Shipping containers
-
-A shipping company handles containers in three different sizes: (1) 27 $ft^3$ (3 x 3 x 3), (2) 125 $ft^3$, and (3) 512 $ft^3$. Let $X_i$ ($i = 1, 2, 3$) denote the number of type $i$ containers shipped during a given week. Suppose that $\mu_1 =200,\sigma_1=10,\mu_2 =250,\sigma_2=12,\mu_3 =100,\sigma_3=8$.
-
-#### Part a
-
-Assuming that $X_1,X_2,X_3$ are independent, calculate the expected value and variance of the total volume shipped.
+Assuming that $X_1,X_2,X_3$ are independent, calculate the expected value of the total volume shipped.
 
 -   *Hint:* First write the total volume, $V$, as a sum of $X_1$, $X_2$, and $X_3$.
 
@@ -304,13 +250,13 @@ Assuming that $X_1,X_2,X_3$ are independent, calculate the expected value and va
 
 #### Part b
 
-Would your calculations necessarily be correct if the $X_i$'s were not independent? Explain.
+Would your calculation necessarily be correct if the $X_i$'s were not independent? Explain.
 
 ***Answer:***
 
-### 7. Waiting for the bus
+### 5. Waiting for the bus
 
-Suppose your waiting time for a bus in the morning is uniformly distributed on \[0, 8\] (minutes), whereas waiting time in the evening is uniformly distributed on \[0, 10\] (minutes) independent of morning waiting time. *Make sure to FIRST set up an equation for calculating the total waiting time in each question before calculating the mean and variance of the total waiting time.* *You may use results from class for the expected value and variance of uniform RVs without proving them.*
+Suppose your waiting time for a bus in the morning is uniformly distributed on \[0, 8\] (minutes), whereas waiting time in the evening is uniformly distributed on \[0, 10\] (minutes) independent of morning waiting time. *Make sure to FIRST set up an equation for the total waiting time in each question before calculating its expected value.* *You may use results from class for the expected value of uniform RVs without proving them.*
 
 #### Part a
 
@@ -320,30 +266,24 @@ If you take the bus each morning and evening for a week (7 days), what is your t
 
 #### Part b
 
-What is the variance of your total waiting time?
+What is the expected value of the difference between morning and evening waiting times on a given day?
 
 ***Answer:***
 
 #### Part c
 
-What are the expected value and variance of the difference between morning and evening waiting times on a given day?
+What is the expected value of the difference between total morning waiting time and total evening waiting time for a particular week?
 
 ***Answer:***
 
 #### Part d
 
-What are the expected value and variance of the difference between total morning waiting time and total evening waiting time for a particular week?
-
-***Answer:***
-
-#### Part e
-
-Simulate 10,000 weeks of bus rides to check your answers to Parts a, b, and d.
+Simulate 10,000 weeks of bus rides to check your answers to Parts a and c.
 
 **Step 1: Set up.** This chunk is done for you. Run it before the others.
 
 ```{r}
-#| label: "q7e-setup"
+#| label: "q5d-setup"
 
 set.seed(6161)  # so you get the same "random" weeks each time
 reps <- 10000   # number of simulated weeks
@@ -358,7 +298,7 @@ n_days <- 7     # number of days in a week
 ***Answer:***
 
 ```{r}
-#| label: "q7e-simulate"
+#| label: "q5d-simulate"
 
 # Your code here
 
@@ -371,26 +311,26 @@ n_days <- 7     # number of days in a week
 ***Answer:***
 
 ```{r}
-#| label: "q7e-weekly"
+#| label: "q5d-weekly"
 
 # Your code here
 
 ```
 
-**Step 4: Summarize.** Approximate the expected value and variance of the total waiting time and of the difference.
+**Step 4: Summarize.** Approximate the expected value of the total waiting time and of the difference.
 
--   *Hint:* Use `summarise()` with `mean()` and `mean((total - mean(total))^2)`, like in Question 1.
+-   *Hint:* Use `summarise()` with `mean()`, like in Question 1.
 
 ***Answer:***
 
 ```{r}
-#| label: "q7e-summarize"
+#| label: "q5d-summarize"
 
 # Your code here
 
 ```
 
-Are your simulated answers close to your answers in Parts a, b, and d? (They do not need to match exactly!)
+Are your simulated answers close to your answers in Parts a and c? (They do not need to match exactly!)
 
 ***Answer:***
 
@@ -406,12 +346,4 @@ There is a bowl containing 30 cashews, 20 pecans, 25 almonds, and 25 walnuts. I 
 
 ### 2. The sample proportion
 
-Let $\hat{p}$ be the random variable for the sample proportion, $\hat{p}=\dfrac{X}{n}$, where $X$ is the number of successes in a random sample of size $n$. Assume the probability of success is $p$.
-
-#### Part a
-
-Find $\mathbb{E}[\hat{p}]$.
-
-#### Part b
-
-Find $Var(\hat{p})$.
+Let $\hat{p}$ be the random variable for the sample proportion, $\hat{p}=\dfrac{X}{n}$, where $X$ is the number of successes in a random sample of size $n$. Assume the probability of success is $p$. Find $\mathbb{E}[\hat{p}]$.

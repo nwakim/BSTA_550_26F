@@ -17,7 +17,7 @@ You are right, the hotel room problem did not need the identical distributions i
 
 It was more that, last class, we did not specify the standard deviation. We could find the expected value of the total cost without knowing the standard deviation, and thus without necessarily assuming the cost of the hotel rooms were identical random variables. In this class, we needed the standard deviation for the cost of each hotel room. We could have made them different, but we made all of them $10.
 
-### 2. The math breakdown of $\text{Var}(X) = E[X^2] - E[X]^2 I'm not sure where the $X$ value in the term 2 summation $\mu_xXp_x(x)$ where did $Xp_x(x)$ go?
+### 2. The math breakdown of $\text{Var}(X) = E[X^2] - E[X]^2$ I'm not sure where the $X$ value in the term 2 summation $\mu_xXp_x(x)$ where did $Xp_x(x)$ go?
 
 I go through that breakdown in the first muddy point from Fall 2023 (below). Check out the term 2 part that is highlighted in green-ish.
 

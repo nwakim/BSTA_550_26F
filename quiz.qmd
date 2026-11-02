@@ -53,7 +53,6 @@ More information specific to each quiz will be posted below.
 
 - Includes lesson 7-9
   - Lesson 6 not technically included, but will be covered
-  - Might have one question from Lesson 10 about process of transformations
 - Mostly properties of pmfs, pdfs, and CDFs: what makes them valid and what are the restrictions of the functions?
 - Some R commands for binomial
 

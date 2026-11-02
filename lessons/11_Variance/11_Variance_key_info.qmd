@@ -15,18 +15,13 @@ source(here("class_dates.R"))
 
 ## Announcements
 
-- Quiz 1 looks good! People got at most 1 question wrong
-- Checkpoint 0 resubs are back
-- I know it's annoying when lessons span two days...
-  - If we don't make it through variance today, I will likely push some lessons back
+![](./images/mermaid.png){fig-align="center" width="1000"}
 
+- Quiz 2 opens on Wednesday
 
 ## Key Dates
 
-- Homework 3 due `r hw3 %>% format("%m/%d")` at 11pm
 - Checkpoint 1 resubmission due 11/4! (on Brightspace)
 - Homework 4 due `r hw4 %>% format("%m/%d")` at 11pm
 - Quiz 2 opens on `r q2_open %>% format("%m/%d")` at 3pm
   - Closes `r q2_close %>% format("%m/%d")` at 11pm
-
-

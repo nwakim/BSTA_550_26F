@@ -17,7 +17,7 @@ Below is the general timing and lessons for each quiz:
 | Quiz | Lessons | HWs | Open Date \@ 3pm | Close Date \@ 11pm |
 |---------------|---------------|---------------|---------------|---------------|
 | 1 | 1-5 | 1 | `r q1_open %>% format("%m/%d")` | `r q1_close %>% format("%m/%d")` |
-| 2 | 7-9 | 2-3 | `r q2_open %>% format("%m/%d")` | `r q2_close %>% format("%m/%d")` |
+| 2 | 5-9, not 6 directly | 2-3 | `r q2_open %>% format("%m/%d")` | `r q2_close %>% format("%m/%d")` |
 | 3 | 10-16 | 5-7 | `r q3_open %>% format("%m/%d")` | `r q3_close %>% format("%m/%d")` |
 
 Quizzes will be mostly conceptual questions with 10-15 multiple choice questions. Some calculations will need to be done for certain questions, but the focus will be on understanding concepts.
@@ -54,6 +54,8 @@ More information specific to each quiz will be posted below.
 - Includes lesson 7-9
   - Lesson 6 not technically included, but will be covered
   - Might have one question from Lesson 10 about process of transformations
+- Mostly properties of pmfs, pdfs, and CDFs: what makes them valid and what are the restrictions of the functions?
+- Some R commands for binomial
 
 ## Quiz 3
 

@@ -3,8 +3,8 @@ title: "Lesson 14: Transformations"
 author: "Nicky Wakim"
 title-slide-attributes:
     data-background-color: "#006a4e"
-date: "`r library(here); source(here('class_dates.R')); w7d1`"
-format: 
+date: "`r library(here); source(here('class_dates.R')); w7d2`"
+format:
   revealjs:
     theme: "../simple_NW.scss"
     slide-number: true
@@ -13,6 +13,10 @@ format:
     height: 1100
     footer: Lesson 14 Slides
     html-math-method: mathjax
+    highlight-style: arrow
+    code-annotations: hover
+execute:
+  echo: true
 ---
 
 ```{r setup, include=FALSE}
@@ -23,7 +27,6 @@ library(tidyverse)
 library(kableExtra)
 
 theme_set(theme_bw(base_size = 28))
-
 ```
 
 # Learning Objectives
@@ -31,16 +34,17 @@ theme_set(theme_bw(base_size = 28))
 1. Find the pdf of a linear rescaling of a random variable
 2. Find the pdf of a nonlinear transformation of a random variable using the CDF method
 
-## Distributions of transformations of random variables {#cdf-method}
+## Distributions of transformations of random variables
 
 - Often make transformations of RVs
-- A function of a random variable is a random variable
+- A function of a [**random variable**]{style="color:#29abe0;"} is a random variable
     - If $X$ is a random variable and $g$ is a function then $Y=g(X)$ is a random variable
-    - Since $g(X)$ is a random variable it has a distribution
+    - Since $g(X)$ is a random variable it has a [**distribution**]{style="color:#E25D3B;"}
 - Distribution of $g(X)$ will have a different shape than the distribution of $X$
 - Two types:
     - Linear rescalings: $g(u) = a + bu$
     - Nonlinear transformations: e.g. $g(u) = u^2$, $g(u) = \log(u)$
+- We've already seen one! In Lesson 9, we simulated $X$ by plugging a Uniform(0, 1) value into the inverse CDF
 
 # Learning Objectives
 
@@ -65,7 +69,7 @@ A **linear rescaling** is a transformation of the form $g(u) = a + bu$, where $a
 
 - For example, converting temperature from Celsius to Fahrenheit using $g(u) = 32 + 1.8u$ is a linear rescaling.
 
-## Example of linear rescaling (1/4) {#sim-linear-rescaling}
+## Example of linear rescaling (1/4)
 
 ::: example
 ::: ex-title
@@ -82,7 +86,7 @@ Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2
 :::
 :::
 
-## Example of linear rescaling (2/4) {#sim-linear-rescaling}
+## Example of linear rescaling (2/4)
 
 ::: example
 ::: ex-title
@@ -96,7 +100,7 @@ Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2
 :::
 :::
 
-## Example of linear rescaling (3/4) {#sim-linear-rescaling}
+## Example of linear rescaling (3/4)
 
 ::: example
 ::: ex-title
@@ -109,7 +113,9 @@ Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2
 :::
 :::
 
-## Example of linear rescaling (4/4) {#sim-linear-rescaling}
+- Hint: rewrite the event $V \leq -0.5$ in terms of $U$, then use $P(a \leq U \leq b) = \int_a^b f_U(u)\,du$
+
+## Example of linear rescaling (4/4)
 
 ::: example
 ::: ex-title
@@ -120,6 +126,97 @@ Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2
 
 4.  Find the pdf of $V$.
 5.  Does $V$ have the same distribution as $U$?
+:::
+:::
+
+## Let's simulate Example 1: simulate {#sim-linear-rescaling}
+
+- Simulate $U$ with the inverse CDF, like Lesson 9: $F_U(u) = \dfrac{u^4 - 1}{15}$, so $F_U^{-1}(p) = (15p + 1)^{1/4}$
+
+::: columns
+::: {.column width="60%"}
+
+```{r}
+set.seed(1111) # <1>
+reps <- 10000 # <2>
+
+u_sims <- tibble( # <3>
+  p = runif(n = reps, min = 0, max = 1) # <3>
+  ) |> # <3>
+  mutate( # <4>
+    u = (15 * p + 1)^(1/4), # <4>
+    v = 1 - u # <5>
+    )
+```
+
+1. Set the random seed once, so we get the same simulation every time.
+2. Save the number of simulations as `reps`, so it is easy to change later.
+3. Simulate a Uniform(0, 1) value `p` for every simulation, like Lesson 9.
+4. Plug each `p` into the inverse CDF to get a simulated value of $U$. `^(1/4)` is the fourth root.
+5. The linear rescaling: each simulated `u` becomes `v = 1 - u`.
+
+:::
+
+::: {.column width="40%"}
+
+```{r}
+head(u_sims) # <6>
+```
+
+6. Each row is one simulation: the `v` in a row came from the `u` beside it.
+
+:::
+:::
+
+## Let's simulate Example 1: summarize
+
+::: columns
+::: {.column width="50%"}
+
+```{r}
+u_sims |> # <1>
+  summarise( # <1>
+    prob_V = mean(v <= -0.5), # <2>
+    prob_U = mean(u >= 1.5) # <3>
+  )
+```
+
+1. One row of summaries of the 10,000 simulations.
+2. The proportion of simulations with $V \leq -0.5$ approximates $P(V \leq -0.5)$.
+3. Same answer: $V \leq -0.5$ is the same event as $U \geq 1.5$.
+
+::: proof1
+::: proof-cont
+From Example 1.3: $P(V \leq -0.5) = \dfrac{2^4 - 1.5^4}{15} \approx 0.7292$
+:::
+:::
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 10
+#| fig-height: 7.5
+
+ggplot(u_sims) + # <4>
+  geom_histogram(aes(x = u, y = after_stat(density)), # <5>
+                 binwidth = 0.05, boundary = 1, # <5>
+                 color = "black", fill = "lightblue") + # <5>
+  geom_histogram(aes(x = v, y = after_stat(density)), # <6>
+                 binwidth = 0.05, boundary = -1, # <6>
+                 color = "black", fill = "#E89543") + # <6>
+  labs(title = "Simulated U (blue) and V = 1 - U (orange)", # <7>
+       x = "Value", y = "Density") # <7>
+```
+
+4. Start a plot of the simulations. Each histogram below picks its own column.
+5. Histogram of the simulated `u` values, scaled like a pdf (Lesson 8).
+6. Histogram of the simulated `v` values, on the same axes.
+7. Add a title and axis labels.
+
 :::
 :::
 
@@ -129,7 +226,13 @@ Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2
 
     - It can flip it, widen it, condense it, and/or shift it
 
--   Remember, do NOT confuse a random variable with its distribution
+    - But it is not the same distribution: the possible values change
+
+-   For $V = a + bU$: $f_V(v) = \dfrac{1}{|b|} f_U\left(\dfrac{v-a}{b}\right)$
+
+    - In Example 1, $b = -1$, so we could substitute $u = 1 - v$ directly into $f_U$
+
+-   Remember, do NOT confuse a [**random variable**]{style="color:#29abe0;"} with its [**distribution**]{style="color:#E25D3B;"}
     -   The random variable is the numerical quantity being measured
     -   The distribution is the long run pattern of variation of many observed values of the random variable
 
@@ -154,11 +257,11 @@ Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2
     -   $g(u) = e^u$
     -   $g(u) = \dfrac{1}{u}$
 
-## Finding the pdf of a transformation
+## Finding the pdf of a transformation {#cdf-method}
 
-- Let $M$ be a transformation of $X$: $M = g(X)$
+- Let $M$ be a nonlinear transformation of $X$: $M = g(X)$
 
-- When we have a transformation of $X$, $M$, we need to follow the **CDF method** to find the pdf of $M$
+- When we have a nonlinear transformation of $X$, $M$, we need to follow the [**CDF method**]{style="color:#E25D3B;"} to find the pdf of $M$
 
 We follow **CDF method**:
 
@@ -168,14 +271,15 @@ We follow **CDF method**:
 
 2. Translate the domain of $X$ to $M$: find the possible values of $M$
 
-3. Find the CDF of $M$ 
+3. Find the CDF of $M$
 
     - aka $F_M(m) = P(M \leq m) = P(g(X) \leq m)$
     - Will require manipulating $g(X) \leq m$ in terms of $X$ (aka $X$ alone on the left side)
 
-4. Take the derivative of the CDF of $M$ with respect to $m$ to find the pdf of $M$ 
+4. Take the derivative of the CDF of $M$ with respect to $m$ to find the pdf of $M$
 
     - aka $f_M(m) = \dfrac{d}{dm}F_M(m)$
+    - Check: $f_M(m)$ should integrate to 1 over the possible values of $M$
 
 ## Example of nonlinear transformation (1/4)
 
@@ -205,23 +309,30 @@ Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2
 :::
 :::
 
+- In this class (and in R), $\log$ is the natural log, $\ln$
+
 ::: columns
 ::: {.column width="40%"}
 ```{r}
+#| echo: false
 #| fig-height: 7
 #| fig-width: 8
 
-domain_u_v = tibble(
-  u = seq(1, 2, 0.01), 
+domain_u_v <- tibble(
+  u = seq(0.5, 2.5, 0.01),
   v = log(u)
 )
 
 ggplot(domain_u_v, aes(x = u, y = v)) +
-  geom_line() +
+  annotate("rect", xmin = 1, xmax = 2, ymin = -Inf, ymax = Inf,
+           fill = "#29abe0", alpha = 0.15) +
+  annotate("rect", xmin = -Inf, xmax = Inf, ymin = 0, ymax = log(2),
+           fill = "#E89543", alpha = 0.15) +
+  geom_line(linewidth = 1.2) +
   labs(
     title = "Transformation: V = log(U)",
     x = "u",
-    y = "log(u)"
+    y = "v = log(u)"
   )
 ```
 :::
@@ -255,6 +366,63 @@ Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2
 :::
 :::
 
+## Let's simulate Example 2
+
+::: columns
+::: {.column width="52%"}
+
+```{r}
+u_sims <- u_sims |> # <1>
+  mutate(log_u = log(u)) # <2>
+
+u_sims |> # <3>
+  summarise( # <3>
+    prob_half = mean(log_u <= 0.5) # <3>
+  )
+```
+
+1. Reuse the 10,000 simulated values of $U$ from Example 1.
+2. The nonlinear transformation: $V = \log(U)$. We name the column `log_u` so it does not replace `v` $= 1 - U$ from Example 1.
+3. The proportion of simulations with $\log(U) \leq 0.5$ approximates the CDF of $V$ at 0.5.
+
+::: proof1
+::: proof-cont
+CDF method: $F_V(0.5) = \dfrac{e^{4(0.5)} - 1}{15} \approx 0.4260$
+:::
+:::
+
+- Why not substitute $u = e^v$ into $f_U$? That gives $\frac{4}{15}e^{3v}$ (dashed), which does not match!
+
+:::
+
+::: {.column width="48%"}
+
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 10
+#| fig-height: 8
+
+ggplot(u_sims, aes(x = log_u)) + # <4>
+  geom_histogram(aes(y = after_stat(density)), # <4>
+                 binwidth = log(2) / 30, boundary = 0, # <4>
+                 color = "black", fill = "lightblue") + # <4>
+  geom_line(aes(y = 4/15 * exp(4 * log_u)), # <5>
+            color = "red", linewidth = 1.5) + # <5>
+  geom_line(aes(y = 4/15 * exp(3 * log_u)), # <6>
+            linetype = "dashed", linewidth = 1.5) + # <6>
+  labs(title = "Simulated V = log(U)", # <7>
+       x = "v", y = "Density") # <7>
+```
+
+4. Histogram of the simulated values of $V = \log(U)$, scaled like a pdf, with 30 bars between 0 and $\log(2)$.
+5. The pdf from the CDF method, $f_V(v) = \frac{4}{15}e^{4v}$, in red.
+6. The wrong guess from substituting $u = e^v$ into $f_U$, dashed.
+7. Add a title and axis labels.
+
+:::
+:::
+
 ## Example of nonlinear transformation: domain (1/4)
 
 ::: example
@@ -263,7 +431,7 @@ Example 3: Nonlinear transformation of $X$
 :::
 ::: ex-cont
 Let $X$ be a random variable with $f_X(x)= \dfrac{1}{2}$ for $-1\leq x \leq 1$. Define $Y=X^2$
- 
+
 1.  What are the possible values of $Y$?
 2.  Find the CDF of $Y$
 3.  Find the pdf of $Y$
@@ -278,7 +446,7 @@ Example 3: Nonlinear transformation of $X$
 :::
 ::: ex-cont
 Let $X$ be a random variable with $f_X(x)= \dfrac{1}{2}$ for $-1\leq x \leq 1$. Define $Y=X^2$
- 
+
 1.  What are the possible values of $Y$?
 :::
 :::
@@ -286,20 +454,25 @@ Let $X$ be a random variable with $f_X(x)= \dfrac{1}{2}$ for $-1\leq x \leq 1$. 
 ::: columns
 ::: {.column width="40%"}
 ```{r}
+#| echo: false
 #| fig-height: 7
 #| fig-width: 8
 
-domain_x_y = tibble(
-  x = seq(-1.5, 1.5, 0.01), 
+domain_x_y <- tibble(
+  x = seq(-1.5, 1.5, 0.01),
   y = x^2
 )
 
 ggplot(domain_x_y, aes(x = x, y = y)) +
-  geom_line() +
+  annotate("rect", xmin = -1, xmax = 1, ymin = -Inf, ymax = Inf,
+           fill = "#29abe0", alpha = 0.15) +
+  annotate("rect", xmin = -Inf, xmax = Inf, ymin = 0, ymax = 1,
+           fill = "#E89543", alpha = 0.15) +
+  geom_line(linewidth = 1.2) +
   labs(
     title = "Transformation: Y = X^2",
     x = "x",
-    y = "x^2"
+    y = "y = x^2"
   )
 ```
 :::
@@ -315,8 +488,8 @@ Example 3: Nonlinear transformation of $X$
 :::
 ::: ex-cont
 Let $X$ be a random variable with $f_X(x)= \dfrac{1}{2}$ for $-1\leq x \leq 1$. Define $Y=X^2$
- 
-2.  Find the CDF of $Y$
+
+2.  Find the CDF of $Y$ (we need it on our way to the pdf, $f_Y(y)$)
 :::
 :::
 
@@ -328,13 +501,79 @@ Example 3: Nonlinear transformation of $X$
 :::
 ::: ex-cont
 Let $X$ be a random variable with $f_X(x)= \dfrac{1}{2}$ for $-1\leq x \leq 1$. Define $Y=X^2$
- 
+
 3.  Find the pdf of $Y$
+:::
+:::
+
+## Let's simulate Example 3
+
+::: columns
+::: {.column width="52%"}
+
+```{r}
+x_sims <- tibble( # <1>
+  x = runif(n = reps, min = -1, max = 1) # <1>
+  ) |> # <1>
+  mutate(y = x^2) # <2>
+
+x_sims |> # <3>
+  summarise( # <3>
+    prob_quarter = mean(y <= 0.25) # <3>
+  )
+```
+
+1. $X \sim \text{U}[-1, 1]$ has $f_X(x) = \frac{1}{2}$, so we can simulate it with `runif()`.
+2. The nonlinear transformation: square each simulated `x`.
+3. The proportion of simulations with $Y \leq 0.25$ approximates the CDF of $Y$ at 0.25.
+
+::: proof1
+::: proof-cont
+CDF method: $F_Y(0.25) = \sqrt{0.25} = 0.5$
+:::
+:::
+
+- $X$ was flat, but $Y = X^2$ piles up near 0: the shape changed!
+
+:::
+
+::: {.column width="48%"}
+
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 10
+#| fig-height: 8
+
+ggplot(x_sims, aes(x = y)) + # <4>
+  geom_histogram(aes(y = after_stat(density)), # <4>
+                 binwidth = 0.02, boundary = 0, # <4>
+                 color = "black", fill = "lightblue") + # <4>
+  geom_line(aes(y = 1 / (2 * sqrt(y))), # <5>
+            color = "red", linewidth = 1.5) + # <5>
+  coord_cartesian(ylim = c(0, 5)) + # <6>
+  labs(title = "Simulated Y = X^2", # <7>
+       x = "y", y = "Density") # <7>
+```
+
+4. Histogram of the simulated values of $Y$, scaled like a pdf.
+5. The pdf from the CDF method, $f_Y(y) = \frac{1}{2\sqrt{y}}$, in red.
+6. `coord_cartesian()` zooms the y-axis to 0 to 5, because $f_Y(y)$ shoots up near $y = 0$.
+7. Add a title and axis labels.
+
 :::
 :::
 
 ## Summary of nonlinear transformations
 
 -   Nonlinear transformations can change the shape of a distribution
--  Always use the CDF method to find the pdf of a nonlinear transformation of a random variable
--  Remember to carefully determine the possible values of the transformed random variable
+-  Always use the [**CDF method**]{style="color:#E25D3B;"} to find the pdf of a nonlinear transformation of a random variable
+-  Remember to carefully determine the possible values (domain) of the transformed random variable
+
+ 
+
+|  | Linear rescaling | Nonlinear transformation |
+|---|---|---|
+| Changes the distribution? | Yes | Yes |
+| Changes the "shape"? | No | Usually |
+| How to find the pdf | Substitute into $f_X$ (and divide by $\lvert b \rvert$) | CDF method |

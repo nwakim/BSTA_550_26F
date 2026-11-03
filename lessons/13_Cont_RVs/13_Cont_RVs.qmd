@@ -3,8 +3,8 @@ title: "Lesson 13: Some Important Continuous RVs"
 author: "Meike Niederhausen and Nicky Wakim"
 title-slide-attributes:
     data-background-color: "#006a4e"
-date: "`r library(here); source(here('class_dates.R')); w6d2`"
-format: 
+date: "`r library(here); source(here('class_dates.R')); w7d1`"
+format:
   revealjs:
     theme: "../simple_NW.scss"
     slide-number: true
@@ -13,8 +13,12 @@ format:
     height: 1100
     footer: Lesson 13 Slides
     html-math-method: mathjax
-editor: 
-  markdown: 
+    highlight-style: arrow
+    code-annotations: hover
+execute:
+  echo: true
+editor:
+  markdown:
     wrap: 72
 ---
 
@@ -33,7 +37,7 @@ library(tidyverse)
     the variable and parameters mean.
 3.  Use the formulas for the pdf/CDF, expected value, and variance to
     answer questions and find probabilities.
-    
+
 ## Where are we?
 
 ![](../img_slides/course_map.png){fig-align="center"}
@@ -42,7 +46,7 @@ library(tidyverse)
 
 ## Properties of continuous uniform RVs
 
--   **Scenario:** Events are equally likely to happen anywhere or anytime in an interval of values
+-   **Scenario:** Events are [**equally likely**]{style="color:#d9534f;"} to happen anywhere or anytime in an interval of values
 
 -   Shorthand: $X \sim \text{U}[a,b]$
 
@@ -51,7 +55,7 @@ f_X(x) = \dfrac{1}{b-a}, \text{ for }a \leq x \leq b
 $$
 
 $$
-F_X(x) = \left\{
+F_X(x) = \int_a^x f_X(s)\,ds = \left\{
         \begin{array}{ll}
             0 & \quad x<a \quad \\
             \dfrac{x-a}{b-a} & \quad a \leq x \leq b\quad \\
@@ -60,7 +64,9 @@ F_X(x) = \left\{
     \right.
 $$
 
-$$\text{E}(X) = \dfrac{a+b}{2} \text{, } \text{ Var}(X) = \dfrac{(b-a)^2}{12}$$
+$$\text{E}(X) = \int_a^b x f_X(x)\,dx = \dfrac{a+b}{2} \text{, } \text{ Var}(X) = \dfrac{(b-a)^2}{12}$$
+
+-   Like every [**continuous RV**]{style="color:#d9534f;"}: $P(X = x) = 0$ for any single value $x$
 
 ## Identifying continuous uniform RV from word problems
 
@@ -70,11 +76,11 @@ $$\text{E}(X) = \dfrac{a+b}{2} \text{, } \text{ Var}(X) = \dfrac{(b-a)^2}{12}$$
 
 -   Look for an interval
 
-    -   **Time example:** Costumer in your store will approach the cash register in next 30 minutes. Approaching the register throughout the 30 minutes is equally likely.
+    -   **Time example:** Customer in your store will approach the cash register in next 30 minutes. Approaching the register throughout the 30 minutes is equally likely.
 
     -   **Length example:** You have a 12 inch string that you need to cut. You are equally likely to cut anywhere on the string.
 
--   Different than the discrete uniform
+-   Different than the [**discrete**]{style="color:#20c997;"} uniform
 
     -   Discrete usually includes a *countable* number of events that are equally likely
 
@@ -84,35 +90,39 @@ $$\text{E}(X) = \dfrac{a+b}{2} \text{, } \text{ Var}(X) = \dfrac{(b-a)^2}{12}$$
 
 ## Helpful R code
 
-Let's say we're looking at equally likely arrival times between 10 am and 11 am.
+Let's say we're looking at equally likely arrival times between 10 am and 11 am. Let $X$ = minutes after 10 am, so $X \sim \text{U}[0, 60]$ (10 am is $X = 0$, 11 am is $X = 60$).
 
--   If we want to know the probability that someone arrives at 10:30am or earlier:
+-   If we want to know the probability that someone arrives at 10:30am or earlier, $P(X \leq 30)$:
 
-    ```{r}
-    #| echo: true
-    punif(q = 30, min = 0, max = 60)
-    ```
+```{r}
+punif(q = 30, min = 0, max = 60) # <1>
+```
 
--   If we want to know the time, say $t$, where the probability of arriving at $t$ or earlier is 0.35:
+1. `punif()` is the CDF, $F_X(30) = P(X \leq 30)$. `min` and `max` are $a$ and $b$.
 
-    ```{r}
-    #| echo: true
-    qunif(p = 0.35, min = 0, max = 60)
-    ```
+-   If we want to know the time, say $t$, where the probability of arriving at $t$ or earlier is 0.35 (inverse CDF):
+
+```{r}
+qunif(p = 0.35, min = 0, max = 60) # <1>
+```
+
+1. `qunif()` is the inverse CDF: it finds $t$ with $P(X \leq t) = 0.35$. So $t = 21$, or 10:21 am.
 
 -   If we want to know the probability that someone arrives between 10:14 and 10:16 am:
 
-    ```{r}
-    #| echo: true
-    punif(q = 16, min = 0, max = 60) - punif(q = 14, min = 0, max = 60)
-    ```
+```{r}
+punif(q = 16, min = 0, max = 60) - punif(q = 14, min = 0, max = 60) # <1>
+```
+
+1. $P(14 \leq X \leq 16) = F_X(16) - F_X(14)$: the CDF at 16 minus the CDF at 14.
 
 -   If we want to sample 20 arrival times from the distribution:
 
-    ```{r}
-    #| echo: true
-    runif(n = 20, min = 0, max = 60)
-    ```
+```{r}
+runif(n = 20, min = 0, max = 60) # <1>
+```
+
+1. `runif()` draws 20 random values, like in Lesson 8. None of them repeat exactly, because $P(X = x) = 0$.
 
 ## Bird on a wire (TB 31.5)
 
@@ -131,15 +141,57 @@ less from one or the other of the poles?
 :::
 :::
 
+## Bird on a wire: check with a simulation
+
+::: columns
+::: {.column width="62%"}
+
+```{r}
+set.seed(1109) # <1>
+reps <- 10000 # <2>
+
+bird_sims <- tibble( # <3>
+  x = runif(n = reps, min = 0, max = 150) # <3>
+  ) # <3>
+
+bird_sims |> # <4>
+  summarise( # <4>
+    prob_near_pole = mean(x <= 20 | x >= 130) # <5>
+  )
+```
+
+1. Set the random seed once, so we get the same simulation every time.
+2. Save the number of simulations as `reps`, so it is easy to change later.
+3. Simulate 10,000 landing spots, $X$ = feet from the left pole, with `runif()` from Lesson 8.
+4. Collapse the 10,000 landing spots into one row of summaries.
+5. The vertical bar `|` means "or": `TRUE` when the bird is within 20 feet of the left pole **or** the right pole. `mean()` of `TRUE`/`FALSE` is the proportion of simulations where that happens.
+
+:::
+
+::: {.column width="38%"}
+
+ 
+
+::: proof1
+::: proof-cont
+Exact: $P(X \leq 20) + P(X \geq 130) = 2 \cdot \dfrac{20}{150} \approx 0.2667$
+:::
+:::
+
+:::
+:::
+
 # Exponential RVs
 
 ## Properties of exponential RVs
 
 -   **Scenario:** Modeling the time until the next (first) event
 
--   Continuous analog to the geometric distribution!
+-   [**Continuous**]{style="color:#d9534f;"} analog to the [**discrete**]{style="color:#20c997;"} geometric distribution!
 
 -   Shorthand: $X \sim \text{Exp}(\lambda)$
+
+    -   $\lambda$ = the **rate**: average number of events (successes) per unit of time
 
 $$
 f_X(x) = \lambda e^{-\lambda x}\text{ for } x>0, \lambda>0
@@ -158,19 +210,19 @@ $$\text{E}(X) = \dfrac{1}{\lambda}$$ $$\text{Var}(X) = \dfrac{1}{\lambda^2}$$
 
 ## Memoryless Property
 
-   
+ 
 
 If $b>0$,
 
 $$P(X > a +b | X> a) = P(X > b)$$
 
-     
+ 
 
 -   **This can be interpreted as:**
 
     -   If you have waited $a$ seconds (or any other measure of time) without a success
 
-    -   Then the probability that you have to wait $b$ more seconds is the same as as the probability of waiting $b$ seconds initially.
+    -   Then the probability that you have to wait $b$ more seconds is the same as the probability of waiting $b$ seconds initially.
 
 ## Identifying exponential RV from word problems
 
@@ -190,42 +242,87 @@ $$P(X > a +b | X> a) = P(X > b)$$
 
 ## Helpful R code
 
-Let's say we're sitting at the bus stop, measuring the time until our bus arrives. We know the bus comes every 10 minutes on average.
+Let's say we're sitting at the bus stop, measuring the time until our bus arrives. We know the bus comes every 10 minutes on average, so $\lambda = 1/10$ bus per minute.
 
--   If we want to know the probability that the bus arrives in the next 5 minutes:
+-   If we want to know the probability that the bus arrives in the next 5 minutes, $P(X \leq 5)$:
 
-    ```{r}
-    #| echo: true
-    pexp(q = 5, rate = 1/10)
-    ```
+```{r}
+pexp(q = 5, rate = 1/10) # <1>
+```
 
--   If we want to know the time, say $t$, where the probability of the bus arriving at $t$ or earlier is 0.35:
+1. `pexp()` is the CDF. `rate` is $\lambda$: 1 bus per 10 minutes.
 
-    ```{r}
-    #| echo: true
-    qexp(p = 0.35, rate = 1/10)
-    ```
+-   If we want to know the time, say $t$, where the probability of the bus arriving at $t$ or earlier is 0.35 (inverse CDF):
+
+```{r}
+qexp(p = 0.35, rate = 1/10) # <1>
+```
+
+1. `qexp()` is the inverse CDF: it finds $t$ with $P(X \leq t) = 0.35$.
 
 -   If we want to know the probability that the bus arrives between 3 and 5 minutes:
 
-    ```{r}
-    #| echo: true
-    pexp(q = 5, rate = 1/10) - pexp(q = 3, rate = 1/10)
-    ```
+```{r}
+pexp(q = 5, rate = 1/10) - pexp(q = 3, rate = 1/10) # <1>
+```
+
+1. $P(3 \leq X \leq 5) = F_X(5) - F_X(3)$.
 
 -   If we want to sample 20 bus arrival times from the distribution:
 
-    ```{r}
-    #| echo: true
-    rexp(n = 20, rate = 1/10)
-    ```
+```{r}
+rexp(n = 20, rate = 1/10) # <1>
+```
+
+1. `rexp()` draws 20 random waiting times. Its `r` stands for "random", like `runif()`.
+
+## Memoryless property: check with a simulation
+
+-   We've already waited $a = 3$ minutes. Is the chance of waiting $b = 5$ **more** minutes the same as $P(X > 5)$?
+
+::: columns
+::: {.column width="62%"}
+
+```{r}
+bus_sims <- tibble( # <1>
+  x = rexp(n = reps, rate = 1/10) # <1>
+  ) # <1>
+
+bus_sims |> # <2>
+  summarise( # <2>
+    prob_over_5   = mean(x > 5), # <3>
+    prob_5_more   = mean(x > 8) / mean(x > 3) # <4>
+  )
+```
+
+1. Simulate 10,000 waiting times for the bus, $X \sim \text{Exp}(1/10)$.
+2. One row with a column for each probability.
+3. $P(X > 5)$: the proportion of waits longer than 5 minutes.
+4. $P(X > 3 + 5 \mid X > 3) = P(X > 8) / P(X > 3)$, the same conditional probability recipe as Lesson 9.
+
+:::
+
+::: {.column width="38%"}
+
+ 
+
+::: proof1
+::: proof-cont
+Exact: both are $e^{-5/10} \approx 0.6065$
+:::
+:::
+
+-   At home: try other values of $a$, like `mean(x > 15) / mean(x > 10)`
+
+:::
+:::
 
 ## Transformation of independent exponential RVs
 
 ::: columns
 ::: {.column width="30%"}
 
-Revisit after joint notes:
+We'll use the **CDF method** (more in Lesson 14):
 
 ::: example
 ::: ex-title
@@ -246,6 +343,7 @@ Let $X_i \sim \textrm{Exp}(\lambda_i)$ be independent RVs, for $i=1 \ldots n$. F
 -   **Scenario:** Modeling the time until the $r^{th}$ event.
 -   Continuous analog to the Negative Binomial distribution
 -   Shorthand: $X \sim \text{Gamma}(r, \lambda)$ or $X \sim \text{Gamma}(\alpha, \beta)$
+-   Same as the sum of $r$ independent waiting times: $X = \sum_{i=1}^r Y_i$, where $Y_i \sim \text{Exp}(\lambda)$
 
 $$
 f_X(x) = \dfrac{\lambda^r}{\Gamma(r)}x^{r-1} e^{-\lambda x}\text{ for } x>0, \lambda>0, \Gamma(r) = (r-1)!
@@ -262,13 +360,13 @@ $$
 
 $$\text{E}(X) = \dfrac{r}{\lambda}\text{, }\text{ Var}(X) = \dfrac{r}{\lambda^2}$$
 
-Common to see $\alpha = r$ and $\beta = \lambda$
+Common to see $\alpha = r$ and $\beta = 1/\lambda$
 
 ## Identifying gamma RV from word problems
 
--   Gamma distribution with $r=1$ is same as exponential
+-   Gamma distribution with $r=1$ is same as exponential (both [**continuous**]{style="color:#d9534f;"})
 
-    -   Just like Negative Binomial with $r=1$ is same as the geometric distribution
+    -   Just like Negative Binomial with $r=1$ is same as the geometric distribution (both [**discrete**]{style="color:#20c997;"})
 
 -   Similar to exponential
 
@@ -285,38 +383,153 @@ Let's say we're sitting at the bus stop, measuring the time until 4 buses arrive
 ::: columns
 ::: column
 ```{r}
-#| echo: true
-pgamma(q = 50, rate = 1/10, shape = 4)
+pgamma(q = 50, rate = 1/10, shape = 4) # <1>
 ```
+
+1. `rate` is $\lambda$ and `shape` is $r$.
 :::
 ::: column
 ```{r}
-#| echo: true
-pgamma(q = 50, scale = 10, shape = 4)
+pgamma(q = 50, scale = 10, shape = 4) # <1>
 ```
+
+1. Same answer: `scale` is $\beta = 1/\lambda$, so `scale = 10` is the same as `rate = 1/10`.
 :::
 :::
 
 -   If we want to know the time, say $t$, where the probability of the 4 buses arriving at $t$ or earlier is 0.35:
 
-    ```{r}
-    #| echo: true
-    qgamma(p = 0.35, rate = 1/10, shape = 4)
-    ```
+```{r}
+qgamma(p = 0.35, rate = 1/10, shape = 4) # <1>
+```
 
--   If we want to know the probability that the 4 buses arrives between 30 and 50 minutes:
+1. `qgamma()` is the inverse CDF, like `qunif()` and `qexp()`.
 
-    ```{r}
-    #| echo: true
-    pgamma(q = 50, scale = 10, shape = 4) - pgamma(q = 30, scale = 10, shape = 4)
-    ```
+-   If we want to know the probability that the 4 buses arrive between 30 and 50 minutes:
+
+```{r}
+pgamma(q = 50, scale = 10, shape = 4) - pgamma(q = 30, scale = 10, shape = 4) # <1>
+```
+
+1. $F_X(50) - F_X(30)$, with the CDF `pgamma()`.
 
 -   If we want to sample 20 arrival times for the 4 buses:
 
-    ```{r}
-    #| echo: true
-    rgamma(n = 20, scale = 10, shape = 4)
-    ```
+```{r}
+rgamma(n = 20, scale = 10, shape = 4) # <1>
+```
+
+1. Each value is one realized time until the 4th bus.
+
+## Gamma as a sum of exponentials: simulate
+
+::::: proposition
+::: prop-title
+1.  Set up
+:::
+:::::
+
+-   Wait for 4 buses, one after another. Each wait is $Y_i \sim \text{Exp}(1/10)$. $X = Y_1 + Y_2 + Y_3 + Y_4$ is the total wait.
+
+::::: proof1
+::: proof-title
+2.  Simulate
+:::
+:::::
+
+::: columns
+::: {.column width="62%"}
+
+```{r}
+n_buses <- 4 # <1>
+
+waits <- expand_grid(sim = 1:reps, bus = 1:n_buses) |> # <2>
+  mutate(wait = rexp(n(), rate = 1/10)) # <3>
+
+X_sims <- waits |> # <4>
+  group_by(sim) |> # <4>
+  summarise(X = sum(wait)) # <4>
+```
+
+1. Save the number of buses as `n_buses`, so it is easy to change later.
+2. One row for every bus in every simulation, like the dice in Lesson 2.
+3. Give each bus its own random waiting time from $\text{Exp}(1/10)$.
+4. For each simulation, add up the 4 waits to get $X$, the time until the 4th bus.
+
+:::
+
+::: {.column width="38%"}
+
+```{r}
+head(X_sims) # <5>
+```
+
+5. The first 6 simulated values of $X$.
+
+:::
+:::
+
+## Gamma as a sum of exponentials: summarize
+
+::::: example
+::: ex-title
+3.  Summarize
+:::
+:::::
+
+::: columns
+::: {.column width="55%"}
+
+```{r}
+X_sims |> # <1>
+  summarise( # <1>
+    average = mean(X), # <2>
+    std_dev = sd(X), # <2>
+    prob_50 = mean(X <= 50) # <3>
+  )
+```
+
+1. One row of summaries of the 10,000 simulated values of $X$.
+2. Compare with $\text{E}(X) = r/\lambda = 40$ and $SD(X) = \sqrt{r/\lambda^2} = 20$.
+3. Compare with `pgamma(q = 50, rate = 1/10, shape = 4)` $\approx 0.7350$.
+
+::::: extra
+::: ext-title
+4.  Sensitivity analysis
+:::
+:::::
+
+-   At home: change to `n_buses <- 1`. Does $X$ look like $\text{Exp}(1/10)$, with average 10?
+
+:::
+
+::: {.column width="45%"}
+
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 9
+#| fig-height: 7
+
+ggplot(X_sims, aes(x = X)) + # <4>
+  geom_histogram(aes(y = after_stat(density)), # <5>
+                 binwidth = 5, boundary = 0, # <5>
+                 color = "black", fill = "lightblue") + # <5>
+  geom_line(aes(y = dgamma(X, rate = 1/10, shape = n_buses)), # <6>
+            color = "red", linewidth = 1.5) + # <6>
+  labs(title = "Simulated X (bars) and\nGamma(4, 1/10) pdf (red)", # <7>
+       x = "Minutes until the 4th bus", # <7>
+       y = "Density") + # <7>
+  theme_minimal(base_size = 22) # <7>
+```
+
+4. Start with the 10,000 simulated values of $X$.
+5. A histogram scaled so the total area is 1, like a pdf (Lesson 8).
+6. The exact pdf: `dgamma()` gives $f_X(x)$. It is a density, not $P(X = x)$.
+7. Add a title and axis labels, with a clean theme and larger text.
+
+:::
+:::
 
 ## Remarks
 
@@ -326,19 +539,21 @@ pgamma(q = 50, scale = 10, shape = 4)
 
 -   When $r$ is a positive integer, the distribution is sometimes called an Erlang($r$,$\lambda$) distribution
 
-     
+    -   Erlang is a gamma with a whole-number $r$
 
-     
+ 
 
 -   When $r$ is any positive real number, we have a general gamma distribution that is usually instead parameterized by $\alpha>0$ and $\beta>0$, where:
 
-    -   $\alpha = \text{shape parameter}$ : same as $k$, the total number of events we must witness
+    -   $\alpha = \text{shape parameter}$ : same as $r$, the total number of events we must witness
 
-        -   In R code example: 4 buses to wait for
+        -   In R code example: 4 buses to wait for (`shape = 4`)
 
-    -   $\beta = \text{scale parameter}$ : same as $\lambda$, the rate parameter
+    -   $\beta = \text{scale parameter}$ : same as $1/\lambda$, one over the rate parameter
 
-        -   In R code example: 1 bus per 10 minutes (1/10)
+        -   In R code example: 1 bus per 10 minutes, so `rate = 1/10` or `scale = 10`
+
+        -   In R: `rate = 1/scale`
 
 ## Sending money orders
 
@@ -366,48 +581,55 @@ On average, someone sends a money order once per 15 minutes. What is the probabi
 
 -   No scenario description here because the Normal distribution is so universal
 
-      -   Central Limit Theorem (next class) makes it applicable to many types of events
+      -   Central Limit Theorem (Lesson 17) makes it applicable to many types of events
 
 -   Shorthand: $X \sim \text{Normal}(\mu, \sigma^2)$
+
+    -   The second parameter is the **variance** $\sigma^2$, but R's `*norm()` functions use `sd` $= \sigma$
 
 $$
 f_X(x) = \dfrac{1}{\sqrt{2\pi \sigma^2}}e^{-(x-\mu)^2/(2\sigma^2)} \text{, for} -\infty < x < \infty
 $$
 
-$$\text{E}(X) = \mu $$ $$\text{Var}(X) = \sigma^2$$
+$$\text{E}(X) = \mu \text{, } \text{ Var}(X) = \sigma^2 \text{, } \text{ SD}(X) = \sigma$$
+
+-   No closed-form CDF: we use R (or a table) to find probabilities
 
 ## Helpful R code
 
-Let's say we're measuring the high temperature today. The average high temperature on this day across many, many years is 50 degrees with a standard deviation of 4 degrees.
+Let's say we're measuring the high temperature today. The average high temperature on this day across many, many years is 50 degrees with a standard deviation of 4 degrees, so $X \sim \text{Normal}(50, 4^2)$.
 
 -   If we want to know the probability that the high temperature is below 45 degrees:
 
-    ```{r}
-    #| echo: true
-    pnorm(q = 45, mean = 50, sd = 4)
-    ```
+```{r}
+pnorm(q = 45, mean = 50, sd = 4) # <1>
+```
 
--   If we want to know the temoerature, say $t$, where the probability of that the temperature is at $t$ or lower is 0.35:
+1. `pnorm()` is the CDF, $P(X \leq 45)$. Note `sd = 4`, not the variance 16.
 
-    ```{r}
-    #| echo: true
-    qnorm(p = 0.35, mean = 50, sd = 4)
-    ```
+-   If we want to know the temperature, say $t$, where the probability that the temperature is at $t$ or lower is 0.35 (inverse CDF):
+
+```{r}
+qnorm(p = 0.35, mean = 50, sd = 4) # <1>
+```
+
+1. `qnorm()` is the inverse CDF: it finds $t$ with $P(X \leq t) = 0.35$.
 
 -   If we want to know the probability that the temperature is between 45 and 50 degrees:
 
-    ```{r}
-    #| echo: true
-    pnorm(q = 50, mean = 50, sd = 4) - pnorm(q = 45, mean = 50, sd = 4)
+```{r}
+pnorm(q = 50, mean = 50, sd = 4) - pnorm(q = 45, mean = 50, sd = 4) # <1>
+```
 
-    ```
+1. $P(45 \leq X \leq 50) = F_X(50) - F_X(45)$.
 
 -   If we want to sample 20 days' temperature (over the years) from the distribution:
 
-    ```{r}
-    #| echo: true
-    rnorm(n = 20, mean = 50, sd = 4)
-    ```
+```{r}
+rnorm(n = 20, mean = 50, sd = 4) # <1>
+```
+
+1. `rnorm()` draws 20 random high temperatures.
 
 ## Movie night while studying
 
@@ -429,6 +651,34 @@ b.  What is range for the bottom quartile (lowest 25%) of time they will be occu
 :::
 :::
 
+## Check Examples 3 and 4 with R
+
+::: columns
+::: {.column width="60%"}
+
+**Example 3:** $X$ = hours until the 10th money order. 1 per 15 minutes is $\lambda = 4$ per hour.
+
+```{r}
+pgamma(q = 3, shape = 10, rate = 4) # <1>
+```
+
+1. $P(X \leq 3)$ for $X \sim \text{Gamma}(10, 4)$. Keep the units the same: time in hours, so the rate is per hour.
+
+ 
+
+**Example 4:** $X$ = movie length in minutes, $X \sim \text{Normal}(98, 10^2)$. Watch the units: 2 hours is 120 minutes.
+
+```{r}
+pnorm(q = 120, mean = 98, sd = 10, lower.tail = FALSE) # <2>
+qnorm(p = 0.25, mean = 98, sd = 10) # <3>
+```
+
+2. (a) $P(X \geq 120)$. `lower.tail = FALSE` gives the upper tail, $P(X > q)$, instead of the CDF. Same as `1 - pnorm(q = 120, mean = 98, sd = 10)`.
+3. (b) The bottom quartile is $X \leq t$, where $P(X \leq t) = 0.25$.
+
+:::
+:::
+
 ## Standard Normal Distribution
 
 $$ Z \sim \text{Normal}(\mu = 0, \sigma^2 = 1)$$
@@ -439,11 +689,11 @@ $$ Z \sim \text{Normal}(\mu = 0, \sigma^2 = 1)$$
 
     -   You can convert any normal distribution to a standard normal through transformation
 
--   $Z = \dfrac{X - \mu_X}{\sigma_X}$
+-   For $X \sim \text{Normal}(\mu_X, \sigma_X^2)$: $Z = \dfrac{X - \mu_X}{\sigma_X}$
 
     -   Comes from $X = \sigma_X Z + \mu_X$
 
-    -   Since $\sigma_X$ and $\mu_X$ are constants, then $E(X) = \mu_X$ and $SD(X) = \sigma_X$
+    -   Since $\sigma_X$ and $\mu_X$ are constants, then $E(X) = \sigma_X E(Z) + \mu_X = \mu_X$ and $SD(X) = \sigma_X$
 
 ## Chi-squared distribution
 
@@ -460,31 +710,32 @@ $$ Z \sim \text{Normal}(\mu = 0, \sigma^2 = 1)$$
     has a Chi-squared distribution with $n$ degrees of freedom
 
     -   Shorthand: $X \sim \chi^2_{(n)}$
+    -   $X$ is always positive (a sum of squares)
 :::
 
 ::: column
 ```{r}
 #| echo: false
+#| warning: false
 #| fig-width: 10
 #| fig-height: 8
 
-library(ggplot2)
-library(dplyr)
-x <- seq(0, 30, length.out = 1000)
-df_values <- c(2, 3, 5, 10,
-                  20)
-df <- expand.grid(x = x, df = df_values)
-df <- df %>%
-  mutate(y = dchisq(x, df))
-ggplot(df, aes(x = x, y = y, color = as.factor(df))) +
-  geom_line(size = 2) +
+df_values <- c(2, 3, 5, 10, 20)
+
+chisq_curves <- expand_grid(
+  df = df_values,
+  x = seq(0, 30, length.out = 1000)
+  ) |>
+  mutate(density = dchisq(x, df = df))
+
+ggplot(chisq_curves, aes(x = x, y = density, color = factor(df))) +
+  geom_line(linewidth = 2) +
   labs(x = "x",
        y = "Density",
-       color = element_blank()) +
-  theme_minimal() +
-  theme(legend.position = "inside", 
-        text = element_text(size = 30)) +
-  scale_color_discrete(labels = paste("n =", df_values))
+       color = NULL) +
+  scale_color_discrete(labels = paste("n =", df_values)) +
+  theme_minimal(base_size = 30) +
+  theme(legend.position = c(0.8, 0.7))
 ```
 
 :::

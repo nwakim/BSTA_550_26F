@@ -114,7 +114,7 @@ Recap from Lesson 7. R commands with their [input]{style="color:#BF396F"} and [o
 
 | R code | What does it return? | What do we use it for? |
 |--------------|-------------------------------|---------------------------|
-| `rbinom()` | returns [sample of random variables]{style="color:#367B79"} with [specified binomial distribution]{style="color:#BF396F"} | simulations! |
+| `rbinom()` | returns [sample of random variables]{style="color:#367B79"} with [specified binomial distribution]{style="color:#BF396F"} | Simulate a Binomial RV |
 | `dbinom()` | returns [probability]{style="color:#367B79"} of getting [certain number of successes]{style="color:#BF396F"} | $P(X = x)$ |
 | `pbinom()` | returns [cumulative probability]{style="color:#367B79"} of getting [certain number or less]{style="color:#BF396F"} successes | $P(X \leq x)$ (or $P(X > x)$ if we add `lower.tail = FALSE`) |
 | `qbinom()` | returns [number of successes]{style="color:#367B79"} corresponding to [desired quantile]{style="color:#BF396F"} | Goes the other direction: we give it a probability $p$ and it returns the value $k$ where $P(X \leq k) = p$ |
@@ -210,13 +210,19 @@ ghost_sims |> # <1>
 3.  Estimates $\text{Var}(Y) = np(1-p)$ (same formula as Lesson 11).
 4.  The proportion of simulations with exactly 1 chocolate, which
     estimates $P(Y = 1)$.
-5.  The exact $P(Y = 1)$ from `dbinom()`, to compare with `prob_1`.
 
  
 
-@claude: make a box around this:
--   In Lesson 11 we found the variance by adding up 5 Bernoulli
-    variances. Now the binomial formula does it in one step!
+::: fact
+::: fact-title
+Connecting to Lesson 11
+:::
+
+::: fact-cont
+In Lesson 11 we found the variance by adding up 5 Bernoulli variances.
+Now the binomial formula does it in one step!
+:::
+:::
 :::
 ::::::::
 
@@ -397,47 +403,38 @@ $$ P(X > k+j |X > j) = \dfrac{P(X>k+j \text{ and } X>j)}{P(X>j)} = \dfrac{P(X>k+
 
 :::::::: columns
 :::::: {.column width="62%"}
--   Act out the story: each throw is a `"bullseye"` (probability 0.01)
-    or a `"miss"`
+-   `rgeom()` simulates a geometric RV directly, so we don't need to
+    act out every throw
 
 ```{r}
 p <- 0.01 # <1>
-max_throws <- 1500 # <2>
 
-throws <- expand_grid(sim = 1:reps, throw = 1:max_throws) |> # <3>
-  mutate(outcome = sample(c("bullseye", "miss"), # <4>
-                          size = n(), # <4>
-                          replace = TRUE, # <4>
-                          prob = c(p, 1 - p))) # <4>
-
-bullseye_sims <- throws |> # <5>
-  filter(outcome == "bullseye") |> # <5>
-  group_by(sim) |> # <6>
-  summarise(X = min(throw)) # <6>
+bullseye_sims <- tibble(sim = 1:reps) |> # <2>
+  mutate(
+    misses = rgeom(n(), prob = p), # <3>
+    X = misses + 1 # <4>
+  )
 ```
 
 1.  The probability of a bullseye on each throw.
-2.  We can't throw forever in R, so we give each simulation 1,500
-    throws. The chance of no bullseye in 1,500 throws is
-    $0.99^{1500} \approx 0.0000003$, so this is plenty.
-3.  One row for every throw in every simulation: 10,000 × 1,500 = 15
-    million rows. `reps` is still 10,000 from the ghost example.
-4.  For every row, randomly pick `"bullseye"` (probability `p`) or
-    `"miss"` (probability `1 - p`), like the falls example in Lesson 7.
-5.  `filter()` keeps only the throws that hit the bullseye.
-6.  For each simulation, the *first* bullseye is the smallest throw
-    number that hit. `min()` finds the smallest value. This is $X$.
+2.  One row per simulation, like the ghost example. `reps` is still
+    10,000.
+3.  `rgeom()` draws one value for every row. `n()` is the number of rows
+    and `prob` is $p$. **Careful:** R counts the **misses** (failures)
+    before the first bullseye.
+4.  Add 1 for the throw that hit the bullseye, so `X` is the number of
+    throws, our $X$.
 ::::::
 
 ::: {.column width="38%"}
--   The first few simulated values of $X$:
+-   The first few simulated values:
 
 ```{r}
 bullseye_sims # <1>
 ```
 
-1.  Each row is one simulation. `X` is the throw number of the first
-    bullseye.
+1.  Each row is one simulation. `misses` is R's count of failures, and
+    `X` is the throw number of the first bullseye.
 :::
 ::::::::
 
@@ -518,7 +515,7 @@ R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#
 
 | R code | What does it return? | What do we use it for? |
 |--------------|-------------------------------|---------------------------|
-| `rnbinom()` | returns [sample of random variables]{style="color:#367B79"} with [specified negative binomial distribution]{style="color:#BF396F"} | simulations! |
+| `rnbinom()` | returns [sample of random variables]{style="color:#367B79"} with [specified negative binomial distribution]{style="color:#BF396F"} | Simulate a Negative Binomial RV |
 | `dnbinom()` | returns [probability]{style="color:#367B79"} of getting [certain number of failures]{style="color:#BF396F"} before the $r^{th}$ success | $P(X = x)$ |
 | `pnbinom()` | returns [cumulative probability]{style="color:#367B79"} of getting [certain number of failures or less]{style="color:#BF396F"} | $P(X \leq x)$ (or $P(X > x)$ if we add `lower.tail = FALSE`) |
 | `qnbinom()` | returns [number of failures]{style="color:#367B79"} corresponding to [desired quantile]{style="color:#BF396F"} | Goes the other direction: we give it a probability and it returns the value $k$ where $P(X \leq k)$ reaches it |
@@ -639,7 +636,7 @@ R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#
 
 | R code | What does it return? | What do we use it for? |
 |--------------|-------------------------------|---------------------------|
-| `rpois()` | returns [sample of random variables]{style="color:#367B79"} with [specified Poisson distribution]{style="color:#BF396F"} | simulations! |
+| `rpois()` | returns [sample of random variables]{style="color:#367B79"} with [specified Poisson distribution]{style="color:#BF396F"} | Simulate a Poisson RV |
 | `dpois()` | returns [probability]{style="color:#367B79"} of getting [certain number of successes]{style="color:#BF396F"} in the time period | $P(X = x)$ |
 | `ppois()` | returns [cumulative probability]{style="color:#367B79"} of getting [certain number or less]{style="color:#BF396F"} successes | $P(X \leq x)$ (or $P(X > x)$ if we add `lower.tail = FALSE`) |
 | `qpois()` | returns [number of successes]{style="color:#367B79"} corresponding to [desired quantile]{style="color:#BF396F"} | Goes the other direction: we give it a probability and it returns the value $k$ where $P(X \leq k)$ reaches it |
@@ -836,7 +833,7 @@ R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#
 
 | R code | What does it return? | What do we use it for? |
 |--------------|-------------------------------|---------------------------|
-| `rhyper()` | returns [sample of random variables]{style="color:#367B79"} with [specified hypergeometric distribution]{style="color:#BF396F"} | simulations! |
+| `rhyper()` | returns [sample of random variables]{style="color:#367B79"} with [specified hypergeometric distribution]{style="color:#BF396F"} | Simulate a Hypergeometric RV |
 | `dhyper()` | returns [probability]{style="color:#367B79"} of getting [certain number of successes]{style="color:#BF396F"} in $n$ draws | $P(X = x)$ |
 | `phyper()` | returns [cumulative probability]{style="color:#367B79"} of getting [certain number or less]{style="color:#BF396F"} successes | $P(X \leq x)$ (or $P(X > x)$ if we add `lower.tail = FALSE`) |
 | `qhyper()` | returns [number of successes]{style="color:#367B79"} corresponding to [desired quantile]{style="color:#BF396F"} | Goes the other direction: we give it a probability and it returns the value $k$ where $P(X \leq k)$ reaches it |
@@ -868,30 +865,27 @@ what is the probability that 3 of them have already been tagged?
 
 :::::::: columns
 :::::: {.column width="62%"}
--   Act out the story: put 24 wolves in a box and capture 5
-    [**without replacement**]{style="color:#E25D3B;"}
+-   `rhyper()` captures 5 of the 24 wolves
+    [**without replacement**]{style="color:#E25D3B;"} for us
 
 ```{r}
-wolves <- c(rep("tagged", 11), rep("untagged", 13)) # <1>
-n_captured <- 5 # <2>
+M <- 11 # <1>
+N <- 24 # <1>
+n_captured <- 5 # <1>
 
-captures <- expand_grid(sim = 1:reps, capture = 1:n_captured) |> # <3>
-  group_by(sim) |> # <4>
-  mutate(wolf = sample(wolves, n())) # <4>
-
-wolf_sims <- captures |> # <5>
-  group_by(sim) |> # <5>
-  summarise(X = sum(wolf == "tagged")) # <5>
+wolf_sims <- tibble(sim = 1:reps) |> # <2>
+  mutate(
+    X = rhyper(n(), m = M, n = N - M, k = n_captured) # <3>
+  )
 ```
 
-1.  `rep("tagged", 11)` repeats `"tagged"` 11 times, and `c()` puts all
-    24 wolves together in one box.
-2.  The number of wolves captured, $n = 5$.
-3.  One row for each captured wolf in each simulation.
-4.  Within each simulation, `n()` is 5, so `sample()` picks 5 different
-    wolves from the box. We leave out `replace = TRUE`, so a captured
-    wolf is **not** put back. That is the hypergeometric part!
-5.  For each simulation, count the tagged wolves. This count is $X$.
+1.  The parameters: $M = 11$ tagged wolves, $N = 24$ wolves in total,
+    and $n = 5$ wolves captured.
+2.  One row per simulation, like the ghost and bullseye examples.
+3.  `rhyper()` draws the number of tagged wolves for every row. The
+    first input is how many values to draw (`n()`, the number of rows).
+    **Careful:** in R, `m` is the number of successes ($M$), `n` is the
+    number of **failures** ($N - M$), and `k` is the number of draws.
 ::::::
 
 ::: {.column width="38%"}

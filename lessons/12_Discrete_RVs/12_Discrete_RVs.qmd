@@ -654,23 +654,44 @@ $$\text{Var}(X) = \lambda$$
 
 ## Distinguishing between Binomial and Poisson RVs
 
--   Recall that if $X\sim \text{Binomial}(n,p)$, then
+::::::: columns
+:::::: {.column width="48%"}
+::::: theorem
+::: thm-title
+Binomial: $X\sim \text{Binomial}(n,p)$
+:::
 
-    -   $X$ models the number of successes ...
+::: thm-cont
+-   $X$ models the number of successes ...
 
-    -   in $n$ independent (Bernoulli) trials ...
+-   in $n$ independent (Bernoulli) trials ...
 
-    -   that each have the same **probability** of success $p$.
+-   that each have the same **probability** of success, $p$
+:::
+:::::
+::::::
 
--   Poisson RVs are similar,
+:::::: {.column width="4%"}
+::::::
 
-    -   except that instead of having $n$ discrete independent trials,
+:::::: {.column width="48%"}
+::::: definition
+::: def-title
+Poisson: $X\sim \text{Poisson}(\lambda)$
+:::
 
-    -   there is a **fixed time period** (or space) during which the
-        successes happen
+::: def-cont
+-   $X$ models the number of successes ...
 
-    -   and instead of a probability, we have a
-        [**rate**]{style="color:#006a4e;"} of successes, $\lambda$
+-   in a **fixed time period** (or space), instead of $n$ discrete
+    independent trials ...
+
+-   that happen at a constant [**rate**]{style="color:#006a4e;"},
+    $\lambda$, instead of a probability
+:::
+:::::
+::::::
+:::::::
 
 ## Examples of Poisson RVs
 

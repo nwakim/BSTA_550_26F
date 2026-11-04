@@ -108,6 +108,27 @@ $$
 
 $$\text{E}(X) = np$$ $$\text{Var}(X) = npq = np(1-p)$$
 
+## Binomial distribution: R commands
+
+Recap from Lesson 7. R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#367B79"}:
+
+| R code | What does it return? | What do we use it for? |
+|--------------|-------------------------------|---------------------------|
+| `rbinom()` | returns [sample of random variables]{style="color:#367B79"} with [specified binomial distribution]{style="color:#BF396F"} | simulations! |
+| `dbinom()` | returns [probability]{style="color:#367B79"} of getting [certain number of successes]{style="color:#BF396F"} | $P(X = x)$ |
+| `pbinom()` | returns [cumulative probability]{style="color:#367B79"} of getting [certain number or less]{style="color:#BF396F"} successes | $P(X \leq x)$ (or $P(X > x)$ if we add `lower.tail = FALSE`) |
+| `qbinom()` | returns [number of successes]{style="color:#367B79"} corresponding to [desired quantile]{style="color:#BF396F"} | Goes the other direction: we give it a probability $p$ and it returns the value $k$ where $P(X \leq k) = p$ |
+
+-   A Bernoulli RV is a binomial RV with $n = 1$, so we use the same
+    commands with `size = 1`
+
+```{r}
+dbinom(1, size = 1, prob = 1/6) # <1>
+```
+
+1.  One roll of a fair die, where a 5 is a success: $P(X = 1)$ with
+    $p = \frac{1}{6}$. `size = 1` means one trial.
+
 ## Our beloved fair 6-sided die
 
 ::::::: columns
@@ -231,6 +252,28 @@ $$F_X(x) = P(X\leq x) = 1-(1-p)^{x+1} \quad \text{for } x=0,1,2,\ldots$$
 $$E(X)=\dfrac{1-p}{p} \qquad Var(X) = \dfrac{1-p}{p^2}$$
 :::
 :::::
+
+## Geometric distribution: R commands
+
+R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#367B79"}:
+
+| R code | What does it return? | What do we use it for? |
+|--------------|-------------------------------|---------------------------|
+| `rgeom()` | returns [sample of random variables]{style="color:#367B79"} with [specified geometric distribution]{style="color:#BF396F"} | simulations! |
+| `dgeom()` | returns [probability]{style="color:#367B79"} of getting [certain number of failures]{style="color:#BF396F"} before the first success | $P(X = x)$ |
+| `pgeom()` | returns [cumulative probability]{style="color:#367B79"} of getting [certain number of failures or less]{style="color:#BF396F"} | $P(X \leq x)$ (or $P(X > x)$ if we add `lower.tail = FALSE`) |
+| `qgeom()` | returns [number of failures]{style="color:#367B79"} corresponding to [desired quantile]{style="color:#BF396F"} | Goes the other direction: we give it a probability and it returns the value $k$ where $P(X \leq k)$ reaches it |
+
+-   **Careful:** R counts the **failures** before the first success
+    (the right column of our table). If $X$ counts the **trials**, use
+    $x - 1$:
+
+```{r}
+pgeom(50 - 1, prob = 0.01) # <1>
+```
+
+1.  Bullseye: $P(X \leq 50)$ where $X$ is the number of throws. 50
+    throws means at most 49 misses before the first bullseye.
 
 ## Bullseye (1/4)
 
@@ -459,6 +502,28 @@ $$ p_X(x) = P(X=x) = {x-1 \choose r-1}(1-p)^{x-r}p^r \text{ for } x = r, r+1, r+
 
 $$ E(X) = \dfrac{r}{p} \qquad Var(X) = \dfrac{rq}{p^2} = \dfrac{r(1-p)}{p^2}$$
 
+## Negative binomial distribution: R commands
+
+R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#367B79"}:
+
+| R code | What does it return? | What do we use it for? |
+|--------------|-------------------------------|---------------------------|
+| `rnbinom()` | returns [sample of random variables]{style="color:#367B79"} with [specified negative binomial distribution]{style="color:#BF396F"} | simulations! |
+| `dnbinom()` | returns [probability]{style="color:#367B79"} of getting [certain number of failures]{style="color:#BF396F"} before the $r^{th}$ success | $P(X = x)$ |
+| `pnbinom()` | returns [cumulative probability]{style="color:#367B79"} of getting [certain number of failures or less]{style="color:#BF396F"} | $P(X \leq x)$ (or $P(X > x)$ if we add `lower.tail = FALSE`) |
+| `qnbinom()` | returns [number of failures]{style="color:#367B79"} corresponding to [desired quantile]{style="color:#BF396F"} | Goes the other direction: we give it a probability and it returns the value $k$ where $P(X \leq k)$ reaches it |
+
+-   **Careful:** like the geometric, R counts the **failures**. If $X$
+    counts the **trials**, use $x - r$. `size` is $r$, the number of
+    successes.
+
+```{r}
+dnbinom(20 - 5, size = 5, prob = 0.01) # <1>
+```
+
+1.  $P(X = 20)$: the $5^{th}$ bullseye on the $20^{th}$ throw means 15
+    misses and 5 bullseyes.
+
 ## Hitting more than 1 bullseye
 
 ::::::: columns
@@ -557,6 +622,20 @@ $$\text{Var}(X) = \lambda$$
     events)
 
 -   Any more?
+
+## Poisson distribution: R commands
+
+R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#367B79"}:
+
+| R code | What does it return? | What do we use it for? |
+|--------------|-------------------------------|---------------------------|
+| `rpois()` | returns [sample of random variables]{style="color:#367B79"} with [specified Poisson distribution]{style="color:#BF396F"} | simulations! |
+| `dpois()` | returns [probability]{style="color:#367B79"} of getting [certain number of successes]{style="color:#BF396F"} in the time period | $P(X = x)$ |
+| `ppois()` | returns [cumulative probability]{style="color:#367B79"} of getting [certain number or less]{style="color:#BF396F"} successes | $P(X \leq x)$ (or $P(X > x)$ if we add `lower.tail = FALSE`) |
+| `qpois()` | returns [number of successes]{style="color:#367B79"} corresponding to [desired quantile]{style="color:#BF396F"} | Goes the other direction: we give it a probability and it returns the value $k$ where $P(X \leq k)$ reaches it |
+
+-   The only parameter is the rate, `lambda` $= \lambda$. Make sure it
+    matches the time period in the question!
 
 ## Emergency Room Visitors
 
@@ -740,6 +819,21 @@ $$\text{E}(X) =\dfrac{nM}{N}$$
 $$\text{Var}(X) = n \dfrac{M}{N} \bigg(1- \dfrac{M}{N} \bigg)\bigg(\dfrac{N-n}{N-1} \bigg)$$
 :::
 :::::
+
+## Hypergeometric distribution: R commands
+
+R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#367B79"}:
+
+| R code | What does it return? | What do we use it for? |
+|--------------|-------------------------------|---------------------------|
+| `rhyper()` | returns [sample of random variables]{style="color:#367B79"} with [specified hypergeometric distribution]{style="color:#BF396F"} | simulations! |
+| `dhyper()` | returns [probability]{style="color:#367B79"} of getting [certain number of successes]{style="color:#BF396F"} in $n$ draws | $P(X = x)$ |
+| `phyper()` | returns [cumulative probability]{style="color:#367B79"} of getting [certain number or less]{style="color:#BF396F"} successes | $P(X \leq x)$ (or $P(X > x)$ if we add `lower.tail = FALSE`) |
+| `qhyper()` | returns [number of successes]{style="color:#367B79"} corresponding to [desired quantile]{style="color:#BF396F"} | Goes the other direction: we give it a probability and it returns the value $k$ where $P(X \leq k)$ reaches it |
+
+-   **Careful:** R uses different letters than we do. In R, `m` $= M$
+    (successes), `n` $= N - M$ (**failures**), and `k` $= n$ (draws):
+    `dhyper(x, m = M, n = N - M, k = n)`
 
 ## Wolf population
 

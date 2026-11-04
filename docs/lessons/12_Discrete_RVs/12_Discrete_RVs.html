@@ -1499,8 +1499,8 @@ p_X(x) = P(X=x) = \dfrac{{M \choose x}{N-M \choose n-x}}{{N \choose n}}
 <li><span class="math inline">\(\frac{M}{N}\)</span> is like <span class="math inline">\(p\)</span> in the binomial: the binomial has a constant <span class="math inline">\(p\)</span></li>
 </ul>
 </section>
-<section id="wolf-population-revisited" class="slide level2">
-<h2>Wolf population revisited</h2>
+<section id="wolf-population-revisited-12" class="slide level2">
+<h2>Wolf population revisited (1/2)</h2>
 <div class="columns">
 <div class="column" style="width:28%;">
 <div class="example">
@@ -1510,15 +1510,14 @@ p_X(x) = P(X=x) = \dfrac{{M \choose x}{N-M \choose n-x}}{{N \choose n}}
 <div class="ex-cont">
 <p>Suppose a specific study region is known to have 2400 wolves, of which 1100 have already been tagged.</p>
 <ol type="1">
-<li><p>If 50 wolves are randomly captured, what is the probability that 20 of them have already been tagged?</p></li>
-<li><p>Approximate the probability in part (1) using the binomial distribution.</p></li>
+<li>If 50 wolves are randomly captured, what is the probability that 20 of them have already been tagged?</li>
 </ol>
 </div>
 </div>
 </div></div>
 </section>
-<section id="wolf-population-revisited-check-in-r" class="slide level2">
-<h2>Wolf population revisited: check in R</h2>
+<section id="wolf-population-revisited-22" class="slide level2">
+<h2>Wolf population revisited (2/2)</h2>
 <div class="columns">
 <div class="column" style="width:28%;">
 <div class="example">
@@ -1527,37 +1526,11 @@ p_X(x) = P(X=x) = \dfrac{{M \choose x}{N-M \choose n-x}}{{N \choose n}}
 </div>
 <div class="ex-cont">
 <p>Suppose a specific study region is known to have 2400 wolves, of which 1100 have already been tagged.</p>
-<ol type="1">
-<li><p>If 50 wolves are randomly captured, what is the probability that 20 of them have already been tagged?</p></li>
-<li><p>Approximate the probability in part (1) using the binomial distribution.</p></li>
+<ol start="2" type="1">
+<li>Approximate the probability in part (1) using the binomial distribution.</li>
 </ol>
 </div>
 </div>
-</div><div class="column" style="width:72%;">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-32"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="1">1</button><span id="annotated-cell-32-1" class="code-annotation-target"><a href="#annotated-cell-32-1" aria-label="1"></a><span class="fu">dhyper</span>(<span class="dv">20</span>, <span class="at">m =</span> <span class="dv">1100</span>, <span class="at">n =</span> <span class="dv">1300</span>, <span class="at">k =</span> <span class="dv">50</span>)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="2">2</button><span id="annotated-cell-32-2" class="code-annotation-target"><a href="#annotated-cell-32-2" aria-label="2"></a><span class="fu">dbinom</span>(<span class="dv">20</span>, <span class="at">size =</span> <span class="dv">50</span>, <span class="at">prob =</span> <span class="dv">1100</span> <span class="sc">/</span> <span class="dv">2400</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-annotation">
-<dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-32" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-32" data-code-lines="1" data-code-annotation="1">The exact hypergeometric probability: 1,100 tagged, 1,300 untagged, and 50 captured.</span>
-</dd>
-<dt data-target-cell="annotated-cell-32" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-32" data-code-lines="2" data-code-annotation="2">The binomial approximation with <span class="math inline">\(p = \frac{M}{N} = \frac{1100}{2400}\)</span>.</span>
-</dd>
-</dl>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.08132015
-[1] 0.08107414</code></pre>
-</div>
-</div>
-<ul>
-<li>Check the rule of thumb: <span class="math inline">\(N = 2400 &gt; 20n = 1000\)</span></li>
-<li>The two probabilities are very close!</li>
-</ul>
 </div></div>
 </section></section>
 <section>
@@ -1597,9 +1570,17 @@ p_X(x) = P(X=x) = \dfrac{1}{N} \text{ for } x=1, 2, 3, ..., N
 <li>In R: every time we used <code>sample(1:N, ...)</code> without <code>prob</code>, we simulated a discrete uniform RV!</li>
 </ul>
 </div></div>
-
-
 </section></section>
+<section id="learning-objectives-1" class="title-slide slide level1 center">
+<h1>Learning Objectives</h1>
+<ol type="1">
+<li>Distinguish between Bernoulli, Binomial, Geometric, Hypergeometric, Discrete Uniform, Negative Binomial, and Poisson distributions when reading a word problem.</li>
+<li>Identify the variable and the parameters in a word problem, and state what the variable and parameters mean.</li>
+<li>Use the formulas for the pmf/CDF, expected value, and variance to answer questions and find probabilities.</li>
+</ol>
+
+
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

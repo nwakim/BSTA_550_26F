@@ -28908,5 +28908,19 @@
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Two emergency rooms: simulate it",
     "text": "Two emergency rooms: simulate it\n\n\n\n\nExample 5\n\n\nSimulate one day of visitors at each emergency room 10,000 times. Does the total, \\(Z = X + Y\\), have the mean and variance of a \\(\\text{Pois}(120)\\)?\n\n\n\n1er_sims &lt;- tibble(sim = 1:reps) |&gt;\n  mutate(\n2    X = rpois(n(), lambda = 50),\n3    Y = rpois(n(), lambda = 70),\n4    Z = X + Y\n  )\n\n\n1\n\nOne row per simulated day.\n\n2\n\nrpois() draws the number of visitors to emergency room 1 for every row. n() is the number of rows and lambda is the rate, \\(\\lambda_1 = 50\\) visitors per day.\n\n3\n\nThe same for emergency room 2, with \\(\\lambda_2 = 70\\). The two rooms are drawn separately, so they are independent.\n\n4\n\nThe total number of visitors to both rooms.\n\n\n\n\n\n\n\n\n1er_sims |&gt;\n  summarise(\n2    average  = mean(Z),\n3    variance = mean((Z - mean(Z))^2)\n  )\n\n\n1\n\nOne row of summaries for the 10,000 simulated totals.\n\n2\n\nEstimates \\(\\text{E}(Z) = \\lambda_1 + \\lambda_2 = 120\\).\n\n3\n\nEstimates \\(\\text{Var}(Z)\\), which is also 120 for a Poisson.\n\n\n\n\n# A tibble: 1 × 2\n  average variance\n    &lt;dbl&gt;    &lt;dbl&gt;\n1    120.     120.\n\n\n \n\nFor a Poisson RV, the mean and the variance are both \\(\\lambda\\)\nBoth are close to 120, just like Theorem 1 says!"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#wolf-population-revisited-12",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#wolf-population-revisited-12",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Wolf population revisited (1/2)",
+    "text": "Wolf population revisited (1/2)\n\n\n\n\nExample 8\n\n\nSuppose a specific study region is known to have 2400 wolves, of which 1100 have already been tagged.\n\nIf 50 wolves are randomly captured, what is the probability that 20 of them have already been tagged?"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#wolf-population-revisited-22",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#wolf-population-revisited-22",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Wolf population revisited (2/2)",
+    "text": "Wolf population revisited (2/2)\n\n\n\n\nExample 8\n\n\nSuppose a specific study region is known to have 2400 wolves, of which 1100 have already been tagged.\n\nApproximate the probability in part (1) using the binomial distribution."
   }
 ]

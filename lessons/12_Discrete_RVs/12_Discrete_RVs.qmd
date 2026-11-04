@@ -1168,3 +1168,13 @@ Examples of discrete uniform RVs
     simulated a discrete uniform RV!
 ::::::
 :::::::
+
+# Learning Objectives
+
+1.  Distinguish between Bernoulli, Binomial, Geometric, Hypergeometric,
+    Discrete Uniform, Negative Binomial, and Poisson distributions when
+    reading a word problem.
+2.  Identify the variable and the parameters in a word problem, and
+    state what the variable and parameters mean.
+3.  Use the formulas for the pmf/CDF, expected value, and variance to
+    answer questions and find probabilities.

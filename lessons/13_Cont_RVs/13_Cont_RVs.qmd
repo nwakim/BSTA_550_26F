@@ -26,6 +26,7 @@ library(here)
 source(here("class_dates.R"))
 
 library(tidyverse)
+options(digits = 4)
 ```
 
 # Learning Objectives
@@ -115,13 +116,13 @@ punif(q = 16, min = 0, max = 60) - punif(q = 14, min = 0, max = 60) # <1>
 
 1. $P(14 \leq X \leq 16) = F_X(16) - F_X(14)$: the CDF at 16 minus the CDF at 14.
 
--   If we want to sample 20 arrival times from the distribution:
+-   If we want to sample 10 arrival times from the distribution:
 
 ```{r}
-runif(n = 20, min = 0, max = 60) # <1>
+runif(n = 10, min = 0, max = 60) # <1>
 ```
 
-1. `runif()` draws 20 random values, like in Lesson 8. None of them repeat exactly, because $P(X = x) = 0$.
+1. `runif()` draws 10 random values, like in Lesson 8. None of them repeat exactly, because $P(X = x) = 0$.
 
 ## Bird on a wire (TB 31.5)
 
@@ -267,13 +268,13 @@ pexp(q = 5, rate = 1/10) - pexp(q = 3, rate = 1/10) # <1>
 
 1. $P(3 \leq X \leq 5) = F_X(5) - F_X(3)$.
 
--   If we want to sample 20 bus arrival times from the distribution:
+-   If we want to sample 10 bus arrival times from the distribution:
 
 ```{r}
-rexp(n = 20, rate = 1/10) # <1>
+rexp(n = 10, rate = 1/10) # <1>
 ```
 
-1. `rexp()` draws 20 random waiting times. Its `r` stands for "random", like `runif()`.
+1. `rexp()` draws 10 random waiting times. Its `r` stands for "random", like `runif()`.
 
 ## Memoryless property: check with a simulation
 
@@ -412,10 +413,10 @@ pgamma(q = 50, scale = 10, shape = 4) - pgamma(q = 30, scale = 10, shape = 4) # 
 
 1. $F_X(50) - F_X(30)$, with the CDF `pgamma()`.
 
--   If we want to sample 20 arrival times for the 4 buses:
+-   If we want to sample 10 arrival times for the 4 buses:
 
 ```{r}
-rgamma(n = 20, scale = 10, shape = 4) # <1>
+rgamma(n = 10, scale = 10, shape = 4) # <1>
 ```
 
 1. Each value is one realized time until the 4th bus.
@@ -622,13 +623,13 @@ pnorm(q = 50, mean = 50, sd = 4) - pnorm(q = 45, mean = 50, sd = 4) # <1>
 
 1. $P(45 \leq X \leq 50) = F_X(50) - F_X(45)$.
 
--   If we want to sample 20 days' temperature (over the years) from the distribution:
+-   If we want to sample 10 days' temperature (over the years) from the distribution:
 
 ```{r}
-rnorm(n = 20, mean = 50, sd = 4) # <1>
+rnorm(n = 10, mean = 50, sd = 4) # <1>
 ```
 
-1. `rnorm()` draws 20 random high temperatures.
+1. `rnorm()` draws 10 random high temperatures.
 
 ## Movie night while studying
 
@@ -672,8 +673,8 @@ pnorm(q = 120, mean = 98, sd = 10, lower.tail = FALSE) # <2>
 qnorm(p = 0.25, mean = 98, sd = 10) # <3>
 ```
 
-2. (a) $P(X \geq 120)$. `lower.tail = FALSE` gives the upper tail, $P(X > q)$, instead of the CDF. Same as `1 - pnorm(q = 120, mean = 98, sd = 10)`.
-3. (b) The bottom quartile is $X \leq t$, where $P(X \leq t) = 0.25$.
+2. Part a: $P(X \geq 120)$. `lower.tail = FALSE` gives the upper tail, $P(X > q)$, instead of the CDF. Same as `1 - pnorm(q = 120, mean = 98, sd = 10)`.
+3. Part b: the bottom quartile is $X \leq t$, where $P(X \leq t) = 0.25$.
 
 :::
 :::

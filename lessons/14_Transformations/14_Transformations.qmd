@@ -309,8 +309,6 @@ Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2
 :::
 :::
 
-- In this class (and in R), $\log$ is the natural log, $\ln$
-
 ::: columns
 ::: {.column width="40%"}
 ```{r}
@@ -337,6 +335,7 @@ ggplot(domain_u_v, aes(x = u, y = v)) +
 ```
 :::
 ::: column
+- In this class (and in R), $\log$ is the natural log, $\ln$
 :::
 :::
 

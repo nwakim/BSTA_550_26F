@@ -834,7 +834,7 @@ number of visitors to both?
 ## Two emergency rooms: simulate it
 
 :::::::: columns
-:::::: {.column width="55%"}
+:::::: {.column width="52%"}
 ::::: example
 ::: ex-title
 Example 5
@@ -865,10 +865,10 @@ er_sims <- tibble(sim = 1:reps) |> # <1>
 4.  The total number of visitors to both rooms.
 ::::::
 
-::: {.column width="1%"}
+::: {.column width="2%"}
 :::
 
-::: {.column width="44%"}
+::: {.column width="46%"}
 ```{r}
 er_sims |> # <1>
   summarise( # <1>

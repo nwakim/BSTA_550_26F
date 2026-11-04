@@ -15,7 +15,7 @@ source(here("class_dates.R"))
 Below is the general timing and lessons for each quiz:
 
 | Quiz | Lessons | HWs | Open Date \@ 3pm | Close Date \@ 11pm |
-|----|----|----|----|----|
+|---------------|---------------|---------------|---------------|---------------|
 | 1 | 1-5 | 1 | `r q1_open %>% format("%m/%d")` | `r q1_close %>% format("%m/%d")` |
 | 2 | 5-9, not 6 directly | 2-3 | `r q2_open %>% format("%m/%d")` | `r q2_close %>% format("%m/%d")` |
 | 3 | 10-16 | 5-7 | `r q3_open %>% format("%m/%d")` | `r q3_close %>% format("%m/%d")` |
@@ -55,6 +55,8 @@ More information specific to each quiz will be posted below.
   - Lesson 6 not technically included, but will be covered
 - Mostly properties of pmfs, pdfs, and CDFs: what makes them valid and what are the restrictions of the functions?
 - Some R commands for binomial
+- There are some integrals (no integral by parts or u-substitution)
+  - You can use an integral solver
 
 ## Quiz 3
 

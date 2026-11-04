@@ -672,8 +672,8 @@ pnorm(q = 120, mean = 98, sd = 10, lower.tail = FALSE) # <2>
 qnorm(p = 0.25, mean = 98, sd = 10) # <3>
 ```
 
-2. (a) $P(X \geq 120)$. `lower.tail = FALSE` gives the upper tail, $P(X > q)$, instead of the CDF. Same as `1 - pnorm(q = 120, mean = 98, sd = 10)`.
-3. (b) The bottom quartile is $X \leq t$, where $P(X \leq t) = 0.25$.
+2. Part a: $P(X \geq 120)$. `lower.tail = FALSE` gives the upper tail, $P(X > q)$, instead of the CDF. Same as `1 - pnorm(q = 120, mean = 98, sd = 10)`.
+3. Part b: the bottom quartile is $X \leq t$, where $P(X \leq t) = 0.25$.
 
 :::
 :::

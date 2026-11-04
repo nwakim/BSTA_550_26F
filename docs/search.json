@@ -19261,7 +19261,7 @@
     "href": "quiz.html#quiz-2",
     "title": "Quiz Info",
     "section": "Quiz 2",
-    "text": "Quiz 2\n\nIncludes lesson 7-9\n\nLesson 6 not technically included, but will be covered\n\nMostly properties of pmfs, pdfs, and CDFs: what makes them valid and what are the restrictions of the functions?\nSome R commands for binomial"
+    "text": "Quiz 2\n\nIncludes lesson 7-9\n\nLesson 6 not technically included, but will be covered\n\nMostly properties of pmfs, pdfs, and CDFs: what makes them valid and what are the restrictions of the functions?\nSome R commands for binomial\nThere are some integrals (no integral by parts or u-substitution)\n\nYou can use an integral solver"
   },
   {
     "objectID": "quiz.html#quiz-3",
@@ -24042,14 +24042,14 @@
     "href": "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.html",
     "title": "Lesson 18: Moment Generating Functions",
     "section": "",
-    "text": "Learn the definition of a moment-generating function.\nFind the moment-generating function of a random variable.\nUse a moment-generating function to find the mean and variance of a random variable."
+    "text": "Learn the definition of a moment-generating function.\nFind the moment-generating function of a random variable.\nUse a moment-generating function to find the mean and variance of a random variable.\nUse moment-generating functions to find the distribution of linear transformations and sums of independent random variables."
   },
   {
     "objectID": "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.html#learning-objectives",
     "href": "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.html#learning-objectives",
     "title": "Lesson 18: Moment Generating Functions",
     "section": "",
-    "text": "Learn the definition of a moment-generating function.\nFind the moment-generating function of a random variable.\nUse a moment-generating function to find the mean and variance of a random variable."
+    "text": "Learn the definition of a moment-generating function.\nFind the moment-generating function of a random variable.\nUse a moment-generating function to find the mean and variance of a random variable.\nUse moment-generating functions to find the distribution of linear transformations and sums of independent random variables."
   },
   {
     "objectID": "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.html#where-are-we",
@@ -24119,14 +24119,14 @@
     "href": "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.html#mgfs-of-sums-of-independent-rvs",
     "title": "Lesson 18: Moment Generating Functions",
     "section": "MGFs of sums of independent RV’s",
-    "text": "MGFs of sums of independent RV’s\n\n\nTheorem 9\n\n\nIf \\(X\\) and \\(Y\\) are independent RV’s with respective MGFs \\(M_X(t)\\) and \\(M_Y(t)\\), then\n\\[M_{X+Y}(t) = E[e^{t(X+Y)}] = E[e^{tX} e^{tY}] = E[e^{tX}]E[e^{tY}]=M_{X}(t)M_{Y}(t)\\]"
+    "text": "MGFs of sums of independent RV’s\n\n\nTheorem 16\n\n\nIf \\(X\\) and \\(Y\\) are independent RV’s with respective MGFs \\(M_X(t)\\) and \\(M_Y(t)\\), then\n\\[M_{X+Y}(t) = E[e^{t(X+Y)}] = E[e^{tX} e^{tY}] = E[e^{tX}]E[e^{tY}]=M_{X}(t)M_{Y}(t)\\]"
   },
   {
     "objectID": "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.html#main-takeaways",
     "href": "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.html#main-takeaways",
     "title": "Lesson 18: Moment Generating Functions",
     "section": "Main takeaways",
-    "text": "Main takeaways\n\nMGFs are a purely mathematically definition\n\nWe can’t really relate it to our real world analysis\n\nThey are helpful mathematically because they are unique to a probability distribution\n\nWe can find the unique MGF from for a probability distribution\nAnd we can find a distribution from an MGF\n\nMGFs can sometimes make it easier to find the mean and variance of an RV\nMGFs are most helpful when we are finding a joint distribution that is a sum or transformation of two RV’s\n\nMake the calculation easier!\n\nMGFs are often used to prove certain distribution are sums of other ones!"
+    "text": "Main takeaways\n\nMGFs are a purely mathematically definition\n\nWe can’t really relate it to our real world analysis\n\nThey are helpful mathematically because they are unique to a probability distribution\n\nWe can find the unique MGF from for a probability distribution\nAnd we can find a distribution from an MGF\n\nMGFs can sometimes make it easier to find the mean and variance of an RV\nMGFs are most helpful when we are finding a joint distribution that is a sum or transformation of two RV’s\n\nMake the calculation easier!\n\nMGFs are often used to prove certain distribution are sums of other ones!\n\nFor example: sums of independent normal RVs are normal, and \\(Z^2\\) is chi-squared"
   },
   {
     "objectID": "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.html#more-resources",
@@ -27598,14 +27598,14 @@
     "href": "lessons/14_Transformations/14_Transformations.html",
     "title": "Lesson 14: Transformations",
     "section": "",
-    "text": "Find the pdf of a linear rescaling of a random variable\nFind the pdf of a nonlinear transformation of a random variable using the CDF method\n\n\n\n\nOften make transformations of RVs\nA function of a random variable is a random variable\n\nIf \\(X\\) is a random variable and \\(g\\) is a function then \\(Y=g(X)\\) is a random variable\nSince \\(g(X)\\) is a random variable it has a distribution\n\nDistribution of \\(g(X)\\) will have a different shape than the distribution of \\(X\\)\nTwo types:\n\nLinear rescalings: \\(g(u) = a + bu\\)\nNonlinear transformations: e.g. \\(g(u) = u^2\\), \\(g(u) = \\log(u)\\)"
+    "text": "Find the pdf of a linear rescaling of a random variable\nFind the pdf of a nonlinear transformation of a random variable using the CDF method\n\n\n\n\nOften make transformations of RVs\nA function of a random variable is a random variable\n\nIf \\(X\\) is a random variable and \\(g\\) is a function then \\(Y=g(X)\\) is a random variable\nSince \\(g(X)\\) is a random variable it has a distribution\n\nDistribution of \\(g(X)\\) will have a different shape than the distribution of \\(X\\)\nTwo types:\n\nLinear rescalings: \\(g(u) = a + bu\\)\nNonlinear transformations: e.g. \\(g(u) = u^2\\), \\(g(u) = \\log(u)\\)\n\nWe’ve already seen one! In Lesson 9, we simulated \\(X\\) by plugging a Uniform(0, 1) value into the inverse CDF"
   },
   {
     "objectID": "lessons/14_Transformations/14_Transformations.html#cdf-method",
     "href": "lessons/14_Transformations/14_Transformations.html#cdf-method",
     "title": "Lesson 14: Transformations",
-    "section": "",
-    "text": "Often make transformations of RVs\nA function of a random variable is a random variable\n\nIf \\(X\\) is a random variable and \\(g\\) is a function then \\(Y=g(X)\\) is a random variable\nSince \\(g(X)\\) is a random variable it has a distribution\n\nDistribution of \\(g(X)\\) will have a different shape than the distribution of \\(X\\)\nTwo types:\n\nLinear rescalings: \\(g(u) = a + bu\\)\nNonlinear transformations: e.g. \\(g(u) = u^2\\), \\(g(u) = \\log(u)\\)"
+    "section": "Finding the pdf of a transformation",
+    "text": "Finding the pdf of a transformation\n\nLet \\(M\\) be a nonlinear transformation of \\(X\\): \\(M = g(X)\\)\nWhen we have a nonlinear transformation of \\(X\\), \\(M\\), we need to follow the CDF method to find the pdf of \\(M\\)\n\nWe follow CDF method:\n\nStart with the pdf for \\(X\\)\n\naka \\(f_{X}(x)\\)\n\nTranslate the domain of \\(X\\) to \\(M\\): find the possible values of \\(M\\)\nFind the CDF of \\(M\\)\n\naka \\(F_M(m) = P(M \\leq m) = P(g(X) \\leq m)\\)\nWill require manipulating \\(g(X) \\leq m\\) in terms of \\(X\\) (aka \\(X\\) alone on the left side)\n\nTake the derivative of the CDF of \\(M\\) with respect to \\(m\\) to find the pdf of \\(M\\)\n\naka \\(f_M(m) = \\dfrac{d}{dm}F_M(m)\\)\nCheck: \\(f_M(m)\\) should integrate to 1 over the possible values of \\(M\\)"
   },
   {
     "objectID": "lessons/14_Transformations/14_Transformations.html#linear-rescaling",
@@ -27618,15 +27618,15 @@
     "objectID": "lessons/14_Transformations/14_Transformations.html#sim-linear-rescaling",
     "href": "lessons/14_Transformations/14_Transformations.html#sim-linear-rescaling",
     "title": "Lesson 14: Transformations",
-    "section": "Example of linear rescaling (4/4)",
-    "text": "Example of linear rescaling (4/4)\n\n\nExample 1: Linear rescaling of \\(U\\)\n\n\nLet \\(U\\) be a random variable with \\(f_U(u)= \\dfrac{4}{15}u^3\\) for \\(1\\leq u \\leq 2\\). Define \\(V=1-U\\)\n\nFind the pdf of \\(V\\).\nDoes \\(V\\) have the same distribution as \\(U\\)?"
+    "section": "Let’s simulate Example 1: simulate",
+    "text": "Let’s simulate Example 1: simulate\n\nSimulate \\(U\\) with the inverse CDF, like Lesson 9: \\(F_U(u) = \\dfrac{u^4 - 1}{15}\\), so \\(F_U^{-1}(p) = (15p + 1)^{1/4}\\)\n\n\n\n\n1set.seed(1111)\n2reps &lt;- 10000\n\n3u_sims &lt;- tibble(\n  p = runif(n = reps, min = 0, max = 1)\n  ) |&gt;\n4  mutate(\n    u = (15 * p + 1)^(1/4),\n5    v = 1 - u\n    )\n\n\n1\n\nSet the random seed once, so we get the same simulation every time.\n\n2\n\nSave the number of simulations as reps, so it is easy to change later.\n\n3\n\nSimulate a Uniform(0, 1) value p for every simulation, like Lesson 9.\n\n4\n\nPlug each p into the inverse CDF to get a simulated value of \\(U\\). ^(1/4) is the fourth root.\n\n5\n\nThe linear rescaling: each simulated u becomes v = 1 - u.\n\n\n\n\n\n\n6head(u_sims)\n\n\n6\n\nEach row is one simulation: the v in a row came from the u beside it.\n\n\n\n\n# A tibble: 6 × 3\n      p     u      v\n  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;\n1 0.466  1.68 -0.681\n2 0.413  1.64 -0.638\n3 0.907  1.95 -0.955\n4 0.137  1.32 -0.322\n5 0.739  1.86 -0.864\n6 0.976  1.99 -0.989"
   },
   {
     "objectID": "lessons/14_Transformations/14_Transformations.html#summary-of-linear-rescaling",
     "href": "lessons/14_Transformations/14_Transformations.html#summary-of-linear-rescaling",
     "title": "Lesson 14: Transformations",
     "section": "Summary of linear rescaling",
-    "text": "Summary of linear rescaling\n\nA linear rescaling of a random variable does not change the basic shape of its distribution, just the range of possible values.\n\nIt can flip it, widen it, condense it, and/or shift it\n\nRemember, do NOT confuse a random variable with its distribution\n\nThe random variable is the numerical quantity being measured\nThe distribution is the long run pattern of variation of many observed values of the random variable"
+    "text": "Summary of linear rescaling\n\nA linear rescaling of a random variable does not change the basic shape of its distribution, just the range of possible values.\n\nIt can flip it, widen it, condense it, and/or shift it\nBut it is not the same distribution: the possible values change\n\nFor \\(V = a + bU\\): \\(f_V(v) = \\dfrac{1}{|b|} f_U\\left(\\dfrac{v-a}{b}\\right)\\)\n\nIn Example 1, \\(b = -1\\), so we could substitute \\(u = 1 - v\\) directly into \\(f_U\\)\n\nRemember, do NOT confuse a random variable with its distribution\n\nThe random variable is the numerical quantity being measured\nThe distribution is the long run pattern of variation of many observed values of the random variable"
   },
   {
     "objectID": "lessons/14_Transformations/14_Transformations.html#nonlinear-transformations",
@@ -27654,7 +27654,7 @@
     "href": "lessons/14_Transformations/14_Transformations.html#example-of-nonlinear-transformation-24",
     "title": "Lesson 14: Transformations",
     "section": "Example of nonlinear transformation (2/4)",
-    "text": "Example of nonlinear transformation (2/4)\n\n\nExample 2: Nonlinear transformation of \\(U\\)\n\n\nLet \\(U\\) be a random variable with \\(f_U(u)= \\dfrac{4}{15}u^3\\) for \\(1\\leq u \\leq 2\\). Define \\(V=\\log(U)\\)\n\nWhat are the possible values of \\(V\\)?\n\n\n\n\n\n\ndomain_u_v = tibble(\n  u = seq(1, 2, 0.01), \n  v = log(u)\n)\n\nggplot(domain_u_v, aes(x = u, y = v)) +\n  geom_line() +\n  labs(\n    title = \"Transformation: V = log(U)\",\n    x = \"u\",\n    y = \"log(u)\"\n  )"
+    "text": "Example of nonlinear transformation (2/4)\n\n\nExample 2: Nonlinear transformation of \\(U\\)\n\n\nLet \\(U\\) be a random variable with \\(f_U(u)= \\dfrac{4}{15}u^3\\) for \\(1\\leq u \\leq 2\\). Define \\(V=\\log(U)\\)\n\nWhat are the possible values of \\(V\\)?\n\n\n\n\nIn this class (and in R), \\(\\log\\) is the natural log, \\(\\ln\\)"
   },
   {
     "objectID": "lessons/14_Transformations/14_Transformations.html#example-of-nonlinear-transformation-34",
@@ -27682,14 +27682,14 @@
     "href": "lessons/14_Transformations/14_Transformations.html#example-of-nonlinear-transformation-domain-24",
     "title": "Lesson 14: Transformations",
     "section": "Example of nonlinear transformation: domain (2/4)",
-    "text": "Example of nonlinear transformation: domain (2/4)\n\n\nExample 3: Nonlinear transformation of \\(X\\)\n\n\nLet \\(X\\) be a random variable with \\(f_X(x)= \\dfrac{1}{2}\\) for \\(-1\\leq x \\leq 1\\). Define \\(Y=X^2\\)\n\nWhat are the possible values of \\(Y\\)?\n\n\n\n\n\n\ndomain_x_y = tibble(\n  x = seq(-1.5, 1.5, 0.01), \n  y = x^2\n)\n\nggplot(domain_x_y, aes(x = x, y = y)) +\n  geom_line() +\n  labs(\n    title = \"Transformation: Y = X^2\",\n    x = \"x\",\n    y = \"x^2\"\n  )"
+    "text": "Example of nonlinear transformation: domain (2/4)\n\n\nExample 3: Nonlinear transformation of \\(X\\)\n\n\nLet \\(X\\) be a random variable with \\(f_X(x)= \\dfrac{1}{2}\\) for \\(-1\\leq x \\leq 1\\). Define \\(Y=X^2\\)\n\nWhat are the possible values of \\(Y\\)?"
   },
   {
     "objectID": "lessons/14_Transformations/14_Transformations.html#example-of-nonlinear-transformation-domain-34",
     "href": "lessons/14_Transformations/14_Transformations.html#example-of-nonlinear-transformation-domain-34",
     "title": "Lesson 14: Transformations",
     "section": "Example of nonlinear transformation: domain (3/4)",
-    "text": "Example of nonlinear transformation: domain (3/4)\n\n\nExample 3: Nonlinear transformation of \\(X\\)\n\n\nLet \\(X\\) be a random variable with \\(f_X(x)= \\dfrac{1}{2}\\) for \\(-1\\leq x \\leq 1\\). Define \\(Y=X^2\\)\n\nFind the CDF of \\(Y\\)"
+    "text": "Example of nonlinear transformation: domain (3/4)\n\n\nExample 3: Nonlinear transformation of \\(X\\)\n\n\nLet \\(X\\) be a random variable with \\(f_X(x)= \\dfrac{1}{2}\\) for \\(-1\\leq x \\leq 1\\). Define \\(Y=X^2\\)\n\nFind the CDF of \\(Y\\) (we need it on our way to the pdf, \\(f_Y(y)\\))"
   },
   {
     "objectID": "lessons/14_Transformations/14_Transformations.html#example-of-nonlinear-transformation-domain-44",
@@ -27703,7 +27703,7 @@
     "href": "lessons/14_Transformations/14_Transformations.html#summary-of-nonlinear-transformations",
     "title": "Lesson 14: Transformations",
     "section": "Summary of nonlinear transformations",
-    "text": "Summary of nonlinear transformations\n\nNonlinear transformations can change the shape of a distribution\nAlways use the CDF method to find the pdf of a nonlinear transformation of a random variable\nRemember to carefully determine the possible values of the transformed random variable"
+    "text": "Summary of nonlinear transformations\n\nNonlinear transformations can change the shape of a distribution\nAlways use the CDF method to find the pdf of a nonlinear transformation of a random variable\nRemember to carefully determine the possible values (domain) of the transformed random variable\n\n \n\n\n\n\n\n\n\n\n\nLinear rescaling\nNonlinear transformation\n\n\n\n\nChanges the distribution?\nYes\nYes\n\n\nChanges the “shape”?\nNo\nUsually\n\n\nHow to find the pdf\nSubstitute into \\(f_X\\) (and divide by \\(\\lvert b \\rvert\\))\nCDF method"
   },
   {
     "objectID": "lessons/11_Variance/11_Variance_key_info.html",
@@ -28284,7 +28284,7 @@
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#properties-of-bernoulli-rvs",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Properties of Bernoulli RVs",
-    "text": "Properties of Bernoulli RVs\n\nScenario: One trial, with outcome success or failure\nShorthand: \\(X \\sim \\text{Bernoulli}(p)\\)\n\n\\[\nX = \\left\\{\n        \\begin{array}{ll}\n            1 & \\quad \\mathrm{with\\ probability}\\ p \\quad \\\\\n            0 & \\quad \\mathrm{with\\ probability}\\ 1-p \\quad\n        \\end{array}\n    \\right.\n\\]\n\\[\np_X(x) = P(X=x) = p^x(1-p)^{1-x} \\text{ for } x=0,1\n\\]\n\\[\\text{E}(X) = p\\]\n\\[\\text{Var}(X) = pq = p(1-p) \\quad \\text{ where } q = 1-p\\]\n\nWe’ve seen a few examples of Bernoulli distributions: ( @claude name some of the examples and give the lesson)"
+    "text": "Properties of Bernoulli RVs\n\nScenario: One trial, with outcome success or failure\nShorthand: \\(X \\sim \\text{Bernoulli}(p)\\)\n\n\\[\nX = \\left\\{\n        \\begin{array}{ll}\n            1 & \\quad \\mathrm{with\\ probability}\\ p \\quad \\\\\n            0 & \\quad \\mathrm{with\\ probability}\\ 1-p \\quad\n        \\end{array}\n    \\right.\n\\]\n\\[\np_X(x) = P(X=x) = p^x(1-p)^{1-x} \\text{ for } x=0,1\n\\]\n\\[\\text{E}(X) = p\\]\n\\[\\text{Var}(X) = pq = p(1-p) \\quad \\text{ where } q = 1-p\\]"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#bernoulli-example-1",
@@ -28305,14 +28305,14 @@
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#our-beloved-fair-6-sided-die",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Our beloved fair 6-sided die",
-    "text": "Our beloved fair 6-sided die\n\n\n\n\nExample 2\n\n\n\nSuppose we roll a fair 6-sided die 50 times.\nWe get $1 every time we roll a 5, and nothing otherwise.\nLet \\(Y\\) be how much money we get on the 50 rolls.\nFind the mean and variance of \\(Y\\)."
+    "text": "Our beloved fair 6-sided die\n\n\n\n\nExample 1\n\n\n\nSuppose we roll a fair 6-sided die 50 times.\nWe get $1 every time we roll a 5, and nothing otherwise.\nLet \\(Y\\) be how much money we get on the 50 rolls.\nFind the mean and variance of \\(Y\\)."
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#our-beloved-fair-6-sided-die-simulate-it",
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#our-beloved-fair-6-sided-die-simulate-it",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Our beloved fair 6-sided die: simulate it",
-    "text": "Our beloved fair 6-sided die: simulate it\n\n\n\n\nExample 2\n\n\nSimulate \\(Y\\), the money from 50 rolls, 10,000 times. Do the mean and variance match \\(np = \\frac{50}{6} \\approx 8.33\\) and \\(np(1-p) = \\frac{250}{36} \\approx 6.94\\)?\n\n\n\n1set.seed(1104)\n2reps &lt;- 10000\nn_rolls &lt;- 50\n\n3rolls &lt;- expand_grid(sim = 1:reps, roll = 1:n_rolls) |&gt;\n4  mutate(face = sample(1:6, n(), replace = TRUE))\n\n5money_sims &lt;- rolls |&gt;\n  group_by(sim) |&gt;\n  summarise(Y = sum(face == 5))\n\n\n1\n\nSet the seed once, so we all get the same random numbers.\n\n2\n\nSave the number of simulations and the number of rolls (\\(n = 50\\)) as variables, so they are easy to change.\n\n3\n\nOne row for every roll in every simulation: 10,000 × 50 = 500,000 rows.\n\n4\n\nRoll a fair die for every row. n() is the number of rows.\n\n5\n\nFor each simulation, count the 5s. face == 5 is TRUE or FALSE, and sum() counts the TRUEs. Each 5 is $1, so this count is \\(Y\\).\n\n\n\n\n\n \n \n\n1money_sims |&gt;\n  summarise(\n2    average  = mean(Y),\n3    variance = mean((Y - mean(Y))^2)\n  )\n\n\n1\n\nCollapse the 10,000 simulated values of Y into one row of summaries.\n\n2\n\nThe average of Y, which estimates \\(\\text{E}(Y) = np\\).\n\n3\n\nThe average squared distance from the mean, which estimates \\(\\text{Var}(Y)\\) (same formula as Lesson 11).\n\n\n\n\n# A tibble: 1 × 2\n  average variance\n    &lt;dbl&gt;    &lt;dbl&gt;\n1    8.32     6.92\n\n\n\nEach roll is a Bernoulli trial, and \\(Y\\) adds up 50 of them: this is the binomial as a sum of independent Bernoulli RVs"
+    "text": "Our beloved fair 6-sided die: simulate it\n\n\n\n\nExample 1\n\n\nSimulate \\(Y\\), the money from 50 rolls, 10,000 times. Do the mean and variance match \\(np = \\frac{50}{6} \\approx 8.33\\) and \\(np(1-p) = \\frac{250}{36} \\approx 6.94\\)?\n\n\n\n1set.seed(1104)\n2reps &lt;- 10000\nn_rolls &lt;- 50\n\n3rolls &lt;- expand_grid(sim = 1:reps, roll = 1:n_rolls) |&gt;\n4  mutate(face = sample(1:6, n(), replace = TRUE))\n\n5money_sims &lt;- rolls |&gt;\n  group_by(sim) |&gt;\n  summarise(Y = sum(face == 5))\n\n\n1\n\nSet the seed once, so we all get the same random numbers.\n\n2\n\nSave the number of simulations and the number of rolls (\\(n = 50\\)) as variables, so they are easy to change.\n\n3\n\nOne row for every roll in every simulation: 10,000 × 50 = 500,000 rows.\n\n4\n\nRoll a fair die for every row. n() is the number of rows.\n\n5\n\nFor each simulation, count the 5s. face == 5 is TRUE or FALSE, and sum() counts the TRUEs. Each 5 is $1, so this count is \\(Y\\).\n\n\n\n\n\n \n \n\n1money_sims |&gt;\n  summarise(\n2    average  = mean(Y),\n3    variance = mean((Y - mean(Y))^2)\n  )\n\n\n1\n\nCollapse the 10,000 simulated values of Y into one row of summaries.\n\n2\n\nThe average of Y, which estimates \\(\\text{E}(Y) = np\\).\n\n3\n\nThe average squared distance from the mean, which estimates \\(\\text{Var}(Y)\\) (same formula as Lesson 11).\n\n\n\n\n# A tibble: 1 × 2\n  average variance\n    &lt;dbl&gt;    &lt;dbl&gt;\n1    8.32     6.92\n\n\n\nEach roll is a Bernoulli trial, and \\(Y\\) adds up 50 of them: this is the binomial as a sum of independent Bernoulli RVs"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#geometric-rvs",
@@ -28326,28 +28326,28 @@
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#bullseye-14",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Bullseye (1/4)",
-    "text": "Bullseye (1/4)\n\n\n\n\nExample 3\n\n\nWe throw darts at a dartboard until we hit the bullseye. Assume throws are independent and the probability of hitting the bullseye is 0.01 for each throw.\n\nWhat is the pmf for the number of throws needed to hit the bullseye?\nWhat are the mean and variance for the number of throws needed to hit the bullseye?\nFind the probability that our first bullseye:\n\nis on one of the first fifty tries\nis after the \\(50^{th}\\) try, given that it did not happen on the first 20 tries"
+    "text": "Bullseye (1/4)\n\n\n\n\nExample 2\n\n\nWe throw darts at a dartboard until we hit the bullseye. Assume throws are independent and the probability of hitting the bullseye is 0.01 for each throw.\n\nWhat is the pmf for the number of throws needed to hit the bullseye?\nWhat are the mean and variance for the number of throws needed to hit the bullseye?\nFind the probability that our first bullseye:\n\nis on one of the first fifty tries\nis after the \\(50^{th}\\) try, given that it did not happen on the first 20 tries"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#bullseye-24",
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#bullseye-24",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Bullseye (2/4)",
-    "text": "Bullseye (2/4)\n\n\n\n\nExample 3\n\n\nWe throw darts at a dartboard until we hit the bullseye. Assume throws are independent and the probability of hitting the bullseye is 0.01 for each throw.\n\nWhat is the pmf for the number of throws needed to hit the bullseye?"
+    "text": "Bullseye (2/4)\n\n\n\n\nExample 2\n\n\nWe throw darts at a dartboard until we hit the bullseye. Assume throws are independent and the probability of hitting the bullseye is 0.01 for each throw.\n\nWhat is the pmf for the number of throws needed to hit the bullseye?"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#bullseye-34",
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#bullseye-34",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Bullseye (3/4)",
-    "text": "Bullseye (3/4)\n\n\n\n\nExample 3\n\n\nWe throw darts at a dartboard until we hit the bullseye. Assume throws are independent and the probability of hitting the bullseye is 0.01 for each throw.\n\nWhat are the mean and variance for the number of throws needed to hit the bullseye?"
+    "text": "Bullseye (3/4)\n\n\n\n\nExample 2\n\n\nWe throw darts at a dartboard until we hit the bullseye. Assume throws are independent and the probability of hitting the bullseye is 0.01 for each throw.\n\nWhat are the mean and variance for the number of throws needed to hit the bullseye?"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#bullseye-44",
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#bullseye-44",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Bullseye (4/4)",
-    "text": "Bullseye (4/4)\n\n\n\n\nExample 3\n\n\nWe throw darts at a dartboard until we hit the bullseye. Assume throws are independent and the probability of hitting the bullseye is 0.01 for each throw.\n\nFind the probability that our first bullseye:\n\nis on one of the first fifty tries\nis after the \\(50^{th}\\) try, given that it did not happen on the first 20 tries"
+    "text": "Bullseye (4/4)\n\n\n\n\nExample 2\n\n\nWe throw darts at a dartboard until we hit the bullseye. Assume throws are independent and the probability of hitting the bullseye is 0.01 for each throw.\n\nFind the probability that our first bullseye:\n\nis on one of the first fifty tries\nis after the \\(50^{th}\\) try, given that it did not happen on the first 20 tries"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#memoryless-property-for-geometric-rvs",
@@ -28382,14 +28382,14 @@
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#hitting-more-than-1-bullseye",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Hitting more than 1 bullseye",
-    "text": "Hitting more than 1 bullseye\n\n\n\n\nExample 4\n\n\nConsider again the bullseye example, where we throw darts at a dartboard until we hit the bullseye. Assume throws are independent and the probability of hitting the bullseye is 0.01 for each throw.\n\nWhat is the expected value and variance of the number of throws needed to hit 5 bullseyes?"
+    "text": "Hitting more than 1 bullseye\n\n\n\n\nExample 3\n\n\nConsider again the bullseye example, where we throw darts at a dartboard until we hit the bullseye. Assume throws are independent and the probability of hitting the bullseye is 0.01 for each throw.\n\nWhat is the expected value and variance of the number of throws needed to hit 5 bullseyes?"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#hitting-more-than-1-bullseye-1",
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#hitting-more-than-1-bullseye-1",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Hitting more than 1 bullseye",
-    "text": "Hitting more than 1 bullseye\n\n\n\n\nExample 4\n\n\nConsider again the bullseye example, where we throw darts at a dartboard until we hit the bullseye. Assume throws are independent and the probability of hitting the bullseye is 0.01 for each throw.\n\nWhat is the probability that the \\(5^{th}\\) bullseye is on the \\(20^{th}\\) throw?"
+    "text": "Hitting more than 1 bullseye\n\n\n\n\nExample 3\n\n\nConsider again the bullseye example, where we throw darts at a dartboard until we hit the bullseye. Assume throws are independent and the probability of hitting the bullseye is 0.01 for each throw.\n\nWhat is the probability that the \\(5^{th}\\) bullseye is on the \\(20^{th}\\) throw?"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#properties-of-poisson-rvs",
@@ -28417,14 +28417,14 @@
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#emergency-room-visitors",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Emergency Room Visitors",
-    "text": "Emergency Room Visitors\n\n\n\n\nExample 5\n\n\nSuppose an emergency room has an average of 50 visitors per day. Find the following probabilities.\n\nProbability of 30 visitors in a day.\nProbability of 8 visitors in an hour."
+    "text": "Emergency Room Visitors\n\n\n\n\nExample 4\n\n\nSuppose an emergency room has an average of 50 visitors per day. Find the following probabilities.\n\nProbability of 30 visitors in a day.\nProbability of 8 visitors in an hour."
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#emergency-room-visitors-in-r",
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#emergency-room-visitors-in-r",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Emergency Room Visitors: in R",
-    "text": "Emergency Room Visitors: in R\n\n\n\n\nExample 5\n\n\nSuppose an emergency room has an average of 50 visitors per day.\n\nProbability of 30 visitors in a day.\nProbability of 8 visitors in an hour.\n\n\n\n\n1dpois(30, lambda = 50)\n\n2lambda_hour &lt;- 50 / 24\n3dpois(8, lambda = lambda_hour)\n\n\n1\n\ndpois() gives \\(P(X = x)\\) for a Poisson RV, like dbinom() did for the binomial. Here \\(x = 30\\) and \\(\\lambda = 50\\) visitors per day.\n\n2\n\nChange the rate to match the time period: 50 visitors per day is \\(\\frac{50}{24} \\approx 2.083\\) visitors per hour.\n\n3\n\n\\(P(X = 8)\\) when \\(X\\) counts visitors in one hour.\n\n\n\n\n[1] 0.0006771985\n[1] 0.001095896\n\n\n\n\n\nChange \\(\\lambda\\), not \\(X\\)\n\n\nWhen the time period changes, change the rate \\(\\lambda\\) to match it.\n\nRight way: \\(\\lambda = \\frac{50}{24}\\) visitors per hour, and find \\(P(X = 8)\\)\nWrong way: keep \\(\\lambda = 50\\) per day and find \\(P(X = 8 \\cdot 24) = P(X = 192)\\)"
+    "text": "Emergency Room Visitors: in R\n\n\n\n\nExample 4\n\n\nSuppose an emergency room has an average of 50 visitors per day.\n\nProbability of 30 visitors in a day.\nProbability of 8 visitors in an hour.\n\n\n\n\n1dpois(30, lambda = 50)\n\n2lambda_hour &lt;- 50 / 24\n3dpois(8, lambda = lambda_hour)\n\n\n1\n\ndpois() gives \\(P(X = x)\\) for a Poisson RV, like dbinom() did for the binomial. Here \\(x = 30\\) and \\(\\lambda = 50\\) visitors per day.\n\n2\n\nChange the rate to match the time period: 50 visitors per day is \\(\\frac{50}{24} \\approx 2.083\\) visitors per hour.\n\n3\n\n\\(P(X = 8)\\) when \\(X\\) counts visitors in one hour.\n\n\n\n\n[1] 0.0006771985\n[1] 0.001095896\n\n\n\n\n\nChange \\(\\lambda\\), not \\(X\\)\n\n\nWhen the time period changes, change the rate \\(\\lambda\\) to match it.\n\nRight way: \\(\\lambda = \\frac{50}{24}\\) visitors per hour, and find \\(P(X = 8)\\)\nWrong way: keep \\(\\lambda = 50\\) per day and find \\(P(X = 8 \\cdot 24) = P(X = 192)\\)"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#combining-independent-poisson-distributions",
@@ -28438,7 +28438,7 @@
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#two-emergency-rooms",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Two emergency rooms",
-    "text": "Two emergency rooms\n\n\n\n\nExample 6\n\n\nSuppose emergency room 1 has an average of 50 visitors per day, and emergency room 2 has an average of 70 visitors per day, independently of each other. What is the probability distribution that models the total number of visitors to both?"
+    "text": "Two emergency rooms\n\n\n\n\nExample 5\n\n\nSuppose emergency room 1 has an average of 50 visitors per day, and emergency room 2 has an average of 70 visitors per day, independently of each other. What is the probability distribution that models the total number of visitors to both?"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#poisson-approximation-of-the-binomial",
@@ -28452,7 +28452,7 @@
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#medical-lab-errors",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Medical lab errors",
-    "text": "Medical lab errors\n\n\n\n\nExample 7\n\n\nSuppose that in the long run, errors in a medical testing lab are made 0.1% of the time. Find the probability that fewer than 4 mistakes are made in the next 2,000 tests.\n\nFind the probability using the Binomial distribution.\nApproximate the probability in part (1) using the Poisson distribution.\n\n\n\n\nTo do for extra practice - will also see a similar problem in BSTA 511\n\nHint: pbinom() and ppois() give \\(P(X \\leq x)\\)"
+    "text": "Medical lab errors\n\n\n\n\nExample 6\n\n\nSuppose that in the long run, errors in a medical testing lab are made 0.1% of the time. Find the probability that fewer than 4 mistakes are made in the next 2,000 tests.\n\nFind the probability using the Binomial distribution.\nApproximate the probability in part (1) using the Poisson distribution.\n\n\n\n\nTo do for extra practice - will also see a similar problem in BSTA 511\n\nHint: pbinom() and ppois() give \\(P(X \\leq x)\\)"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#hypergeometric-rvs",
@@ -28466,7 +28466,7 @@
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#wolf-population",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Wolf population",
-    "text": "Wolf population\n\n\n\n\nExample 8\n\n\nA wildlife biologist is using mark-recapture to research a wolf population. Suppose a specific study region is known to have 24 wolves, of which 11 have already been tagged. If 5 wolves are randomly captured, what is the probability that 3 of them have already been tagged?"
+    "text": "Wolf population\n\n\n\n\nExample 7\n\n\nA wildlife biologist is using mark-recapture to research a wolf population. Suppose a specific study region is known to have 24 wolves, of which 11 have already been tagged. If 5 wolves are randomly captured, what is the probability that 3 of them have already been tagged?"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#wolf-population-simulate-it",
@@ -28487,14 +28487,14 @@
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#wolf-population-revisited",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Wolf population revisited",
-    "text": "Wolf population revisited\n\n\n\n\nExample 9\n\n\nSuppose a specific study region is known to have 2400 wolves, of which 1100 have already been tagged.\n\nIf 50 wolves are randomly captured, what is the probability that 20 of them have already been tagged?\nApproximate the probability in part (1) using the binomial distribution."
+    "text": "Wolf population revisited\n\n\n\n\nExample 8\n\n\nSuppose a specific study region is known to have 2400 wolves, of which 1100 have already been tagged.\n\nIf 50 wolves are randomly captured, what is the probability that 20 of them have already been tagged?\nApproximate the probability in part (1) using the binomial distribution."
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#wolf-population-revisited-check-in-r",
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#wolf-population-revisited-check-in-r",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Wolf population revisited: check in R",
-    "text": "Wolf population revisited: check in R\n\n\n\n\nExample 9\n\n\nSuppose a specific study region is known to have 2400 wolves, of which 1100 have already been tagged.\n\nIf 50 wolves are randomly captured, what is the probability that 20 of them have already been tagged?\nApproximate the probability in part (1) using the binomial distribution.\n\n\n\n\n\n1dhyper(20, m = 1100, n = 1300, k = 50)\n2dbinom(20, size = 50, prob = 1100 / 2400)\n\n\n1\n\nThe exact hypergeometric probability: 1,100 tagged, 1,300 untagged, and 50 captured.\n\n2\n\nThe binomial approximation with \\(p = \\frac{M}{N} = \\frac{1100}{2400}\\).\n\n\n\n\n[1] 0.08132015\n[1] 0.08107414\n\n\n\nCheck the rule of thumb: \\(N = 2400 &gt; 20n = 1000\\)\nThe two probabilities are very close!"
+    "text": "Wolf population revisited: check in R\n\n\n\n\nExample 8\n\n\nSuppose a specific study region is known to have 2400 wolves, of which 1100 have already been tagged.\n\nIf 50 wolves are randomly captured, what is the probability that 20 of them have already been tagged?\nApproximate the probability in part (1) using the binomial distribution.\n\n\n\n\n\n1dhyper(20, m = 1100, n = 1300, k = 50)\n2dbinom(20, size = 50, prob = 1100 / 2400)\n\n\n1\n\nThe exact hypergeometric probability: 1,100 tagged, 1,300 untagged, and 50 captured.\n\n2\n\nThe binomial approximation with \\(p = \\frac{M}{N} = \\frac{1100}{2400}\\).\n\n\n\n\n[1] 0.08132015\n[1] 0.08107414\n\n\n\nCheck the rule of thumb: \\(N = 2400 &gt; 20n = 1000\\)\nThe two probabilities are very close!"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#discrete-uniform-rvs",
@@ -28508,7 +28508,7 @@
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#what-discrete-uniform-rvs-have-we-seen-already",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "What discrete uniform RVs have we seen already?",
-    "text": "What discrete uniform RVs have we seen already?\n\n\n\n\nExample 10\n\n\nExamples of discrete uniform RVs\n\n\n \n\nIn R: every time we used sample(1:N, ...) without prob, we simulated a discrete uniform RV!"
+    "text": "What discrete uniform RVs have we seen already?\n\n\n\n\nExample 9\n\n\nExamples of discrete uniform RVs\n\n\n \n\nIn R: every time we used sample(1:N, ...) without prob, we simulated a discrete uniform RV!"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#all-the-r-code-for-these",
@@ -28516,5 +28516,334 @@
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "All the R code for these!",
     "text": "All the R code for these!\nCheck out this page with all the different functions for distributions in R\n\nd___() gives the pmf \\(P(X = x)\\), p___() gives the CDF \\(P(X \\leq x)\\), q___() gives quantiles, and r___() simulates\n\n\n\n\n\n\n\n\n\n\nDistribution\npmf: \\(P(X = x)\\)\nCDF: \\(P(X \\leq x)\\)\nSimulate\n\n\n\n\nBinomial\\((n, p)\\)\ndbinom(x, size = n, prob = p)\npbinom(x, size = n, prob = p)\nrbinom()\n\n\nGeometric\\((p)\\) *\ndgeom(x - 1, prob = p)\npgeom(x - 1, prob = p)\nrgeom()\n\n\nNegBin\\((p, r)\\) *\ndnbinom(x - r, size = r, prob = p)\npnbinom(x - r, size = r, prob = p)\nrnbinom()\n\n\nPoisson\\((\\lambda)\\)\ndpois(x, lambda = lambda)\nppois(x, lambda = lambda)\nrpois()\n\n\nHypergeo\\((M, N, n)\\)\ndhyper(x, m = M, n = N - M, k = n)\nphyper(x, m = M, n = N - M, k = n)\nrhyper()\n\n\nUniform\\((N)\\)\n\\(\\frac{1}{N}\\)\n\\(\\frac{x}{N}\\)\nsample(1:N, ...)\n\n\n\n* R counts the number of failures before the success(es), not the number of trials. So we subtract the successes: \\(x - 1\\) for the geometric and \\(x - r\\) for the negative binomial."
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#bernoulli-rvs-weve-already-seen",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#bernoulli-rvs-weve-already-seen",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Bernoulli RVs we’ve already seen",
+    "text": "Bernoulli RVs we’ve already seen\n\nWe’ve seen a few examples of Bernoulli distributions:\n\nLesson 1: Toss one coin. Success is heads, so \\(p = \\frac{1}{2}\\)\nLesson 7, Example 1 (falls in older adults): Whether one older adult has at least one fall in a year, \\(p = 0.25\\)\nLesson 10, Example 3: The general Bernoulli RV, where we found \\(\\text{E}(X) = p\\)\nLesson 11, Example 2 (card example): Draw one card, and \\(X = 1\\) if it is a heart, \\(p = \\frac{1}{4}\\)\nLesson 11, Example 5 (ghost problem): The ghost grabs one candy, and \\(Y = 1\\) if it is a chocolate, \\(p = \\frac{10}{60} = \\frac{1}{6}\\)"
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#where-are-we",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#where-are-we",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Where are we?",
+    "text": "Where are we?"
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#properties-of-continuous-uniform-rvs",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#properties-of-continuous-uniform-rvs",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Properties of continuous uniform RVs",
+    "text": "Properties of continuous uniform RVs\n\nScenario: Events are equally likely to happen anywhere or anytime in an interval of values\nShorthand: \\(X \\sim \\text{U}[a,b]\\)\n\n\\[\nf_X(x) = \\dfrac{1}{b-a}, \\text{ for }a \\leq x \\leq b\n\\]\n\\[\nF_X(x) = \\int_a^x f_X(s)\\,ds = \\left\\{\n        \\begin{array}{ll}\n            0 & \\quad x&lt;a \\quad \\\\\n            \\dfrac{x-a}{b-a} & \\quad a \\leq x \\leq b\\quad \\\\\n            1 & \\quad x&gt;b \\quad\n        \\end{array}\n    \\right.\n\\]\n\\[\\text{E}(X) = \\int_a^b x f_X(x)\\,dx = \\dfrac{a+b}{2} \\text{, } \\text{ Var}(X) = \\dfrac{(b-a)^2}{12}\\]\n\nLike every continuous RV: \\(P(X = x) = 0\\) for any single value \\(x\\)"
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#identifying-continuous-uniform-rv-from-word-problems",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#identifying-continuous-uniform-rv-from-word-problems",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Identifying continuous uniform RV from word problems",
+    "text": "Identifying continuous uniform RV from word problems\n\nLook for some indication that all events are equally likely\n\nCould also say “uniformly distributed”\n\nLook for an interval\n\nTime example: Customer in your store will approach the cash register in next 30 minutes. Approaching the register throughout the 30 minutes is equally likely.\nLength example: You have a 12 inch string that you need to cut. You are equally likely to cut anywhere on the string.\n\nDifferent than the discrete uniform\n\nDiscrete usually includes a countable number of events that are equally likely\nContinuous is not countable\n\nExact time and length can be measured with infinite decimal places"
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#helpful-r-code",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#helpful-r-code",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Helpful R code",
+    "text": "Helpful R code\nLet’s say we’re looking at equally likely arrival times between 10 am and 11 am. Let \\(X\\) = minutes after 10 am, so \\(X \\sim \\text{U}[0, 60]\\) (10 am is \\(X = 0\\), 11 am is \\(X = 60\\)).\n\nIf we want to know the probability that someone arrives at 10:30am or earlier, \\(P(X \\leq 30)\\):\n\n\n1punif(q = 30, min = 0, max = 60)\n\n\n1\n\npunif() is the CDF, \\(F_X(30) = P(X \\leq 30)\\). min and max are \\(a\\) and \\(b\\).\n\n\n\n\n[1] 0.5\n\n\n\nIf we want to know the time, say \\(t\\), where the probability of arriving at \\(t\\) or earlier is 0.35 (inverse CDF):\n\n\n1qunif(p = 0.35, min = 0, max = 60)\n\n\n1\n\nqunif() is the inverse CDF: it finds \\(t\\) with \\(P(X \\leq t) = 0.35\\). So \\(t = 21\\), or 10:21 am.\n\n\n\n\n[1] 21\n\n\n\nIf we want to know the probability that someone arrives between 10:14 and 10:16 am:\n\n\n1punif(q = 16, min = 0, max = 60) - punif(q = 14, min = 0, max = 60)\n\n\n1\n\n\\(P(14 \\leq X \\leq 16) = F_X(16) - F_X(14)\\): the CDF at 16 minus the CDF at 14.\n\n\n\n\n[1] 0.03333333\n\n\n\nIf we want to sample 20 arrival times from the distribution:\n\n\n1runif(n = 20, min = 0, max = 60)\n\n\n1\n\nrunif() draws 20 random values, like in Lesson 8. None of them repeat exactly, because \\(P(X = x) = 0\\).\n\n\n\n\n [1] 27.821305  6.468829  7.754867 55.773304  6.466633 20.927596 38.381519\n [8]  6.035079 35.612306 36.581834  7.644013  6.137624  1.477807 35.463674\n[15]  2.655787 15.765632 10.453779 58.078505 23.685766  7.419441"
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#bird-on-a-wire-tb-31.5",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#bird-on-a-wire-tb-31.5",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Bird on a wire (TB 31.5)",
+    "text": "Bird on a wire (TB 31.5)\n\n\n\n\nExample 1\n\n\nA bird lands at a location that is Uniformly distributed along an electrical wire of length 150 feet. The wire is stretched tightly between two poles. What is the probability that the bird is 20 feet or less from one or the other of the poles?"
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#bird-on-a-wire-check-with-a-simulation",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#bird-on-a-wire-check-with-a-simulation",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Bird on a wire: check with a simulation",
+    "text": "Bird on a wire: check with a simulation\n\n\n\n1set.seed(1109)\n2reps &lt;- 10000\n\n3bird_sims &lt;- tibble(\n  x = runif(n = reps, min = 0, max = 150)\n  )\n\n4bird_sims |&gt;\n  summarise(\n5    prob_near_pole = mean(x &lt;= 20 | x &gt;= 130)\n  )\n\n\n1\n\nSet the random seed once, so we get the same simulation every time.\n\n2\n\nSave the number of simulations as reps, so it is easy to change later.\n\n3\n\nSimulate 10,000 landing spots, \\(X\\) = feet from the left pole, with runif() from Lesson 8.\n\n4\n\nCollapse the 10,000 landing spots into one row of summaries.\n\n5\n\nThe vertical bar | means “or”: TRUE when the bird is within 20 feet of the left pole or the right pole. mean() of TRUE/FALSE is the proportion of simulations where that happens.\n\n\n\n\n# A tibble: 1 × 1\n  prob_near_pole\n           &lt;dbl&gt;\n1          0.266\n\n\n\n \n\n\nExact: \\(P(X \\leq 20) + P(X \\geq 130) = 2 \\cdot \\dfrac{20}{150} \\approx 0.2667\\)"
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#properties-of-exponential-rvs",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#properties-of-exponential-rvs",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Properties of exponential RVs",
+    "text": "Properties of exponential RVs\n\nScenario: Modeling the time until the next (first) event\nContinuous analog to the discrete geometric distribution!\nShorthand: \\(X \\sim \\text{Exp}(\\lambda)\\)\n\n\\(\\lambda\\) = the rate: average number of events (successes) per unit of time\n\n\n\\[\nf_X(x) = \\lambda e^{-\\lambda x}\\text{ for } x&gt;0, \\lambda&gt;0\n\\]\n\\[\nF_X(x) = \\left\\{\n        \\begin{array}{ll}\n            0 & \\quad x&lt;0 \\quad \\\\\n            1 - e^{-\\lambda x} & \\quad x\\geq0 \\\\\n        \\end{array}\n    \\right.\n\\]\n\\[\\text{E}(X) = \\dfrac{1}{\\lambda}\\] \\[\\text{Var}(X) = \\dfrac{1}{\\lambda^2}\\]"
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#memoryless-property",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#memoryless-property",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Memoryless Property",
+    "text": "Memoryless Property\n \nIf \\(b&gt;0\\),\n\\[P(X &gt; a +b | X&gt; a) = P(X &gt; b)\\]\n \n\nThis can be interpreted as:\n\nIf you have waited \\(a\\) seconds (or any other measure of time) without a success\nThen the probability that you have to wait \\(b\\) more seconds is the same as the probability of waiting \\(b\\) seconds initially."
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#identifying-exponential-rv-from-word-problems",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#identifying-exponential-rv-from-word-problems",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Identifying exponential RV from word problems",
+    "text": "Identifying exponential RV from word problems\n\nLook for time between events/successes\nLook for a rate of the events over time period\nHow does it differ from the geometric distribution?\n\nGeometric is number of trials until first success\nExponential is time until first success\n\nRelation to the Poisson distribution?\n\nWhen the time between arrivals is exponential, the number of arrivals in a fixed time interval is Poisson with the mean \\(\\lambda\\)"
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#helpful-r-code-1",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#helpful-r-code-1",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Helpful R code",
+    "text": "Helpful R code\nLet’s say we’re sitting at the bus stop, measuring the time until our bus arrives. We know the bus comes every 10 minutes on average, so \\(\\lambda = 1/10\\) bus per minute.\n\nIf we want to know the probability that the bus arrives in the next 5 minutes, \\(P(X \\leq 5)\\):\n\n\n1pexp(q = 5, rate = 1/10)\n\n\n1\n\npexp() is the CDF. rate is \\(\\lambda\\): 1 bus per 10 minutes.\n\n\n\n\n[1] 0.3934693\n\n\n\nIf we want to know the time, say \\(t\\), where the probability of the bus arriving at \\(t\\) or earlier is 0.35 (inverse CDF):\n\n\n1qexp(p = 0.35, rate = 1/10)\n\n\n1\n\nqexp() is the inverse CDF: it finds \\(t\\) with \\(P(X \\leq t) = 0.35\\).\n\n\n\n\n[1] 4.307829\n\n\n\nIf we want to know the probability that the bus arrives between 3 and 5 minutes:\n\n\n1pexp(q = 5, rate = 1/10) - pexp(q = 3, rate = 1/10)\n\n\n1\n\n\\(P(3 \\leq X \\leq 5) = F_X(5) - F_X(3)\\).\n\n\n\n\n[1] 0.1342876\n\n\n\nIf we want to sample 20 bus arrival times from the distribution:\n\n\n1rexp(n = 20, rate = 1/10)\n\n\n1\n\nrexp() draws 20 random waiting times. Its r stands for “random”, like runif().\n\n\n\n\n [1] 18.3344600  6.1163560  9.1841361  7.5032881  6.1888203  7.0098627\n [7] 31.0361078 24.4134862  0.8449651  8.0629784  5.7748585  0.2466386\n[13] 13.8347902  7.1343906  3.1363843  0.4708147  9.0277066 10.4220932\n[19] 23.2332273  6.5199777"
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#memoryless-property-check-with-a-simulation",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#memoryless-property-check-with-a-simulation",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Memoryless property: check with a simulation",
+    "text": "Memoryless property: check with a simulation\n\nWe’ve already waited \\(a = 3\\) minutes. Is the chance of waiting \\(b = 5\\) more minutes the same as \\(P(X &gt; 5)\\)?\n\n\n\n\n1bus_sims &lt;- tibble(\n  x = rexp(n = reps, rate = 1/10)\n  )\n\n2bus_sims |&gt;\n  summarise(\n3    prob_over_5   = mean(x &gt; 5),\n4    prob_5_more   = mean(x &gt; 8) / mean(x &gt; 3)\n  )\n\n\n1\n\nSimulate 10,000 waiting times for the bus, \\(X \\sim \\text{Exp}(1/10)\\).\n\n2\n\nOne row with a column for each probability.\n\n3\n\n\\(P(X &gt; 5)\\): the proportion of waits longer than 5 minutes.\n\n4\n\n\\(P(X &gt; 3 + 5 \\mid X &gt; 3) = P(X &gt; 8) / P(X &gt; 3)\\), the same conditional probability recipe as Lesson 9.\n\n\n\n\n# A tibble: 1 × 2\n  prob_over_5 prob_5_more\n        &lt;dbl&gt;       &lt;dbl&gt;\n1       0.609       0.612\n\n\n\n \n\n\nExact: both are \\(e^{-5/10} \\approx 0.6065\\)\n\n\n\nAt home: try other values of \\(a\\), like mean(x &gt; 15) / mean(x &gt; 10)"
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#transformation-of-independent-exponential-rvs",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#transformation-of-independent-exponential-rvs",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Transformation of independent exponential RVs",
+    "text": "Transformation of independent exponential RVs\n\n\nWe’ll use the CDF method (more in Lesson 14):\n\n\nExample 2\n\n\nLet \\(X_i \\sim \\textrm{Exp}(\\lambda_i)\\) be independent RVs, for \\(i=1 \\ldots n\\). Find the pdf for the first of the arrival times."
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#properties-of-gamma-rvs",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#properties-of-gamma-rvs",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Properties of gamma RVs",
+    "text": "Properties of gamma RVs\n\nScenario: Modeling the time until the \\(r^{th}\\) event.\nContinuous analog to the Negative Binomial distribution\nShorthand: \\(X \\sim \\text{Gamma}(r, \\lambda)\\) or \\(X \\sim \\text{Gamma}(\\alpha, \\beta)\\)\nSame as the sum of \\(r\\) independent waiting times: \\(X = \\sum_{i=1}^r Y_i\\), where \\(Y_i \\sim \\text{Exp}(\\lambda)\\)\n\n\\[\nf_X(x) = \\dfrac{\\lambda^r}{\\Gamma(r)}x^{r-1} e^{-\\lambda x}\\text{ for } x&gt;0, \\lambda&gt;0, \\Gamma(r) = (r-1)!\n\\]\n\\[\nF_X(x) = \\left\\{\n        \\begin{array}{ll}\n            0 & \\quad x&lt;0 \\quad \\\\\n            1 - e^{-\\lambda x}\\displaystyle\\sum_{j=0}^{r-1}\\dfrac{(\\lambda x)^j}{j!}  & \\quad x\\geq0 \\\\\n        \\end{array}\n    \\right.\n\\]\n\\[\\text{E}(X) = \\dfrac{r}{\\lambda}\\text{, }\\text{ Var}(X) = \\dfrac{r}{\\lambda^2}\\]\nCommon to see \\(\\alpha = r\\) and \\(\\beta = 1/\\lambda\\)"
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#identifying-gamma-rv-from-word-problems",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#identifying-gamma-rv-from-word-problems",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Identifying gamma RV from word problems",
+    "text": "Identifying gamma RV from word problems\n\nGamma distribution with \\(r=1\\) is same as exponential (both continuous)\n\nJust like Negative Binomial with \\(r=1\\) is same as the geometric distribution (both discrete)\n\nSimilar to exponential\n\nLook for time between or until events/successes\n\nBUT now we are measuring time until more than 1 success\n\nLook for a rate of the events over time period"
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#helpful-r-code-2",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#helpful-r-code-2",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Helpful R code",
+    "text": "Helpful R code\nLet’s say we’re sitting at the bus stop, measuring the time until 4 buses arrive. We know the bus comes every 10 minutes on average.\n\nIf we want to know the probability that the 4 buses arrive in the next 50 minutes:\n\n\n\n\n1pgamma(q = 50, rate = 1/10, shape = 4)\n\n\n1\n\nrate is \\(\\lambda\\) and shape is \\(r\\).\n\n\n\n\n[1] 0.7349741\n\n\n\n\n1pgamma(q = 50, scale = 10, shape = 4)\n\n\n1\n\nSame answer: scale is \\(\\beta = 1/\\lambda\\), so scale = 10 is the same as rate = 1/10.\n\n\n\n\n[1] 0.7349741\n\n\n\n\nIf we want to know the time, say \\(t\\), where the probability of the 4 buses arriving at \\(t\\) or earlier is 0.35:\n\n\n1qgamma(p = 0.35, rate = 1/10, shape = 4)\n\n\n1\n\nqgamma() is the inverse CDF, like qunif() and qexp().\n\n\n\n\n[1] 29.87645\n\n\n\nIf we want to know the probability that the 4 buses arrive between 30 and 50 minutes:\n\n\n1pgamma(q = 50, scale = 10, shape = 4) - pgamma(q = 30, scale = 10, shape = 4)\n\n\n1\n\n\\(F_X(50) - F_X(30)\\), with the CDF pgamma().\n\n\n\n\n[1] 0.382206\n\n\n\nIf we want to sample 20 arrival times for the 4 buses:\n\n\n1rgamma(n = 20, scale = 10, shape = 4)\n\n\n1\n\nEach value is one realized time until the 4th bus.\n\n\n\n\n [1] 20.23170 31.96416 19.67564 37.39946 43.21252 11.52238 27.08311 22.95557\n [9] 39.60133 32.48924 43.66935 40.58189 27.56440 23.44789 19.92940 45.44941\n[17] 46.49131 65.38541 54.62606 32.81682"
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#gamma-as-a-sum-of-exponentials-simulate",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#gamma-as-a-sum-of-exponentials-simulate",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Gamma as a sum of exponentials: simulate",
+    "text": "Gamma as a sum of exponentials: simulate\n\n\n\nSet up\n\n\n\n\nWait for 4 buses, one after another. Each wait is \\(Y_i \\sim \\text{Exp}(1/10)\\). \\(X = Y_1 + Y_2 + Y_3 + Y_4\\) is the total wait.\n\n\n\n\nSimulate\n\n\n\n\n\n\n1n_buses &lt;- 4\n\n2waits &lt;- expand_grid(sim = 1:reps, bus = 1:n_buses) |&gt;\n3  mutate(wait = rexp(n(), rate = 1/10))\n\n4X_sims &lt;- waits |&gt;\n  group_by(sim) |&gt;\n  summarise(X = sum(wait))\n\n\n1\n\nSave the number of buses as n_buses, so it is easy to change later.\n\n2\n\nOne row for every bus in every simulation, like the dice in Lesson 2.\n\n3\n\nGive each bus its own random waiting time from \\(\\text{Exp}(1/10)\\).\n\n4\n\nFor each simulation, add up the 4 waits to get \\(X\\), the time until the 4th bus.\n\n\n\n\n\n\n5head(X_sims)\n\n\n5\n\nThe first 6 simulated values of \\(X\\).\n\n\n\n\n# A tibble: 6 × 2\n    sim     X\n  &lt;int&gt; &lt;dbl&gt;\n1     1  20.2\n2     2  57.3\n3     3  22.1\n4     4  46.5\n5     5  49.2\n6     6  39.6"
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#gamma-as-a-sum-of-exponentials-summarize",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#gamma-as-a-sum-of-exponentials-summarize",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Gamma as a sum of exponentials: summarize",
+    "text": "Gamma as a sum of exponentials: summarize\n\n\n\nSummarize\n\n\n\n\n\n\n1X_sims |&gt;\n  summarise(\n2    average = mean(X),\n    std_dev = sd(X),\n3    prob_50 = mean(X &lt;= 50)\n  )\n\n\n1\n\nOne row of summaries of the 10,000 simulated values of \\(X\\).\n\n2\n\nCompare with \\(\\text{E}(X) = r/\\lambda = 40\\) and \\(SD(X) = \\sqrt{r/\\lambda^2} = 20\\).\n\n3\n\nCompare with pgamma(q = 50, rate = 1/10, shape = 4) \\(\\approx 0.7350\\).\n\n\n\n\n# A tibble: 1 × 3\n  average std_dev prob_50\n    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;\n1    40.1    20.1   0.731\n\n\n\n\n\nSensitivity analysis\n\n\n\n\nAt home: change to n_buses &lt;- 1. Does \\(X\\) look like \\(\\text{Exp}(1/10)\\), with average 10?\n\n\n\n\nPlot code\n4ggplot(X_sims, aes(x = X)) +\n5  geom_histogram(aes(y = after_stat(density)),\n                 binwidth = 5, boundary = 0,\n                 color = \"black\", fill = \"lightblue\") +\n6  geom_line(aes(y = dgamma(X, rate = 1/10, shape = n_buses)),\n            color = \"red\", linewidth = 1.5) +\n7  labs(title = \"Simulated X (bars) and\\nGamma(4, 1/10) pdf (red)\",\n       x = \"Minutes until the 4th bus\",\n       y = \"Density\") +\n  theme_minimal(base_size = 22)\n\n\n\n4\n\nStart with the 10,000 simulated values of \\(X\\).\n\n5\n\nA histogram scaled so the total area is 1, like a pdf (Lesson 8).\n\n6\n\nThe exact pdf: dgamma() gives \\(f_X(x)\\). It is a density, not \\(P(X = x)\\).\n\n7\n\nAdd a title and axis labels, with a clean theme and larger text."
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#remarks",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#remarks",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Remarks",
+    "text": "Remarks\n\nThe parameter \\(r\\) in a Gamma(\\(r\\),\\(\\lambda\\)) distribution does NOT need to be a positive integer\n\n\\(r\\) is usually a positive integer\n\nWhen \\(r\\) is a positive integer, the distribution is sometimes called an Erlang(\\(r\\),\\(\\lambda\\)) distribution\n\nErlang is a gamma with a whole-number \\(r\\)\n\n\n \n\nWhen \\(r\\) is any positive real number, we have a general gamma distribution that is usually instead parameterized by \\(\\alpha&gt;0\\) and \\(\\beta&gt;0\\), where:\n\n\\(\\alpha = \\text{shape parameter}\\) : same as \\(r\\), the total number of events we must witness\n\nIn R code example: 4 buses to wait for (shape = 4)\n\n\\(\\beta = \\text{scale parameter}\\) : same as \\(1/\\lambda\\), one over the rate parameter\n\nIn R code example: 1 bus per 10 minutes, so rate = 1/10 or scale = 10\nIn R: rate = 1/scale"
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#sending-money-orders",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#sending-money-orders",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Sending money orders",
+    "text": "Sending money orders\n\n\n\n\nExample 3\n\n\nOn average, someone sends a money order once per 15 minutes. What is the probability someone sends 10 money orders in less than 3 hours?"
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#additional-resource",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#additional-resource",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Additional Resource",
+    "text": "Additional Resource\n\nAnother helpful site with R code: https://rpubs.com/mpfoley73/459051"
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#properties-of-normal-rvs",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#properties-of-normal-rvs",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Properties of Normal RVs",
+    "text": "Properties of Normal RVs\n\nNo scenario description here because the Normal distribution is so universal\n\nCentral Limit Theorem (Lesson 17) makes it applicable to many types of events\n\nShorthand: \\(X \\sim \\text{Normal}(\\mu, \\sigma^2)\\)\n\nThe second parameter is the variance \\(\\sigma^2\\), but R’s *norm() functions use sd \\(= \\sigma\\)\n\n\n\\[\nf_X(x) = \\dfrac{1}{\\sqrt{2\\pi \\sigma^2}}e^{-(x-\\mu)^2/(2\\sigma^2)} \\text{, for} -\\infty &lt; x &lt; \\infty\n\\]\n\\[\\text{E}(X) = \\mu \\text{, } \\text{ Var}(X) = \\sigma^2 \\text{, } \\text{ SD}(X) = \\sigma\\]\n\nNo closed-form CDF: we use R (or a table) to find probabilities"
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#helpful-r-code-3",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#helpful-r-code-3",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Helpful R code",
+    "text": "Helpful R code\nLet’s say we’re measuring the high temperature today. The average high temperature on this day across many, many years is 50 degrees with a standard deviation of 4 degrees, so \\(X \\sim \\text{Normal}(50, 4^2)\\).\n\nIf we want to know the probability that the high temperature is below 45 degrees:\n\n\n1pnorm(q = 45, mean = 50, sd = 4)\n\n\n1\n\npnorm() is the CDF, \\(P(X \\leq 45)\\). Note sd = 4, not the variance 16.\n\n\n\n\n[1] 0.1056498\n\n\n\nIf we want to know the temperature, say \\(t\\), where the probability that the temperature is at \\(t\\) or lower is 0.35 (inverse CDF):\n\n\n1qnorm(p = 0.35, mean = 50, sd = 4)\n\n\n1\n\nqnorm() is the inverse CDF: it finds \\(t\\) with \\(P(X \\leq t) = 0.35\\).\n\n\n\n\n[1] 48.45872\n\n\n\nIf we want to know the probability that the temperature is between 45 and 50 degrees:\n\n\n1pnorm(q = 50, mean = 50, sd = 4) - pnorm(q = 45, mean = 50, sd = 4)\n\n\n1\n\n\\(P(45 \\leq X \\leq 50) = F_X(50) - F_X(45)\\).\n\n\n\n\n[1] 0.3943502\n\n\n\nIf we want to sample 20 days’ temperature (over the years) from the distribution:\n\n\n1rnorm(n = 20, mean = 50, sd = 4)\n\n\n1\n\nrnorm() draws 20 random high temperatures.\n\n\n\n\n [1] 52.14363 53.25506 61.21263 54.28228 51.55782 49.11686 42.00588 51.45593\n [9] 50.83036 57.22362 50.75557 48.86826 49.12262 51.57961 51.71904 51.13177\n[17] 52.89919 47.52842 50.90655 50.24362"
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#movie-night-while-studying",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#movie-night-while-studying",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Movie night while studying",
+    "text": "Movie night while studying\n\n\n\n\nExample 4\n\n\nChildren’s movies run an average of 98 minutes with a standard deviation of 10 minutes. You check out a random movie from the library to entertain your kids so you can study for your test. Assume that your kids will be occupied for the entire length of the movie.\n\nWhat is the probability that your kids will be occupied for at least the 2 hours you would like to study?\nWhat is range for the bottom quartile (lowest 25%) of time they will be occupied?"
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#check-examples-3-and-4-with-r",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#check-examples-3-and-4-with-r",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Check Examples 3 and 4 with R",
+    "text": "Check Examples 3 and 4 with R\n\n\nExample 3: \\(X\\) = hours until the 10th money order. 1 per 15 minutes is \\(\\lambda = 4\\) per hour.\n\n1pgamma(q = 3, shape = 10, rate = 4)\n\n\n1\n\n\\(P(X \\leq 3)\\) for \\(X \\sim \\text{Gamma}(10, 4)\\). Keep the units the same: time in hours, so the rate is per hour.\n\n\n\n\n[1] 0.7576078\n\n\n \nExample 4: \\(X\\) = movie length in minutes, \\(X \\sim \\text{Normal}(98, 10^2)\\). Watch the units: 2 hours is 120 minutes.\n\n2pnorm(q = 120, mean = 98, sd = 10, lower.tail = FALSE)\n3qnorm(p = 0.25, mean = 98, sd = 10)\n\n\n2\n\nPart a: \\(P(X \\geq 120)\\). lower.tail = FALSE gives the upper tail, \\(P(X &gt; q)\\), instead of the CDF. Same as 1 - pnorm(q = 120, mean = 98, sd = 10).\n\n3\n\nPart b: the bottom quartile is \\(X \\leq t\\), where \\(P(X \\leq t) = 0.25\\).\n\n\n\n\n[1] 0.01390345\n[1] 91.2551"
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#standard-normal-distribution",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#standard-normal-distribution",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Standard Normal Distribution",
+    "text": "Standard Normal Distribution\n\\[ Z \\sim \\text{Normal}(\\mu = 0, \\sigma^2 = 1)\\]\n\nUsed to be more helpful when computing was not as advanced\n\nUse tables of the standard normal\nYou can convert any normal distribution to a standard normal through transformation\n\nFor \\(X \\sim \\text{Normal}(\\mu_X, \\sigma_X^2)\\): \\(Z = \\dfrac{X - \\mu_X}{\\sigma_X}\\)\n\nComes from \\(X = \\sigma_X Z + \\mu_X\\)\nSince \\(\\sigma_X\\) and \\(\\mu_X\\) are constants, then \\(E(X) = \\sigma_X E(Z) + \\mu_X = \\mu_X\\) and \\(SD(X) = \\sigma_X\\)"
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#chi-squared-distribution",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#chi-squared-distribution",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Chi-squared distribution",
+    "text": "Chi-squared distribution\n\n\n\nIf \\(Z \\sim \\text{Normal}(0,1)\\), then \\(X = Z^2\\) has a Chi-squared distribution with 1 degree of freedom\n\nShorthand: \\(X \\sim \\chi^2_{(1)}\\)\n\nIf \\(Z_1, Z_2, \\ldots, Z_n\\) are independent standard normal RVs, then\n\\[X = \\sum_{i=1}^n Z_i^2\\]\nhas a Chi-squared distribution with \\(n\\) degrees of freedom\n\nShorthand: \\(X \\sim \\chi^2_{(n)}\\)\n\\(X\\) is always positive (a sum of squares)"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs_key_info.html",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs_key_info.html",
+    "title": "Key Info",
+    "section": "",
+    "text": "Quiz 2 opens today!!\n\nThere are some integrals (no integral by parts or u-substitution)\n\nYou can use an integral solver"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs_key_info.html#announcements",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs_key_info.html#announcements",
+    "title": "Key Info",
+    "section": "",
+    "text": "Quiz 2 opens today!!\n\nThere are some integrals (no integral by parts or u-substitution)\n\nYou can use an integral solver"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs_key_info.html#key-dates",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs_key_info.html#key-dates",
+    "title": "Key Info",
+    "section": "Key Dates",
+    "text": "Key Dates\n\nCheckpoint 1 resubmission due TODAY 11/4! (on Brightspace)\nHomework 4 due 11/08 at 11pm\nQuiz 2 opens on 11/04 at 3pm\n\nCloses 11/08 at 11pm"
+  },
+  {
+    "objectID": "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.html#finding-a-distribution-from-its-mgf",
+    "href": "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.html#finding-a-distribution-from-its-mgf",
+    "title": "Lesson 18: Moment Generating Functions",
+    "section": "Finding a distribution from its MGF",
+    "text": "Finding a distribution from its MGF\n\n\n\n\nExample 11\n\n\nLet \\(X\\) be a random variable with MGF \\[M_X(t)= \\frac{1}{5}e^t + \\frac{3}{10}e^{2t} + \\frac{1}{2}e^{3t}.\\] Find the pmf or pdf of \\(X\\)."
+  },
+  {
+    "objectID": "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.html#mgfs-of-linear-transformations",
+    "href": "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.html#mgfs-of-linear-transformations",
+    "title": "Lesson 18: Moment Generating Functions",
+    "section": "MGFs of linear transformations",
+    "text": "MGFs of linear transformations\n\n\nTheorem 12\n\n\nLet \\(X\\) have MGF \\(M_X(t)\\), and let \\(Y=aX+b\\), where \\(a\\) and \\(b\\) are constants. Then \\[M_Y(t)=\\]\n\n\n\nProof."
+  },
+  {
+    "objectID": "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.html#using-the-mgf-to-describe-the-normal-distribution",
+    "href": "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.html#using-the-mgf-to-describe-the-normal-distribution",
+    "title": "Lesson 18: Moment Generating Functions",
+    "section": "Using the MGF to describe the normal distribution",
+    "text": "Using the MGF to describe the normal distribution\n\n\n\n\nExample 13\n\n\nLet \\(X\\) be a normal random variable with mean \\(\\mu\\) and variance \\(\\sigma^2\\), i.e. \\(X \\sim N(\\mu,\\sigma^2)\\).\n\nFind the MGF of \\(X\\)\nFind \\(\\mathbb{E}[X]\\)\nFind \\(Var(X)\\)"
+  },
+  {
+    "objectID": "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.html#do-linear-transformations-preserve-the-distribution-type",
+    "href": "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.html#do-linear-transformations-preserve-the-distribution-type",
+    "title": "Lesson 18: Moment Generating Functions",
+    "section": "Do linear transformations preserve the distribution type?",
+    "text": "Do linear transformations preserve the distribution type?\nQuestion: If \\(X\\) has a certain probability distribution, does \\(aX+b\\) always have the same distribution type?\n\n\n\n\nExample 14\n\n\nLet \\(X \\sim U[0,1]\\), and \\(Y = 2X+3\\). Is \\(Y\\) also a uniform RV? If so, what are its parameters?"
+  },
+  {
+    "objectID": "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.html#do-linear-transformations-preserve-the-distribution-type-1",
+    "href": "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.html#do-linear-transformations-preserve-the-distribution-type-1",
+    "title": "Lesson 18: Moment Generating Functions",
+    "section": "Do linear transformations preserve the distribution type?",
+    "text": "Do linear transformations preserve the distribution type?\n\n\n\n\nExample 15\n\n\nLet \\(X \\sim Exp(\\lambda=5)\\), and \\(Y = 2X+3\\). Is \\(Y\\) also an exponential RV? If so, what is its parameter?"
+  },
+  {
+    "objectID": "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.html#mgfs-of-linear-combinations-of-independent-rvs",
+    "href": "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.html#mgfs-of-linear-combinations-of-independent-rvs",
+    "title": "Lesson 18: Moment Generating Functions",
+    "section": "MGFs of linear combinations of independent RV’s",
+    "text": "MGFs of linear combinations of independent RV’s\n\n\nTheorem 17\n\n\nLet \\(X_1, X_2, \\ldots, X_n\\) be independent RV’s with respective MGFs \\(M_{X_i}(t)\\), for \\(i=1,2,\\ldots,n\\). Let \\(Y=\\sum_{i=1}^n a_iX_i\\), where \\(a_i\\) are constants. Then \\[M_Y(t)= %\\Pi_{i=1}^n M_{X_i}(a_it).\\]\n\n\n\nProof."
+  },
+  {
+    "objectID": "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.html#sums-of-independent-normal-rvs",
+    "href": "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.html#sums-of-independent-normal-rvs",
+    "title": "Lesson 18: Moment Generating Functions",
+    "section": "Sums of independent normal RV’s",
+    "text": "Sums of independent normal RV’s\n\n\n\n\nExample 18\n\n\nLet \\(X_i \\sim N(\\mu_i, \\sigma_i^2)\\) be independent normal RV’s. What is the distribution of \\(Y=\\sum_{i=1}^n X_i\\)?"
+  },
+  {
+    "objectID": "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.html#the-sample-mean-of-iid-normal-rvs",
+    "href": "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.html#the-sample-mean-of-iid-normal-rvs",
+    "title": "Lesson 18: Moment Generating Functions",
+    "section": "The sample mean of iid normal RV’s",
+    "text": "The sample mean of iid normal RV’s\n\n\n\n\nExample 19\n\n\nLet \\(X_i \\sim N(\\mu, \\sigma^2)\\) be iid normal RV’s, for \\(i=1,2,\\ldots,n\\). What is the distribution of \\(\\bar{X}=\\frac{\\sum_{i=1}^n X_i}{n}\\)?"
+  },
+  {
+    "objectID": "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.html#connecting-the-normal-and-chi-squared-distributions",
+    "href": "lessons/18_Moment_Generating_Functions/18_Moment_Generating_Functions.html#connecting-the-normal-and-chi-squared-distributions",
+    "title": "Lesson 18: Moment Generating Functions",
+    "section": "Connecting the normal and chi-squared distributions",
+    "text": "Connecting the normal and chi-squared distributions\n\n\n\n\nExample 20\n\n\nLet \\(Z\\) be a standard normal random variable, i.e. \\(Z \\sim N(0,1)\\). Show that \\(Z^2 \\sim \\chi_1^2\\), i.e. is a chi-squared RV with 1 degree of freedom (Lesson 13)."
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations.html#distributions-of-transformations-of-random-variables",
+    "href": "lessons/14_Transformations/14_Transformations.html#distributions-of-transformations-of-random-variables",
+    "title": "Lesson 14: Transformations",
+    "section": "",
+    "text": "Often make transformations of RVs\nA function of a random variable is a random variable\n\nIf \\(X\\) is a random variable and \\(g\\) is a function then \\(Y=g(X)\\) is a random variable\nSince \\(g(X)\\) is a random variable it has a distribution\n\nDistribution of \\(g(X)\\) will have a different shape than the distribution of \\(X\\)\nTwo types:\n\nLinear rescalings: \\(g(u) = a + bu\\)\nNonlinear transformations: e.g. \\(g(u) = u^2\\), \\(g(u) = \\log(u)\\)\n\nWe’ve already seen one! In Lesson 9, we simulated \\(X\\) by plugging a Uniform(0, 1) value into the inverse CDF"
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations.html#example-of-linear-rescaling-14",
+    "href": "lessons/14_Transformations/14_Transformations.html#example-of-linear-rescaling-14",
+    "title": "Lesson 14: Transformations",
+    "section": "Example of linear rescaling (1/4)",
+    "text": "Example of linear rescaling (1/4)\n\n\nExample 1: Linear rescaling of \\(U\\)\n\n\nLet \\(U\\) be a random variable with \\(f_U(u)= \\dfrac{4}{15}u^3\\) for \\(1\\leq u \\leq 2\\). Define \\(V=1-U\\)\n\nWhat are the possible values of \\(V\\)?\nIs \\(V\\) the same random variable as \\(U\\)?\nFind \\(P(V \\le -0.5)\\).\nFind the pdf of \\(V\\).\nDoes \\(V\\) have the same distribution as \\(U\\)?"
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations.html#example-of-linear-rescaling-24",
+    "href": "lessons/14_Transformations/14_Transformations.html#example-of-linear-rescaling-24",
+    "title": "Lesson 14: Transformations",
+    "section": "Example of linear rescaling (2/4)",
+    "text": "Example of linear rescaling (2/4)\n\n\nExample 1: Linear rescaling of \\(U\\)\n\n\nLet \\(U\\) be a random variable with \\(f_U(u)= \\dfrac{4}{15}u^3\\) for \\(1\\leq u \\leq 2\\). Define \\(V=1-U\\)\n\nWhat are the possible values of \\(V\\)?\nIs \\(V\\) the same random variable as \\(U\\)?"
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations.html#example-of-linear-rescaling-34",
+    "href": "lessons/14_Transformations/14_Transformations.html#example-of-linear-rescaling-34",
+    "title": "Lesson 14: Transformations",
+    "section": "Example of linear rescaling (3/4)",
+    "text": "Example of linear rescaling (3/4)\n\n\nExample 1: Linear rescaling of \\(U\\)\n\n\nLet \\(U\\) be a random variable with \\(f_U(u)= \\dfrac{4}{15}u^3\\) for \\(1\\leq u \\leq 2\\). Define \\(V=1-U\\)\n\nFind \\(P(V \\le -0.5)\\).\n\n\n\n\nHint: rewrite the event \\(V \\leq -0.5\\) in terms of \\(U\\), then use \\(P(a \\leq U \\leq b) = \\int_a^b f_U(u)\\,du\\)"
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations.html#example-of-linear-rescaling-44",
+    "href": "lessons/14_Transformations/14_Transformations.html#example-of-linear-rescaling-44",
+    "title": "Lesson 14: Transformations",
+    "section": "Example of linear rescaling (4/4)",
+    "text": "Example of linear rescaling (4/4)\n\n\nExample 1: Linear rescaling of \\(U\\)\n\n\nLet \\(U\\) be a random variable with \\(f_U(u)= \\dfrac{4}{15}u^3\\) for \\(1\\leq u \\leq 2\\). Define \\(V=1-U\\)\n\nFind the pdf of \\(V\\).\nDoes \\(V\\) have the same distribution as \\(U\\)?"
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations.html#lets-simulate-example-1-summarize",
+    "href": "lessons/14_Transformations/14_Transformations.html#lets-simulate-example-1-summarize",
+    "title": "Lesson 14: Transformations",
+    "section": "Let’s simulate Example 1: summarize",
+    "text": "Let’s simulate Example 1: summarize\n\n\n\n1u_sims |&gt;\n  summarise(\n2    prob_V = mean(v &lt;= -0.5),\n3    prob_U = mean(u &gt;= 1.5)\n  )\n\n\n1\n\nOne row of summaries of the 10,000 simulations.\n\n2\n\nThe proportion of simulations with \\(V \\leq -0.5\\) approximates \\(P(V \\leq -0.5)\\).\n\n3\n\nSame answer: \\(V \\leq -0.5\\) is the same event as \\(U \\geq 1.5\\).\n\n\n\n\n# A tibble: 1 × 2\n  prob_V prob_U\n   &lt;dbl&gt;  &lt;dbl&gt;\n1  0.730  0.730\n\n\n\n\nFrom Example 1.3: \\(P(V \\leq -0.5) = \\dfrac{2^4 - 1.5^4}{15} \\approx 0.7292\\)\n\n\n\n\n\nPlot code\n4ggplot(u_sims) +\n5  geom_histogram(aes(x = u, y = after_stat(density)),\n                 binwidth = 0.05, boundary = 1,\n                 color = \"black\", fill = \"lightblue\") +\n6  geom_histogram(aes(x = v, y = after_stat(density)),\n                 binwidth = 0.05, boundary = -1,\n                 color = \"black\", fill = \"#E89543\") +\n7  labs(title = \"Simulated U (blue) and V = 1 - U (orange)\",\n       x = \"Value\", y = \"Density\")\n\n\n\n4\n\nStart a plot of the simulations. Each histogram below picks its own column.\n\n5\n\nHistogram of the simulated u values, scaled like a pdf (Lesson 8).\n\n6\n\nHistogram of the simulated v values, on the same axes.\n\n7\n\nAdd a title and axis labels."
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations.html#lets-simulate-example-2",
+    "href": "lessons/14_Transformations/14_Transformations.html#lets-simulate-example-2",
+    "title": "Lesson 14: Transformations",
+    "section": "Let’s simulate Example 2",
+    "text": "Let’s simulate Example 2\n\n\n\n1u_sims &lt;- u_sims |&gt;\n2  mutate(log_u = log(u))\n\n3u_sims |&gt;\n  summarise(\n    prob_half = mean(log_u &lt;= 0.5)\n  )\n\n\n1\n\nReuse the 10,000 simulated values of \\(U\\) from Example 1.\n\n2\n\nThe nonlinear transformation: \\(V = \\log(U)\\). We name the column log_u so it does not replace v \\(= 1 - U\\) from Example 1.\n\n3\n\nThe proportion of simulations with \\(\\log(U) \\leq 0.5\\) approximates the CDF of \\(V\\) at 0.5.\n\n\n\n\n# A tibble: 1 × 1\n  prob_half\n      &lt;dbl&gt;\n1     0.424\n\n\n\n\nCDF method: \\(F_V(0.5) = \\dfrac{e^{4(0.5)} - 1}{15} \\approx 0.4260\\)\n\n\n\nWhy not substitute \\(u = e^v\\) into \\(f_U\\)? That gives \\(\\frac{4}{15}e^{3v}\\) (dashed), which does not match!\n\n\n\n\nPlot code\n4ggplot(u_sims, aes(x = log_u)) +\n  geom_histogram(aes(y = after_stat(density)),\n                 binwidth = log(2) / 30, boundary = 0,\n                 color = \"black\", fill = \"lightblue\") +\n5  geom_line(aes(y = 4/15 * exp(4 * log_u)),\n            color = \"red\", linewidth = 1.5) +\n6  geom_line(aes(y = 4/15 * exp(3 * log_u)),\n            linetype = \"dashed\", linewidth = 1.5) +\n7  labs(title = \"Simulated V = log(U)\",\n       x = \"v\", y = \"Density\")\n\n\n\n4\n\nHistogram of the simulated values of \\(V = \\log(U)\\), scaled like a pdf, with 30 bars between 0 and \\(\\log(2)\\).\n\n5\n\nThe pdf from the CDF method, \\(f_V(v) = \\frac{4}{15}e^{4v}\\), in red.\n\n6\n\nThe wrong guess from substituting \\(u = e^v\\) into \\(f_U\\), dashed.\n\n7\n\nAdd a title and axis labels."
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations.html#lets-simulate-example-3",
+    "href": "lessons/14_Transformations/14_Transformations.html#lets-simulate-example-3",
+    "title": "Lesson 14: Transformations",
+    "section": "Let’s simulate Example 3",
+    "text": "Let’s simulate Example 3\n\n\n\n1x_sims &lt;- tibble(\n  x = runif(n = reps, min = -1, max = 1)\n  ) |&gt;\n2  mutate(y = x^2)\n\n3x_sims |&gt;\n  summarise(\n    prob_quarter = mean(y &lt;= 0.25)\n  )\n\n\n1\n\n\\(X \\sim \\text{U}[-1, 1]\\) has \\(f_X(x) = \\frac{1}{2}\\), so we can simulate it with runif().\n\n2\n\nThe nonlinear transformation: square each simulated x.\n\n3\n\nThe proportion of simulations with \\(Y \\leq 0.25\\) approximates the CDF of \\(Y\\) at 0.25.\n\n\n\n\n# A tibble: 1 × 1\n  prob_quarter\n         &lt;dbl&gt;\n1        0.505\n\n\n\n\nCDF method: \\(F_Y(0.25) = \\sqrt{0.25} = 0.5\\)\n\n\n\n\\(X\\) was flat, but \\(Y = X^2\\) piles up near 0: the shape changed!\n\n\n\n\nPlot code\n4ggplot(x_sims, aes(x = y)) +\n  geom_histogram(aes(y = after_stat(density)),\n                 binwidth = 0.02, boundary = 0,\n                 color = \"black\", fill = \"lightblue\") +\n5  geom_line(aes(y = 1 / (2 * sqrt(y))),\n            color = \"red\", linewidth = 1.5) +\n6  coord_cartesian(ylim = c(0, 5)) +\n7  labs(title = \"Simulated Y = X^2\",\n       x = \"y\", y = \"Density\")\n\n\n\n4\n\nHistogram of the simulated values of \\(Y\\), scaled like a pdf.\n\n5\n\nThe pdf from the CDF method, \\(f_Y(y) = \\frac{1}{2\\sqrt{y}}\\), in red.\n\n6\n\ncoord_cartesian() zooms the y-axis to 0 to 5, because \\(f_Y(y)\\) shoots up near \\(y = 0\\).\n\n7\n\nAdd a title and axis labels."
   }
 ]

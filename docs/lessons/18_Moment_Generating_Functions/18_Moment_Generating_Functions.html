@@ -181,7 +181,16 @@ window.Quarto = {
   <li><a href="#using-r_xt-to-uniquely-describe-a-probability-distribution" id="toc-using-r_xt-to-uniquely-describe-a-probability-distribution" class="nav-link" data-scroll-target="#using-r_xt-to-uniquely-describe-a-probability-distribution">Using <span class="math inline">\(R_X(t)\)</span> to uniquely describe a probability distribution</a></li>
   <li><a href="#using-the-mgf-to-uniquely-describe-the-standard-normal-distribution" id="toc-using-the-mgf-to-uniquely-describe-the-standard-normal-distribution" class="nav-link" data-scroll-target="#using-the-mgf-to-uniquely-describe-the-standard-normal-distribution">Using the MGF to uniquely describe the standard normal distribution</a></li>
   <li><a href="#using-the-mgf-to-uniquely-describe-the-standard-normal-distribution-1" id="toc-using-the-mgf-to-uniquely-describe-the-standard-normal-distribution-1" class="nav-link" data-scroll-target="#using-the-mgf-to-uniquely-describe-the-standard-normal-distribution-1">Using the MGF to uniquely describe the standard normal distribution</a></li>
+  <li><a href="#finding-a-distribution-from-its-mgf" id="toc-finding-a-distribution-from-its-mgf" class="nav-link" data-scroll-target="#finding-a-distribution-from-its-mgf">Finding a distribution from its MGF</a></li>
+  <li><a href="#mgfs-of-linear-transformations" id="toc-mgfs-of-linear-transformations" class="nav-link" data-scroll-target="#mgfs-of-linear-transformations">MGFs of linear transformations</a></li>
+  <li><a href="#using-the-mgf-to-describe-the-normal-distribution" id="toc-using-the-mgf-to-describe-the-normal-distribution" class="nav-link" data-scroll-target="#using-the-mgf-to-describe-the-normal-distribution">Using the MGF to describe the normal distribution</a></li>
+  <li><a href="#do-linear-transformations-preserve-the-distribution-type" id="toc-do-linear-transformations-preserve-the-distribution-type" class="nav-link" data-scroll-target="#do-linear-transformations-preserve-the-distribution-type">Do linear transformations preserve the distribution type?</a></li>
+  <li><a href="#do-linear-transformations-preserve-the-distribution-type-1" id="toc-do-linear-transformations-preserve-the-distribution-type-1" class="nav-link" data-scroll-target="#do-linear-transformations-preserve-the-distribution-type-1">Do linear transformations preserve the distribution type?</a></li>
   <li><a href="#mgfs-of-sums-of-independent-rvs" id="toc-mgfs-of-sums-of-independent-rvs" class="nav-link" data-scroll-target="#mgfs-of-sums-of-independent-rvs">MGFs of sums of independent RV’s</a></li>
+  <li><a href="#mgfs-of-linear-combinations-of-independent-rvs" id="toc-mgfs-of-linear-combinations-of-independent-rvs" class="nav-link" data-scroll-target="#mgfs-of-linear-combinations-of-independent-rvs">MGFs of linear combinations of independent RV’s</a></li>
+  <li><a href="#sums-of-independent-normal-rvs" id="toc-sums-of-independent-normal-rvs" class="nav-link" data-scroll-target="#sums-of-independent-normal-rvs">Sums of independent normal RV’s</a></li>
+  <li><a href="#the-sample-mean-of-iid-normal-rvs" id="toc-the-sample-mean-of-iid-normal-rvs" class="nav-link" data-scroll-target="#the-sample-mean-of-iid-normal-rvs">The sample mean of iid normal RV’s</a></li>
+  <li><a href="#connecting-the-normal-and-chi-squared-distributions" id="toc-connecting-the-normal-and-chi-squared-distributions" class="nav-link" data-scroll-target="#connecting-the-normal-and-chi-squared-distributions">Connecting the normal and chi-squared distributions</a></li>
   <li><a href="#main-takeaways" id="toc-main-takeaways" class="nav-link" data-scroll-target="#main-takeaways">Main takeaways</a></li>
   <li><a href="#more-resources" id="toc-more-resources" class="nav-link" data-scroll-target="#more-resources">More resources</a></li>
   </ul>
@@ -227,6 +236,7 @@ window.Quarto = {
 <li>Learn the definition of a moment-generating function.</li>
 <li>Find the moment-generating function of a random variable.</li>
 <li>Use a moment-generating function to find the mean and variance of a random variable.</li>
+<li>Use moment-generating functions to find the distribution of linear transformations and sums of independent random variables.</li>
 </ol>
 </section>
 <section id="where-are-we" class="level2">
@@ -415,15 +425,154 @@ window.Quarto = {
 <section id="using-the-mgf-to-uniquely-describe-the-standard-normal-distribution-1" class="level2">
 <h2 class="anchored" data-anchor-id="using-the-mgf-to-uniquely-describe-the-standard-normal-distribution-1">Using the MGF to uniquely describe the standard normal distribution</h2>
 </section>
+<section id="finding-a-distribution-from-its-mgf" class="level2">
+<h2 class="anchored" data-anchor-id="finding-a-distribution-from-its-mgf">Finding a distribution from its MGF</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="example">
+<div class="ex-title">
+<p>Example 11</p>
+</div>
+<div class="ex-cont">
+<p>Let <span class="math inline">\(X\)</span> be a random variable with MGF <span class="math display">\[M_X(t)= \frac{1}{5}e^t + \frac{3}{10}e^{2t} + \frac{1}{2}e^{3t}.\]</span> Find the pmf or pdf of <span class="math inline">\(X\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="mgfs-of-linear-transformations" class="level2">
+<h2 class="anchored" data-anchor-id="mgfs-of-linear-transformations">MGFs of linear transformations</h2>
+<div class="theorem">
+<div class="thm-title">
+<p>Theorem 12</p>
+</div>
+<div class="thm-cont">
+<p>Let <span class="math inline">\(X\)</span> have MGF <span class="math inline">\(M_X(t)\)</span>, and let <span class="math inline">\(Y=aX+b\)</span>, where <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are constants. Then <span class="math display">\[M_Y(t)=\]</span></p>
+</div>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span></p>
+</div>
+</section>
+<section id="using-the-mgf-to-describe-the-normal-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="using-the-mgf-to-describe-the-normal-distribution">Using the MGF to describe the normal distribution</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="example">
+<div class="ex-title">
+<p>Example 13</p>
+</div>
+<div class="ex-cont">
+<p>Let <span class="math inline">\(X\)</span> be a normal random variable with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>, i.e.&nbsp;<span class="math inline">\(X \sim N(\mu,\sigma^2)\)</span>.</p>
+<ol type="1">
+<li><p>Find the MGF of <span class="math inline">\(X\)</span></p></li>
+<li><p>Find <span class="math inline">\(\mathbb{E}[X]\)</span></p></li>
+<li><p>Find <span class="math inline">\(Var(X)\)</span></p></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="do-linear-transformations-preserve-the-distribution-type" class="level2">
+<h2 class="anchored" data-anchor-id="do-linear-transformations-preserve-the-distribution-type">Do linear transformations preserve the distribution type?</h2>
+<p><strong>Question:</strong> If <span class="math inline">\(X\)</span> has a certain probability distribution, does <span class="math inline">\(aX+b\)</span> always have the same distribution type?</p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="example">
+<div class="ex-title">
+<p>Example 14</p>
+</div>
+<div class="ex-cont">
+<p>Let <span class="math inline">\(X \sim U[0,1]\)</span>, and <span class="math inline">\(Y = 2X+3\)</span>. Is <span class="math inline">\(Y\)</span> also a uniform RV? If so, what are its parameters?</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="do-linear-transformations-preserve-the-distribution-type-1" class="level2">
+<h2 class="anchored" data-anchor-id="do-linear-transformations-preserve-the-distribution-type-1">Do linear transformations preserve the distribution type?</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="example">
+<div class="ex-title">
+<p>Example 15</p>
+</div>
+<div class="ex-cont">
+<p>Let <span class="math inline">\(X \sim Exp(\lambda=5)\)</span>, and <span class="math inline">\(Y = 2X+3\)</span>. Is <span class="math inline">\(Y\)</span> also an exponential RV? If so, what is its parameter?</p>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="mgfs-of-sums-of-independent-rvs" class="level2">
 <h2 class="anchored" data-anchor-id="mgfs-of-sums-of-independent-rvs">MGFs of sums of independent RV’s</h2>
 <div class="theorem">
 <div class="thm-title">
-<p>Theorem 9</p>
+<p>Theorem 16</p>
 </div>
 <div class="thm-cont">
 <p>If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent RV’s with respective MGFs <span class="math inline">\(M_X(t)\)</span> and <span class="math inline">\(M_Y(t)\)</span>, then</p>
 <p><span class="math display">\[M_{X+Y}(t) = E[e^{t(X+Y)}] = E[e^{tX} e^{tY}] = E[e^{tX}]E[e^{tY}]=M_{X}(t)M_{Y}(t)\]</span></p>
+</div>
+</div>
+</section>
+<section id="mgfs-of-linear-combinations-of-independent-rvs" class="level2">
+<h2 class="anchored" data-anchor-id="mgfs-of-linear-combinations-of-independent-rvs">MGFs of linear combinations of independent RV’s</h2>
+<div class="theorem">
+<div class="thm-title">
+<p>Theorem 17</p>
+</div>
+<div class="thm-cont">
+<p>Let <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> be independent RV’s with respective MGFs <span class="math inline">\(M_{X_i}(t)\)</span>, for <span class="math inline">\(i=1,2,\ldots,n\)</span>. Let <span class="math inline">\(Y=\sum_{i=1}^n a_iX_i\)</span>, where <span class="math inline">\(a_i\)</span> are constants. Then <span class="math display">\[M_Y(t)= %\Pi_{i=1}^n M_{X_i}(a_it).\]</span></p>
+</div>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span></p>
+</div>
+</section>
+<section id="sums-of-independent-normal-rvs" class="level2">
+<h2 class="anchored" data-anchor-id="sums-of-independent-normal-rvs">Sums of independent normal RV’s</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="example">
+<div class="ex-title">
+<p>Example 18</p>
+</div>
+<div class="ex-cont">
+<p>Let <span class="math inline">\(X_i \sim N(\mu_i, \sigma_i^2)\)</span> be independent normal RV’s. What is the distribution of <span class="math inline">\(Y=\sum_{i=1}^n X_i\)</span>?</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-sample-mean-of-iid-normal-rvs" class="level2">
+<h2 class="anchored" data-anchor-id="the-sample-mean-of-iid-normal-rvs">The sample mean of iid normal RV’s</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="example">
+<div class="ex-title">
+<p>Example 19</p>
+</div>
+<div class="ex-cont">
+<p>Let <span class="math inline">\(X_i \sim N(\mu, \sigma^2)\)</span> be iid normal RV’s, for <span class="math inline">\(i=1,2,\ldots,n\)</span>. What is the distribution of <span class="math inline">\(\bar{X}=\frac{\sum_{i=1}^n X_i}{n}\)</span>?</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="connecting-the-normal-and-chi-squared-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="connecting-the-normal-and-chi-squared-distributions">Connecting the normal and chi-squared distributions</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="example">
+<div class="ex-title">
+<p>Example 20</p>
+</div>
+<div class="ex-cont">
+<p>Let <span class="math inline">\(Z\)</span> be a standard normal random variable, i.e.&nbsp;<span class="math inline">\(Z \sim N(0,1)\)</span>. Show that <span class="math inline">\(Z^2 \sim \chi_1^2\)</span>, i.e.&nbsp;is a chi-squared RV with 1 degree of freedom (Lesson 13).</p>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -444,7 +593,10 @@ window.Quarto = {
 <ul>
 <li>Make the calculation easier!</li>
 </ul></li>
-<li><p>MGFs are often used to prove certain distribution are sums of other ones!</p></li>
+<li><p>MGFs are often used to prove certain distribution are sums of other ones!</p>
+<ul>
+<li>For example: sums of independent normal RVs are normal, and <span class="math inline">\(Z^2\)</span> is chi-squared</li>
+</ul></li>
 </ul>
 </section>
 <section id="more-resources" class="level2">

@@ -67,27 +67,7 @@ $$\text{E}(X) = p$$
 
 $$\text{Var}(X) = pq = p(1-p) \quad \text{ where } q = 1-p$$
 
-## Bernoulli Example 1
-
-::::::: columns
-:::::: {.column width="35%"}
-::::: example
-::: ex-title
-Example 1
-:::
-
-::: ex-cont
--   We roll a fair 6-sided die.
-
--   We get \$1 if we roll a 5, and nothing otherwise.
-
--   Let $X$ be how much money we get.
-
--   Find the mean and variance of $X$.
-:::
-:::::
-::::::
-:::::::
+- We've seen a few examples of Bernoulli distributions: ( @claude name some of the examples and give the lesson)
 
 # Binomial RVs {#chapter-15-binomial-RVs .unnumbered}
 

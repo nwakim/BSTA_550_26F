@@ -1,0 +1,145 @@
+---
+title: "Muddy Points"
+subtitle: "Chapter 25: Joint densities"
+date: "11/20/2024"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+editor_options: 
+  chunk_output_type: console
+---
+
+Muddy points from Fall 2023:
+
+### 1. How do pdf, CDF, and probability interact with each other?
+
+Let's say we have a pdf, $f_X(x) = \dfrac{1}{9}x^2$ for $0 \leq x \leq 3$. This is just a function. The pdf is not used on its own to report any probability. We must integrate over the pdf to find a probability.
+
+```{r}
+library("ggplot2")
+eq = function(x){(1/9)*x^2}
+ggplot(data.frame(x=c(1, 50)), aes(x=x)) + 
+  stat_function(fun=eq) +
+  xlab("x") + ylab("pdf") +
+  xlim(0,3)
+```
+
+The total area under the pdf is 1. This makes our pdf valid.
+
+```{r}
+eq = function(x){(1/9)*x^2}
+ggplot(data.frame(x=c(1, 50)), aes(x=x)) + 
+  stat_function(fun=eq) +
+  xlab("x") + ylab("pdf") +
+  xlim(0,3) +
+  stat_function(fun=eq, 
+                xlim = c(0, 3),
+                geom = "area", 
+                aes(fill = "red")) +
+  theme(legend.position = "none") +
+  annotate("text", x = 0.5, y = 0.7, label = "AUC = 1", color = "black")
+```
+
+If we only look at a proportion of the area under the pdf, then we start constructing our probabilities. For example, we can look at probability that we have a value between 0 and 1.5.
+
+```{r}
+ggplot(data.frame(x=c(1, 50)), aes(x=x)) + 
+  stat_function(fun=eq) +
+  xlab("x") + ylab("pdf") +
+  xlim(0,3) +
+  stat_function(fun=eq, 
+                xlim = c(0, 1.5),
+                geom = "area", 
+                aes(fill = "blue")) +
+  theme(legend.position = "none") +
+  annotate("text", x = 0.5, y = 0.7, label = "AUC = 0.125", color = "black")
+```
+
+Instead of calculating the EXACT probability for each value between 0 and 3, we can find the CDF of the pdf.
+
+The CDF is: $$
+F_X(x) = \left\{
+        \begin{array}{ll}
+            0 & \quad x<3 \quad \\
+            \dfrac{1}{27}x^3 & \quad 0 \leq x \leq 3\quad \\
+            1 & \quad x>3 \quad
+        \end{array}
+    \right.
+$$
+
+```{r}
+cdf = function(x){(1/27)*x^3}
+ggplot(data.frame(x=c(1, 50)), aes(x=x)) + 
+  stat_function(fun=cdf) +
+  xlab("x") + ylab("CDF") +
+  xlim(0,3) +
+  theme(legend.position = "none")
+```
+
+When $x=1.5$, we can calculate the probability using the CDF. Remember that $F_X(x) = P(X \leq x)$. So we can say $P(X \leq 1.5) = F_X(1.5) = \dfrac{1}{27}(1.5)^3$, which equals 0.125.
+
+```{r}
+cdf = function(x){(1/27)*x^3}
+ggplot(data.frame(x=c(1, 50)), aes(x=x)) + 
+  stat_function(fun=cdf) +
+  xlab("x") + ylab("CDF") +
+  xlim(0,3) +
+  theme(legend.position = "none") +
+  geom_point(aes(x=1.5, y=.125), colour="blue", size=3) +
+  annotate("text", x = 0.5, y = 0.7, label = "CDF = 0.125", color = "black")
+```
+
+We can also calculate the probability with an integral: $P(X \leq 1.5) = \displaystyle\int_0^{1.5} \dfrac{1}{9}x^2 dx$.
+
+We can also find the probability that X is between two numbers. $P(1\leq X \leq 1.5) = F_X(1.5) - F_X(1)$ or $P(1\leq X \leq 1.5) = \displaystyle\int_1^{1.5} \dfrac{1}{9}x^2 dx$.
+
+### 2. Joint vs marginal vs conditional: How are we calculating the probability?
+
+If we start at a joint probability $f_{X,Y}(x,y)$.... we can look at a few probabilities:
+
+-   Joint probability: $P(a \leq X \leq b, c \leq Y \leq d)$
+
+    $$P(a \leq X \leq b, c \leq Y \leq d) = \displaystyle\int_{x=a}^{x=b}\displaystyle\int_{y=c}^{y=d} f_{X,Y}(x,y) dydx$$
+
+-   Marginal probability: $P(a \leq X \leq b)$
+
+    $$P(a \leq X \leq b) = \displaystyle\int_{x=a}^{x=b} f_{X}(x) dx$$
+
+    OR
+
+    $$P(a \leq X \leq b) = \displaystyle\int_{x=a}^{x=b}\displaystyle\int_{y=-\inf}^{y=\inf} f_{X,Y}(x,y) dydx$$
+
+-   Conditional probability: $P(a \leq X \leq b | Y = c)$
+
+    $$P(a \leq X \leq b | Y=c) = \displaystyle\int_{x=a}^{x=b} f_{X|Y}(x|y=c) dx$$
+
+    You cannot calculate $P(a \leq X \leq b | Y = c)$ by $\dfrac{P(a \leq X \leq b, Y=c)}{P(Y = c)}$ because $P(Y = c)$ is 0. Instead, we need to find $f_{X|Y}(x|y=c)$ by $\dfrac{f_{X,Y}(x,y=c)}{f_{Y}(y=c)}$ and THEN integrate over X.
+
+### 3. What are we actually finding by solving the double integral. In the first example, we found the probability was 1/16 after integrating but what does 1/16 mean in relation to the random variables X and Y?
+
+It means that the volume contained by $0\leq X \leq 1$, $0\leq Y \leq 1/2$, and their joint pdf is 1/16 of the total volume contained by $0\leq X \leq 2$, $0\leq Y \leq 1$, and their joint pdf. The probability for a joint pdf is now a measure of the proportion of the volume.
+
+This is not be confused with a probability from marginal pdf or pdf from one RV. The probability for marginal/single RV pdfs is the proportion of the area under the pdf for a specific range of values.
+
+### 4. Here's a 3D plot of one of our joint pdf's
+
+$$
+f_{X,Y}(x,y) = 5e^{-x-3y} \text{ for } 0 \leq y \leq x/2
+$$
+
+```{r}
+#| warning: false
+library(plotly)
+
+x = seq(0, 5, 0.1)
+y = seq(0, max(x)/2, 0.1/2)
+fn = expand.grid(x=x,y=y)
+fn$z = ifelse(fn$y<fn$x/2, 5*exp( (-1)*fn$x - 3*fn$y), NA)
+
+z = matrix(fn$z, ncol = 51, nrow = 51, byrow = T)
+
+fig <- plot_ly(x = x, y=y, z=z) %>% add_surface()
+
+fig
+```

@@ -1,0 +1,39 @@
+---
+title: "Key Info"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Announcements
+
+- Midterm feedback!
+  - Did you fill out the final survey to record your name?
+  - Dislikes/suggestions
+    - Textbook
+    - Want more R code
+    - pdf lectures posted earlier
+    - Some in-class work
+    - Slower on slides + more examples:
+      - I can try to post more completed examples, but ultimately both of these are limited by the content we need to cover and the total lecture time in quarter
+  - Likes/helping learn
+    - Pace of class
+    - Stress-free environment
+    - Annotated notes + rewatching lectures
+    - Visualizations
+    - Homework based on completion
+    - Actively working on problems together
+    - Using AI for help
+- We will be taking a pause before expected values
+  - Finish conditional pdf problem
+  - Review joint distributions
+- HW 4: looked pretty good!
+- Come to office hours! 
+  - Don't spend hours on a problem! Charles and I can help you!
+
+## Key Dates
+
+- HW 05 due this Sunday!

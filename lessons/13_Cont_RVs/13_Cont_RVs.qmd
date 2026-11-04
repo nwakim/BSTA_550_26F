@@ -3,7 +3,7 @@ title: "Lesson 13: Some Important Continuous RVs"
 author: "Meike Niederhausen and Nicky Wakim"
 title-slide-attributes:
     data-background-color: "#006a4e"
-date: "`r library(here); source(here('class_dates.R')); w7d1`"
+date: " `r library(here); source(here('class_dates.R')); w7d1` "
 format:
   revealjs:
     theme: "../simple_NW.scss"
@@ -17,9 +17,8 @@ format:
     code-annotations: hover
 execute:
   echo: true
-editor:
-  markdown:
-    wrap: 72
+  warning: false
+  message: false
 ---
 
 ```{r setup, include=FALSE}

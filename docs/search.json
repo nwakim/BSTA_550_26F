@@ -28271,5 +28271,250 @@
     "title": "Homework 5",
     "section": "Assignment information",
     "text": "Assignment information\n\nLessons covered\n\nLesson 11: Variance\nLesson 12: Important discrete RVs\nLesson 13: Important continuous RVs\nLesson 14: Transformations of distributions\nLesson 15: Joint distributions\n\n\n\nDirections\nPlease turn in this homework on Brightspace. Please submit your homework as a pdf or html file. You can type your work in this file and render it, or submit a single file with photos of your written work or any other method that can be turned into a pdf. Please let me know if you prefer to submit a physical copy, we can arrange for a physical “turn in” during Monday’s class.\nGet the .qmd file: You can download this homework as a .qmd file from GitHub. On that page, click the download button (“Download raw file”) near the top right of the file.\nYou must show all of your work to receive credit.\nExtra problems do not need to be turned in!\n\n\n\n\n\n\nWarningIf you are editing this file to turn in\n\n\n\n\n\nIf you are editing this .qmd file, then you will see a section right below the YAML called “HOW TO USE THIS FILE.” Please follow those instructions to make sure you are not deleting essential parts of this file. When you render, that section will not show up.\n\n\n\n\n\n\n\n\n\nNoteAI Use Statement\n\n\n\n\n\nUsing AI is not required in this class. If you did use an AI tool (ChatGPT, Claude, Copilot, Gemini, an RStudio assistant, etc.) on this homework, add a brief AI Use Statement at the very top of your submission. Include:\n\nWhich tool(s) you used\nWhat for (a sentence or two, with question numbers)\nWhere it contributed to any written interpretations (if at all)\nYou do NOT need to link your conversation.\n\nFor example:\n\nAI Use Statement: Claude was used to explain an error message in Question 3. All statistical reasoning, code review, and conclusions are my own.\n\nOR\n\nAI Use Statement: AI was not used in this assignment.\n\nBefore using AI, check the table of allowed uses in the Generative AI Policy. For homework, AI can help you understand (explain an error or a concept, check an answer you already worked out, give feedback on your own writing), but it should not do the problem for you. A half-finished answer that shows your thinking is always better than a polished one from AI!"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#where-are-we",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#where-are-we",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Where are we?",
+    "text": "Where are we?"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#properties-of-bernoulli-rvs",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#properties-of-bernoulli-rvs",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Properties of Bernoulli RVs",
+    "text": "Properties of Bernoulli RVs\n\nScenario: One trial, with outcome success or failure\nShorthand: \\(X \\sim \\text{Bernoulli}(p)\\)\n\n\\[\nX = \\left\\{\n        \\begin{array}{ll}\n            1 & \\quad \\mathrm{with\\ probability}\\ p \\quad \\\\\n            0 & \\quad \\mathrm{with\\ probability}\\ 1-p \\quad\n        \\end{array}\n    \\right.\n\\]\n\\[\np_X(x) = P(X=x) = p^x(1-p)^{1-x} \\text{ for } x=0,1\n\\]\n\\[\\text{E}(X) = p\\]\n\\[\\text{Var}(X) = pq = p(1-p) \\quad \\text{ where } q = 1-p\\]\n\nWe’ve seen a few examples of Bernoulli distributions: ( @claude name some of the examples and give the lesson)"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#bernoulli-example-1",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#bernoulli-example-1",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Bernoulli Example 1",
+    "text": "Bernoulli Example 1\n\n\n\n\nExample 1\n\n\n\nWe roll a fair 6-sided die.\nWe get $1 if we roll a 5, and nothing otherwise.\nLet \\(X\\) be how much money we get.\nFind the mean and variance of \\(X\\)."
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#properties-of-binomial-rvs",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#properties-of-binomial-rvs",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Properties of Binomial RVs",
+    "text": "Properties of Binomial RVs\n\nScenario: There are \\(n\\) independent trials, each resulting in a success or failure, with constant probability, \\(p\\), in each trial. We are counting the number of successes (or failures).\nShorthand: \\(X \\sim \\text{Binomial}(n, p)\\)\nA binomial random variable is the sum of \\(n\\) independent Bernoulli RVs\n\n\\[\nX = \\text{Number of successes of } n \\text{ independent trials}\n\\]\n\\[\np_X(x) = P(X=x) = {n \\choose x}p^x(1-p)^{n-x} \\text{ for } x=0,1,2,  ..., n\n\\]\n\\[\\text{E}(X) = np\\] \\[\\text{Var}(X) = npq = np(1-p)\\]"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#our-beloved-fair-6-sided-die",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#our-beloved-fair-6-sided-die",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Our beloved fair 6-sided die",
+    "text": "Our beloved fair 6-sided die\n\n\n\n\nExample 2\n\n\n\nSuppose we roll a fair 6-sided die 50 times.\nWe get $1 every time we roll a 5, and nothing otherwise.\nLet \\(Y\\) be how much money we get on the 50 rolls.\nFind the mean and variance of \\(Y\\)."
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#our-beloved-fair-6-sided-die-simulate-it",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#our-beloved-fair-6-sided-die-simulate-it",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Our beloved fair 6-sided die: simulate it",
+    "text": "Our beloved fair 6-sided die: simulate it\n\n\n\n\nExample 2\n\n\nSimulate \\(Y\\), the money from 50 rolls, 10,000 times. Do the mean and variance match \\(np = \\frac{50}{6} \\approx 8.33\\) and \\(np(1-p) = \\frac{250}{36} \\approx 6.94\\)?\n\n\n\n1set.seed(1104)\n2reps &lt;- 10000\nn_rolls &lt;- 50\n\n3rolls &lt;- expand_grid(sim = 1:reps, roll = 1:n_rolls) |&gt;\n4  mutate(face = sample(1:6, n(), replace = TRUE))\n\n5money_sims &lt;- rolls |&gt;\n  group_by(sim) |&gt;\n  summarise(Y = sum(face == 5))\n\n\n1\n\nSet the seed once, so we all get the same random numbers.\n\n2\n\nSave the number of simulations and the number of rolls (\\(n = 50\\)) as variables, so they are easy to change.\n\n3\n\nOne row for every roll in every simulation: 10,000 × 50 = 500,000 rows.\n\n4\n\nRoll a fair die for every row. n() is the number of rows.\n\n5\n\nFor each simulation, count the 5s. face == 5 is TRUE or FALSE, and sum() counts the TRUEs. Each 5 is $1, so this count is \\(Y\\).\n\n\n\n\n\n \n \n\n1money_sims |&gt;\n  summarise(\n2    average  = mean(Y),\n3    variance = mean((Y - mean(Y))^2)\n  )\n\n\n1\n\nCollapse the 10,000 simulated values of Y into one row of summaries.\n\n2\n\nThe average of Y, which estimates \\(\\text{E}(Y) = np\\).\n\n3\n\nThe average squared distance from the mean, which estimates \\(\\text{Var}(Y)\\) (same formula as Lesson 11).\n\n\n\n\n# A tibble: 1 × 2\n  average variance\n    &lt;dbl&gt;    &lt;dbl&gt;\n1    8.32     6.92\n\n\n\nEach roll is a Bernoulli trial, and \\(Y\\) adds up 50 of them: this is the binomial as a sum of independent Bernoulli RVs"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#geometric-rvs",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#geometric-rvs",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Geometric RVs",
+    "text": "Geometric RVs\n\nScenario: There are repeated independent trials, each resulting in a success or failure, with constant probability of success for each trial. We are counting the number of trials until the first success.\n\nFor example, toss a coin until we get heads: H, or TH, or TTH, or TTTH, …\n\nShorthand: \\(X \\sim \\text{Geo}(p)\\) or \\(X \\sim \\text{Geometric}(p)\\) or \\(X \\sim \\text{G}(p)\\)\n\n\n\n\\(X =\\) Number of trials needed for first success (count \\(x\\) includes the success)\n\\[p_X(x) = P(X=x) = (1-p)^{x-1}p \\quad \\text{for } x=1,2,3,\\ldots\\]\n\\[F_X(x) = P(X\\leq x) = 1-(1-p)^x \\quad \\text{for } x=1,2,3,\\ldots\\]\n\\[E(X)=\\dfrac{1}{p} \\qquad Var(X)= \\dfrac{1-p}{p^2}\\]\n\n\\(X =\\) Number of failures before first success (count \\(x\\) does not include the success)\n\\[p_X(x) = P(X=x) = (1-p)^{x}p \\quad \\text{for } x=0,1,2,\\ldots\\]\n\\[F_X(x) = P(X\\leq x) = 1-(1-p)^{x+1} \\quad \\text{for } x=0,1,2,\\ldots\\]\n\\[E(X)=\\dfrac{1-p}{p} \\qquad Var(X) = \\dfrac{1-p}{p^2}\\]"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#bullseye-14",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#bullseye-14",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Bullseye (1/4)",
+    "text": "Bullseye (1/4)\n\n\n\n\nExample 3\n\n\nWe throw darts at a dartboard until we hit the bullseye. Assume throws are independent and the probability of hitting the bullseye is 0.01 for each throw.\n\nWhat is the pmf for the number of throws needed to hit the bullseye?\nWhat are the mean and variance for the number of throws needed to hit the bullseye?\nFind the probability that our first bullseye:\n\nis on one of the first fifty tries\nis after the \\(50^{th}\\) try, given that it did not happen on the first 20 tries"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#bullseye-24",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#bullseye-24",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Bullseye (2/4)",
+    "text": "Bullseye (2/4)\n\n\n\n\nExample 3\n\n\nWe throw darts at a dartboard until we hit the bullseye. Assume throws are independent and the probability of hitting the bullseye is 0.01 for each throw.\n\nWhat is the pmf for the number of throws needed to hit the bullseye?"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#bullseye-34",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#bullseye-34",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Bullseye (3/4)",
+    "text": "Bullseye (3/4)\n\n\n\n\nExample 3\n\n\nWe throw darts at a dartboard until we hit the bullseye. Assume throws are independent and the probability of hitting the bullseye is 0.01 for each throw.\n\nWhat are the mean and variance for the number of throws needed to hit the bullseye?"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#bullseye-44",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#bullseye-44",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Bullseye (4/4)",
+    "text": "Bullseye (4/4)\n\n\n\n\nExample 3\n\n\nWe throw darts at a dartboard until we hit the bullseye. Assume throws are independent and the probability of hitting the bullseye is 0.01 for each throw.\n\nFind the probability that our first bullseye:\n\nis on one of the first fifty tries\nis after the \\(50^{th}\\) try, given that it did not happen on the first 20 tries"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#memoryless-property-for-geometric-rvs",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#memoryless-property-for-geometric-rvs",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Memoryless property for Geometric RVs",
+    "text": "Memoryless property for Geometric RVs\nIf we know \\(X\\) is greater than some number (aka given \\(X &gt;j\\)), then the probability of \\(X &gt; k+j\\) is just the probability that \\(X&gt;k\\). This is the memoryless property.\n \n\\(P(X &gt; k+j |X &gt; j) = P(X &gt; k)\\)\n\\[ P(X &gt; k+j |X &gt; j) = \\dfrac{P(X&gt;k+j \\text{ and } X&gt;j)}{P(X&gt;j)} = \\dfrac{P(X&gt;k+j)}{P(X&gt;j)} = \\dfrac{(1-p)^{k+j}}{(1-p)^{j}} = (1-p)^{k} \\]"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#lets-simulate-the-bullseye-example-12",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#lets-simulate-the-bullseye-example-12",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Let’s simulate the bullseye example (1/2)",
+    "text": "Let’s simulate the bullseye example (1/2)\n\n\n\nAct out the story: each throw is a \"bullseye\" (probability 0.01) or a \"miss\"\n\n\n1p &lt;- 0.01\n2max_throws &lt;- 1500\n\n3throws &lt;- expand_grid(sim = 1:reps, throw = 1:max_throws) |&gt;\n4  mutate(outcome = sample(c(\"bullseye\", \"miss\"),\n                          size = n(),\n                          replace = TRUE,\n                          prob = c(p, 1 - p)))\n\n5bullseye_sims &lt;- throws |&gt;\n  filter(outcome == \"bullseye\") |&gt;\n6  group_by(sim) |&gt;\n  summarise(X = min(throw))\n\n\n1\n\nThe probability of a bullseye on each throw.\n\n2\n\nWe can’t throw forever in R, so we give each simulation 1,500 throws. The chance of no bullseye in 1,500 throws is \\(0.99^{1500} \\approx 0.0000003\\), so this is plenty.\n\n3\n\nOne row for every throw in every simulation: 10,000 × 1,500 = 15 million rows. reps is still 10,000 from the die example.\n\n4\n\nFor every row, randomly pick \"bullseye\" (probability p) or \"miss\" (probability 1 - p), like the falls example in Lesson 7.\n\n5\n\nfilter() keeps only the throws that hit the bullseye.\n\n6\n\nFor each simulation, the first bullseye is the smallest throw number that hit. min() finds the smallest value. This is \\(X\\).\n\n\n\n\n\n\nThe first few simulated values of \\(X\\):\n\n\n1bullseye_sims\n\n\n1\n\nEach row is one simulation. X is the throw number of the first bullseye.\n\n\n\n\n# A tibble: 10,000 × 2\n     sim     X\n   &lt;int&gt; &lt;int&gt;\n 1     1    15\n 2     2    44\n 3     3    12\n 4     4    21\n 5     5    19\n 6     6   105\n 7     7   188\n 8     8    28\n 9     9    49\n10    10    20\n# ℹ 9,990 more rows"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#lets-simulate-the-bullseye-example-22",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#lets-simulate-the-bullseye-example-22",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Let’s simulate the bullseye example (2/2)",
+    "text": "Let’s simulate the bullseye example (2/2)\n\n\n\n1bullseye_sims |&gt;\n  summarise(\n2    average       = mean(X),\n    variance      = mean((X - mean(X))^2),\n3    prob_first_50 = mean(X &lt;= 50)\n  )\n\n\n1\n\nOne row of summaries for the 10,000 simulated values of \\(X\\).\n\n2\n\nCompare with \\(E(X) = \\frac{1}{0.01} = 100\\) and \\(Var(X) = \\frac{0.99}{0.01^2} = 9900\\).\n\n3\n\nThe proportion of simulations where the first bullseye was on one of the first 50 throws, which estimates \\(P(X \\leq 50)\\).\n\n\n\n\n# A tibble: 1 × 3\n  average variance prob_first_50\n    &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;\n1    99.6   10064.         0.407\n\n\n \n\nBy hand: \\(P(X \\leq 50) = 1 - 0.99^{50} \\approx 0.395\\)\n\n\n\nCheck the memoryless property\n\n\n1bullseye_sims |&gt;\n  filter(X &gt; 20) |&gt;\n2  summarise(prob_after_50 = mean(X &gt; 50))\n\n3bullseye_sims |&gt;\n  summarise(prob_after_30 = mean(X &gt; 30))\n\n\n1\n\nKeep only the simulations where the first 20 throws were all misses (\\(X &gt; 20\\)).\n\n2\n\nAmong those, the proportion with \\(X &gt; 50\\) estimates \\(P(X &gt; 50 | X &gt; 20)\\).\n\n3\n\nUsing all simulations, the proportion with \\(X &gt; 30\\) estimates \\(P(X &gt; 30)\\).\n\n\n\n\n# A tibble: 1 × 1\n  prob_after_50\n          &lt;dbl&gt;\n1         0.726\n# A tibble: 1 × 1\n  prob_after_30\n          &lt;dbl&gt;\n1         0.731\n\n\n\nBoth are close to \\(0.99^{30} \\approx 0.740\\)"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#properties-of-negative-binomial-rvs",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#properties-of-negative-binomial-rvs",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Properties of Negative Binomial RVs",
+    "text": "Properties of Negative Binomial RVs\n\nScenario: There are repeated independent trials, each resulting in a success or failure, with constant probability of success for each trial. We are counting the number of trials until the \\(r^{th}\\) success.\nShorthand: \\(X \\sim \\text{NegBin}(p, r)\\) or \\(X \\sim \\text{NB}(p, r)\\)\nNegative binomial is sum of \\(r\\) geometric distributions\n\nIf \\(Y \\sim \\text{Geo}(p)\\), then \\(E(X) = r \\cdot E(Y)\\) and \\(Var(X) = r \\cdot Var(Y)\\)\n\n\n\\[\nX = \\text{Number of independent trials until } r^{th} \\text{ success}\n\\]\n\\[ p_X(x) = P(X=x) = {x-1 \\choose r-1}(1-p)^{x-r}p^r \\text{ for } x = r, r+1, r+2, ...\\]\n\nIn \\(x\\) trials: \\(x - r\\) failures and \\(r\\) successes, and the last trial must be a success\n\n\\[ E(X) = \\dfrac{r}{p} \\qquad Var(X) = \\dfrac{rq}{p^2} = \\dfrac{r(1-p)}{p^2}\\]"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#hitting-more-than-1-bullseye",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#hitting-more-than-1-bullseye",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Hitting more than 1 bullseye",
+    "text": "Hitting more than 1 bullseye\n\n\n\n\nExample 4\n\n\nConsider again the bullseye example, where we throw darts at a dartboard until we hit the bullseye. Assume throws are independent and the probability of hitting the bullseye is 0.01 for each throw.\n\nWhat is the expected value and variance of the number of throws needed to hit 5 bullseyes?"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#hitting-more-than-1-bullseye-1",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#hitting-more-than-1-bullseye-1",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Hitting more than 1 bullseye",
+    "text": "Hitting more than 1 bullseye\n\n\n\n\nExample 4\n\n\nConsider again the bullseye example, where we throw darts at a dartboard until we hit the bullseye. Assume throws are independent and the probability of hitting the bullseye is 0.01 for each throw.\n\nWhat is the probability that the \\(5^{th}\\) bullseye is on the \\(20^{th}\\) throw?"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#properties-of-poisson-rvs",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#properties-of-poisson-rvs",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Properties of Poisson RVs",
+    "text": "Properties of Poisson RVs\n\nScenario: We are counting the number of successes in a fixed time period (or fixed space), which has a constant rate (\\(\\lambda\\)) of successes\nShorthand: \\(X \\sim \\text{Poisson}(\\lambda)\\) or \\(X \\sim \\text{Pois}(\\lambda)\\)\n\n\\[\nX = \\text{Number of successes in a given period (or given space)}\n\\]\n\\[ p_X(x) = P(X=x) = \\dfrac{e^{-\\lambda}\\lambda^x}{x!} \\text{ for } x = 0, 1, 2,3, ...\\]\n\\[ \\text{E}(X) = \\lambda\\]\n\\[\\text{Var}(X) = \\lambda\\]"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#distinguishing-between-binomial-and-poisson-rvs",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#distinguishing-between-binomial-and-poisson-rvs",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Distinguishing between Binomial and Poisson RVs",
+    "text": "Distinguishing between Binomial and Poisson RVs\n\nRecall that if \\(X\\sim \\text{Binomial}(n,p)\\), then\n\n\\(X\\) models the number of successes …\nin \\(n\\) independent (Bernoulli) trials …\nthat each have the same probability of success \\(p\\).\n\nPoisson RVs are similar,\n\nexcept that instead of having \\(n\\) discrete independent trials,\nthere is a fixed time period (or space) during which the successes happen\nand instead of a probability, we have a rate of successes, \\(\\lambda\\)"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#examples-of-poisson-rvs",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#examples-of-poisson-rvs",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Examples of Poisson RVs",
+    "text": "Examples of Poisson RVs\n\nNumber of visitors to an emergency room in an hour during a weekend night\nNumber of study participants enrolled in a study per week\nNumber of pedestrians walking through a square mile\nNumber of babies born with a cleft palate within 1 year (rare events)\nAny more?"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#emergency-room-visitors",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#emergency-room-visitors",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Emergency Room Visitors",
+    "text": "Emergency Room Visitors\n\n\n\n\nExample 5\n\n\nSuppose an emergency room has an average of 50 visitors per day. Find the following probabilities.\n\nProbability of 30 visitors in a day.\nProbability of 8 visitors in an hour."
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#emergency-room-visitors-in-r",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#emergency-room-visitors-in-r",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Emergency Room Visitors: in R",
+    "text": "Emergency Room Visitors: in R\n\n\n\n\nExample 5\n\n\nSuppose an emergency room has an average of 50 visitors per day.\n\nProbability of 30 visitors in a day.\nProbability of 8 visitors in an hour.\n\n\n\n\n1dpois(30, lambda = 50)\n\n2lambda_hour &lt;- 50 / 24\n3dpois(8, lambda = lambda_hour)\n\n\n1\n\ndpois() gives \\(P(X = x)\\) for a Poisson RV, like dbinom() did for the binomial. Here \\(x = 30\\) and \\(\\lambda = 50\\) visitors per day.\n\n2\n\nChange the rate to match the time period: 50 visitors per day is \\(\\frac{50}{24} \\approx 2.083\\) visitors per hour.\n\n3\n\n\\(P(X = 8)\\) when \\(X\\) counts visitors in one hour.\n\n\n\n\n[1] 0.0006771985\n[1] 0.001095896\n\n\n\n\n\nChange \\(\\lambda\\), not \\(X\\)\n\n\nWhen the time period changes, change the rate \\(\\lambda\\) to match it.\n\nRight way: \\(\\lambda = \\frac{50}{24}\\) visitors per hour, and find \\(P(X = 8)\\)\nWrong way: keep \\(\\lambda = 50\\) per day and find \\(P(X = 8 \\cdot 24) = P(X = 192)\\)"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#combining-independent-poisson-distributions",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#combining-independent-poisson-distributions",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Combining independent Poisson distributions",
+    "text": "Combining independent Poisson distributions\n\n\nTheorem 1\n\n\nIf \\(X\\sim Pois(\\lambda_1)\\) and \\(Y\\sim Pois(\\lambda_2)\\) are independent of each other, then \\(Z=X+Y\\sim Pois(\\lambda_1 + \\lambda_2)\\)."
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#two-emergency-rooms",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#two-emergency-rooms",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Two emergency rooms",
+    "text": "Two emergency rooms\n\n\n\n\nExample 6\n\n\nSuppose emergency room 1 has an average of 50 visitors per day, and emergency room 2 has an average of 70 visitors per day, independently of each other. What is the probability distribution that models the total number of visitors to both?"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#poisson-approximation-of-the-binomial",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#poisson-approximation-of-the-binomial",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Poisson Approximation of the Binomial",
+    "text": "Poisson Approximation of the Binomial\nBoth Poisson and Binomial RVs are counting the number of successes\n\nIf for a Binomial RV\n\nthe number of trials \\(n\\) is very large, and\nthe probability of success \\(p\\) is close to 0 or 1,\n\nThen the Poisson distribution can be used to approximate Binomial probabilities\n\nand we use \\(\\lambda = np\\)\n\nRule of thumb: We can use the Poisson approximation when \\(\\dfrac{1}{10} \\leq np(1-p) \\leq 10\\)"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#medical-lab-errors",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#medical-lab-errors",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Medical lab errors",
+    "text": "Medical lab errors\n\n\n\n\nExample 7\n\n\nSuppose that in the long run, errors in a medical testing lab are made 0.1% of the time. Find the probability that fewer than 4 mistakes are made in the next 2,000 tests.\n\nFind the probability using the Binomial distribution.\nApproximate the probability in part (1) using the Poisson distribution.\n\n\n\n\nTo do for extra practice - will also see a similar problem in BSTA 511\n\nHint: pbinom() and ppois() give \\(P(X \\leq x)\\)"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#hypergeometric-rvs",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#hypergeometric-rvs",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Hypergeometric RVs",
+    "text": "Hypergeometric RVs\n\nScenario: There are a fixed number of successes and failures (which are known in advance), from which we make \\(n\\) draws without replacement. We are counting the number of successes from the \\(n\\) trials.\n\nThere is a finite population of \\(N\\) items\nEach item in the population is either a success or a failure, and there are \\(M\\) successes total (and \\(N-M\\) failures).\nWe randomly select (sample) \\(n\\) items from the population without replacement\n\nShorthand: \\(X \\sim \\text{Hypergeo}(M, N, n)\\)\n\n\n\n\\[\nX = \\text{Number of successes in } n \\text{ draws}\n\\]\n\\[\np_X(x) = P(X=x) = \\dfrac{{M \\choose x}{N-M \\choose n-x}}{{N \\choose n}}\n\\] \\[\\text{ for } x \\text{ integer-valued } \\\\ \\max(0, n-(N-M)) \\leq x \\leq \\min(n, M)\\]\n\n\\[\\text{E}(X) =\\dfrac{nM}{N}\\]\n\\[\\text{Var}(X) = n \\dfrac{M}{N} \\bigg(1- \\dfrac{M}{N} \\bigg)\\bigg(\\dfrac{N-n}{N-1} \\bigg)\\]"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#wolf-population",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#wolf-population",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Wolf population",
+    "text": "Wolf population\n\n\n\n\nExample 8\n\n\nA wildlife biologist is using mark-recapture to research a wolf population. Suppose a specific study region is known to have 24 wolves, of which 11 have already been tagged. If 5 wolves are randomly captured, what is the probability that 3 of them have already been tagged?"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#wolf-population-simulate-it",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#wolf-population-simulate-it",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Wolf population: simulate it",
+    "text": "Wolf population: simulate it\n\n\n\nAct out the story: put 24 wolves in a box and capture 5 without replacement\n\n\n1wolves &lt;- c(rep(\"tagged\", 11), rep(\"untagged\", 13))\n2n_captured &lt;- 5\n\n3captures &lt;- expand_grid(sim = 1:reps, capture = 1:n_captured) |&gt;\n4  group_by(sim) |&gt;\n  mutate(wolf = sample(wolves, n()))\n\n5wolf_sims &lt;- captures |&gt;\n  group_by(sim) |&gt;\n  summarise(X = sum(wolf == \"tagged\"))\n\n\n1\n\nrep(\"tagged\", 11) repeats \"tagged\" 11 times, and c() puts all 24 wolves together in one box.\n\n2\n\nThe number of wolves captured, \\(n = 5\\).\n\n3\n\nOne row for each captured wolf in each simulation.\n\n4\n\nWithin each simulation, n() is 5, so sample() picks 5 different wolves from the box. We leave out replace = TRUE, so a captured wolf is not put back. That is the hypergeometric part!\n\n5\n\nFor each simulation, count the tagged wolves. This count is \\(X\\).\n\n\n\n\n\n\n1wolf_sims |&gt;\n  summarise(\n2    average = mean(X),\n3    prob_3  = mean(X == 3)\n  )\n\n\n1\n\nOne row of summaries for the 10,000 simulated values of \\(X\\).\n\n2\n\nCompare with \\(E(X) = \\frac{5 \\cdot 11}{24} \\approx 2.29\\).\n\n3\n\nThe proportion of simulations with exactly 3 tagged wolves, which estimates \\(P(X = 3)\\).\n\n\n\n\n# A tibble: 1 × 2\n  average prob_3\n    &lt;dbl&gt;  &lt;dbl&gt;\n1    2.29  0.296\n\n\n\nThe exact answer, two ways:\n\n\n1choose(11, 3) * choose(13, 2) / choose(24, 5)\n2dhyper(3, m = 11, n = 13, k = 5)\n\n\n1\n\nThe pmf by hand: choose(top, bottom) is \\({top \\choose bottom}\\).\n\n2\n\ndhyper() does the same thing. Careful: in R, m is the number of successes (\\(M\\)), n is the number of failures (\\(N - M\\)), and k is the number of draws (\\(n\\)).\n\n\n\n\n[1] 0.302795\n[1] 0.302795"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#binomial-approximation-of-the-hypergeometric-rv",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#binomial-approximation-of-the-hypergeometric-rv",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Binomial approximation of the hypergeometric RV",
+    "text": "Binomial approximation of the hypergeometric RV\nSuppose a hypergeometric RV \\(X\\) has the following properties:\n\nthe population size \\(N\\) is really big,\nthe number of successes \\(M\\) in the population is relatively large,\n\n\\(\\frac{M}{N}\\) shouldn’t be close to 0 or 1\n\nand the number of items \\(n\\) selected is small (relative to \\(N\\))\nRule of thumb: \\(\\dfrac{n}{N}&lt;0.05\\) or \\(N&gt;20n\\)\n\nThen, in this case, making \\(n\\) draws from the population doesn’t change the probability of success much, and the hypergeometric RV can be approximated by a binomial RV with \\(p = \\frac{M}{N}\\)\n\n\\(\\frac{M}{N}\\) is like \\(p\\) in the binomial: the binomial has a constant \\(p\\)"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#wolf-population-revisited",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#wolf-population-revisited",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Wolf population revisited",
+    "text": "Wolf population revisited\n\n\n\n\nExample 9\n\n\nSuppose a specific study region is known to have 2400 wolves, of which 1100 have already been tagged.\n\nIf 50 wolves are randomly captured, what is the probability that 20 of them have already been tagged?\nApproximate the probability in part (1) using the binomial distribution."
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#wolf-population-revisited-check-in-r",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#wolf-population-revisited-check-in-r",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Wolf population revisited: check in R",
+    "text": "Wolf population revisited: check in R\n\n\n\n\nExample 9\n\n\nSuppose a specific study region is known to have 2400 wolves, of which 1100 have already been tagged.\n\nIf 50 wolves are randomly captured, what is the probability that 20 of them have already been tagged?\nApproximate the probability in part (1) using the binomial distribution.\n\n\n\n\n\n1dhyper(20, m = 1100, n = 1300, k = 50)\n2dbinom(20, size = 50, prob = 1100 / 2400)\n\n\n1\n\nThe exact hypergeometric probability: 1,100 tagged, 1,300 untagged, and 50 captured.\n\n2\n\nThe binomial approximation with \\(p = \\frac{M}{N} = \\frac{1100}{2400}\\).\n\n\n\n\n[1] 0.08132015\n[1] 0.08107414\n\n\n\nCheck the rule of thumb: \\(N = 2400 &gt; 20n = 1000\\)\nThe two probabilities are very close!"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#discrete-uniform-rvs",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#discrete-uniform-rvs",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Discrete Uniform RVs",
+    "text": "Discrete Uniform RVs\n\nScenario: There are \\(N\\) possible outcomes, which are all equally likely.\nShorthand: \\(X \\sim \\text{Uniform}(N)\\)\n\n\\[\nX = \\text{Outcome of interest, with } x=1, 2, ..., N\n\\]\n\\[\np_X(x) = P(X=x) = \\dfrac{1}{N} \\text{ for } x=1, 2, 3, ..., N\n\\]\n\\[\\text{E}(X) =\\dfrac{N+1}{2}\\]\n\\[\\text{Var}(X) = \\dfrac{N^2 -1}{12}\\]"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#what-discrete-uniform-rvs-have-we-seen-already",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#what-discrete-uniform-rvs-have-we-seen-already",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "What discrete uniform RVs have we seen already?",
+    "text": "What discrete uniform RVs have we seen already?\n\n\n\n\nExample 10\n\n\nExamples of discrete uniform RVs\n\n\n \n\nIn R: every time we used sample(1:N, ...) without prob, we simulated a discrete uniform RV!"
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#all-the-r-code-for-these",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#all-the-r-code-for-these",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "All the R code for these!",
+    "text": "All the R code for these!\nCheck out this page with all the different functions for distributions in R\n\nd___() gives the pmf \\(P(X = x)\\), p___() gives the CDF \\(P(X \\leq x)\\), q___() gives quantiles, and r___() simulates\n\n\n\n\n\n\n\n\n\n\nDistribution\npmf: \\(P(X = x)\\)\nCDF: \\(P(X \\leq x)\\)\nSimulate\n\n\n\n\nBinomial\\((n, p)\\)\ndbinom(x, size = n, prob = p)\npbinom(x, size = n, prob = p)\nrbinom()\n\n\nGeometric\\((p)\\) *\ndgeom(x - 1, prob = p)\npgeom(x - 1, prob = p)\nrgeom()\n\n\nNegBin\\((p, r)\\) *\ndnbinom(x - r, size = r, prob = p)\npnbinom(x - r, size = r, prob = p)\nrnbinom()\n\n\nPoisson\\((\\lambda)\\)\ndpois(x, lambda = lambda)\nppois(x, lambda = lambda)\nrpois()\n\n\nHypergeo\\((M, N, n)\\)\ndhyper(x, m = M, n = N - M, k = n)\nphyper(x, m = M, n = N - M, k = n)\nrhyper()\n\n\nUniform\\((N)\\)\n\\(\\frac{1}{N}\\)\n\\(\\frac{x}{N}\\)\nsample(1:N, ...)\n\n\n\n* R counts the number of failures before the success(es), not the number of trials. So we subtract the successes: \\(x - 1\\) for the geometric and \\(x - r\\) for the negative binomial."
   }
 ]

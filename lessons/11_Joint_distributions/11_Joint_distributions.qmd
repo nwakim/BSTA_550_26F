@@ -1,0 +1,688 @@
+---
+title: "Lesson 11: Joint distributions"
+author: "Meike Niederhausen and Nicky Wakim"
+date: "`r library(here); source(here('class_dates.R')); w5d2`"
+title-slide-attributes:
+    data-background-color: "#006a4e"
+format: 
+  revealjs:
+    theme: "../simple_NW.scss"
+    slide-number: true
+    show-slide-number: all
+    width: 1955
+    height: 1100
+    footer: Lesson 11 Slides
+    html-math-method: mathjax
+---
+
+```{r setup, include=FALSE}
+library(here)
+source(here("class_dates.R"))
+
+library(tidyverse)
+```
+
+# Learning Objectives
+
+1.  Define **joint and marginal** distributions for discrete and continuous random variables
+
+2.  Calculate or find **joint and marginal** probabilities, pmf's, and CDF's for discrete random variables
+
+3.  Calculate or find **joint and marginal** probabilities, pdf's, and CDF's for continuous random variables
+
+4.  Extra practice on your own: solve double integrals in a mini lesson
+
+## Where are we?
+
+![](../img_slides/course_map.png){fig-align="center"}
+
+# Learning Objectives
+
+::: lob
+1.  Define **joint and marginal** distributions for discrete and continuous random variables
+:::
+
+2.  Calculate or find **joint and marginal** probabilities, pmf's, and CDF's for discrete random variables
+
+3.  Calculate or find **joint and marginal** probabilities, pdf's, and CDF's for continuous random variables
+
+4.  Extra practice on your own: solve double integrals in a mini lesson
+
+## What is a joint distribution?
+
+::::::::::: columns
+:::::: {.column width="50%"}
+::::: proof1
+::: proof-title
+Definition: joint pmf
+:::
+
+::: proof-cont
+The **joint pmf** of a pair of discrete RV's $X$ and $Y$ is $$\begin{aligned}
+p_{X,Y}(x,y) = & \mathbb{P}(X=x \cap Y=y) \\ = & \mathbb{P}(X=x, Y=y)
+\end{aligned}$$
+:::
+:::::
+::::::
+
+:::::: {.column width="50%"}
+::::: theorem
+::: thm-title
+Definition: joint pdf
+:::
+
+::: thm-cont
+The **joint pdf** for two continuous RVs ($X$ and $Y$) is $f_{X,Y}(x,y)$, such that we have the following joint probability: $$\begin{aligned}
+\mathbb{P}(a \leq X \leq b, & c \leq Y \leq d) = \\ & \int_a^b \int_c^d f_{X,Y}(x,y)dydx
+\end{aligned}$$
+:::
+:::::
+::::::
+:::::::::::
+
+## Important properties of joint distributions
+
+::::::::::: columns
+:::::: {.column width="50%"}
+::::: proof1
+::: proof-title
+Properties of joint pmf's
+:::
+
+::: proof-cont
+-   A joint pmf $p_{X,Y}(x,y)$ must satisfy the following properties:
+
+    -   $0 \geq p_{X,Y}(x,y) \leq 1$ for all $x, y$
+
+     
+
+    -   $\sum \limits_{\{all\ x\}} \sum \limits_{\{all\ y\}} p_{X,Y}(x,y)=1$
+:::
+:::::
+::::::
+
+:::::: {.column width="50%"}
+::::: theorem
+::: thm-title
+Properties of joint pdf's
+:::
+
+::: thm-cont
+-   A joint pdf $f_{X,Y}(x,y)$ must satisfy the following properties:
+
+    -   $f_{X,Y}(x,y)\geq 0$ for all $x,y$
+
+     
+
+    -   $\displaystyle\int_{-\infty}^{\infty}\displaystyle\int_{-\infty}^{\infty} f_{X,Y}(x,y)dxdy=1$
+
+ 
+
+-   Remember that $f_{X,Y}(x,y)\neq \mathbb{P}(X=x, Y=y)$!!!
+:::
+:::::
+::::::
+:::::::::::
+
+## Marginal distributions
+
+::::::::::: columns
+:::::: {.column width="50%"}
+::::: proof1
+::: proof-title
+Marginal pmf's
+:::
+
+::: proof-cont
+Suppose $X$ and $Y$ are discrete RV's, with joint pmf $p_{X,Y}(x,y)$. Then the **marginal probability mass functions** are
+
+$$p_X(x) = \sum \limits_{\{all\ y\}} p_{X,Y}(x,y)$$
+
+$$p_Y(y) = \sum \limits_{\{all\ x\}} p_{X,Y}(x,y)$$
+:::
+:::::
+::::::
+
+:::::: {.column width="50%"}
+::::: theorem
+::: thm-title
+Marginal pdf's
+:::
+
+::: thm-cont
+Suppose $X$ and $Y$ are continuous RV's, with joint pdf $f_{X,Y}(x,y)$. Then the **marginal probability density functions** are $$\begin{aligned}
+f_X(x)&=& \int_{-\infty}^{\infty} f_{X,Y}(x,y)dy\\
+f_Y(y)&=& \int_{-\infty}^{\infty} f_{X,Y}(x,y)dx
+\end{aligned}$$
+:::
+:::::
+::::::
+:::::::::::
+
+## Joint cumulative distribution functions (CDFs)
+
+::::::::::: columns
+:::::: {.column width="50%"}
+::::: proof1
+::: proof-title
+Joint CDF for discrete RVs
+:::
+
+::: proof-cont
+The **joint CDF** of a pair of discrete RV's $X$ and $Y$ is 
+$$\begin{aligned}
+F_{X,Y}(x,y) = &\mathbb{P}(X \leq x\ and\ Y \leq y) \\ = &\mathbb{P}(X \leq x, Y \leq y)
+\end{aligned}$$
+:::
+:::::
+::::::
+
+:::::: {.column width="50%"}
+::::: theorem
+::: thm-title
+Joint CDF for continuous RVs
+:::
+
+::: thm-cont
+The **joint CDF** of continuous random variables $X$ and $Y$, is the function $F_{X,Y}(x,y)$, such that for all real values of $x$ and $y$, 
+$$\begin{aligned}
+F_{X,Y}(x,y)= \mathbb{P}(X \leq x, & Y \leq y) = \\
+& \int_{-\infty}^x\int_{-\infty}^y f_{X,Y}(s,t)dtds
+\end{aligned}$$
+:::
+:::::
+::::::
+:::::::::::
+
+# Learning Objectives
+
+1.  Define **joint and marginal** distributions for discrete and continuous random variables
+
+::: lob
+2.  Calculate or find **joint and marginal** probabilities, pmf's, and CDF's for discrete random variables
+:::
+
+3.  Calculate or find **joint and marginal** probabilities, pdf's, and CDF's for continuous random variables
+
+4.  Extra practice on your own: solve double integrals in a mini lesson
+
+## Joint distribution for two discrete random variables (1/5)
+
+::::::: columns
+:::::: {.column width="100%"}
+::::: example
+::: ex-title
+Example 1
+:::
+
+::: ex-cont
+Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.
+
+1.  Find $p_{X,Y}(x,y)$
+
+2.  Find $\mathbb{P}(X+Y=3)$
+
+3.  Find $\mathbb{P}(Y = 1)$
+
+4.  Find $\mathbb{P}(Y \leq 2)$
+
+5.  Find the joint CDF $F_{X,Y}(x,y)$ for the joint pmf $p_{X,Y}(x,y)$
+
+6.  Find the marginal CDFs $F_{X}(x)$ and $F_{Y}(y)$
+:::
+:::::
+::::::
+:::::::
+
+## Joint distribution for two discrete random variables (2/5)
+
+::::::: columns
+:::::: {.column width="35%"}
+::::: example
+::: ex-title
+Example 1
+:::
+
+::: ex-cont
+Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.
+
+1.  Find $p_{X,Y}(x,y)$
+
+2.  Find $\mathbb{P}(X+Y=3)$
+:::
+:::::
+![](/lessons/img_slides/joint_pmf.png){width="520"}
+::::::
+:::::::
+
+## Joint distribution for two discrete random variables (3/5)
+
+::::::: columns
+:::::: {.column width="35%"}
+::::: example
+::: ex-title
+Example 1
+:::
+
+::: ex-cont
+Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.
+
+3.  Find $\mathbb{P}(Y = 1)$
+
+4.  Find $\mathbb{P}(Y \leq 2)$
+:::
+:::::
+![](/lessons/img_slides/joint_pmf.png){width="520"}
+::::::
+:::::::
+
+## Joint distribution for two discrete random variables (4/5)
+
+::::::: columns
+:::::: {.column width="35%"}
+::::: example
+::: ex-title
+Example 1
+:::
+
+::: ex-cont
+Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.
+
+5.  Find the joint CDF $F_{X,Y}(x,y)$ for the joint pmf $p_{X,Y}(x,y)$
+:::
+:::::
+![](/lessons/img_slides/joint_pmf.png){width="520"}
+::::::
+:::::::
+
+## Joint distribution for two discrete random variables (5/5)
+
+::::::: columns
+:::::: {.column width="35%"}
+::::: example
+::: ex-title
+Example 1
+:::
+
+::: ex-cont
+Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.
+
+6.  Find the marginal CDFs $F_{X}(x)$ and $F_{Y}(y)$
+:::
+:::::
+![](/lessons/img_slides/joint_pmf.png){width="520"}
+::::::
+:::::::
+
+## Quick remarks on the joint and marginal CDF
+
+-   $F_X(x)$: right most columns of the CDF table (where the $Y$ values are largest)
+
+-   $F_Y(y)$: bottom row of the table (where X values are largest)
+
+-   $F_X(x)=\lim\limits_{y\rightarrow\infty}F_{X, Y}(x,y)$
+
+-   $F_Y(y)=\lim\limits_{x\rightarrow\infty}F_{X, Y}(x,y)$
+
+# Learning Objectives
+
+1.  Define **joint and marginal** distributions for discrete and continuous random variables
+
+2.  Calculate or find **joint and marginal** probabilities, pmf's, and CDF's for discrete random variables
+
+::: lob
+3.  Calculate or find **joint and marginal** probabilities, pdf's, and CDF's for continuous random variables
+:::
+
+4.  Extra practice on your own: solve double integrals in a mini lesson
+
+## Common steps for joint pdfs and CDFs
+
+1.  Set up the domain of the pdf with a picture
+
+ 
+
+2.  Translate to needed integrands
+
+    -   For probability: shade in the area of interest, then translate
+    -   For expected value: translate domain
+
+ 
+
+3.  Set up integral: $dxdy$ or $dydx$?
+
+ 
+
+4.  Solve integral!
+
+## Example 2: Joint pdf (1/2)
+
+::::::: columns
+:::::: {.column width="30%"}
+::::: example
+::: ex-title
+Example 2.1
+:::
+
+::: ex-cont
+Let $f_{X,Y}(x,y)= \frac32 y^2$, for $0 \leq x \leq 2, \ 0 \leq y \leq 1$.
+
+1.  Find $\mathbb{P}(0 \leq X \leq 1, 0 \leq Y \leq \frac12)$
+:::
+:::::
+
+```{r}
+#| fig-width: 6
+#| fig-height: 5.5
+
+library(tidyverse)
+joint1 = tibble(
+  x = seq(0, 2, 0.01), 
+  y = seq(0, 1, 0.005)
+)
+
+x_y_plot1 = ggplot(joint1, aes(x = x, y = y)) +
+  labs(x = "x", y = "y") +
+  scale_x_continuous(breaks = c(0, 1, 2)) +
+  scale_y_continuous(breaks = c(0, 0.5, 1)) +
+  theme_bw() +
+  theme(text = element_text(size=30))
+x_y_plot1
+```
+::::::
+:::::::
+
+## Example 2: Joint pdf (2/2)
+
+::::::: columns
+:::::: {.column width="30%"}
+::::: example
+::: ex-title
+Example 2.2
+:::
+
+::: ex-cont
+Let $f_{X,Y}(x,y)= \frac32 y^2$, for $0 \leq x \leq 2, \ 0 \leq y \leq 1$.
+
+2.  Find $f_X(x)$ and $f_Y(y)$.
+:::
+:::::
+
+```{r}
+#| fig-width: 6
+#| fig-height: 5.5
+
+x_y_plot1
+```
+
+::::::
+:::::::
+
+## Example with more complicated pdf (1/2)
+
+::: {.callout-important appearance="simple" icon="false"}
+Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+:::
+
+::::::: columns
+:::::: {.column width="30%"}
+::::: example
+::: ex-title
+Example 3.1
+:::
+
+::: ex-cont
+Let $f_{X,Y}(x,y)= 2 e^{-(x+y)}$, for $0 \leq x \leq y$.
+
+1.  Find $f_X(x)$ and $f_Y(y)$.
+:::
+:::::
+::::::
+:::::::
+
+## Example with more complicated pdf (2/2)
+
+::: {.callout-important appearance="simple" icon="false"}
+Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+:::
+
+::::::: columns
+:::::: {.column width="30%"}
+::::: example
+::: ex-title
+Example 3.2
+:::
+
+::: ex-cont
+Let $f_{X,Y}(x,y)= 2 e^{-(x+y)}$, for $0 \leq x \leq y$.
+
+2.  Find $\mathbb{P}(Y < 3)$.
+:::
+:::::
+::::::
+:::::::
+
+## Recall: Finding the pdf of a transformation
+
+-   Let $M$ be a transformation of $X$ and $Y$: $M = g(X, Y)$
+
+-   When we have a transformation of $X$ and $Y$, $M$, we need to follow the **CDF method** to find the pdf of $M$
+
+We follow **CDF method**:
+
+1.  Start with the joint pdf for $X$ and $Y$
+
+    -   aka $f_{X,Y}(x, y)$
+
+2.  Translate the domain of $X$ and $Y$ to $M$: find possible values of $M$
+
+3.  Find the CDF of $M$
+
+    - aka $F_M(m) = P(M \leq m) = P(g(X, Y) \leq m)$
+
+4.  Take the derivative of the CDF of $M$ with respect to $m$ to find the pdf of $M$ 
+
+    -   aka $f_M(m) = \dfrac{d}{dm}F_M(m)$
+
+## Example of a joint pdf with a transformation (1/3)
+
+::::::: columns
+:::::: {.column width="30%"}
+::::: example
+::: ex-title
+Example 4.1
+:::
+
+::: ex-cont
+Let $X$ and $Y$ have constant density on the square $0 \leq X \leq 4, 0 \leq Y \leq 4$.
+
+1.  Find $\mathbb{P}(|X-Y| < 2)$
+:::
+:::::
+
+```{r}
+#| fig-width: 6
+#| fig-height: 5.5
+
+library(tidyverse)
+joint2 = tibble(
+  x = seq(0, 4, 0.5), 
+  y = seq(0, 4, 0.5)
+)
+
+x_y_plot2 = ggplot(joint2, aes(x = x, y = y)) +
+  labs(x = "x", y = "y") +
+  scale_x_continuous(breaks = c(0, 2, 4)) +
+  scale_y_continuous(breaks = c(0, 2, 4)) +
+  theme_bw() +
+  theme(text = element_text(size=30))
+x_y_plot2
+```
+
+::::::
+:::::::
+
+## Example of a joint pdf with a transformation (2/3)
+
+::::::: columns
+:::::: {.column width="30%"}
+::::: example
+::: ex-title
+Example 4.2
+:::
+
+::: ex-cont
+Let $X$ and $Y$ have constant density on the square $0 \leq X \leq 4, 0 \leq Y \leq 4$.
+
+2.  Let $M = \max(X,Y)$. Find the pdf for $M$, that is $f_M(m)$
+:::
+:::::
+
+```{r}
+#| fig-width: 6
+#| fig-height: 5.5
+
+x_y_plot2
+```
+
+::::::
+:::::::
+
+## Example of a joint pdf with a transformation (3/3)
+
+::::::: columns
+:::::: {.column width="30%"}
+::::: example
+::: ex-title
+Example 4.3
+:::
+
+::: ex-cont
+Let $X$ and $Y$ have constant density on the square $0 \leq X \leq 4, 0 \leq Y \leq 4$.
+
+3.  Let $Z = \min(X,Y)$. Find the pdf for $Z$, that is $f_Z(z)$.
+:::
+:::::
+
+```{r}
+#| fig-width: 6
+#| fig-height: 5.5
+
+x_y_plot2
+```
+
+::::::
+
+:::::: {.column width="70%"}
+::: {.callout-important appearance="simple" icon="false"}
+Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+:::
+::::::
+:::::::
+
+## Last example *for home*: more complicated transformation
+
+::::::: columns
+:::::: {.column width="30%"}
+::::: example
+::: ex-title
+Example 5
+:::
+
+::: ex-cont
+Let $X$ and $Y$ have joint density $f_{X,Y}(x,y)= \frac85(x+y)$ in the region $0 < x < 1,\ \frac12 < y <1$. Find the pdf of the RV $Z$, where $Z=XY$.
+:::
+:::::
+
+```{r}
+#| fig-width: 6
+#| fig-height: 5.5
+
+joint3 = tibble(
+  x = seq(0, 1, 0.5), 
+  y = seq(0, 1, 0.5)
+)
+
+x_y_plot3 = ggplot(joint3, aes(x = x, y = y)) +
+  labs(x = "x", y = "y") +
+  scale_x_continuous(breaks = c(0, 0.5, 1)) +
+  scale_y_continuous(breaks = c(0, 0.5, 1)) +
+  theme_bw() +
+  theme(text = element_text(size=30))
+x_y_plot3
+```
+
+::::::
+:::::::
+
+# Learning Objectives
+
+1.  Solve double integrals in our mini lesson!
+
+2.  Calculate probabilities for a pair of continuous random variables
+
+3.  Calculate a *joint and marginal* probability density function (pdf)
+
+::: lob
+4.  Calculate a *joint and marginal* cumulative distribution function (CDF) from a pdf
+:::
+
+## Double Integrals Mini Lesson (1/3)
+
+::: {.callout-important appearance="simple" icon="false"}
+Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+:::
+
+::::::: columns
+:::::: {.column width="30%"}
+::::: example
+::: ex-title
+Mini Lesson Example 1
+:::
+
+::: ex-cont
+Solve the following integral: $\displaystyle\int_{2}^{3}\displaystyle\int_{0}^{1} xy dydx$
+:::
+:::::
+::::::
+:::::::
+
+## Double Integrals Mini Lesson (2/3)
+
+::: {.callout-important appearance="simple" icon="false"}
+Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+:::
+
+::::::: columns
+:::::: {.column width="30%"}
+::::: example
+::: ex-title
+Mini Lesson Example 2
+:::
+
+::: ex-cont
+Solve the following integral: $\displaystyle\int_{2}^{3}\displaystyle\int_{0}^{1} (x+y) dydx$
+:::
+:::::
+::::::
+:::::::
+
+## Double Integrals Mini Lesson (3/3)
+
+::: {.callout-important appearance="simple" icon="false"}
+Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+:::
+
+::::::: columns
+:::::: {.column width="30%"}
+::::: example
+::: ex-title
+Mini Lesson Example 3
+:::
+
+::: ex-cont
+Solve the following integral: $\displaystyle\int_{2}^{3}\displaystyle\int_{0}^{1} e^{x+y} dydx$
+:::
+:::::
+::::::
+:::::::

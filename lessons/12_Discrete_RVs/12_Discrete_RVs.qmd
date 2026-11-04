@@ -156,7 +156,7 @@ handful of five pieces of candy ***with*** replacement.
 ## Ghost problem revisited: simulate it
 
 :::::::: columns
-:::::: {.column width="58%"}
+:::::: {.column width="54%"}
 ::::: example
 ::: ex-title
 Example 1
@@ -176,7 +176,9 @@ n_candy <- 5 # <3>
 p <- 10 / 60 # <3>
 
 ghost_sims <- tibble(sim = 1:reps) |> # <4>
-  mutate(Y = rbinom(n(), size = n_candy, prob = p)) # <5>
+  mutate(
+    Y = rbinom(n(), size = n_candy, prob = p) # <5>
+    ) 
 ```
 
 1.  Set the seed once, so we all get the same random numbers.
@@ -190,7 +192,10 @@ ghost_sims <- tibble(sim = 1:reps) |> # <4>
     candy: `rbinom()` gives the number of chocolates directly!
 ::::::
 
-::: {.column width="42%"}
+::: {.column width="1%"}
+:::
+
+::: {.column width="45%"}
 ```{r}
 ghost_sims |> # <1>
   summarise( # <1>
@@ -198,8 +203,6 @@ ghost_sims |> # <1>
     variance = mean((Y - mean(Y))^2), # <3>
     prob_1   = mean(Y == 1) # <4>
   )
-
-dbinom(1, size = n_candy, prob = p) # <5>
 ```
 
 1.  One row of summaries for the 10,000 simulated values of $Y$.
@@ -209,6 +212,9 @@ dbinom(1, size = n_candy, prob = p) # <5>
     estimates $P(Y = 1)$.
 5.  The exact $P(Y = 1)$ from `dbinom()`, to compare with `prob_1`.
 
+ 
+
+@claude: make a box around this:
 -   In Lesson 11 we found the variance by adding up 5 Bernoulli
     variances. Now the binomial formula does it in one step!
 :::
@@ -259,7 +265,7 @@ R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#
 
 | R code | What does it return? | What do we use it for? |
 |--------------|-------------------------------|---------------------------|
-| `rgeom()` | returns [sample of random variables]{style="color:#367B79"} with [specified geometric distribution]{style="color:#BF396F"} | simulations! |
+| `rgeom()` | returns [sample of random variables]{style="color:#367B79"} with [specified geometric distribution]{style="color:#BF396F"} | Simulate a Geometric RV |
 | `dgeom()` | returns [probability]{style="color:#367B79"} of getting [certain number of failures]{style="color:#BF396F"} before the first success | $P(X = x)$ |
 | `pgeom()` | returns [cumulative probability]{style="color:#367B79"} of getting [certain number of failures or less]{style="color:#BF396F"} | $P(X \leq x)$ (or $P(X > x)$ if we add `lower.tail = FALSE`) |
 | `qgeom()` | returns [number of failures]{style="color:#367B79"} corresponding to [desired quantile]{style="color:#BF396F"} | Goes the other direction: we give it a probability and it returns the value $k$ where $P(X \leq k)$ reaches it |
@@ -374,7 +380,11 @@ each throw.
 ## Memoryless property for Geometric RVs
 
 If we know $X$ is greater than some number (aka given $X >j$), then the
-probability of $X > k+j$ is just the probability that $X>k$. This is the
+probability of $X > k+j$ is just the probability that $X>k$. 
+
+ 
+
+This is the
 [**memoryless**]{style="color:#29abe0;"} property.
 
  

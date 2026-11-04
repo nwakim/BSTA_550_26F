@@ -25,6 +25,7 @@ source(here("class_dates.R"))
 1. Learn the definition of a moment-generating function.
 2. Find the moment-generating function of a random variable.
 3. Use a moment-generating function to find the mean and variance of a random variable.
+4. Use moment-generating functions to find the distribution of linear transformations and sums of independent random variables.
 
 ## Where are we?
 
@@ -226,16 +227,162 @@ $Z \sim N(0,1)$.
 
 ## Using the MGF to uniquely describe the standard normal distribution
 
+## Finding a distribution from its MGF
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 11
+:::
+::: ex-cont
+Let $X$ be a random variable with MGF
+$$M_X(t)= \frac{1}{5}e^t + \frac{3}{10}e^{2t} + \frac{1}{2}e^{3t}.$$
+Find the pmf or pdf of $X$.
+:::
+:::
+:::
+:::
+
+## MGFs of linear transformations
+
+::: theorem
+::: thm-title
+Theorem 12
+:::
+::: thm-cont
+Let $X$ have MGF $M_X(t)$, and let $Y=aX+b$, where $a$ and $b$ are constants. Then
+$$M_Y(t)=$$
+:::
+:::
+
+::: proof
+:::
+
+## Using the MGF to describe the normal distribution
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 13
+:::
+::: ex-cont
+Let $X$ be a normal random variable with mean $\mu$ and variance $\sigma^2$, i.e. $X \sim N(\mu,\sigma^2)$.
+
+1.  Find the MGF of $X$
+
+2.  Find $\mathbb{E}[X]$
+
+3.  Find $Var(X)$
+:::
+:::
+:::
+:::
+
+## Do linear transformations preserve the distribution type?
+
+**Question:** If $X$ has a certain probability distribution, does $aX+b$ always have the same distribution type?
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 14
+:::
+::: ex-cont
+Let $X \sim U[0,1]$, and $Y = 2X+3$. Is $Y$ also a uniform RV? If so, what are its parameters?
+:::
+:::
+:::
+:::
+
+## Do linear transformations preserve the distribution type?
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 15
+:::
+::: ex-cont
+Let $X \sim Exp(\lambda=5)$, and $Y = 2X+3$. Is $Y$ also an exponential RV? If so, what is its parameter?
+:::
+:::
+:::
+:::
+
+
 ## MGFs of sums of independent RV's
 
 ::: theorem
 ::: thm-title
-Theorem 9
+Theorem 16
 :::
 ::: thm-cont
 If $X$ and $Y$ are independent RV's with respective MGFs $M_X(t)$ and $M_Y(t)$, then
 
 $$M_{X+Y}(t) = E[e^{t(X+Y)}] = E[e^{tX} e^{tY}] = E[e^{tX}]E[e^{tY}]=M_{X}(t)M_{Y}(t)$$
+:::
+:::
+
+## MGFs of linear combinations of independent RV's
+
+::: theorem
+::: thm-title
+Theorem 17
+:::
+::: thm-cont
+Let $X_1, X_2, \ldots, X_n$ be independent RV's with respective MGFs $M_{X_i}(t)$, for $i=1,2,\ldots,n$. Let $Y=\sum_{i=1}^n a_iX_i$, where $a_i$ are constants. Then
+$$M_Y(t)= %\Pi_{i=1}^n M_{X_i}(a_it).$$
+:::
+:::
+
+::: proof
+:::
+
+## Sums of independent normal RV's
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 18
+:::
+::: ex-cont
+Let $X_i \sim N(\mu_i, \sigma_i^2)$ be independent normal RV's. What is the distribution of $Y=\sum_{i=1}^n X_i$?
+:::
+:::
+:::
+:::
+
+## The sample mean of iid normal RV's
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 19
+:::
+::: ex-cont
+Let $X_i \sim N(\mu, \sigma^2)$ be iid normal RV's, for $i=1,2,\ldots,n$. What is the distribution of $\bar{X}=\frac{\sum_{i=1}^n X_i}{n}$?
+:::
+:::
+:::
+:::
+
+## Connecting the normal and chi-squared distributions
+
+::: columns
+::: {.column width="30%"}
+::: example
+::: ex-title
+Example 20
+:::
+::: ex-cont
+Let $Z$ be a standard normal random variable, i.e. $Z \sim N(0,1)$. Show that $Z^2 \sim \chi_1^2$, i.e. is a chi-squared RV with 1 degree of freedom (Lesson 13).
+:::
+:::
 :::
 :::
 
@@ -254,6 +401,7 @@ $$M_{X+Y}(t) = E[e^{t(X+Y)}] = E[e^{tX} e^{tY}] = E[e^{tX}]E[e^{tY}]=M_{X}(t)M_{
   - Make the calculation easier!
 
 - MGFs are often used to prove certain distribution are sums of other ones!
+  - For example: sums of independent normal RVs are normal, and $Z^2$ is chi-squared
   
 ## More resources
 

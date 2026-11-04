@@ -3,8 +3,8 @@ title: "Lesson 12: Some Important Discrete RVs"
 author: "Meike Niederhausen and Nicky Wakim"
 title-slide-attributes:
     data-background-color: "#006a4e"
-date: "`r library(here); source(here('class_dates.R')); w6d1`"
-format: 
+date: "`r library(here); source(here('class_dates.R')); w6d2`"
+format:
   revealjs:
     theme: "../simple_NW.scss"
     slide-number: true
@@ -13,8 +13,12 @@ format:
     height: 1100
     footer: Lesson 12 Slides
     html-math-method: mathjax
-editor: 
-  markdown: 
+    highlight-style: arrow
+    code-annotations: hover
+execute:
+  echo: true
+editor:
+  markdown:
     wrap: 72
 ---
 
@@ -29,8 +33,8 @@ library(tidyverse)
 
 1.  Distinguish between Bernoulli, Binomial, Geometric, Hypergeometric,
     Discrete Uniform, Negative Binomial, and Poisson distributions when
-    reading a world problem.
-2.  Identify the variable and the parameters in a world problem, and
+    reading a word problem.
+2.  Identify the variable and the parameters in a word problem, and
     state what the variable and parameters mean.
 3.  Use the formulas for the pmf/CDF, expected value, and variance to
     answer questions and find probabilities.
@@ -61,7 +65,7 @@ $$
 
 $$\text{E}(X) = p$$
 
-$$\text{Var}(X) = pq = p(1-p)$$
+$$\text{Var}(X) = pq = p(1-p) \quad \text{ where } q = 1-p$$
 
 ## Bernoulli Example 1
 
@@ -95,6 +99,9 @@ Example 1
 
 -   Shorthand: $X \sim \text{Binomial}(n, p)$
 
+-   A [**binomial random variable**]{style="color:#20c997;"} is the
+    **sum of** $n$ **independent Bernoulli RVs**
+
 $$
 X = \text{Number of successes of } n \text{ independent trials}
 $$
@@ -105,7 +112,7 @@ $$
 
 $$\text{E}(X) = np$$ $$\text{Var}(X) = npq = np(1-p)$$
 
-## Our beloved fair-sided die
+## Our beloved fair 6-sided die
 
 ::::::: columns
 :::::: {.column width="35%"}
@@ -119,13 +126,76 @@ Example 2
 
 -   We get \$1 every time we roll a 5, and nothing otherwise.
 
--   Let $X$ be how much money we get on the 50 rolls.
+-   Let $Y$ be how much money we get on the 50 rolls.
 
--   Find the mean and variance of $X$.
+-   Find the mean and variance of $Y$.
 :::
 :::::
 ::::::
 :::::::
+
+## Our beloved fair 6-sided die: simulate it
+
+:::::::: columns
+:::::: {.column width="60%"}
+::::: example
+::: ex-title
+Example 2
+:::
+
+::: ex-cont
+Simulate $Y$, the money from 50 rolls, 10,000 times. Do the mean and
+variance match $np = \frac{50}{6} \approx 8.33$ and
+$np(1-p) = \frac{250}{36} \approx 6.94$?
+:::
+:::::
+
+```{r}
+set.seed(1104) # <1>
+reps <- 10000 # <2>
+n_rolls <- 50 # <2>
+
+rolls <- expand_grid(sim = 1:reps, roll = 1:n_rolls) |> # <3>
+  mutate(face = sample(1:6, n(), replace = TRUE)) # <4>
+
+money_sims <- rolls |> # <5>
+  group_by(sim) |> # <5>
+  summarise(Y = sum(face == 5)) # <5>
+```
+
+1.  Set the seed once, so we all get the same random numbers.
+2.  Save the number of simulations and the number of rolls ($n = 50$) as
+    variables, so they are easy to change.
+3.  One row for every roll in every simulation: 10,000 × 50 = 500,000
+    rows.
+4.  Roll a fair die for every row. `n()` is the number of rows.
+5.  For each simulation, count the 5s. `face == 5` is `TRUE` or `FALSE`,
+    and `sum()` counts the `TRUE`s. Each 5 is \$1, so this count is $Y$.
+::::::
+
+::: {.column width="40%"}
+ 
+
+ 
+
+```{r}
+money_sims |> # <1>
+  summarise( # <1>
+    average  = mean(Y), # <2>
+    variance = mean((Y - mean(Y))^2) # <3>
+  )
+```
+
+1.  Collapse the 10,000 simulated values of `Y` into one row of
+    summaries.
+2.  The average of `Y`, which estimates $\text{E}(Y) = np$.
+3.  The average squared distance from the mean, which estimates
+    $\text{Var}(Y)$ (same formula as Lesson 11).
+
+-   Each roll is a Bernoulli trial, and $Y$ adds up 50 of them: this is
+    the binomial as a **sum of independent Bernoulli RVs**
+:::
+::::::::
 
 # Geometric RVs {#chapter-16-geometric-RVs .unnumbered}
 
@@ -136,31 +206,35 @@ Example 2
     each trial. We are counting the number of trials until the first
     success.
 
+    -   For example, toss a coin until we get heads: H, or TH, or TTH,
+        or TTTH, ...
+
 -   Shorthand: $X \sim \text{Geo}(p)$ or $X \sim \text{Geometric}(p)$ or
     $X \sim \text{G}(p)$
 
-+---------------------------------+---------------------------------+
-| $X =$ Number of trials needed   | $X =$ Number of failures before |
-| for first success (count $x$    | first success (count $x$ *does  |
-| *includes* the success)         | not include* the success)       |
-+:===============================:+:===============================:+
-| \$p \_                          | \$ p \_X (x)= P(X=x) =          |
-|                                 | (1-p)\^{x}p\$                   |
-| X( x ) = P(X=x) =               |                                 |
-| (1-p)\^{x-1}p\$                 | for $x=0, 1,2,...$              |
-|                                 |                                 |
-| for $x=1,2, 3,...$              | \$\$F_X ( x )                   |
-|                                 |                                 |
-| \$\$F\_ X ( x                   | = P(X\leq x) =                  |
-|                                 | 1-(1-p)\^{x+1}\$\$              |
-| ) = P(X\leq x) = 1-(1-p)\^x\$\$ |                                 |
-|                                 | for $x=0, 1,2,...$              |
-| for $x=1,2, 3,...$              |                                 |
-+---------------------------------+---------------------------------+
-| $E(X)=\dfrac{1}{p}$             | $E(X)=\dfrac{1-p}{p}$           |
-|                                 |                                 |
-| $Var(X)= \dfrac{1-p}{p^2}$      | $Var(X) = \dfrac{1-p}{p^2}$     |
-+---------------------------------+---------------------------------+
+::::: columns
+::: {.column width="50%"}
+**$X =$ Number of trials needed for first success** (count $x$
+*includes* the success)
+
+$$p_X(x) = P(X=x) = (1-p)^{x-1}p \quad \text{for } x=1,2,3,\ldots$$
+
+$$F_X(x) = P(X\leq x) = 1-(1-p)^x \quad \text{for } x=1,2,3,\ldots$$
+
+$$E(X)=\dfrac{1}{p} \qquad Var(X)= \dfrac{1-p}{p^2}$$
+:::
+
+::: {.column width="50%"}
+**$X =$ Number of failures before first success** (count $x$ *does not
+include* the success)
+
+$$p_X(x) = P(X=x) = (1-p)^{x}p \quad \text{for } x=0,1,2,\ldots$$
+
+$$F_X(x) = P(X\leq x) = 1-(1-p)^{x+1} \quad \text{for } x=0,1,2,\ldots$$
+
+$$E(X)=\dfrac{1-p}{p} \qquad Var(X) = \dfrac{1-p}{p^2}$$
+:::
+:::::
 
 ## Bullseye (1/4)
 
@@ -261,13 +335,109 @@ each throw.
 ## Memoryless property for Geometric RVs
 
 If we know $X$ is greater than some number (aka given $X >j$), then the
-probability of $X > k+j$ is just the probability that $X>k$.
+probability of $X > k+j$ is just the probability that $X>k$. This is the
+[**memoryless**]{style="color:#29abe0;"} property.
 
  
 
 $P(X > k+j |X > j) = P(X > k)$
 
 $$ P(X > k+j |X > j) = \dfrac{P(X>k+j \text{ and } X>j)}{P(X>j)} = \dfrac{P(X>k+j)}{P(X>j)} = \dfrac{(1-p)^{k+j}}{(1-p)^{j}} = (1-p)^{k} $$
+
+## Let's simulate the bullseye example (1/2)
+
+:::::::: columns
+:::::: {.column width="62%"}
+-   Act out the story: each throw is a `"bullseye"` (probability 0.01)
+    or a `"miss"`
+
+```{r}
+p <- 0.01 # <1>
+max_throws <- 1500 # <2>
+
+throws <- expand_grid(sim = 1:reps, throw = 1:max_throws) |> # <3>
+  mutate(outcome = sample(c("bullseye", "miss"), # <4>
+                          size = n(), # <4>
+                          replace = TRUE, # <4>
+                          prob = c(p, 1 - p))) # <4>
+
+bullseye_sims <- throws |> # <5>
+  filter(outcome == "bullseye") |> # <5>
+  group_by(sim) |> # <6>
+  summarise(X = min(throw)) # <6>
+```
+
+1.  The probability of a bullseye on each throw.
+2.  We can't throw forever in R, so we give each simulation 1,500
+    throws. The chance of no bullseye in 1,500 throws is
+    $0.99^{1500} \approx 0.0000003$, so this is plenty.
+3.  One row for every throw in every simulation: 10,000 × 1,500 = 15
+    million rows. `reps` is still 10,000 from the die example.
+4.  For every row, randomly pick `"bullseye"` (probability `p`) or
+    `"miss"` (probability `1 - p`), like the falls example in Lesson 7.
+5.  `filter()` keeps only the throws that hit the bullseye.
+6.  For each simulation, the *first* bullseye is the smallest throw
+    number that hit. `min()` finds the smallest value. This is $X$.
+::::::
+
+::: {.column width="38%"}
+-   The first few simulated values of $X$:
+
+```{r}
+bullseye_sims # <1>
+```
+
+1.  Each row is one simulation. `X` is the throw number of the first
+    bullseye.
+:::
+::::::::
+
+## Let's simulate the bullseye example (2/2)
+
+:::::::: columns
+:::::: {.column width="55%"}
+```{r}
+bullseye_sims |> # <1>
+  summarise( # <1>
+    average       = mean(X), # <2>
+    variance      = mean((X - mean(X))^2), # <2>
+    prob_first_50 = mean(X <= 50) # <3>
+  )
+```
+
+1.  One row of summaries for the 10,000 simulated values of $X$.
+2.  Compare with $E(X) = \frac{1}{0.01} = 100$ and
+    $Var(X) = \frac{0.99}{0.01^2} = 9900$.
+3.  The proportion of simulations where the first bullseye was on one of
+    the first 50 throws, which estimates $P(X \leq 50)$.
+
+ 
+
+-   By hand: $P(X \leq 50) = 1 - 0.99^{50} \approx 0.395$
+::::::
+
+::: {.column width="45%"}
+-   Check the [**memoryless**]{style="color:#29abe0;"} property
+
+```{r}
+bullseye_sims |> # <1>
+  filter(X > 20) |> # <1>
+  summarise(prob_after_50 = mean(X > 50)) # <2>
+
+bullseye_sims |> # <3>
+  summarise(prob_after_30 = mean(X > 30)) # <3>
+```
+
+1.  Keep only the simulations where the first 20 throws were all misses
+    ($X > 20$).
+2.  Among those, the proportion with $X > 50$ estimates
+    $P(X > 50 | X > 20)$.
+3.  Using all simulations, the proportion with $X > 30$ estimates
+    $P(X > 30)$.
+
+-   Both are close to $0.99^{30} \approx 0.740$
+:::
+::::::::
 
 # Negative Binomial RVs
 
@@ -279,6 +449,8 @@ $$ P(X > k+j |X > j) = \dfrac{P(X>k+j \text{ and } X>j)}{P(X>j)} = \dfrac{P(X>k+
     success.
 -   Shorthand: $X \sim \text{NegBin}(p, r)$ or $X \sim \text{NB}(p, r)$
 -   Negative binomial is sum of $r$ geometric distributions
+    -   If $Y \sim \text{Geo}(p)$, then $E(X) = r \cdot E(Y)$ and
+        $Var(X) = r \cdot Var(Y)$
 
 $$
 X = \text{Number of independent trials until } r^{th} \text{ success}
@@ -286,9 +458,10 @@ $$
 
 $$ p_X(x) = P(X=x) = {x-1 \choose r-1}(1-p)^{x-r}p^r \text{ for } x = r, r+1, r+2, ...$$
 
-$$ E(X) = \dfrac{r}{p}$$
+-   In $x$ trials: $x - r$ failures and $r$ successes, and the last
+    trial must be a success
 
-$$Var(X) = \dfrac{rq}{p^2} = \dfrac{r(1-p)}{p^2}$$
+$$ E(X) = \dfrac{r}{p} \qquad Var(X) = \dfrac{rq}{p^2} = \dfrac{r(1-p)}{p^2}$$
 
 ## Hitting more than 1 bullseye
 
@@ -296,7 +469,7 @@ $$Var(X) = \dfrac{rq}{p^2} = \dfrac{r(1-p)}{p^2}$$
 :::::: {.column width="35%"}
 ::::: example
 ::: ex-title
-Example 1
+Example 4
 :::
 
 ::: ex-cont
@@ -317,7 +490,7 @@ probability of hitting the bullseye is 0.01 for each throw.
 :::::: {.column width="35%"}
 ::::: example
 ::: ex-title
-Example 1
+Example 4
 :::
 
 ::: ex-cont
@@ -338,14 +511,15 @@ probability of hitting the bullseye is 0.01 for each throw.
 
 ## Properties of Poisson RVs
 
--   **Scenario:** We are counting the number of successes in a fixed
-    time period (or fixed space), which has a constant rate ($\lambda$)
-    of successes
+-   **Scenario:** We are counting the number of successes in a
+    [**fixed time period (or fixed space)**]{style="color:#006a4e;"},
+    which has a constant [**rate**]{style="color:#006a4e;"}
+    ($\lambda$) of successes
 -   Shorthand: $X \sim \text{Poisson}(\lambda)$ or
     $X \sim \text{Pois}(\lambda)$
 
 $$
-X = \text{Number of successes in a given period}
+X = \text{Number of successes in a given period (or given space)}
 $$
 
 $$ p_X(x) = P(X=x) = \dfrac{e^{-\lambda}\lambda^x}{x!} \text{ for } x = 0, 1, 2,3, ...$$
@@ -362,14 +536,17 @@ $$\text{Var}(X) = \lambda$$
 
     -   in $n$ independent (Bernoulli) trials ...
 
-    -   that each have the same probability of success $p$.
+    -   that each have the same **probability** of success $p$.
 
--   Poisson RV's are similar,
+-   Poisson RVs are similar,
 
     -   except that instead of having $n$ discrete independent trials,
 
     -   there is a **fixed time period** (or space) during which the
         successes happen
+
+    -   and instead of a probability, we have a
+        [**rate**]{style="color:#006a4e;"} of successes, $\lambda$
 
 ## Examples of Poisson RVs
 
@@ -380,6 +557,9 @@ $$\text{Var}(X) = \lambda$$
 
 -   Number of pedestrians walking through a square mile
 
+-   Number of babies born with a cleft palate within 1 year (rare
+    events)
+
 -   Any more?
 
 ## Emergency Room Visitors
@@ -388,7 +568,7 @@ $$\text{Var}(X) = \lambda$$
 :::::: {.column width="35%"}
 ::::: example
 ::: ex-title
-Example 1
+Example 5
 :::
 
 ::: ex-cont
@@ -398,12 +578,59 @@ the following probabilities.
 1.  Probability of 30 visitors in a day.
 
 2.  Probability of 8 visitors in an hour.
-
-3.  Probability of at least 8 visitors in an hour.
 :::
 :::::
 ::::::
 :::::::
+
+## Emergency Room Visitors: in R
+
+:::::::: columns
+:::::: {.column width="55%"}
+::::: example
+::: ex-title
+Example 5
+:::
+
+::: ex-cont
+Suppose an emergency room has an average of 50 visitors per day.
+
+1.  Probability of 30 visitors in a day.
+2.  Probability of 8 visitors in an hour.
+:::
+:::::
+
+```{r}
+dpois(30, lambda = 50) # <1>
+
+lambda_hour <- 50 / 24 # <2>
+dpois(8, lambda = lambda_hour) # <3>
+```
+
+1.  `dpois()` gives $P(X = x)$ for a Poisson RV, like `dbinom()` did for
+    the binomial. Here $x = 30$ and $\lambda = 50$ visitors per day.
+2.  Change the rate to match the time period: 50 visitors per day is
+    $\frac{50}{24} \approx 2.083$ visitors per hour.
+3.  $P(X = 8)$ when $X$ counts visitors in one hour.
+::::::
+
+::: {.column width="45%"}
+::::: fact
+::: fact-title
+Change $\lambda$, not $X$
+:::
+
+::: fact-cont
+When the time period changes, change the **rate** $\lambda$ to match it.
+
+-   Right way: $\lambda = \frac{50}{24}$ visitors per hour, and find
+    $P(X = 8)$
+-   Wrong way: keep $\lambda = 50$ per day and find
+    $P(X = 8 \cdot 24) = P(X = 192)$
+:::
+:::::
+:::
+::::::::
 
 ## Combining independent Poisson distributions
 
@@ -424,13 +651,13 @@ of each other, then $Z=X+Y\sim Pois(\lambda_1 + \lambda_2)$.
 :::::: {.column width="35%"}
 ::::: example
 ::: ex-title
-Example 2
+Example 6
 :::
 
 ::: ex-cont
 Suppose emergency room 1 has an average of 50 visitors per day, and
 emergency room 2 has an average of 70 visitors per day, independently of
-each other. What is the probability distribution to model of the total
+each other. What is the probability distribution that models the total
 number of visitors to both?
 :::
 :::::
@@ -439,7 +666,7 @@ number of visitors to both?
 
 ## Poisson Approximation of the Binomial
 
-Both Poisson and Binomial RV's are counting the number of successes
+Both Poisson and Binomial RVs are counting the number of successes
 
 -   If for a Binomial RV
 
@@ -461,7 +688,7 @@ Both Poisson and Binomial RV's are counting the number of successes
 :::::: {.column width="35%"}
 ::::: example
 ::: ex-title
-Example 3
+Example 7
 :::
 
 ::: ex-cont
@@ -479,6 +706,8 @@ made in the next 2,000 tests.
 
 ::: {.column width="60%"}
 To do for extra practice - will also see a similar problem in BSTA 511
+
+-   *Hint:* `pbinom()` and `ppois()` give $P(X \leq x)$
 :::
 ::::::::
 
@@ -487,12 +716,12 @@ To do for extra practice - will also see a similar problem in BSTA 511
 ## Hypergeometric RVs
 
 -   **Scenario:** There are a fixed number of successes and failures
-    (which are known in advance), from which we make $n$ draws without
-    replacement. We are counting the number of successes from the $n$
-    trials.
+    (which are known in advance), from which we make $n$ draws
+    [**without replacement**]{style="color:#E25D3B;"}. We are counting
+    the number of successes from the $n$ trials.
     -   There is a finite population of $N$ items
     -   Each item in the population is either a success or a failure,
-        and there are $M$ successes total.
+        and there are $M$ successes total (and $N-M$ failures).
     -   We randomly select (sample) $n$ items from the population
         without replacement
 -   Shorthand: $X \sim \text{Hypergeo}(M, N, n)$
@@ -504,7 +733,7 @@ X = \text{Number of successes in } n \text{ draws}
 $$
 
 $$
-p_X(x) = P(X=x) = \dfrac{{M \choose x}{N-M \choose n-x}}{{N \choose n}} 
+p_X(x) = P(X=x) = \dfrac{{M \choose x}{N-M \choose n-x}}{{N \choose n}}
 $$
 $$\text{ for } x \text{ integer-valued } \\ \max(0, n-(N-M)) \leq x \leq \min(n, M)$$
 :::
@@ -522,7 +751,7 @@ $$\text{Var}(X) = n \dfrac{M}{N} \bigg(1- \dfrac{M}{N} \bigg)\bigg(\dfrac{N-n}{N
 :::::: {.column width="35%"}
 ::::: example
 ::: ex-title
-Example 4
+Example 8
 :::
 
 ::: ex-cont
@@ -535,6 +764,64 @@ what is the probability that 3 of them have already been tagged?
 ::::::
 :::::::
 
+## Wolf population: simulate it
+
+:::::::: columns
+:::::: {.column width="62%"}
+-   Act out the story: put 24 wolves in a box and capture 5
+    [**without replacement**]{style="color:#E25D3B;"}
+
+```{r}
+wolves <- c(rep("tagged", 11), rep("untagged", 13)) # <1>
+n_captured <- 5 # <2>
+
+captures <- expand_grid(sim = 1:reps, capture = 1:n_captured) |> # <3>
+  group_by(sim) |> # <4>
+  mutate(wolf = sample(wolves, n())) # <4>
+
+wolf_sims <- captures |> # <5>
+  group_by(sim) |> # <5>
+  summarise(X = sum(wolf == "tagged")) # <5>
+```
+
+1.  `rep("tagged", 11)` repeats `"tagged"` 11 times, and `c()` puts all
+    24 wolves together in one box.
+2.  The number of wolves captured, $n = 5$.
+3.  One row for each captured wolf in each simulation.
+4.  Within each simulation, `n()` is 5, so `sample()` picks 5 different
+    wolves from the box. We leave out `replace = TRUE`, so a captured
+    wolf is **not** put back. That is the hypergeometric part!
+5.  For each simulation, count the tagged wolves. This count is $X$.
+::::::
+
+::: {.column width="38%"}
+```{r}
+wolf_sims |> # <1>
+  summarise( # <1>
+    average = mean(X), # <2>
+    prob_3  = mean(X == 3) # <3>
+  )
+```
+
+1.  One row of summaries for the 10,000 simulated values of $X$.
+2.  Compare with $E(X) = \frac{5 \cdot 11}{24} \approx 2.29$.
+3.  The proportion of simulations with exactly 3 tagged wolves, which
+    estimates $P(X = 3)$.
+
+-   The exact answer, two ways:
+
+```{r}
+choose(11, 3) * choose(13, 2) / choose(24, 5) # <1>
+dhyper(3, m = 11, n = 13, k = 5) # <2>
+```
+
+1.  The pmf by hand: `choose(top, bottom)` is ${top \choose bottom}$.
+2.  `dhyper()` does the same thing. Careful: in R, `m` is the number of
+    successes ($M$), `n` is the number of **failures** ($N - M$), and
+    `k` is the number of draws ($n$).
+:::
+::::::::
+
 ## Binomial approximation of the hypergeometric RV
 
 Suppose a hypergeometric RV $X$ has the following properties:
@@ -545,13 +832,17 @@ Suppose a hypergeometric RV $X$ has the following properties:
 
     -   $\frac{M}{N}$ shouldn't be close to 0 or 1
 
--   and the number of items $n$ selected is small
+-   and the number of items $n$ selected is small (relative to $N$)
 
 -   **Rule of thumb:** $\dfrac{n}{N}<0.05$ or $N>20n$
 
 Then, in this case, making $n$ draws from the population doesn't change
-the probability of success much, and the **hypergeometric RV. can be
-approximated by a binomial RV**
+the probability of success much, and the **hypergeometric RV can be
+approximated by a** [**binomial RV**]{style="color:#20c997;"} with
+$p = \frac{M}{N}$
+
+-   $\frac{M}{N}$ is like $p$ in the binomial: the binomial has a
+    constant $p$
 
 ## Wolf population revisited
 
@@ -559,7 +850,7 @@ approximated by a binomial RV**
 :::::: {.column width="28%"}
 ::::: example
 ::: ex-title
-Example 5
+Example 9
 :::
 
 ::: ex-cont
@@ -575,6 +866,43 @@ Suppose a specific study region is known to have 2400 wolves, of which
 :::::
 ::::::
 :::::::
+
+## Wolf population revisited: check in R
+
+:::::::: columns
+:::::: {.column width="28%"}
+::::: example
+::: ex-title
+Example 9
+:::
+
+::: ex-cont
+Suppose a specific study region is known to have 2400 wolves, of which
+1100 have already been tagged.
+
+1.  If 50 wolves are randomly captured, what is the probability that 20
+    of them have already been tagged?
+
+2.  Approximate the probability in part (1) using the binomial
+    distribution.
+:::
+:::::
+::::::
+
+::: {.column width="72%"}
+```{r}
+dhyper(20, m = 1100, n = 1300, k = 50) # <1>
+dbinom(20, size = 50, prob = 1100 / 2400) # <2>
+```
+
+1.  The exact hypergeometric probability: 1,100 tagged, 1,300 untagged,
+    and 50 captured.
+2.  The binomial approximation with $p = \frac{M}{N} = \frac{1100}{2400}$.
+
+-   Check the rule of thumb: $N = 2400 > 20n = 1000$
+-   The two probabilities are very close!
+:::
+::::::::
 
 # Discrete Uniform RVs {#chapter-20-discrete-uniform-RVs .unnumbered}
 
@@ -602,13 +930,18 @@ $$\text{Var}(X) = \dfrac{N^2 -1}{12}$$
 :::::: {.column width="35%"}
 ::::: example
 ::: ex-title
-Example 6
+Example 10
 :::
 
 ::: ex-cont
 Examples of discrete uniform RVs
 :::
 :::::
+
+ 
+
+-   In R: every time we used `sample(1:N, ...)` without `prob`, we
+    simulated a discrete uniform RV!
 ::::::
 :::::::
 
@@ -617,35 +950,18 @@ Examples of discrete uniform RVs
 [Check out this page with all the different functions for distributions
 in R](https://www.stat.umn.edu/geyer/old/5101/rlook.html)
 
-Example of R commands for hypergeometric distribution with their
-[input]{style="color:#BF396F"} and [output]{style="color:#367B79"}:
+-   `d___()` gives the pmf $P(X = x)$, `p___()` gives the CDF
+    $P(X \leq x)$, `q___()` gives quantiles, and `r___()` simulates
 
-+----------------------------------+----------------------------------+
-| R code                           | What does it return?             |
-+==================================+==================================+
-| `rhyper()`                       | returns [sample of random        |
-|                                  | v                                |
-|                                  | ariables]{style="color:#367B79"} |
-|                                  | with [specified                  |
-|                                  | dist                             |
-|                                  | ribution]{style="color:#BF396F"} |
-+----------------------------------+----------------------------------+
-| `dhyper()`                       | returns [value of probability    |
-|                                  | density]{style="color:#367B79"}  |
-|                                  | at [certain point of the         |
-|                                  | dist                             |
-|                                  | ribution]{style="color:#BF396F"} |
-+----------------------------------+----------------------------------+
-| `phyper()`                       | returns [cumulative              |
-|                                  | pro                              |
-|                                  | bability]{style="color:#367B79"} |
-|                                  | of getting [certain point (or    |
-|                                  | less) of the normal              |
-|                                  | dist                             |
-|                                  | ribution]{style="color:#BF396F"} |
-+----------------------------------+----------------------------------+
-| `qhyper()`                       | returns [inverse                 |
-|                                  | CDF]{style="color:#367B79"}      |
-|                                  | corresponding to [desired        |
-|                                  | quantile]{style="color:#BF396F"} |
-+----------------------------------+----------------------------------+
+| Distribution | pmf: $P(X = x)$ | CDF: $P(X \leq x)$ | Simulate |
+|------------------|------------------|------------------|------------------|
+| Binomial$(n, p)$ | `dbinom(x, size = n, prob = p)` | `pbinom(x, size = n, prob = p)` | `rbinom()` |
+| Geometric$(p)$ \* | `dgeom(x - 1, prob = p)` | `pgeom(x - 1, prob = p)` | `rgeom()` |
+| NegBin$(p, r)$ \* | `dnbinom(x - r, size = r, prob = p)` | `pnbinom(x - r, size = r, prob = p)` | `rnbinom()` |
+| Poisson$(\lambda)$ | `dpois(x, lambda = lambda)` | `ppois(x, lambda = lambda)` | `rpois()` |
+| Hypergeo$(M, N, n)$ | `dhyper(x, m = M, n = N - M, k = n)` | `phyper(x, m = M, n = N - M, k = n)` | `rhyper()` |
+| Uniform$(N)$ | $\frac{1}{N}$ | $\frac{x}{N}$ | `sample(1:N, ...)` |
+
+\* R counts the number of **failures** before the success(es), not the
+number of trials. So we subtract the successes: $x - 1$ for the
+geometric and $x - r$ for the negative binomial.

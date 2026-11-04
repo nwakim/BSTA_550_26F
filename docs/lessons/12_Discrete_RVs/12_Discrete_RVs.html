@@ -283,6 +283,25 @@ p_X(x) = P(X=x) = {n \choose x}p^x(1-p)^{n-x} \text{ for } x=0,1,2,  ..., n
 \]</span></p>
 <p><span class="math display">\[\text{E}(X) = np\]</span> <span class="math display">\[\text{Var}(X) = npq = np(1-p)\]</span></p>
 </section>
+<section id="ghost-problem-revisited" class="slide level2">
+<h2>Ghost problem revisited</h2>
+<div class="columns">
+<div class="column" style="width:35%;">
+<div class="example">
+<div class="ex-title">
+<p>Example 1</p>
+</div>
+<div class="ex-cont">
+<p>Recall the ghost problem from Lesson 11 (Example 5). The bag of candy has 10 chocolates, 20 lollipops, and 30 laffy taffies. The ghost grabs a handful of five pieces of candy <strong><em>with</em></strong> replacement.</p>
+<ul>
+<li><p>Let <span class="math inline">\(Y\)</span> be the number of chocolates the ghost takes.</p></li>
+<li><p>What is the distribution of <span class="math inline">\(Y\)</span>?</p></li>
+<li><p>Find the mean and variance of <span class="math inline">\(Y\)</span>.</p></li>
+</ul>
+</div>
+</div>
+</div></div>
+</section>
 <section id="binomial-distribution-r-commands" class="slide level2">
 <h2>Binomial distribution: R commands</h2>
 <p>Recap from Lesson 7. R commands with their <span style="color:#BF396F">input</span> and <span style="color:#367B79">output</span>:</p>
@@ -339,25 +358,6 @@ p_X(x) = P(X=x) = {n \choose x}p^x(1-p)^{n-x} \text{ for } x=0,1,2,  ..., n
 <pre><code>[1] 0.1666667</code></pre>
 </div>
 </div>
-</section>
-<section id="ghost-problem-revisited" class="slide level2">
-<h2>Ghost problem revisited</h2>
-<div class="columns">
-<div class="column" style="width:35%;">
-<div class="example">
-<div class="ex-title">
-<p>Example 1</p>
-</div>
-<div class="ex-cont">
-<p>Recall the ghost problem from Lesson 11 (Example 5). The bag of candy has 10 chocolates, 20 lollipops, and 30 laffy taffies. The ghost grabs a handful of five pieces of candy <strong><em>with</em></strong> replacement.</p>
-<ul>
-<li><p>Let <span class="math inline">\(Y\)</span> be the number of chocolates the ghost takes.</p></li>
-<li><p>What is the distribution of <span class="math inline">\(Y\)</span>?</p></li>
-<li><p>Find the mean and variance of <span class="math inline">\(Y\)</span>.</p></li>
-</ul>
-</div>
-</div>
-</div></div>
 </section>
 <section id="ghost-problem-revisited-simulate-it" class="slide level2">
 <h2>Ghost problem revisited: simulate it</h2>
@@ -481,63 +481,6 @@ p_X(x) = P(X=x) = {n \choose x}p^x(1-p)^{n-x} \text{ for } x=0,1,2,  ..., n
 <p><span class="math display">\[E(X)=\dfrac{1-p}{p} \qquad Var(X) = \dfrac{1-p}{p^2}\]</span></p>
 </div></div>
 </section>
-<section id="geometric-distribution-r-commands" class="slide level2">
-<h2>Geometric distribution: R commands</h2>
-<p>R commands with their <span style="color:#BF396F">input</span> and <span style="color:#367B79">output</span>:</p>
-<table class="caption-top">
-<colgroup>
-<col style="width: 19%">
-<col style="width: 43%">
-<col style="width: 37%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>R code</th>
-<th>What does it return?</th>
-<th>What do we use it for?</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>rgeom()</code></td>
-<td>returns <span style="color:#367B79">sample of random variables</span> with <span style="color:#BF396F">specified geometric distribution</span></td>
-<td>Simulate a Geometric RV</td>
-</tr>
-<tr class="even">
-<td><code>dgeom()</code></td>
-<td>returns <span style="color:#367B79">probability</span> of getting <span style="color:#BF396F">certain number of failures</span> before the first success</td>
-<td><span class="math inline">\(P(X = x)\)</span></td>
-</tr>
-<tr class="odd">
-<td><code>pgeom()</code></td>
-<td>returns <span style="color:#367B79">cumulative probability</span> of getting <span style="color:#BF396F">certain number of failures or less</span></td>
-<td><span class="math inline">\(P(X \leq x)\)</span> (or <span class="math inline">\(P(X &gt; x)\)</span> if we add <code>lower.tail = FALSE</code>)</td>
-</tr>
-<tr class="even">
-<td><code>qgeom()</code></td>
-<td>returns <span style="color:#367B79">number of failures</span> corresponding to <span style="color:#BF396F">desired quantile</span></td>
-<td>Goes the other direction: we give it a probability and it returns the value <span class="math inline">\(k\)</span> where <span class="math inline">\(P(X \leq k)\)</span> reaches it</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><strong>Careful:</strong> R counts the <strong>failures</strong> before the first success (the right column of our table). If <span class="math inline">\(X\)</span> counts the <strong>trials</strong>, use <span class="math inline">\(x - 1\)</span>:</li>
-</ul>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-label="1"></a><span class="fu">pgeom</span>(<span class="dv">50</span> <span class="sc">-</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.01</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-annotation">
-<dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">Bullseye: <span class="math inline">\(P(X \leq 50)\)</span> where <span class="math inline">\(X\)</span> is the number of throws. 50 throws means at most 49 misses before the first bullseye.</span>
-</dd>
-</dl>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3949939</code></pre>
-</div>
-</div>
-</section>
 <section id="bullseye-14" class="slide level2">
 <h2>Bullseye (1/4)</h2>
 <div class="columns">
@@ -624,6 +567,63 @@ p_X(x) = P(X=x) = {n \choose x}p^x(1-p)^{n-x} \text{ for } x=0,1,2,  ..., n
 <p>&nbsp;</p>
 <p><span class="math inline">\(P(X &gt; k+j |X &gt; j) = P(X &gt; k)\)</span></p>
 <p><span class="math display">\[ P(X &gt; k+j |X &gt; j) = \dfrac{P(X&gt;k+j \text{ and } X&gt;j)}{P(X&gt;j)} = \dfrac{P(X&gt;k+j)}{P(X&gt;j)} = \dfrac{(1-p)^{k+j}}{(1-p)^{j}} = (1-p)^{k} \]</span></p>
+</section>
+<section id="geometric-distribution-r-commands" class="slide level2">
+<h2>Geometric distribution: R commands</h2>
+<p>R commands with their <span style="color:#BF396F">input</span> and <span style="color:#367B79">output</span>:</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 43%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>R code</th>
+<th>What does it return?</th>
+<th>What do we use it for?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>rgeom()</code></td>
+<td>returns <span style="color:#367B79">sample of random variables</span> with <span style="color:#BF396F">specified geometric distribution</span></td>
+<td>Simulate a Geometric RV</td>
+</tr>
+<tr class="even">
+<td><code>dgeom()</code></td>
+<td>returns <span style="color:#367B79">probability</span> of getting <span style="color:#BF396F">certain number of failures</span> before the first success</td>
+<td><span class="math inline">\(P(X = x)\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>pgeom()</code></td>
+<td>returns <span style="color:#367B79">cumulative probability</span> of getting <span style="color:#BF396F">certain number of failures or less</span></td>
+<td><span class="math inline">\(P(X \leq x)\)</span> (or <span class="math inline">\(P(X &gt; x)\)</span> if we add <code>lower.tail = FALSE</code>)</td>
+</tr>
+<tr class="even">
+<td><code>qgeom()</code></td>
+<td>returns <span style="color:#367B79">number of failures</span> corresponding to <span style="color:#BF396F">desired quantile</span></td>
+<td>Goes the other direction: we give it a probability and it returns the value <span class="math inline">\(k\)</span> where <span class="math inline">\(P(X \leq k)\)</span> reaches it</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Careful:</strong> R counts the <strong>failures</strong> before the first success (the right column of our table). If <span class="math inline">\(X\)</span> counts the <strong>trials</strong>, use <span class="math inline">\(x - 1\)</span>:</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-label="1"></a><span class="fu">pgeom</span>(<span class="dv">50</span> <span class="sc">-</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.01</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">Bullseye: <span class="math inline">\(P(X \leq 50)\)</span> where <span class="math inline">\(X\)</span> is the number of throws. 50 throws means at most 49 misses before the first bullseye.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3949939</code></pre>
+</div>
+</div>
 </section>
 <section id="lets-simulate-the-bullseye-example-12" class="slide level2">
 <h2>Let’s simulate the bullseye example (1/2)</h2>
@@ -793,6 +793,40 @@ X = \text{Number of independent trials until } r^{th} \text{ success}
 <p><span class="math display">\[ p_X(x) = P(X=x) = {x-1 \choose r-1}(1-p)^{x-r}p^r \text{ for } x = r, r+1, r+2, ...\]</span></p>
 <p><span class="math display">\[ E(X) = \dfrac{r}{p} \qquad Var(X) = \dfrac{rq}{p^2} = \dfrac{r(1-p)}{p^2}\]</span></p>
 </section>
+<section id="hitting-more-than-1-bullseye" class="slide level2">
+<h2>Hitting more than 1 bullseye</h2>
+<div class="columns">
+<div class="column" style="width:35%;">
+<div class="example">
+<div class="ex-title">
+<p>Example 3</p>
+</div>
+<div class="ex-cont">
+<p>Consider again the bullseye example, where we throw darts at a dartboard until we hit the bullseye. Assume throws are independent and the probability of hitting the bullseye is 0.01 for each throw.</p>
+<ol type="1">
+<li>What is the expected value and variance of the number of throws needed to hit 5 bullseyes?</li>
+</ol>
+</div>
+</div>
+</div></div>
+</section>
+<section id="hitting-more-than-1-bullseye-1" class="slide level2">
+<h2>Hitting more than 1 bullseye</h2>
+<div class="columns">
+<div class="column" style="width:35%;">
+<div class="example">
+<div class="ex-title">
+<p>Example 3</p>
+</div>
+<div class="ex-cont">
+<p>Consider again the bullseye example, where we throw darts at a dartboard until we hit the bullseye. Assume throws are independent and the probability of hitting the bullseye is 0.01 for each throw.</p>
+<ol start="2" type="1">
+<li>What is the probability that the <span class="math inline">\(5^{th}\)</span> bullseye is on the <span class="math inline">\(20^{th}\)</span> throw?</li>
+</ol>
+</div>
+</div>
+</div></div>
+</section>
 <section id="negative-binomial-distribution-r-commands" class="slide level2">
 <h2>Negative binomial distribution: R commands</h2>
 <p>R commands with their <span style="color:#BF396F">input</span> and <span style="color:#367B79">output</span>:</p>
@@ -849,40 +883,6 @@ X = \text{Number of independent trials until } r^{th} \text{ success}
 <pre><code>[1] 3.333586e-07</code></pre>
 </div>
 </div>
-</section>
-<section id="hitting-more-than-1-bullseye" class="slide level2">
-<h2>Hitting more than 1 bullseye</h2>
-<div class="columns">
-<div class="column" style="width:35%;">
-<div class="example">
-<div class="ex-title">
-<p>Example 3</p>
-</div>
-<div class="ex-cont">
-<p>Consider again the bullseye example, where we throw darts at a dartboard until we hit the bullseye. Assume throws are independent and the probability of hitting the bullseye is 0.01 for each throw.</p>
-<ol type="1">
-<li>What is the expected value and variance of the number of throws needed to hit 5 bullseyes?</li>
-</ol>
-</div>
-</div>
-</div></div>
-</section>
-<section id="hitting-more-than-1-bullseye-1" class="slide level2">
-<h2>Hitting more than 1 bullseye</h2>
-<div class="columns">
-<div class="column" style="width:35%;">
-<div class="example">
-<div class="ex-title">
-<p>Example 3</p>
-</div>
-<div class="ex-cont">
-<p>Consider again the bullseye example, where we throw darts at a dartboard until we hit the bullseye. Assume throws are independent and the probability of hitting the bullseye is 0.01 for each throw.</p>
-<ol start="2" type="1">
-<li>What is the probability that the <span class="math inline">\(5^{th}\)</span> bullseye is on the <span class="math inline">\(20^{th}\)</span> throw?</li>
-</ol>
-</div>
-</div>
-</div></div>
 </section>
 <section id="hitting-more-than-1-bullseye-simulate-it" class="slide level2">
 <h2>Hitting more than 1 bullseye: simulate it</h2>
@@ -989,20 +989,36 @@ X = \text{Number of successes in a given period (or given space)}
 </section>
 <section id="distinguishing-between-binomial-and-poisson-rvs" class="slide level2">
 <h2>Distinguishing between Binomial and Poisson RVs</h2>
-<ul>
-<li><p>Recall that if <span class="math inline">\(X\sim \text{Binomial}(n,p)\)</span>, then</p>
+<div class="columns">
+<div class="column" style="width:48%;">
+<div class="theorem">
+<div class="thm-title">
+<p>Binomial: <span class="math inline">\(X\sim \text{Binomial}(n,p)\)</span></p>
+</div>
+<div class="thm-cont">
 <ul>
 <li><p><span class="math inline">\(X\)</span> models the number of successes …</p></li>
 <li><p>in <span class="math inline">\(n\)</span> independent (Bernoulli) trials …</p></li>
-<li><p>that each have the same <strong>probability</strong> of success <span class="math inline">\(p\)</span>.</p></li>
-</ul></li>
-<li><p>Poisson RVs are similar,</p>
-<ul>
-<li><p>except that instead of having <span class="math inline">\(n\)</span> discrete independent trials,</p></li>
-<li><p>there is a <strong>fixed time period</strong> (or space) during which the successes happen</p></li>
-<li><p>and instead of a probability, we have a <span style="color:#006a4e;"><strong>rate</strong></span> of successes, <span class="math inline">\(\lambda\)</span></p></li>
-</ul></li>
+<li><p>that each have the same <strong>probability</strong> of success, <span class="math inline">\(p\)</span></p></li>
 </ul>
+</div>
+</div>
+</div><div class="column" style="width:4%;">
+
+</div><div class="column" style="width:48%;">
+<div class="definition">
+<div class="def-title">
+<p>Poisson: <span class="math inline">\(X\sim \text{Poisson}(\lambda)\)</span></p>
+</div>
+<div class="def-cont">
+<ul>
+<li><p><span class="math inline">\(X\)</span> models the number of successes …</p></li>
+<li><p>in a <strong>fixed time period</strong> (or space), instead of <span class="math inline">\(n\)</span> discrete independent trials …</p></li>
+<li><p>that happen at a constant <span style="color:#006a4e;"><strong>rate</strong></span>, <span class="math inline">\(\lambda\)</span>, instead of a probability</p></li>
+</ul>
+</div>
+</div>
+</div></div>
 </section>
 <section id="examples-of-poisson-rvs" class="slide level2">
 <h2>Examples of Poisson RVs</h2>
@@ -1013,6 +1029,24 @@ X = \text{Number of successes in a given period (or given space)}
 <li><p>Number of babies born with a cleft palate within 1 year (rare events)</p></li>
 <li><p>Any more?</p></li>
 </ul>
+</section>
+<section id="emergency-room-visitors" class="slide level2">
+<h2>Emergency Room Visitors</h2>
+<div class="columns">
+<div class="column" style="width:35%;">
+<div class="example">
+<div class="ex-title">
+<p>Example 4</p>
+</div>
+<div class="ex-cont">
+<p>Suppose an emergency room has an average of 50 visitors per day. Find the following probabilities.</p>
+<ol type="1">
+<li><p>Probability of 30 visitors in a day.</p></li>
+<li><p>Probability of 8 visitors in an hour.</p></li>
+</ol>
+</div>
+</div>
+</div></div>
 </section>
 <section id="poisson-distribution-r-commands" class="slide level2">
 <h2>Poisson distribution: R commands</h2>
@@ -1057,24 +1091,6 @@ X = \text{Number of successes in a given period (or given space)}
 <li>The only parameter is the rate, <code>lambda</code> <span class="math inline">\(= \lambda\)</span>. Make sure it matches the time period in the question!</li>
 </ul>
 </section>
-<section id="emergency-room-visitors" class="slide level2">
-<h2>Emergency Room Visitors</h2>
-<div class="columns">
-<div class="column" style="width:35%;">
-<div class="example">
-<div class="ex-title">
-<p>Example 4</p>
-</div>
-<div class="ex-cont">
-<p>Suppose an emergency room has an average of 50 visitors per day. Find the following probabilities.</p>
-<ol type="1">
-<li><p>Probability of 30 visitors in a day.</p></li>
-<li><p>Probability of 8 visitors in an hour.</p></li>
-</ol>
-</div>
-</div>
-</div></div>
-</section>
 <section id="emergency-room-visitors-in-r" class="slide level2">
 <h2>Emergency Room Visitors: in R</h2>
 <div class="columns">
@@ -1091,30 +1107,43 @@ X = \text{Number of successes in a given period (or given space)}
 </ol>
 </div>
 </div>
+<ul>
+<li>Probability of 30 visitors in a day.</li>
+</ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-20"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="1">1</button><span id="annotated-cell-20-1" class="code-annotation-target"><a href="#annotated-cell-20-1" aria-label="1"></a><span class="fu">dpois</span>(<span class="dv">30</span>, <span class="at">lambda =</span> <span class="dv">50</span>)</span>
-<span id="annotated-cell-20-2"><a href="#annotated-cell-20-2" aria-label="2"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="2">2</button><span id="annotated-cell-20-3" class="code-annotation-target"><a href="#annotated-cell-20-3" aria-label="3"></a>lambda_hour <span class="ot">&lt;-</span> <span class="dv">50</span> <span class="sc">/</span> <span class="dv">24</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="3">3</button><span id="annotated-cell-20-4" class="code-annotation-target"><a href="#annotated-cell-20-4" aria-label="4"></a><span class="fu">dpois</span>(<span class="dv">8</span>, <span class="at">lambda =</span> lambda_hour)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-20"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="1">1</button><span id="annotated-cell-20-1" class="code-annotation-target"><a href="#annotated-cell-20-1" aria-label="1"></a><span class="fu">dpois</span>(<span class="dv">30</span>, <span class="at">lambda =</span> <span class="dv">50</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-20" data-target-annotation="1">1</dt>
 <dd>
 <span data-code-cell="annotated-cell-20" data-code-lines="1" data-code-annotation="1"><code>dpois()</code> gives <span class="math inline">\(P(X = x)\)</span> for a Poisson RV, like <code>dbinom()</code> did for the binomial. Here <span class="math inline">\(x = 30\)</span> and <span class="math inline">\(\lambda = 50\)</span> visitors per day.</span>
 </dd>
-<dt data-target-cell="annotated-cell-20" data-target-annotation="2">2</dt>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0006771985</code></pre>
+</div>
+</div>
+<ul>
+<li>Probability of 8 visitors in an hour.</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-21"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="2">2</button><span id="annotated-cell-21-1" class="code-annotation-target"><a href="#annotated-cell-21-1" aria-label="1"></a>lambda_hour <span class="ot">&lt;-</span> <span class="dv">50</span> <span class="sc">/</span> <span class="dv">24</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="3">3</button><span id="annotated-cell-21-2" class="code-annotation-target"><a href="#annotated-cell-21-2" aria-label="2"></a><span class="fu">dpois</span>(<span class="dv">8</span>, <span class="at">lambda =</span> lambda_hour)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-21" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-20" data-code-lines="3" data-code-annotation="2">Change the rate to match the time period: 50 visitors per day is <span class="math inline">\(\frac{50}{24} \approx 2.083\)</span> visitors per hour.</span>
+<span data-code-cell="annotated-cell-21" data-code-lines="1" data-code-annotation="2">Change the rate to match the time period: 50 visitors per day is <span class="math inline">\(\frac{50}{24} \approx 2.083\)</span> visitors per hour.</span>
 </dd>
-<dt data-target-cell="annotated-cell-20" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-21" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-20" data-code-lines="4" data-code-annotation="3"><span class="math inline">\(P(X = 8)\)</span> when <span class="math inline">\(X\)</span> counts visitors in one hour.</span>
+<span data-code-cell="annotated-cell-21" data-code-lines="2" data-code-annotation="3"><span class="math inline">\(P(X = 8)\)</span> when <span class="math inline">\(X\)</span> counts visitors in one hour.</span>
 </dd>
 </dl>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.0006771985
-[1] 0.001095896</code></pre>
+<pre><code>[1] 0.001095896</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:45%;">
@@ -1139,7 +1168,7 @@ X = \text{Number of successes in a given period (or given space)}
 <p>Theorem 1</p>
 </div>
 <div class="thm-cont">
-<p>If <span class="math inline">\(X\sim Pois(\lambda_1)\)</span> and <span class="math inline">\(Y\sim Pois(\lambda_2)\)</span> are independent of each other, then <span class="math inline">\(Z=X+Y\sim Pois(\lambda_1 + \lambda_2)\)</span>.</p>
+<p>If <span class="math inline">\(X\sim Pois(\lambda_1)\)</span> and <span class="math inline">\(Y\sim Pois(\lambda_2)\)</span> are independent of each other, then <span class="math display">\[Z=X+Y\sim Pois(\lambda_1 + \lambda_2)\]</span></p>
 </div>
 </div>
 </section>
@@ -1170,29 +1199,29 @@ X = \text{Number of successes in a given period (or given space)}
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-22"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="1">1</button><span id="annotated-cell-22-1" class="code-annotation-target"><a href="#annotated-cell-22-1" aria-label="1"></a>er_sims <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-22-2"><a href="#annotated-cell-22-2" aria-label="2"></a>  <span class="fu">mutate</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="2">2</button><span id="annotated-cell-22-3" class="code-annotation-target"><a href="#annotated-cell-22-3" aria-label="3"></a>    <span class="at">X =</span> <span class="fu">rpois</span>(<span class="fu">n</span>(), <span class="at">lambda =</span> <span class="dv">50</span>),</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="3">3</button><span id="annotated-cell-22-4" class="code-annotation-target"><a href="#annotated-cell-22-4" aria-label="4"></a>    <span class="at">Y =</span> <span class="fu">rpois</span>(<span class="fu">n</span>(), <span class="at">lambda =</span> <span class="dv">70</span>),</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="4">4</button><span id="annotated-cell-22-5" class="code-annotation-target"><a href="#annotated-cell-22-5" aria-label="5"></a>    <span class="at">Z =</span> X <span class="sc">+</span> Y</span>
-<span id="annotated-cell-22-6"><a href="#annotated-cell-22-6" aria-label="6"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-24"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="1">1</button><span id="annotated-cell-24-1" class="code-annotation-target"><a href="#annotated-cell-24-1" aria-label="1"></a>er_sims <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-24-2"><a href="#annotated-cell-24-2" aria-label="2"></a>  <span class="fu">mutate</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="2">2</button><span id="annotated-cell-24-3" class="code-annotation-target"><a href="#annotated-cell-24-3" aria-label="3"></a>    <span class="at">X =</span> <span class="fu">rpois</span>(<span class="fu">n</span>(), <span class="at">lambda =</span> <span class="dv">50</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="3">3</button><span id="annotated-cell-24-4" class="code-annotation-target"><a href="#annotated-cell-24-4" aria-label="4"></a>    <span class="at">Y =</span> <span class="fu">rpois</span>(<span class="fu">n</span>(), <span class="at">lambda =</span> <span class="dv">70</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="4">4</button><span id="annotated-cell-24-5" class="code-annotation-target"><a href="#annotated-cell-24-5" aria-label="5"></a>    <span class="at">Z =</span> X <span class="sc">+</span> Y</span>
+<span id="annotated-cell-24-6"><a href="#annotated-cell-24-6" aria-label="6"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-22" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-24" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-22" data-code-lines="1" data-code-annotation="1">One row per simulated day.</span>
+<span data-code-cell="annotated-cell-24" data-code-lines="1" data-code-annotation="1">One row per simulated day.</span>
 </dd>
-<dt data-target-cell="annotated-cell-22" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-24" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-22" data-code-lines="3" data-code-annotation="2"><code>rpois()</code> draws the number of visitors to emergency room 1 for every row. <code>n()</code> is the number of rows and <code>lambda</code> is the rate, <span class="math inline">\(\lambda_1 = 50\)</span> visitors per day.</span>
+<span data-code-cell="annotated-cell-24" data-code-lines="3" data-code-annotation="2"><code>rpois()</code> draws the number of visitors to emergency room 1 for every row. <code>n()</code> is the number of rows and <code>lambda</code> is the rate, <span class="math inline">\(\lambda_1 = 50\)</span> visitors per day.</span>
 </dd>
-<dt data-target-cell="annotated-cell-22" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-24" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-22" data-code-lines="4" data-code-annotation="3">The same for emergency room 2, with <span class="math inline">\(\lambda_2 = 70\)</span>. The two rooms are drawn separately, so they are independent.</span>
+<span data-code-cell="annotated-cell-24" data-code-lines="4" data-code-annotation="3">The same for emergency room 2, with <span class="math inline">\(\lambda_2 = 70\)</span>. The two rooms are drawn separately, so they are independent.</span>
 </dd>
-<dt data-target-cell="annotated-cell-22" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-24" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-22" data-code-lines="5" data-code-annotation="4">The total number of visitors to both rooms.</span>
+<span data-code-cell="annotated-cell-24" data-code-lines="5" data-code-annotation="4">The total number of visitors to both rooms.</span>
 </dd>
 </dl>
 </div>
@@ -1201,24 +1230,24 @@ X = \text{Number of successes in a given period (or given space)}
 
 </div><div class="column" style="width:44%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-23"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-23" data-target-annotation="1">1</button><span id="annotated-cell-23-1" class="code-annotation-target"><a href="#annotated-cell-23-1" aria-label="1"></a>er_sims <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-23-2"><a href="#annotated-cell-23-2" aria-label="2"></a>  <span class="fu">summarise</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-23" data-target-annotation="2">2</button><span id="annotated-cell-23-3" class="code-annotation-target"><a href="#annotated-cell-23-3" aria-label="3"></a>    <span class="at">average  =</span> <span class="fu">mean</span>(Z),</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-23" data-target-annotation="3">3</button><span id="annotated-cell-23-4" class="code-annotation-target"><a href="#annotated-cell-23-4" aria-label="4"></a>    <span class="at">variance =</span> <span class="fu">mean</span>((Z <span class="sc">-</span> <span class="fu">mean</span>(Z))<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="annotated-cell-23-5"><a href="#annotated-cell-23-5" aria-label="5"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-25"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="1">1</button><span id="annotated-cell-25-1" class="code-annotation-target"><a href="#annotated-cell-25-1" aria-label="1"></a>er_sims <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-25-2"><a href="#annotated-cell-25-2" aria-label="2"></a>  <span class="fu">summarise</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="2">2</button><span id="annotated-cell-25-3" class="code-annotation-target"><a href="#annotated-cell-25-3" aria-label="3"></a>    <span class="at">average  =</span> <span class="fu">mean</span>(Z),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="3">3</button><span id="annotated-cell-25-4" class="code-annotation-target"><a href="#annotated-cell-25-4" aria-label="4"></a>    <span class="at">variance =</span> <span class="fu">mean</span>((Z <span class="sc">-</span> <span class="fu">mean</span>(Z))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="annotated-cell-25-5"><a href="#annotated-cell-25-5" aria-label="5"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-23" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-25" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-23" data-code-lines="1,2" data-code-annotation="1">One row of summaries for the 10,000 simulated totals.</span>
+<span data-code-cell="annotated-cell-25" data-code-lines="1,2" data-code-annotation="1">One row of summaries for the 10,000 simulated totals.</span>
 </dd>
-<dt data-target-cell="annotated-cell-23" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-25" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-23" data-code-lines="3" data-code-annotation="2">Estimates <span class="math inline">\(\text{E}(Z) = \lambda_1 + \lambda_2 = 120\)</span>.</span>
+<span data-code-cell="annotated-cell-25" data-code-lines="3" data-code-annotation="2">Estimates <span class="math inline">\(\text{E}(Z) = \lambda_1 + \lambda_2 = 120\)</span>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-23" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-25" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-23" data-code-lines="4" data-code-annotation="3">Estimates <span class="math inline">\(\text{Var}(Z)\)</span>, which is also 120 for a Poisson.</span>
+<span data-code-cell="annotated-cell-25" data-code-lines="4" data-code-annotation="3">Estimates <span class="math inline">\(\text{Var}(Z)\)</span>, which is also 120 for a Poisson.</span>
 </dd>
 </dl>
 </div>
@@ -1304,6 +1333,20 @@ p_X(x) = P(X=x) = \dfrac{{M \choose x}{N-M \choose n-x}}{{N \choose n}}
 <p><span class="math display">\[\text{Var}(X) = n \dfrac{M}{N} \bigg(1- \dfrac{M}{N} \bigg)\bigg(\dfrac{N-n}{N-1} \bigg)\]</span></p>
 </div></div>
 </section>
+<section id="wolf-population" class="slide level2">
+<h2>Wolf population</h2>
+<div class="columns">
+<div class="column" style="width:35%;">
+<div class="example">
+<div class="ex-title">
+<p>Example 7</p>
+</div>
+<div class="ex-cont">
+<p>A wildlife biologist is using mark-recapture to research a wolf population. Suppose a specific study region is known to have 24 wolves, of which 11 have already been tagged. If 5 wolves are randomly captured, what is the probability that 3 of them have already been tagged?</p>
+</div>
+</div>
+</div></div>
+</section>
 <section id="hypergeometric-distribution-r-commands" class="slide level2">
 <h2>Hypergeometric distribution: R commands</h2>
 <p>R commands with their <span style="color:#BF396F">input</span> and <span style="color:#367B79">output</span>:</p>
@@ -1347,20 +1390,6 @@ p_X(x) = P(X=x) = \dfrac{{M \choose x}{N-M \choose n-x}}{{N \choose n}}
 <li><strong>Careful:</strong> R uses different letters than we do. In R, <code>m</code> <span class="math inline">\(= M\)</span> (successes), <code>n</code> <span class="math inline">\(= N - M\)</span> (<strong>failures</strong>), and <code>k</code> <span class="math inline">\(= n\)</span> (draws): <code>dhyper(x, m = M, n = N - M, k = n)</code></li>
 </ul>
 </section>
-<section id="wolf-population" class="slide level2">
-<h2>Wolf population</h2>
-<div class="columns">
-<div class="column" style="width:35%;">
-<div class="example">
-<div class="ex-title">
-<p>Example 7</p>
-</div>
-<div class="ex-cont">
-<p>A wildlife biologist is using mark-recapture to research a wolf population. Suppose a specific study region is known to have 24 wolves, of which 11 have already been tagged. If 5 wolves are randomly captured, what is the probability that 3 of them have already been tagged?</p>
-</div>
-</div>
-</div></div>
-</section>
 <section id="wolf-population-simulate-it" class="slide level2">
 <h2>Wolf population: simulate it</h2>
 <div class="columns">
@@ -1369,51 +1398,51 @@ p_X(x) = P(X=x) = \dfrac{{M \choose x}{N-M \choose n-x}}{{N \choose n}}
 <li><code>rhyper()</code> captures 5 of the 24 wolves <span style="color:#E25D3B;"><strong>without replacement</strong></span> for us</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-25"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="1">1</button><span id="annotated-cell-25-1" class="code-annotation-target"><a href="#annotated-cell-25-1" aria-label="1"></a>M <span class="ot">&lt;-</span> <span class="dv">11</span></span>
-<span id="annotated-cell-25-2"><a href="#annotated-cell-25-2" aria-label="2"></a>N <span class="ot">&lt;-</span> <span class="dv">24</span></span>
-<span id="annotated-cell-25-3"><a href="#annotated-cell-25-3" aria-label="3"></a>n_captured <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="annotated-cell-25-4"><a href="#annotated-cell-25-4" aria-label="4"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="2">2</button><span id="annotated-cell-25-5" class="code-annotation-target"><a href="#annotated-cell-25-5" aria-label="5"></a>wolf_sims <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-25-6"><a href="#annotated-cell-25-6" aria-label="6"></a>  <span class="fu">mutate</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="3">3</button><span id="annotated-cell-25-7" class="code-annotation-target"><a href="#annotated-cell-25-7" aria-label="7"></a>    <span class="at">X =</span> <span class="fu">rhyper</span>(<span class="fu">n</span>(), <span class="at">m =</span> M, <span class="at">n =</span> N <span class="sc">-</span> M, <span class="at">k =</span> n_captured)</span>
-<span id="annotated-cell-25-8"><a href="#annotated-cell-25-8" aria-label="8"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-27"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-27" data-target-annotation="1">1</button><span id="annotated-cell-27-1" class="code-annotation-target"><a href="#annotated-cell-27-1" aria-label="1"></a>M <span class="ot">&lt;-</span> <span class="dv">11</span></span>
+<span id="annotated-cell-27-2"><a href="#annotated-cell-27-2" aria-label="2"></a>N <span class="ot">&lt;-</span> <span class="dv">24</span></span>
+<span id="annotated-cell-27-3"><a href="#annotated-cell-27-3" aria-label="3"></a>n_captured <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="annotated-cell-27-4"><a href="#annotated-cell-27-4" aria-label="4"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-27" data-target-annotation="2">2</button><span id="annotated-cell-27-5" class="code-annotation-target"><a href="#annotated-cell-27-5" aria-label="5"></a>wolf_sims <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-27-6"><a href="#annotated-cell-27-6" aria-label="6"></a>  <span class="fu">mutate</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-27" data-target-annotation="3">3</button><span id="annotated-cell-27-7" class="code-annotation-target"><a href="#annotated-cell-27-7" aria-label="7"></a>    <span class="at">X =</span> <span class="fu">rhyper</span>(<span class="fu">n</span>(), <span class="at">m =</span> M, <span class="at">n =</span> N <span class="sc">-</span> M, <span class="at">k =</span> n_captured)</span>
+<span id="annotated-cell-27-8"><a href="#annotated-cell-27-8" aria-label="8"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-25" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-27" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="1,2,3" data-code-annotation="1">The parameters: <span class="math inline">\(M = 11\)</span> tagged wolves, <span class="math inline">\(N = 24\)</span> wolves in total, and <span class="math inline">\(n = 5\)</span> wolves captured.</span>
+<span data-code-cell="annotated-cell-27" data-code-lines="1,2,3" data-code-annotation="1">The parameters: <span class="math inline">\(M = 11\)</span> tagged wolves, <span class="math inline">\(N = 24\)</span> wolves in total, and <span class="math inline">\(n = 5\)</span> wolves captured.</span>
 </dd>
-<dt data-target-cell="annotated-cell-25" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-27" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="5" data-code-annotation="2">One row per simulation, like the ghost and bullseye examples.</span>
+<span data-code-cell="annotated-cell-27" data-code-lines="5" data-code-annotation="2">One row per simulation, like the ghost and bullseye examples.</span>
 </dd>
-<dt data-target-cell="annotated-cell-25" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-27" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="7" data-code-annotation="3"><code>rhyper()</code> draws the number of tagged wolves for every row. The first input is how many values to draw (<code>n()</code>, the number of rows). <strong>Careful:</strong> in R, <code>m</code> is the number of successes (<span class="math inline">\(M\)</span>), <code>n</code> is the number of <strong>failures</strong> (<span class="math inline">\(N - M\)</span>), and <code>k</code> is the number of draws.</span>
+<span data-code-cell="annotated-cell-27" data-code-lines="7" data-code-annotation="3"><code>rhyper()</code> draws the number of tagged wolves for every row. The first input is how many values to draw (<code>n()</code>, the number of rows). <strong>Careful:</strong> in R, <code>m</code> is the number of successes (<span class="math inline">\(M\)</span>), <code>n</code> is the number of <strong>failures</strong> (<span class="math inline">\(N - M\)</span>), and <code>k</code> is the number of draws.</span>
 </dd>
 </dl>
 </div>
 </div>
 </div><div class="column" style="width:38%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-26"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="1">1</button><span id="annotated-cell-26-1" class="code-annotation-target"><a href="#annotated-cell-26-1" aria-label="1"></a>wolf_sims <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-26-2"><a href="#annotated-cell-26-2" aria-label="2"></a>  <span class="fu">summarise</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="2">2</button><span id="annotated-cell-26-3" class="code-annotation-target"><a href="#annotated-cell-26-3" aria-label="3"></a>    <span class="at">average =</span> <span class="fu">mean</span>(X),</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="3">3</button><span id="annotated-cell-26-4" class="code-annotation-target"><a href="#annotated-cell-26-4" aria-label="4"></a>    <span class="at">prob_3  =</span> <span class="fu">mean</span>(X <span class="sc">==</span> <span class="dv">3</span>)</span>
-<span id="annotated-cell-26-5"><a href="#annotated-cell-26-5" aria-label="5"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-28"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-28" data-target-annotation="1">1</button><span id="annotated-cell-28-1" class="code-annotation-target"><a href="#annotated-cell-28-1" aria-label="1"></a>wolf_sims <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-28-2"><a href="#annotated-cell-28-2" aria-label="2"></a>  <span class="fu">summarise</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-28" data-target-annotation="2">2</button><span id="annotated-cell-28-3" class="code-annotation-target"><a href="#annotated-cell-28-3" aria-label="3"></a>    <span class="at">average =</span> <span class="fu">mean</span>(X),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-28" data-target-annotation="3">3</button><span id="annotated-cell-28-4" class="code-annotation-target"><a href="#annotated-cell-28-4" aria-label="4"></a>    <span class="at">prob_3  =</span> <span class="fu">mean</span>(X <span class="sc">==</span> <span class="dv">3</span>)</span>
+<span id="annotated-cell-28-5"><a href="#annotated-cell-28-5" aria-label="5"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-26" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-28" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-26" data-code-lines="1,2" data-code-annotation="1">One row of summaries for the 10,000 simulated values of <span class="math inline">\(X\)</span>.</span>
+<span data-code-cell="annotated-cell-28" data-code-lines="1,2" data-code-annotation="1">One row of summaries for the 10,000 simulated values of <span class="math inline">\(X\)</span>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-26" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-28" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-26" data-code-lines="3" data-code-annotation="2">Compare with <span class="math inline">\(E(X) = \frac{5 \cdot 11}{24} \approx 2.29\)</span>.</span>
+<span data-code-cell="annotated-cell-28" data-code-lines="3" data-code-annotation="2">Compare with <span class="math inline">\(E(X) = \frac{5 \cdot 11}{24} \approx 2.29\)</span>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-26" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-28" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-26" data-code-lines="4" data-code-annotation="3">The proportion of simulations with exactly 3 tagged wolves, which estimates <span class="math inline">\(P(X = 3)\)</span>.</span>
+<span data-code-cell="annotated-cell-28" data-code-lines="4" data-code-annotation="3">The proportion of simulations with exactly 3 tagged wolves, which estimates <span class="math inline">\(P(X = 3)\)</span>.</span>
 </dd>
 </dl>
 </div>
@@ -1428,17 +1457,17 @@ p_X(x) = P(X=x) = \dfrac{{M \choose x}{N-M \choose n-x}}{{N \choose n}}
 <li>The exact answer, two ways:</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-27"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-27" data-target-annotation="1">1</button><span id="annotated-cell-27-1" class="code-annotation-target"><a href="#annotated-cell-27-1" aria-label="1"></a><span class="fu">choose</span>(<span class="dv">11</span>, <span class="dv">3</span>) <span class="sc">*</span> <span class="fu">choose</span>(<span class="dv">13</span>, <span class="dv">2</span>) <span class="sc">/</span> <span class="fu">choose</span>(<span class="dv">24</span>, <span class="dv">5</span>)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-27" data-target-annotation="2">2</button><span id="annotated-cell-27-2" class="code-annotation-target"><a href="#annotated-cell-27-2" aria-label="2"></a><span class="fu">dhyper</span>(<span class="dv">3</span>, <span class="at">m =</span> <span class="dv">11</span>, <span class="at">n =</span> <span class="dv">13</span>, <span class="at">k =</span> <span class="dv">5</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-29"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="1">1</button><span id="annotated-cell-29-1" class="code-annotation-target"><a href="#annotated-cell-29-1" aria-label="1"></a><span class="fu">choose</span>(<span class="dv">11</span>, <span class="dv">3</span>) <span class="sc">*</span> <span class="fu">choose</span>(<span class="dv">13</span>, <span class="dv">2</span>) <span class="sc">/</span> <span class="fu">choose</span>(<span class="dv">24</span>, <span class="dv">5</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="2">2</button><span id="annotated-cell-29-2" class="code-annotation-target"><a href="#annotated-cell-29-2" aria-label="2"></a><span class="fu">dhyper</span>(<span class="dv">3</span>, <span class="at">m =</span> <span class="dv">11</span>, <span class="at">n =</span> <span class="dv">13</span>, <span class="at">k =</span> <span class="dv">5</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-27" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-29" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-27" data-code-lines="1" data-code-annotation="1">The pmf by hand: <code>choose(top, bottom)</code> is <span class="math inline">\({top \choose bottom}\)</span>.</span>
+<span data-code-cell="annotated-cell-29" data-code-lines="1" data-code-annotation="1">The pmf by hand: <code>choose(top, bottom)</code> is <span class="math inline">\({top \choose bottom}\)</span>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-27" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-29" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-27" data-code-lines="2" data-code-annotation="2"><code>dhyper()</code> does the same thing. Careful: in R, <code>m</code> is the number of successes (<span class="math inline">\(M\)</span>), <code>n</code> is the number of <strong>failures</strong> (<span class="math inline">\(N - M\)</span>), and <code>k</code> is the number of draws (<span class="math inline">\(n\)</span>).</span>
+<span data-code-cell="annotated-cell-29" data-code-lines="2" data-code-annotation="2"><code>dhyper()</code> does the same thing. Careful: in R, <code>m</code> is the number of successes (<span class="math inline">\(M\)</span>), <code>n</code> is the number of <strong>failures</strong> (<span class="math inline">\(N - M\)</span>), and <code>k</code> is the number of draws (<span class="math inline">\(n\)</span>).</span>
 </dd>
 </dl>
 </div>
@@ -1502,17 +1531,17 @@ p_X(x) = P(X=x) = \dfrac{{M \choose x}{N-M \choose n-x}}{{N \choose n}}
 </div>
 </div><div class="column" style="width:72%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-30"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="1">1</button><span id="annotated-cell-30-1" class="code-annotation-target"><a href="#annotated-cell-30-1" aria-label="1"></a><span class="fu">dhyper</span>(<span class="dv">20</span>, <span class="at">m =</span> <span class="dv">1100</span>, <span class="at">n =</span> <span class="dv">1300</span>, <span class="at">k =</span> <span class="dv">50</span>)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="2">2</button><span id="annotated-cell-30-2" class="code-annotation-target"><a href="#annotated-cell-30-2" aria-label="2"></a><span class="fu">dbinom</span>(<span class="dv">20</span>, <span class="at">size =</span> <span class="dv">50</span>, <span class="at">prob =</span> <span class="dv">1100</span> <span class="sc">/</span> <span class="dv">2400</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-32"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="1">1</button><span id="annotated-cell-32-1" class="code-annotation-target"><a href="#annotated-cell-32-1" aria-label="1"></a><span class="fu">dhyper</span>(<span class="dv">20</span>, <span class="at">m =</span> <span class="dv">1100</span>, <span class="at">n =</span> <span class="dv">1300</span>, <span class="at">k =</span> <span class="dv">50</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="2">2</button><span id="annotated-cell-32-2" class="code-annotation-target"><a href="#annotated-cell-32-2" aria-label="2"></a><span class="fu">dbinom</span>(<span class="dv">20</span>, <span class="at">size =</span> <span class="dv">50</span>, <span class="at">prob =</span> <span class="dv">1100</span> <span class="sc">/</span> <span class="dv">2400</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-30" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-32" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-30" data-code-lines="1" data-code-annotation="1">The exact hypergeometric probability: 1,100 tagged, 1,300 untagged, and 50 captured.</span>
+<span data-code-cell="annotated-cell-32" data-code-lines="1" data-code-annotation="1">The exact hypergeometric probability: 1,100 tagged, 1,300 untagged, and 50 captured.</span>
 </dd>
-<dt data-target-cell="annotated-cell-30" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-32" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-30" data-code-lines="2" data-code-annotation="2">The binomial approximation with <span class="math inline">\(p = \frac{M}{N} = \frac{1100}{2400}\)</span>.</span>
+<span data-code-cell="annotated-cell-32" data-code-lines="2" data-code-annotation="2">The binomial approximation with <span class="math inline">\(p = \frac{M}{N} = \frac{1100}{2400}\)</span>.</span>
 </dd>
 </dl>
 </div>

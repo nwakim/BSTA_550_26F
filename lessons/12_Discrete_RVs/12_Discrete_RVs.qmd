@@ -759,15 +759,23 @@ Suppose an emergency room has an average of 50 visitors per day.
 :::
 :::::
 
+- Probability of 30 visitors in a day.
+
 ```{r}
 dpois(30, lambda = 50) # <1>
-
-lambda_hour <- 50 / 24 # <2>
-dpois(8, lambda = lambda_hour) # <3>
 ```
 
 1.  `dpois()` gives $P(X = x)$ for a Poisson RV, like `dbinom()` did for
     the binomial. Here $x = 30$ and $\lambda = 50$ visitors per day.
+
+- Probability of 8 visitors in an hour.
+
+```{r}
+lambda_hour <- 50 / 24 # <2>
+dpois(8, lambda = lambda_hour) # <3>
+```
+
+
 2.  Change the rate to match the time period: 50 visitors per day is
     $\frac{50}{24} \approx 2.083$ visitors per hour.
 3.  $P(X = 8)$ when $X$ counts visitors in one hour.
@@ -800,7 +808,7 @@ Theorem 1
 
 ::: thm-cont
 If $X\sim Pois(\lambda_1)$ and $Y\sim Pois(\lambda_2)$ are independent
-of each other, then $Z=X+Y\sim Pois(\lambda_1 + \lambda_2)$.
+of each other, then $$Z=X+Y\sim Pois(\lambda_1 + \lambda_2)$$
 :::
 :::::
 

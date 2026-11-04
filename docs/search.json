@@ -28403,7 +28403,7 @@
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#distinguishing-between-binomial-and-poisson-rvs",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Distinguishing between Binomial and Poisson RVs",
-    "text": "Distinguishing between Binomial and Poisson RVs\n\nRecall that if \\(X\\sim \\text{Binomial}(n,p)\\), then\n\n\\(X\\) models the number of successes …\nin \\(n\\) independent (Bernoulli) trials …\nthat each have the same probability of success \\(p\\).\n\nPoisson RVs are similar,\n\nexcept that instead of having \\(n\\) discrete independent trials,\nthere is a fixed time period (or space) during which the successes happen\nand instead of a probability, we have a rate of successes, \\(\\lambda\\)"
+    "text": "Distinguishing between Binomial and Poisson RVs\n\n\n\n\nBinomial: \\(X\\sim \\text{Binomial}(n,p)\\)\n\n\n\n\\(X\\) models the number of successes …\nin \\(n\\) independent (Bernoulli) trials …\nthat each have the same probability of success, \\(p\\)\n\n\n\n\n\n\n\n\nPoisson: \\(X\\sim \\text{Poisson}(\\lambda)\\)\n\n\n\n\\(X\\) models the number of successes …\nin a fixed time period (or space), instead of \\(n\\) discrete independent trials …\nthat happen at a constant rate, \\(\\lambda\\), instead of a probability"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#examples-of-poisson-rvs",
@@ -28424,14 +28424,14 @@
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#emergency-room-visitors-in-r",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Emergency Room Visitors: in R",
-    "text": "Emergency Room Visitors: in R\n\n\n\n\nExample 4\n\n\nSuppose an emergency room has an average of 50 visitors per day.\n\nProbability of 30 visitors in a day.\nProbability of 8 visitors in an hour.\n\n\n\n\n1dpois(30, lambda = 50)\n\n2lambda_hour &lt;- 50 / 24\n3dpois(8, lambda = lambda_hour)\n\n\n1\n\ndpois() gives \\(P(X = x)\\) for a Poisson RV, like dbinom() did for the binomial. Here \\(x = 30\\) and \\(\\lambda = 50\\) visitors per day.\n\n2\n\nChange the rate to match the time period: 50 visitors per day is \\(\\frac{50}{24} \\approx 2.083\\) visitors per hour.\n\n3\n\n\\(P(X = 8)\\) when \\(X\\) counts visitors in one hour.\n\n\n\n\n[1] 0.0006771985\n[1] 0.001095896\n\n\n\n\n\nChange \\(\\lambda\\), not \\(X\\)\n\n\nWhen the time period changes, change the rate \\(\\lambda\\) to match it.\n\nRight way: \\(\\lambda = \\frac{50}{24}\\) visitors per hour, and find \\(P(X = 8)\\)\nWrong way: keep \\(\\lambda = 50\\) per day and find \\(P(X = 8 \\cdot 24) = P(X = 192)\\)"
+    "text": "Emergency Room Visitors: in R\n\n\n\n\nExample 4\n\n\nSuppose an emergency room has an average of 50 visitors per day.\n\nProbability of 30 visitors in a day.\nProbability of 8 visitors in an hour.\n\n\n\n\nProbability of 30 visitors in a day.\n\n\n1dpois(30, lambda = 50)\n\n\n1\n\ndpois() gives \\(P(X = x)\\) for a Poisson RV, like dbinom() did for the binomial. Here \\(x = 30\\) and \\(\\lambda = 50\\) visitors per day.\n\n\n\n\n[1] 0.0006771985\n\n\n\nProbability of 8 visitors in an hour.\n\n\n2lambda_hour &lt;- 50 / 24\n3dpois(8, lambda = lambda_hour)\n\n\n2\n\nChange the rate to match the time period: 50 visitors per day is \\(\\frac{50}{24} \\approx 2.083\\) visitors per hour.\n\n3\n\n\\(P(X = 8)\\) when \\(X\\) counts visitors in one hour.\n\n\n\n\n[1] 0.001095896\n\n\n\n\n\nChange \\(\\lambda\\), not \\(X\\)\n\n\nWhen the time period changes, change the rate \\(\\lambda\\) to match it.\n\nRight way: \\(\\lambda = \\frac{50}{24}\\) visitors per hour, and find \\(P(X = 8)\\)\nWrong way: keep \\(\\lambda = 50\\) per day and find \\(P(X = 8 \\cdot 24) = P(X = 192)\\)"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#combining-independent-poisson-distributions",
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#combining-independent-poisson-distributions",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Combining independent Poisson distributions",
-    "text": "Combining independent Poisson distributions\n\n\nTheorem 1\n\n\nIf \\(X\\sim Pois(\\lambda_1)\\) and \\(Y\\sim Pois(\\lambda_2)\\) are independent of each other, then \\(Z=X+Y\\sim Pois(\\lambda_1 + \\lambda_2)\\)."
+    "text": "Combining independent Poisson distributions\n\n\nTheorem 1\n\n\nIf \\(X\\sim Pois(\\lambda_1)\\) and \\(Y\\sim Pois(\\lambda_2)\\) are independent of each other, then \\[Z=X+Y\\sim Pois(\\lambda_1 + \\lambda_2)\\]"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#two-emergency-rooms",

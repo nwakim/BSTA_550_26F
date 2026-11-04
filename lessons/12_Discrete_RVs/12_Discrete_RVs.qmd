@@ -34,21 +34,33 @@ library(tidyverse)
 .ribbon {
   display: flex;
   align-items: stretch;
-  min-height: 95px;
+  min-height: 110px;
   margin: 12px 0;
   border-radius: 8px;
   overflow: hidden;
 }
 .ribbon .rib-label {
-  flex: 0 0 64px;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  text-align: center;
+  flex: 0 0 72px;
+  position: relative;
+  container-type: size;  /* lets the label text scale with the box */
   color: #fff;
   font-weight: 700;
-  font-size: 0.55em;
-  padding: 8px 0;
 }
+/* Rotate the label and center it both ways in the dark box */
+.ribbon .rib-label p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  white-space: nowrap;
+  line-height: 1;
+}
+/* As large as fits: limited by the box height (text length) and width */
+.rib-x   .rib-label p { font-size: min(70cqh, 75cqw); }
+.rib-pmf .rib-label p { font-size: min(46cqh, 72cqw); }
+.rib-cdf .rib-label p { font-size: min(40cqh, 72cqw); }
+.rib-e   .rib-label p { font-size: min(29cqh, 72cqw); }
+.rib-var .rib-label p { font-size: min(21cqh, 72cqw); }
 .ribbon .rib-body {
   flex: 1;
   display: flex;
@@ -72,8 +84,8 @@ library(tidyverse)
 .rib-var .rib-label { background-color: #29abe0; }
 .rib-var .rib-body  { background-color: #d8eff9; }
 /* Tighter ribbons for the two-column slides */
-.rib-compact .ribbon { margin: 8px 0; min-height: 85px; }
-.rib-compact .ribbon .rib-label { flex-basis: 54px; font-size: 0.48em; }
+.rib-compact .ribbon { margin: 8px 0; min-height: 100px; }
+.rib-compact .ribbon .rib-label { flex-basis: 60px; }
 .rib-compact .ribbon .rib-body { padding: 2px 16px; font-size: 0.8em; }
 ```
 
@@ -100,7 +112,7 @@ library(tidyverse)
 
 ::: {.ribbon .rib-x}
 ::: rib-label
-X
+$X$
 :::
 
 ::: rib-body
@@ -127,7 +139,7 @@ $$p_X(x) = P(X=x) = p^x(1-p)^{1-x} \text{ for } x=0,1$$
 
 ::: {.ribbon .rib-e}
 ::: rib-label
-E(X)
+$\text{E}(X)$
 :::
 
 ::: rib-body
@@ -137,7 +149,7 @@ $$\text{E}(X) = p$$
 
 ::: {.ribbon .rib-var}
 ::: rib-label
-Var(X)
+$\text{Var}(X)$
 :::
 
 ::: rib-body
@@ -178,7 +190,7 @@ $$\text{Var}(X) = pq = p(1-p) \quad \text{ where } q = 1-p$$
 
 ::: {.ribbon .rib-x}
 ::: rib-label
-X
+$X$
 :::
 
 ::: rib-body
@@ -198,7 +210,7 @@ $$p_X(x) = P(X=x) = {n \choose x}p^x(1-p)^{n-x} \text{ for } x=0,1,2,  ..., n$$
 
 ::: {.ribbon .rib-e}
 ::: rib-label
-E(X)
+$\text{E}(X)$
 :::
 
 ::: rib-body
@@ -208,7 +220,7 @@ $$\text{E}(X) = np$$
 
 ::: {.ribbon .rib-var}
 ::: rib-label
-Var(X)
+$\text{Var}(X)$
 :::
 
 ::: rib-body
@@ -353,7 +365,7 @@ Now the binomial formula does it in one step!
 ::::::: {.column width="49%"}
 ::: {.ribbon .rib-x}
 ::: rib-label
-X
+$X$
 :::
 
 ::: rib-body
@@ -387,7 +399,7 @@ $$F_X(x) = P(X\leq x) = 1-(1-p)^x$$
 
 ::: {.ribbon .rib-e}
 ::: rib-label
-E(X)
+$\text{E}(X)$
 :::
 
 ::: rib-body
@@ -397,7 +409,7 @@ $$E(X)=\dfrac{1}{p}$$
 
 ::: {.ribbon .rib-var}
 ::: rib-label
-Var(X)
+$\text{Var}(X)$
 :::
 
 ::: rib-body
@@ -413,7 +425,7 @@ $$Var(X)= \dfrac{1-p}{p^2}$$
 ::::::: {.column width="49%"}
 ::: {.ribbon .rib-x}
 ::: rib-label
-X
+$X$
 :::
 
 ::: rib-body
@@ -447,7 +459,7 @@ $$F_X(x) = P(X\leq x) = 1-(1-p)^{x+1}$$
 
 ::: {.ribbon .rib-e}
 ::: rib-label
-E(X)
+$\text{E}(X)$
 :::
 
 ::: rib-body
@@ -457,7 +469,7 @@ $$E(X)=\dfrac{1-p}{p}$$
 
 ::: {.ribbon .rib-var}
 ::: rib-label
-Var(X)
+$\text{Var}(X)$
 :::
 
 ::: rib-body
@@ -727,7 +739,7 @@ bullseye_sims |> # <3>
 
 ::: {.ribbon .rib-x}
 ::: rib-label
-X
+$X$
 :::
 
 ::: rib-body
@@ -747,7 +759,7 @@ $$p_X(x) = P(X=x) = {x-1 \choose r-1}(1-p)^{x-r}p^r \text{ for } x = r, r+1, r+2
 
 ::: {.ribbon .rib-e}
 ::: rib-label
-E(X)
+$\text{E}(X)$
 :::
 
 ::: rib-body
@@ -757,7 +769,7 @@ $$E(X) = \dfrac{r}{p}$$
 
 ::: {.ribbon .rib-var}
 ::: rib-label
-Var(X)
+$\text{Var}(X)$
 :::
 
 ::: rib-body
@@ -928,7 +940,7 @@ bullseye5_sims |> # <1>
 
 ::: {.ribbon .rib-x}
 ::: rib-label
-X
+$X$
 :::
 
 ::: rib-body
@@ -948,7 +960,7 @@ $$p_X(x) = P(X=x) = \dfrac{e^{-\lambda}\lambda^x}{x!} \text{ for } x = 0, 1, 2,3
 
 ::: {.ribbon .rib-e}
 ::: rib-label
-E(X)
+$\text{E}(X)$
 :::
 
 ::: rib-body
@@ -958,7 +970,7 @@ $$\text{E}(X) = \lambda$$
 
 ::: {.ribbon .rib-var}
 ::: rib-label
-Var(X)
+$\text{Var}(X)$
 :::
 
 ::: rib-body
@@ -1312,7 +1324,7 @@ $$
 ::::::: {.column width="49%"}
 ::: {.ribbon .rib-x}
 ::: rib-label
-X
+$X$
 :::
 
 ::: rib-body
@@ -1340,7 +1352,7 @@ $$p_X(x) = P(X=x) = \dfrac{{M \choose x}{N-M \choose n-x}}{{N \choose n}}$$
 ::::::: {.column width="49%"}
 ::: {.ribbon .rib-e}
 ::: rib-label
-E(X)
+$\text{E}(X)$
 :::
 
 ::: rib-body
@@ -1350,7 +1362,7 @@ $$\text{E}(X) =\dfrac{nM}{N}$$
 
 ::: {.ribbon .rib-var}
 ::: rib-label
-Var(X)
+$\text{Var}(X)$
 :::
 
 ::: rib-body
@@ -1547,7 +1559,7 @@ Suppose a specific study region is known to have 2400 wolves, of which
 
 ::: {.ribbon .rib-x}
 ::: rib-label
-X
+$X$
 :::
 
 ::: rib-body
@@ -1567,7 +1579,7 @@ $$p_X(x) = P(X=x) = \dfrac{1}{N} \text{ for } x=1, 2, 3, ..., N$$
 
 ::: {.ribbon .rib-e}
 ::: rib-label
-E(X)
+$\text{E}(X)$
 :::
 
 ::: rib-body
@@ -1577,7 +1589,7 @@ $$\text{E}(X) =\dfrac{N+1}{2}$$
 
 ::: {.ribbon .rib-var}
 ::: rib-label
-Var(X)
+$\text{Var}(X)$
 :::
 
 ::: rib-body

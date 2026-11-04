@@ -1272,13 +1272,14 @@ X = \text{Number of successes in a given period (or given space)}
 <li><p>If for a Binomial RV</p>
 <ul>
 <li><p>the number of trials <span class="math inline">\(n\)</span> is very large, and</p></li>
-<li><p>the probability of success <span class="math inline">\(p\)</span> is close to 0 or 1,</p></li>
+<li><p>the probability of success <span class="math inline">\(p\)</span> is small (close to 0),</p></li>
 </ul></li>
 <li><p>Then the Poisson distribution can be used to approximate Binomial probabilities</p>
 <ul>
-<li>and we use <span class="math inline">\(\lambda = np\)</span></li>
+<li><p>and we use <span class="math inline">\(\lambda = np\)</span></p></li>
+<li><p>If <span class="math inline">\(p\)</span> is close to 1, count the failures instead, with <span class="math inline">\(\lambda = n(1-p)\)</span></p></li>
 </ul></li>
-<li><p><strong>Rule of thumb:</strong> We can use the Poisson approximation when <span class="math inline">\(\dfrac{1}{10} \leq np(1-p) \leq 10\)</span></p></li>
+<li><p><strong>Rule of thumb:</strong> We can use the Poisson approximation when <span class="math inline">\(n \geq 20\)</span> and <span class="math inline">\(p \leq 0.05\)</span>, or when <span class="math inline">\(n \geq 100\)</span> and <span class="math inline">\(np \leq 10\)</span></p></li>
 </ul>
 </section>
 <section id="medical-lab-errors" class="slide level2">
@@ -1393,7 +1394,7 @@ p_X(x) = P(X=x) = \dfrac{{M \choose x}{N-M \choose n-x}}{{N \choose n}}
 <section id="wolf-population-simulate-it" class="slide level2">
 <h2>Wolf population: simulate it</h2>
 <div class="columns">
-<div class="column" style="width:62%;">
+<div class="column" style="width:45%;">
 <ul>
 <li><code>rhyper()</code> captures 5 of the 24 wolves <span style="color:#E25D3B;"><strong>without replacement</strong></span> for us</li>
 </ul>
@@ -1404,8 +1405,13 @@ p_X(x) = P(X=x) = \dfrac{{M \choose x}{N-M \choose n-x}}{{N \choose n}}
 <span id="annotated-cell-27-4"><a href="#annotated-cell-27-4" aria-label="4"></a></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-27" data-target-annotation="2">2</button><span id="annotated-cell-27-5" class="code-annotation-target"><a href="#annotated-cell-27-5" aria-label="5"></a>wolf_sims <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps) <span class="sc">|&gt;</span></span>
 <span id="annotated-cell-27-6"><a href="#annotated-cell-27-6" aria-label="6"></a>  <span class="fu">mutate</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-27" data-target-annotation="3">3</button><span id="annotated-cell-27-7" class="code-annotation-target"><a href="#annotated-cell-27-7" aria-label="7"></a>    <span class="at">X =</span> <span class="fu">rhyper</span>(<span class="fu">n</span>(), <span class="at">m =</span> M, <span class="at">n =</span> N <span class="sc">-</span> M, <span class="at">k =</span> n_captured)</span>
-<span id="annotated-cell-27-8"><a href="#annotated-cell-27-8" aria-label="8"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="annotated-cell-27-7"><a href="#annotated-cell-27-7" aria-label="7"></a>    <span class="at">X =</span> <span class="fu">rhyper</span>(</span>
+<span id="annotated-cell-27-8"><a href="#annotated-cell-27-8" aria-label="8"></a>      <span class="fu">n</span>(), </span>
+<span id="annotated-cell-27-9"><a href="#annotated-cell-27-9" aria-label="9"></a>      <span class="at">m =</span> M, </span>
+<span id="annotated-cell-27-10"><a href="#annotated-cell-27-10" aria-label="10"></a>      <span class="at">n =</span> N <span class="sc">-</span> M, </span>
+<span id="annotated-cell-27-11"><a href="#annotated-cell-27-11" aria-label="11"></a>      <span class="at">k =</span> n_captured</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-27" data-target-annotation="3">3</button><span id="annotated-cell-27-12" class="code-annotation-target"><a href="#annotated-cell-27-12" aria-label="12"></a>      )</span>
+<span id="annotated-cell-27-13"><a href="#annotated-cell-27-13" aria-label="13"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-27" data-target-annotation="1">1</dt>
@@ -1418,12 +1424,14 @@ p_X(x) = P(X=x) = \dfrac{{M \choose x}{N-M \choose n-x}}{{N \choose n}}
 </dd>
 <dt data-target-cell="annotated-cell-27" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-27" data-code-lines="7" data-code-annotation="3"><code>rhyper()</code> draws the number of tagged wolves for every row. The first input is how many values to draw (<code>n()</code>, the number of rows). <strong>Careful:</strong> in R, <code>m</code> is the number of successes (<span class="math inline">\(M\)</span>), <code>n</code> is the number of <strong>failures</strong> (<span class="math inline">\(N - M\)</span>), and <code>k</code> is the number of draws.</span>
+<span data-code-cell="annotated-cell-27" data-code-lines="12" data-code-annotation="3"><code>rhyper()</code> draws the number of tagged wolves for every row. The first input is how many values to draw (<code>n()</code>, the number of rows). <strong>Careful:</strong> in R, <code>m</code> is the number of successes (<span class="math inline">\(M\)</span>), <code>n</code> is the number of <strong>failures</strong> (<span class="math inline">\(N - M\)</span>), and <code>k</code> is the number of draws.</span>
 </dd>
 </dl>
 </div>
 </div>
-</div><div class="column" style="width:38%;">
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:53%;">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-28"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-28" data-target-annotation="1">1</button><span id="annotated-cell-28-1" class="code-annotation-target"><a href="#annotated-cell-28-1" aria-label="1"></a>wolf_sims <span class="sc">|&gt;</span></span>
 <span id="annotated-cell-28-2"><a href="#annotated-cell-28-2" aria-label="2"></a>  <span class="fu">summarise</span>(</span>
@@ -1483,12 +1491,8 @@ p_X(x) = P(X=x) = \dfrac{{M \choose x}{N-M \choose n-x}}{{N \choose n}}
 <p>Suppose a hypergeometric RV <span class="math inline">\(X\)</span> has the following properties:</p>
 <ul>
 <li><p>the population size <span class="math inline">\(N\)</span> is really big,</p></li>
-<li><p>the number of successes <span class="math inline">\(M\)</span> in the population is relatively large,</p>
-<ul>
-<li><span class="math inline">\(\frac{M}{N}\)</span> shouldn’t be close to 0 or 1</li>
-</ul></li>
 <li><p>and the number of items <span class="math inline">\(n\)</span> selected is small (relative to <span class="math inline">\(N\)</span>)</p></li>
-<li><p><strong>Rule of thumb:</strong> <span class="math inline">\(\dfrac{n}{N}&lt;0.05\)</span> or <span class="math inline">\(N&gt;20n\)</span></p></li>
+<li><p><strong>Rule of thumb:</strong> <span class="math inline">\(\dfrac{n}{N}&lt;0.05\)</span> (equivalently, <span class="math inline">\(N&gt;20n\)</span>)</p></li>
 </ul>
 <p>Then, in this case, making <span class="math inline">\(n\)</span> draws from the population doesn’t change the probability of success much, and the <strong>hypergeometric RV can be approximated by a</strong> <span style="color:#20c997;"><strong>binomial RV</strong></span> with <span class="math inline">\(p = \frac{M}{N}\)</span></p>
 <ul>

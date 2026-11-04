@@ -1009,7 +1009,7 @@ R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#
 ## Wolf population: simulate it
 
 :::::::: columns
-:::::: {.column width="62%"}
+:::::: {.column width="45%"}
 -   `rhyper()` captures 5 of the 24 wolves
     [**without replacement**]{style="color:#E25D3B;"} for us
 
@@ -1020,7 +1020,12 @@ n_captured <- 5 # <1>
 
 wolf_sims <- tibble(sim = 1:reps) |> # <2>
   mutate(
-    X = rhyper(n(), m = M, n = N - M, k = n_captured) # <3>
+    X = rhyper(
+      n(), 
+      m = M, 
+      n = N - M, 
+      k = n_captured
+      ) # <3>
   )
 ```
 
@@ -1033,7 +1038,11 @@ wolf_sims <- tibble(sim = 1:reps) |> # <2>
     number of **failures** ($N - M$), and `k` is the number of draws.
 ::::::
 
-::: {.column width="38%"}
+::: {.column width="2%"}
+
+:::
+
+::: {.column width="53%"}
 ```{r}
 wolf_sims |> # <1>
   summarise( # <1>

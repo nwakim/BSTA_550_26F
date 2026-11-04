@@ -1088,7 +1088,7 @@ $p = \frac{M}{N}$
 -   $\frac{M}{N}$ is like $p$ in the binomial: the binomial has a
     constant $p$
 
-## Wolf population revisited
+## Wolf population revisited (1/2)
 
 ::::::: columns
 :::::: {.column width="28%"}
@@ -1103,17 +1103,14 @@ Suppose a specific study region is known to have 2400 wolves, of which
 
 1.  If 50 wolves are randomly captured, what is the probability that 20
     of them have already been tagged?
-
-2.  Approximate the probability in part (1) using the binomial
-    distribution.
 :::
 :::::
 ::::::
 :::::::
 
-## Wolf population revisited: check in R
+## Wolf population revisited (2/2)
 
-:::::::: columns
+::::::: columns
 :::::: {.column width="28%"}
 ::::: example
 ::: ex-title
@@ -1124,29 +1121,12 @@ Example 8
 Suppose a specific study region is known to have 2400 wolves, of which
 1100 have already been tagged.
 
-1.  If 50 wolves are randomly captured, what is the probability that 20
-    of them have already been tagged?
-
 2.  Approximate the probability in part (1) using the binomial
     distribution.
 :::
 :::::
 ::::::
-
-::: {.column width="72%"}
-```{r}
-dhyper(20, m = 1100, n = 1300, k = 50) # <1>
-dbinom(20, size = 50, prob = 1100 / 2400) # <2>
-```
-
-1.  The exact hypergeometric probability: 1,100 tagged, 1,300 untagged,
-    and 50 captured.
-2.  The binomial approximation with $p = \frac{M}{N} = \frac{1100}{2400}$.
-
--   Check the rule of thumb: $N = 2400 > 20n = 1000$
--   The two probabilities are very close!
-:::
-::::::::
+:::::::
 
 # Discrete Uniform RVs {#chapter-20-discrete-uniform-RVs .unnumbered}
 

@@ -28284,7 +28284,7 @@
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#properties-of-bernoulli-rvs",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Properties of Bernoulli RVs",
-    "text": "Properties of Bernoulli RVs\n\nScenario: One trial, with outcome success or failure\nShorthand: \\(X \\sim \\text{Bernoulli}(p)\\)\n\n\\[\nX = \\left\\{\n        \\begin{array}{ll}\n            1 & \\quad \\mathrm{with\\ probability}\\ p \\quad \\\\\n            0 & \\quad \\mathrm{with\\ probability}\\ 1-p \\quad\n        \\end{array}\n    \\right.\n\\]\n\\[\np_X(x) = P(X=x) = p^x(1-p)^{1-x} \\text{ for } x=0,1\n\\]\n\\[\\text{E}(X) = p\\]\n\\[\\text{Var}(X) = pq = p(1-p) \\quad \\text{ where } q = 1-p\\]"
+    "text": "Properties of Bernoulli RVs\n\nScenario: One trial, with outcome success or failure\nShorthand: \\(X \\sim \\text{Bernoulli}(p)\\)\n\n\n\n\\(X\\)\n\n\n\\[\nX = \\left\\{\n        \\begin{array}{ll}\n            1 & \\quad \\mathrm{with\\ probability}\\ p \\quad \\\\\n            0 & \\quad \\mathrm{with\\ probability}\\ 1-p \\quad\n        \\end{array}\n    \\right.\n\\]\n\n\n\n\npmf\n\n\n\\[p_X(x) = P(X=x) = p^x(1-p)^{1-x} \\text{ for } x=0,1\\]\n\n\n\n\n\\(\\text{E}(X)\\)\n\n\n\\[\\text{E}(X) = p\\]\n\n\n\n\n\\(\\text{Var}(X)\\)\n\n\n\\[\\text{Var}(X) = pq = p(1-p) \\quad \\text{ where } q = 1-p\\]"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#bernoulli-example-1",
@@ -28298,7 +28298,7 @@
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#properties-of-binomial-rvs",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Properties of Binomial RVs",
-    "text": "Properties of Binomial RVs\n\nScenario: There are \\(n\\) independent trials, each resulting in a success or failure, with constant probability, \\(p\\), in each trial. We are counting the number of successes (or failures).\nShorthand: \\(X \\sim \\text{Binomial}(n, p)\\)\nA binomial random variable is the sum of \\(n\\) independent Bernoulli RVs\n\n\\[\nX = \\text{Number of successes of } n \\text{ independent trials}\n\\]\n\\[\np_X(x) = P(X=x) = {n \\choose x}p^x(1-p)^{n-x} \\text{ for } x=0,1,2,  ..., n\n\\]\n\\[\\text{E}(X) = np\\] \\[\\text{Var}(X) = npq = np(1-p)\\]"
+    "text": "Properties of Binomial RVs\n\nScenario: There are \\(n\\) independent trials, each resulting in a success or failure, with constant probability, \\(p\\), in each trial. We are counting the number of successes (or failures).\nShorthand: \\(X \\sim \\text{Binomial}(n, p)\\)\nA binomial random variable is the sum of \\(n\\) independent Bernoulli RVs\n\n\n\n\\(X\\)\n\n\n\\[X = \\text{Number of successes of } n \\text{ independent trials}\\]\n\n\n\n\npmf\n\n\n\\[p_X(x) = P(X=x) = {n \\choose x}p^x(1-p)^{n-x} \\text{ for } x=0,1,2,  ..., n\\]\n\n\n\n\n\\(\\text{E}(X)\\)\n\n\n\\[\\text{E}(X) = np\\]\n\n\n\n\n\\(\\text{Var}(X)\\)\n\n\n\\[\\text{Var}(X) = npq = np(1-p)\\]"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#our-beloved-fair-6-sided-die",
@@ -28319,7 +28319,7 @@
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#geometric-rvs",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Geometric RVs",
-    "text": "Geometric RVs\n\nScenario: There are repeated independent trials, each resulting in a success or failure, with constant probability of success for each trial. We are counting the number of trials until the first success.\n\nFor example, toss a coin until we get heads: H, or TH, or TTH, or TTTH, …\n\nShorthand: \\(X \\sim \\text{Geo}(p)\\) or \\(X \\sim \\text{Geometric}(p)\\) or \\(X \\sim \\text{G}(p)\\)\n\n\n\n\\(X =\\) Number of trials needed for first success (count \\(x\\) includes the success)\n\\[p_X(x) = P(X=x) = (1-p)^{x-1}p \\quad \\text{for } x=1,2,3,\\ldots\\]\n\\[F_X(x) = P(X\\leq x) = 1-(1-p)^x \\quad \\text{for } x=1,2,3,\\ldots\\]\n\\[E(X)=\\dfrac{1}{p} \\qquad Var(X)= \\dfrac{1-p}{p^2}\\]\n\n\\(X =\\) Number of failures before first success (count \\(x\\) does not include the success)\n\\[p_X(x) = P(X=x) = (1-p)^{x}p \\quad \\text{for } x=0,1,2,\\ldots\\]\n\\[F_X(x) = P(X\\leq x) = 1-(1-p)^{x+1} \\quad \\text{for } x=0,1,2,\\ldots\\]\n\\[E(X)=\\dfrac{1-p}{p} \\qquad Var(X) = \\dfrac{1-p}{p^2}\\]"
+    "text": "Geometric RVs\n\nScenario: There are repeated independent trials, each resulting in a success or failure, with constant probability of success for each trial. We are counting the number of trials until the first success.\n\nFor example, toss a coin until we get heads: H, or TH, or TTH, or TTTH, …\n\nShorthand: \\(X \\sim \\text{Geo}(p)\\) or \\(X \\sim \\text{Geometric}(p)\\) or \\(X \\sim \\text{G}(p)\\)\n\n\n\n\n\n\\(X\\)\n\n\nNumber of trials needed for first success (count \\(x\\) includes the success)\n\n\n\n\npmf\n\n\n\\[p_X(x) = P(X=x) = (1-p)^{x-1}p\\]\nfor \\(x=1,2,3,\\ldots\\)\n\n\n\n\nCDF\n\n\n\\[F_X(x) = P(X\\leq x) = 1-(1-p)^x\\]\nfor \\(x=1,2,3,\\ldots\\)\n\n\n\n\n\\(\\text{E}(X)\\)\n\n\n\\[E(X)=\\dfrac{1}{p}\\]\n\n\n\n\n\\(\\text{Var}(X)\\)\n\n\n\\[Var(X)= \\dfrac{1-p}{p^2}\\]\n\n\n\n\n\n\n\n\\(X\\)\n\n\nNumber of failures before first success (count \\(x\\) does not include the success)\n\n\n\n\npmf\n\n\n\\[p_X(x) = P(X=x) = (1-p)^{x}p\\]\nfor \\(x=0,1,2,\\ldots\\)\n\n\n\n\nCDF\n\n\n\\[F_X(x) = P(X\\leq x) = 1-(1-p)^{x+1}\\]\nfor \\(x=0,1,2,\\ldots\\)\n\n\n\n\n\\(\\text{E}(X)\\)\n\n\n\\[E(X)=\\dfrac{1-p}{p}\\]\n\n\n\n\n\\(\\text{Var}(X)\\)\n\n\n\\[Var(X) = \\dfrac{1-p}{p^2}\\]"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#bullseye-14",
@@ -28333,7 +28333,7 @@
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#bullseye-24",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Bullseye (2/4)",
-    "text": "Bullseye (2/4)\n\n\n\n\nExample 2\n\n\nWe throw darts at a dartboard until we hit the bullseye. Assume throws are independent and the probability of hitting the bullseye is 0.01 for each throw.\n\nWhat is the pmf for the number of throws needed to hit the bullseye?"
+    "text": "Bullseye (2/4)\n\n\n\n\nExample 2\n\n\nWe throw darts at a dartboard until we hit the bullseye. Assume throws are independent and the probability of hitting the bullseye is 0.01 for each throw.\n\nWhat is the pmf for the number of throws needed to hit the bullseye?\n\n\n\n\n\n\n\nLet \\(X\\) = number of throws needed to hit the first bullseye (the count includes the bullseye)\nPossible sequences, with H = hit and M = miss:\n\nH (\\(x = 1\\)), MH (\\(x = 2\\)), MMH (\\(x = 3\\)), MMMH (\\(x = 4\\)), …\n\nEach throw is independent, so \\(x - 1\\) misses and then 1 hit:\n\n\\[\nP(X = x) = (1-p)^{x-1}p\n\\]\n\nWith \\(p = 0.01\\):\n\n\\[\np_X(x) = 0.99^{x-1}(0.01) \\quad \\text{for } x = 1, 2, 3, \\ldots\n\\]\n\n\\(X \\sim \\text{Geo}(0.01)\\)"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#bullseye-34",
@@ -28375,14 +28375,14 @@
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#properties-of-negative-binomial-rvs",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Properties of Negative Binomial RVs",
-    "text": "Properties of Negative Binomial RVs\n\nScenario: There are repeated independent trials, each resulting in a success or failure, with constant probability of success for each trial. We are counting the number of trials until the \\(r^{th}\\) success.\nShorthand: \\(X \\sim \\text{NegBin}(p, r)\\) or \\(X \\sim \\text{NB}(p, r)\\)\nNegative binomial is sum of \\(r\\) geometric distributions\n\n\\[\nX = \\text{Number of independent trials until } r^{th} \\text{ success}\n\\]\n\\[ p_X(x) = P(X=x) = {x-1 \\choose r-1}(1-p)^{x-r}p^r \\text{ for } x = r, r+1, r+2, ...\\]\n\\[ E(X) = \\dfrac{r}{p} \\qquad Var(X) = \\dfrac{rq}{p^2} = \\dfrac{r(1-p)}{p^2}\\]"
+    "text": "Properties of Negative Binomial RVs\n\nScenario: There are repeated independent trials, each resulting in a success or failure, with constant probability of success for each trial. We are counting the number of trials until the \\(r^{th}\\) success.\nShorthand: \\(X \\sim \\text{NegBin}(p, r)\\) or \\(X \\sim \\text{NB}(p, r)\\)\nNegative binomial is sum of \\(r\\) geometric distributions\n\n\n\n\\(X\\)\n\n\n\\[X = \\text{Number of independent trials until } r^{th} \\text{ success}\\]\n\n\n\n\npmf\n\n\n\\[p_X(x) = P(X=x) = {x-1 \\choose r-1}(1-p)^{x-r}p^r \\text{ for } x = r, r+1, r+2, ...\\]\n\n\n\n\n\\(\\text{E}(X)\\)\n\n\n\\[E(X) = \\dfrac{r}{p}\\]\n\n\n\n\n\\(\\text{Var}(X)\\)\n\n\n\\[Var(X) = \\dfrac{rq}{p^2} = \\dfrac{r(1-p)}{p^2}\\]"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#hitting-more-than-1-bullseye",
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#hitting-more-than-1-bullseye",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Hitting more than 1 bullseye",
-    "text": "Hitting more than 1 bullseye\n\n\n\n\nExample 3\n\n\nConsider again the bullseye example, where we throw darts at a dartboard until we hit the bullseye. Assume throws are independent and the probability of hitting the bullseye is 0.01 for each throw.\n\nWhat is the expected value and variance of the number of throws needed to hit 5 bullseyes?"
+    "text": "Hitting more than 1 bullseye\n\n\n\n\nExample 3\n\n\nConsider again the bullseye example, where we throw darts at a dartboard until we hit the bullseye. Assume throws are independent and the probability of hitting the bullseye is 0.01 for each throw.\n\nWhat is the expected value and variance of the number of throws needed to hit 5 bullseyes?\n\n\n\n\n\n\n\nLet \\(X\\) = number of throws needed to hit 5 bullseyes\nParameters: \\(r = 5\\) bullseyes and \\(p = 0.01\\)\n\\(X \\sim \\text{NegBin}(r = 5, p = 0.01)\\)\n\n\\[\nE(X) = \\dfrac{r}{p} = \\dfrac{5}{0.01} = 500\n\\]\n\\[\nVar(X) = \\dfrac{r(1-p)}{p^2} = \\dfrac{5(0.99)}{0.01^2} = \\dfrac{4.95}{0.0001} = 49{,}500\n\\]\n\nCheck with the geometric: one bullseye takes \\(E(Y) = 100\\) throws with \\(Var(Y) = 9{,}900\\), so 5 bullseyes take \\(5 \\cdot 100 = 500\\) throws with variance \\(5 \\cdot 9{,}900 = 49{,}500\\)"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#hitting-more-than-1-bullseye-1",
@@ -28396,7 +28396,7 @@
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#properties-of-poisson-rvs",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Properties of Poisson RVs",
-    "text": "Properties of Poisson RVs\n\nScenario: We are counting the number of successes in a fixed time period (or fixed space), which has a constant rate (\\(\\lambda\\)) of successes\nShorthand: \\(X \\sim \\text{Poisson}(\\lambda)\\) or \\(X \\sim \\text{Pois}(\\lambda)\\)\n\n\\[\nX = \\text{Number of successes in a given period (or given space)}\n\\]\n\\[ p_X(x) = P(X=x) = \\dfrac{e^{-\\lambda}\\lambda^x}{x!} \\text{ for } x = 0, 1, 2,3, ...\\]\n\\[ \\text{E}(X) = \\lambda\\]\n\\[\\text{Var}(X) = \\lambda\\]"
+    "text": "Properties of Poisson RVs\n\nScenario: We are counting the number of successes in a fixed time period (or fixed space), which has a constant rate (\\(\\lambda\\)) of successes\nShorthand: \\(X \\sim \\text{Poisson}(\\lambda)\\) or \\(X \\sim \\text{Pois}(\\lambda)\\)\n\n\n\n\\(X\\)\n\n\n\\[X = \\text{Number of successes in a given period (or given space)}\\]\n\n\n\n\npmf\n\n\n\\[p_X(x) = P(X=x) = \\dfrac{e^{-\\lambda}\\lambda^x}{x!} \\text{ for } x = 0, 1, 2,3, ...\\]\n\n\n\n\n\\(\\text{E}(X)\\)\n\n\n\\[\\text{E}(X) = \\lambda\\]\n\n\n\n\n\\(\\text{Var}(X)\\)\n\n\n\\[\\text{Var}(X) = \\lambda\\]"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#distinguishing-between-binomial-and-poisson-rvs",
@@ -28438,7 +28438,7 @@
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#two-emergency-rooms",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Two emergency rooms",
-    "text": "Two emergency rooms\n\n\n\n\nExample 5\n\n\nSuppose emergency room 1 has an average of 50 visitors per day, and emergency room 2 has an average of 70 visitors per day, independently of each other. What is the probability distribution that models the total number of visitors to both?"
+    "text": "Two emergency rooms\n\n\n\n\nExample 5\n\n\nSuppose emergency room 1 has an average of 50 visitors per day, and emergency room 2 has an average of 70 visitors per day, independently of each other. What is the probability distribution that models the total number of visitors to both?\n\n\n\n\n\n\nLet \\(X\\) = number of visitors to emergency room 1 in a day, so \\(X \\sim \\text{Pois}(\\lambda_1 = 50)\\)\nLet \\(Y\\) = number of visitors to emergency room 2 in a day, so \\(Y \\sim \\text{Pois}(\\lambda_2 = 70)\\)\nLet \\(Z = X + Y\\) = total number of visitors to both in a day\n\\(X\\) and \\(Y\\) are independent, so by Theorem 1:\n\n\\[\nZ \\sim \\text{Pois}(\\lambda_1 + \\lambda_2) = \\text{Pois}(50 + 70) = \\text{Pois}(120)\n\\]\n\\[\np_Z(z) = P(Z = z) = \\dfrac{e^{-120}\\,120^z}{z!} \\quad \\text{for } z = 0, 1, 2, \\ldots\n\\]"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#poisson-approximation-of-the-binomial",
@@ -28459,7 +28459,7 @@
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#hypergeometric-rvs",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Hypergeometric RVs",
-    "text": "Hypergeometric RVs\n\nScenario: There are a fixed number of successes and failures (which are known in advance), from which we make \\(n\\) draws without replacement. We are counting the number of successes from the \\(n\\) trials.\n\nThere is a finite population of \\(N\\) items\nEach item in the population is either a success or a failure, and there are \\(M\\) successes total (and \\(N-M\\) failures).\nWe randomly select (sample) \\(n\\) items from the population without replacement\n\nShorthand: \\(X \\sim \\text{Hypergeo}(M, N, n)\\)\n\n\n\n\\[\nX = \\text{Number of successes in } n \\text{ draws}\n\\]\n\\[\np_X(x) = P(X=x) = \\dfrac{{M \\choose x}{N-M \\choose n-x}}{{N \\choose n}}\n\\] \\[\\text{ for } x \\text{ integer-valued } \\\\ \\max(0, n-(N-M)) \\leq x \\leq \\min(n, M)\\]\n\n\\[\\text{E}(X) =\\dfrac{nM}{N}\\]\n\\[\\text{Var}(X) = n \\dfrac{M}{N} \\bigg(1- \\dfrac{M}{N} \\bigg)\\bigg(\\dfrac{N-n}{N-1} \\bigg)\\]"
+    "text": "Hypergeometric RVs\n\nScenario: There are a fixed number of successes and failures (which are known in advance), from which we make \\(n\\) draws without replacement. We are counting the number of successes from the \\(n\\) trials.\n\nThere is a finite population of \\(N\\) items\nEach item in the population is either a success or a failure, and there are \\(M\\) successes total (and \\(N-M\\) failures).\nWe randomly select (sample) \\(n\\) items from the population without replacement\n\nShorthand: \\(X \\sim \\text{Hypergeo}(M, N, n)\\)\n\n\n\n\n\n\\(X\\)\n\n\n\\[X = \\text{Number of successes in } n \\text{ draws}\\]\n\n\n\n\npmf\n\n\n\\[p_X(x) = P(X=x) = \\dfrac{{M \\choose x}{N-M \\choose n-x}}{{N \\choose n}}\\]\nfor integer \\(x\\) with \\(\\max(0, n-(N-M)) \\leq x \\leq \\min(n, M)\\)\n\n\n\n\n\n\n\n\\(\\text{E}(X)\\)\n\n\n\\[\\text{E}(X) =\\dfrac{nM}{N}\\]\n\n\n\n\n\\(\\text{Var}(X)\\)\n\n\n\\[\\text{Var}(X) = n \\dfrac{M}{N} \\bigg(1- \\dfrac{M}{N} \\bigg)\\bigg(\\dfrac{N-n}{N-1} \\bigg)\\]"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#wolf-population",
@@ -28501,7 +28501,7 @@
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#discrete-uniform-rvs",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Discrete Uniform RVs",
-    "text": "Discrete Uniform RVs\n\nScenario: There are \\(N\\) possible outcomes, which are all equally likely.\nShorthand: \\(X \\sim \\text{Uniform}(N)\\)\n\n\\[\nX = \\text{Outcome of interest, with } x=1, 2, ..., N\n\\]\n\\[\np_X(x) = P(X=x) = \\dfrac{1}{N} \\text{ for } x=1, 2, 3, ..., N\n\\]\n\\[\\text{E}(X) =\\dfrac{N+1}{2}\\]\n\\[\\text{Var}(X) = \\dfrac{N^2 -1}{12}\\]"
+    "text": "Discrete Uniform RVs\n\nScenario: There are \\(N\\) possible outcomes, which are all equally likely.\nShorthand: \\(X \\sim \\text{Uniform}(N)\\)\n\n\n\n\\(X\\)\n\n\n\\[X = \\text{Outcome of interest, with } x=1, 2, ..., N\\]\n\n\n\n\npmf\n\n\n\\[p_X(x) = P(X=x) = \\dfrac{1}{N} \\text{ for } x=1, 2, 3, ..., N\\]\n\n\n\n\n\\(\\text{E}(X)\\)\n\n\n\\[\\text{E}(X) =\\dfrac{N+1}{2}\\]\n\n\n\n\n\\(\\text{Var}(X)\\)\n\n\n\\[\\text{Var}(X) = \\dfrac{N^2 -1}{12}\\]"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#what-discrete-uniform-rvs-have-we-seen-already",
@@ -28914,7 +28914,7 @@
     "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#wolf-population-revisited-12",
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Wolf population revisited (1/2)",
-    "text": "Wolf population revisited (1/2)\n\n\n\n\nExample 8\n\n\nSuppose a specific study region is known to have 2400 wolves, of which 1100 have already been tagged.\n\nIf 50 wolves are randomly captured, what is the probability that 20 of them have already been tagged?"
+    "text": "Wolf population revisited (1/2)\n\n\n\n\nExample 8\n\n\nSuppose a specific study region is known to have 2400 wolves, of which 1100 have already been tagged.\n\nIf 50 wolves are randomly captured, what is the probability that 20 of them have already been tagged?\n\n\n\n\n\n\n\nLet \\(X\\) = number of tagged wolves in the 50 captured\nParameters: \\(N = 2400\\) wolves, \\(M = 1100\\) tagged, \\(N - M = 1300\\) untagged, and \\(n = 50\\) captured\n\\(X \\sim \\text{Hypergeo}(M = 1100, N = 2400, n = 50)\\)\n\n\\[\nP(X = 20) = \\dfrac{{M \\choose x}{N-M \\choose n-x}}{{N \\choose n}}\n= \\dfrac{{1100 \\choose 20}{1300 \\choose 30}}{{2400 \\choose 50}}\n\\approx 0.0813\n\\]\n\nIn R: dhyper(20, m = 1100, n = 1300, k = 50)"
   },
   {
     "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#wolf-population-revisited-22",
@@ -28922,5 +28922,12 @@
     "title": "Lesson 12: Some Important Discrete RVs",
     "section": "Wolf population revisited (2/2)",
     "text": "Wolf population revisited (2/2)\n\n\n\n\nExample 8\n\n\nSuppose a specific study region is known to have 2400 wolves, of which 1100 have already been tagged.\n\nApproximate the probability in part (1) using the binomial distribution."
+  },
+  {
+    "objectID": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#medical-lab-errors-at-home-reference",
+    "href": "lessons/12_Discrete_RVs/12_Discrete_RVs.html#medical-lab-errors-at-home-reference",
+    "title": "Lesson 12: Some Important Discrete RVs",
+    "section": "Medical lab errors (at home reference)",
+    "text": "Medical lab errors (at home reference)\n\n\n\n\nExample 6\n\n\nSuppose that in the long run, errors in a medical testing lab are made 0.1% of the time. Find the probability that fewer than 4 mistakes are made in the next 2,000 tests.\n\nFind the probability using the Binomial distribution.\nApproximate the probability in part (1) using the Poisson distribution.\n\n\n\n\nLet \\(X\\) = number of mistakes in the next 2,000 tests\n1. Binomial: \\(X \\sim \\text{Binomial}(n = 2000, p = 0.001)\\)\n\\[\nP(X &lt; 4) = P(X \\leq 3) = \\sum_{x=0}^{3} {2000 \\choose x}(0.001)^x(0.999)^{2000-x} \\approx 0.8572\n\\]\n\nIn R: pbinom(3, size = 2000, prob = 0.001)\n\n2. Poisson approximation: \\(n = 2000 \\geq 100\\) and \\(np = 2 \\leq 10\\), so we can use \\(\\lambda = np = 2\\)\n\\[\nP(X \\leq 3) \\approx \\sum_{x=0}^{3} \\dfrac{e^{-2}2^x}{x!} = e^{-2}\\left(1 + 2 + 2 + \\dfrac{4}{3}\\right) \\approx 0.8571\n\\]\n\nIn R: ppois(3, lambda = 2)\nThe two answers are very close!"
   }
 ]

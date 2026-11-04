@@ -223,6 +223,67 @@ Meike Niederhausen and Nicky Wakim
 </section>
 <section id="where-are-we" class="slide level2">
 <h2>Where are we?</h2>
+<div class="cell">
+<style type="text/css">
+/* Ribbons for the X / pmf / CDF / E(X) / Var(X) rows on the properties slides */
+.ribbon {
+  display: flex;
+  align-items: stretch;
+  min-height: 110px;
+  margin: 12px 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.ribbon .rib-label {
+  flex: 0 0 72px;
+  position: relative;
+  container-type: size;  /* lets the label text scale with the box */
+  color: #fff;
+  font-weight: 700;
+}
+/* Rotate the label and center it both ways in the dark box */
+.ribbon .rib-label p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  white-space: nowrap;
+  line-height: 1;
+}
+/* As large as fits: limited by the box height (text length) and width */
+.rib-x   .rib-label p { font-size: min(70cqh, 75cqw); }
+.rib-pmf .rib-label p { font-size: min(46cqh, 72cqw); }
+.rib-cdf .rib-label p { font-size: min(40cqh, 72cqw); }
+.rib-e   .rib-label p { font-size: min(29cqh, 72cqw); }
+.rib-var .rib-label p { font-size: min(21cqh, 72cqw); }
+.ribbon .rib-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4px 28px;
+}
+.ribbon p { margin: 0 !important; }
+.ribbon .rib-body .math.display { margin: 0; }
+.ribbon mjx-container[display="true"] { margin: 0.2em 0 !important; }
+.ribbon .rib-range { font-size: 0.8em; }
+.ribbon .rib-body p:has(.rib-range) { text-align: center; }
+.rib-x   .rib-label { background-color: #006a4e; }
+.rib-x   .rib-body  { background-color: #d6ebe4; }
+.rib-pmf .rib-label { background-color: #E25D3B; }
+.rib-pmf .rib-body  { background-color: #fbe1d9; }
+.rib-cdf .rib-label { background-color: #20c997; }
+.rib-cdf .rib-body  { background-color: #d4f4ea; }
+.rib-e   .rib-label { background-color: #E89543; }
+.rib-e   .rib-body  { background-color: #fbecdb; }
+.rib-var .rib-label { background-color: #29abe0; }
+.rib-var .rib-body  { background-color: #d8eff9; }
+/* Tighter ribbons for the two-column slides */
+.rib-compact .ribbon { margin: 8px 0; min-height: 100px; }
+.rib-compact .ribbon .rib-label { flex-basis: 60px; }
+.rib-compact .ribbon .rib-body { padding: 2px 16px; font-size: 0.8em; }
+</style>
+</div>
 
 <img data-src="../img_slides/course_map.png" class="quarto-figure quarto-figure-center r-stretch"></section></section>
 <section>
@@ -236,6 +297,11 @@ Meike Niederhausen and Nicky Wakim
 <li><strong>Scenario:</strong> One trial, with outcome success or failure</li>
 <li>Shorthand: <span class="math inline">\(X \sim \text{Bernoulli}(p)\)</span></li>
 </ul>
+<div class="ribbon rib-x">
+<div class="rib-label">
+<p><span class="math inline">\(X\)</span></p>
+</div>
+<div class="rib-body">
 <p><span class="math display">\[
 X = \left\{
         \begin{array}{ll}
@@ -244,11 +310,32 @@ X = \left\{
         \end{array}
     \right.
 \]</span></p>
-<p><span class="math display">\[
-p_X(x) = P(X=x) = p^x(1-p)^{1-x} \text{ for } x=0,1
-\]</span></p>
+</div>
+</div>
+<div class="ribbon rib-pmf">
+<div class="rib-label">
+<p>pmf</p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[p_X(x) = P(X=x) = p^x(1-p)^{1-x} \text{ for } x=0,1\]</span></p>
+</div>
+</div>
+<div class="ribbon rib-e">
+<div class="rib-label">
+<p><span class="math inline">\(\text{E}(X)\)</span></p>
+</div>
+<div class="rib-body">
 <p><span class="math display">\[\text{E}(X) = p\]</span></p>
+</div>
+</div>
+<div class="ribbon rib-var">
+<div class="rib-label">
+<p><span class="math inline">\(\text{Var}(X)\)</span></p>
+</div>
+<div class="rib-body">
 <p><span class="math display">\[\text{Var}(X) = pq = p(1-p) \quad \text{ where } q = 1-p\]</span></p>
+</div>
+</div>
 </section>
 <section id="bernoulli-rvs-weve-already-seen" class="slide level2">
 <h2>Bernoulli RVs we’ve already seen</h2>
@@ -275,13 +362,38 @@ p_X(x) = P(X=x) = p^x(1-p)^{1-x} \text{ for } x=0,1
 <li><p>Shorthand: <span class="math inline">\(X \sim \text{Binomial}(n, p)\)</span></p></li>
 <li><p>A <span style="color:#20c997;"><strong>binomial random variable</strong></span> is the <strong>sum of</strong> <span class="math inline">\(n\)</span> <strong>independent Bernoulli RVs</strong></p></li>
 </ul>
-<p><span class="math display">\[
-X = \text{Number of successes of } n \text{ independent trials}
-\]</span></p>
-<p><span class="math display">\[
-p_X(x) = P(X=x) = {n \choose x}p^x(1-p)^{n-x} \text{ for } x=0,1,2,  ..., n
-\]</span></p>
-<p><span class="math display">\[\text{E}(X) = np\]</span> <span class="math display">\[\text{Var}(X) = npq = np(1-p)\]</span></p>
+<div class="ribbon rib-x">
+<div class="rib-label">
+<p><span class="math inline">\(X\)</span></p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[X = \text{Number of successes of } n \text{ independent trials}\]</span></p>
+</div>
+</div>
+<div class="ribbon rib-pmf">
+<div class="rib-label">
+<p>pmf</p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[p_X(x) = P(X=x) = {n \choose x}p^x(1-p)^{n-x} \text{ for } x=0,1,2,  ..., n\]</span></p>
+</div>
+</div>
+<div class="ribbon rib-e">
+<div class="rib-label">
+<p><span class="math inline">\(\text{E}(X)\)</span></p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[\text{E}(X) = np\]</span></p>
+</div>
+</div>
+<div class="ribbon rib-var">
+<div class="rib-label">
+<p><span class="math inline">\(\text{Var}(X)\)</span></p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[\text{Var}(X) = npq = np(1-p)\]</span></p>
+</div>
+</div>
 </section>
 <section id="ghost-problem-revisited" class="slide level2">
 <h2>Ghost problem revisited</h2>
@@ -468,17 +580,95 @@ p_X(x) = P(X=x) = {n \choose x}p^x(1-p)^{n-x} \text{ for } x=0,1,2,  ..., n
 </ul></li>
 <li><p>Shorthand: <span class="math inline">\(X \sim \text{Geo}(p)\)</span> or <span class="math inline">\(X \sim \text{Geometric}(p)\)</span> or <span class="math inline">\(X \sim \text{G}(p)\)</span></p></li>
 </ul>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong><span class="math inline">\(X =\)</span> Number of trials needed for first success</strong> (count <span class="math inline">\(x\)</span> <em>includes</em> the success)</p>
-<p><span class="math display">\[p_X(x) = P(X=x) = (1-p)^{x-1}p \quad \text{for } x=1,2,3,\ldots\]</span></p>
-<p><span class="math display">\[F_X(x) = P(X\leq x) = 1-(1-p)^x \quad \text{for } x=1,2,3,\ldots\]</span></p>
-<p><span class="math display">\[E(X)=\dfrac{1}{p} \qquad Var(X)= \dfrac{1-p}{p^2}\]</span></p>
-</div><div class="column" style="width:50%;">
-<p><strong><span class="math inline">\(X =\)</span> Number of failures before first success</strong> (count <span class="math inline">\(x\)</span> <em>does not include</em> the success)</p>
-<p><span class="math display">\[p_X(x) = P(X=x) = (1-p)^{x}p \quad \text{for } x=0,1,2,\ldots\]</span></p>
-<p><span class="math display">\[F_X(x) = P(X\leq x) = 1-(1-p)^{x+1} \quad \text{for } x=0,1,2,\ldots\]</span></p>
-<p><span class="math display">\[E(X)=\dfrac{1-p}{p} \qquad Var(X) = \dfrac{1-p}{p^2}\]</span></p>
+<div class="columns rib-compact">
+<div class="column" style="width:49%;">
+<div class="ribbon rib-x">
+<div class="rib-label">
+<p><span class="math inline">\(X\)</span></p>
+</div>
+<div class="rib-body">
+<p><strong>Number of trials needed for first success</strong> (count <span class="math inline">\(x\)</span> <em>includes</em> the success)</p>
+</div>
+</div>
+<div class="ribbon rib-pmf">
+<div class="rib-label">
+<p>pmf</p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[p_X(x) = P(X=x) = (1-p)^{x-1}p\]</span></p>
+<p><span class="rib-range">for <span class="math inline">\(x=1,2,3,\ldots\)</span></span></p>
+</div>
+</div>
+<div class="ribbon rib-cdf">
+<div class="rib-label">
+<p>CDF</p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[F_X(x) = P(X\leq x) = 1-(1-p)^x\]</span></p>
+<p><span class="rib-range">for <span class="math inline">\(x=1,2,3,\ldots\)</span></span></p>
+</div>
+</div>
+<div class="ribbon rib-e">
+<div class="rib-label">
+<p><span class="math inline">\(\text{E}(X)\)</span></p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[E(X)=\dfrac{1}{p}\]</span></p>
+</div>
+</div>
+<div class="ribbon rib-var">
+<div class="rib-label">
+<p><span class="math inline">\(\text{Var}(X)\)</span></p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[Var(X)= \dfrac{1-p}{p^2}\]</span></p>
+</div>
+</div>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:49%;">
+<div class="ribbon rib-x">
+<div class="rib-label">
+<p><span class="math inline">\(X\)</span></p>
+</div>
+<div class="rib-body">
+<p><strong>Number of failures before first success</strong> (count <span class="math inline">\(x\)</span> <em>does not include</em> the success)</p>
+</div>
+</div>
+<div class="ribbon rib-pmf">
+<div class="rib-label">
+<p>pmf</p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[p_X(x) = P(X=x) = (1-p)^{x}p\]</span></p>
+<p><span class="rib-range">for <span class="math inline">\(x=0,1,2,\ldots\)</span></span></p>
+</div>
+</div>
+<div class="ribbon rib-cdf">
+<div class="rib-label">
+<p>CDF</p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[F_X(x) = P(X\leq x) = 1-(1-p)^{x+1}\]</span></p>
+<p><span class="rib-range">for <span class="math inline">\(x=0,1,2,\ldots\)</span></span></p>
+</div>
+</div>
+<div class="ribbon rib-e">
+<div class="rib-label">
+<p><span class="math inline">\(\text{E}(X)\)</span></p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[E(X)=\dfrac{1-p}{p}\]</span></p>
+</div>
+</div>
+<div class="ribbon rib-var">
+<div class="rib-label">
+<p><span class="math inline">\(\text{Var}(X)\)</span></p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[Var(X) = \dfrac{1-p}{p^2}\]</span></p>
+</div>
+</div>
 </div></div>
 </section>
 <section id="bullseye-14" class="slide level2">
@@ -519,6 +709,29 @@ p_X(x) = P(X=x) = {n \choose x}p^x(1-p)^{n-x} \text{ for } x=0,1,2,  ..., n
 </ol>
 </div>
 </div>
+</div><div class="column" style="width:4%;">
+
+</div><div class="column" style="width:61%;">
+<ul>
+<li><p>Let <span class="math inline">\(X\)</span> = number of throws needed to hit the first bullseye (the count <em>includes</em> the bullseye)</p></li>
+<li><p>Possible sequences, with H = hit and M = miss:</p>
+<ul>
+<li>H (<span class="math inline">\(x = 1\)</span>), MH (<span class="math inline">\(x = 2\)</span>), MMH (<span class="math inline">\(x = 3\)</span>), MMMH (<span class="math inline">\(x = 4\)</span>), …</li>
+</ul></li>
+<li><p>Each throw is independent, so <span class="math inline">\(x - 1\)</span> misses and then 1 hit:</p></li>
+</ul>
+<p><span class="math display">\[
+P(X = x) = (1-p)^{x-1}p
+\]</span></p>
+<ul>
+<li>With <span class="math inline">\(p = 0.01\)</span>:</li>
+</ul>
+<p><span class="math display">\[
+p_X(x) = 0.99^{x-1}(0.01) \quad \text{for } x = 1, 2, 3, \ldots
+\]</span></p>
+<ul>
+<li><span class="math inline">\(X \sim \text{Geo}(0.01)\)</span></li>
+</ul>
 </div></div>
 </section>
 <section id="bullseye-34" class="slide level2">
@@ -787,11 +1000,38 @@ p_X(x) = P(X=x) = {n \choose x}p^x(1-p)^{n-x} \text{ for } x=0,1,2,  ..., n
 <li>Shorthand: <span class="math inline">\(X \sim \text{NegBin}(p, r)\)</span> or <span class="math inline">\(X \sim \text{NB}(p, r)\)</span></li>
 <li>Negative binomial is sum of <span class="math inline">\(r\)</span> geometric distributions</li>
 </ul>
-<p><span class="math display">\[
-X = \text{Number of independent trials until } r^{th} \text{ success}
-\]</span></p>
-<p><span class="math display">\[ p_X(x) = P(X=x) = {x-1 \choose r-1}(1-p)^{x-r}p^r \text{ for } x = r, r+1, r+2, ...\]</span></p>
-<p><span class="math display">\[ E(X) = \dfrac{r}{p} \qquad Var(X) = \dfrac{rq}{p^2} = \dfrac{r(1-p)}{p^2}\]</span></p>
+<div class="ribbon rib-x">
+<div class="rib-label">
+<p><span class="math inline">\(X\)</span></p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[X = \text{Number of independent trials until } r^{th} \text{ success}\]</span></p>
+</div>
+</div>
+<div class="ribbon rib-pmf">
+<div class="rib-label">
+<p>pmf</p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[p_X(x) = P(X=x) = {x-1 \choose r-1}(1-p)^{x-r}p^r \text{ for } x = r, r+1, r+2, ...\]</span></p>
+</div>
+</div>
+<div class="ribbon rib-e">
+<div class="rib-label">
+<p><span class="math inline">\(\text{E}(X)\)</span></p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[E(X) = \dfrac{r}{p}\]</span></p>
+</div>
+</div>
+<div class="ribbon rib-var">
+<div class="rib-label">
+<p><span class="math inline">\(\text{Var}(X)\)</span></p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[Var(X) = \dfrac{rq}{p^2} = \dfrac{r(1-p)}{p^2}\]</span></p>
+</div>
+</div>
 </section>
 <section id="hitting-more-than-1-bullseye" class="slide level2">
 <h2>Hitting more than 1 bullseye</h2>
@@ -808,6 +1048,23 @@ X = \text{Number of independent trials until } r^{th} \text{ success}
 </ol>
 </div>
 </div>
+</div><div class="column" style="width:4%;">
+
+</div><div class="column" style="width:61%;">
+<ul>
+<li><p>Let <span class="math inline">\(X\)</span> = number of throws needed to hit 5 bullseyes</p></li>
+<li><p>Parameters: <span class="math inline">\(r = 5\)</span> bullseyes and <span class="math inline">\(p = 0.01\)</span></p></li>
+<li><p><span class="math inline">\(X \sim \text{NegBin}(r = 5, p = 0.01)\)</span></p></li>
+</ul>
+<p><span class="math display">\[
+E(X) = \dfrac{r}{p} = \dfrac{5}{0.01} = 500
+\]</span></p>
+<p><span class="math display">\[
+Var(X) = \dfrac{r(1-p)}{p^2} = \dfrac{5(0.99)}{0.01^2} = \dfrac{4.95}{0.0001} = 49{,}500
+\]</span></p>
+<ul>
+<li>Check with the geometric: one bullseye takes <span class="math inline">\(E(Y) = 100\)</span> throws with <span class="math inline">\(Var(Y) = 9{,}900\)</span>, so 5 bullseyes take <span class="math inline">\(5 \cdot 100 = 500\)</span> throws with variance <span class="math inline">\(5 \cdot 9{,}900 = 49{,}500\)</span></li>
+</ul>
 </div></div>
 </section>
 <section id="hitting-more-than-1-bullseye-1" class="slide level2">
@@ -980,12 +1237,38 @@ X = \text{Number of independent trials until } r^{th} \text{ success}
 <li><strong>Scenario:</strong> We are counting the number of successes in a <span style="color:#006a4e;"><strong>fixed time period (or fixed space)</strong></span>, which has a constant <span style="color:#006a4e;"><strong>rate</strong></span> (<span class="math inline">\(\lambda\)</span>) of successes</li>
 <li>Shorthand: <span class="math inline">\(X \sim \text{Poisson}(\lambda)\)</span> or <span class="math inline">\(X \sim \text{Pois}(\lambda)\)</span></li>
 </ul>
-<p><span class="math display">\[
-X = \text{Number of successes in a given period (or given space)}
-\]</span></p>
-<p><span class="math display">\[ p_X(x) = P(X=x) = \dfrac{e^{-\lambda}\lambda^x}{x!} \text{ for } x = 0, 1, 2,3, ...\]</span></p>
-<p><span class="math display">\[ \text{E}(X) = \lambda\]</span></p>
+<div class="ribbon rib-x">
+<div class="rib-label">
+<p><span class="math inline">\(X\)</span></p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[X = \text{Number of successes in a given period (or given space)}\]</span></p>
+</div>
+</div>
+<div class="ribbon rib-pmf">
+<div class="rib-label">
+<p>pmf</p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[p_X(x) = P(X=x) = \dfrac{e^{-\lambda}\lambda^x}{x!} \text{ for } x = 0, 1, 2,3, ...\]</span></p>
+</div>
+</div>
+<div class="ribbon rib-e">
+<div class="rib-label">
+<p><span class="math inline">\(\text{E}(X)\)</span></p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[\text{E}(X) = \lambda\]</span></p>
+</div>
+</div>
+<div class="ribbon rib-var">
+<div class="rib-label">
+<p><span class="math inline">\(\text{Var}(X)\)</span></p>
+</div>
+<div class="rib-body">
 <p><span class="math display">\[\text{Var}(X) = \lambda\]</span></p>
+</div>
+</div>
 </section>
 <section id="distinguishing-between-binomial-and-poisson-rvs" class="slide level2">
 <h2>Distinguishing between Binomial and Poisson RVs</h2>
@@ -1184,6 +1467,21 @@ X = \text{Number of successes in a given period (or given space)}
 <p>Suppose emergency room 1 has an average of 50 visitors per day, and emergency room 2 has an average of 70 visitors per day, independently of each other. What is the probability distribution that models the total number of visitors to both?</p>
 </div>
 </div>
+</div><div class="column" style="width:4%;">
+
+</div><div class="column" style="width:61%;">
+<ul>
+<li><p>Let <span class="math inline">\(X\)</span> = number of visitors to emergency room 1 in a day, so <span class="math inline">\(X \sim \text{Pois}(\lambda_1 = 50)\)</span></p></li>
+<li><p>Let <span class="math inline">\(Y\)</span> = number of visitors to emergency room 2 in a day, so <span class="math inline">\(Y \sim \text{Pois}(\lambda_2 = 70)\)</span></p></li>
+<li><p>Let <span class="math inline">\(Z = X + Y\)</span> = total number of visitors to both in a day</p></li>
+<li><p><span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, so by Theorem 1:</p></li>
+</ul>
+<p><span class="math display">\[
+Z \sim \text{Pois}(\lambda_1 + \lambda_2) = \text{Pois}(50 + 70) = \text{Pois}(120)
+\]</span></p>
+<p><span class="math display">\[
+p_Z(z) = P(Z = z) = \dfrac{e^{-120}\,120^z}{z!} \quad \text{for } z = 0, 1, 2, \ldots
+\]</span></p>
 </div></div>
 </section>
 <section id="two-emergency-rooms-simulate-it" class="slide level2">
@@ -1282,10 +1580,10 @@ X = \text{Number of successes in a given period (or given space)}
 <li><p><strong>Rule of thumb:</strong> We can use the Poisson approximation when <span class="math inline">\(n \geq 20\)</span> and <span class="math inline">\(p \leq 0.05\)</span>, or when <span class="math inline">\(n \geq 100\)</span> and <span class="math inline">\(np \leq 10\)</span></p></li>
 </ul>
 </section>
-<section id="medical-lab-errors" class="slide level2">
-<h2>Medical lab errors</h2>
+<section id="medical-lab-errors-at-home-reference" class="slide level2">
+<h2>Medical lab errors (at home reference)</h2>
 <div class="columns">
-<div class="column" style="width:35%;">
+<div class="column" style="width:29%;">
 <div class="example">
 <div class="ex-title">
 <p>Example 6</p>
@@ -1298,10 +1596,22 @@ X = \text{Number of successes in a given period (or given space)}
 </ol>
 </div>
 </div>
-</div><div class="column" style="width:60%;">
-<p>To do for extra practice - will also see a similar problem in BSTA 511</p>
+</div><div class="column" style="width:71%;">
+<p><em>Let <span class="math inline">\(X\)</span> = number of mistakes in the next 2,000 tests</em></p>
+<p><strong>1. Binomial:</strong> <span class="math inline">\(X \sim \text{Binomial}(n = 2000, p = 0.001)\)</span></p>
+<p><span class="math display">\[
+P(X &lt; 4) = P(X \leq 3) = \sum_{x=0}^{3} {2000 \choose x}(0.001)^x(0.999)^{2000-x} \approx 0.8572
+\]</span></p>
 <ul>
-<li><em>Hint:</em> <code>pbinom()</code> and <code>ppois()</code> give <span class="math inline">\(P(X \leq x)\)</span></li>
+<li>In R: <code>pbinom(3, size = 2000, prob = 0.001)</code></li>
+</ul>
+<p><strong>2. Poisson approximation:</strong> <span class="math inline">\(n = 2000 \geq 100\)</span> and <span class="math inline">\(np = 2 \leq 10\)</span>, so we can use <span class="math inline">\(\lambda = np = 2\)</span></p>
+<p><span class="math display">\[
+P(X \leq 3) \approx \sum_{x=0}^{3} \dfrac{e^{-2}2^x}{x!} = e^{-2}\left(1 + 2 + 2 + \dfrac{4}{3}\right) \approx 0.8571
+\]</span></p>
+<ul>
+<li>In R: <code>ppois(3, lambda = 2)</code></li>
+<li>The two answers are very close!</li>
 </ul>
 </div></div>
 </section></section>
@@ -1321,17 +1631,44 @@ X = \text{Number of successes in a given period (or given space)}
 </ul></li>
 <li>Shorthand: <span class="math inline">\(X \sim \text{Hypergeo}(M, N, n)\)</span></li>
 </ul>
-<div class="columns">
-<div class="column">
-<p><span class="math display">\[
-X = \text{Number of successes in } n \text{ draws}
-\]</span></p>
-<p><span class="math display">\[
-p_X(x) = P(X=x) = \dfrac{{M \choose x}{N-M \choose n-x}}{{N \choose n}}
-\]</span> <span class="math display">\[\text{ for } x \text{ integer-valued } \\ \max(0, n-(N-M)) \leq x \leq \min(n, M)\]</span></p>
-</div><div class="column">
+<div class="columns rib-compact">
+<div class="column" style="width:49%;">
+<div class="ribbon rib-x">
+<div class="rib-label">
+<p><span class="math inline">\(X\)</span></p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[X = \text{Number of successes in } n \text{ draws}\]</span></p>
+</div>
+</div>
+<div class="ribbon rib-pmf">
+<div class="rib-label">
+<p>pmf</p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[p_X(x) = P(X=x) = \dfrac{{M \choose x}{N-M \choose n-x}}{{N \choose n}}\]</span></p>
+<p><span class="rib-range">for integer <span class="math inline">\(x\)</span> with <span class="math inline">\(\max(0, n-(N-M)) \leq x \leq \min(n, M)\)</span></span></p>
+</div>
+</div>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:49%;">
+<div class="ribbon rib-e">
+<div class="rib-label">
+<p><span class="math inline">\(\text{E}(X)\)</span></p>
+</div>
+<div class="rib-body">
 <p><span class="math display">\[\text{E}(X) =\dfrac{nM}{N}\]</span></p>
+</div>
+</div>
+<div class="ribbon rib-var">
+<div class="rib-label">
+<p><span class="math inline">\(\text{Var}(X)\)</span></p>
+</div>
+<div class="rib-body">
 <p><span class="math display">\[\text{Var}(X) = n \dfrac{M}{N} \bigg(1- \dfrac{M}{N} \bigg)\bigg(\dfrac{N-n}{N-1} \bigg)\]</span></p>
+</div>
+</div>
 </div></div>
 </section>
 <section id="wolf-population" class="slide level2">
@@ -1514,6 +1851,22 @@ p_X(x) = P(X=x) = \dfrac{{M \choose x}{N-M \choose n-x}}{{N \choose n}}
 </ol>
 </div>
 </div>
+</div><div class="column" style="width:4%;">
+
+</div><div class="column" style="width:68%;">
+<ul>
+<li><p>Let <span class="math inline">\(X\)</span> = number of tagged wolves in the 50 captured</p></li>
+<li><p>Parameters: <span class="math inline">\(N = 2400\)</span> wolves, <span class="math inline">\(M = 1100\)</span> tagged, <span class="math inline">\(N - M = 1300\)</span> untagged, and <span class="math inline">\(n = 50\)</span> captured</p></li>
+<li><p><span class="math inline">\(X \sim \text{Hypergeo}(M = 1100, N = 2400, n = 50)\)</span></p></li>
+</ul>
+<p><span class="math display">\[
+P(X = 20) = \dfrac{{M \choose x}{N-M \choose n-x}}{{N \choose n}}
+= \dfrac{{1100 \choose 20}{1300 \choose 30}}{{2400 \choose 50}}
+\approx 0.0813
+\]</span></p>
+<ul>
+<li>In R: <code>dhyper(20, m = 1100, n = 1300, k = 50)</code></li>
+</ul>
 </div></div>
 </section>
 <section id="wolf-population-revisited-22" class="slide level2">
@@ -1544,14 +1897,38 @@ p_X(x) = P(X=x) = \dfrac{{M \choose x}{N-M \choose n-x}}{{N \choose n}}
 <li><strong>Scenario:</strong> There are <span class="math inline">\(N\)</span> possible outcomes, which are all equally likely.</li>
 <li>Shorthand: <span class="math inline">\(X \sim \text{Uniform}(N)\)</span></li>
 </ul>
-<p><span class="math display">\[
-X = \text{Outcome of interest, with } x=1, 2, ..., N
-\]</span></p>
-<p><span class="math display">\[
-p_X(x) = P(X=x) = \dfrac{1}{N} \text{ for } x=1, 2, 3, ..., N
-\]</span></p>
+<div class="ribbon rib-x">
+<div class="rib-label">
+<p><span class="math inline">\(X\)</span></p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[X = \text{Outcome of interest, with } x=1, 2, ..., N\]</span></p>
+</div>
+</div>
+<div class="ribbon rib-pmf">
+<div class="rib-label">
+<p>pmf</p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[p_X(x) = P(X=x) = \dfrac{1}{N} \text{ for } x=1, 2, 3, ..., N\]</span></p>
+</div>
+</div>
+<div class="ribbon rib-e">
+<div class="rib-label">
+<p><span class="math inline">\(\text{E}(X)\)</span></p>
+</div>
+<div class="rib-body">
 <p><span class="math display">\[\text{E}(X) =\dfrac{N+1}{2}\]</span></p>
+</div>
+</div>
+<div class="ribbon rib-var">
+<div class="rib-label">
+<p><span class="math inline">\(\text{Var}(X)\)</span></p>
+</div>
+<div class="rib-body">
 <p><span class="math display">\[\text{Var}(X) = \dfrac{N^2 -1}{12}\]</span></p>
+</div>
+</div>
 </section>
 <section id="what-discrete-uniform-rvs-have-we-seen-already" class="slide level2">
 <h2>What discrete uniform RVs have we seen already?</h2>

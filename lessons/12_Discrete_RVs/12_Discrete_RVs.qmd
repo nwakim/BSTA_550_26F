@@ -22,6 +22,18 @@ editor:
     wrap: 72
 ---
 
+# Learning Objectives
+
+1.  Distinguish between Bernoulli, Binomial, Geometric, Hypergeometric,
+    Discrete Uniform, Negative Binomial, and Poisson distributions when
+    reading a word problem.
+2.  Identify the variable and the parameters in a word problem, and
+    state what the variable and parameters mean.
+3.  Use the formulas for the pmf/CDF, expected value, and variance to
+    answer questions and find probabilities.
+
+## Where are we?
+
 ```{r setup, include=FALSE}
 library(here)
 source(here("class_dates.R"))
@@ -88,18 +100,6 @@ library(tidyverse)
 .rib-compact .ribbon .rib-label { flex-basis: 60px; }
 .rib-compact .ribbon .rib-body { padding: 2px 16px; font-size: 0.8em; }
 ```
-
-# Learning Objectives
-
-1.  Distinguish between Bernoulli, Binomial, Geometric, Hypergeometric,
-    Discrete Uniform, Negative Binomial, and Poisson distributions when
-    reading a word problem.
-2.  Identify the variable and the parameters in a word problem, and
-    state what the variable and parameters mean.
-3.  Use the formulas for the pmf/CDF, expected value, and variance to
-    answer questions and find probabilities.
-
-## Where are we?
 
 ![](../img_slides/course_map.png){fig-align="center"}
 
@@ -1261,7 +1261,7 @@ Both Poisson and Binomial RVs are counting the number of successes
 ## Medical lab errors (at home reference)
 
 :::::::: columns
-:::::: {.column width="35%"}
+:::::: {.column width="29%"}
 ::::: example
 ::: ex-title
 Example 6
@@ -1280,10 +1280,8 @@ made in the next 2,000 tests.
 :::::
 ::::::
 
-::: {.column width="65%"}
-At home reference - will also see a similar problem in BSTA 511
-
--   Let $X$ = number of mistakes in the next 2,000 tests
+::: {.column width="71%"}
+*Let $X$ = number of mistakes in the next 2,000 tests*
 
 **1. Binomial:** $X \sim \text{Binomial}(n = 2000, p = 0.001)$
 

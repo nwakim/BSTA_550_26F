@@ -313,6 +313,32 @@ each throw.
 :::
 :::::
 ::::::
+
+:::::: {.column width="4%"}
+::::::
+
+:::::: {.column width="61%"}
+-   Let $X$ = number of throws needed to hit the first bullseye (the
+    count *includes* the bullseye)
+
+-   Possible sequences, with H = hit and M = miss:
+
+    -   H ($x = 1$), MH ($x = 2$), MMH ($x = 3$), MMMH ($x = 4$), ...
+
+-   Each throw is independent, so $x - 1$ misses and then 1 hit:
+
+$$
+P(X = x) = (1-p)^{x-1}p
+$$
+
+-   With $p = 0.01$:
+
+$$
+p_X(x) = 0.99^{x-1}(0.01) \quad \text{for } x = 1, 2, 3, \ldots
+$$
+
+-   $X \sim \text{Geo}(0.01)$
+::::::
 :::::::
 
 ## Bullseye (3/4)

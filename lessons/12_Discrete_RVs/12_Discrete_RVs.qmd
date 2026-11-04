@@ -67,7 +67,23 @@ $$\text{E}(X) = p$$
 
 $$\text{Var}(X) = pq = p(1-p) \quad \text{ where } q = 1-p$$
 
-- We've seen a few examples of Bernoulli distributions: ( @claude name some of the examples and give the lesson)
+## Bernoulli RVs we've already seen
+
+-   We've seen a few examples of Bernoulli distributions:
+
+    -   **Lesson 1:** Toss one coin. Success is heads, so $p = \frac{1}{2}$
+
+    -   **Lesson 7, Example 1 (falls in older adults):** Whether one
+        older adult has at least one fall in a year, $p = 0.25$
+
+    -   **Lesson 10, Example 3:** The general Bernoulli RV, where we
+        found $\text{E}(X) = p$
+
+    -   **Lesson 11, Example 2 (card example):** Draw one card, and
+        $X = 1$ if it is a heart, $p = \frac{1}{4}$
+
+    -   **Lesson 11, Example 5 (ghost problem):** The ghost grabs one
+        candy, and $Y = 1$ if it is a chocolate, $p = \frac{10}{60} = \frac{1}{6}$
 
 # Binomial RVs {#chapter-15-binomial-RVs .unnumbered}
 
@@ -98,7 +114,7 @@ $$\text{E}(X) = np$$ $$\text{Var}(X) = npq = np(1-p)$$
 :::::: {.column width="35%"}
 ::::: example
 ::: ex-title
-Example 2
+Example 1
 :::
 
 ::: ex-cont
@@ -120,7 +136,7 @@ Example 2
 :::::: {.column width="60%"}
 ::::: example
 ::: ex-title
-Example 2
+Example 1
 :::
 
 ::: ex-cont
@@ -222,7 +238,7 @@ $$E(X)=\dfrac{1-p}{p} \qquad Var(X) = \dfrac{1-p}{p^2}$$
 :::::: {.column width="100%"}
 ::::: example
 ::: ex-title
-Example 3
+Example 2
 :::
 
 ::: ex-cont
@@ -252,7 +268,7 @@ each throw.
 :::::: {.column width="35%"}
 ::::: example
 ::: ex-title
-Example 3
+Example 2
 :::
 
 ::: ex-cont
@@ -272,7 +288,7 @@ each throw.
 :::::: {.column width="35%"}
 ::::: example
 ::: ex-title
-Example 3
+Example 2
 :::
 
 ::: ex-cont
@@ -293,7 +309,7 @@ each throw.
 :::::: {.column width="35%"}
 ::::: example
 ::: ex-title
-Example 3
+Example 2
 :::
 
 ::: ex-cont
@@ -449,7 +465,7 @@ $$ E(X) = \dfrac{r}{p} \qquad Var(X) = \dfrac{rq}{p^2} = \dfrac{r(1-p)}{p^2}$$
 :::::: {.column width="35%"}
 ::::: example
 ::: ex-title
-Example 4
+Example 3
 :::
 
 ::: ex-cont
@@ -470,7 +486,7 @@ probability of hitting the bullseye is 0.01 for each throw.
 :::::: {.column width="35%"}
 ::::: example
 ::: ex-title
-Example 4
+Example 3
 :::
 
 ::: ex-cont
@@ -548,7 +564,7 @@ $$\text{Var}(X) = \lambda$$
 :::::: {.column width="35%"}
 ::::: example
 ::: ex-title
-Example 5
+Example 4
 :::
 
 ::: ex-cont
@@ -569,7 +585,7 @@ the following probabilities.
 :::::: {.column width="55%"}
 ::::: example
 ::: ex-title
-Example 5
+Example 4
 :::
 
 ::: ex-cont
@@ -631,7 +647,7 @@ of each other, then $Z=X+Y\sim Pois(\lambda_1 + \lambda_2)$.
 :::::: {.column width="35%"}
 ::::: example
 ::: ex-title
-Example 6
+Example 5
 :::
 
 ::: ex-cont
@@ -668,7 +684,7 @@ Both Poisson and Binomial RVs are counting the number of successes
 :::::: {.column width="35%"}
 ::::: example
 ::: ex-title
-Example 7
+Example 6
 :::
 
 ::: ex-cont
@@ -731,7 +747,7 @@ $$\text{Var}(X) = n \dfrac{M}{N} \bigg(1- \dfrac{M}{N} \bigg)\bigg(\dfrac{N-n}{N
 :::::: {.column width="35%"}
 ::::: example
 ::: ex-title
-Example 8
+Example 7
 :::
 
 ::: ex-cont
@@ -830,7 +846,7 @@ $p = \frac{M}{N}$
 :::::: {.column width="28%"}
 ::::: example
 ::: ex-title
-Example 9
+Example 8
 :::
 
 ::: ex-cont
@@ -853,7 +869,7 @@ Suppose a specific study region is known to have 2400 wolves, of which
 :::::: {.column width="28%"}
 ::::: example
 ::: ex-title
-Example 9
+Example 8
 :::
 
 ::: ex-cont
@@ -910,7 +926,7 @@ $$\text{Var}(X) = \dfrac{N^2 -1}{12}$$
 :::::: {.column width="35%"}
 ::::: example
 ::: ex-title
-Example 10
+Example 9
 :::
 
 ::: ex-cont

@@ -29,6 +29,54 @@ source(here("class_dates.R"))
 library(tidyverse)
 ```
 
+```{css, echo=FALSE}
+/* Ribbons for the X / pmf / CDF / E(X) / Var(X) rows on the properties slides */
+.ribbon {
+  display: flex;
+  align-items: stretch;
+  min-height: 95px;
+  margin: 12px 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.ribbon .rib-label {
+  flex: 0 0 64px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.55em;
+  padding: 8px 0;
+}
+.ribbon .rib-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4px 28px;
+}
+.ribbon p { margin: 0 !important; }
+.ribbon .rib-body .math.display { margin: 0; }
+.ribbon mjx-container[display="true"] { margin: 0.2em 0 !important; }
+.ribbon .rib-range { font-size: 0.8em; }
+.ribbon .rib-body p:has(.rib-range) { text-align: center; }
+.rib-x   .rib-label { background-color: #006a4e; }
+.rib-x   .rib-body  { background-color: #d6ebe4; }
+.rib-pmf .rib-label { background-color: #E25D3B; }
+.rib-pmf .rib-body  { background-color: #fbe1d9; }
+.rib-cdf .rib-label { background-color: #20c997; }
+.rib-cdf .rib-body  { background-color: #d4f4ea; }
+.rib-e   .rib-label { background-color: #E89543; }
+.rib-e   .rib-body  { background-color: #fbecdb; }
+.rib-var .rib-label { background-color: #29abe0; }
+.rib-var .rib-body  { background-color: #d8eff9; }
+/* Tighter ribbons for the two-column slides */
+.rib-compact .ribbon { margin: 8px 0; min-height: 85px; }
+.rib-compact .ribbon .rib-label { flex-basis: 54px; font-size: 0.48em; }
+.rib-compact .ribbon .rib-body { padding: 2px 16px; font-size: 0.8em; }
+```
+
 # Learning Objectives
 
 1.  Distinguish between Bernoulli, Binomial, Geometric, Hypergeometric,
@@ -50,6 +98,12 @@ library(tidyverse)
 -   **Scenario:** One trial, with outcome success or failure
 -   Shorthand: $X \sim \text{Bernoulli}(p)$
 
+::: {.ribbon .rib-x}
+::: rib-label
+X
+:::
+
+::: rib-body
 $$
 X = \left\{
         \begin{array}{ll}
@@ -58,14 +112,38 @@ X = \left\{
         \end{array}
     \right.
 $$
+:::
+:::
 
-$$
-p_X(x) = P(X=x) = p^x(1-p)^{1-x} \text{ for } x=0,1
-$$
+::: {.ribbon .rib-pmf}
+::: rib-label
+pmf
+:::
 
+::: rib-body
+$$p_X(x) = P(X=x) = p^x(1-p)^{1-x} \text{ for } x=0,1$$
+:::
+:::
+
+::: {.ribbon .rib-e}
+::: rib-label
+E(X)
+:::
+
+::: rib-body
 $$\text{E}(X) = p$$
+:::
+:::
 
+::: {.ribbon .rib-var}
+::: rib-label
+Var(X)
+:::
+
+::: rib-body
 $$\text{Var}(X) = pq = p(1-p) \quad \text{ where } q = 1-p$$
+:::
+:::
 
 ## Bernoulli RVs we've already seen
 
@@ -98,15 +176,45 @@ $$\text{Var}(X) = pq = p(1-p) \quad \text{ where } q = 1-p$$
 -   A [**binomial random variable**]{style="color:#20c997;"} is the
     **sum of** $n$ **independent Bernoulli RVs**
 
-$$
-X = \text{Number of successes of } n \text{ independent trials}
-$$
+::: {.ribbon .rib-x}
+::: rib-label
+X
+:::
 
-$$
-p_X(x) = P(X=x) = {n \choose x}p^x(1-p)^{n-x} \text{ for } x=0,1,2,  ..., n
-$$
+::: rib-body
+$$X = \text{Number of successes of } n \text{ independent trials}$$
+:::
+:::
 
-$$\text{E}(X) = np$$ $$\text{Var}(X) = npq = np(1-p)$$
+::: {.ribbon .rib-pmf}
+::: rib-label
+pmf
+:::
+
+::: rib-body
+$$p_X(x) = P(X=x) = {n \choose x}p^x(1-p)^{n-x} \text{ for } x=0,1,2,  ..., n$$
+:::
+:::
+
+::: {.ribbon .rib-e}
+::: rib-label
+E(X)
+:::
+
+::: rib-body
+$$\text{E}(X) = np$$
+:::
+:::
+
+::: {.ribbon .rib-var}
+::: rib-label
+Var(X)
+:::
+
+::: rib-body
+$$\text{Var}(X) = npq = np(1-p)$$
+:::
+:::
 
 ## Ghost problem revisited
 
@@ -241,29 +349,124 @@ Now the binomial formula does it in one step!
 -   Shorthand: $X \sim \text{Geo}(p)$ or $X \sim \text{Geometric}(p)$ or
     $X \sim \text{G}(p)$
 
-::::: columns
-::: {.column width="50%"}
-**$X =$ Number of trials needed for first success** (count $x$
-*includes* the success)
-
-$$p_X(x) = P(X=x) = (1-p)^{x-1}p \quad \text{for } x=1,2,3,\ldots$$
-
-$$F_X(x) = P(X\leq x) = 1-(1-p)^x \quad \text{for } x=1,2,3,\ldots$$
-
-$$E(X)=\dfrac{1}{p} \qquad Var(X)= \dfrac{1-p}{p^2}$$
+:::::::: {.columns .rib-compact}
+::::::: {.column width="49%"}
+::: {.ribbon .rib-x}
+::: rib-label
+X
 :::
 
-::: {.column width="50%"}
-**$X =$ Number of failures before first success** (count $x$ *does not
-include* the success)
-
-$$p_X(x) = P(X=x) = (1-p)^{x}p \quad \text{for } x=0,1,2,\ldots$$
-
-$$F_X(x) = P(X\leq x) = 1-(1-p)^{x+1} \quad \text{for } x=0,1,2,\ldots$$
-
-$$E(X)=\dfrac{1-p}{p} \qquad Var(X) = \dfrac{1-p}{p^2}$$
+::: rib-body
+**Number of trials needed for first success** (count $x$ *includes* the success)
 :::
-:::::
+:::
+
+::: {.ribbon .rib-pmf}
+::: rib-label
+pmf
+:::
+
+::: rib-body
+$$p_X(x) = P(X=x) = (1-p)^{x-1}p$$
+
+[for $x=1,2,3,\ldots$]{.rib-range}
+:::
+:::
+
+::: {.ribbon .rib-cdf}
+::: rib-label
+CDF
+:::
+
+::: rib-body
+$$F_X(x) = P(X\leq x) = 1-(1-p)^x$$
+
+[for $x=1,2,3,\ldots$]{.rib-range}
+:::
+:::
+
+::: {.ribbon .rib-e}
+::: rib-label
+E(X)
+:::
+
+::: rib-body
+$$E(X)=\dfrac{1}{p}$$
+:::
+:::
+
+::: {.ribbon .rib-var}
+::: rib-label
+Var(X)
+:::
+
+::: rib-body
+$$Var(X)= \dfrac{1-p}{p^2}$$
+:::
+:::
+
+:::::::
+
+::::::: {.column width="2%"}
+:::::::
+
+::::::: {.column width="49%"}
+::: {.ribbon .rib-x}
+::: rib-label
+X
+:::
+
+::: rib-body
+**Number of failures before first success** (count $x$ *does not include* the success)
+:::
+:::
+
+::: {.ribbon .rib-pmf}
+::: rib-label
+pmf
+:::
+
+::: rib-body
+$$p_X(x) = P(X=x) = (1-p)^{x}p$$
+
+[for $x=0,1,2,\ldots$]{.rib-range}
+:::
+:::
+
+::: {.ribbon .rib-cdf}
+::: rib-label
+CDF
+:::
+
+::: rib-body
+$$F_X(x) = P(X\leq x) = 1-(1-p)^{x+1}$$
+
+[for $x=0,1,2,\ldots$]{.rib-range}
+:::
+:::
+
+::: {.ribbon .rib-e}
+::: rib-label
+E(X)
+:::
+
+::: rib-body
+$$E(X)=\dfrac{1-p}{p}$$
+:::
+:::
+
+::: {.ribbon .rib-var}
+::: rib-label
+Var(X)
+:::
+
+::: rib-body
+$$Var(X) = \dfrac{1-p}{p^2}$$
+:::
+:::
+
+:::::::
+::::::::
 
 ## Bullseye (1/4)
 
@@ -522,13 +725,45 @@ bullseye_sims |> # <3>
 -   Shorthand: $X \sim \text{NegBin}(p, r)$ or $X \sim \text{NB}(p, r)$
 -   Negative binomial is sum of $r$ geometric distributions
 
-$$
-X = \text{Number of independent trials until } r^{th} \text{ success}
-$$
+::: {.ribbon .rib-x}
+::: rib-label
+X
+:::
 
-$$ p_X(x) = P(X=x) = {x-1 \choose r-1}(1-p)^{x-r}p^r \text{ for } x = r, r+1, r+2, ...$$
+::: rib-body
+$$X = \text{Number of independent trials until } r^{th} \text{ success}$$
+:::
+:::
 
-$$ E(X) = \dfrac{r}{p} \qquad Var(X) = \dfrac{rq}{p^2} = \dfrac{r(1-p)}{p^2}$$
+::: {.ribbon .rib-pmf}
+::: rib-label
+pmf
+:::
+
+::: rib-body
+$$p_X(x) = P(X=x) = {x-1 \choose r-1}(1-p)^{x-r}p^r \text{ for } x = r, r+1, r+2, ...$$
+:::
+:::
+
+::: {.ribbon .rib-e}
+::: rib-label
+E(X)
+:::
+
+::: rib-body
+$$E(X) = \dfrac{r}{p}$$
+:::
+:::
+
+::: {.ribbon .rib-var}
+::: rib-label
+Var(X)
+:::
+
+::: rib-body
+$$Var(X) = \dfrac{rq}{p^2} = \dfrac{r(1-p)}{p^2}$$
+:::
+:::
 
 ## Hitting more than 1 bullseye
 
@@ -691,15 +926,45 @@ bullseye5_sims |> # <1>
 -   Shorthand: $X \sim \text{Poisson}(\lambda)$ or
     $X \sim \text{Pois}(\lambda)$
 
-$$
-X = \text{Number of successes in a given period (or given space)}
-$$
+::: {.ribbon .rib-x}
+::: rib-label
+X
+:::
 
-$$ p_X(x) = P(X=x) = \dfrac{e^{-\lambda}\lambda^x}{x!} \text{ for } x = 0, 1, 2,3, ...$$
+::: rib-body
+$$X = \text{Number of successes in a given period (or given space)}$$
+:::
+:::
 
-$$ \text{E}(X) = \lambda$$
+::: {.ribbon .rib-pmf}
+::: rib-label
+pmf
+:::
 
+::: rib-body
+$$p_X(x) = P(X=x) = \dfrac{e^{-\lambda}\lambda^x}{x!} \text{ for } x = 0, 1, 2,3, ...$$
+:::
+:::
+
+::: {.ribbon .rib-e}
+::: rib-label
+E(X)
+:::
+
+::: rib-body
+$$\text{E}(X) = \lambda$$
+:::
+:::
+
+::: {.ribbon .rib-var}
+::: rib-label
+Var(X)
+:::
+
+::: rib-body
 $$\text{Var}(X) = \lambda$$
+:::
+:::
 
 ## Distinguishing between Binomial and Poisson RVs
 
@@ -1043,24 +1308,58 @@ $$
         without replacement
 -   Shorthand: $X \sim \text{Hypergeo}(M, N, n)$
 
-::::: columns
-::: column
-$$
-X = \text{Number of successes in } n \text{ draws}
-$$
-
-$$
-p_X(x) = P(X=x) = \dfrac{{M \choose x}{N-M \choose n-x}}{{N \choose n}}
-$$
-$$\text{ for } x \text{ integer-valued } \\ \max(0, n-(N-M)) \leq x \leq \min(n, M)$$
+:::::::: {.columns .rib-compact}
+::::::: {.column width="49%"}
+::: {.ribbon .rib-x}
+::: rib-label
+X
 :::
 
-::: column
-$$\text{E}(X) =\dfrac{nM}{N}$$
+::: rib-body
+$$X = \text{Number of successes in } n \text{ draws}$$
+:::
+:::
 
+::: {.ribbon .rib-pmf}
+::: rib-label
+pmf
+:::
+
+::: rib-body
+$$p_X(x) = P(X=x) = \dfrac{{M \choose x}{N-M \choose n-x}}{{N \choose n}}$$
+
+[for integer $x$ with $\max(0, n-(N-M)) \leq x \leq \min(n, M)$]{.rib-range}
+:::
+:::
+
+:::::::
+
+::::::: {.column width="2%"}
+:::::::
+
+::::::: {.column width="49%"}
+::: {.ribbon .rib-e}
+::: rib-label
+E(X)
+:::
+
+::: rib-body
+$$\text{E}(X) =\dfrac{nM}{N}$$
+:::
+:::
+
+::: {.ribbon .rib-var}
+::: rib-label
+Var(X)
+:::
+
+::: rib-body
 $$\text{Var}(X) = n \dfrac{M}{N} \bigg(1- \dfrac{M}{N} \bigg)\bigg(\dfrac{N-n}{N-1} \bigg)$$
 :::
-:::::
+:::
+
+:::::::
+::::::::
 
 ## Wolf population
 
@@ -1246,17 +1545,45 @@ Suppose a specific study region is known to have 2400 wolves, of which
     likely.
 -   Shorthand: $X \sim \text{Uniform}(N)$
 
-$$
-X = \text{Outcome of interest, with } x=1, 2, ..., N
-$$
+::: {.ribbon .rib-x}
+::: rib-label
+X
+:::
 
-$$
-p_X(x) = P(X=x) = \dfrac{1}{N} \text{ for } x=1, 2, 3, ..., N
-$$
+::: rib-body
+$$X = \text{Outcome of interest, with } x=1, 2, ..., N$$
+:::
+:::
 
+::: {.ribbon .rib-pmf}
+::: rib-label
+pmf
+:::
+
+::: rib-body
+$$p_X(x) = P(X=x) = \dfrac{1}{N} \text{ for } x=1, 2, 3, ..., N$$
+:::
+:::
+
+::: {.ribbon .rib-e}
+::: rib-label
+E(X)
+:::
+
+::: rib-body
 $$\text{E}(X) =\dfrac{N+1}{2}$$
+:::
+:::
 
+::: {.ribbon .rib-var}
+::: rib-label
+Var(X)
+:::
+
+::: rib-body
 $$\text{Var}(X) = \dfrac{N^2 -1}{12}$$
+:::
+:::
 
 ## What discrete uniform RVs have we seen already?
 

@@ -896,15 +896,18 @@ Both Poisson and Binomial RVs are counting the number of successes
 
     -   the number of trials $n$ is very large, and
 
-    -   the probability of success $p$ is close to 0 or 1,
+    -   the probability of success $p$ is small (close to 0),
 
 -   Then the Poisson distribution can be used to approximate Binomial
     probabilities
 
     -   and we use $\lambda = np$
 
+    -   If $p$ is close to 1, count the failures instead, with
+        $\lambda = n(1-p)$
+
 -   **Rule of thumb:** We can use the Poisson approximation when
-    $\dfrac{1}{10} \leq np(1-p) \leq 10$
+    $n \geq 20$ and $p \leq 0.05$, or when $n \geq 100$ and $np \leq 10$
 
 ## Medical lab errors
 

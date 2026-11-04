@@ -108,7 +108,28 @@ $$
 
 $$\text{E}(X) = np$$ $$\text{Var}(X) = npq = np(1-p)$$
 
-## Our beloved fair 6-sided die
+## Binomial distribution: R commands
+
+Recap from Lesson 7. R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#367B79"}:
+
+| R code | What does it return? | What do we use it for? |
+|--------------|-------------------------------|---------------------------|
+| `rbinom()` | returns [sample of random variables]{style="color:#367B79"} with [specified binomial distribution]{style="color:#BF396F"} | simulations! |
+| `dbinom()` | returns [probability]{style="color:#367B79"} of getting [certain number of successes]{style="color:#BF396F"} | $P(X = x)$ |
+| `pbinom()` | returns [cumulative probability]{style="color:#367B79"} of getting [certain number or less]{style="color:#BF396F"} successes | $P(X \leq x)$ (or $P(X > x)$ if we add `lower.tail = FALSE`) |
+| `qbinom()` | returns [number of successes]{style="color:#367B79"} corresponding to [desired quantile]{style="color:#BF396F"} | Goes the other direction: we give it a probability $p$ and it returns the value $k$ where $P(X \leq k) = p$ |
+
+-   A Bernoulli RV is a binomial RV with $n = 1$, so we use the same
+    commands with `size = 1`
+
+```{r}
+dbinom(1, size = 1, prob = 10/60) # <1>
+```
+
+1.  The ghost grabs one candy, and a chocolate is a success:
+    $P(X = 1)$ with $p = \frac{10}{60}$. `size = 1` means one trial.
+
+## Ghost problem revisited
 
 ::::::: columns
 :::::: {.column width="35%"}
@@ -118,11 +139,13 @@ Example 1
 :::
 
 ::: ex-cont
--   Suppose we roll a fair 6-sided die 50 times.
+Recall the ghost problem from Lesson 11 (Example 5). The bag of candy
+has 10 chocolates, 20 lollipops, and 30 laffy taffies. The ghost grabs a
+handful of five pieces of candy ***with*** replacement.
 
--   We get \$1 every time we roll a 5, and nothing otherwise.
+-   Let $Y$ be the number of chocolates the ghost takes.
 
--   Let $Y$ be how much money we get on the 50 rolls.
+-   What is the distribution of $Y$?
 
 -   Find the mean and variance of $Y$.
 :::
@@ -130,66 +153,64 @@ Example 1
 ::::::
 :::::::
 
-## Our beloved fair 6-sided die: simulate it
+## Ghost problem revisited: simulate it
 
 :::::::: columns
-:::::: {.column width="60%"}
+:::::: {.column width="58%"}
 ::::: example
 ::: ex-title
 Example 1
 :::
 
 ::: ex-cont
-Simulate $Y$, the money from 50 rolls, 10,000 times. Do the mean and
-variance match $np = \frac{50}{6} \approx 8.33$ and
-$np(1-p) = \frac{250}{36} \approx 6.94$?
+Simulate $Y$, the number of chocolates in 5 pieces, 10,000 times. Do
+the mean and variance match $np = \frac{5}{6} \approx 0.833$ and
+$np(1-p) = \frac{25}{36} \approx 0.694$?
 :::
 :::::
 
 ```{r}
 set.seed(1104) # <1>
 reps <- 10000 # <2>
-n_rolls <- 50 # <2>
+n_candy <- 5 # <3>
+p <- 10 / 60 # <3>
 
-rolls <- expand_grid(sim = 1:reps, roll = 1:n_rolls) |> # <3>
-  mutate(face = sample(1:6, n(), replace = TRUE)) # <4>
-
-money_sims <- rolls |> # <5>
-  group_by(sim) |> # <5>
-  summarise(Y = sum(face == 5)) # <5>
+ghost_sims <- tibble(sim = 1:reps) |> # <4>
+  mutate(Y = rbinom(n(), size = n_candy, prob = p)) # <5>
 ```
 
 1.  Set the seed once, so we all get the same random numbers.
-2.  Save the number of simulations and the number of rolls ($n = 50$) as
-    variables, so they are easy to change.
-3.  One row for every roll in every simulation: 10,000 × 50 = 500,000
-    rows.
-4.  Roll a fair die for every row. `n()` is the number of rows.
-5.  For each simulation, count the 5s. `face == 5` is `TRUE` or `FALSE`,
-    and `sum()` counts the `TRUE`s. Each 5 is \$1, so this count is $Y$.
+2.  The number of simulations.
+3.  The two parameters: $n = 5$ pieces of candy, and $p = \frac{10}{60}$
+    chance that each piece is a chocolate.
+4.  `tibble()` makes a table with one row per simulation, like the
+    not-so-fair die in Lesson 10.
+5.  `rbinom()` draws one value of $Y$ for every row. `n()` is the number
+    of rows, `size` is $n$, and `prob` is $p$. No need to draw each
+    candy: `rbinom()` gives the number of chocolates directly!
 ::::::
 
-::: {.column width="40%"}
- 
-
- 
-
+::: {.column width="42%"}
 ```{r}
-money_sims |> # <1>
+ghost_sims |> # <1>
   summarise( # <1>
     average  = mean(Y), # <2>
-    variance = mean((Y - mean(Y))^2) # <3>
+    variance = mean((Y - mean(Y))^2), # <3>
+    prob_1   = mean(Y == 1) # <4>
   )
+
+dbinom(1, size = n_candy, prob = p) # <5>
 ```
 
-1.  Collapse the 10,000 simulated values of `Y` into one row of
-    summaries.
-2.  The average of `Y`, which estimates $\text{E}(Y) = np$.
-3.  The average squared distance from the mean, which estimates
-    $\text{Var}(Y)$ (same formula as Lesson 11).
+1.  One row of summaries for the 10,000 simulated values of $Y$.
+2.  Estimates $\text{E}(Y) = np$.
+3.  Estimates $\text{Var}(Y) = np(1-p)$ (same formula as Lesson 11).
+4.  The proportion of simulations with exactly 1 chocolate, which
+    estimates $P(Y = 1)$.
+5.  The exact $P(Y = 1)$ from `dbinom()`, to compare with `prob_1`.
 
--   Each roll is a Bernoulli trial, and $Y$ adds up 50 of them: this is
-    the binomial as a **sum of independent Bernoulli RVs**
+-   In Lesson 11 we found the variance by adding up 5 Bernoulli
+    variances. Now the binomial formula does it in one step!
 :::
 ::::::::
 
@@ -231,6 +252,28 @@ $$F_X(x) = P(X\leq x) = 1-(1-p)^{x+1} \quad \text{for } x=0,1,2,\ldots$$
 $$E(X)=\dfrac{1-p}{p} \qquad Var(X) = \dfrac{1-p}{p^2}$$
 :::
 :::::
+
+## Geometric distribution: R commands
+
+R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#367B79"}:
+
+| R code | What does it return? | What do we use it for? |
+|--------------|-------------------------------|---------------------------|
+| `rgeom()` | returns [sample of random variables]{style="color:#367B79"} with [specified geometric distribution]{style="color:#BF396F"} | simulations! |
+| `dgeom()` | returns [probability]{style="color:#367B79"} of getting [certain number of failures]{style="color:#BF396F"} before the first success | $P(X = x)$ |
+| `pgeom()` | returns [cumulative probability]{style="color:#367B79"} of getting [certain number of failures or less]{style="color:#BF396F"} | $P(X \leq x)$ (or $P(X > x)$ if we add `lower.tail = FALSE`) |
+| `qgeom()` | returns [number of failures]{style="color:#367B79"} corresponding to [desired quantile]{style="color:#BF396F"} | Goes the other direction: we give it a probability and it returns the value $k$ where $P(X \leq k)$ reaches it |
+
+-   **Careful:** R counts the **failures** before the first success
+    (the right column of our table). If $X$ counts the **trials**, use
+    $x - 1$:
+
+```{r}
+pgeom(50 - 1, prob = 0.01) # <1>
+```
+
+1.  Bullseye: $P(X \leq 50)$ where $X$ is the number of throws. 50
+    throws means at most 49 misses before the first bullseye.
 
 ## Bullseye (1/4)
 
@@ -368,7 +411,7 @@ bullseye_sims <- throws |> # <5>
     throws. The chance of no bullseye in 1,500 throws is
     $0.99^{1500} \approx 0.0000003$, so this is plenty.
 3.  One row for every throw in every simulation: 10,000 × 1,500 = 15
-    million rows. `reps` is still 10,000 from the die example.
+    million rows. `reps` is still 10,000 from the ghost example.
 4.  For every row, randomly pick `"bullseye"` (probability `p`) or
     `"miss"` (probability `1 - p`), like the falls example in Lesson 7.
 5.  `filter()` keeps only the throws that hit the bullseye.
@@ -458,6 +501,28 @@ $$ p_X(x) = P(X=x) = {x-1 \choose r-1}(1-p)^{x-r}p^r \text{ for } x = r, r+1, r+
     trial must be a success
 
 $$ E(X) = \dfrac{r}{p} \qquad Var(X) = \dfrac{rq}{p^2} = \dfrac{r(1-p)}{p^2}$$
+
+## Negative binomial distribution: R commands
+
+R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#367B79"}:
+
+| R code | What does it return? | What do we use it for? |
+|--------------|-------------------------------|---------------------------|
+| `rnbinom()` | returns [sample of random variables]{style="color:#367B79"} with [specified negative binomial distribution]{style="color:#BF396F"} | simulations! |
+| `dnbinom()` | returns [probability]{style="color:#367B79"} of getting [certain number of failures]{style="color:#BF396F"} before the $r^{th}$ success | $P(X = x)$ |
+| `pnbinom()` | returns [cumulative probability]{style="color:#367B79"} of getting [certain number of failures or less]{style="color:#BF396F"} | $P(X \leq x)$ (or $P(X > x)$ if we add `lower.tail = FALSE`) |
+| `qnbinom()` | returns [number of failures]{style="color:#367B79"} corresponding to [desired quantile]{style="color:#BF396F"} | Goes the other direction: we give it a probability and it returns the value $k$ where $P(X \leq k)$ reaches it |
+
+-   **Careful:** like the geometric, R counts the **failures**. If $X$
+    counts the **trials**, use $x - r$. `size` is $r$, the number of
+    successes.
+
+```{r}
+dnbinom(20 - 5, size = 5, prob = 0.01) # <1>
+```
+
+1.  $P(X = 20)$: the $5^{th}$ bullseye on the $20^{th}$ throw means 15
+    misses and 5 bullseyes.
 
 ## Hitting more than 1 bullseye
 
@@ -557,6 +622,20 @@ $$\text{Var}(X) = \lambda$$
     events)
 
 -   Any more?
+
+## Poisson distribution: R commands
+
+R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#367B79"}:
+
+| R code | What does it return? | What do we use it for? |
+|--------------|-------------------------------|---------------------------|
+| `rpois()` | returns [sample of random variables]{style="color:#367B79"} with [specified Poisson distribution]{style="color:#BF396F"} | simulations! |
+| `dpois()` | returns [probability]{style="color:#367B79"} of getting [certain number of successes]{style="color:#BF396F"} in the time period | $P(X = x)$ |
+| `ppois()` | returns [cumulative probability]{style="color:#367B79"} of getting [certain number or less]{style="color:#BF396F"} successes | $P(X \leq x)$ (or $P(X > x)$ if we add `lower.tail = FALSE`) |
+| `qpois()` | returns [number of successes]{style="color:#367B79"} corresponding to [desired quantile]{style="color:#BF396F"} | Goes the other direction: we give it a probability and it returns the value $k$ where $P(X \leq k)$ reaches it |
+
+-   The only parameter is the rate, `lambda` $= \lambda$. Make sure it
+    matches the time period in the question!
 
 ## Emergency Room Visitors
 
@@ -740,6 +819,21 @@ $$\text{E}(X) =\dfrac{nM}{N}$$
 $$\text{Var}(X) = n \dfrac{M}{N} \bigg(1- \dfrac{M}{N} \bigg)\bigg(\dfrac{N-n}{N-1} \bigg)$$
 :::
 :::::
+
+## Hypergeometric distribution: R commands
+
+R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#367B79"}:
+
+| R code | What does it return? | What do we use it for? |
+|--------------|-------------------------------|---------------------------|
+| `rhyper()` | returns [sample of random variables]{style="color:#367B79"} with [specified hypergeometric distribution]{style="color:#BF396F"} | simulations! |
+| `dhyper()` | returns [probability]{style="color:#367B79"} of getting [certain number of successes]{style="color:#BF396F"} in $n$ draws | $P(X = x)$ |
+| `phyper()` | returns [cumulative probability]{style="color:#367B79"} of getting [certain number or less]{style="color:#BF396F"} successes | $P(X \leq x)$ (or $P(X > x)$ if we add `lower.tail = FALSE`) |
+| `qhyper()` | returns [number of successes]{style="color:#367B79"} corresponding to [desired quantile]{style="color:#BF396F"} | Goes the other direction: we give it a probability and it returns the value $k$ where $P(X \leq k)$ reaches it |
+
+-   **Careful:** R uses different letters than we do. In R, `m` $= M$
+    (successes), `n` $= N - M$ (**failures**), and `k` $= n$ (draws):
+    `dhyper(x, m = M, n = N - M, k = n)`
 
 ## Wolf population
 

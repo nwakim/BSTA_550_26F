@@ -878,6 +878,29 @@ number of visitors to both?
 :::
 :::::
 ::::::
+
+:::::: {.column width="4%"}
+::::::
+
+:::::: {.column width="61%"}
+-   Let $X$ = number of visitors to emergency room 1 in a day, so
+    $X \sim \text{Pois}(\lambda_1 = 50)$
+
+-   Let $Y$ = number of visitors to emergency room 2 in a day, so
+    $Y \sim \text{Pois}(\lambda_2 = 70)$
+
+-   Let $Z = X + Y$ = total number of visitors to both in a day
+
+-   $X$ and $Y$ are independent, so by Theorem 1:
+
+$$
+Z \sim \text{Pois}(\lambda_1 + \lambda_2) = \text{Pois}(50 + 70) = \text{Pois}(120)
+$$
+
+$$
+p_Z(z) = P(Z = z) = \dfrac{e^{-120}\,120^z}{z!} \quad \text{for } z = 0, 1, 2, \ldots
+$$
+::::::
 :::::::
 
 ## Two emergency rooms: simulate it

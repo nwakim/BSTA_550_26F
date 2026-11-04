@@ -495,17 +495,12 @@ bullseye_sims |> # <3>
     success.
 -   Shorthand: $X \sim \text{NegBin}(p, r)$ or $X \sim \text{NB}(p, r)$
 -   Negative binomial is sum of $r$ geometric distributions
-    -   If $Y \sim \text{Geo}(p)$, then $E(X) = r \cdot E(Y)$ and
-        $Var(X) = r \cdot Var(Y)$
 
 $$
 X = \text{Number of independent trials until } r^{th} \text{ success}
 $$
 
 $$ p_X(x) = P(X=x) = {x-1 \choose r-1}(1-p)^{x-r}p^r \text{ for } x = r, r+1, r+2, ...$$
-
--   In $x$ trials: $x - r$ failures and $r$ successes, and the last
-    trial must be a success
 
 $$ E(X) = \dfrac{r}{p} \qquad Var(X) = \dfrac{rq}{p^2} = \dfrac{r(1-p)}{p^2}$$
 

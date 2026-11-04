@@ -1067,13 +1067,9 @@ Suppose a hypergeometric RV $X$ has the following properties:
 
 -   the population size $N$ is really big,
 
--   the number of successes $M$ in the population is relatively large,
-
-    -   $\frac{M}{N}$ shouldn't be close to 0 or 1
-
 -   and the number of items $n$ selected is small (relative to $N$)
 
--   **Rule of thumb:** $\dfrac{n}{N}<0.05$ or $N>20n$
+-   **Rule of thumb:** $\dfrac{n}{N}<0.05$ (equivalently, $N>20n$)
 
 Then, in this case, making $n$ draws from the population doesn't change
 the probability of success much, and the **hypergeometric RV can be

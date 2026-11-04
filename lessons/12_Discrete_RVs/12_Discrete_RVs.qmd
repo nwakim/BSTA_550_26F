@@ -1034,24 +1034,3 @@ Examples of discrete uniform RVs
     simulated a discrete uniform RV!
 ::::::
 :::::::
-
-## All the R code for these!
-
-[Check out this page with all the different functions for distributions
-in R](https://www.stat.umn.edu/geyer/old/5101/rlook.html)
-
--   `d___()` gives the pmf $P(X = x)$, `p___()` gives the CDF
-    $P(X \leq x)$, `q___()` gives quantiles, and `r___()` simulates
-
-| Distribution | pmf: $P(X = x)$ | CDF: $P(X \leq x)$ | Simulate |
-|------------------|------------------|------------------|------------------|
-| Binomial$(n, p)$ | `dbinom(x, size = n, prob = p)` | `pbinom(x, size = n, prob = p)` | `rbinom()` |
-| Geometric$(p)$ \* | `dgeom(x - 1, prob = p)` | `pgeom(x - 1, prob = p)` | `rgeom()` |
-| NegBin$(p, r)$ \* | `dnbinom(x - r, size = r, prob = p)` | `pnbinom(x - r, size = r, prob = p)` | `rnbinom()` |
-| Poisson$(\lambda)$ | `dpois(x, lambda = lambda)` | `ppois(x, lambda = lambda)` | `rpois()` |
-| Hypergeo$(M, N, n)$ | `dhyper(x, m = M, n = N - M, k = n)` | `phyper(x, m = M, n = N - M, k = n)` | `rhyper()` |
-| Uniform$(N)$ | $\frac{1}{N}$ | $\frac{x}{N}$ | `sample(1:N, ...)` |
-
-\* R counts the number of **failures** before the success(es), not the
-number of trials. So we subtract the successes: $x - 1$ for the
-geometric and $x - r$ for the negative binomial.

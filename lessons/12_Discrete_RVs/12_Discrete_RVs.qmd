@@ -1106,6 +1106,26 @@ Suppose a specific study region is known to have 2400 wolves, of which
 :::
 :::::
 ::::::
+
+:::::: {.column width="4%"}
+::::::
+
+:::::: {.column width="68%"}
+-   Let $X$ = number of tagged wolves in the 50 captured
+
+-   Parameters: $N = 2400$ wolves, $M = 1100$ tagged, $N - M = 1300$
+    untagged, and $n = 50$ captured
+
+-   $X \sim \text{Hypergeo}(M = 1100, N = 2400, n = 50)$
+
+$$
+P(X = 20) = \dfrac{{M \choose x}{N-M \choose n-x}}{{N \choose n}}
+= \dfrac{{1100 \choose 20}{1300 \choose 30}}{{2400 \choose 50}}
+\approx 0.0813
+$$
+
+-   In R: `dhyper(20, m = 1100, n = 1300, k = 50)`
+::::::
 :::::::
 
 ## Wolf population revisited (2/2)

@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Your name here!">
+<meta name="author" content="Your name(s) here!">
 
 <title>Checkpoint 2: Counting Events – Introduction to Probability</title>
 <style>
@@ -4230,7 +4230,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Your name here! </p>
+             <p>Your name(s) here! </p>
           </div>
   </div>
     
@@ -4238,7 +4238,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">September 30, 2026</p>
+      <p class="date-modified">November 4, 2026</p>
     </div>
   </div>
     
@@ -4260,11 +4260,16 @@ Warning
 </div>
 <div class="callout-body-container callout-body">
 <p>Note that this is the editing file. <strong>There are detailed instructions on our course page for Checkpoint 2 that are not in this file.</strong></p>
+<ul>
+<li>Please do not remove anything from this file. Only add your work to it.</li>
+<li>Name your files <code>lastname_firstinitial_checkpoint_02.qmd</code> and <code>.html</code> (or <code>lastname1_lastname2_checkpoint_02.qmd</code> and <code>.html</code> for a pair). One submission per team.</li>
+</ul>
 </div>
 </div>
 <section id="your-scenario" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="your-scenario">Your scenario</h2>
 <p>Scenario (A, B, or C):</p>
+<p><strong>My Checkpoint 2 guiding question</strong> (from Checkpoint 0, with any changes from feedback):</p>
 </section>
 <section id="define-your-random-variable" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="define-your-random-variable"><span class="header-section-number">1</span> Define your random variable</h2>
@@ -4284,6 +4289,8 @@ Warning
 </ul>
 </div>
 </div>
+<p><strong><span class="math inline">\(X\)</span> =</strong></p>
+<p><strong>Possible values of <span class="math inline">\(X\)</span>:</strong></p>
 </section>
 <section id="justify-the-distribution" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="justify-the-distribution"><span class="header-section-number">2</span> Justify the distribution</h2>
@@ -4304,6 +4311,30 @@ Warning
 </ul>
 </div>
 </div>
+<p><strong>Distribution:</strong> <span class="math inline">\(X \sim\)</span></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Assumptions:</strong></p>
+<p><strong>Assumption most likely to fail:</strong></p>
 </section>
 <section id="solve-it-analytically" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="solve-it-analytically"><span class="header-section-number">3</span> Solve it analytically</h2>
@@ -4319,7 +4350,7 @@ Warning
 <div class="callout-body-container callout-body">
 <ul>
 <li>Find <span class="math inline">\(E(X)\)</span>, <span class="math inline">\(\text{Var}(X)\)</span>, and <span class="math inline">\(\text{SD}(X)\)</span> using formulas from class.</li>
-<li>Calculate <strong>two</strong> probabilities that answer your program’s planning question. Show the formula (PMF or CDF) for each, then compute with R.</li>
+<li>Calculate the probability in your Checkpoint 2 guiding question. Show the formula (PMF or CDF), then compute with R.</li>
 </ul>
 </div>
 </div>
@@ -4337,9 +4368,9 @@ Warning
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Generate at least 10,000 draws of <span class="math inline">\(X\)</span> with R.</li>
-<li>Make a plot comparing the empirical distribution (from your simulation) with the theoretical PMF.</li>
-<li>Compare the simulated mean, variance, and your two probabilities with the analytic values in a small table.</li>
+<li>Simulate at least 100,000 values of <span class="math inline">\(X\)</span> in R.</li>
+<li>Make a plot comparing the simulated distribution with the theoretical PMF.</li>
+<li>Compare the simulated mean, variance, and guiding-question probability with the analytic values in a small table.</li>
 </ul>
 </div>
 </div>
@@ -4372,9 +4403,20 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Write a short paragraph (4–6 sentences) for the program manager who needs to plan around this count. What is typical? What is unusual, and how often does it happen? What would you warn them about, given the assumption most likely to fail?</p>
+<ul>
+<li>Write a short paragraph (4–6 sentences) for the program manager who needs to plan around this count. In plain language, answer in order:
+<ol type="1">
+<li>What should I expect on a typical day, household, or year? (Use <span class="math inline">\(E(X)\)</span> and <span class="math inline">\(\text{SD}(X)\)</span>.)</li>
+<li>How often does the situation in our guiding question happen? (Use your guiding-question probability as a natural frequency.)</li>
+<li>What could make these numbers wrong? (Use the assumption most likely to fail.)</li>
+<li>So what should we plan for?</li>
+</ol></li>
+<li>Answer your Checkpoint 2 guiding question in one sentence, using the probability.</li>
+</ul>
 </div>
 </div>
+<p><strong>Paragraph for the program manager:</strong></p>
+<p><strong>Answer to my Checkpoint 2 guiding question:</strong></p>
 
 
 </section>

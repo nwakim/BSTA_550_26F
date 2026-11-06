@@ -1,6 +1,6 @@
 ---
 title: "Checkpoint 2: Counting Events"
-author: "Your name here!"
+author: "Your name(s) here!"
 subtitle: "BSTA 550"
 date-modified: "today"
 format:
@@ -26,11 +26,16 @@ library(tidyverse)
 
 ::: callout-warning
 Note that this is the editing file. **There are detailed instructions on our course page for Checkpoint 2 that are not in this file.**
+
+-   Please do not remove anything from this file. Only add your work to it.
+-   Name your files `lastname_firstinitial_checkpoint_02.qmd` and `.html` (or `lastname1_lastname2_checkpoint_02.qmd` and `.html` for a pair). One submission per team.
 :::
 
 ## Your scenario {.unnumbered}
 
 Scenario (A, B, or C):
+
+**My Checkpoint 2 guiding question** (with any changes from feedback):
 
 ## Define your random variable
 
@@ -40,6 +45,10 @@ Scenario (A, B, or C):
 -   Write $X$ in words, including its units and time frame, using the definition for your scenario.
 -   List the possible values (the support) of $X$.
 :::
+
+**$X$ =**
+
+**Possible values of $X$:**
 
 ## Justify the distribution
 
@@ -51,13 +60,24 @@ Scenario (A, B, or C):
 -   Identify the assumption **most likely to fail** in real life, and explain why.
 :::
 
+**Distribution:** $X \sim$
+
+| Parameter | Value | Source |
+|----|----|----|
+|  |  |  |
+|  |  |  |
+
+**Assumptions:**
+
+**Assumption most likely to fail:**
+
 ## Solve it analytically
 
 ::: callout-important
 #### Task
 
 -   Find $E(X)$, $\text{Var}(X)$, and $\text{SD}(X)$ using formulas from class.
--   Calculate **two** probabilities that answer your program's planning question. Show the formula (PMF or CDF) for each, then compute with R.
+-   Calculate the probability in your Checkpoint 2 guiding question. Show the formula (PMF or CDF), then compute with R.
 :::
 
 ```{r}
@@ -69,9 +89,9 @@ Scenario (A, B, or C):
 ::: callout-important
 #### Task
 
--   Generate at least 10,000 draws of $X$ with R.
--   Make a plot comparing the empirical distribution (from your simulation) with the theoretical PMF.
--   Compare the simulated mean, variance, and your two probabilities with the analytic values in a small table.
+-   Simulate at least 100,000 values of $X$ in R.
+-   Make a plot comparing the simulated distribution with the theoretical PMF.
+-   Compare the simulated mean, variance, and guiding-question probability with the analytic values in a small table.
 :::
 
 ```{r}
@@ -95,5 +115,14 @@ Break the assumption you identified above and show how the answer changes.
 ::: callout-important
 #### Task
 
-Write a short paragraph (4–6 sentences) for the program manager who needs to plan around this count. What is typical? What is unusual, and how often does it happen? What would you warn them about, given the assumption most likely to fail?
+-   Write a short paragraph (4–6 sentences) for the program manager who needs to plan around this count. Use plain language, with no probability notation. Answer these questions in order:
+    1.  What should I expect on a typical day, household, or year? (Use $E(X)$ and $\text{SD}(X)$.)
+    2.  How often does the situation in our guiding question happen? (Use your guiding-question probability as a natural frequency, with the probability in parentheses.)
+    3.  What could make these numbers wrong? (Use the assumption most likely to fail.)
+    4.  So what should we plan for?
+-   Answer your Checkpoint 2 guiding question in one sentence, using the probability.
 :::
+
+**Paragraph for the program manager:**
+
+**Answer to my Checkpoint 2 guiding question:**

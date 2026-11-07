@@ -244,6 +244,8 @@ punif(q = 30, min = 0, max = 60) # <1>
 
 1. `punif()` is the CDF, $F_X(30) = P(X \leq 30)$. `min` and `max` are $a$ and $b$.
 
+ 
+
 **b.** Find $t$ with $P(X \leq t) = 0.35$
 
 ```{r}
@@ -251,6 +253,8 @@ qunif(p = 0.35, min = 0, max = 60) # <1>
 ```
 
 1. `qunif()` is the inverse CDF. So $t = 21$, or 10:21 am.
+
+ 
 
 **c.** $P(14 \leq X \leq 16)$
 
@@ -492,6 +496,8 @@ pexp(q = 5, rate = 1/10) # <1>
 
 1. `pexp()` is the CDF. `rate` is $\lambda$: 1 bus per 10 minutes.
 
+ 
+
 **b.** Find $t$ with $P(X \leq t) = 0.35$
 
 ```{r}
@@ -499,6 +505,8 @@ qexp(p = 0.35, rate = 1/10) # <1>
 ```
 
 1. `qexp()` is the inverse CDF: it finds $t$ with $P(X \leq t) = 0.35$.
+
+ 
 
 **c.** $P(3 \leq X \leq 5)$
 
@@ -731,6 +739,8 @@ pgamma(q = 50, shape = 4, rate = 1/10) # <1>
 
 1. `shape` is $r$ and `rate` is $\lambda$. Same answer with `scale = 10` in place of `rate = 1/10`, since `scale` is $\beta = 1/\lambda$.
 
+ 
+
 **b.** Find $t$ with $P(X \leq t) = 0.35$
 
 ```{r}
@@ -738,6 +748,8 @@ qgamma(p = 0.35, shape = 4, rate = 1/10) # <1>
 ```
 
 1. `qgamma()` is the inverse CDF, like `qunif()` and `qexp()`. There is no closed form for $t$, so R does the work.
+
+ 
 
 **c.** $P(30 \leq X \leq 50)$
 
@@ -1001,6 +1013,8 @@ pnorm(q = 45, mean = 50, sd = 4) # <1>
 
 1. `pnorm()` is the CDF. Note `sd = 4`, not the variance 16. For a continuous RV, $P(X < 45) = P(X \leq 45)$.
 
+ 
+
 **b.** Find $t$ with $P(X \leq t) = 0.35$
 
 ```{r}
@@ -1008,6 +1022,8 @@ qnorm(p = 0.35, mean = 50, sd = 4) # <1>
 ```
 
 1. `qnorm()` is the inverse CDF: it finds $t$ with $P(X \leq t) = 0.35$.
+
+ 
 
 **c.** $P(45 \leq X \leq 50)$
 

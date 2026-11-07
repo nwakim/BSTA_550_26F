@@ -178,8 +178,6 @@ $$\text{Var}(X) = \dfrac{(b-a)^2}{12}$$
 :::::::
 ::::::::
 
--   Like every [**continuous RV**]{style="color:#d9534f;"}: $P(X = x) = 0$ for any single value $x$
-
 ## Identifying continuous uniform RV from word problems
 
 -   Look for some indication that all events are **equally likely**

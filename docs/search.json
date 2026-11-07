@@ -25442,7 +25442,7 @@
     "href": "project/lastname_firstinitial_checkpoint_02.html#your-scenario",
     "title": "Checkpoint 2: Counting Events",
     "section": "Your scenario",
-    "text": "Your scenario\nScenario (A, B, or C):\nMy Checkpoint 2 guiding question (from Checkpoint 0, with any changes from feedback):"
+    "text": "Your scenario\nScenario (A, B, or C):\nMy Checkpoint 2 guiding question (with any changes from feedback):"
   },
   {
     "objectID": "project/lastname_firstinitial_checkpoint_02.html#define-your-random-variable",
@@ -25484,7 +25484,7 @@
     "href": "project/lastname_firstinitial_checkpoint_02.html#say-it",
     "title": "Checkpoint 2: Counting Events",
     "section": "6 Say it",
-    "text": "6 Say it\n\n\n\n\n\n\nImportantTask\n\n\n\n\nWrite a short paragraph (4–6 sentences) for the program manager who needs to plan around this count. In plain language, answer in order:\n\nWhat should I expect on a typical day, household, or year? (Use \\(E(X)\\) and \\(\\text{SD}(X)\\).)\nHow often does the situation in our guiding question happen? (Use your guiding-question probability as a natural frequency.)\nWhat could make these numbers wrong? (Use the assumption most likely to fail.)\nSo what should we plan for?\n\nAnswer your Checkpoint 2 guiding question in one sentence, using the probability.\n\n\n\nParagraph for the program manager:\nAnswer to my Checkpoint 2 guiding question:"
+    "text": "6 Say it\n\n\n\n\n\n\nImportantTask\n\n\n\n\nWrite a short paragraph (4–6 sentences) for the program manager who needs to plan around this count. Use plain language, with no probability notation. Answer these questions in order:\n\nWhat should I expect on a typical day, household, or year? (Use \\(E(X)\\) and \\(\\text{SD}(X)\\).)\nHow often does the situation in our guiding question happen? (Use your guiding-question probability as a natural frequency, with the probability in parentheses.)\nWhat could make these numbers wrong? (Use the assumption most likely to fail.)\nSo what should we plan for?\n\nAnswer your Checkpoint 2 guiding question in one sentence, using the probability.\n\n\n\nParagraph for the program manager:\nAnswer to my Checkpoint 2 guiding question:"
   },
   {
     "objectID": "project/lastname_firstinitial_checkpoint_01.html",

@@ -200,22 +200,27 @@ $$\text{Var}(X) = \dfrac{(b-a)^2}{12}$$
 
         -   Exact time and length can be measured with infinite decimal places
 
-## Bird on a wire (TB 31.5)
+## Arrival times
 
-::: columns
-::: {.column width="30%"}
-::: example
+::::::: columns
+:::::: {.column width="40%"}
+::::: example
 ::: ex-title
 Example 1
 :::
 
 ::: ex-cont
-A bird lands at a location that is Uniformly distributed along an electrical wire of length 150 feet. The wire is stretched tightly between two poles. What is the probability that the bird is 20 feet or
-less from one or the other of the poles?
+People arrive at equally likely times between 10 am and 11 am. Let $X$ = minutes after 10 am, so $X \sim \text{U}[0, 60]$.
+
+a.  What is the probability that someone arrives at 10:30 am or earlier?
+
+b.  Find the time $t$ where the probability of arriving at $t$ or earlier is 0.35.
+
+c.  What is the probability that someone arrives between 10:14 and 10:16 am?
 :::
-:::
-:::
-:::
+:::::
+::::::
+:::::::
 
 ## Uniform distribution: R commands
 
@@ -230,11 +235,9 @@ R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#
 
 -   Parameters: `min` $= a$ and `max` $= b$
 
-## Helpful R code
+## Arrival times: check in R
 
-Let's say we're looking at equally likely arrival times between 10 am and 11 am. Let $X$ = minutes after 10 am, so $X \sim \text{U}[0, 60]$ (10 am is $X = 0$, 11 am is $X = 60$).
-
--   If we want to know the probability that someone arrives at 10:30am or earlier, $P(X \leq 30)$:
+-   **Part a:** If we want to know the probability that someone arrives at 10:30am or earlier, $P(X \leq 30)$:
 
 ```{r}
 punif(q = 30, min = 0, max = 60) # <1>
@@ -242,7 +245,7 @@ punif(q = 30, min = 0, max = 60) # <1>
 
 1. `punif()` is the CDF, $F_X(30) = P(X \leq 30)$. `min` and `max` are $a$ and $b$.
 
--   If we want to know the time, say $t$, where the probability of arriving at $t$ or earlier is 0.35 (inverse CDF):
+-   **Part b:** If we want to know the time, say $t$, where the probability of arriving at $t$ or earlier is 0.35 (inverse CDF):
 
 ```{r}
 qunif(p = 0.35, min = 0, max = 60) # <1>
@@ -250,7 +253,7 @@ qunif(p = 0.35, min = 0, max = 60) # <1>
 
 1. `qunif()` is the inverse CDF: it finds $t$ with $P(X \leq t) = 0.35$. So $t = 21$, or 10:21 am.
 
--   If we want to know the probability that someone arrives between 10:14 and 10:16 am:
+-   **Part c:** If we want to know the probability that someone arrives between 10:14 and 10:16 am:
 
 ```{r}
 punif(q = 16, min = 0, max = 60) - punif(q = 14, min = 0, max = 60) # <1>
@@ -258,53 +261,55 @@ punif(q = 16, min = 0, max = 60) - punif(q = 14, min = 0, max = 60) # <1>
 
 1. $P(14 \leq X \leq 16) = F_X(16) - F_X(14)$: the CDF at 16 minus the CDF at 14.
 
--   If we want to sample 20 arrival times from the distribution:
+## Arrival times: simulate it
 
-```{r}
-runif(n = 20, min = 0, max = 60) # <1>
-```
+:::::::: columns
+:::::: {.column width="55%"}
+::::: example
+::: ex-title
+Example 1
+:::
 
-1. `runif()` draws 20 random values, like in Lesson 8. None of them repeat exactly, because $P(X = x) = 0$.
-
-## Bird on a wire: check with a simulation
-
-::: columns
-::: {.column width="62%"}
+::: ex-cont
+Simulate 10,000 arrival times and answer parts a, b, and c.
+:::
+:::::
 
 ```{r}
 set.seed(1109) # <1>
 reps <- 10000 # <2>
 
-bird_sims <- tibble( # <3>
-  x = runif(n = reps, min = 0, max = 150) # <3>
-  ) # <3>
-
-bird_sims |> # <4>
-  summarise( # <4>
-    prob_near_pole = mean(x <= 20 | x >= 130) # <5>
+arrival_sims <- tibble(sim = 1:reps) |> # <3>
+  mutate(
+    X = runif(n(), min = 0, max = 60) # <4>
   )
 ```
 
-1. Set the random seed once, so we get the same simulation every time.
-2. Save the number of simulations as `reps`, so it is easy to change later.
-3. Simulate 10,000 landing spots, $X$ = feet from the left pole, with `runif()` from Lesson 8.
-4. Collapse the 10,000 landing spots into one row of summaries.
-5. The vertical bar `|` means "or": `TRUE` when the bird is within 20 feet of the left pole **or** the right pole. `mean()` of `TRUE`/`FALSE` is the proportion of simulations where that happens.
+1.  Set the random seed once, so we get the same simulation every time.
+2.  Save the number of simulations as `reps`, so it is easy to change later.
+3.  One row per simulated person.
+4.  `runif()` draws one arrival time for every row. `n()` is the number of rows, and `min` and `max` are $a = 0$ and $b = 60$.
+::::::
 
+::: {.column width="1%"}
 :::
 
-::: {.column width="38%"}
+::: {.column width="44%"}
+```{r}
+arrival_sims |> # <1>
+  summarise( # <1>
+    prob_a = mean(X <= 30), # <2>
+    t_b    = quantile(X, 0.35), # <3>
+    prob_c = mean(X >= 14 & X <= 16) # <4>
+  )
+```
 
- 
-
-::: proof1
-::: proof-cont
-Exact: $P(X \leq 20) + P(X \geq 130) = 2 \cdot \dfrac{20}{150} \approx 0.2667$
+1.  One row of summaries for the 10,000 simulated arrival times.
+2.  Part a: the proportion of arrivals at 30 minutes or earlier, which estimates $P(X \leq 30) = 0.5$.
+3.  Part b: `quantile(X, 0.35)` finds the value with 35% of the simulated times below it. It is the simulation version of `qunif()`. Exact: $t = 21$.
+4.  Part c: `&` means "and": `TRUE` only when the arrival is after 14 **and** before 16 minutes. Exact: $\frac{2}{60} \approx 0.0333$.
 :::
-:::
-
-:::
-:::
+::::::::
 
 # Exponential RVs
 
@@ -418,24 +423,48 @@ $$P(X > a +b | X> a) = P(X > b)$$
 
     -   When the time between arrivals is exponential, the number of arrivals in a fixed time interval is Poisson with the mean $\lambda$
 
-## Transformation of independent exponential RVs
+## Minimum of independent exponential RVs
 
-::: columns
-::: {.column width="30%"}
+::::: theorem
+::: thm-title
+Theorem 1
+:::
 
-We'll use the **CDF method** (more in Lesson 14):
+::: thm-cont
+If $X_1, X_2, \ldots, X_n$ are independent with $X_i \sim \text{Exp}(\lambda_i)$, then the **first** of the arrival times,
+$$M = \min(X_1, X_2, \ldots, X_n) \sim \text{Exp}(\lambda_1 + \lambda_2 + \cdots + \lambda_n)$$
+:::
+:::::
 
-::: example
+ 
+
+-   The rates add: waiting for the first of several independent events is like waiting for one event with the combined rate
+
+-   For example, if bus A comes every 10 minutes on average ($\lambda_1 = 1/10$) and bus B every 15 minutes ($\lambda_2 = 1/15$), the wait for whichever bus comes first is $\text{Exp}(1/10 + 1/15) = \text{Exp}(1/6)$: 6 minutes on average
+
+-   We can show this with the CDF method (Lesson 14)
+
+## Waiting for the bus
+
+::::::: columns
+:::::: {.column width="40%"}
+::::: example
 ::: ex-title
 Example 2
 :::
 
 ::: ex-cont
-Let $X_i \sim \textrm{Exp}(\lambda_i)$ be independent RVs, for $i=1 \ldots n$. Find the pdf for the first of the arrival times.
+We are at the bus stop, measuring the time until our bus arrives. The bus comes every 10 minutes on average, so $X \sim \text{Exp}(\lambda = 1/10)$, with $X$ in minutes.
+
+a.  What is the probability that the bus arrives in the next 5 minutes?
+
+b.  Find the time $t$ where the probability of the bus arriving at $t$ or earlier is 0.35.
+
+c.  What is the probability that the bus arrives between 3 and 5 minutes?
 :::
-:::
-:::
-:::
+:::::
+::::::
+:::::::
 
 ## Exponential distribution: R commands
 
@@ -450,11 +479,9 @@ R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#
 
 -   Parameters: `rate` $= \lambda$
 
-## Helpful R code
+## Waiting for the bus: check in R
 
-Let's say we're sitting at the bus stop, measuring the time until our bus arrives. We know the bus comes every 10 minutes on average, so $\lambda = 1/10$ bus per minute.
-
--   If we want to know the probability that the bus arrives in the next 5 minutes, $P(X \leq 5)$:
+-   **Part a:** If we want to know the probability that the bus arrives in the next 5 minutes, $P(X \leq 5)$:
 
 ```{r}
 pexp(q = 5, rate = 1/10) # <1>
@@ -462,7 +489,7 @@ pexp(q = 5, rate = 1/10) # <1>
 
 1. `pexp()` is the CDF. `rate` is $\lambda$: 1 bus per 10 minutes.
 
--   If we want to know the time, say $t$, where the probability of the bus arriving at $t$ or earlier is 0.35 (inverse CDF):
+-   **Part b:** If we want to know the time, say $t$, where the probability of the bus arriving at $t$ or earlier is 0.35 (inverse CDF):
 
 ```{r}
 qexp(p = 0.35, rate = 1/10) # <1>
@@ -470,7 +497,7 @@ qexp(p = 0.35, rate = 1/10) # <1>
 
 1. `qexp()` is the inverse CDF: it finds $t$ with $P(X \leq t) = 0.35$.
 
--   If we want to know the probability that the bus arrives between 3 and 5 minutes:
+-   **Part c:** If we want to know the probability that the bus arrives between 3 and 5 minutes:
 
 ```{r}
 pexp(q = 5, rate = 1/10) - pexp(q = 3, rate = 1/10) # <1>
@@ -478,13 +505,50 @@ pexp(q = 5, rate = 1/10) - pexp(q = 3, rate = 1/10) # <1>
 
 1. $P(3 \leq X \leq 5) = F_X(5) - F_X(3)$.
 
--   If we want to sample 20 bus arrival times from the distribution:
+## Waiting for the bus: simulate it
+
+:::::::: columns
+:::::: {.column width="55%"}
+::::: example
+::: ex-title
+Example 2
+:::
+
+::: ex-cont
+Simulate 10,000 waits for the bus and answer parts a, b, and c.
+:::
+:::::
 
 ```{r}
-rexp(n = 20, rate = 1/10) # <1>
+bus_sims <- tibble(sim = 1:reps) |> # <1>
+  mutate(
+    X = rexp(n(), rate = 1/10) # <2>
+  )
 ```
 
-1. `rexp()` draws 20 random waiting times. Its `r` stands for "random", like `runif()`.
+1.  One row per simulated wait. `reps` is still 10,000.
+2.  `rexp()` draws one waiting time for every row. `rate` is $\lambda = 1/10$ bus per minute.
+::::::
+
+::: {.column width="1%"}
+:::
+
+::: {.column width="44%"}
+```{r}
+bus_sims |> # <1>
+  summarise( # <1>
+    prob_a = mean(X <= 5), # <2>
+    t_b    = quantile(X, 0.35), # <3>
+    prob_c = mean(X >= 3 & X <= 5) # <4>
+  )
+```
+
+1.  One row of summaries for the 10,000 simulated waits.
+2.  Part a: estimates $P(X \leq 5) = 1 - e^{-0.5} \approx 0.3935$.
+3.  Part b: the simulation version of `qexp()`. Exact: $t = -10\ln(0.65) \approx 4.31$.
+4.  Part c: estimates $P(3 \leq X \leq 5) = e^{-0.3} - e^{-0.5} \approx 0.1343$.
+:::
+::::::::
 
 ## Memoryless property: check with a simulation
 
@@ -494,21 +558,16 @@ rexp(n = 20, rate = 1/10) # <1>
 ::: {.column width="62%"}
 
 ```{r}
-bus_sims <- tibble( # <1>
-  x = rexp(n = reps, rate = 1/10) # <1>
-  ) # <1>
-
-bus_sims |> # <2>
-  summarise( # <2>
-    prob_over_5   = mean(x > 5), # <3>
-    prob_5_more   = mean(x > 8) / mean(x > 3) # <4>
+bus_sims |> # <1>
+  summarise( # <1>
+    prob_over_5   = mean(X > 5), # <2>
+    prob_5_more   = mean(X > 8) / mean(X > 3) # <3>
   )
 ```
 
-1. Simulate 10,000 waiting times for the bus, $X \sim \text{Exp}(1/10)$.
-2. One row with a column for each probability.
-3. $P(X > 5)$: the proportion of waits longer than 5 minutes.
-4. $P(X > 3 + 5 \mid X > 3) = P(X > 8) / P(X > 3)$, the same conditional probability recipe as Lesson 9.
+1. Use the same 10,000 bus waits from Example 2. One row with a column for each probability.
+2. $P(X > 5)$: the proportion of waits longer than 5 minutes.
+3. $P(X > 3 + 5 \mid X > 3) = P(X > 8) / P(X > 3)$, the same conditional probability recipe as Lesson 9.
 
 :::
 
@@ -522,7 +581,7 @@ Exact: both are $e^{-5/10} \approx 0.6065$
 :::
 :::
 
--   At home: try other values of $a$, like `mean(x > 15) / mean(x > 10)`
+-   At home: try other values of $a$, like `mean(X > 15) / mean(X > 10)`
 
 :::
 :::
@@ -620,21 +679,27 @@ Common to see $\alpha = r$ and $\beta = 1/\lambda$
         -   BUT now we are measuring time until more than 1 success
     -   Look for a rate of the events over time period
 
-## Sending money orders
+## Waiting for 4 buses
 
-::: columns
-::: {.column width="30%"}
-::: example
+::::::: columns
+:::::: {.column width="40%"}
+::::: example
 ::: ex-title
 Example 3
 :::
 
 ::: ex-cont
-On average, someone sends a money order once per 15 minutes. What is the probability someone sends 10 money orders in less than 3 hours?
+We are at the bus stop, measuring the time until 4 buses arrive. The bus comes every 10 minutes on average, so $X \sim \text{Gamma}(r = 4, \lambda = 1/10)$, with $X$ in minutes.
+
+a.  What is the probability that the 4 buses arrive in the next 50 minutes?
+
+b.  Find the time $t$ where the probability of the 4 buses arriving at $t$ or earlier is 0.35. (No closed form: use R)
+
+c.  What is the probability that the 4 buses arrive between 30 and 50 minutes?
 :::
-:::
-:::
-:::
+:::::
+::::::
+:::::::
 
 ## Gamma distribution: R commands
 
@@ -649,11 +714,9 @@ R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#
 
 -   Parameters: `shape` $= r$ and `rate` $= \lambda$ (or `scale` $= \beta = 1/\lambda$)
 
-## Helpful R code
+## Waiting for 4 buses: check in R
 
-Let's say we're sitting at the bus stop, measuring the time until 4 buses arrive. We know the bus comes every 10 minutes on average.
-
--   If we want to know the probability that the 4 buses arrive in the next 50 minutes:
+-   **Part a:** If we want to know the probability that the 4 buses arrive in the next 50 minutes:
 
 ::: columns
 ::: column
@@ -672,7 +735,7 @@ pgamma(q = 50, scale = 10, shape = 4) # <1>
 :::
 :::
 
--   If we want to know the time, say $t$, where the probability of the 4 buses arriving at $t$ or earlier is 0.35:
+-   **Part b:** If we want to know the time, say $t$, where the probability of the 4 buses arriving at $t$ or earlier is 0.35:
 
 ```{r}
 qgamma(p = 0.35, rate = 1/10, shape = 4) # <1>
@@ -680,21 +743,13 @@ qgamma(p = 0.35, rate = 1/10, shape = 4) # <1>
 
 1. `qgamma()` is the inverse CDF, like `qunif()` and `qexp()`.
 
--   If we want to know the probability that the 4 buses arrive between 30 and 50 minutes:
+-   **Part c:** If we want to know the probability that the 4 buses arrive between 30 and 50 minutes:
 
 ```{r}
 pgamma(q = 50, scale = 10, shape = 4) - pgamma(q = 30, scale = 10, shape = 4) # <1>
 ```
 
 1. $F_X(50) - F_X(30)$, with the CDF `pgamma()`.
-
--   If we want to sample 20 arrival times for the 4 buses:
-
-```{r}
-rgamma(n = 20, scale = 10, shape = 4) # <1>
-```
-
-1. Each value is one realized time until the 4th bus.
 
 ## Remarks
 
@@ -712,29 +767,13 @@ rgamma(n = 20, scale = 10, shape = 4) # <1>
 
     -   $\alpha = \text{shape parameter}$ : same as $r$, the total number of events we must witness
 
-        -   In R code example: 4 buses to wait for (`shape = 4`)
+        -   In Example 3: 4 buses to wait for (`shape = 4`)
 
     -   $\beta = \text{scale parameter}$ : same as $1/\lambda$, one over the rate parameter
 
-        -   In R code example: 1 bus per 10 minutes, so `rate = 1/10` or `scale = 10`
+        -   In Example 3: 1 bus per 10 minutes, so `rate = 1/10` or `scale = 10`
 
         -   In R: `rate = 1/scale`
-
-## Sending money orders: check in R
-
-::: columns
-::: {.column width="60%"}
-
-**Example 3:** $X$ = hours until the 10th money order. 1 per 15 minutes is $\lambda = 4$ per hour.
-
-```{r}
-pgamma(q = 3, shape = 10, rate = 4) # <1>
-```
-
-1. $P(X \leq 3)$ for $X \sim \text{Gamma}(10, 4)$. Keep the units the same: time in hours, so the rate is per hour.
-
-:::
-:::
 
 ## Gamma as a sum of exponentials: simulate
 
@@ -803,19 +842,20 @@ head(sum_sims) # <6>
 ```{r}
 gamma_sims |> # <1>
   summarise( # <1>
-    average = mean(X), # <2>
-    std_dev = sd(X), # <2>
-    prob_50 = mean(X <= 50) # <3>
+    prob_a = mean(X <= 50), # <2>
+    t_b    = quantile(X, 0.35), # <3>
+    prob_c = mean(X >= 30 & X <= 50) # <4>
   )
 
-sum_sims |> # <4>
-  summarise(average = mean(Y), std_dev = sd(Y), prob_50 = mean(Y <= 50)) # <4>
+sum_sims |> # <5>
+  summarise(average = mean(Y), std_dev = sd(Y)) # <5>
 ```
 
 1. One row of summaries of the 10,000 values of $X$ from `rgamma()`.
-2. Compare with $\text{E}(X) = r/\lambda = 40$ and $SD(X) = \sqrt{r/\lambda^2} = 20$.
-3. Compare with `pgamma(q = 50, rate = 1/10, shape = 4)` $\approx 0.7350$.
-4. The same summaries for the sums of 4 exponential waits. They match!
+2. Example 3, part a: compare with `pgamma()` $\approx 0.7350$.
+3. Part b: compare with `qgamma()` $\approx 29.88$.
+4. Part c: compare with $\approx 0.3822$.
+5. The sums of 4 exponential waits: compare with $\text{E}(X) = r/\lambda = 40$ and $SD(X) = \sqrt{r/\lambda^2} = 20$. They behave like the gamma!
 
 ::::: extra
 ::: ext-title
@@ -916,25 +956,27 @@ $$\text{Var}(X) = \sigma^2 \qquad \text{SD}(X) = \sigma$$
 
 -   No closed-form CDF: we use R (or a table) to find probabilities
 
-## Movie night while studying
+## High temperature
 
-::: columns
-::: {.column width="37%"}
-::: example
+::::::: columns
+:::::: {.column width="40%"}
+::::: example
 ::: ex-title
 Example 4
 :::
 
 ::: ex-cont
-Children's movies run an average of 98 minutes with a standard deviation of 10 minutes. You check out a random movie from the library to entertain your kids so you can study for your test. Assume that your kids will be occupied for the entire length of the movie.
+We are measuring the high temperature today. The average high temperature on this day across many, many years is 50 degrees with a standard deviation of 4 degrees, so $X \sim \text{Normal}(50, 4^2)$.
 
-a.  What is the probability that your kids will be occupied for at least the 2 hours you would like to study?
+a.  What is the probability that the high temperature is below 45 degrees?
 
-b.  What is range for the bottom quartile (lowest 25%) of time they will be occupied?
+b.  Find the temperature $t$ where the probability that the temperature is at $t$ or lower is 0.35.
+
+c.  What is the probability that the temperature is between 45 and 50 degrees?
 :::
-:::
-:::
-:::
+:::::
+::::::
+:::::::
 
 ## Normal distribution: R commands
 
@@ -949,11 +991,9 @@ R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#
 
 -   Parameters: `mean` $= \mu$ and `sd` $= \sigma$ (the standard deviation, **not** the variance $\sigma^2$)
 
-## Helpful R code
+## High temperature: check in R
 
-Let's say we're measuring the high temperature today. The average high temperature on this day across many, many years is 50 degrees with a standard deviation of 4 degrees, so $X \sim \text{Normal}(50, 4^2)$.
-
--   If we want to know the probability that the high temperature is below 45 degrees:
+-   **Part a:** If we want to know the probability that the high temperature is below 45 degrees:
 
 ```{r}
 pnorm(q = 45, mean = 50, sd = 4) # <1>
@@ -961,7 +1001,7 @@ pnorm(q = 45, mean = 50, sd = 4) # <1>
 
 1. `pnorm()` is the CDF, $P(X \leq 45)$. Note `sd = 4`, not the variance 16.
 
--   If we want to know the temperature, say $t$, where the probability that the temperature is at $t$ or lower is 0.35 (inverse CDF):
+-   **Part b:** If we want to know the temperature, say $t$, where the probability that the temperature is at $t$ or lower is 0.35 (inverse CDF):
 
 ```{r}
 qnorm(p = 0.35, mean = 50, sd = 4) # <1>
@@ -969,7 +1009,7 @@ qnorm(p = 0.35, mean = 50, sd = 4) # <1>
 
 1. `qnorm()` is the inverse CDF: it finds $t$ with $P(X \leq t) = 0.35$.
 
--   If we want to know the probability that the temperature is between 45 and 50 degrees:
+-   **Part c:** If we want to know the probability that the temperature is between 45 and 50 degrees:
 
 ```{r}
 pnorm(q = 50, mean = 50, sd = 4) - pnorm(q = 45, mean = 50, sd = 4) # <1>
@@ -977,33 +1017,7 @@ pnorm(q = 50, mean = 50, sd = 4) - pnorm(q = 45, mean = 50, sd = 4) # <1>
 
 1. $P(45 \leq X \leq 50) = F_X(50) - F_X(45)$.
 
--   If we want to sample 20 days' temperature (over the years) from the distribution:
-
-```{r}
-rnorm(n = 20, mean = 50, sd = 4) # <1>
-```
-
-1. `rnorm()` draws 20 random high temperatures.
-
-## Movie night while studying: check in R
-
-::: columns
-::: {.column width="60%"}
-
-**Example 4:** $X$ = movie length in minutes, $X \sim \text{Normal}(98, 10^2)$. Watch the units: 2 hours is 120 minutes.
-
-```{r}
-pnorm(q = 120, mean = 98, sd = 10, lower.tail = FALSE) # <1>
-qnorm(p = 0.25, mean = 98, sd = 10) # <2>
-```
-
-1. Part a: $P(X \geq 120)$. `lower.tail = FALSE` gives the upper tail, $P(X > q)$, instead of the CDF. Same as `1 - pnorm(q = 120, mean = 98, sd = 10)`.
-2. Part b: the bottom quartile is $X \leq t$, where $P(X \leq t) = 0.25$.
-
-:::
-:::
-
-## Movie night while studying: simulate it
+## High temperature: simulate it
 
 :::::::: columns
 :::::: {.column width="55%"}
@@ -1013,22 +1027,19 @@ Example 4
 :::
 
 ::: ex-cont
-Simulate the lengths of 10,000 random movies. Do we get about
-$P(X \geq 120) \approx 0.0139$ and a bottom quartile that ends near 91.26
-minutes?
+Simulate 10,000 high temperatures and answer parts a, b, and c.
 :::
 :::::
 
 ```{r}
-movie_sims <- tibble(sim = 1:reps) |> # <1>
+temp_sims <- tibble(sim = 1:reps) |> # <1>
   mutate(
-    X = rnorm(n(), mean = 98, sd = 10) # <2>
+    X = rnorm(n(), mean = 50, sd = 4) # <2>
   )
 ```
 
-1.  One row per simulated movie. `reps` is still 10,000.
-2.  `rnorm()` draws one movie length for every row. `n()` is the number of
-    rows, `mean` is $\mu = 98$, and `sd` is $\sigma = 10$.
+1.  One row per simulated day. `reps` is still 10,000.
+2.  `rnorm()` draws one high temperature for every row. `mean` is $\mu = 50$ and `sd` is $\sigma = 4$.
 ::::::
 
 ::: {.column width="1%"}
@@ -1036,19 +1047,18 @@ movie_sims <- tibble(sim = 1:reps) |> # <1>
 
 ::: {.column width="44%"}
 ```{r}
-movie_sims |> # <1>
+temp_sims |> # <1>
   summarise( # <1>
-    prob_2_hours    = mean(X >= 120), # <2>
-    bottom_quartile = quantile(X, 0.25) # <3>
+    prob_a = mean(X < 45), # <2>
+    t_b    = quantile(X, 0.35), # <3>
+    prob_c = mean(X >= 45 & X <= 50) # <4>
   )
 ```
 
-1.  One row of summaries for the 10,000 simulated movie lengths.
-2.  The proportion of movies that last at least 120 minutes, which
-    estimates $P(X \geq 120)$ (part a).
-3.  `quantile(X, 0.25)` finds the value with 25% of the simulated lengths
-    below it, which estimates $t$ in part b. It is the simulation version
-    of `qnorm()`.
+1.  One row of summaries for the 10,000 simulated temperatures.
+2.  Part a: compare with `pnorm()` $\approx 0.1056$.
+3.  Part b: the simulation version of `qnorm()`. Exact: $t \approx 48.46$.
+4.  Part c: compare with $\approx 0.3944$.
 :::
 ::::::::
 

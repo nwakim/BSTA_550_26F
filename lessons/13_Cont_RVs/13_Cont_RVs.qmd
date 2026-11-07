@@ -198,10 +198,23 @@ $$\text{Var}(X) = \dfrac{(b-a)^2}{12}$$
 
         -   Exact time and length can be measured with infinite decimal places
 
+## Uniform distribution: R commands
+
+R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#367B79"}:
+
+| R code | What does it return? | What do we use it for? |
+|--------------|-------------------------------|---------------------------|
+| `runif()` | returns [sample of random variables]{style="color:#367B79"} with [specified uniform distribution]{style="color:#BF396F"} | Simulate a Uniform RV |
+| `dunif()` | returns [density]{style="color:#367B79"} $f_X(x)$ at a [certain value]{style="color:#BF396F"} | $f_X(x)$: the height of the pdf, **not** a probability |
+| `punif()` | returns [cumulative probability]{style="color:#367B79"} of getting a [certain value or less]{style="color:#BF396F"} | $P(X \leq x)$ (or $P(X > x)$ if we add `lower.tail = FALSE`) |
+| `qunif()` | returns [value]{style="color:#367B79"} corresponding to [desired quantile]{style="color:#BF396F"} | Inverse CDF: we give it a probability $p$ and it returns the value $t$ where $P(X \leq t) = p$ |
+
+-   Parameters: `min` $= a$ and `max` $= b$
+
 ## Arrival times
 
-::::::: columns
-:::::: {.column width="40%"}
+::::::::: columns
+:::::::: {.column width="36%"}
 ::::: example
 ::: ex-title
 Example 1
@@ -217,25 +230,13 @@ b.  Find the time $t$ where the probability of arriving at $t$ or earlier is 0.3
 c.  What is the probability that someone arrives between 10:14 and 10:16 am?
 :::
 :::::
-::::::
-:::::::
+::::::::
 
-## Uniform distribution: R commands
+:::::::: {.column width="2%"}
+::::::::
 
-R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#367B79"}:
-
-| R code | What does it return? | What do we use it for? |
-|--------------|-------------------------------|---------------------------|
-| `runif()` | returns [sample of random variables]{style="color:#367B79"} with [specified uniform distribution]{style="color:#BF396F"} | Simulate a Uniform RV |
-| `dunif()` | returns [density]{style="color:#367B79"} $f_X(x)$ at a [certain value]{style="color:#BF396F"} | $f_X(x)$: the height of the pdf, **not** a probability |
-| `punif()` | returns [cumulative probability]{style="color:#367B79"} of getting a [certain value or less]{style="color:#BF396F"} | $P(X \leq x)$ (or $P(X > x)$ if we add `lower.tail = FALSE`) |
-| `qunif()` | returns [value]{style="color:#367B79"} corresponding to [desired quantile]{style="color:#BF396F"} | Inverse CDF: we give it a probability $p$ and it returns the value $t$ where $P(X \leq t) = p$ |
-
--   Parameters: `min` $= a$ and `max` $= b$
-
-## Arrival times: check in R
-
--   **Part a:** If we want to know the probability that someone arrives at 10:30am or earlier, $P(X \leq 30)$:
+:::::::: {.column width="62%"}
+**a.** $P(X \leq 30)$
 
 ```{r}
 punif(q = 30, min = 0, max = 60) # <1>
@@ -243,21 +244,28 @@ punif(q = 30, min = 0, max = 60) # <1>
 
 1. `punif()` is the CDF, $F_X(30) = P(X \leq 30)$. `min` and `max` are $a$ and $b$.
 
--   **Part b:** If we want to know the time, say $t$, where the probability of arriving at $t$ or earlier is 0.35 (inverse CDF):
+ 
+
+**b.** Find $t$ with $P(X \leq t) = 0.35$
 
 ```{r}
 qunif(p = 0.35, min = 0, max = 60) # <1>
 ```
 
-1. `qunif()` is the inverse CDF: it finds $t$ with $P(X \leq t) = 0.35$. So $t = 21$, or 10:21 am.
+1. `qunif()` is the inverse CDF. So $t = 21$, or 10:21 am.
 
--   **Part c:** If we want to know the probability that someone arrives between 10:14 and 10:16 am:
+ 
+
+**c.** $P(14 \leq X \leq 16)$
 
 ```{r}
-punif(q = 16, min = 0, max = 60) - punif(q = 14, min = 0, max = 60) # <1>
+punif(q = 16, min = 0, max = 60) - # <1>
+  punif(q = 14, min = 0, max = 60) # <1>
 ```
 
 1. $P(14 \leq X \leq 16) = F_X(16) - F_X(14)$: the CDF at 16 minus the CDF at 14.
+::::::::
+:::::::::
 
 ## Arrival times: simulate it
 
@@ -442,10 +450,23 @@ $$M = \min(X_1, X_2, \ldots, X_n) \sim \text{Exp}(\lambda_1 + \lambda_2 + \cdots
 
 -   We can show this with the CDF method (Lesson 14)
 
+## Exponential distribution: R commands
+
+R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#367B79"}:
+
+| R code | What does it return? | What do we use it for? |
+|--------------|-------------------------------|---------------------------|
+| `rexp()` | returns [sample of random variables]{style="color:#367B79"} with [specified exponential distribution]{style="color:#BF396F"} | Simulate a Exponential RV |
+| `dexp()` | returns [density]{style="color:#367B79"} $f_X(x)$ at a [certain value]{style="color:#BF396F"} | $f_X(x)$: the height of the pdf, **not** a probability |
+| `pexp()` | returns [cumulative probability]{style="color:#367B79"} of getting a [certain value or less]{style="color:#BF396F"} | $P(X \leq x)$ (or $P(X > x)$ if we add `lower.tail = FALSE`) |
+| `qexp()` | returns [value]{style="color:#367B79"} corresponding to [desired quantile]{style="color:#BF396F"} | Inverse CDF: we give it a probability $p$ and it returns the value $t$ where $P(X \leq t) = p$ |
+
+-   Parameters: `rate` $= \lambda$
+
 ## Waiting for the bus
 
-::::::: columns
-:::::: {.column width="40%"}
+::::::::: columns
+:::::::: {.column width="36%"}
 ::::: example
 ::: ex-title
 Example 2
@@ -461,25 +482,13 @@ b.  Find the time $t$ where the probability of the bus arriving at $t$ or earlie
 c.  What is the probability that the bus arrives between 3 and 5 minutes?
 :::
 :::::
-::::::
-:::::::
+::::::::
 
-## Exponential distribution: R commands
+:::::::: {.column width="2%"}
+::::::::
 
-R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#367B79"}:
-
-| R code | What does it return? | What do we use it for? |
-|--------------|-------------------------------|---------------------------|
-| `rexp()` | returns [sample of random variables]{style="color:#367B79"} with [specified exponential distribution]{style="color:#BF396F"} | Simulate a Exponential RV |
-| `dexp()` | returns [density]{style="color:#367B79"} $f_X(x)$ at a [certain value]{style="color:#BF396F"} | $f_X(x)$: the height of the pdf, **not** a probability |
-| `pexp()` | returns [cumulative probability]{style="color:#367B79"} of getting a [certain value or less]{style="color:#BF396F"} | $P(X \leq x)$ (or $P(X > x)$ if we add `lower.tail = FALSE`) |
-| `qexp()` | returns [value]{style="color:#367B79"} corresponding to [desired quantile]{style="color:#BF396F"} | Inverse CDF: we give it a probability $p$ and it returns the value $t$ where $P(X \leq t) = p$ |
-
--   Parameters: `rate` $= \lambda$
-
-## Waiting for the bus: check in R
-
--   **Part a:** If we want to know the probability that the bus arrives in the next 5 minutes, $P(X \leq 5)$:
+:::::::: {.column width="62%"}
+**a.** $P(X \leq 5)$
 
 ```{r}
 pexp(q = 5, rate = 1/10) # <1>
@@ -487,7 +496,9 @@ pexp(q = 5, rate = 1/10) # <1>
 
 1. `pexp()` is the CDF. `rate` is $\lambda$: 1 bus per 10 minutes.
 
--   **Part b:** If we want to know the time, say $t$, where the probability of the bus arriving at $t$ or earlier is 0.35 (inverse CDF):
+ 
+
+**b.** Find $t$ with $P(X \leq t) = 0.35$
 
 ```{r}
 qexp(p = 0.35, rate = 1/10) # <1>
@@ -495,13 +506,18 @@ qexp(p = 0.35, rate = 1/10) # <1>
 
 1. `qexp()` is the inverse CDF: it finds $t$ with $P(X \leq t) = 0.35$.
 
--   **Part c:** If we want to know the probability that the bus arrives between 3 and 5 minutes:
+ 
+
+**c.** $P(3 \leq X \leq 5)$
 
 ```{r}
-pexp(q = 5, rate = 1/10) - pexp(q = 3, rate = 1/10) # <1>
+pexp(q = 5, rate = 1/10) - # <1>
+  pexp(q = 3, rate = 1/10) # <1>
 ```
 
 1. $P(3 \leq X \leq 5) = F_X(5) - F_X(3)$.
+::::::::
+:::::::::
 
 ## Waiting for the bus: simulate it
 
@@ -677,28 +693,6 @@ Common to see $\alpha = r$ and $\beta = 1/\lambda$
         -   BUT now we are measuring time until more than 1 success
     -   Look for a rate of the events over time period
 
-## Waiting for 4 buses
-
-::::::: columns
-:::::: {.column width="40%"}
-::::: example
-::: ex-title
-Example 3
-:::
-
-::: ex-cont
-We are at the bus stop, measuring the time until 4 buses arrive. The bus comes every 10 minutes on average, so $X \sim \text{Gamma}(r = 4, \lambda = 1/10)$, with $X$ in minutes.
-
-a.  What is the probability that the 4 buses arrive in the next 50 minutes?
-
-b.  Find the time $t$ where the probability of the 4 buses arriving at $t$ or earlier is 0.35. (No closed form: use R)
-
-c.  What is the probability that the 4 buses arrive between 30 and 50 minutes?
-:::
-:::::
-::::::
-:::::::
-
 ## Gamma distribution: R commands
 
 R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#367B79"}:
@@ -712,42 +706,61 @@ R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#
 
 -   Parameters: `shape` $= r$ and `rate` $= \lambda$ (or `scale` $= \beta = 1/\lambda$)
 
-## Waiting for 4 buses: check in R
+## Waiting for 4 buses
 
--   **Part a:** If we want to know the probability that the 4 buses arrive in the next 50 minutes:
-
-::: columns
-::: column
-```{r}
-pgamma(q = 50, rate = 1/10, shape = 4) # <1>
-```
-
-1. `rate` is $\lambda$ and `shape` is $r$.
-:::
-::: column
-```{r}
-pgamma(q = 50, scale = 10, shape = 4) # <1>
-```
-
-1. Same answer: `scale` is $\beta = 1/\lambda$, so `scale = 10` is the same as `rate = 1/10`.
-:::
+::::::::: columns
+:::::::: {.column width="36%"}
+::::: example
+::: ex-title
+Example 3
 :::
 
--   **Part b:** If we want to know the time, say $t$, where the probability of the 4 buses arriving at $t$ or earlier is 0.35:
+::: ex-cont
+We are at the bus stop, measuring the time until 4 buses arrive. The bus comes every 10 minutes on average, so $X \sim \text{Gamma}(r = 4, \lambda = 1/10)$, with $X$ in minutes.
+
+a.  What is the probability that the 4 buses arrive in the next 50 minutes?
+
+b.  Find the time $t$ where the probability of the 4 buses arriving at $t$ or earlier is 0.35.
+
+c.  What is the probability that the 4 buses arrive between 30 and 50 minutes?
+:::
+:::::
+::::::::
+
+:::::::: {.column width="2%"}
+::::::::
+
+:::::::: {.column width="62%"}
+**a.** $P(X \leq 50)$
 
 ```{r}
-qgamma(p = 0.35, rate = 1/10, shape = 4) # <1>
+pgamma(q = 50, shape = 4, rate = 1/10) # <1>
 ```
 
-1. `qgamma()` is the inverse CDF, like `qunif()` and `qexp()`.
+1. `shape` is $r$ and `rate` is $\lambda$. Same answer with `scale = 10` in place of `rate = 1/10`, since `scale` is $\beta = 1/\lambda$.
 
--   **Part c:** If we want to know the probability that the 4 buses arrive between 30 and 50 minutes:
+ 
+
+**b.** Find $t$ with $P(X \leq t) = 0.35$
 
 ```{r}
-pgamma(q = 50, scale = 10, shape = 4) - pgamma(q = 30, scale = 10, shape = 4) # <1>
+qgamma(p = 0.35, shape = 4, rate = 1/10) # <1>
+```
+
+1. `qgamma()` is the inverse CDF, like `qunif()` and `qexp()`. There is no closed form for $t$, so R does the work.
+
+ 
+
+**c.** $P(30 \leq X \leq 50)$
+
+```{r}
+pgamma(q = 50, shape = 4, rate = 1/10) - # <1>
+  pgamma(q = 30, shape = 4, rate = 1/10) # <1>
 ```
 
 1. $F_X(50) - F_X(30)$, with the CDF `pgamma()`.
+::::::::
+:::::::::
 
 ## Remarks
 
@@ -954,10 +967,23 @@ $$\text{Var}(X) = \sigma^2 \qquad \text{SD}(X) = \sigma$$
 
 -   No closed-form CDF: we use R (or a table) to find probabilities
 
+## Normal distribution: R commands
+
+R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#367B79"}:
+
+| R code | What does it return? | What do we use it for? |
+|--------------|-------------------------------|---------------------------|
+| `rnorm()` | returns [sample of random variables]{style="color:#367B79"} with [specified normal distribution]{style="color:#BF396F"} | Simulate a Normal RV |
+| `dnorm()` | returns [density]{style="color:#367B79"} $f_X(x)$ at a [certain value]{style="color:#BF396F"} | $f_X(x)$: the height of the pdf, **not** a probability |
+| `pnorm()` | returns [cumulative probability]{style="color:#367B79"} of getting a [certain value or less]{style="color:#BF396F"} | $P(X \leq x)$ (or $P(X > x)$ if we add `lower.tail = FALSE`) |
+| `qnorm()` | returns [value]{style="color:#367B79"} corresponding to [desired quantile]{style="color:#BF396F"} | Inverse CDF: we give it a probability $p$ and it returns the value $t$ where $P(X \leq t) = p$ |
+
+-   Parameters: `mean` $= \mu$ and `sd` $= \sigma$ (the standard deviation, **not** the variance $\sigma^2$)
+
 ## High temperature
 
-::::::: columns
-:::::: {.column width="40%"}
+::::::::: columns
+:::::::: {.column width="36%"}
 ::::: example
 ::: ex-title
 Example 4
@@ -973,33 +999,23 @@ b.  Find the temperature $t$ where the probability that the temperature is at $t
 c.  What is the probability that the temperature is between 45 and 50 degrees?
 :::
 :::::
-::::::
-:::::::
+::::::::
 
-## Normal distribution: R commands
+:::::::: {.column width="2%"}
+::::::::
 
-R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#367B79"}:
-
-| R code | What does it return? | What do we use it for? |
-|--------------|-------------------------------|---------------------------|
-| `rnorm()` | returns [sample of random variables]{style="color:#367B79"} with [specified normal distribution]{style="color:#BF396F"} | Simulate a Normal RV |
-| `dnorm()` | returns [density]{style="color:#367B79"} $f_X(x)$ at a [certain value]{style="color:#BF396F"} | $f_X(x)$: the height of the pdf, **not** a probability |
-| `pnorm()` | returns [cumulative probability]{style="color:#367B79"} of getting a [certain value or less]{style="color:#BF396F"} | $P(X \leq x)$ (or $P(X > x)$ if we add `lower.tail = FALSE`) |
-| `qnorm()` | returns [value]{style="color:#367B79"} corresponding to [desired quantile]{style="color:#BF396F"} | Inverse CDF: we give it a probability $p$ and it returns the value $t$ where $P(X \leq t) = p$ |
-
--   Parameters: `mean` $= \mu$ and `sd` $= \sigma$ (the standard deviation, **not** the variance $\sigma^2$)
-
-## High temperature: check in R
-
--   **Part a:** If we want to know the probability that the high temperature is below 45 degrees:
+:::::::: {.column width="62%"}
+**a.** $P(X < 45)$
 
 ```{r}
 pnorm(q = 45, mean = 50, sd = 4) # <1>
 ```
 
-1. `pnorm()` is the CDF, $P(X \leq 45)$. Note `sd = 4`, not the variance 16.
+1. `pnorm()` is the CDF. Note `sd = 4`, not the variance 16. For a continuous RV, $P(X < 45) = P(X \leq 45)$.
 
--   **Part b:** If we want to know the temperature, say $t$, where the probability that the temperature is at $t$ or lower is 0.35 (inverse CDF):
+ 
+
+**b.** Find $t$ with $P(X \leq t) = 0.35$
 
 ```{r}
 qnorm(p = 0.35, mean = 50, sd = 4) # <1>
@@ -1007,13 +1023,18 @@ qnorm(p = 0.35, mean = 50, sd = 4) # <1>
 
 1. `qnorm()` is the inverse CDF: it finds $t$ with $P(X \leq t) = 0.35$.
 
--   **Part c:** If we want to know the probability that the temperature is between 45 and 50 degrees:
+ 
+
+**c.** $P(45 \leq X \leq 50)$
 
 ```{r}
-pnorm(q = 50, mean = 50, sd = 4) - pnorm(q = 45, mean = 50, sd = 4) # <1>
+pnorm(q = 50, mean = 50, sd = 4) - # <1>
+  pnorm(q = 45, mean = 50, sd = 4) # <1>
 ```
 
 1. $P(45 \leq X \leq 50) = F_X(50) - F_X(45)$.
+::::::::
+:::::::::
 
 ## High temperature: simulate it
 

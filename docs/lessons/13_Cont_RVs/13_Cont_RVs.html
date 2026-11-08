@@ -374,25 +374,6 @@ F_X(x) = \int_a^x f_X(s)\,ds = \left\{
 </ul></li>
 </ul>
 </section>
-<section id="arrival-times" class="slide level2">
-<h2>Arrival times</h2>
-<div class="columns">
-<div class="column" style="width:40%;">
-<div class="example">
-<div class="ex-title">
-<p>Example 1</p>
-</div>
-<div class="ex-cont">
-<p>People arrive at equally likely times between 10 am and 11 am. Let <span class="math inline">\(X\)</span> = minutes after 10 am, so <span class="math inline">\(X \sim \text{U}[0, 60]\)</span>.</p>
-<ol type="a">
-<li><p>What is the probability that someone arrives at 10:30 am or earlier?</p></li>
-<li><p>Find the time <span class="math inline">\(t\)</span> where the probability of arriving at <span class="math inline">\(t\)</span> or earlier is 0.35.</p></li>
-<li><p>What is the probability that someone arrives between 10:14 and 10:16 am?</p></li>
-</ol>
-</div>
-</div>
-</div></div>
-</section>
 <section id="uniform-distribution-r-commands" class="slide level2">
 <h2>Uniform distribution: R commands</h2>
 <p>R commands with their <span style="color:#BF396F">input</span> and <span style="color:#367B79">output</span>:</p>
@@ -436,11 +417,28 @@ F_X(x) = \int_a^x f_X(s)\,ds = \left\{
 <li>Parameters: <code>min</code> <span class="math inline">\(= a\)</span> and <code>max</code> <span class="math inline">\(= b\)</span></li>
 </ul>
 </section>
-<section id="arrival-times-check-in-r" class="slide level2">
-<h2>Arrival times: check in R</h2>
-<ul>
-<li><strong>Part a:</strong> If we want to know the probability that someone arrives at 10:30am or earlier, <span class="math inline">\(P(X \leq 30)\)</span>:</li>
-</ul>
+<section id="arrival-times" class="slide level2">
+<h2>Arrival times</h2>
+<div class="columns">
+<div class="column" style="width:36%;">
+<div class="example">
+<div class="ex-title">
+<p>Example 1</p>
+</div>
+<div class="ex-cont">
+<p>People arrive at equally likely times between 10 am and 11 am. Let <span class="math inline">\(X\)</span> = minutes after 10 am so <span class="math inline">\(X \sim \text{U}[0, 60]\)</span></p>
+<ol type="a">
+<li><p>What is the probability that someone arrives at 10:30 am or earlier?</p></li>
+<li><p>Find the time <span class="math inline">\(t\)</span> where the probability of arriving at <span class="math inline">\(t\)</span> or earlier is 0.35.</p></li>
+<li><p>What is the probability that someone arrives between 10:14 and 10:16 am?</p></li>
+</ol>
+</div>
+</div>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:62%;">
+<p><strong>a.</strong> <span class="math inline">\(P(X \leq 30)\)</span></p>
+<p>&nbsp;</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1" aria-label="1"></a><span class="fu">punif</span>(<span class="at">q =</span> <span class="dv">30</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">60</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
@@ -455,16 +453,16 @@ F_X(x) = \int_a^x f_X(s)\,ds = \left\{
 <pre><code>[1] 0.5</code></pre>
 </div>
 </div>
-<ul>
-<li><strong>Part b:</strong> If we want to know the time, say <span class="math inline">\(t\)</span>, where the probability of arriving at <span class="math inline">\(t\)</span> or earlier is 0.35 (inverse CDF):</li>
-</ul>
+<p>&nbsp;</p>
+<p><strong>b.</strong> Find <span class="math inline">\(t\)</span> with <span class="math inline">\(P(X \leq t) = 0.35\)</span></p>
+<p>&nbsp;</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-label="1"></a><span class="fu">qunif</span>(<span class="at">p =</span> <span class="fl">0.35</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">60</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1"><code>qunif()</code> is the inverse CDF: it finds <span class="math inline">\(t\)</span> with <span class="math inline">\(P(X \leq t) = 0.35\)</span>. So <span class="math inline">\(t = 21\)</span>, or 10:21 am.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1"><code>qunif()</code> is the inverse CDF. So <span class="math inline">\(t = 21\)</span>, or 10:21 am.</span>
 </dd>
 </dl>
 </div>
@@ -472,16 +470,17 @@ F_X(x) = \int_a^x f_X(s)\,ds = \left\{
 <pre><code>[1] 21</code></pre>
 </div>
 </div>
-<ul>
-<li><strong>Part c:</strong> If we want to know the probability that someone arrives between 10:14 and 10:16 am:</li>
-</ul>
+<p>&nbsp;</p>
+<p><strong>c.</strong> <span class="math inline">\(P(14 \leq X \leq 16)\)</span></p>
+<p>&nbsp;</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1" aria-label="1"></a><span class="fu">punif</span>(<span class="at">q =</span> <span class="dv">16</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">60</span>) <span class="sc">-</span> <span class="fu">punif</span>(<span class="at">q =</span> <span class="dv">14</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">60</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1" aria-label="1"></a><span class="fu">punif</span>(<span class="at">q =</span> <span class="dv">16</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">60</span>) <span class="sc">-</span></span>
+<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-label="2"></a>  <span class="fu">punif</span>(<span class="at">q =</span> <span class="dv">14</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">60</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1"><span class="math inline">\(P(14 \leq X \leq 16) = F_X(16) - F_X(14)\)</span>: the CDF at 16 minus the CDF at 14.</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="1,2" data-code-annotation="1"><span class="math inline">\(P(14 \leq X \leq 16) = F_X(16) - F_X(14)\)</span>: the CDF at 16 minus the CDF at 14.</span>
 </dd>
 </dl>
 </div>
@@ -489,11 +488,10 @@ F_X(x) = \int_a^x f_X(s)\,ds = \left\{
 <pre><code>[1] 0.03333333</code></pre>
 </div>
 </div>
+</div></div>
 </section>
 <section id="arrival-times-simulate-it" class="slide level2">
 <h2>Arrival times: simulate it</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
 <div class="example">
 <div class="ex-title">
 <p>Example 1</p>
@@ -502,62 +500,67 @@ F_X(x) = \int_a^x f_X(s)\,ds = \left\{
 <p>Simulate 10,000 arrival times and answer parts a, b, and c.</p>
 </div>
 </div>
+<div class="columns">
+<div class="column" style="width:49%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-15"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1">1</button><span id="annotated-cell-15-1" class="code-annotation-target"><a href="#annotated-cell-15-1" aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">1109</span>)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="2">2</button><span id="annotated-cell-15-2" class="code-annotation-target"><a href="#annotated-cell-15-2" aria-label="2"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="annotated-cell-15-3"><a href="#annotated-cell-15-3" aria-label="3"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="3">3</button><span id="annotated-cell-15-4" class="code-annotation-target"><a href="#annotated-cell-15-4" aria-label="4"></a>arrival_sims <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-15-5"><a href="#annotated-cell-15-5" aria-label="5"></a>  <span class="fu">mutate</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="4">4</button><span id="annotated-cell-15-6" class="code-annotation-target"><a href="#annotated-cell-15-6" aria-label="6"></a>    <span class="at">X =</span> <span class="fu">runif</span>(<span class="fu">n</span>(), <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">60</span>)</span>
-<span id="annotated-cell-15-7"><a href="#annotated-cell-15-7" aria-label="7"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1">1</button><span id="annotated-cell-7-1" class="code-annotation-target"><a href="#annotated-cell-7-1" aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">1109</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2">2</button><span id="annotated-cell-7-2" class="code-annotation-target"><a href="#annotated-cell-7-2" aria-label="2"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3" aria-label="3"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="3">3</button><span id="annotated-cell-7-4" class="code-annotation-target"><a href="#annotated-cell-7-4" aria-label="4"></a>arrival_sims <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-7-5"><a href="#annotated-cell-7-5" aria-label="5"></a>  <span class="fu">mutate</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="4">4</button><span id="annotated-cell-7-6" class="code-annotation-target"><a href="#annotated-cell-7-6" aria-label="6"></a>    <span class="at">X =</span> <span class="fu">runif</span>(<span class="fu">n</span>(), <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">60</span>)</span>
+<span id="annotated-cell-7-7"><a href="#annotated-cell-7-7" aria-label="7"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-15" data-code-lines="1" data-code-annotation="1">Set the random seed once, so we get the same simulation every time.</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="1" data-code-annotation="1">Set the random seed once, so we get the same simulation every time.</span>
 </dd>
-<dt data-target-cell="annotated-cell-15" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-15" data-code-lines="2" data-code-annotation="2">Save the number of simulations as <code>reps</code>, so it is easy to change later.</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="2" data-code-annotation="2">Save the number of simulations as <code>reps</code>, so it is easy to change later.</span>
 </dd>
-<dt data-target-cell="annotated-cell-15" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-15" data-code-lines="4" data-code-annotation="3">One row per simulated person.</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="4" data-code-annotation="3">One row per simulated person.</span>
 </dd>
-<dt data-target-cell="annotated-cell-15" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-15" data-code-lines="6" data-code-annotation="4"><code>runif()</code> draws one arrival time for every row. <code>n()</code> is the number of rows, and <code>min</code> and <code>max</code> are <span class="math inline">\(a = 0\)</span> and <span class="math inline">\(b = 60\)</span>.</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="6" data-code-annotation="4"><code>runif()</code> draws one arrival time for every row. <code>n()</code> is the number of rows, and <code>min</code> and <code>max</code> are <span class="math inline">\(a = 0\)</span> and <span class="math inline">\(b = 60\)</span>.</span>
 </dd>
 </dl>
 </div>
 </div>
 </div><div class="column" style="width:1%;">
 
-</div><div class="column" style="width:44%;">
+</div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-16"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1">1</button><span id="annotated-cell-16-1" class="code-annotation-target"><a href="#annotated-cell-16-1" aria-label="1"></a>arrival_sims <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-16-2"><a href="#annotated-cell-16-2" aria-label="2"></a>  <span class="fu">summarise</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="2">2</button><span id="annotated-cell-16-3" class="code-annotation-target"><a href="#annotated-cell-16-3" aria-label="3"></a>    <span class="at">prob_a =</span> <span class="fu">mean</span>(X <span class="sc">&lt;=</span> <span class="dv">30</span>),</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="3">3</button><span id="annotated-cell-16-4" class="code-annotation-target"><a href="#annotated-cell-16-4" aria-label="4"></a>    <span class="at">t_b    =</span> <span class="fu">quantile</span>(X, <span class="fl">0.35</span>),</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="4">4</button><span id="annotated-cell-16-5" class="code-annotation-target"><a href="#annotated-cell-16-5" aria-label="5"></a>    <span class="at">prob_c =</span> <span class="fu">mean</span>(X <span class="sc">&gt;=</span> <span class="dv">14</span> <span class="sc">&amp;</span> X <span class="sc">&lt;=</span> <span class="dv">16</span>)</span>
-<span id="annotated-cell-16-6"><a href="#annotated-cell-16-6" aria-label="6"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-8"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1">1</button><span id="annotated-cell-8-1" class="code-annotation-target"><a href="#annotated-cell-8-1" aria-label="1"></a>arrival_sims <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-8-2"><a href="#annotated-cell-8-2" aria-label="2"></a>  <span class="fu">summarise</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="2">2</button><span id="annotated-cell-8-3" class="code-annotation-target"><a href="#annotated-cell-8-3" aria-label="3"></a>    <span class="at">prob_a =</span> <span class="fu">mean</span>(X <span class="sc">&lt;=</span> <span class="dv">30</span>),</span>
+<span id="annotated-cell-8-4"><a href="#annotated-cell-8-4" aria-label="4"></a>    </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="3">3</button><span id="annotated-cell-8-5" class="code-annotation-target"><a href="#annotated-cell-8-5" aria-label="5"></a>    <span class="at">t_b    =</span> <span class="fu">quantile</span>(X, <span class="fl">0.35</span>),</span>
+<span id="annotated-cell-8-6"><a href="#annotated-cell-8-6" aria-label="6"></a>    </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="4">4</button><span id="annotated-cell-8-7" class="code-annotation-target"><a href="#annotated-cell-8-7" aria-label="7"></a>    <span class="at">prob_c =</span> <span class="fu">mean</span>(X <span class="sc">&gt;=</span> <span class="dv">14</span> <span class="sc">&amp;</span> X <span class="sc">&lt;=</span> <span class="dv">16</span>)</span>
+<span id="annotated-cell-8-8"><a href="#annotated-cell-8-8" aria-label="8"></a>    </span>
+<span id="annotated-cell-8-9"><a href="#annotated-cell-8-9" aria-label="9"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="1,2" data-code-annotation="1">One row of summaries for the 10,000 simulated arrival times.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="1,2" data-code-annotation="1">One row of summaries for the 10,000 simulated arrival times.</span>
 </dd>
-<dt data-target-cell="annotated-cell-16" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="3" data-code-annotation="2">Part a: the proportion of arrivals at 30 minutes or earlier, which estimates <span class="math inline">\(P(X \leq 30) = 0.5\)</span>.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="3" data-code-annotation="2">Part a: the proportion of arrivals at 30 minutes or earlier, which estimates <span class="math inline">\(P(X \leq 30) = 0.5\)</span>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-16" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="4" data-code-annotation="3">Part b: <code>quantile(X, 0.35)</code> finds the value with 35% of the simulated times below it. It is the simulation version of <code>qunif()</code>. Exact: <span class="math inline">\(t = 21\)</span>.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="5" data-code-annotation="3">Part b: <code>quantile(X, 0.35)</code> finds the value with 35% of the simulated times below it. It is the simulation version of <code>qunif()</code>. Exact: <span class="math inline">\(t = 21\)</span>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-16" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="5" data-code-annotation="4">Part c: <code>&amp;</code> means “and”: <code>TRUE</code> only when the arrival is after 14 <strong>and</strong> before 16 minutes. Exact: <span class="math inline">\(\frac{2}{60} \approx 0.0333\)</span>.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="7" data-code-annotation="4">Part c: <code>&amp;</code> means “and”: <code>TRUE</code> only when the arrival is after 14 <strong>and</strong> before 16 minutes. Exact: <span class="math inline">\(\frac{2}{60} \approx 0.0333\)</span>.</span>
 </dd>
 </dl>
 </div>
@@ -663,9 +666,10 @@ F_X(x) = \left\{
 <li><p>Geometric is <em>number of trials</em> until first success</p></li>
 <li><p>Exponential is <em>time</em> until first success</p></li>
 </ul></li>
-<li><p>Relation to the Poisson distribution?</p>
+<li><p>Relation to discrete distributions</p>
 <ul>
-<li>When the time between arrivals is exponential, the number of arrivals in a fixed time interval is Poisson with the mean <span class="math inline">\(\lambda\)</span></li>
+<li>Relationship to Geometric: Exponential is the continuous analog to the Geometric distribution</li>
+<li>Relationship to Poisson: When the time between arrivals is exponential, the number of arrivals in a fixed time interval is Poisson with the mean <span class="math inline">\(\lambda\)</span></li>
 </ul></li>
 </ul>
 </section>
@@ -685,25 +689,6 @@ F_X(x) = \left\{
 <li><p>For example, if bus A comes every 10 minutes on average (<span class="math inline">\(\lambda_1 = 1/10\)</span>) and bus B every 15 minutes (<span class="math inline">\(\lambda_2 = 1/15\)</span>), the wait for whichever bus comes first is <span class="math inline">\(\text{Exp}(1/10 + 1/15) = \text{Exp}(1/6)\)</span>: 6 minutes on average</p></li>
 <li><p>We can show this with the CDF method (Lesson 14)</p></li>
 </ul>
-</section>
-<section id="waiting-for-the-bus" class="slide level2">
-<h2>Waiting for the bus</h2>
-<div class="columns">
-<div class="column" style="width:40%;">
-<div class="example">
-<div class="ex-title">
-<p>Example 2</p>
-</div>
-<div class="ex-cont">
-<p>We are at the bus stop, measuring the time until our bus arrives. The bus comes every 10 minutes on average, so <span class="math inline">\(X \sim \text{Exp}(\lambda = 1/10)\)</span>, with <span class="math inline">\(X\)</span> in minutes.</p>
-<ol type="a">
-<li><p>What is the probability that the bus arrives in the next 5 minutes?</p></li>
-<li><p>Find the time <span class="math inline">\(t\)</span> where the probability of the bus arriving at <span class="math inline">\(t\)</span> or earlier is 0.35.</p></li>
-<li><p>What is the probability that the bus arrives between 3 and 5 minutes?</p></li>
-</ol>
-</div>
-</div>
-</div></div>
 </section>
 <section id="exponential-distribution-r-commands" class="slide level2">
 <h2>Exponential distribution: R commands</h2>
@@ -748,18 +733,34 @@ F_X(x) = \left\{
 <li>Parameters: <code>rate</code> <span class="math inline">\(= \lambda\)</span></li>
 </ul>
 </section>
-<section id="waiting-for-the-bus-check-in-r" class="slide level2">
-<h2>Waiting for the bus: check in R</h2>
-<ul>
-<li><strong>Part a:</strong> If we want to know the probability that the bus arrives in the next 5 minutes, <span class="math inline">\(P(X \leq 5)\)</span>:</li>
-</ul>
+<section id="waiting-for-the-bus" class="slide level2">
+<h2>Waiting for the bus</h2>
+<div class="columns">
+<div class="column" style="width:36%;">
+<div class="example">
+<div class="ex-title">
+<p>Example 2</p>
+</div>
+<div class="ex-cont">
+<p>We are at the bus stop, measuring the time until our bus arrives. The bus comes every 10 minutes on average, so <span class="math inline">\(X \sim \text{Exp}(\lambda = 1/10)\)</span>, with <span class="math inline">\(X\)</span> in minutes.</p>
+<ol type="a">
+<li><p>What is the probability that the bus arrives in the next 5 minutes?</p></li>
+<li><p>Find the time <span class="math inline">\(t\)</span> where the probability of the bus arriving at <span class="math inline">\(t\)</span> or earlier is 0.35.</p></li>
+<li><p>What is the probability that the bus arrives between 3 and 5 minutes?</p></li>
+</ol>
+</div>
+</div>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:62%;">
+<p><strong>a.</strong> <span class="math inline">\(P(X \leq 5)\)</span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1">1</button><span id="annotated-cell-4-1" class="code-annotation-target"><a href="#annotated-cell-4-1" aria-label="1"></a><span class="fu">pexp</span>(<span class="at">q =</span> <span class="dv">5</span>, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-10"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1">1</button><span id="annotated-cell-10-1" class="code-annotation-target"><a href="#annotated-cell-10-1" aria-label="1"></a><span class="fu">pexp</span>(<span class="at">q =</span> <span class="dv">5</span>, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="1" data-code-annotation="1"><code>pexp()</code> is the CDF. <code>rate</code> is <span class="math inline">\(\lambda\)</span>: 1 bus per 10 minutes.</span>
+<span data-code-cell="annotated-cell-10" data-code-lines="1" data-code-annotation="1"><code>pexp()</code> is the CDF. <code>rate</code> is <span class="math inline">\(\lambda\)</span>: 1 bus per 10 minutes.</span>
 </dd>
 </dl>
 </div>
@@ -767,16 +768,15 @@ F_X(x) = \left\{
 <pre><code>[1] 0.3934693</code></pre>
 </div>
 </div>
-<ul>
-<li><strong>Part b:</strong> If we want to know the time, say <span class="math inline">\(t\)</span>, where the probability of the bus arriving at <span class="math inline">\(t\)</span> or earlier is 0.35 (inverse CDF):</li>
-</ul>
+<p>&nbsp;</p>
+<p><strong>b.</strong> Find <span class="math inline">\(t\)</span> with <span class="math inline">\(P(X \leq t) = 0.35\)</span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-1" class="code-annotation-target"><a href="#annotated-cell-5-1" aria-label="1"></a><span class="fu">qexp</span>(<span class="at">p =</span> <span class="fl">0.35</span>, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-11"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1">1</button><span id="annotated-cell-11-1" class="code-annotation-target"><a href="#annotated-cell-11-1" aria-label="1"></a><span class="fu">qexp</span>(<span class="at">p =</span> <span class="fl">0.35</span>, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="1" data-code-annotation="1"><code>qexp()</code> is the inverse CDF: it finds <span class="math inline">\(t\)</span> with <span class="math inline">\(P(X \leq t) = 0.35\)</span>.</span>
+<span data-code-cell="annotated-cell-11" data-code-lines="1" data-code-annotation="1"><code>qexp()</code> is the inverse CDF: it finds <span class="math inline">\(t\)</span> with <span class="math inline">\(P(X \leq t) = 0.35\)</span>.</span>
 </dd>
 </dl>
 </div>
@@ -784,16 +784,16 @@ F_X(x) = \left\{
 <pre><code>[1] 4.307829</code></pre>
 </div>
 </div>
-<ul>
-<li><strong>Part c:</strong> If we want to know the probability that the bus arrives between 3 and 5 minutes:</li>
-</ul>
+<p>&nbsp;</p>
+<p><strong>c.</strong> <span class="math inline">\(P(3 \leq X \leq 5)\)</span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-6"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1">1</button><span id="annotated-cell-6-1" class="code-annotation-target"><a href="#annotated-cell-6-1" aria-label="1"></a><span class="fu">pexp</span>(<span class="at">q =</span> <span class="dv">5</span>, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>) <span class="sc">-</span> <span class="fu">pexp</span>(<span class="at">q =</span> <span class="dv">3</span>, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-12"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="1">1</button><span id="annotated-cell-12-1" class="code-annotation-target"><a href="#annotated-cell-12-1" aria-label="1"></a><span class="fu">pexp</span>(<span class="at">q =</span> <span class="dv">5</span>, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>) <span class="sc">-</span></span>
+<span id="annotated-cell-12-2"><a href="#annotated-cell-12-2" aria-label="2"></a>  <span class="fu">pexp</span>(<span class="at">q =</span> <span class="dv">3</span>, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="1" data-code-annotation="1"><span class="math inline">\(P(3 \leq X \leq 5) = F_X(5) - F_X(3)\)</span>.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="1,2" data-code-annotation="1"><span class="math inline">\(P(3 \leq X \leq 5) = F_X(5) - F_X(3)\)</span>.</span>
 </dd>
 </dl>
 </div>
@@ -801,6 +801,7 @@ F_X(x) = \left\{
 <pre><code>[1] 0.1342876</code></pre>
 </div>
 </div>
+</div></div>
 </section>
 <section id="waiting-for-the-bus-simulate-it" class="slide level2">
 <h2>Waiting for the bus: simulate it</h2>
@@ -815,19 +816,19 @@ F_X(x) = \left\{
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-21"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="1">1</button><span id="annotated-cell-21-1" class="code-annotation-target"><a href="#annotated-cell-21-1" aria-label="1"></a>bus_sims <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-21-2"><a href="#annotated-cell-21-2" aria-label="2"></a>  <span class="fu">mutate</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="2">2</button><span id="annotated-cell-21-3" class="code-annotation-target"><a href="#annotated-cell-21-3" aria-label="3"></a>    <span class="at">X =</span> <span class="fu">rexp</span>(<span class="fu">n</span>(), <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)</span>
-<span id="annotated-cell-21-4"><a href="#annotated-cell-21-4" aria-label="4"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-16"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1">1</button><span id="annotated-cell-16-1" class="code-annotation-target"><a href="#annotated-cell-16-1" aria-label="1"></a>bus_sims <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-16-2"><a href="#annotated-cell-16-2" aria-label="2"></a>  <span class="fu">mutate</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="2">2</button><span id="annotated-cell-16-3" class="code-annotation-target"><a href="#annotated-cell-16-3" aria-label="3"></a>    <span class="at">X =</span> <span class="fu">rexp</span>(<span class="fu">n</span>(), <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)</span>
+<span id="annotated-cell-16-4"><a href="#annotated-cell-16-4" aria-label="4"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-21" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-21" data-code-lines="1" data-code-annotation="1">One row per simulated wait. <code>reps</code> is still 10,000.</span>
+<span data-code-cell="annotated-cell-16" data-code-lines="1" data-code-annotation="1">One row per simulated wait. <code>reps</code> is still 10,000.</span>
 </dd>
-<dt data-target-cell="annotated-cell-21" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-16" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-21" data-code-lines="3" data-code-annotation="2"><code>rexp()</code> draws one waiting time for every row. <code>rate</code> is <span class="math inline">\(\lambda = 1/10\)</span> bus per minute.</span>
+<span data-code-cell="annotated-cell-16" data-code-lines="3" data-code-annotation="2"><code>rexp()</code> draws one waiting time for every row. <code>rate</code> is <span class="math inline">\(\lambda = 1/10\)</span> bus per minute.</span>
 </dd>
 </dl>
 </div>
@@ -836,29 +837,29 @@ F_X(x) = \left\{
 
 </div><div class="column" style="width:44%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-22"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="1">1</button><span id="annotated-cell-22-1" class="code-annotation-target"><a href="#annotated-cell-22-1" aria-label="1"></a>bus_sims <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-22-2"><a href="#annotated-cell-22-2" aria-label="2"></a>  <span class="fu">summarise</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="2">2</button><span id="annotated-cell-22-3" class="code-annotation-target"><a href="#annotated-cell-22-3" aria-label="3"></a>    <span class="at">prob_a =</span> <span class="fu">mean</span>(X <span class="sc">&lt;=</span> <span class="dv">5</span>),</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="3">3</button><span id="annotated-cell-22-4" class="code-annotation-target"><a href="#annotated-cell-22-4" aria-label="4"></a>    <span class="at">t_b    =</span> <span class="fu">quantile</span>(X, <span class="fl">0.35</span>),</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="4">4</button><span id="annotated-cell-22-5" class="code-annotation-target"><a href="#annotated-cell-22-5" aria-label="5"></a>    <span class="at">prob_c =</span> <span class="fu">mean</span>(X <span class="sc">&gt;=</span> <span class="dv">3</span> <span class="sc">&amp;</span> X <span class="sc">&lt;=</span> <span class="dv">5</span>)</span>
-<span id="annotated-cell-22-6"><a href="#annotated-cell-22-6" aria-label="6"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-17"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="1">1</button><span id="annotated-cell-17-1" class="code-annotation-target"><a href="#annotated-cell-17-1" aria-label="1"></a>bus_sims <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-17-2"><a href="#annotated-cell-17-2" aria-label="2"></a>  <span class="fu">summarise</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="2">2</button><span id="annotated-cell-17-3" class="code-annotation-target"><a href="#annotated-cell-17-3" aria-label="3"></a>    <span class="at">prob_a =</span> <span class="fu">mean</span>(X <span class="sc">&lt;=</span> <span class="dv">5</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="3">3</button><span id="annotated-cell-17-4" class="code-annotation-target"><a href="#annotated-cell-17-4" aria-label="4"></a>    <span class="at">t_b    =</span> <span class="fu">quantile</span>(X, <span class="fl">0.35</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="4">4</button><span id="annotated-cell-17-5" class="code-annotation-target"><a href="#annotated-cell-17-5" aria-label="5"></a>    <span class="at">prob_c =</span> <span class="fu">mean</span>(X <span class="sc">&gt;=</span> <span class="dv">3</span> <span class="sc">&amp;</span> X <span class="sc">&lt;=</span> <span class="dv">5</span>)</span>
+<span id="annotated-cell-17-6"><a href="#annotated-cell-17-6" aria-label="6"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-22" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-22" data-code-lines="1,2" data-code-annotation="1">One row of summaries for the 10,000 simulated waits.</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="1,2" data-code-annotation="1">One row of summaries for the 10,000 simulated waits.</span>
 </dd>
-<dt data-target-cell="annotated-cell-22" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-22" data-code-lines="3" data-code-annotation="2">Part a: estimates <span class="math inline">\(P(X \leq 5) = 1 - e^{-0.5} \approx 0.3935\)</span>.</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="3" data-code-annotation="2">Part a: estimates <span class="math inline">\(P(X \leq 5) = 1 - e^{-0.5} \approx 0.3935\)</span>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-22" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-22" data-code-lines="4" data-code-annotation="3">Part b: the simulation version of <code>qexp()</code>. Exact: <span class="math inline">\(t = -10\ln(0.65) \approx 4.31\)</span>.</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="4" data-code-annotation="3">Part b: the simulation version of <code>qexp()</code>. Exact: <span class="math inline">\(t = -10\ln(0.65) \approx 4.31\)</span>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-22" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-22" data-code-lines="5" data-code-annotation="4">Part c: estimates <span class="math inline">\(P(3 \leq X \leq 5) = e^{-0.3} - e^{-0.5} \approx 0.1343\)</span>.</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="5" data-code-annotation="4">Part c: estimates <span class="math inline">\(P(3 \leq X \leq 5) = e^{-0.3} - e^{-0.5} \approx 0.1343\)</span>.</span>
 </dd>
 </dl>
 </div>
@@ -879,24 +880,24 @@ F_X(x) = \left\{
 <div class="columns">
 <div class="column" style="width:62%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-24"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="1">1</button><span id="annotated-cell-24-1" class="code-annotation-target"><a href="#annotated-cell-24-1" aria-label="1"></a>bus_sims <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-24-2"><a href="#annotated-cell-24-2" aria-label="2"></a>  <span class="fu">summarise</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="2">2</button><span id="annotated-cell-24-3" class="code-annotation-target"><a href="#annotated-cell-24-3" aria-label="3"></a>    <span class="at">prob_over_5   =</span> <span class="fu">mean</span>(X <span class="sc">&gt;</span> <span class="dv">5</span>),</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="3">3</button><span id="annotated-cell-24-4" class="code-annotation-target"><a href="#annotated-cell-24-4" aria-label="4"></a>    <span class="at">prob_5_more   =</span> <span class="fu">mean</span>(X <span class="sc">&gt;</span> <span class="dv">8</span>) <span class="sc">/</span> <span class="fu">mean</span>(X <span class="sc">&gt;</span> <span class="dv">3</span>)</span>
-<span id="annotated-cell-24-5"><a href="#annotated-cell-24-5" aria-label="5"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-19"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="1">1</button><span id="annotated-cell-19-1" class="code-annotation-target"><a href="#annotated-cell-19-1" aria-label="1"></a>bus_sims <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-19-2"><a href="#annotated-cell-19-2" aria-label="2"></a>  <span class="fu">summarise</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="2">2</button><span id="annotated-cell-19-3" class="code-annotation-target"><a href="#annotated-cell-19-3" aria-label="3"></a>    <span class="at">prob_over_5   =</span> <span class="fu">mean</span>(X <span class="sc">&gt;</span> <span class="dv">5</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="3">3</button><span id="annotated-cell-19-4" class="code-annotation-target"><a href="#annotated-cell-19-4" aria-label="4"></a>    <span class="at">prob_5_more   =</span> <span class="fu">mean</span>(X <span class="sc">&gt;</span> <span class="dv">8</span>) <span class="sc">/</span> <span class="fu">mean</span>(X <span class="sc">&gt;</span> <span class="dv">3</span>)</span>
+<span id="annotated-cell-19-5"><a href="#annotated-cell-19-5" aria-label="5"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-24" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-19" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-24" data-code-lines="1,2" data-code-annotation="1">Use the same 10,000 bus waits from Example 2. One row with a column for each probability.</span>
+<span data-code-cell="annotated-cell-19" data-code-lines="1,2" data-code-annotation="1">Use the same 10,000 bus waits from Example 2. One row with a column for each probability.</span>
 </dd>
-<dt data-target-cell="annotated-cell-24" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-19" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-24" data-code-lines="3" data-code-annotation="2"><span class="math inline">\(P(X &gt; 5)\)</span>: the proportion of waits longer than 5 minutes.</span>
+<span data-code-cell="annotated-cell-19" data-code-lines="3" data-code-annotation="2"><span class="math inline">\(P(X &gt; 5)\)</span>: the proportion of waits longer than 5 minutes.</span>
 </dd>
-<dt data-target-cell="annotated-cell-24" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-19" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-24" data-code-lines="4" data-code-annotation="3"><span class="math inline">\(P(X &gt; 3 + 5 \mid X &gt; 3) = P(X &gt; 8) / P(X &gt; 3)\)</span>, the same conditional probability recipe as Lesson 9.</span>
+<span data-code-cell="annotated-cell-19" data-code-lines="4" data-code-annotation="3"><span class="math inline">\(P(X &gt; 3 + 5 \mid X &gt; 3) = P(X &gt; 8) / P(X &gt; 3)\)</span>, the same conditional probability recipe as Lesson 9.</span>
 </dd>
 </dl>
 </div>
@@ -1005,25 +1006,6 @@ F_X(x) = \left\{
 </ul></li>
 </ul>
 </section>
-<section id="waiting-for-4-buses" class="slide level2">
-<h2>Waiting for 4 buses</h2>
-<div class="columns">
-<div class="column" style="width:40%;">
-<div class="example">
-<div class="ex-title">
-<p>Example 3</p>
-</div>
-<div class="ex-cont">
-<p>We are at the bus stop, measuring the time until 4 buses arrive. The bus comes every 10 minutes on average, so <span class="math inline">\(X \sim \text{Gamma}(r = 4, \lambda = 1/10)\)</span>, with <span class="math inline">\(X\)</span> in minutes.</p>
-<ol type="a">
-<li><p>What is the probability that the 4 buses arrive in the next 50 minutes?</p></li>
-<li><p>Find the time <span class="math inline">\(t\)</span> where the probability of the 4 buses arriving at <span class="math inline">\(t\)</span> or earlier is 0.35. (No closed form: use R)</p></li>
-<li><p>What is the probability that the 4 buses arrive between 30 and 50 minutes?</p></li>
-</ol>
-</div>
-</div>
-</div></div>
-</section>
 <section id="gamma-distribution-r-commands" class="slide level2">
 <h2>Gamma distribution: R commands</h2>
 <p>R commands with their <span style="color:#BF396F">input</span> and <span style="color:#367B79">output</span>:</p>
@@ -1067,20 +1049,34 @@ F_X(x) = \left\{
 <li>Parameters: <code>shape</code> <span class="math inline">\(= r\)</span> and <code>rate</code> <span class="math inline">\(= \lambda\)</span> (or <code>scale</code> <span class="math inline">\(= \beta = 1/\lambda\)</span>)</li>
 </ul>
 </section>
-<section id="waiting-for-4-buses-check-in-r" class="slide level2">
-<h2>Waiting for 4 buses: check in R</h2>
-<ul>
-<li><strong>Part a:</strong> If we want to know the probability that the 4 buses arrive in the next 50 minutes:</li>
-</ul>
+<section id="waiting-for-4-buses" class="slide level2">
+<h2>Waiting for 4 buses</h2>
 <div class="columns">
-<div class="column">
+<div class="column" style="width:36%;">
+<div class="example">
+<div class="ex-title">
+<p>Example 3</p>
+</div>
+<div class="ex-cont">
+<p>We are at the bus stop, measuring the time until 4 buses arrive. The bus comes every 10 minutes on average, so <span class="math inline">\(X \sim \text{Gamma}(r = 4, \lambda = 1/10)\)</span>, with <span class="math inline">\(X\)</span> in minutes.</p>
+<ol type="a">
+<li><p>What is the probability that the 4 buses arrive in the next 50 minutes?</p></li>
+<li><p>Find the time <span class="math inline">\(t\)</span> where the probability of the 4 buses arriving at <span class="math inline">\(t\)</span> or earlier is 0.35.</p></li>
+<li><p>What is the probability that the 4 buses arrive between 30 and 50 minutes?</p></li>
+</ol>
+</div>
+</div>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:62%;">
+<p><strong>a.</strong> <span class="math inline">\(P(X \leq 50)\)</span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-26"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="1">1</button><span id="annotated-cell-26-1" class="code-annotation-target"><a href="#annotated-cell-26-1" aria-label="1"></a><span class="fu">pgamma</span>(<span class="at">q =</span> <span class="dv">50</span>, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>, <span class="at">shape =</span> <span class="dv">4</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-21"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="1">1</button><span id="annotated-cell-21-1" class="code-annotation-target"><a href="#annotated-cell-21-1" aria-label="1"></a><span class="fu">pgamma</span>(<span class="at">q =</span> <span class="dv">50</span>, <span class="at">shape =</span> <span class="dv">4</span>, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-26" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-21" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-26" data-code-lines="1" data-code-annotation="1"><code>rate</code> is <span class="math inline">\(\lambda\)</span> and <code>shape</code> is <span class="math inline">\(r\)</span>.</span>
+<span data-code-cell="annotated-cell-21" data-code-lines="1" data-code-annotation="1"><code>shape</code> is <span class="math inline">\(r\)</span> and <code>rate</code> is <span class="math inline">\(\lambda\)</span>. Same answer with <code>scale = 10</code> in place of <code>rate = 1/10</code>, since <code>scale</code> is <span class="math inline">\(\beta = 1/\lambda\)</span>.</span>
 </dd>
 </dl>
 </div>
@@ -1088,32 +1084,15 @@ F_X(x) = \left\{
 <pre><code>[1] 0.7349741</code></pre>
 </div>
 </div>
-</div><div class="column">
+<p>&nbsp;</p>
+<p><strong>b.</strong> Find <span class="math inline">\(t\)</span> with <span class="math inline">\(P(X \leq t) = 0.35\)</span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-28"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-28" data-target-annotation="1">1</button><span id="annotated-cell-28-1" class="code-annotation-target"><a href="#annotated-cell-28-1" aria-label="1"></a><span class="fu">pgamma</span>(<span class="at">q =</span> <span class="dv">50</span>, <span class="at">scale =</span> <span class="dv">10</span>, <span class="at">shape =</span> <span class="dv">4</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-22"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="1">1</button><span id="annotated-cell-22-1" class="code-annotation-target"><a href="#annotated-cell-22-1" aria-label="1"></a><span class="fu">qgamma</span>(<span class="at">p =</span> <span class="fl">0.35</span>, <span class="at">shape =</span> <span class="dv">4</span>, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-28" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-28" data-code-lines="1" data-code-annotation="1">Same answer: <code>scale</code> is <span class="math inline">\(\beta = 1/\lambda\)</span>, so <code>scale = 10</code> is the same as <code>rate = 1/10</code>.</span>
-</dd>
-</dl>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7349741</code></pre>
-</div>
-</div>
-</div></div>
-<ul>
-<li><strong>Part b:</strong> If we want to know the time, say <span class="math inline">\(t\)</span>, where the probability of the 4 buses arriving at <span class="math inline">\(t\)</span> or earlier is 0.35:</li>
-</ul>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1">1</button><span id="annotated-cell-7-1" class="code-annotation-target"><a href="#annotated-cell-7-1" aria-label="1"></a><span class="fu">qgamma</span>(<span class="at">p =</span> <span class="fl">0.35</span>, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>, <span class="at">shape =</span> <span class="dv">4</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-annotation">
-<dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="1" data-code-annotation="1"><code>qgamma()</code> is the inverse CDF, like <code>qunif()</code> and <code>qexp()</code>.</span>
+<span data-code-cell="annotated-cell-22" data-code-lines="1" data-code-annotation="1"><code>qgamma()</code> is the inverse CDF, like <code>qunif()</code> and <code>qexp()</code>. There is no closed form for <span class="math inline">\(t\)</span>, so R does the work.</span>
 </dd>
 </dl>
 </div>
@@ -1121,16 +1100,16 @@ F_X(x) = \left\{
 <pre><code>[1] 29.87645</code></pre>
 </div>
 </div>
-<ul>
-<li><strong>Part c:</strong> If we want to know the probability that the 4 buses arrive between 30 and 50 minutes:</li>
-</ul>
+<p>&nbsp;</p>
+<p><strong>c.</strong> <span class="math inline">\(P(30 \leq X \leq 50)\)</span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-8"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1">1</button><span id="annotated-cell-8-1" class="code-annotation-target"><a href="#annotated-cell-8-1" aria-label="1"></a><span class="fu">pgamma</span>(<span class="at">q =</span> <span class="dv">50</span>, <span class="at">scale =</span> <span class="dv">10</span>, <span class="at">shape =</span> <span class="dv">4</span>) <span class="sc">-</span> <span class="fu">pgamma</span>(<span class="at">q =</span> <span class="dv">30</span>, <span class="at">scale =</span> <span class="dv">10</span>, <span class="at">shape =</span> <span class="dv">4</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-23"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-23" data-target-annotation="1">1</button><span id="annotated-cell-23-1" class="code-annotation-target"><a href="#annotated-cell-23-1" aria-label="1"></a><span class="fu">pgamma</span>(<span class="at">q =</span> <span class="dv">50</span>, <span class="at">shape =</span> <span class="dv">4</span>, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>) <span class="sc">-</span></span>
+<span id="annotated-cell-23-2"><a href="#annotated-cell-23-2" aria-label="2"></a>  <span class="fu">pgamma</span>(<span class="at">q =</span> <span class="dv">30</span>, <span class="at">shape =</span> <span class="dv">4</span>, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-23" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="1" data-code-annotation="1"><span class="math inline">\(F_X(50) - F_X(30)\)</span>, with the CDF <code>pgamma()</code>.</span>
+<span data-code-cell="annotated-cell-23" data-code-lines="1,2" data-code-annotation="1"><span class="math inline">\(F_X(50) - F_X(30)\)</span>, with the CDF <code>pgamma()</code>.</span>
 </dd>
 </dl>
 </div>
@@ -1138,6 +1117,7 @@ F_X(x) = \left\{
 <pre><code>[1] 0.382206</code></pre>
 </div>
 </div>
+</div></div>
 </section>
 <section id="remarks" class="slide level2">
 <h2>Remarks</h2>
@@ -1189,51 +1169,51 @@ F_X(x) = \left\{
 <div class="columns">
 <div class="column" style="width:62%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-32"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="1">1</button><span id="annotated-cell-32-1" class="code-annotation-target"><a href="#annotated-cell-32-1" aria-label="1"></a>n_buses <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="annotated-cell-32-2"><a href="#annotated-cell-32-2" aria-label="2"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="2">2</button><span id="annotated-cell-32-3" class="code-annotation-target"><a href="#annotated-cell-32-3" aria-label="3"></a>gamma_sims <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-32-4"><a href="#annotated-cell-32-4" aria-label="4"></a>  <span class="fu">mutate</span>(<span class="at">X =</span> <span class="fu">rgamma</span>(<span class="fu">n</span>(), <span class="at">shape =</span> n_buses, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>))</span>
-<span id="annotated-cell-32-5"><a href="#annotated-cell-32-5" aria-label="5"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="3">3</button><span id="annotated-cell-32-6" class="code-annotation-target"><a href="#annotated-cell-32-6" aria-label="6"></a>waits <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps, <span class="at">bus =</span> <span class="dv">1</span><span class="sc">:</span>n_buses) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-32-7"><a href="#annotated-cell-32-7" aria-label="7"></a>  <span class="fu">mutate</span>(<span class="at">wait =</span> <span class="fu">rexp</span>(<span class="fu">n</span>(), <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>))</span>
-<span id="annotated-cell-32-8"><a href="#annotated-cell-32-8" aria-label="8"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="4">4</button><span id="annotated-cell-32-9" class="code-annotation-target"><a href="#annotated-cell-32-9" aria-label="9"></a>sum_sims <span class="ot">&lt;-</span> waits <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-32-10"><a href="#annotated-cell-32-10" aria-label="10"></a>  <span class="fu">group_by</span>(sim) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-32-11"><a href="#annotated-cell-32-11" aria-label="11"></a>  <span class="fu">summarise</span>(<span class="at">Y =</span> <span class="fu">sum</span>(wait))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-27"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-27" data-target-annotation="1">1</button><span id="annotated-cell-27-1" class="code-annotation-target"><a href="#annotated-cell-27-1" aria-label="1"></a>n_buses <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="annotated-cell-27-2"><a href="#annotated-cell-27-2" aria-label="2"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-27" data-target-annotation="2">2</button><span id="annotated-cell-27-3" class="code-annotation-target"><a href="#annotated-cell-27-3" aria-label="3"></a>gamma_sims <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-27-4"><a href="#annotated-cell-27-4" aria-label="4"></a>  <span class="fu">mutate</span>(<span class="at">X =</span> <span class="fu">rgamma</span>(<span class="fu">n</span>(), <span class="at">shape =</span> n_buses, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>))</span>
+<span id="annotated-cell-27-5"><a href="#annotated-cell-27-5" aria-label="5"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-27" data-target-annotation="3">3</button><span id="annotated-cell-27-6" class="code-annotation-target"><a href="#annotated-cell-27-6" aria-label="6"></a>waits <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps, <span class="at">bus =</span> <span class="dv">1</span><span class="sc">:</span>n_buses) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-27-7"><a href="#annotated-cell-27-7" aria-label="7"></a>  <span class="fu">mutate</span>(<span class="at">wait =</span> <span class="fu">rexp</span>(<span class="fu">n</span>(), <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>))</span>
+<span id="annotated-cell-27-8"><a href="#annotated-cell-27-8" aria-label="8"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-27" data-target-annotation="4">4</button><span id="annotated-cell-27-9" class="code-annotation-target"><a href="#annotated-cell-27-9" aria-label="9"></a>sum_sims <span class="ot">&lt;-</span> waits <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-27-10"><a href="#annotated-cell-27-10" aria-label="10"></a>  <span class="fu">group_by</span>(sim) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-27-11"><a href="#annotated-cell-27-11" aria-label="11"></a>  <span class="fu">summarise</span>(<span class="at">Y =</span> <span class="fu">sum</span>(wait))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-32" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-27" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-32" data-code-lines="1" data-code-annotation="1">Save the number of buses as <code>n_buses</code>, so it is easy to change later.</span>
+<span data-code-cell="annotated-cell-27" data-code-lines="1" data-code-annotation="1">Save the number of buses as <code>n_buses</code>, so it is easy to change later.</span>
 </dd>
-<dt data-target-cell="annotated-cell-32" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-27" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-32" data-code-lines="3,4" data-code-annotation="2"><code>rgamma()</code> draws the time until the 4th bus directly: <code>shape</code> is <span class="math inline">\(r\)</span> and <code>rate</code> is <span class="math inline">\(\lambda\)</span>.</span>
+<span data-code-cell="annotated-cell-27" data-code-lines="3,4" data-code-annotation="2"><code>rgamma()</code> draws the time until the 4th bus directly: <code>shape</code> is <span class="math inline">\(r\)</span> and <code>rate</code> is <span class="math inline">\(\lambda\)</span>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-32" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-27" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-32" data-code-lines="6,7" data-code-annotation="3">The long way: one row for every bus in every simulation, each with its own wait from <code>rexp()</code>.</span>
+<span data-code-cell="annotated-cell-27" data-code-lines="6,7" data-code-annotation="3">The long way: one row for every bus in every simulation, each with its own wait from <code>rexp()</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-32" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-27" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-32" data-code-lines="9,10,11" data-code-annotation="4">For each simulation, add up the 4 waits. If the gamma really is a sum of exponentials, <code>Y</code> should behave like <code>X</code>.</span>
+<span data-code-cell="annotated-cell-27" data-code-lines="9,10,11" data-code-annotation="4">For each simulation, add up the 4 waits. If the gamma really is a sum of exponentials, <code>Y</code> should behave like <code>X</code>.</span>
 </dd>
 </dl>
 </div>
 </div>
 </div><div class="column" style="width:38%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-33"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="5">5</button><span id="annotated-cell-33-1" class="code-annotation-target"><a href="#annotated-cell-33-1" aria-label="1"></a><span class="fu">head</span>(gamma_sims)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="6">6</button><span id="annotated-cell-33-2" class="code-annotation-target"><a href="#annotated-cell-33-2" aria-label="2"></a><span class="fu">head</span>(sum_sims)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-28"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-28" data-target-annotation="5">5</button><span id="annotated-cell-28-1" class="code-annotation-target"><a href="#annotated-cell-28-1" aria-label="1"></a><span class="fu">head</span>(gamma_sims)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-28" data-target-annotation="6">6</button><span id="annotated-cell-28-2" class="code-annotation-target"><a href="#annotated-cell-28-2" aria-label="2"></a><span class="fu">head</span>(sum_sims)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-33" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-28" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-33" data-code-lines="1" data-code-annotation="5">The first 6 values of <span class="math inline">\(X\)</span> from <code>rgamma()</code>.</span>
+<span data-code-cell="annotated-cell-28" data-code-lines="1" data-code-annotation="5">The first 6 values of <span class="math inline">\(X\)</span> from <code>rgamma()</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-33" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-28" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-33" data-code-lines="2" data-code-annotation="6">The first 6 sums of 4 exponential waits.</span>
+<span data-code-cell="annotated-cell-28" data-code-lines="2" data-code-annotation="6">The first 6 sums of 4 exponential waits.</span>
 </dd>
 </dl>
 </div>
@@ -1272,36 +1252,36 @@ F_X(x) = \left\{
 <div class="columns">
 <div class="column" style="width:55%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-35"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="1">1</button><span id="annotated-cell-35-1" class="code-annotation-target"><a href="#annotated-cell-35-1" aria-label="1"></a>gamma_sims <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-35-2"><a href="#annotated-cell-35-2" aria-label="2"></a>  <span class="fu">summarise</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="2">2</button><span id="annotated-cell-35-3" class="code-annotation-target"><a href="#annotated-cell-35-3" aria-label="3"></a>    <span class="at">prob_a =</span> <span class="fu">mean</span>(X <span class="sc">&lt;=</span> <span class="dv">50</span>),</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="3">3</button><span id="annotated-cell-35-4" class="code-annotation-target"><a href="#annotated-cell-35-4" aria-label="4"></a>    <span class="at">t_b    =</span> <span class="fu">quantile</span>(X, <span class="fl">0.35</span>),</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="4">4</button><span id="annotated-cell-35-5" class="code-annotation-target"><a href="#annotated-cell-35-5" aria-label="5"></a>    <span class="at">prob_c =</span> <span class="fu">mean</span>(X <span class="sc">&gt;=</span> <span class="dv">30</span> <span class="sc">&amp;</span> X <span class="sc">&lt;=</span> <span class="dv">50</span>)</span>
-<span id="annotated-cell-35-6"><a href="#annotated-cell-35-6" aria-label="6"></a>  )</span>
-<span id="annotated-cell-35-7"><a href="#annotated-cell-35-7" aria-label="7"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="5">5</button><span id="annotated-cell-35-8" class="code-annotation-target"><a href="#annotated-cell-35-8" aria-label="8"></a>sum_sims <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-35-9"><a href="#annotated-cell-35-9" aria-label="9"></a>  <span class="fu">summarise</span>(<span class="at">average =</span> <span class="fu">mean</span>(Y), <span class="at">std_dev =</span> <span class="fu">sd</span>(Y))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-30"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="1">1</button><span id="annotated-cell-30-1" class="code-annotation-target"><a href="#annotated-cell-30-1" aria-label="1"></a>gamma_sims <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-30-2"><a href="#annotated-cell-30-2" aria-label="2"></a>  <span class="fu">summarise</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="2">2</button><span id="annotated-cell-30-3" class="code-annotation-target"><a href="#annotated-cell-30-3" aria-label="3"></a>    <span class="at">prob_a =</span> <span class="fu">mean</span>(X <span class="sc">&lt;=</span> <span class="dv">50</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="3">3</button><span id="annotated-cell-30-4" class="code-annotation-target"><a href="#annotated-cell-30-4" aria-label="4"></a>    <span class="at">t_b    =</span> <span class="fu">quantile</span>(X, <span class="fl">0.35</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="4">4</button><span id="annotated-cell-30-5" class="code-annotation-target"><a href="#annotated-cell-30-5" aria-label="5"></a>    <span class="at">prob_c =</span> <span class="fu">mean</span>(X <span class="sc">&gt;=</span> <span class="dv">30</span> <span class="sc">&amp;</span> X <span class="sc">&lt;=</span> <span class="dv">50</span>)</span>
+<span id="annotated-cell-30-6"><a href="#annotated-cell-30-6" aria-label="6"></a>  )</span>
+<span id="annotated-cell-30-7"><a href="#annotated-cell-30-7" aria-label="7"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="5">5</button><span id="annotated-cell-30-8" class="code-annotation-target"><a href="#annotated-cell-30-8" aria-label="8"></a>sum_sims <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-30-9"><a href="#annotated-cell-30-9" aria-label="9"></a>  <span class="fu">summarise</span>(<span class="at">average =</span> <span class="fu">mean</span>(Y), <span class="at">std_dev =</span> <span class="fu">sd</span>(Y))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-35" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-30" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-35" data-code-lines="1,2" data-code-annotation="1">One row of summaries of the 10,000 values of <span class="math inline">\(X\)</span> from <code>rgamma()</code>.</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="1,2" data-code-annotation="1">One row of summaries of the 10,000 values of <span class="math inline">\(X\)</span> from <code>rgamma()</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-35" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-30" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-35" data-code-lines="3" data-code-annotation="2">Example 3, part a: compare with <code>pgamma()</code> <span class="math inline">\(\approx 0.7350\)</span>.</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="3" data-code-annotation="2">Example 3, part a: compare with <code>pgamma()</code> <span class="math inline">\(\approx 0.7350\)</span>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-35" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-30" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-35" data-code-lines="4" data-code-annotation="3">Part b: compare with <code>qgamma()</code> <span class="math inline">\(\approx 29.88\)</span>.</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="4" data-code-annotation="3">Part b: compare with <code>qgamma()</code> <span class="math inline">\(\approx 29.88\)</span>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-35" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-30" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-35" data-code-lines="5" data-code-annotation="4">Part c: compare with <span class="math inline">\(\approx 0.3822\)</span>.</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="5" data-code-annotation="4">Part c: compare with <span class="math inline">\(\approx 0.3822\)</span>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-35" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-30" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-35" data-code-lines="8,9" data-code-annotation="5">The sums of 4 exponential waits: compare with <span class="math inline">\(\text{E}(X) = r/\lambda = 40\)</span> and <span class="math inline">\(SD(X) = \sqrt{r/\lambda^2} = 20\)</span>. They behave like the gamma!</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="8,9" data-code-annotation="5">The sums of 4 exponential waits: compare with <span class="math inline">\(\text{E}(X) = r/\lambda = 40\)</span> and <span class="math inline">\(SD(X) = \sqrt{r/\lambda^2} = 20\)</span>. They behave like the gamma!</span>
 </dd>
 </dl>
 </div>
@@ -1330,41 +1310,41 @@ F_X(x) = \left\{
 <div class="cell">
 <details class="code-fold">
 <summary>Plot code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-37"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="4">4</button><span id="annotated-cell-37-1" class="code-annotation-target"><a href="#annotated-cell-37-1" aria-label="1"></a><span class="fu">ggplot</span>(sum_sims, <span class="fu">aes</span>(<span class="at">x =</span> Y)) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="5">5</button><span id="annotated-cell-37-2" class="code-annotation-target"><a href="#annotated-cell-37-2" aria-label="2"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)),</span>
-<span id="annotated-cell-37-3"><a href="#annotated-cell-37-3" aria-label="3"></a>                 <span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">boundary =</span> <span class="dv">0</span>,</span>
-<span id="annotated-cell-37-4"><a href="#annotated-cell-37-4" aria-label="4"></a>                 <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="6">6</button><span id="annotated-cell-37-5" class="code-annotation-target"><a href="#annotated-cell-37-5" aria-label="5"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">dgamma</span>(Y, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>, <span class="at">shape =</span> n_buses)),</span>
-<span id="annotated-cell-37-6"><a href="#annotated-cell-37-6" aria-label="6"></a>            <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-37" data-target-annotation="7">7</button><span id="annotated-cell-37-7" class="code-annotation-target"><a href="#annotated-cell-37-7" aria-label="7"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Sum of 4 exponential waits (bars)</span><span class="sc">\n</span><span class="st">and Gamma(4, 1/10) pdf (red)"</span>,</span>
-<span id="annotated-cell-37-8"><a href="#annotated-cell-37-8" aria-label="8"></a>       <span class="at">x =</span> <span class="st">"Minutes until the 4th bus"</span>,</span>
-<span id="annotated-cell-37-9"><a href="#annotated-cell-37-9" aria-label="9"></a>       <span class="at">y =</span> <span class="st">"Density"</span>) <span class="sc">+</span></span>
-<span id="annotated-cell-37-10"><a href="#annotated-cell-37-10" aria-label="10"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">22</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-32"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="4">4</button><span id="annotated-cell-32-1" class="code-annotation-target"><a href="#annotated-cell-32-1" aria-label="1"></a><span class="fu">ggplot</span>(sum_sims, <span class="fu">aes</span>(<span class="at">x =</span> Y)) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="5">5</button><span id="annotated-cell-32-2" class="code-annotation-target"><a href="#annotated-cell-32-2" aria-label="2"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)),</span>
+<span id="annotated-cell-32-3"><a href="#annotated-cell-32-3" aria-label="3"></a>                 <span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">boundary =</span> <span class="dv">0</span>,</span>
+<span id="annotated-cell-32-4"><a href="#annotated-cell-32-4" aria-label="4"></a>                 <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="6">6</button><span id="annotated-cell-32-5" class="code-annotation-target"><a href="#annotated-cell-32-5" aria-label="5"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">dgamma</span>(Y, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>, <span class="at">shape =</span> n_buses)),</span>
+<span id="annotated-cell-32-6"><a href="#annotated-cell-32-6" aria-label="6"></a>            <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-32" data-target-annotation="7">7</button><span id="annotated-cell-32-7" class="code-annotation-target"><a href="#annotated-cell-32-7" aria-label="7"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Sum of 4 exponential waits (bars)</span><span class="sc">\n</span><span class="st">and Gamma(4, 1/10) pdf (red)"</span>,</span>
+<span id="annotated-cell-32-8"><a href="#annotated-cell-32-8" aria-label="8"></a>       <span class="at">x =</span> <span class="st">"Minutes until the 4th bus"</span>,</span>
+<span id="annotated-cell-32-9"><a href="#annotated-cell-32-9" aria-label="9"></a>       <span class="at">y =</span> <span class="st">"Density"</span>) <span class="sc">+</span></span>
+<span id="annotated-cell-32-10"><a href="#annotated-cell-32-10" aria-label="10"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">22</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-37" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-32" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-37" data-code-lines="1" data-code-annotation="4">Start with the 10,000 sums of 4 exponential waits, <span class="math inline">\(Y\)</span>.</span>
+<span data-code-cell="annotated-cell-32" data-code-lines="1" data-code-annotation="4">Start with the 10,000 sums of 4 exponential waits, <span class="math inline">\(Y\)</span>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-37" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-32" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-37" data-code-lines="2,3,4" data-code-annotation="5">A histogram scaled so the total area is 1, like a pdf (Lesson 8).</span>
+<span data-code-cell="annotated-cell-32" data-code-lines="2,3,4" data-code-annotation="5">A histogram scaled so the total area is 1, like a pdf (Lesson 8).</span>
 </dd>
-<dt data-target-cell="annotated-cell-37" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-32" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-37" data-code-lines="5,6" data-code-annotation="6">The exact pdf: <code>dgamma()</code> gives <span class="math inline">\(f_X(x)\)</span>. It is a density, not <span class="math inline">\(P(X = x)\)</span>.</span>
+<span data-code-cell="annotated-cell-32" data-code-lines="5,6" data-code-annotation="6">The exact pdf: <code>dgamma()</code> gives <span class="math inline">\(f_X(x)\)</span>. It is a density, not <span class="math inline">\(P(X = x)\)</span>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-37" data-target-annotation="7">7</dt>
+<dt data-target-cell="annotated-cell-32" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-37" data-code-lines="7,8,9,10" data-code-annotation="7">Add a title and axis labels, with a clean theme and larger text.</span>
+<span data-code-cell="annotated-cell-32" data-code-lines="7,8,9,10" data-code-annotation="7">Add a title and axis labels, with a clean theme and larger text.</span>
 </dd>
 </dl>
 </div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="13_Cont_RVs_files/figure-revealjs/unnamed-chunk-20-1.png" width="864"></p>
+<p><img data-src="13_Cont_RVs_files/figure-revealjs/unnamed-chunk-19-1.png" width="864"></p>
 </figure>
 </div>
 </div>
@@ -1429,25 +1409,6 @@ F_X(x) = \left\{
 <li>No closed-form CDF: we use R (or a table) to find probabilities</li>
 </ul>
 </section>
-<section id="high-temperature" class="slide level2">
-<h2>High temperature</h2>
-<div class="columns">
-<div class="column" style="width:40%;">
-<div class="example">
-<div class="ex-title">
-<p>Example 4</p>
-</div>
-<div class="ex-cont">
-<p>We are measuring the high temperature today. The average high temperature on this day across many, many years is 50 degrees with a standard deviation of 4 degrees, so <span class="math inline">\(X \sim \text{Normal}(50, 4^2)\)</span>.</p>
-<ol type="a">
-<li><p>What is the probability that the high temperature is below 45 degrees?</p></li>
-<li><p>Find the temperature <span class="math inline">\(t\)</span> where the probability that the temperature is at <span class="math inline">\(t\)</span> or lower is 0.35.</p></li>
-<li><p>What is the probability that the temperature is between 45 and 50 degrees?</p></li>
-</ol>
-</div>
-</div>
-</div></div>
-</section>
 <section id="normal-distribution-r-commands" class="slide level2">
 <h2>Normal distribution: R commands</h2>
 <p>R commands with their <span style="color:#BF396F">input</span> and <span style="color:#367B79">output</span>:</p>
@@ -1491,18 +1452,34 @@ F_X(x) = \left\{
 <li>Parameters: <code>mean</code> <span class="math inline">\(= \mu\)</span> and <code>sd</code> <span class="math inline">\(= \sigma\)</span> (the standard deviation, <strong>not</strong> the variance <span class="math inline">\(\sigma^2\)</span>)</li>
 </ul>
 </section>
-<section id="high-temperature-check-in-r" class="slide level2">
-<h2>High temperature: check in R</h2>
-<ul>
-<li><strong>Part a:</strong> If we want to know the probability that the high temperature is below 45 degrees:</li>
-</ul>
+<section id="high-temperature" class="slide level2">
+<h2>High temperature</h2>
+<div class="columns">
+<div class="column" style="width:36%;">
+<div class="example">
+<div class="ex-title">
+<p>Example 4</p>
+</div>
+<div class="ex-cont">
+<p>We are measuring the high temperature today. The average high temperature on this day across many, many years is 50 degrees with a standard deviation of 4 degrees, so <span class="math inline">\(X \sim \text{Normal}(50, 4^2)\)</span>.</p>
+<ol type="a">
+<li><p>What is the probability that the high temperature is below 45 degrees?</p></li>
+<li><p>Find the temperature <span class="math inline">\(t\)</span> where the probability that the temperature is at <span class="math inline">\(t\)</span> or lower is 0.35.</p></li>
+<li><p>What is the probability that the temperature is between 45 and 50 degrees?</p></li>
+</ol>
+</div>
+</div>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:62%;">
+<p><strong>a.</strong> <span class="math inline">\(P(X &lt; 45)\)</span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-9"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1">1</button><span id="annotated-cell-9-1" class="code-annotation-target"><a href="#annotated-cell-9-1" aria-label="1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">45</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">4</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-33"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="1">1</button><span id="annotated-cell-33-1" class="code-annotation-target"><a href="#annotated-cell-33-1" aria-label="1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">45</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">4</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-33" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-lines="1" data-code-annotation="1"><code>pnorm()</code> is the CDF, <span class="math inline">\(P(X \leq 45)\)</span>. Note <code>sd = 4</code>, not the variance 16.</span>
+<span data-code-cell="annotated-cell-33" data-code-lines="1" data-code-annotation="1"><code>pnorm()</code> is the CDF. Note <code>sd = 4</code>, not the variance 16. For a continuous RV, <span class="math inline">\(P(X &lt; 45) = P(X \leq 45)\)</span>.</span>
 </dd>
 </dl>
 </div>
@@ -1510,16 +1487,15 @@ F_X(x) = \left\{
 <pre><code>[1] 0.1056498</code></pre>
 </div>
 </div>
-<ul>
-<li><strong>Part b:</strong> If we want to know the temperature, say <span class="math inline">\(t\)</span>, where the probability that the temperature is at <span class="math inline">\(t\)</span> or lower is 0.35 (inverse CDF):</li>
-</ul>
+<p>&nbsp;</p>
+<p><strong>b.</strong> Find <span class="math inline">\(t\)</span> with <span class="math inline">\(P(X \leq t) = 0.35\)</span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-10"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1">1</button><span id="annotated-cell-10-1" class="code-annotation-target"><a href="#annotated-cell-10-1" aria-label="1"></a><span class="fu">qnorm</span>(<span class="at">p =</span> <span class="fl">0.35</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">4</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-34"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-34" data-target-annotation="1">1</button><span id="annotated-cell-34-1" class="code-annotation-target"><a href="#annotated-cell-34-1" aria-label="1"></a><span class="fu">qnorm</span>(<span class="at">p =</span> <span class="fl">0.35</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">4</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-34" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="1" data-code-annotation="1"><code>qnorm()</code> is the inverse CDF: it finds <span class="math inline">\(t\)</span> with <span class="math inline">\(P(X \leq t) = 0.35\)</span>.</span>
+<span data-code-cell="annotated-cell-34" data-code-lines="1" data-code-annotation="1"><code>qnorm()</code> is the inverse CDF: it finds <span class="math inline">\(t\)</span> with <span class="math inline">\(P(X \leq t) = 0.35\)</span>.</span>
 </dd>
 </dl>
 </div>
@@ -1527,16 +1503,16 @@ F_X(x) = \left\{
 <pre><code>[1] 48.45872</code></pre>
 </div>
 </div>
-<ul>
-<li><strong>Part c:</strong> If we want to know the probability that the temperature is between 45 and 50 degrees:</li>
-</ul>
+<p>&nbsp;</p>
+<p><strong>c.</strong> <span class="math inline">\(P(45 \leq X \leq 50)\)</span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-11"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1">1</button><span id="annotated-cell-11-1" class="code-annotation-target"><a href="#annotated-cell-11-1" aria-label="1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">4</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">45</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">4</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-35"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-35" data-target-annotation="1">1</button><span id="annotated-cell-35-1" class="code-annotation-target"><a href="#annotated-cell-35-1" aria-label="1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">4</span>) <span class="sc">-</span></span>
+<span id="annotated-cell-35-2"><a href="#annotated-cell-35-2" aria-label="2"></a>  <span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">45</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">4</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-35" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-11" data-code-lines="1" data-code-annotation="1"><span class="math inline">\(P(45 \leq X \leq 50) = F_X(50) - F_X(45)\)</span>.</span>
+<span data-code-cell="annotated-cell-35" data-code-lines="1,2" data-code-annotation="1"><span class="math inline">\(P(45 \leq X \leq 50) = F_X(50) - F_X(45)\)</span>.</span>
 </dd>
 </dl>
 </div>
@@ -1544,6 +1520,7 @@ F_X(x) = \left\{
 <pre><code>[1] 0.3943502</code></pre>
 </div>
 </div>
+</div></div>
 </section>
 <section id="high-temperature-simulate-it" class="slide level2">
 <h2>High temperature: simulate it</h2>
@@ -1558,19 +1535,19 @@ F_X(x) = \left\{
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-41"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-41" data-target-annotation="1">1</button><span id="annotated-cell-41-1" class="code-annotation-target"><a href="#annotated-cell-41-1" aria-label="1"></a>temp_sims <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-41-2"><a href="#annotated-cell-41-2" aria-label="2"></a>  <span class="fu">mutate</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-41" data-target-annotation="2">2</button><span id="annotated-cell-41-3" class="code-annotation-target"><a href="#annotated-cell-41-3" aria-label="3"></a>    <span class="at">X =</span> <span class="fu">rnorm</span>(<span class="fu">n</span>(), <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">4</span>)</span>
-<span id="annotated-cell-41-4"><a href="#annotated-cell-41-4" aria-label="4"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-39"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="1">1</button><span id="annotated-cell-39-1" class="code-annotation-target"><a href="#annotated-cell-39-1" aria-label="1"></a>temp_sims <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-39-2"><a href="#annotated-cell-39-2" aria-label="2"></a>  <span class="fu">mutate</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-39" data-target-annotation="2">2</button><span id="annotated-cell-39-3" class="code-annotation-target"><a href="#annotated-cell-39-3" aria-label="3"></a>    <span class="at">X =</span> <span class="fu">rnorm</span>(<span class="fu">n</span>(), <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">4</span>)</span>
+<span id="annotated-cell-39-4"><a href="#annotated-cell-39-4" aria-label="4"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-41" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-39" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-41" data-code-lines="1" data-code-annotation="1">One row per simulated day. <code>reps</code> is still 10,000.</span>
+<span data-code-cell="annotated-cell-39" data-code-lines="1" data-code-annotation="1">One row per simulated day. <code>reps</code> is still 10,000.</span>
 </dd>
-<dt data-target-cell="annotated-cell-41" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-39" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-41" data-code-lines="3" data-code-annotation="2"><code>rnorm()</code> draws one high temperature for every row. <code>mean</code> is <span class="math inline">\(\mu = 50\)</span> and <code>sd</code> is <span class="math inline">\(\sigma = 4\)</span>.</span>
+<span data-code-cell="annotated-cell-39" data-code-lines="3" data-code-annotation="2"><code>rnorm()</code> draws one high temperature for every row. <code>mean</code> is <span class="math inline">\(\mu = 50\)</span> and <code>sd</code> is <span class="math inline">\(\sigma = 4\)</span>.</span>
 </dd>
 </dl>
 </div>
@@ -1579,29 +1556,29 @@ F_X(x) = \left\{
 
 </div><div class="column" style="width:44%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-42"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-42" data-target-annotation="1">1</button><span id="annotated-cell-42-1" class="code-annotation-target"><a href="#annotated-cell-42-1" aria-label="1"></a>temp_sims <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-42-2"><a href="#annotated-cell-42-2" aria-label="2"></a>  <span class="fu">summarise</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-42" data-target-annotation="2">2</button><span id="annotated-cell-42-3" class="code-annotation-target"><a href="#annotated-cell-42-3" aria-label="3"></a>    <span class="at">prob_a =</span> <span class="fu">mean</span>(X <span class="sc">&lt;</span> <span class="dv">45</span>),</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-42" data-target-annotation="3">3</button><span id="annotated-cell-42-4" class="code-annotation-target"><a href="#annotated-cell-42-4" aria-label="4"></a>    <span class="at">t_b    =</span> <span class="fu">quantile</span>(X, <span class="fl">0.35</span>),</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-42" data-target-annotation="4">4</button><span id="annotated-cell-42-5" class="code-annotation-target"><a href="#annotated-cell-42-5" aria-label="5"></a>    <span class="at">prob_c =</span> <span class="fu">mean</span>(X <span class="sc">&gt;=</span> <span class="dv">45</span> <span class="sc">&amp;</span> X <span class="sc">&lt;=</span> <span class="dv">50</span>)</span>
-<span id="annotated-cell-42-6"><a href="#annotated-cell-42-6" aria-label="6"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-40"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-40" data-target-annotation="1">1</button><span id="annotated-cell-40-1" class="code-annotation-target"><a href="#annotated-cell-40-1" aria-label="1"></a>temp_sims <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-40-2"><a href="#annotated-cell-40-2" aria-label="2"></a>  <span class="fu">summarise</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-40" data-target-annotation="2">2</button><span id="annotated-cell-40-3" class="code-annotation-target"><a href="#annotated-cell-40-3" aria-label="3"></a>    <span class="at">prob_a =</span> <span class="fu">mean</span>(X <span class="sc">&lt;</span> <span class="dv">45</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-40" data-target-annotation="3">3</button><span id="annotated-cell-40-4" class="code-annotation-target"><a href="#annotated-cell-40-4" aria-label="4"></a>    <span class="at">t_b    =</span> <span class="fu">quantile</span>(X, <span class="fl">0.35</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-40" data-target-annotation="4">4</button><span id="annotated-cell-40-5" class="code-annotation-target"><a href="#annotated-cell-40-5" aria-label="5"></a>    <span class="at">prob_c =</span> <span class="fu">mean</span>(X <span class="sc">&gt;=</span> <span class="dv">45</span> <span class="sc">&amp;</span> X <span class="sc">&lt;=</span> <span class="dv">50</span>)</span>
+<span id="annotated-cell-40-6"><a href="#annotated-cell-40-6" aria-label="6"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-42" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-40" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-42" data-code-lines="1,2" data-code-annotation="1">One row of summaries for the 10,000 simulated temperatures.</span>
+<span data-code-cell="annotated-cell-40" data-code-lines="1,2" data-code-annotation="1">One row of summaries for the 10,000 simulated temperatures.</span>
 </dd>
-<dt data-target-cell="annotated-cell-42" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-40" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-42" data-code-lines="3" data-code-annotation="2">Part a: compare with <code>pnorm()</code> <span class="math inline">\(\approx 0.1056\)</span>.</span>
+<span data-code-cell="annotated-cell-40" data-code-lines="3" data-code-annotation="2">Part a: compare with <code>pnorm()</code> <span class="math inline">\(\approx 0.1056\)</span>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-42" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-40" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-42" data-code-lines="4" data-code-annotation="3">Part b: the simulation version of <code>qnorm()</code>. Exact: <span class="math inline">\(t \approx 48.46\)</span>.</span>
+<span data-code-cell="annotated-cell-40" data-code-lines="4" data-code-annotation="3">Part b: the simulation version of <code>qnorm()</code>. Exact: <span class="math inline">\(t \approx 48.46\)</span>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-42" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-40" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-42" data-code-lines="5" data-code-annotation="4">Part c: compare with <span class="math inline">\(\approx 0.3944\)</span>.</span>
+<span data-code-cell="annotated-cell-40" data-code-lines="5" data-code-annotation="4">Part c: compare with <span class="math inline">\(\approx 0.3944\)</span>.</span>
 </dd>
 </dl>
 </div>
@@ -1653,7 +1630,7 @@ F_X(x) = \left\{
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="13_Cont_RVs_files/figure-revealjs/unnamed-chunk-26-1.png" width="960"></p>
+<p><img data-src="13_Cont_RVs_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
 </figure>
 </div>
 </div>

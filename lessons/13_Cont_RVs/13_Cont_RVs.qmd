@@ -221,7 +221,7 @@ Example 1
 :::
 
 ::: ex-cont
-People arrive at equally likely times between 10 am and 11 am. Let $X$ = minutes after 10 am, so $X \sim \text{U}[0, 60]$.
+People arrive at equally likely times between 10 am and 11 am. Let $X$ = minutes after 10 am so $X \sim \text{U}[0, 60]$
 
 a.  What is the probability that someone arrives at 10:30 am or earlier?
 
@@ -238,6 +238,8 @@ c.  What is the probability that someone arrives between 10:14 and 10:16 am?
 :::::::: {.column width="62%"}
 **a.** $P(X \leq 30)$
 
+ 
+
 ```{r}
 punif(q = 30, min = 0, max = 60) # <1>
 ```
@@ -246,7 +248,10 @@ punif(q = 30, min = 0, max = 60) # <1>
 
  
 
+
 **b.** Find $t$ with $P(X \leq t) = 0.35$
+
+ 
 
 ```{r}
 qunif(p = 0.35, min = 0, max = 60) # <1>
@@ -256,7 +261,10 @@ qunif(p = 0.35, min = 0, max = 60) # <1>
 
  
 
+
 **c.** $P(14 \leq X \leq 16)$
+
+ 
 
 ```{r}
 punif(q = 16, min = 0, max = 60) - # <1>
@@ -269,8 +277,6 @@ punif(q = 16, min = 0, max = 60) - # <1>
 
 ## Arrival times: simulate it
 
-:::::::: columns
-:::::: {.column width="55%"}
 ::::: example
 ::: ex-title
 Example 1
@@ -280,6 +286,9 @@ Example 1
 Simulate 10,000 arrival times and answer parts a, b, and c.
 :::
 :::::
+
+:::::::: columns
+:::::: {.column width="49%"}
 
 ```{r}
 set.seed(1109) # <1>
@@ -300,13 +309,16 @@ arrival_sims <- tibble(sim = 1:reps) |> # <3>
 ::: {.column width="1%"}
 :::
 
-::: {.column width="44%"}
+::: {.column width="50%"}
 ```{r}
 arrival_sims |> # <1>
   summarise( # <1>
     prob_a = mean(X <= 30), # <2>
+    
     t_b    = quantile(X, 0.35), # <3>
+    
     prob_c = mean(X >= 14 & X <= 16) # <4>
+    
   )
 ```
 
@@ -425,9 +437,12 @@ $$P(X > a +b | X> a) = P(X > b)$$
 
     -   Exponential is *time* until first success
 
--   Relation to the Poisson distribution?
+-   Relation to discrete distributions
 
-    -   When the time between arrivals is exponential, the number of arrivals in a fixed time interval is Poisson with the mean $\lambda$
+    -   Relationship to Geometric: Exponential is the continuous analog to the Geometric distribution
+    -   Relationship to Poisson: When the time between arrivals is exponential, the number of arrivals in a fixed time interval is Poisson with the mean $\lambda$
+    
+
 
 ## Minimum of independent exponential RVs
 

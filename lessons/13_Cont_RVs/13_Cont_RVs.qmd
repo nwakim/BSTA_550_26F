@@ -505,6 +505,8 @@ c.  What is the probability that the bus arrives between 3 and 5 minutes?
 :::::::: {.column width="62%"}
 **a.** $P(X \leq 5)$
 
+ 
+
 ```{r}
 pexp(q = 5, rate = 1/10) # <1>
 ```
@@ -513,7 +515,10 @@ pexp(q = 5, rate = 1/10) # <1>
 
  
 
+
 **b.** Find $t$ with $P(X \leq t) = 0.35$
+
+ 
 
 ```{r}
 qexp(p = 0.35, rate = 1/10) # <1>
@@ -523,7 +528,10 @@ qexp(p = 0.35, rate = 1/10) # <1>
 
  
 
+
 **c.** $P(3 \leq X \leq 5)$
+
+ 
 
 ```{r}
 pexp(q = 5, rate = 1/10) - # <1>
@@ -536,8 +544,6 @@ pexp(q = 5, rate = 1/10) - # <1>
 
 ## Waiting for the bus: simulate it
 
-:::::::: columns
-:::::: {.column width="55%"}
 ::::: example
 ::: ex-title
 Example 2
@@ -547,6 +553,9 @@ Example 2
 Simulate 10,000 waits for the bus and answer parts a, b, and c.
 :::
 :::::
+
+:::::::: columns
+:::::: {.column width="49%"}
 
 ```{r}
 bus_sims <- tibble(sim = 1:reps) |> # <1>
@@ -562,13 +571,16 @@ bus_sims <- tibble(sim = 1:reps) |> # <1>
 ::: {.column width="1%"}
 :::
 
-::: {.column width="44%"}
+::: {.column width="50%"}
 ```{r}
 bus_sims |> # <1>
   summarise( # <1>
     prob_a = mean(X <= 5), # <2>
+    
     t_b    = quantile(X, 0.35), # <3>
+    
     prob_c = mean(X >= 3 & X <= 5) # <4>
+    
   )
 ```
 
@@ -748,6 +760,8 @@ c.  What is the probability that the 4 buses arrive between 30 and 50 minutes?
 :::::::: {.column width="62%"}
 **a.** $P(X \leq 50)$
 
+ 
+
 ```{r}
 pgamma(q = 50, shape = 4, rate = 1/10) # <1>
 ```
@@ -756,7 +770,10 @@ pgamma(q = 50, shape = 4, rate = 1/10) # <1>
 
  
 
+
 **b.** Find $t$ with $P(X \leq t) = 0.35$
+
+ 
 
 ```{r}
 qgamma(p = 0.35, shape = 4, rate = 1/10) # <1>
@@ -766,7 +783,10 @@ qgamma(p = 0.35, shape = 4, rate = 1/10) # <1>
 
  
 
+
 **c.** $P(30 \leq X \leq 50)$
+
+ 
 
 ```{r}
 pgamma(q = 50, shape = 4, rate = 1/10) - # <1>
@@ -776,6 +796,58 @@ pgamma(q = 50, shape = 4, rate = 1/10) - # <1>
 1. $F_X(50) - F_X(30)$, with the CDF `pgamma()`.
 ::::::::
 :::::::::
+
+## Waiting for 4 buses: simulate it
+
+::::: example
+::: ex-title
+Example 3
+:::
+
+::: ex-cont
+Simulate 10,000 waits for 4 buses and answer parts a, b, and c.
+:::
+:::::
+
+:::::::: columns
+:::::: {.column width="49%"}
+
+```{r}
+n_buses <- 4 # <1>
+
+gamma_sims <- tibble(sim = 1:reps) |> # <2>
+  mutate(
+    X = rgamma(n(), shape = n_buses, rate = 1/10) # <3>
+  )
+```
+
+1.  Save the number of buses as `n_buses`, so it is easy to change later.
+2.  One row per simulated wait for 4 buses. `reps` is still 10,000.
+3.  `rgamma()` draws the time until the 4th bus for every row: `shape` is $r$ and `rate` is $\lambda$.
+::::::
+
+::: {.column width="1%"}
+:::
+
+::: {.column width="50%"}
+```{r}
+gamma_sims |> # <1>
+  summarise( # <1>
+    prob_a = mean(X <= 50), # <2>
+    
+    t_b    = quantile(X, 0.35), # <3>
+    
+    prob_c = mean(X >= 30 & X <= 50) # <4>
+    
+  )
+```
+
+1.  One row of summaries for the 10,000 simulated waits.
+2.  Part a: compare with `pgamma()` $\approx 0.7350$.
+3.  Part b: the simulation version of `qgamma()`. Exact: $t \approx 29.88$.
+4.  Part c: compare with $\approx 0.3822$.
+:::
+::::::::
 
 ## Remarks
 
@@ -809,7 +881,7 @@ pgamma(q = 50, shape = 4, rate = 1/10) - # <1>
 :::
 :::::
 
--   Wait for 4 buses, one after another. Simulate the total wait $X \sim \text{Gamma}(4, 1/10)$ directly with `rgamma()`, and as the sum of 4 waits $Y_i \sim \text{Exp}(1/10)$.
+-   Is the gamma really a sum of exponentials? Wait for 4 buses, one after another, with each wait $Y_i \sim \text{Exp}(1/10)$. Is the total wait like the $X \sim \text{Gamma}(4, 1/10)$ from Example 3?
 
 ::::: proof1
 ::: proof-title
@@ -821,35 +893,26 @@ pgamma(q = 50, shape = 4, rate = 1/10) - # <1>
 ::: {.column width="62%"}
 
 ```{r}
-n_buses <- 4 # <1>
+waits <- expand_grid(sim = 1:reps, bus = 1:n_buses) |> # <1>
+  mutate(wait = rexp(n(), rate = 1/10)) # <1>
 
-gamma_sims <- tibble(sim = 1:reps) |> # <2>
-  mutate(X = rgamma(n(), shape = n_buses, rate = 1/10)) # <2>
-
-waits <- expand_grid(sim = 1:reps, bus = 1:n_buses) |> # <3>
-  mutate(wait = rexp(n(), rate = 1/10)) # <3>
-
-sum_sims <- waits |> # <4>
-  group_by(sim) |> # <4>
-  summarise(Y = sum(wait)) # <4>
+sum_sims <- waits |> # <2>
+  group_by(sim) |> # <2>
+  summarise(Y = sum(wait)) # <2>
 ```
 
-1. Save the number of buses as `n_buses`, so it is easy to change later.
-2. `rgamma()` draws the time until the 4th bus directly: `shape` is $r$ and `rate` is $\lambda$.
-3. The long way: one row for every bus in every simulation, each with its own wait from `rexp()`.
-4. For each simulation, add up the 4 waits. If the gamma really is a sum of exponentials, `Y` should behave like `X`.
+1. One row for every bus in every simulation, each with its own wait from `rexp()`. `n_buses` is still 4 from Example 3.
+2. For each simulation, add up the 4 waits. If the gamma really is a sum of exponentials, `Y` should behave like `X`.
 
 :::
 
 ::: {.column width="38%"}
 
 ```{r}
-head(gamma_sims) # <5>
-head(sum_sims) # <6>
+head(sum_sims) # <1>
 ```
 
-5. The first 6 values of $X$ from `rgamma()`.
-6. The first 6 sums of 4 exponential waits.
+1. The first 6 sums of 4 exponential waits.
 
 :::
 :::
@@ -866,22 +929,20 @@ head(sum_sims) # <6>
 ::: {.column width="55%"}
 
 ```{r}
-gamma_sims |> # <1>
+sum_sims |> # <1>
   summarise( # <1>
-    prob_a = mean(X <= 50), # <2>
-    t_b    = quantile(X, 0.35), # <3>
-    prob_c = mean(X >= 30 & X <= 50) # <4>
+    average = mean(Y), # <2>
+    
+    std_dev = sd(Y), # <2>
+    
+    prob_a  = mean(Y <= 50) # <3>
+    
   )
-
-sum_sims |> # <5>
-  summarise(average = mean(Y), std_dev = sd(Y)) # <5>
 ```
 
-1. One row of summaries of the 10,000 values of $X$ from `rgamma()`.
-2. Example 3, part a: compare with `pgamma()` $\approx 0.7350$.
-3. Part b: compare with `qgamma()` $\approx 29.88$.
-4. Part c: compare with $\approx 0.3822$.
-5. The sums of 4 exponential waits: compare with $\text{E}(X) = r/\lambda = 40$ and $SD(X) = \sqrt{r/\lambda^2} = 20$. They behave like the gamma!
+1. One row of summaries of the 10,000 sums of 4 exponential waits.
+2. Compare with $\text{E}(X) = r/\lambda = 40$ and $SD(X) = \sqrt{r/\lambda^2} = 20$.
+3. Compare with Example 3, part a: $P(X \leq 50) \approx 0.7350$. The sums behave like the gamma!
 
 ::::: extra
 ::: ext-title
@@ -889,7 +950,7 @@ sum_sims |> # <5>
 :::
 :::::
 
--   At home: change to `n_buses <- 1`. Do $X$ and $Y$ look like $\text{Exp}(1/10)$, with average 10?
+-   At home: change to `n_buses <- 1`. Does $Y$ look like $\text{Exp}(1/10)$, with average 10?
 
 :::
 
@@ -1022,6 +1083,8 @@ c.  What is the probability that the temperature is between 45 and 50 degrees?
 :::::::: {.column width="62%"}
 **a.** $P(X < 45)$
 
+ 
+
 ```{r}
 pnorm(q = 45, mean = 50, sd = 4) # <1>
 ```
@@ -1030,7 +1093,10 @@ pnorm(q = 45, mean = 50, sd = 4) # <1>
 
  
 
+
 **b.** Find $t$ with $P(X \leq t) = 0.35$
+
+ 
 
 ```{r}
 qnorm(p = 0.35, mean = 50, sd = 4) # <1>
@@ -1040,7 +1106,10 @@ qnorm(p = 0.35, mean = 50, sd = 4) # <1>
 
  
 
+
 **c.** $P(45 \leq X \leq 50)$
+
+ 
 
 ```{r}
 pnorm(q = 50, mean = 50, sd = 4) - # <1>
@@ -1053,8 +1122,6 @@ pnorm(q = 50, mean = 50, sd = 4) - # <1>
 
 ## High temperature: simulate it
 
-:::::::: columns
-:::::: {.column width="55%"}
 ::::: example
 ::: ex-title
 Example 4
@@ -1064,6 +1131,9 @@ Example 4
 Simulate 10,000 high temperatures and answer parts a, b, and c.
 :::
 :::::
+
+:::::::: columns
+:::::: {.column width="49%"}
 
 ```{r}
 temp_sims <- tibble(sim = 1:reps) |> # <1>
@@ -1079,13 +1149,16 @@ temp_sims <- tibble(sim = 1:reps) |> # <1>
 ::: {.column width="1%"}
 :::
 
-::: {.column width="44%"}
+::: {.column width="50%"}
 ```{r}
 temp_sims |> # <1>
   summarise( # <1>
     prob_a = mean(X < 45), # <2>
+    
     t_b    = quantile(X, 0.35), # <3>
+    
     prob_c = mean(X >= 45 & X <= 50) # <4>
+    
   )
 ```
 

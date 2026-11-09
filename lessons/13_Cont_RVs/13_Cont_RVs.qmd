@@ -1236,5 +1236,3 @@ ggplot(chisq_curves, aes(x = x, y = density, color = factor(df))) +
 ## How are these distributions related?
 
 ![](../img_slides/distribution_relationships.png){fig-align="center" width="1700"}
-
-[Solid lines: special cases and transformations. Dashed lines: limits (approximations). Dotted green lines: discrete and continuous analogs. Adapted from Leemis (1986).]{style="font-size: 60%;"}

@@ -950,9 +950,10 @@ F_X(x) = \left\{
 <h2>Properties of gamma RVs</h2>
 <ul>
 <li><strong>Scenario:</strong> Modeling the time until the <span class="math inline">\(r^{th}\)</span> event.</li>
-<li>Continuous analog to the Negative Binomial distribution</li>
-<li>Shorthand: <span class="math inline">\(X \sim \text{Gamma}(r, \lambda)\)</span> or <span class="math inline">\(X \sim \text{Gamma}(\alpha, \beta)\)</span></li>
-<li>Same as the sum of <span class="math inline">\(r\)</span> independent waiting times: <span class="math inline">\(X = \sum_{i=1}^r Y_i\)</span>, where <span class="math inline">\(Y_i \sim \text{Exp}(\lambda)\)</span></li>
+<li>Shorthand: <span class="math inline">\(X \sim \text{Gamma}(r, \lambda)\)</span> or <span class="math inline">\(X \sim \text{Gamma}(\alpha, \beta)\)</span>
+<ul>
+<li>Common to see <span class="math inline">\(\alpha = r\)</span> and <span class="math inline">\(\beta = 1/\lambda\)</span></li>
+</ul></li>
 </ul>
 <div class="columns rib-compact">
 <div class="column" style="width:49%;">
@@ -1017,11 +1018,12 @@ F_X(x) = \left\{
 </div>
 </div>
 </div></div>
-<p>Common to see <span class="math inline">\(\alpha = r\)</span> and <span class="math inline">\(\beta = 1/\lambda\)</span></p>
 </section>
 <section id="identifying-gamma-rv-from-word-problems" class="slide level2">
 <h2>Identifying gamma RV from word problems</h2>
 <ul>
+<li><p>Continuous analog to the Negative Binomial distribution</p></li>
+<li><p>Same as the sum of <span class="math inline">\(r\)</span> independent waiting times: <span class="math inline">\(X = \sum_{i=1}^r Y_i\)</span>, where <span class="math inline">\(Y_i \sim \text{Exp}(\lambda)\)</span></p></li>
 <li><p>Gamma distribution with <span class="math inline">\(r=1\)</span> is same as exponential (both <span style="color:#d9534f;"><strong>continuous</strong></span>)</p>
 <ul>
 <li>Just like Negative Binomial with <span class="math inline">\(r=1\)</span> is same as the geometric distribution (both <span style="color:#20c997;"><strong>discrete</strong></span>)</li>
@@ -1528,7 +1530,7 @@ F_X(x) = \left\{
 <section id="high-temperature" class="slide level2">
 <h2>High temperature</h2>
 <div class="columns">
-<div class="column" style="width:36%;">
+<div class="column" style="width:38%;">
 <div class="example">
 <div class="ex-title">
 <p>Example 4</p>
@@ -1544,7 +1546,7 @@ F_X(x) = \left\{
 </div>
 </div><div class="column" style="width:2%;">
 
-</div><div class="column" style="width:62%;">
+</div><div class="column" style="width:60%;">
 <p><strong>a.</strong> <span class="math inline">\(P(X &lt; 45)\)</span></p>
 <p>&nbsp;</p>
 <div class="cell">

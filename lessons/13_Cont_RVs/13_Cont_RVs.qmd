@@ -682,9 +682,8 @@ Exact: both are $e^{-5/10} \approx 0.6065$
 ## Properties of gamma RVs
 
 -   **Scenario:** Modeling the time until the $r^{th}$ event.
--   Continuous analog to the Negative Binomial distribution
 -   Shorthand: $X \sim \text{Gamma}(r, \lambda)$ or $X \sim \text{Gamma}(\alpha, \beta)$
--   Same as the sum of $r$ independent waiting times: $X = \sum_{i=1}^r Y_i$, where $Y_i \sim \text{Exp}(\lambda)$
+    - Common to see $\alpha = r$ and $\beta = 1/\lambda$
 
 :::::::: {.columns .rib-compact}
 ::::::: {.column width="49%"}
@@ -780,9 +779,11 @@ ggplot(gamma_curves, aes(x = x, y = density, color = factor(r))) +
 :::::::
 ::::::::
 
-Common to see $\alpha = r$ and $\beta = 1/\lambda$
-
 ## Identifying gamma RV from word problems
+
+-   Continuous analog to the Negative Binomial distribution
+
+-   Same as the sum of $r$ independent waiting times: $X = \sum_{i=1}^r Y_i$, where $Y_i \sim \text{Exp}(\lambda)$
 
 -   Gamma distribution with $r=1$ is same as exponential (both [**continuous**]{style="color:#d9534f;"})
 
@@ -1155,7 +1156,7 @@ R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#
 ## High temperature
 
 ::::::::: columns
-:::::::: {.column width="36%"}
+:::::::: {.column width="38%"}
 ::::: example
 ::: ex-title
 Example 4
@@ -1176,7 +1177,7 @@ c.  What is the probability that the temperature is between 45 and 50 degrees?
 :::::::: {.column width="2%"}
 ::::::::
 
-:::::::: {.column width="62%"}
+:::::::: {.column width="60%"}
 **a.** $P(X < 45)$
 
  

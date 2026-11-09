@@ -8,22 +8,26 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r setup, include=FALSE}
+library(here)
+source(here("class_dates.R"))
+```
+
 ## Announcements
 
-- We will finish up the example from last class
-- No class on 11/26 and 12/1
-- Biostatistics tutoring starts today
-  - [Schedule a meeting here](https://traccloud.go-redrock.com/ohsu)
-  - Or email Charles directly
-- Homework 6
-  - Looks pretty good!
-  - Please attempt all problems! This is how you get practice.
+- We will finish up the lesson on discrete RVs
+- No class on 11/25
+- New office hours from Mady:
+  - Wed 3:15–5:15 PM (2-hour block)
+  - Thu 5:30–6:30 PM (new)
+- Need to catch up on grading!
+- Quiz 2 grades posted!
+  
 
 ## Key Dates
 
-- HW 7 due Sunday 11/23
-- Quiz 3 opens 12/3
-- HW 8 due 12/7
+- Checkpoint 2 due `r cp2 |> format("%m/%d")` at 11pm
+- Homework 5 due `r hw5 |> format("%m/%d")` at 11pm
 
   
 

@@ -1,0 +1,15 @@
+{
+  "hash": "0b5ae474a7a1db8d12f70a01a239964b",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Key Info\"\ndate-modified: \"today\"\nformat: \n  html:\n    link-external-newwindow: true\neditor_options: \n  chunk_output_type: console\n---\n\n\n\n## Announcements\n\n- We will finish up the lesson on discrete RVs\n- No class on 11/25\n- New office hours from Mady:\n  - Wed 3:15–5:15 PM (2-hour block)\n  - Thu 5:30–6:30 PM (new)\n- Need to catch up on grading!\n- Quiz 2 grades posted!\n  \n\n## Key Dates\n\n- Checkpoint 2 due 11/15 at 11pm\n- Homework 5 due 11/22 at 11pm\n\n  \n\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

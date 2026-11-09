@@ -1232,4 +1232,4 @@ ggplot(chisq_curves, aes(x = x, y = density, color = factor(df))) +
 
 ##
 
-![](../img_slides/distribution_relationships.png){fig-align="center" width="1700"}
+![](../img_slides/distribution_relationships.png){fig-align="center" width="1850"}

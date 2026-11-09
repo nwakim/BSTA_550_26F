@@ -74,12 +74,12 @@ def arrow(a, b, style="solid", rad=0.0, dx=0.0, dy=0.0, color=INK, lw=3, head=Tr
 def hpair(a, b, top, bot):        # a -> b on top, b -> a below
     arrow(a, b, dy=0.2); arrow(b, a, dy=-0.2)
     xm = (N[a][0]+N[b][0])/2; y = N[a][1]
-    lab(xm, y+0.8, top); lab(xm, y-0.8, bot)
+    lab(xm, y+1.05, top); lab(xm, y-0.8, bot)
 
 def vpair(a, b, left, right):     # a -> b on the left, b -> a on the right
     arrow(a, b, dx=-0.22); arrow(b, a, dx=0.22)
     x = N[a][0]; ym = (N[a][1]+N[b][1])/2
-    lab(x-1.35, ym, left); lab(x+1.35, ym, right)
+    lab(x-1.45, ym+0.4, left); lab(x+1.35, ym, right)
 
 def loop(k, side, label, lxy):
     x,y = N[k][0], N[k][1]
@@ -93,13 +93,13 @@ def loop(k, side, label, lxy):
     lab(*lxy, label)
 
 # --- solid: special cases and transformations
-vpair("bern", "binom", r"sum of $n$", r"$n = 1$")
-hpair("geo", "nb", r"sum of $r$", r"$r = 1$")
-hpair("expo", "gam", r"sum of $r$", r"$r = 1$")
+vpair("bern", "binom", r"$\sum_{i=1}^{n} X_i$", r"$n = 1$")
+hpair("geo", "nb", r"$\sum_{i=1}^{r} X_i$", r"$r = 1$")
+hpair("expo", "gam", r"$\sum_{i=1}^{r} X_i$", r"$r = 1$")
 vpair("norm", "z", r"$\dfrac{X-\mu}{\sigma}$", r"$\mu + \sigma Z$")
-loop("pois", "left", "sum of\nPoissons", (c[3]-3.55, rB+0.95))
+loop("pois", "left", r"$\sum X_i$", (c[3]-3.2, rB+0.95))
 loop("expo", "right", "min of\nExponentials", (c[2]+4.15, rC))
-arrow("z", "chi"); lab((N["z"][0]+N["chi"][0])/2 - 0.75, rD+0.8, r"sum of $n$ squares")
+arrow("z", "chi"); lab((N["z"][0]+N["chi"][0])/2 - 0.4, rD+1.0, r"$\sum_{i=1}^{n} Z_i^2$")
 arrow("chi", "f"); lab((N["chi"][0]+N["f"][0])/2, rD+0.95, r"$\dfrac{X_1/n}{X_2/m}$")
 
 # --- dashed: limits

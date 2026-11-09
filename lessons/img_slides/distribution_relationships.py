@@ -15,7 +15,7 @@ plt.rcParams.update({"font.family": "Lato", "mathtext.fontset": "cm"})
 TEAL, TEAL_L = "#20c997", "#d4f4ea"
 RED, RED_L   = "#d9534f", "#f9e0df"
 GREEN, INK   = "#006a4e", "#3a3a3a"
-W, H = 29.4, 13.4
+W, H = 30.8, 13.4
 fig, ax = plt.subplots(figsize=(W, H), dpi=150)
 ax.set_xlim(0, W); ax.set_ylim(0, H); ax.axis("off")
 
@@ -23,7 +23,7 @@ NAME, LABEL = 29, 24          # font sizes: box text, line labels
 BW, BH = 3.2, 1.35            # box size (wide boxes get +WIDE)
 WIDE = 1.05
 WIDE_BOXES = ("nb", "dunif", "z", "hyper")
-c = [2.6, 8.4, 14.2, 19.9, 25.6]   # column centers
+c = [2.6, 8.4, 14.2, 19.9, 27.0]   # column centers
 rA, rB, rC, rD = 11.9, 8.7, 5.3, 1.7
 N = {
  "hyper": (c[3], rA, "Hypergeometric", r"$(M,\ N,\ n)$", "d"),
@@ -56,6 +56,10 @@ def edge_pt(k, toward):
     dx, dy = toward[0]-x, toward[1]-y
     s = min(hw/abs(dx) if dx else 1e9, hh/abs(dy) if dy else 1e9)
     return (x+dx*s, y+dy*s)
+
+def mid(a, b, t=0.5):
+    A = edge_pt(a, N[b][:2]); B = edge_pt(b, N[a][:2])
+    return (A[0]+(B[0]-A[0])*t, A[1]+(B[1]-A[1])*t)
 
 def lab(x, y, s, color=INK, size=LABEL):
     ax.text(x, y, s, ha="center", va="center", fontsize=size, color=color, zorder=6,
@@ -104,9 +108,9 @@ arrow("chi", "f"); lab((N["chi"][0]+N["f"][0])/2, rD+0.95, r"$\dfrac{X_1/n}{X_2/
 
 # --- dashed: limits
 arrow("hyper", "binom", style="dashed"); lab(c[3]+0.55, 10.2, "$p = M/N$,\n$N$ large")
-arrow("binom", "pois", style="dashed");  lab((c[3]+c[4])/2, 7.5, "$\\lambda = np$,\n$n$ large, $p$ small")
+arrow("binom", "pois", style="dashed");  x_, y_ = mid("binom", "pois", 0.62); lab(x_, y_+0.6, "$\\lambda = np$,\n$n$ large, $p$ small")
 arrow("binom", "norm", style="dashed");  lab(c[4]+2.2, 7.0, "$\\mu = np$,\n$\\sigma^2 = np(1-p)$,\n$n$ large")
-arrow("pois", "norm", style="dashed");   lab(c[3]+0.9, 6.15, "$\\mu = \\sigma^2 = \\lambda$,\n$\\lambda$ large")
+arrow("pois", "norm", style="dashed");   lab(*mid("pois", "norm"), "$\\mu = \\sigma^2 = \\lambda$,\n$\\lambda$ large")
 
 # --- dotted green: discrete <-> continuous analogs (no arrowheads)
 for a,b in [("dunif","unif"), ("nb","gam"), ("geo","expo"), ("pois","expo")]:

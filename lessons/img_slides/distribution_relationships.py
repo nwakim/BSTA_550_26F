@@ -15,7 +15,7 @@ plt.rcParams.update({"font.family": "Lato", "mathtext.fontset": "cm"})
 TEAL, TEAL_L = "#20c997", "#d4f4ea"
 RED, RED_L   = "#d9534f", "#f9e0df"
 GREEN, INK   = "#006a4e", "#3a3a3a"
-W, H = 29.4, 13.4
+W, H = 30.8, 13.4
 fig, ax = plt.subplots(figsize=(W, H), dpi=150)
 ax.set_xlim(0, W); ax.set_ylim(0, H); ax.axis("off")
 
@@ -23,7 +23,7 @@ NAME, LABEL = 29, 24          # font sizes: box text, line labels
 BW, BH = 3.2, 1.35            # box size (wide boxes get +WIDE)
 WIDE = 1.05
 WIDE_BOXES = ("nb", "dunif", "z", "hyper")
-c = [2.6, 8.4, 14.2, 19.9, 25.6]   # column centers
+c = [2.6, 8.4, 14.2, 19.9, 27.0]   # column centers
 rA, rB, rC, rD = 11.9, 8.7, 5.3, 1.7
 N = {
  "hyper": (c[3], rA, "Hypergeometric", r"$(M,\ N,\ n)$", "d"),
@@ -57,6 +57,10 @@ def edge_pt(k, toward):
     s = min(hw/abs(dx) if dx else 1e9, hh/abs(dy) if dy else 1e9)
     return (x+dx*s, y+dy*s)
 
+def mid(a, b, t=0.5):
+    A = edge_pt(a, N[b][:2]); B = edge_pt(b, N[a][:2])
+    return (A[0]+(B[0]-A[0])*t, A[1]+(B[1]-A[1])*t)
+
 def lab(x, y, s, color=INK, size=LABEL):
     ax.text(x, y, s, ha="center", va="center", fontsize=size, color=color, zorder=6,
             bbox=dict(boxstyle="round,pad=0.2", fc="white", ec="none", alpha=0.95))
@@ -71,15 +75,15 @@ def arrow(a, b, style="solid", rad=0.0, dx=0.0, dy=0.0, color=INK, lw=3, head=Tr
                         mutation_scale=15, lw=lw, color=color, linestyle=STY[style], zorder=2, shrinkA=0, shrinkB=0)
     p.set_capstyle("round"); ax.add_patch(p)
 
-def hpair(a, b, top, bot):        # a -> b on top, b -> a below
+def hpair(a, b, top, bot, top_dx=0.0):        # a -> b on top, b -> a below
     arrow(a, b, dy=0.2); arrow(b, a, dy=-0.2)
     xm = (N[a][0]+N[b][0])/2; y = N[a][1]
-    lab(xm, y+0.8, top); lab(xm, y-0.8, bot)
+    lab(xm+top_dx, y+1.05, top); lab(xm, y-0.8, bot)
 
 def vpair(a, b, left, right):     # a -> b on the left, b -> a on the right
     arrow(a, b, dx=-0.22); arrow(b, a, dx=0.22)
     x = N[a][0]; ym = (N[a][1]+N[b][1])/2
-    lab(x-1.35, ym, left); lab(x+1.35, ym, right)
+    lab(x-1.1, ym+0.1, left); lab(x+1.35, ym, right)
 
 def loop(k, side, label, lxy):
     x,y = N[k][0], N[k][1]
@@ -93,20 +97,20 @@ def loop(k, side, label, lxy):
     lab(*lxy, label)
 
 # --- solid: special cases and transformations
-vpair("bern", "binom", r"sum of $n$", r"$n = 1$")
-hpair("geo", "nb", r"sum of $r$", r"$r = 1$")
-hpair("expo", "gam", r"sum of $r$", r"$r = 1$")
+vpair("bern", "binom", r"$\sum_{i=1}^{n} X_i$", r"$n = 1$")
+hpair("geo", "nb", r"$\sum_{i=1}^{r} X_i$", r"$r = 1$", top_dx=0.45)
+hpair("expo", "gam", r"$\sum_{i=1}^{r} X_i$", r"$r = 1$")
 vpair("norm", "z", r"$\dfrac{X-\mu}{\sigma}$", r"$\mu + \sigma Z$")
-loop("pois", "left", "sum of\nPoissons", (c[3]-3.55, rB+0.95))
+loop("pois", "left", r"$\sum X_i$", (c[3]-2.7, rB+0.9))
 loop("expo", "right", "min of\nExponentials", (c[2]+4.15, rC))
-arrow("z", "chi"); lab((N["z"][0]+N["chi"][0])/2 - 0.75, rD+0.8, r"sum of $n$ squares")
+arrow("z", "chi"); lab((N["z"][0]+N["chi"][0])/2 - 0.4, rD+1.0, r"$\sum_{i=1}^{n} Z_i^2$")
 arrow("chi", "f"); lab((N["chi"][0]+N["f"][0])/2, rD+0.95, r"$\dfrac{X_1/n}{X_2/m}$")
 
 # --- dashed: limits
 arrow("hyper", "binom", style="dashed"); lab(c[3]+0.55, 10.2, "$p = M/N$,\n$N$ large")
-arrow("binom", "pois", style="dashed");  lab((c[3]+c[4])/2, 7.5, "$\\lambda = np$,\n$n$ large, $p$ small")
+arrow("binom", "pois", style="dashed");  x_, y_ = mid("binom", "pois", 0.62); lab(x_, y_+0.6, "$\\lambda = np$,\n$n$ large, $p$ small")
 arrow("binom", "norm", style="dashed");  lab(c[4]+2.2, 7.0, "$\\mu = np$,\n$\\sigma^2 = np(1-p)$,\n$n$ large")
-arrow("pois", "norm", style="dashed");   lab(c[3]+0.9, 6.15, "$\\mu = \\sigma^2 = \\lambda$,\n$\\lambda$ large")
+arrow("pois", "norm", style="dashed");   lab(*mid("pois", "norm"), "$\\mu = \\sigma^2 = \\lambda$,\n$\\lambda$ large")
 
 # --- dotted green: discrete <-> continuous analogs (no arrowheads)
 for a,b in [("dunif","unif"), ("nb","gam"), ("geo","expo"), ("pois","expo")]:

@@ -121,16 +121,6 @@ $X$ = a value in the interval $[a, b]$, where every value is equally likely
 :::
 :::
 
-::: {.ribbon .rib-pdf}
-::: rib-label
-pdf
-:::
-
-::: rib-body
-$$f_X(x) = \dfrac{1}{b-a}, \text{ for }a \leq x \leq b$$
-:::
-:::
-
 ::: {.ribbon .rib-cdf}
 ::: rib-label
 CDF
@@ -149,12 +139,6 @@ $$
 :::
 :::
 
-:::::::
-
-::::::: {.column width="2%"}
-:::::::
-
-::::::: {.column width="49%"}
 ::: {.ribbon .rib-e}
 ::: rib-label
 $\text{E}(X)$
@@ -172,6 +156,22 @@ $\text{Var}(X)$
 
 ::: rib-body
 $$\text{Var}(X) = \dfrac{(b-a)^2}{12}$$
+:::
+:::
+
+:::::::
+
+::::::: {.column width="2%"}
+:::::::
+
+::::::: {.column width="49%"}
+::: {.ribbon .rib-pdf}
+::: rib-label
+pdf
+:::
+
+::: rib-body
+$$f_X(x) = \dfrac{1}{b-a}, \text{ for }a \leq x \leq b$$
 :::
 :::
 
@@ -198,7 +198,6 @@ ggplot(unif_curves, aes(x = x, y = density, color = label)) +
   theme_minimal(base_size = 30) +
   theme(legend.position = c(0.8, 0.75))
 ```
-
 :::::::
 ::::::::
 
@@ -377,16 +376,6 @@ $X$ = time until the next (first) event
 :::
 :::
 
-::: {.ribbon .rib-pdf}
-::: rib-label
-pdf
-:::
-
-::: rib-body
-$$f_X(x) = \lambda e^{-\lambda x}\text{ for } x>0, \lambda>0$$
-:::
-:::
-
 ::: {.ribbon .rib-cdf}
 ::: rib-label
 CDF
@@ -404,12 +393,6 @@ $$
 :::
 :::
 
-:::::::
-
-::::::: {.column width="2%"}
-:::::::
-
-::::::: {.column width="49%"}
 ::: {.ribbon .rib-e}
 ::: rib-label
 $\text{E}(X)$
@@ -427,6 +410,22 @@ $\text{Var}(X)$
 
 ::: rib-body
 $$\text{Var}(X) = \dfrac{1}{\lambda^2}$$
+:::
+:::
+
+:::::::
+
+::::::: {.column width="2%"}
+:::::::
+
+::::::: {.column width="49%"}
+::: {.ribbon .rib-pdf}
+::: rib-label
+pdf
+:::
+
+::: rib-body
+$$f_X(x) = \lambda e^{-\lambda x}\text{ for } x>0, \lambda>0$$
 :::
 :::
 
@@ -453,7 +452,6 @@ ggplot(exp_curves, aes(x = x, y = density, color = factor(lambda))) +
   theme(legend.position = c(0.8, 0.7),
         legend.text = element_text(hjust = 0))
 ```
-
 :::::::
 ::::::::
 
@@ -698,18 +696,6 @@ $X$ = time until the $r^{th}$ event
 :::
 :::
 
-::: {.ribbon .rib-pdf}
-::: rib-label
-pdf
-:::
-
-::: rib-body
-$$f_X(x) = \dfrac{\lambda^r}{\Gamma(r)}x^{r-1} e^{-\lambda x}\text{ for } x>0, \lambda>0$$
-
-[where $\Gamma(r) = (r-1)!$]{.rib-range}
-:::
-:::
-
 ::: {.ribbon .rib-cdf}
 ::: rib-label
 CDF
@@ -727,12 +713,6 @@ $$
 :::
 :::
 
-:::::::
-
-::::::: {.column width="2%"}
-:::::::
-
-::::::: {.column width="49%"}
 ::: {.ribbon .rib-e}
 ::: rib-label
 $\text{E}(X)$
@@ -750,6 +730,24 @@ $\text{Var}(X)$
 
 ::: rib-body
 $$\text{Var}(X) = \dfrac{r}{\lambda^2}$$
+:::
+:::
+
+:::::::
+
+::::::: {.column width="2%"}
+:::::::
+
+::::::: {.column width="49%"}
+::: {.ribbon .rib-pdf}
+::: rib-label
+pdf
+:::
+
+::: rib-body
+$$f_X(x) = \dfrac{\lambda^r}{\Gamma(r)}x^{r-1} e^{-\lambda x}\text{ for } x>0, \lambda>0$$
+
+[where $\Gamma(r) = (r-1)!$]{.rib-range}
 :::
 :::
 
@@ -776,7 +774,6 @@ ggplot(gamma_curves, aes(x = x, y = density, color = factor(r))) +
   theme(legend.position = c(0.75, 0.7),
         legend.text = element_text(hjust = 0))
 ```
-
 :::::::
 ::::::::
 
@@ -1069,24 +1066,6 @@ ggplot(sum_sims, aes(x = Y)) + # <4>
 
 :::::::: {.columns .rib-compact}
 ::::::: {.column width="49%"}
-::: {.ribbon .rib-pdf}
-::: rib-label
-pdf
-:::
-
-::: rib-body
-$$f_X(x) = \dfrac{1}{\sqrt{2\pi \sigma^2}}e^{-(x-\mu)^2/(2\sigma^2)}$$
-
-[for $-\infty < x < \infty$]{.rib-range}
-:::
-:::
-
-:::::::
-
-::::::: {.column width="2%"}
-:::::::
-
-::::::: {.column width="49%"}
 ::: {.ribbon .rib-e}
 ::: rib-label
 $\text{E}(X)$
@@ -1104,6 +1083,24 @@ $\text{Var}(X)$
 
 ::: rib-body
 $$\text{Var}(X) = \sigma^2 \qquad \text{SD}(X) = \sigma$$
+:::
+:::
+
+:::::::
+
+::::::: {.column width="2%"}
+:::::::
+
+::::::: {.column width="49%"}
+::: {.ribbon .rib-pdf}
+::: rib-label
+pdf
+:::
+
+::: rib-body
+$$f_X(x) = \dfrac{1}{\sqrt{2\pi \sigma^2}}e^{-(x-\mu)^2/(2\sigma^2)}$$
+
+[for $-\infty < x < \infty$]{.rib-range}
 :::
 :::
 
@@ -1132,7 +1129,6 @@ ggplot(norm_curves, aes(x = x, y = density, color = label)) +
   theme(legend.position = c(0.18, 0.75),
         legend.text = element_text(hjust = 0))
 ```
-
 :::::::
 ::::::::
 

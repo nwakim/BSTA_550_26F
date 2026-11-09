@@ -179,7 +179,7 @@ $$f_X(x) = \dfrac{1}{b-a}, \text{ for }a \leq x \leq b$$
 #| echo: false
 #| warning: false
 #| fig-width: 9
-#| fig-height: 4.4
+#| fig-height: 5
 #| fig-align: center
 
 unif_params <- tibble(
@@ -195,7 +195,7 @@ unif_curves <- unif_params |>
 ggplot(unif_curves, aes(x = x, y = density, color = label)) +
   geom_line(linewidth = 2) +
   labs(x = "x", y = "Density", color = NULL) +
-  theme_minimal(base_size = 30) +
+  theme_classic(base_size = 30) +
   theme(legend.position = c(0.8, 0.75))
 ```
 :::::::
@@ -433,7 +433,7 @@ $$f_X(x) = \lambda e^{-\lambda x}\text{ for } x>0, \lambda>0$$
 #| echo: false
 #| warning: false
 #| fig-width: 9
-#| fig-height: 4.2
+#| fig-height: 5
 #| fig-align: center
 
 lambda_values <- c(0.5, 1, 2)
@@ -448,7 +448,7 @@ ggplot(exp_curves, aes(x = x, y = density, color = factor(lambda))) +
   geom_line(linewidth = 2) +
   labs(x = "x", y = "Density", color = NULL) +
   scale_color_discrete(labels = parse(text = paste("lambda ==", lambda_values))) +
-  theme_minimal(base_size = 30) +
+  theme_classic(base_size = 30) +
   theme(legend.position = c(0.8, 0.7),
         legend.text = element_text(hjust = 0))
 ```
@@ -755,7 +755,7 @@ $$f_X(x) = \dfrac{\lambda^r}{\Gamma(r)}x^{r-1} e^{-\lambda x}\text{ for } x>0, \
 #| echo: false
 #| warning: false
 #| fig-width: 9
-#| fig-height: 3.4
+#| fig-height: 5
 #| fig-align: center
 
 r_values <- c(1, 2, 4)
@@ -770,7 +770,7 @@ ggplot(gamma_curves, aes(x = x, y = density, color = factor(r))) +
   geom_line(linewidth = 2) +
   labs(x = "x", y = "Density", color = NULL) +
   scale_color_discrete(labels = parse(text = paste0("r == ", r_values, "*','~lambda == 1"))) +
-  theme_minimal(base_size = 30) +
+  theme_classic(base_size = 30) +
   theme(legend.position = c(0.75, 0.7),
         legend.text = element_text(hjust = 0))
 ```
@@ -1086,6 +1086,8 @@ $$\text{Var}(X) = \sigma^2 \qquad \text{SD}(X) = \sigma$$
 :::
 :::
 
+-   No closed-form CDF: we use R (or a table) to find probabilities
+
 :::::::
 
 ::::::: {.column width="2%"}
@@ -1108,7 +1110,7 @@ $$f_X(x) = \dfrac{1}{\sqrt{2\pi \sigma^2}}e^{-(x-\mu)^2/(2\sigma^2)}$$
 #| echo: false
 #| warning: false
 #| fig-width: 9
-#| fig-height: 3.8
+#| fig-height: 5
 #| fig-align: center
 
 norm_params <- tibble(
@@ -1125,14 +1127,13 @@ ggplot(norm_curves, aes(x = x, y = density, color = label)) +
   geom_line(linewidth = 2) +
   labs(x = "x", y = "Density", color = NULL) +
   scale_color_discrete(labels = function(l) parse(text = l)) +
-  theme_minimal(base_size = 30) +
+  theme_classic(base_size = 30) +
   theme(legend.position = c(0.18, 0.75),
         legend.text = element_text(hjust = 0))
 ```
 :::::::
 ::::::::
 
--   No closed-form CDF: we use R (or a table) to find probabilities
 
 ## Normal distribution: R commands
 
@@ -1324,6 +1325,6 @@ ggplot(chisq_curves, aes(x = x, y = density, color = factor(df))) +
 
 # Relationships between distributions
 
-##
+## Distributions and relationships we learned
 
 ![](../img_slides/distribution_relationships.png){fig-align="center" width="1850"}

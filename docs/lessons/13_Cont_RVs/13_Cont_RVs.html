@@ -307,14 +307,6 @@ Meike Niederhausen and Nicky Wakim
 <p><span class="math inline">\(X\)</span> = a value in the interval <span class="math inline">\([a, b]\)</span>, where every value is equally likely</p>
 </div>
 </div>
-<div class="ribbon rib-pdf">
-<div class="rib-label">
-<p>pdf</p>
-</div>
-<div class="rib-body">
-<p><span class="math display">\[f_X(x) = \dfrac{1}{b-a}, \text{ for }a \leq x \leq b\]</span></p>
-</div>
-</div>
 <div class="ribbon rib-cdf">
 <div class="rib-label">
 <p>CDF</p>
@@ -331,9 +323,6 @@ F_X(x) = \int_a^x f_X(s)\,ds = \left\{
 \]</span></p>
 </div>
 </div>
-</div><div class="column" style="width:2%;">
-
-</div><div class="column" style="width:49%;">
 <div class="ribbon rib-e">
 <div class="rib-label">
 <p><span class="math inline">\(\text{E}(X)\)</span></p>
@@ -348,6 +337,26 @@ F_X(x) = \int_a^x f_X(s)\,ds = \left\{
 </div>
 <div class="rib-body">
 <p><span class="math display">\[\text{Var}(X) = \dfrac{(b-a)^2}{12}\]</span></p>
+</div>
+</div>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:49%;">
+<div class="ribbon rib-pdf">
+<div class="rib-label">
+<p>pdf</p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[f_X(x) = \dfrac{1}{b-a}, \text{ for }a \leq x \leq b\]</span></p>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="13_Cont_RVs_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center" width="864"></p>
+</figure>
+</div>
 </div>
 </div>
 </div></div>
@@ -598,14 +607,6 @@ F_X(x) = \int_a^x f_X(s)\,ds = \left\{
 <p><span class="math inline">\(X\)</span> = time until the next (first) event</p>
 </div>
 </div>
-<div class="ribbon rib-pdf">
-<div class="rib-label">
-<p>pdf</p>
-</div>
-<div class="rib-body">
-<p><span class="math display">\[f_X(x) = \lambda e^{-\lambda x}\text{ for } x&gt;0, \lambda&gt;0\]</span></p>
-</div>
-</div>
 <div class="ribbon rib-cdf">
 <div class="rib-label">
 <p>CDF</p>
@@ -621,9 +622,6 @@ F_X(x) = \left\{
 \]</span></p>
 </div>
 </div>
-</div><div class="column" style="width:2%;">
-
-</div><div class="column" style="width:49%;">
 <div class="ribbon rib-e">
 <div class="rib-label">
 <p><span class="math inline">\(\text{E}(X)\)</span></p>
@@ -638,6 +636,26 @@ F_X(x) = \left\{
 </div>
 <div class="rib-body">
 <p><span class="math display">\[\text{Var}(X) = \dfrac{1}{\lambda^2}\]</span></p>
+</div>
+</div>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:49%;">
+<div class="ribbon rib-pdf">
+<div class="rib-label">
+<p>pdf</p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[f_X(x) = \lambda e^{-\lambda x}\text{ for } x&gt;0, \lambda&gt;0\]</span></p>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="13_Cont_RVs_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center" width="864"></p>
+</figure>
+</div>
 </div>
 </div>
 </div></div>
@@ -946,15 +964,6 @@ F_X(x) = \left\{
 <p><span class="math inline">\(X\)</span> = time until the <span class="math inline">\(r^{th}\)</span> event</p>
 </div>
 </div>
-<div class="ribbon rib-pdf">
-<div class="rib-label">
-<p>pdf</p>
-</div>
-<div class="rib-body">
-<p><span class="math display">\[f_X(x) = \dfrac{\lambda^r}{\Gamma(r)}x^{r-1} e^{-\lambda x}\text{ for } x&gt;0, \lambda&gt;0\]</span></p>
-<p><span class="rib-range">where <span class="math inline">\(\Gamma(r) = (r-1)!\)</span></span></p>
-</div>
-</div>
 <div class="ribbon rib-cdf">
 <div class="rib-label">
 <p>CDF</p>
@@ -970,9 +979,6 @@ F_X(x) = \left\{
 \]</span></p>
 </div>
 </div>
-</div><div class="column" style="width:2%;">
-
-</div><div class="column" style="width:49%;">
 <div class="ribbon rib-e">
 <div class="rib-label">
 <p><span class="math inline">\(\text{E}(X)\)</span></p>
@@ -987,6 +993,27 @@ F_X(x) = \left\{
 </div>
 <div class="rib-body">
 <p><span class="math display">\[\text{Var}(X) = \dfrac{r}{\lambda^2}\]</span></p>
+</div>
+</div>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:49%;">
+<div class="ribbon rib-pdf">
+<div class="rib-label">
+<p>pdf</p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[f_X(x) = \dfrac{\lambda^r}{\Gamma(r)}x^{r-1} e^{-\lambda x}\text{ for } x&gt;0, \lambda&gt;0\]</span></p>
+<p><span class="rib-range">where <span class="math inline">\(\Gamma(r) = (r-1)!\)</span></span></p>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="13_Cont_RVs_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" width="864"></p>
+</figure>
+</div>
 </div>
 </div>
 </div></div>
@@ -1387,7 +1414,7 @@ F_X(x) = \left\{
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="13_Cont_RVs_files/figure-revealjs/unnamed-chunk-21-1.png" width="864"></p>
+<p><img data-src="13_Cont_RVs_files/figure-revealjs/unnamed-chunk-24-1.png" width="864"></p>
 </figure>
 </div>
 </div>
@@ -1413,18 +1440,6 @@ F_X(x) = \left\{
 </ul>
 <div class="columns rib-compact">
 <div class="column" style="width:49%;">
-<div class="ribbon rib-pdf">
-<div class="rib-label">
-<p>pdf</p>
-</div>
-<div class="rib-body">
-<p><span class="math display">\[f_X(x) = \dfrac{1}{\sqrt{2\pi \sigma^2}}e^{-(x-\mu)^2/(2\sigma^2)}\]</span></p>
-<p><span class="rib-range">for <span class="math inline">\(-\infty &lt; x &lt; \infty\)</span></span></p>
-</div>
-</div>
-</div><div class="column" style="width:2%;">
-
-</div><div class="column" style="width:49%;">
 <div class="ribbon rib-e">
 <div class="rib-label">
 <p><span class="math inline">\(\text{E}(X)\)</span></p>
@@ -1441,10 +1456,31 @@ F_X(x) = \left\{
 <p><span class="math display">\[\text{Var}(X) = \sigma^2 \qquad \text{SD}(X) = \sigma\]</span></p>
 </div>
 </div>
-</div></div>
 <ul>
 <li>No closed-form CDF: we use R (or a table) to find probabilities</li>
 </ul>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:49%;">
+<div class="ribbon rib-pdf">
+<div class="rib-label">
+<p>pdf</p>
+</div>
+<div class="rib-body">
+<p><span class="math display">\[f_X(x) = \dfrac{1}{\sqrt{2\pi \sigma^2}}e^{-(x-\mu)^2/(2\sigma^2)}\]</span></p>
+<p><span class="rib-range">for <span class="math inline">\(-\infty &lt; x &lt; \infty\)</span></span></p>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="13_Cont_RVs_files/figure-revealjs/unnamed-chunk-25-1.png" class="quarto-figure quarto-figure-center" width="864"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
 </section>
 <section id="normal-distribution-r-commands" class="slide level2">
 <h2>Normal distribution: R commands</h2>
@@ -1670,7 +1706,7 @@ F_X(x) = \left\{
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="13_Cont_RVs_files/figure-revealjs/unnamed-chunk-27-1.png" width="768"></p>
+<p><img data-src="13_Cont_RVs_files/figure-revealjs/unnamed-chunk-31-1.png" width="768"></p>
 </figure>
 </div>
 </div>
@@ -1682,8 +1718,8 @@ F_X(x) = \left\{
 <h1>Relationships between distributions</h1>
 
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
+<section id="distributions-and-relationships-we-learned" class="slide level2">
+<h2>Distributions and relationships we learned</h2>
 
 
 

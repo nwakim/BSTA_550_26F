@@ -28536,7 +28536,7 @@
     "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#properties-of-continuous-uniform-rvs",
     "title": "Lesson 13: Some Important Continuous RVs",
     "section": "Properties of continuous uniform RVs",
-    "text": "Properties of continuous uniform RVs\n\nScenario: Events are equally likely to happen anywhere or anytime in an interval of values\nShorthand: \\(X \\sim \\text{U}[a,b]\\)\n\n\n\n\n\n\\(X\\)\n\n\n\\(X\\) = a value in the interval \\([a, b]\\), where every value is equally likely\n\n\n\n\npdf\n\n\n\\[f_X(x) = \\dfrac{1}{b-a}, \\text{ for }a \\leq x \\leq b\\]\n\n\n\n\nCDF\n\n\n\\[\nF_X(x) = \\int_a^x f_X(s)\\,ds = \\left\\{\n        \\begin{array}{ll}\n            0 & \\quad x&lt;a \\quad \\\\\n            \\dfrac{x-a}{b-a} & \\quad a \\leq x \\leq b\\quad \\\\\n            1 & \\quad x&gt;b \\quad\n        \\end{array}\n    \\right.\n\\]\n\n\n\n\n\n\n\n\\(\\text{E}(X)\\)\n\n\n\\[\\text{E}(X) = \\int_a^b x f_X(x)\\,dx = \\dfrac{a+b}{2}\\]\n\n\n\n\n\\(\\text{Var}(X)\\)\n\n\n\\[\\text{Var}(X) = \\dfrac{(b-a)^2}{12}\\]"
+    "text": "Properties of continuous uniform RVs\n\nScenario: Events are equally likely to happen anywhere or anytime in an interval of values\nShorthand: \\(X \\sim \\text{U}[a,b]\\)\n\n\n\n\n\n\\(X\\)\n\n\n\\(X\\) = a value in the interval \\([a, b]\\), where every value is equally likely\n\n\n\n\nCDF\n\n\n\\[\nF_X(x) = \\int_a^x f_X(s)\\,ds = \\left\\{\n        \\begin{array}{ll}\n            0 & \\quad x&lt;a \\quad \\\\\n            \\dfrac{x-a}{b-a} & \\quad a \\leq x \\leq b\\quad \\\\\n            1 & \\quad x&gt;b \\quad\n        \\end{array}\n    \\right.\n\\]\n\n\n\n\n\\(\\text{E}(X)\\)\n\n\n\\[\\text{E}(X) = \\int_a^b x f_X(x)\\,dx = \\dfrac{a+b}{2}\\]\n\n\n\n\n\\(\\text{Var}(X)\\)\n\n\n\\[\\text{Var}(X) = \\dfrac{(b-a)^2}{12}\\]\n\n\n\n\n\n\n\npdf\n\n\n\\[f_X(x) = \\dfrac{1}{b-a}, \\text{ for }a \\leq x \\leq b\\]"
   },
   {
     "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#identifying-continuous-uniform-rv-from-word-problems",
@@ -28571,7 +28571,7 @@
     "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#properties-of-exponential-rvs",
     "title": "Lesson 13: Some Important Continuous RVs",
     "section": "Properties of exponential RVs",
-    "text": "Properties of exponential RVs\n\nScenario: Modeling the time until the next (first) event\nContinuous analog to the discrete geometric distribution!\nShorthand: \\(X \\sim \\text{Exp}(\\lambda)\\)\n\n\\(\\lambda\\) = the rate: average number of events (successes) per unit of time\n\n\n\n\n\n\n\\(X\\)\n\n\n\\(X\\) = time until the next (first) event\n\n\n\n\npdf\n\n\n\\[f_X(x) = \\lambda e^{-\\lambda x}\\text{ for } x&gt;0, \\lambda&gt;0\\]\n\n\n\n\nCDF\n\n\n\\[\nF_X(x) = \\left\\{\n        \\begin{array}{ll}\n            0 & \\quad x&lt;0 \\quad \\\\\n            1 - e^{-\\lambda x} & \\quad x\\geq0 \\\\\n        \\end{array}\n    \\right.\n\\]\n\n\n\n\n\n\n\n\\(\\text{E}(X)\\)\n\n\n\\[\\text{E}(X) = \\dfrac{1}{\\lambda}\\]\n\n\n\n\n\\(\\text{Var}(X)\\)\n\n\n\\[\\text{Var}(X) = \\dfrac{1}{\\lambda^2}\\]"
+    "text": "Properties of exponential RVs\n\nScenario: Modeling the time until the next (first) event\nContinuous analog to the discrete geometric distribution!\nShorthand: \\(X \\sim \\text{Exp}(\\lambda)\\)\n\n\\(\\lambda\\) = the rate: average number of events (successes) per unit of time\n\n\n\n\n\n\n\\(X\\)\n\n\n\\(X\\) = time until the next (first) event\n\n\n\n\nCDF\n\n\n\\[\nF_X(x) = \\left\\{\n        \\begin{array}{ll}\n            0 & \\quad x&lt;0 \\quad \\\\\n            1 - e^{-\\lambda x} & \\quad x\\geq0 \\\\\n        \\end{array}\n    \\right.\n\\]\n\n\n\n\n\\(\\text{E}(X)\\)\n\n\n\\[\\text{E}(X) = \\dfrac{1}{\\lambda}\\]\n\n\n\n\n\\(\\text{Var}(X)\\)\n\n\n\\[\\text{Var}(X) = \\dfrac{1}{\\lambda^2}\\]\n\n\n\n\n\n\n\npdf\n\n\n\\[f_X(x) = \\lambda e^{-\\lambda x}\\text{ for } x&gt;0, \\lambda&gt;0\\]"
   },
   {
     "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#memoryless-property",
@@ -28613,7 +28613,7 @@
     "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#properties-of-gamma-rvs",
     "title": "Lesson 13: Some Important Continuous RVs",
     "section": "Properties of gamma RVs",
-    "text": "Properties of gamma RVs\n\nScenario: Modeling the time until the \\(r^{th}\\) event.\nContinuous analog to the Negative Binomial distribution\nShorthand: \\(X \\sim \\text{Gamma}(r, \\lambda)\\) or \\(X \\sim \\text{Gamma}(\\alpha, \\beta)\\)\nSame as the sum of \\(r\\) independent waiting times: \\(X = \\sum_{i=1}^r Y_i\\), where \\(Y_i \\sim \\text{Exp}(\\lambda)\\)\n\n\n\n\n\n\\(X\\)\n\n\n\\(X\\) = time until the \\(r^{th}\\) event\n\n\n\n\npdf\n\n\n\\[f_X(x) = \\dfrac{\\lambda^r}{\\Gamma(r)}x^{r-1} e^{-\\lambda x}\\text{ for } x&gt;0, \\lambda&gt;0\\]\nwhere \\(\\Gamma(r) = (r-1)!\\)\n\n\n\n\nCDF\n\n\n\\[\nF_X(x) = \\left\\{\n        \\begin{array}{ll}\n            0 & \\quad x&lt;0 \\quad \\\\\n            1 - e^{-\\lambda x}\\displaystyle\\sum_{j=0}^{r-1}\\dfrac{(\\lambda x)^j}{j!}  & \\quad x\\geq0 \\\\\n        \\end{array}\n    \\right.\n\\]\n\n\n\n\n\n\n\n\\(\\text{E}(X)\\)\n\n\n\\[\\text{E}(X) = \\dfrac{r}{\\lambda}\\]\n\n\n\n\n\\(\\text{Var}(X)\\)\n\n\n\\[\\text{Var}(X) = \\dfrac{r}{\\lambda^2}\\]\n\n\n\nCommon to see \\(\\alpha = r\\) and \\(\\beta = 1/\\lambda\\)"
+    "text": "Properties of gamma RVs\n\nScenario: Modeling the time until the \\(r^{th}\\) event.\nContinuous analog to the Negative Binomial distribution\nShorthand: \\(X \\sim \\text{Gamma}(r, \\lambda)\\) or \\(X \\sim \\text{Gamma}(\\alpha, \\beta)\\)\nSame as the sum of \\(r\\) independent waiting times: \\(X = \\sum_{i=1}^r Y_i\\), where \\(Y_i \\sim \\text{Exp}(\\lambda)\\)\n\n\n\n\n\n\\(X\\)\n\n\n\\(X\\) = time until the \\(r^{th}\\) event\n\n\n\n\nCDF\n\n\n\\[\nF_X(x) = \\left\\{\n        \\begin{array}{ll}\n            0 & \\quad x&lt;0 \\quad \\\\\n            1 - e^{-\\lambda x}\\displaystyle\\sum_{j=0}^{r-1}\\dfrac{(\\lambda x)^j}{j!}  & \\quad x\\geq0 \\\\\n        \\end{array}\n    \\right.\n\\]\n\n\n\n\n\\(\\text{E}(X)\\)\n\n\n\\[\\text{E}(X) = \\dfrac{r}{\\lambda}\\]\n\n\n\n\n\\(\\text{Var}(X)\\)\n\n\n\\[\\text{Var}(X) = \\dfrac{r}{\\lambda^2}\\]\n\n\n\n\n\n\n\npdf\n\n\n\\[f_X(x) = \\dfrac{\\lambda^r}{\\Gamma(r)}x^{r-1} e^{-\\lambda x}\\text{ for } x&gt;0, \\lambda&gt;0\\]\nwhere \\(\\Gamma(r) = (r-1)!\\)\n\n\n\n\n\n\n\n\n\n\n\n\nCommon to see \\(\\alpha = r\\) and \\(\\beta = 1/\\lambda\\)"
   },
   {
     "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#identifying-gamma-rv-from-word-problems",
@@ -28669,7 +28669,7 @@
     "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#properties-of-normal-rvs",
     "title": "Lesson 13: Some Important Continuous RVs",
     "section": "Properties of Normal RVs",
-    "text": "Properties of Normal RVs\n\nNo scenario description here because the Normal distribution is so universal\n\nCentral Limit Theorem (Lesson 17) makes it applicable to many types of events\n\nShorthand: \\(X \\sim \\text{Normal}(\\mu, \\sigma^2)\\)\n\nThe second parameter is the variance \\(\\sigma^2\\), but R’s *norm() functions use sd \\(= \\sigma\\)\n\n\n\n\n\n\npdf\n\n\n\\[f_X(x) = \\dfrac{1}{\\sqrt{2\\pi \\sigma^2}}e^{-(x-\\mu)^2/(2\\sigma^2)}\\]\nfor \\(-\\infty &lt; x &lt; \\infty\\)\n\n\n\n\n\n\n\n\\(\\text{E}(X)\\)\n\n\n\\[\\text{E}(X) = \\mu\\]\n\n\n\n\n\\(\\text{Var}(X)\\)\n\n\n\\[\\text{Var}(X) = \\sigma^2 \\qquad \\text{SD}(X) = \\sigma\\]\n\n\n\n\nNo closed-form CDF: we use R (or a table) to find probabilities"
+    "text": "Properties of Normal RVs\n\nNo scenario description here because the Normal distribution is so universal\n\nCentral Limit Theorem (Lesson 17) makes it applicable to many types of events\n\nShorthand: \\(X \\sim \\text{Normal}(\\mu, \\sigma^2)\\)\n\nThe second parameter is the variance \\(\\sigma^2\\), but R’s *norm() functions use sd \\(= \\sigma\\)\n\n\n\n\n\n\n\\(\\text{E}(X)\\)\n\n\n\\[\\text{E}(X) = \\mu\\]\n\n\n\n\n\\(\\text{Var}(X)\\)\n\n\n\\[\\text{Var}(X) = \\sigma^2 \\qquad \\text{SD}(X) = \\sigma\\]\n\n\n\nNo closed-form CDF: we use R (or a table) to find probabilities\n\n\n\n\n\n\npdf\n\n\n\\[f_X(x) = \\dfrac{1}{\\sqrt{2\\pi \\sigma^2}}e^{-(x-\\mu)^2/(2\\sigma^2)}\\]\nfor \\(-\\infty &lt; x &lt; \\infty\\)"
   },
   {
     "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#helpful-r-code-3",
@@ -29097,5 +29097,12 @@
     "title": "Lesson 13: Some Important Continuous RVs",
     "section": "How are these distributions related?",
     "text": "How are these distributions related?"
+  },
+  {
+    "objectID": "lessons/13_Cont_RVs/13_Cont_RVs.html#distributions-and-relationships-we-learned",
+    "href": "lessons/13_Cont_RVs/13_Cont_RVs.html#distributions-and-relationships-we-learned",
+    "title": "Lesson 13: Some Important Continuous RVs",
+    "section": "Distributions and relationships we learned",
+    "text": "Distributions and relationships we learned"
   }
 ]

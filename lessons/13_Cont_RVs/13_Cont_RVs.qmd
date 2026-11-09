@@ -439,8 +439,8 @@ $$P(X > a +b | X> a) = P(X > b)$$
 
 -   Relation to discrete distributions
 
-    -   Relationship to Geometric: Exponential is the continuous analog to the Geometric distribution
-    -   Relationship to Poisson: When the time between arrivals is exponential, the number of arrivals in a fixed time interval is Poisson with the mean $\lambda$
+    -   **Relationship to Geometric:** Exponential is the continuous analog to the Geometric distribution
+    -   **Relationship to Poisson:** When the time between arrivals is exponential, the number of arrivals in a fixed time interval is Poisson with the mean $\lambda$
     
 
 
@@ -596,13 +596,12 @@ bus_sims |> # <1>
 -   We've already waited $a = 3$ minutes. Is the chance of waiting $b = 5$ **more** minutes the same as $P(X > 5)$?
 
 ::: columns
-::: {.column width="62%"}
+::: {.column width="60%"}
 
 ```{r}
 bus_sims |> # <1>
   summarise( # <1>
     prob_over_5   = mean(X > 5), # <2>
-    prob_5_more   = mean(X > 8) / mean(X > 3) # <3>
   )
 ```
 
@@ -610,6 +609,9 @@ bus_sims |> # <1>
 2. $P(X > 5)$: the proportion of waits longer than 5 minutes.
 3. $P(X > 3 + 5 \mid X > 3) = P(X > 8) / P(X > 3)$, the same conditional probability recipe as Lesson 9.
 
+:::
+
+::: {.column width="2%"}
 :::
 
 ::: {.column width="38%"}
@@ -732,6 +734,8 @@ R commands with their [input]{style="color:#BF396F"} and [output]{style="color:#
 | `qgamma()` | returns [value]{style="color:#367B79"} corresponding to [desired quantile]{style="color:#BF396F"} | Inverse CDF: we give it a probability $p$ and it returns the value $t$ where $P(X \leq t) = p$ |
 
 -   Parameters: `shape` $= r$ and `rate` $= \lambda$ (or `scale` $= \beta = 1/\lambda$)
+
+-   Another helpful site with R code: <https://rpubs.com/mpfoley73/459051>
 
 ## Waiting for 4 buses
 
@@ -932,11 +936,8 @@ head(sum_sims) # <1>
 sum_sims |> # <1>
   summarise( # <1>
     average = mean(Y), # <2>
-    
     std_dev = sd(Y), # <2>
-    
     prob_a  = mean(Y <= 50) # <3>
-    
   )
 ```
 
@@ -981,10 +982,6 @@ ggplot(sum_sims, aes(x = Y)) + # <4>
 
 :::
 :::
-
-## Additional Resource
-
--   Another helpful site with R code: <https://rpubs.com/mpfoley73/459051>
 
 # Normal RVs
 
@@ -1188,10 +1185,8 @@ $$ Z \sim \text{Normal}(\mu = 0, \sigma^2 = 1)$$
 ## Chi-squared distribution
 
 ::: columns
-::: column
+::: {.column width="58%"}
 -   If $Z \sim \text{Normal}(0,1)$, then $X = Z^2$ has a Chi-squared distribution with 1 degree of freedom
-
-    -   Shorthand: $X \sim \chi^2_{(1)}$
 
 -  If $Z_1, Z_2, \ldots, Z_n$ are independent standard normal RVs, then
 
@@ -1205,11 +1200,11 @@ $$ Z \sim \text{Normal}(\mu = 0, \sigma^2 = 1)$$
 -   A ratio of two independent chi-squared RVs, each divided by its degrees of freedom, has an F distribution: $\dfrac{\chi^2_{(n)}/n}{\chi^2_{(m)}/m} \sim F_{n,m}$
 :::
 
-::: column
+::: {.column width="42%"}
 ```{r}
 #| echo: false
 #| warning: false
-#| fig-width: 10
+#| fig-width: 8
 #| fig-height: 8
 
 df_values <- c(2, 3, 5, 10, 20)

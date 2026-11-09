@@ -1230,4 +1230,4 @@ ggplot(chisq_curves, aes(x = x, y = density, color = factor(df))) +
 
 ## How are these distributions related?
 
-![](../img_slides/distribution_relationships.png){fig-align="center" width="1700"}
+![](../img_slides/distribution_relationships.png){fig-align="center" width="1850"}

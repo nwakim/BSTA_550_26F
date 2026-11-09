@@ -20,6 +20,8 @@ website:
         text: Homework
       - href: quiz.qmd
         text: Quizzes
+      - href: distributions.qmd
+        text: Distributions
       - href: project.qmd
         text: Project
       

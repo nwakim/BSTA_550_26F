@@ -1,0 +1,67 @@
+// Source for lessons/img_slides/distribution_relationships.png
+// Re-render with:  neato -n2 -Tpng -Gdpi=96 distribution_relationships.dot -o distribution_relationships.png
+// Adapted from Leemis (1986), "Relationships among common univariate distributions".
+digraph distributions {
+  graph [splines=true, overlap=false, fontname="Lato", bgcolor="white", pad=0.3, outputorder=edgesfirst];
+  node  [shape=box, style="rounded,filled", fontname="Lato", fontsize=30, penwidth=4, margin="0.25,0.12", width=2.6];
+  edge  [fontname="Lato", fontsize=22, penwidth=3, color="#444444", fontcolor="#333333"];
+
+  // discrete (teal)
+  node [color="#20c997", fillcolor="#d4f4ea"];
+  dunif [label="Discrete Uniform\n(N)",        pos="-274,720"];
+  nb    [label="Negative Binomial\n(p, r)",    pos="86,720", width=3.3];
+  geo   [label="Geometric\n(p)",               pos="418,720"];
+  pois  [label="Poisson\n(λ)",                 pos="792,720"];
+  binom [label="Binomial\n(n, p)",             pos="1210,720"];
+  bern  [label="Bernoulli\n(p)",               pos="1699,720"];
+  hyper [label="Hypergeometric\n(M, N, n)",    pos="1210,936", width=3.3];
+
+  // continuous (red)
+  node [color="#d9534f", fillcolor="#f9e0df"];
+  unif  [label="Uniform\n[a, b]",              pos="-274,187"];
+  gam   [label="Gamma\n(r, λ)",                pos="86,418"];
+  expo  [label="Exponential\n(λ)",             pos="605,526"];
+  norm  [label="Normal\n(μ, σ²)",              pos="1210,389"];
+  z     [label="Standard Normal\n(0, 1)",      pos="1699,389", width=3.3];
+  chi   [label="Chi-squared\n(n)",             pos="835,101"];
+  f     [label="F\n(n, m)",                    pos="1282,36"];
+
+  // special cases and transformations (solid)
+  bern  -> binom [label="\nsum of n"];
+  binom -> bern  [label="n = 1\n"];
+  geo   -> nb    [label="\nsum of r"];
+  nb    -> geo   [label="r = 1\n"];
+  pois  -> pois  [label="sum", tailport=n, headport=n];
+  expo  -> gam   [label="\nsum of r"];
+  gam   -> expo  [label="r = 1\n"];
+  expo  -> expo  [label="  min", tailport=e, headport=e];
+  unif  -> expo  [label="a = 0, b = 1:  −ln(1 − X) / λ"];
+  gam   -> chi   [label="r = n/2,  λ = 1/2"];
+  norm  -> z     [label="(X − μ) / σ\n"];
+  z     -> norm  [label="\nμ + σZ"];
+  z     -> chi   [label="sum of n squares"];
+  chi   -> f     [label="(X₁/n) / (X₂/m)"];
+
+  // limits / approximations (dashed)
+  hyper -> binom [style=dashed, label="p = M/N, N large"];
+  binom -> pois  [style=dashed, label="λ = np,\nn large, p small"];
+  binom -> norm  [style=dashed, label="μ = np, σ² = np(1−p),\nn large"];
+  pois  -> norm  [style=dashed, label="μ = σ² = λ,\nλ large"];
+  gam   -> norm  [style=dashed, label="μ = r/λ, σ² = r/λ²,\nr large"];
+
+  // discrete <-> continuous analogs (dotted green)
+  edge [style=dotted, color="#006a4e", fontcolor="#006a4e", dir=none, penwidth=4.5, fontsize=24];
+  dunif -> unif  [label="analog"];
+  nb    -> gam   [label="analog"];
+  geo   -> expo  [label="analog"];
+  pois  -> expo  [label="counts ↔\nwaiting times"];
+
+  // legend
+  legend [shape=plaintext, style="", pos="-86,-43", fontsize=24, label=<
+    <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2">
+      <TR><TD ALIGN="LEFT"><FONT COLOR="#20c997"><B>■</B></FONT> Discrete    <FONT COLOR="#d9534f"><B>■</B></FONT> Continuous</TD></TR>
+      <TR><TD ALIGN="LEFT">——  special case or transformation</TD></TR>
+      <TR><TD ALIGN="LEFT">- - -  limit (approximation)</TD></TR>
+      <TR><TD ALIGN="LEFT"><FONT COLOR="#006a4e">· · ·  discrete ↔ continuous analog</FONT></TD></TR>
+    </TABLE>>];
+}

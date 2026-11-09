@@ -195,6 +195,7 @@ unif_curves <- unif_params |>
 ggplot(unif_curves, aes(x = x, y = density, color = label)) +
   geom_line(linewidth = 2) +
   labs(x = "x", y = "Density", color = NULL) +
+  scale_color_manual(values = c("#29abe0", "#E89543", "#d9534f")) +
   theme_classic(base_size = 30) +
   theme(legend.position = c(0.8, 0.75))
 ```
@@ -447,7 +448,8 @@ exp_curves <- expand_grid(
 ggplot(exp_curves, aes(x = x, y = density, color = factor(lambda))) +
   geom_line(linewidth = 2) +
   labs(x = "x", y = "Density", color = NULL) +
-  scale_color_discrete(labels = parse(text = paste("lambda ==", lambda_values))) +
+  scale_color_manual(values = c("#29abe0", "#E89543", "#d9534f"),
+                     labels = parse(text = paste("lambda ==", lambda_values))) +
   theme_classic(base_size = 30) +
   theme(legend.position = c(0.8, 0.7),
         legend.text = element_text(hjust = 0))
@@ -769,7 +771,8 @@ gamma_curves <- expand_grid(
 ggplot(gamma_curves, aes(x = x, y = density, color = factor(r))) +
   geom_line(linewidth = 2) +
   labs(x = "x", y = "Density", color = NULL) +
-  scale_color_discrete(labels = parse(text = paste0("r == ", r_values, "*','~lambda == 1"))) +
+  scale_color_manual(values = c("#29abe0", "#E89543", "#d9534f"),
+                     labels = parse(text = paste0("r == ", r_values, "*','~lambda == 1"))) +
   theme_classic(base_size = 30) +
   theme(legend.position = c(0.75, 0.7),
         legend.text = element_text(hjust = 0))
@@ -1126,7 +1129,8 @@ norm_curves <- norm_params |>
 ggplot(norm_curves, aes(x = x, y = density, color = label)) +
   geom_line(linewidth = 2) +
   labs(x = "x", y = "Density", color = NULL) +
-  scale_color_discrete(labels = function(l) parse(text = l)) +
+  scale_color_manual(values = c("#29abe0", "#E89543", "#d9534f"),
+                     labels = function(l) parse(text = l)) +
   theme_classic(base_size = 30) +
   theme(legend.position = c(0.18, 0.75),
         legend.text = element_text(hjust = 0))

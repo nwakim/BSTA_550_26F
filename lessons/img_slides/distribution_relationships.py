@@ -28,7 +28,7 @@ N = {
  "binom": (18.2, 8.0, "Binomial", r"$(n,\ p)$", "d"),
  "bern":  (22.4, 8.0, "Bernoulli", r"$(p)$", "d"),
  "hyper": (18.2, 10.4, "Hypergeometric", r"$(M,\ N,\ n)$", "d"),
- "unif":  (1.9, 2.0, "Uniform", r"$[a,\ b]$", "c"),
+ "unif":  (1.9, 4.8, "Uniform", r"$[a,\ b]$", "c"),
  "gam":   (5.9, 4.8, "Gamma", r"$(r,\ \lambda)$", "c"),
  "expo":  (10.8, 4.8, "Exponential", r"$(\lambda)$", "c"),
  "norm":  (18.2, 4.8, "Normal", r"$(\mu,\ \sigma^2)$", "c"),
@@ -95,8 +95,6 @@ pair("expo","gam", r"sum of $r$", r"$r = 1$", 0.62, -0.62)
 pair("norm","z", r"$(X-\mu)/\sigma$", r"$\mu + \sigma Z$", 0.62, -0.62)
 loop("pois","top", "sum of Poissons")
 loop("expo","right", "min of\nExponentials")
-arrow("unif","expo", rad=0.18); lab(6.3, 2.05, r"$a=0,\ b=1$:  $-\ln(1-X)/\lambda$")
-arrow("gam","chi", rad=0.12, label=r"$r = n/2,\ \lambda = 1/2$", lpos=0.62, loff=(-0.9,-0.55))
 arrow("z","chi", rad=-0.08, label=r"sum of $n$ squares", lpos=0.42, loff=(0.5,-0.5))
 arrow("chi","f", label=r"$\dfrac{X_1/n}{X_2/m}$", lpos=0.5, loff=(0.2,-0.8))
 
@@ -105,7 +103,6 @@ arrow("hyper","binom", style="dashed"); lab(20.2, 9.2, r"$p = M/N$, $N$ large")
 arrow("binom","pois", style="dashed");  lab(16.0, 7.25, "$\\lambda = np$,\n$n$ large, $p$ small")
 arrow("binom","norm", style="dashed");  lab(20.3, 6.4, "$\\mu = np$, $\\sigma^2 = np(1-p)$,\n$n$ large")
 arrow("pois","norm", style="dashed", label="$\\mu = \\sigma^2 = \\lambda$,\n$\\lambda$ large", lpos=0.5, loff=(-0.55,-0.25))
-arrow("gam","norm", style="dashed", rad=0.26, label=r"$\mu = r/\lambda$, $\sigma^2 = r/\lambda^2$, $r$ large", lpos=0.5, loff=(0.4,-1.75))
 
 # --- dotted green: analogs (no arrowheads)
 for a,b,l,lp,lo in [("dunif","unif","analog",0.5,(0,0)),("nb","gam","analog",0.5,(0,0)),
@@ -113,7 +110,7 @@ for a,b,l,lp,lo in [("dunif","unif","analog",0.5,(0,0)),("nb","gam","analog",0.5
     arrow(a,b, style="dotted", color=GREEN, lw=4, head=False, label=l, lpos=lp, loff=lo)
 
 # --- legend
-lx, ly = 3.7, 0.95
+lx, ly = 0.35, 0.95
 ax.add_patch(FancyBboxPatch((lx, 0.2), 6.6, 1.45, boxstyle="round,pad=0.05,rounding_size=0.15", lw=1.2, ec="#bbbbbb", fc="white", zorder=1))
 ax.add_patch(FancyBboxPatch((lx+0.2, ly+0.38), 0.35, 0.25, boxstyle="round,pad=0.01", fc=TEAL_L, ec=TEAL, lw=2.5))
 ax.text(lx+0.7, ly+0.5, "Discrete", fontsize=15, va="center")

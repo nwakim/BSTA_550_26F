@@ -175,6 +175,30 @@ $$\text{Var}(X) = \dfrac{(b-a)^2}{12}$$
 :::
 :::
 
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 4.4
+#| fig-align: center
+
+unif_params <- tibble(
+  a = c(0, 0, 1),
+  b = c(1, 2, 4),
+  label = paste0("a = ", a, ", b = ", b)
+)
+
+unif_curves <- unif_params |>
+  expand_grid(x = seq(-0.5, 4.5, length.out = 2001)) |>
+  mutate(density = dunif(x, min = a, max = b))
+
+ggplot(unif_curves, aes(x = x, y = density, color = label)) +
+  geom_line(linewidth = 2) +
+  labs(x = "x", y = "Density", color = NULL) +
+  theme_minimal(base_size = 30) +
+  theme(legend.position = c(0.8, 0.75))
+```
+
 :::::::
 ::::::::
 
@@ -405,6 +429,30 @@ $\text{Var}(X)$
 $$\text{Var}(X) = \dfrac{1}{\lambda^2}$$
 :::
 :::
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 4.2
+#| fig-align: center
+
+lambda_values <- c(0.5, 1, 2)
+
+exp_curves <- expand_grid(
+  lambda = lambda_values,
+  x = seq(0, 5, length.out = 1000)
+  ) |>
+  mutate(density = dexp(x, rate = lambda))
+
+ggplot(exp_curves, aes(x = x, y = density, color = factor(lambda))) +
+  geom_line(linewidth = 2) +
+  labs(x = "x", y = "Density", color = NULL) +
+  scale_color_discrete(labels = parse(text = paste("lambda ==", lambda_values))) +
+  theme_minimal(base_size = 30) +
+  theme(legend.position = c(0.8, 0.7),
+        legend.text = element_text(hjust = 0))
+```
 
 :::::::
 ::::::::
@@ -704,6 +752,30 @@ $\text{Var}(X)$
 $$\text{Var}(X) = \dfrac{r}{\lambda^2}$$
 :::
 :::
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 3.4
+#| fig-align: center
+
+r_values <- c(1, 2, 4)
+
+gamma_curves <- expand_grid(
+  r = r_values,
+  x = seq(0, 12, length.out = 1000)
+  ) |>
+  mutate(density = dgamma(x, shape = r, rate = 1))
+
+ggplot(gamma_curves, aes(x = x, y = density, color = factor(r))) +
+  geom_line(linewidth = 2) +
+  labs(x = "x", y = "Density", color = NULL) +
+  scale_color_discrete(labels = parse(text = paste0("r == ", r_values, "*','~lambda == 1"))) +
+  theme_minimal(base_size = 30) +
+  theme(legend.position = c(0.75, 0.7),
+        legend.text = element_text(hjust = 0))
+```
 
 :::::::
 ::::::::
@@ -1034,6 +1106,32 @@ $\text{Var}(X)$
 $$\text{Var}(X) = \sigma^2 \qquad \text{SD}(X) = \sigma$$
 :::
 :::
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 9
+#| fig-height: 3.8
+#| fig-align: center
+
+norm_params <- tibble(
+  mu = c(0, 0, 2),
+  sigma = c(1, 2, 1),
+  label = paste0("mu == ", mu, "*','~sigma == ", sigma)
+)
+
+norm_curves <- norm_params |>
+  expand_grid(x = seq(-6, 6, length.out = 1000)) |>
+  mutate(density = dnorm(x, mean = mu, sd = sigma))
+
+ggplot(norm_curves, aes(x = x, y = density, color = label)) +
+  geom_line(linewidth = 2) +
+  labs(x = "x", y = "Density", color = NULL) +
+  scale_color_discrete(labels = function(l) parse(text = l)) +
+  theme_minimal(base_size = 30) +
+  theme(legend.position = c(0.18, 0.75),
+        legend.text = element_text(hjust = 0))
+```
 
 :::::::
 ::::::::

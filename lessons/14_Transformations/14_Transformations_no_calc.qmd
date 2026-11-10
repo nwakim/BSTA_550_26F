@@ -77,7 +77,11 @@ How do we get simulated values of $X$ in step 2?
 
 1. **Named distribution:** use its `r*()` function from Lessons 12 and 13 (`runif()`, `rexp()`, `rgamma()`, `rnorm()`)
 
+ 
+
 2. **Build it from simpler pieces:** like the Gamma as a sum of exponentials (Lesson 13)
+
+ 
 
 3. **Only have the pdf?** Use [**grid sampling**]{style="color:#E25D3B;"} (next slide)
     - Lesson 9's inverse CDF method needs the CDF
@@ -95,12 +99,19 @@ How do we get simulated values of $X$ in step 2?
 set.seed(1111) # <1>
 reps <- 10000 # <2>
 
-u_grid <- seq(from = 1, to = 2, length.out = 1001) # <3>
+u_grid <- seq(
+  from = 1, 
+  to = 2, 
+  length.out = 1001
+  ) # <3>
 
 u_sims <- tibble(sim = 1:reps) |> # <4>
   mutate(
-    u = sample(u_grid, size = n(), replace = TRUE, # <5>
-               prob = 4/15 * u_grid^3) # <6>
+    u = sample(u_grid, 
+               size = n(), 
+               replace = TRUE, # <5>
+               prob = 4/15 * u_grid^3
+               ) # <6>
   )
 ```
 

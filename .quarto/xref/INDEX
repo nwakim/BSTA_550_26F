@@ -344,5 +344,8 @@
   },
   "lessons/14_Variance/14_Variance.qmd": {
     "14_Variance.html": "8c7d7bb5"
+  },
+  "lessons/14_Transformations/14_Transformations_no_calc.qmd": {
+    "14_Transformations_no_calc.html": "e0ad33a5"
   }
 }

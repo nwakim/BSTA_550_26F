@@ -270,7 +270,7 @@ Nicky Wakim
 </ul>
 </section>
 <section id="simulating-x-three-ways" class="slide level2">
-<h2>Simulating <span class="math inline">\(X\)</span>: three ways</h2>
+<h2>Simulating X: three ways</h2>
 <p>How do we get simulated values of <span class="math inline">\(X\)</span> in step 2?</p>
 <ol type="1">
 <li><strong>Named distribution:</strong> use its <code>r*()</code> function from Lessons 12 and 13 (<code>runif()</code>, <code>rexp()</code>, <code>rgamma()</code>, <code>rnorm()</code>)</li>
@@ -289,30 +289,63 @@ Nicky Wakim
 </ol>
 </section>
 <section id="grid-sampling" class="slide level2">
-<h2>Grid sampling: simulating from a pdf</h2>
+<h2>Grid sampling: the steps</h2>
 <ul>
 <li>Let <span class="math inline">\(U\)</span> have pdf <span class="math inline">\(f_U(u)= \dfrac{4}{15}u^3\)</span> for <span class="math inline">\(1\leq u \leq 2\)</span>. There is no <code>r*()</code> function for <span class="math inline">\(U\)</span>!</li>
-<li>Idea: a box model (Lesson 2). Fill a box with many evenly spaced values between 1 and 2, and make each ticket’s chance of being drawn proportional to the pdf’s height there</li>
+<li>Idea: a box model (Lesson 2), where tickets in taller parts of the pdf are more likely to be drawn</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ol type="1">
+<li><p><strong>Find the possible values</strong> of <span class="math inline">\(U\)</span>: from 1 to 2</p></li>
+<li><p><strong>Make a grid:</strong> many evenly spaced values across the possible values. Each value is a ticket in the box</p>
+<ul>
+<li>e.g.&nbsp;1, 1.001, 1.002, …, 2 (1001 tickets)</li>
+</ul></li>
+<li><p><strong>Find the pdf’s height</strong> at each ticket: <span class="math inline">\(f_U(1) \approx 0.27\)</span>, …, <span class="math inline">\(f_U(2) \approx 2.13\)</span></p></li>
+<li><p><strong>Draw many tickets with replacement.</strong> Each draw is one simulated value of <span class="math inline">\(U\)</span></p>
+<ul>
+<li>Each ticket has a chance of being drawn proportional to its height</li>
+</ul></li>
+<li><p><strong>Check:</strong> a histogram of the draws should follow the pdf</p></li>
+</ol>
+</div><div class="column" style="width:45%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="14_Transformations_no_calc_files/figure-revealjs/unnamed-chunk-1-1.png" width="864"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><em>Real grid has 1001 tickets, so draws look continuous</em></p>
+</div></div>
+</section>
+<section id="grid-sampling-code-and-plot" class="slide level2">
+<h2>Grid sampling: code and plot</h2>
+<ul>
+<li>Simulate 10,000 values of <span class="math inline">\(U\)</span>, with <span class="math inline">\(f_U(u)= \dfrac{4}{15}u^3\)</span> for <span class="math inline">\(1\leq u \leq 2\)</span>, by grid sampling</li>
 </ul>
 <div class="columns">
 <div class="column" style="width:55%;">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">1111</span>)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2">2</button><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2" aria-label="2"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2">2</button><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2" aria-label="2"></a>reps <span class="ot">&lt;-</span> <span class="dv">100000</span></span>
 <span id="annotated-cell-2-3"><a href="#annotated-cell-2-3" aria-label="3"></a></span>
 <span id="annotated-cell-2-4"><a href="#annotated-cell-2-4" aria-label="4"></a>u_grid <span class="ot">&lt;-</span> <span class="fu">seq</span>(</span>
 <span id="annotated-cell-2-5"><a href="#annotated-cell-2-5" aria-label="5"></a>  <span class="at">from =</span> <span class="dv">1</span>, </span>
 <span id="annotated-cell-2-6"><a href="#annotated-cell-2-6" aria-label="6"></a>  <span class="at">to =</span> <span class="dv">2</span>, </span>
-<span id="annotated-cell-2-7"><a href="#annotated-cell-2-7" aria-label="7"></a>  <span class="at">length.out =</span> <span class="dv">1001</span></span>
+<span id="annotated-cell-2-7"><a href="#annotated-cell-2-7" aria-label="7"></a>  <span class="at">length.out =</span> <span class="dv">10001</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3">3</button><span id="annotated-cell-2-8" class="code-annotation-target"><a href="#annotated-cell-2-8" aria-label="8"></a>  )</span>
 <span id="annotated-cell-2-9"><a href="#annotated-cell-2-9" aria-label="9"></a></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="4">4</button><span id="annotated-cell-2-10" class="code-annotation-target"><a href="#annotated-cell-2-10" aria-label="10"></a>u_sims <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps) <span class="sc">|&gt;</span></span>
 <span id="annotated-cell-2-11"><a href="#annotated-cell-2-11" aria-label="11"></a>  <span class="fu">mutate</span>(</span>
-<span id="annotated-cell-2-12"><a href="#annotated-cell-2-12" aria-label="12"></a>    <span class="at">u =</span> <span class="fu">sample</span>(u_grid, </span>
-<span id="annotated-cell-2-13"><a href="#annotated-cell-2-13" aria-label="13"></a>               <span class="at">size =</span> <span class="fu">n</span>(), </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="5">5</button><span id="annotated-cell-2-14" class="code-annotation-target"><a href="#annotated-cell-2-14" aria-label="14"></a>               <span class="at">replace =</span> <span class="cn">TRUE</span>,</span>
-<span id="annotated-cell-2-15"><a href="#annotated-cell-2-15" aria-label="15"></a>               <span class="at">prob =</span> <span class="dv">4</span><span class="sc">/</span><span class="dv">15</span> <span class="sc">*</span> u_grid<span class="sc">^</span><span class="dv">3</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="6">6</button><span id="annotated-cell-2-16" class="code-annotation-target"><a href="#annotated-cell-2-16" aria-label="16"></a>               )</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="5">5</button><span id="annotated-cell-2-12" class="code-annotation-target"><a href="#annotated-cell-2-12" aria-label="12"></a>    <span class="at">u =</span> <span class="fu">sample</span>(u_grid,</span>
+<span id="annotated-cell-2-13"><a href="#annotated-cell-2-13" aria-label="13"></a>               <span class="at">size =</span> <span class="fu">n</span>(),</span>
+<span id="annotated-cell-2-14"><a href="#annotated-cell-2-14" aria-label="14"></a>               <span class="at">replace =</span> <span class="cn">TRUE</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="6">6</button><span id="annotated-cell-2-15" class="code-annotation-target"><a href="#annotated-cell-2-15" aria-label="15"></a>               <span class="at">prob =</span> <span class="dv">4</span><span class="sc">/</span><span class="dv">15</span> <span class="sc">*</span> u_grid<span class="sc">^</span><span class="dv">3</span></span>
+<span id="annotated-cell-2-16"><a href="#annotated-cell-2-16" aria-label="16"></a>               )</span>
 <span id="annotated-cell-2-17"><a href="#annotated-cell-2-17" aria-label="17"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
@@ -326,7 +359,7 @@ Nicky Wakim
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="8" data-code-annotation="3">The “tickets”: 1001 evenly spaced values from 1 to 2 (1, 1.001, 1.002, …, 2).</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="8" data-code-annotation="3">Steps 1 and 2: the “tickets” are 1001 evenly spaced values from 1 to 2 (1, 1.001, 1.002, …, 2).</span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="4">4</dt>
 <dd>
@@ -334,11 +367,11 @@ Nicky Wakim
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="14" data-code-annotation="5"><code>sample()</code> draws one ticket for every row, with replacement, like in Lesson 2.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="12,13,14" data-code-annotation="5">Step 5: <code>sample()</code> draws one ticket for every row, with replacement, like in Lesson 2.</span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="16" data-code-annotation="6"><code>prob</code> makes tickets where the pdf is taller more likely to be drawn. R rescales <code>prob</code> to add to 1, so <code>prob = u_grid^3</code> gives the same draws: the constant <span class="math inline">\(\frac{4}{15}\)</span> is not even needed!</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="15" data-code-annotation="6">Steps 3 and 4: <code>prob</code> gives each ticket the pdf’s height there, so taller tickets are more likely to be drawn. R rescales <code>prob</code> to add to 1, so <code>prob = u_grid^3</code> gives the same draws: the constant <span class="math inline">\(\frac{4}{15}\)</span> is not even needed!</span>
 </dd>
 </dl>
 </div>
@@ -349,7 +382,7 @@ Nicky Wakim
 <summary>Plot code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="7">7</button><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1" aria-label="1"></a><span class="fu">ggplot</span>(u_sims, <span class="fu">aes</span>(<span class="at">x =</span> u)) <span class="sc">+</span></span>
 <span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-label="2"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)),</span>
-<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3" aria-label="3"></a>                 <span class="at">binwidth =</span> <span class="fl">0.05</span>, <span class="at">boundary =</span> <span class="dv">1</span>,</span>
+<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3" aria-label="3"></a>                 <span class="at">binwidth =</span> <span class="fl">0.02</span>, <span class="at">boundary =</span> <span class="dv">1</span>,</span>
 <span id="annotated-cell-3-4"><a href="#annotated-cell-3-4" aria-label="4"></a>                 <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="8">8</button><span id="annotated-cell-3-5" class="code-annotation-target"><a href="#annotated-cell-3-5" aria-label="5"></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> <span class="cf">function</span>(u) <span class="dv">4</span><span class="sc">/</span><span class="dv">15</span> <span class="sc">*</span> u<span class="sc">^</span><span class="dv">3</span>,</span>
 <span id="annotated-cell-3-6"><a href="#annotated-cell-3-6" aria-label="6"></a>                <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
@@ -364,7 +397,7 @@ Nicky Wakim
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="5,6" data-code-annotation="8">The pdf <span class="math inline">\(f_U(u)\)</span> in red. The histogram follows it.</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="5,6" data-code-annotation="8">Step 6: the pdf <span class="math inline">\(f_U(u)\)</span> in red. The histogram follows it.</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="9">9</dt>
 <dd>
@@ -375,7 +408,7 @@ Nicky Wakim
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="14_Transformations_no_calc_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+<p><img data-src="14_Transformations_no_calc_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -484,7 +517,7 @@ Nicky Wakim
 <pre><code># A tibble: 1 × 2
   prob_V prob_U
    &lt;dbl&gt;  &lt;dbl&gt;
-1  0.733  0.733</code></pre>
+1  0.731  0.731</code></pre>
 </div>
 </div>
 <div class="proof1">
@@ -529,7 +562,7 @@ Nicky Wakim
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="14_Transformations_no_calc_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+<p><img data-src="14_Transformations_no_calc_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -663,7 +696,7 @@ Nicky Wakim
 <pre><code># A tibble: 1 × 3
   prob_F mean_F  sd_F
    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
-1 0.0948   68.1  9.04</code></pre>
+1 0.0925   68.0  9.03</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
@@ -817,7 +850,7 @@ Nicky Wakim
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="14_Transformations_no_calc_files/figure-revealjs/unnamed-chunk-7-1.png" width="768"></p>
+<p><img data-src="14_Transformations_no_calc_files/figure-revealjs/unnamed-chunk-8-1.png" width="768"></p>
 </figure>
 </div>
 </div>
@@ -867,7 +900,7 @@ Nicky Wakim
 <pre><code># A tibble: 1 × 2
   prob_V prob_U
    &lt;dbl&gt;  &lt;dbl&gt;
-1  0.424  0.424</code></pre>
+1  0.423  0.423</code></pre>
 </div>
 </div>
 <div class="proof1">
@@ -907,7 +940,7 @@ Nicky Wakim
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="14_Transformations_no_calc_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
+<p><img data-src="14_Transformations_no_calc_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -955,7 +988,7 @@ Nicky Wakim
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="14_Transformations_no_calc_files/figure-revealjs/unnamed-chunk-10-1.png" width="768"></p>
+<p><img data-src="14_Transformations_no_calc_files/figure-revealjs/unnamed-chunk-11-1.png" width="768"></p>
 </figure>
 </div>
 </div>
@@ -1010,7 +1043,7 @@ Nicky Wakim
 <pre><code># A tibble: 1 × 1
   prob_Y
    &lt;dbl&gt;
-1  0.488
+1  0.498
 [1] 0.5</code></pre>
 </div>
 </div>
@@ -1040,7 +1073,7 @@ Nicky Wakim
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="14_Transformations_no_calc_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+<p><img data-src="14_Transformations_no_calc_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1109,7 +1142,7 @@ Nicky Wakim
 <pre><code># A tibble: 1 × 1
   prob_W
    &lt;dbl&gt;
-1  0.955
+1  0.954
 [1] 0.9544997
 [1] 0.9544997</code></pre>
 </div>
@@ -1150,7 +1183,7 @@ Nicky Wakim
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="14_Transformations_no_calc_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+<p><img data-src="14_Transformations_no_calc_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1227,7 +1260,7 @@ Nicky Wakim
 <pre><code># A tibble: 1 × 3
   prob_Y prob_X mean_Y
    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-1  0.568  0.567   8.01</code></pre>
+1  0.568  0.567   7.97</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:48%;">
@@ -1266,7 +1299,7 @@ Nicky Wakim
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="14_Transformations_no_calc_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+<p><img data-src="14_Transformations_no_calc_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1351,9 +1384,9 @@ Nicky Wakim
 <pre><code># A tibble: 3 × 3
   n_sims avg_estimate  spread
    &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;
-1    100        0.421 0.0503 
-2   1000        0.425 0.0157 
-3  10000        0.425 0.00541</code></pre>
+1    100        0.425 0.0521 
+2   1000        0.426 0.0173 
+3  10000        0.426 0.00479</code></pre>
 </div>
 </div>
 <ul>
@@ -1398,7 +1431,7 @@ Nicky Wakim
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="14_Transformations_no_calc_files/figure-revealjs/unnamed-chunk-19-1.png" width="1056"></p>
+<p><img data-src="14_Transformations_no_calc_files/figure-revealjs/unnamed-chunk-20-1.png" width="1056"></p>
 </figure>
 </div>
 </div>

@@ -71,7 +71,7 @@ To learn about the distribution of $Y = g(X)$:
 - This works for **any** function $g$, as long as we can simulate $X$
 - We do not need the CDF of $X$, the CDF of $Y$, or a `p*()` function for $Y$
 
-## Simulating $X$: three ways
+## Simulating X: three ways
 
 How do we get simulated values of $X$ in step 2?
 
@@ -103,14 +103,10 @@ How do we get simulated values of $X$ in step 2?
 
 3. **Find the pdf's height** at each ticket: $f_U(1) \approx 0.27$, ..., $f_U(2) \approx 2.13$
 
-4. **Give each ticket a chance of being drawn** proportional to its height
+4. **Draw many tickets with replacement.** Each draw is one simulated value of $U$
+    - Each ticket has a chance of being drawn proportional to its height
 
-    - A ticket twice as tall is twice as likely to be drawn
-    - The heights don't need to add to 1: we only care how they compare
-
-5. **Draw many tickets with replacement.** Each draw is one simulated value of $U$
-
-6. **Check:** a histogram of the draws should follow the pdf
+5. **Check:** a histogram of the draws should follow the pdf
 
 :::
 
@@ -119,7 +115,7 @@ How do we get simulated values of $X$ in step 2?
 ```{r}
 #| echo: false
 #| fig-width: 9
-#| fig-height: 8
+#| fig-height: 7
 
 small_grid <- tibble(u = seq(1, 2, by = 0.1)) |>
   mutate(height = 4/15 * u^3,
@@ -131,12 +127,11 @@ ggplot(small_grid, aes(x = u, y = chance)) +
   geom_text(aes(label = round(chance, 3)), vjust = -1, size = 6) +
   scale_x_continuous(breaks = seq(1, 2, by = 0.1)) +
   coord_cartesian(ylim = c(0, 0.22)) +
-  labs(title = "A small grid: 11 tickets",
-       subtitle = "Chance of drawing each ticket is proportional to f(u)",
+  labs(title = "A small example grid: 11 tickets",
        x = "Ticket (u)", y = "Chance of being drawn")
 ```
 
-- The real grid has 1001 tickets, so the draws look continuous
+*Real grid has 1001 tickets, so draws look continuous*
 
 :::
 :::
@@ -150,12 +145,12 @@ ggplot(small_grid, aes(x = u, y = chance)) +
 
 ```{r}
 set.seed(1111) # <1>
-reps <- 10000 # <2>
+reps <- 100000 # <2>
 
 u_grid <- seq(
   from = 1, 
   to = 2, 
-  length.out = 1001
+  length.out = 10001
   ) # <3>
 
 u_sims <- tibble(sim = 1:reps) |> # <4>
@@ -187,7 +182,7 @@ u_sims <- tibble(sim = 1:reps) |> # <4>
 
 ggplot(u_sims, aes(x = u)) + # <7>
   geom_histogram(aes(y = after_stat(density)), # <7>
-                 binwidth = 0.05, boundary = 1, # <7>
+                 binwidth = 0.02, boundary = 1, # <7>
                  color = "black", fill = "lightblue") + # <7>
   geom_function(fun = function(u) 4/15 * u^3, # <8>
                 color = "red", linewidth = 1.5) + # <8>

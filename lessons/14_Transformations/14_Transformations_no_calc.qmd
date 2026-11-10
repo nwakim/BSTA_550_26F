@@ -1,0 +1,859 @@
+---
+title: "Lesson 14: Transformations"
+author: "Nicky Wakim"
+title-slide-attributes:
+    data-background-color: "#006a4e"
+date: "`r library(here); source(here('class_dates.R')); w7d2`"
+format:
+  revealjs:
+    theme: "../simple_NW.scss"
+    slide-number: true
+    show-slide-number: all
+    width: 1955
+    height: 1100
+    footer: Lesson 14 Slides
+    html-math-method: mathjax
+    highlight-style: arrow
+    code-annotations: hover
+execute:
+  echo: true
+---
+
+```{r setup, include=FALSE}
+library(here)
+source(here("class_dates.R"))
+
+library(tidyverse)
+library(kableExtra)
+
+theme_set(theme_bw(base_size = 28))
+```
+
+# Learning Objectives
+
+1. Describe how a linear rescaling changes a random variable, and identify the new distribution for Normal, Uniform, Exponential, and Gamma random variables
+2. Use simulation to approximate probabilities and the shape of the distribution of a nonlinear transformation
+3. Rewrite events about a transformation $g(X)$ as events about $X$
+
+## Distributions of transformations of random variables
+
+- Often make transformations of RVs
+    - Unit conversions (Celsius to Fahrenheit, minutes to hours)
+    - Log-transforming a skewed biomarker
+    - Turning a waiting time into a rate
+- A function of a [**random variable**]{style="color:#29abe0;"} is a random variable
+    - If $X$ is a random variable and $g$ is a function then $Y=g(X)$ is a random variable
+    - Since $g(X)$ is a random variable it has a [**distribution**]{style="color:#E25D3B;"}
+- Two types:
+    - Linear rescalings: $g(u) = a + bu$
+    - Nonlinear transformations: e.g. $g(u) = u^2$, $g(u) = \log(u)$
+- Our main tool today: **simulate $X$, transform every simulated value, then summarize**
+
+## Our main tool: simulate, transform, summarize {#sim-method}
+
+::: definition
+::: def-title
+The simulation method for transformations
+:::
+::: def-cont
+To learn about the distribution of $Y = g(X)$:
+
+1. **Possible values:** Find the possible values of $Y$ (graph $g$ over the possible values of $X$)
+2. **Simulate:** Simulate many values of $X$
+3. **Transform:** Apply $g$ to every simulated value: `mutate(y = g(x))`
+4. **Summarize:**
+    - Probabilities: `mean(y <= c)` approximates $P(Y \leq c)$
+    - Shape: a histogram of `y`
+    - Center and spread: `mean(y)`, `sd(y)`
+:::
+:::
+
+- This works for **any** function $g$, as long as we can simulate $X$
+- We do not need the CDF of $X$, the CDF of $Y$, or a `p*()` function for $Y$
+
+## Simulating $X$: three ways
+
+How do we get simulated values of $X$ in step 2?
+
+1. **Named distribution:** use its `r*()` function from Lessons 12 and 13 (`runif()`, `rexp()`, `rgamma()`, `rnorm()`)
+
+2. **Build it from simpler pieces:** like the Gamma as a sum of exponentials (Lesson 13)
+
+3. **Only have the pdf?** Use [**grid sampling**]{style="color:#E25D3B;"} (next slide)
+    - Lesson 9's inverse CDF method needs the CDF
+    - Grid sampling only needs the *height* of the pdf
+
+## Grid sampling: simulating from a pdf {#grid-sampling}
+
+- Let $U$ have pdf $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2$. There is no `r*()` function for $U$!
+- Idea: a box model (Lesson 2). Fill a box with many evenly spaced values between 1 and 2, and make each ticket's chance of being drawn proportional to the pdf's height there
+
+::: columns
+::: {.column width="55%"}
+
+```{r}
+set.seed(1111) # <1>
+reps <- 10000 # <2>
+
+u_grid <- seq(from = 1, to = 2, length.out = 1001) # <3>
+
+u_sims <- tibble(sim = 1:reps) |> # <4>
+  mutate(
+    u = sample(u_grid, size = n(), replace = TRUE, # <5>
+               prob = 4/15 * u_grid^3) # <6>
+  )
+```
+
+1. Set the random seed once, so we get the same simulation every time.
+2. Save the number of simulations as `reps`, so it is easy to change later.
+3. The "tickets": 1001 evenly spaced values from 1 to 2 (1, 1.001, 1.002, ..., 2).
+4. One row per simulation.
+5. `sample()` draws one ticket for every row, with replacement, like in Lesson 2.
+6. `prob` makes tickets where the pdf is taller more likely to be drawn. R rescales `prob` to add to 1, so `prob = u_grid^3` gives the same draws: the constant $\frac{4}{15}$ is not even needed!
+
+:::
+
+::: {.column width="45%"}
+
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 10
+#| fig-height: 7
+
+ggplot(u_sims, aes(x = u)) + # <7>
+  geom_histogram(aes(y = after_stat(density)), # <7>
+                 binwidth = 0.05, boundary = 1, # <7>
+                 color = "black", fill = "lightblue") + # <7>
+  geom_function(fun = function(u) 4/15 * u^3, # <8>
+                color = "red", linewidth = 1.5) + # <8>
+  labs(title = "Grid sampling from f(u) = (4/15) u^3", # <9>
+       x = "u", y = "Density") # <9>
+```
+
+7. Histogram of the simulated values of $U$, scaled like a pdf (Lesson 8).
+8. The pdf $f_U(u)$ in red. The histogram follows it.
+9. Add a title and axis labels.
+
+:::
+:::
+
+# Learning Objectives
+
+::: lob
+1. Describe how a linear rescaling changes a random variable, and identify the new distribution for Normal, Uniform, Exponential, and Gamma random variables
+:::
+2. Use simulation to approximate probabilities and the shape of the distribution of a nonlinear transformation
+3. Rewrite events about a transformation $g(X)$ as events about $X$
+
+## Linear rescaling
+
+::: definition
+::: def-title
+Definition: Linear Rescaling
+:::
+::: def-cont
+A **linear rescaling** is a transformation of the form $g(u) = a + bu$, where $a$ and $b$ are constants
+:::
+:::
+
+- Thus, if we have a random variable, $X$, then a linear rescaling of $X$ could be $M = g(X) = a + bX$
+
+- For example, converting temperature from Celsius to Fahrenheit using $g(u) = 32 + 1.8u$ is a linear rescaling.
+
+## Example of linear rescaling (1/3)
+
+::: example
+::: ex-title
+Example 1: Linear rescaling of $U$
+:::
+::: ex-cont
+Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2$. Define $V=1-U$
+
+1.  What are the possible values of $V$?
+2.  Is $V$ the same random variable as $U$?
+3.  Rewrite the event $V \le -0.5$ in terms of $U$. Then approximate $P(V \le -0.5)$ with simulation.
+4.  Does $V$ have the same distribution as $U$? Does it have the same shape?
+:::
+:::
+
+## Example of linear rescaling (2/3)
+
+::: example
+::: ex-title
+Example 1: Linear rescaling of $U$
+:::
+::: ex-cont
+Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2$. Define $V=1-U$
+
+1.  What are the possible values of $V$?
+2.  Is $V$ the same random variable as $U$?
+3.  Rewrite the event $V \le -0.5$ in terms of $U$.
+:::
+:::
+
+## Example of linear rescaling (3/3): simulate
+
+::: columns
+::: {.column width="50%"}
+
+```{r}
+u_sims <- u_sims |> # <1>
+  mutate(v = 1 - u) # <2>
+
+u_sims |> # <3>
+  summarise( # <3>
+    prob_V = mean(v <= -0.5), # <4>
+    prob_U = mean(u >= 1.5) # <5>
+  )
+```
+
+1. Reuse the 10,000 grid-sampled values of $U$.
+2. The linear rescaling: each simulated `u` becomes `v = 1 - u`.
+3. One row of summaries of the 10,000 simulations.
+4. The proportion of simulations with $V \leq -0.5$ approximates $P(V \leq -0.5)$.
+5. Same answer: $V \leq -0.5$ is the same event as $U \geq 1.5$.
+
+::: proof1
+::: proof-cont
+For reference, the exact answer is $P(V \leq -0.5) \approx 0.7292$
+:::
+:::
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 10
+#| fig-height: 7.5
+
+ggplot(u_sims) + # <6>
+  geom_histogram(aes(x = u, y = after_stat(density)), # <7>
+                 binwidth = 0.05, boundary = 1, # <7>
+                 color = "black", fill = "lightblue") + # <7>
+  geom_histogram(aes(x = v, y = after_stat(density)), # <8>
+                 binwidth = 0.05, boundary = -1, # <8>
+                 color = "black", fill = "#E89543") + # <8>
+  labs(title = "Simulated U (blue) and V = 1 - U (orange)", # <9>
+       x = "Value", y = "Density") # <9>
+```
+
+6. Start a plot of the simulations. Each histogram below picks its own column.
+7. Histogram of the simulated `u` values, scaled like a pdf.
+8. Histogram of the simulated `v` values, on the same axes.
+9. Add a title and axis labels.
+
+:::
+:::
+
+## Why the shape does not change
+
+- $V = 1 - U$ flips $U$ around: same shape, mirrored
+- In general, $a + bX$ can **shift** (add $a$), **stretch or squeeze** (multiply by $|b|$), and **flip** ($b < 0$)
+    - Stretching the values out by $|b|$ makes the histogram $|b|$ times wider...
+    - ...so it must get $|b|$ times shorter to keep the total area equal to 1
+- Center and spread change the way we saw in Lessons 10 and 11:
+    - $\mathbb{E}[a + bX] = a + b\,\mathbb{E}[X]$
+    - $Var(a + bX) = b^2\, Var(X)$ and $SD(a + bX) = |b|\, SD(X)$
+
+## Linear rescaling of named distributions
+
+For most named distributions, a linear rescaling stays in the **same family**, with new parameters:
+
+| If $X \sim$ | then | is |
+|---|---|---|
+| $\text{Normal}(\mu, \sigma^2)$ | $a + bX$ | $\text{Normal}(a + b\mu,\ b^2\sigma^2)$ |
+| $\text{Uniform}[l, r]$ | $a + bX$ (with $b > 0$) | $\text{Uniform}[a + bl,\ a + br]$ |
+| $\text{Exponential}(\lambda)$ | $cX$ (with $c > 0$) | $\text{Exponential}(\lambda / c)$ |
+| $\text{Gamma}(r, \lambda)$ | $cX$ (with $c > 0$) | $\text{Gamma}(r,\ \lambda / c)$ |
+
+- Exponential and Gamma: only multiply, do not shift! $X + 3$ can't be close to 0, so it is not Exponential
+
+- [**Standardizing**]{style="color:#E25D3B;"} is a linear rescaling: if $X \sim \text{Normal}(\mu, \sigma^2)$, then
+
+$$Z = \dfrac{X - \mu}{\sigma} \sim \text{Normal}(0, 1)$$
+
+## Example of a Normal rescaling (1/2)
+
+::: example
+::: ex-title
+Example 2: Temperature in Celsius and Fahrenheit
+:::
+::: ex-cont
+The high temperature in Portland on a June day, in Celsius, is $C \sim \text{Normal}(\mu = 20, \sigma^2 = 5^2)$. In Fahrenheit, the temperature is $F = 32 + 1.8C$.
+
+1.  What is the distribution of $F$?
+2.  Find $P(F > 80)$ using the distribution of $F$ and `pnorm()`.
+3.  Rewrite the event $F > 80$ in terms of $C$. Find $P(F > 80)$ again using the distribution of $C$.
+4.  Check your answers with simulation.
+:::
+:::
+
+## Example of a Normal rescaling (2/2): simulate
+
+::: columns
+::: {.column width="50%"}
+
+```{r}
+temp_sims <- tibble(sim = 1:reps) |> # <1>
+  mutate(
+    celsius = rnorm(n(), mean = 20, sd = 5), # <2>
+    fahrenheit = 32 + 1.8 * celsius # <3>
+  )
+
+temp_sims |> # <4>
+  summarise( # <4>
+    prob_F = mean(fahrenheit > 80), # <5>
+    mean_F = mean(fahrenheit), # <6>
+    sd_F = sd(fahrenheit) # <6>
+  )
+```
+
+1. One row per simulated day.
+2. `rnorm()` draws one Celsius temperature for every row. `sd` is $\sigma = 5$, not $\sigma^2$.
+3. The linear rescaling to Fahrenheit.
+4. One row of summaries.
+5. Approximates $P(F > 80)$.
+6. Should be close to $32 + 1.8(20) = 68$ and $1.8(5) = 9$.
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+pnorm(80, mean = 68, sd = 9, # <7>
+      lower.tail = FALSE) # <7>
+
+pnorm((80 - 32) / 1.8, mean = 20, sd = 5, # <8>
+      lower.tail = FALSE) # <8>
+```
+
+7. Part 2: $P(F > 80)$ with $F \sim \text{Normal}(68, 9^2)$.
+8. Part 3: $F > 80$ is the same event as $C > \frac{80 - 32}{1.8} \approx 26.67$.
+
+- Both standardize to the same $z$: $\dfrac{80 - 68}{9} = \dfrac{26.67 - 20}{5} \approx 1.33$
+
+:::
+:::
+
+## Summary of linear rescaling
+
+-   A linear rescaling of a random variable does not change the basic shape of its distribution, just the range of possible values.
+
+    - It can flip it, widen it, condense it, and/or shift it
+
+    - But it is not the same distribution: the possible values change
+
+-   Normal, Uniform, Exponential, and Gamma RVs stay in the same family, with new parameters
+
+-   Remember, do NOT confuse a [**random variable**]{style="color:#29abe0;"} with its [**distribution**]{style="color:#E25D3B;"}
+    -   The random variable is the numerical quantity being measured
+    -   The distribution is the long run pattern of variation of many observed values of the random variable
+
+# Learning Objectives
+
+1. Describe how a linear rescaling changes a random variable, and identify the new distribution for Normal, Uniform, Exponential, and Gamma random variables
+
+::: lob
+2. Use simulation to approximate probabilities and the shape of the distribution of a nonlinear transformation
+3. Rewrite events about a transformation $g(X)$ as events about $X$
+:::
+
+## Nonlinear transformations
+
+- What happens when we make a **nonlinear transformation**, like a logarithmic or square root transformation?
+- Nonlinear transformations do *not* necessarily preserve the distribution shape
+
+- Examples of nonlinear transformations:
+    -   $g(u) = u^2$
+    -   $g(u) = \sqrt{u}$
+    -   $g(u) = \log(u)$
+    -   $g(u) = e^u$
+    -   $g(u) = \dfrac{1}{u}$
+
+- There is usually no shortcut like the table for linear rescalings, so we use the [**simulation method**](#sim-method)
+
+## Rewriting events {#rewrite-events}
+
+- Rewriting an event about $Y = g(X)$ as an event about $X$ helps us:
+    - Find the possible values of $Y$
+    - Check that our simulation summary is counting the right thing
+    - Find an exact answer when we *can* find probabilities for $X$ (a `p*()` function or a rectangle's area)
+
+- Examples:
+
+| Event about $Y$ | Same event about $X$ |
+|---|---|
+| $\log(X) \leq 0.5$ | $X \leq e^{0.5}$ |
+| $X^2 \leq 0.25$ | $-0.5 \leq X \leq 0.5$ (two sides!) |
+| $\dfrac{1}{X} > 2$ (for $X > 0$) | $X < 0.5$ (the inequality flips!) |
+
+- Graph $g$ to see which values of $X$ land in the event
+
+## Example of nonlinear transformation (1/3)
+
+::: example
+::: ex-title
+Example 3: Log transformation of $U$
+:::
+::: ex-cont
+Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2$. Define $V=\log(U)$
+
+1.  What are the possible values of $V$?
+2.  Rewrite the event $V \leq 0.5$ in terms of $U$.
+3.  Approximate $P(V \leq 0.5)$ with simulation.
+4.  Describe the shape of the distribution of $V$. Can we find the pdf of $V$ by substituting $u = e^v$ into $f_U(u)$?
+:::
+:::
+
+## Example of nonlinear transformation (2/3)
+
+::: example
+::: ex-title
+Example 3: Log transformation of $U$
+:::
+::: ex-cont
+Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2$. Define $V=\log(U)$
+
+1.  What are the possible values of $V$?
+2.  Rewrite the event $V \leq 0.5$ in terms of $U$.
+:::
+:::
+
+- In this class (and in R), $\log$ is the natural log, $\ln$
+
+::: columns
+::: {.column width="40%"}
+```{r}
+#| echo: false
+#| fig-height: 7
+#| fig-width: 8
+
+domain_u_v <- tibble(
+  u = seq(0.5, 2.5, 0.01),
+  v = log(u)
+)
+
+ggplot(domain_u_v, aes(x = u, y = v)) +
+  annotate("rect", xmin = 1, xmax = 2, ymin = -Inf, ymax = Inf,
+           fill = "#29abe0", alpha = 0.15) +
+  annotate("rect", xmin = -Inf, xmax = Inf, ymin = 0, ymax = log(2),
+           fill = "#E89543", alpha = 0.15) +
+  geom_line(linewidth = 1.2) +
+  labs(
+    title = "Transformation: V = log(U)",
+    x = "u",
+    y = "v = log(u)"
+  )
+```
+:::
+::: column
+:::
+:::
+
+## Example of nonlinear transformation (3/3): simulate
+
+::: columns
+::: {.column width="52%"}
+
+```{r}
+u_sims <- u_sims |> # <1>
+  mutate(log_u = log(u)) # <2>
+
+u_sims |> # <3>
+  summarise( # <3>
+    prob_V = mean(log_u <= 0.5), # <4>
+    prob_U = mean(u <= exp(0.5)) # <5>
+  )
+```
+
+1. Reuse the 10,000 grid-sampled values of $U$ from Example 1.
+2. The nonlinear transformation: $V = \log(U)$. We name the column `log_u` so it does not replace `v` $= 1 - U$ from Example 1.
+3. One row of summaries.
+4. The proportion of simulations with $\log(U) \leq 0.5$ approximates $P(V \leq 0.5)$.
+5. Same answer: $\log(U) \leq 0.5$ is the same event as $U \leq e^{0.5}$. `exp()` is $e$ to a power.
+
+::: proof1
+::: proof-cont
+For reference, the exact answer is $P(V \leq 0.5) \approx 0.4260$
+:::
+:::
+
+:::
+
+::: {.column width="48%"}
+
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 10
+#| fig-height: 8
+
+ggplot(u_sims, aes(x = log_u)) + # <6>
+  geom_histogram(aes(y = after_stat(density)), # <6>
+                 binwidth = log(2) / 30, boundary = 0, # <6>
+                 color = "black", fill = "lightblue") + # <6>
+  geom_function(fun = function(v) 4/15 * exp(3 * v), # <7>
+                linetype = "dashed", linewidth = 1.5) + # <7>
+  labs(title = "Simulated V = log(U)", # <8>
+       x = "v", y = "Density") # <8>
+```
+
+6. Histogram of the simulated values of $V = \log(U)$, scaled like a pdf, with 30 bars between 0 and $\log(2)$.
+7. The guess from substituting $u = e^v$ into $f_U$: $\frac{4}{15}e^{3v}$, dashed. It does not match the histogram!
+8. Add a title and axis labels.
+
+:::
+:::
+
+- Substituting into the pdf does **not** work for nonlinear transformations. The histogram shows us the real shape.
+
+## Example of nonlinear transformation: squaring (1/3)
+
+::: example
+::: ex-title
+Example 4: Squaring a Uniform RV
+:::
+::: ex-cont
+Let $X \sim \text{Uniform}[-1, 1]$, so $f_X(x)= \dfrac{1}{2}$ for $-1\leq x \leq 1$. Define $Y=X^2$
+
+1.  What are the possible values of $Y$?
+2.  Rewrite the event $Y \leq 0.25$ in terms of $X$.
+3.  Find $P(Y \leq 0.25)$ exactly using the distribution of $X$. Check it with simulation.
+4.  Describe the shape of the distribution of $Y$. Is it still flat?
+:::
+:::
+
+## Example of nonlinear transformation: squaring (2/3)
+
+::: example
+::: ex-title
+Example 4: Squaring a Uniform RV
+:::
+::: ex-cont
+Let $X \sim \text{Uniform}[-1, 1]$, so $f_X(x)= \dfrac{1}{2}$ for $-1\leq x \leq 1$. Define $Y=X^2$
+
+1.  What are the possible values of $Y$?
+2.  Rewrite the event $Y \leq 0.25$ in terms of $X$.
+3.  Find $P(Y \leq 0.25)$ exactly using the distribution of $X$.
+:::
+:::
+
+::: columns
+::: {.column width="40%"}
+```{r}
+#| echo: false
+#| fig-height: 7
+#| fig-width: 8
+
+domain_x_y <- tibble(
+  x = seq(-1.5, 1.5, 0.01),
+  y = x^2
+)
+
+ggplot(domain_x_y, aes(x = x, y = y)) +
+  annotate("rect", xmin = -1, xmax = 1, ymin = -Inf, ymax = Inf,
+           fill = "#29abe0", alpha = 0.15) +
+  annotate("rect", xmin = -Inf, xmax = Inf, ymin = 0, ymax = 1,
+           fill = "#E89543", alpha = 0.15) +
+  geom_line(linewidth = 1.2) +
+  labs(
+    title = "Transformation: Y = X^2",
+    x = "x",
+    y = "y = x^2"
+  )
+```
+:::
+::: column
+:::
+:::
+
+## Example of nonlinear transformation: squaring (3/3): simulate
+
+::: columns
+::: {.column width="52%"}
+
+```{r}
+x_sims <- tibble(sim = 1:reps) |> # <1>
+  mutate(
+    x = runif(n(), min = -1, max = 1), # <2>
+    y = x^2 # <3>
+  )
+
+x_sims |> # <4>
+  summarise( # <4>
+    prob_Y = mean(y <= 0.25) # <4>
+  )
+
+punif(0.5, min = -1, max = 1) - # <5>
+  punif(-0.5, min = -1, max = 1) # <5>
+```
+
+1. One row per simulation.
+2. $X \sim \text{Uniform}[-1, 1]$ has a named distribution, so we simulate it with `runif()`.
+3. The nonlinear transformation: square each simulated `x`.
+4. The proportion of simulations with $Y \leq 0.25$ approximates $P(Y \leq 0.25)$.
+5. Exact: $P(-0.5 \leq X \leq 0.5)$, a rectangle with width 1 and height $\frac{1}{2}$.
+
+:::
+
+::: {.column width="48%"}
+
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 10
+#| fig-height: 8
+
+ggplot(x_sims, aes(x = y)) + # <6>
+  geom_histogram(aes(y = after_stat(density)), # <6>
+                 binwidth = 0.02, boundary = 0, # <6>
+                 color = "black", fill = "lightblue") + # <6>
+  labs(title = "Simulated Y = X^2", # <7>
+       x = "y", y = "Density") # <7>
+```
+
+6. Histogram of the simulated values of $Y$, scaled like a pdf.
+7. Add a title and axis labels.
+
+:::
+:::
+
+- $X$ was flat, but $Y = X^2$ piles up near 0: the shape changed!
+    - Half of the values of $X$ (from $-0.5$ to $0.5$) get squeezed into $[0, 0.25]$, only a quarter of the possible values of $Y$
+
+## Example: squaring a standard Normal
+
+::: example
+::: ex-title
+Example 5: $Z^2$ and the chi-squared distribution
+:::
+::: ex-cont
+Let $Z \sim \text{Normal}(0, 1)$ and $W = Z^2$.
+
+1.  What are the possible values of $W$?
+2.  Rewrite $W \leq 4$ in terms of $Z$, and find $P(W \leq 4)$ with `pnorm()`.
+3.  In Lesson 13, we said $Z^2 \sim \chi^2_{(1)}$. Check with `pchisq()` and with simulation.
+:::
+:::
+
+::: columns
+::: {.column width="52%"}
+
+```{r}
+z_sims <- tibble(sim = 1:reps) |> # <1>
+  mutate(
+    z = rnorm(n(), mean = 0, sd = 1), # <1>
+    w = z^2 # <2>
+  )
+
+z_sims |> summarise(prob_W = mean(w <= 4)) # <3>
+
+pnorm(2) - pnorm(-2) # <4>
+pchisq(4, df = 1) # <5>
+```
+
+1. Simulate the standard Normal $Z$ with `rnorm()`.
+2. The nonlinear transformation: $W = Z^2$.
+3. Approximates $P(W \leq 4)$.
+4. $Z^2 \leq 4$ is the same event as $-2 \leq Z \leq 2$ (two sides, like Example 4).
+5. The chi-squared distribution with 1 degree of freedom gives the same answer.
+
+:::
+
+::: {.column width="48%"}
+
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 10
+#| fig-height: 7
+
+ggplot(z_sims, aes(x = w)) + # <6>
+  geom_histogram(aes(y = after_stat(density)), # <6>
+                 binwidth = 0.2, boundary = 0, # <6>
+                 color = "black", fill = "lightblue") + # <6>
+  geom_function(fun = function(w) dchisq(w, df = 1), # <7>
+                color = "red", linewidth = 1.5) + # <7>
+  coord_cartesian(xlim = c(0, 8), ylim = c(0, 2)) + # <8>
+  labs(title = "Simulated W = Z^2", x = "w", y = "Density") # <9>
+```
+
+6. Histogram of the simulated values of $W$, scaled like a pdf.
+7. The $\chi^2_{(1)}$ pdf from `dchisq()`, in red.
+8. Zoom in, because the pdf shoots up near 0 and has a long right tail.
+9. Add a title and axis labels.
+
+:::
+:::
+
+## Example: when there is no `p*()` function (1/2)
+
+::: example
+::: ex-title
+Example 6: Buses per hour
+:::
+::: ex-cont
+From Lesson 13: the time until 4 buses arrive is $X \sim \text{Gamma}(r = 4, \lambda = 1/10)$, in minutes. The average number of buses per hour while we wait is
+
+$$Y = \dfrac{4 \text{ buses}}{X \text{ minutes}} \times 60 \ \dfrac{\text{minutes}}{\text{hour}} = \dfrac{240}{X}$$
+
+1.  What are the possible values of $Y$?
+2.  Rewrite the event $Y > 6$ in terms of $X$.
+3.  Approximate $P(Y > 6)$ with simulation. Check it with `pgamma()`.
+4.  $\mathbb{E}[X] = \frac{r}{\lambda} = 40$ minutes. Is $\mathbb{E}[Y]$ equal to $\frac{240}{40} = 6$ buses per hour?
+:::
+:::
+
+- $Y$ is not Gamma, and base R has no `p*()` or `r*()` function for $Y$. We don't need one!
+
+## Example: when there is no `p*()` function (2/2)
+
+::: columns
+::: {.column width="52%"}
+
+```{r}
+bus_sims <- tibble(sim = 1:reps) |> # <1>
+  mutate(
+    x = rgamma(n(), shape = 4, rate = 1/10), # <1>
+    y = 240 / x # <2>
+  )
+
+bus_sims |> # <3>
+  summarise( # <3>
+    prob_Y = mean(y > 6), # <4>
+    prob_X = pgamma(40, shape = 4, rate = 1/10), # <5>
+    mean_Y = mean(y) # <6>
+  )
+```
+
+1. Simulate the time until 4 buses with `rgamma()`, like Lesson 13.
+2. The nonlinear transformation: buses per hour.
+3. One row of summaries.
+4. Approximates $P(Y > 6)$.
+5. Exact: $Y > 6$ is the same event as $X < 40$ (the inequality flips!).
+6. Approximates $\mathbb{E}[Y]$. It is about 8, not 6!
+
+:::
+
+::: {.column width="48%"}
+
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 10
+#| fig-height: 7
+
+ggplot(bus_sims, aes(x = y)) + # <7>
+  geom_histogram(aes(y = after_stat(density)), # <7>
+                 binwidth = 0.5, boundary = 0, # <7>
+                 color = "black", fill = "lightblue") + # <7>
+  geom_vline(xintercept = 6, linetype = "dashed", linewidth = 1.5) + # <8>
+  coord_cartesian(xlim = c(0, 30)) + # <9>
+  labs(title = "Simulated buses per hour, Y = 240 / X", # <10>
+       x = "y", y = "Density") # <10>
+```
+
+7. Histogram of the simulated values of $Y$, scaled like a pdf.
+8. Dashed line at $\frac{240}{\mathbb{E}[X]} = 6$.
+9. Zoom in: a few very short waits give a very large $Y$.
+10. Add a title and axis labels.
+
+:::
+:::
+
+- For a nonlinear $g$, $\mathbb{E}[g(X)] \neq g(\mathbb{E}[X])$ in general. The long right tail pulls the mean of $Y$ up
+
+## How accurate is a simulation? (1/2)
+
+- A simulation gives an **approximation**. Run it again with a new seed and the answer moves a little
+- How much it moves depends on the number of simulations
+- Let's repeat the simulation from Example 3 **200 times** for each of 100, 1,000, and 10,000 simulations
+
+```{r}
+accuracy_sims <- expand_grid( # <1>
+    n_sims = c(100, 1000, 10000), # <1>
+    run = 1:200 # <1>
+  ) |>
+  uncount(n_sims, .remove = FALSE) |> # <2>
+  mutate( # <3>
+    u = sample(u_grid, size = n(), replace = TRUE, prob = u_grid^3) # <3>
+  ) |>
+  group_by(n_sims, run) |> # <4>
+  summarise(estimate = mean(log(u) <= 0.5), .groups = "drop") # <5>
+```
+
+1. One row for every combination of simulation size and repeat: 3 sizes $\times$ 200 runs.
+2. `uncount()` copies each row `n_sims` times, so each run gets 100, 1,000, or 10,000 rows.
+3. Grid sample one $U$ for every row, like before.
+4. Treat each run of each size separately.
+5. Each run's approximation of $P(V \leq 0.5) = P(\log(U) \leq 0.5)$.
+
+## How accurate is a simulation? (2/2)
+
+::: columns
+::: {.column width="45%"}
+
+```{r}
+accuracy_sims |> # <1>
+  group_by(n_sims) |> # <1>
+  summarise( # <1>
+    avg_estimate = mean(estimate), # <2>
+    spread = sd(estimate) # <3>
+  )
+```
+
+1. Summarize the 200 approximations for each simulation size.
+2. On average, every size is close to the exact answer, 0.4260.
+3. The SD of the 200 approximations: how much one simulation's answer moves around.
+
+- 100 times more simulations makes the spread about 10 times smaller
+    - Spread shrinks like $\dfrac{1}{\sqrt{\text{number of simulations}}}$
+    - We will see this again with the Central Limit Theorem
+
+:::
+
+::: {.column width="55%"}
+
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 11
+#| fig-height: 7.5
+
+ggplot(accuracy_sims, # <4>
+       aes(x = factor(n_sims), y = estimate)) + # <4>
+  geom_jitter(width = 0.2, alpha = 0.4, size = 2) + # <5>
+  geom_hline(yintercept = (exp(2) - 1) / 15, # <6>
+             color = "red", linewidth = 1.5) + # <6>
+  labs(title = "200 approximations of P(V <= 0.5)", # <7>
+       x = "Number of simulations", y = "Approximation") # <7>
+```
+
+4. One column of points for each simulation size.
+5. Each point is one run's approximation. `geom_jitter()` spreads the points sideways so they don't overlap.
+6. The exact answer in red.
+7. Add a title and axis labels.
+
+:::
+:::
+
+## Summary of transformations
+
+-   Linear rescalings keep the shape. Named distributions stay in the same family, with new parameters
+-   Nonlinear transformations can change the shape of a distribution
+    -   Substituting into the pdf does **not** work
+    -   $\mathbb{E}[g(X)]$ is not $g(\mathbb{E}[X])$
+-   The [**simulation method**]{style="color:#E25D3B;"} works for any transformation: simulate $X$, transform, summarize
+-   Rewrite events about $Y$ in terms of $X$ to find possible values, check your simulation, and get exact answers when you can
+
+
+
+|  | Linear rescaling | Nonlinear transformation |
+|---|---|---|
+| Changes the distribution? | Yes | Yes |
+| Changes the "shape"? | No | Usually |
+| How to find probabilities | Same family with new parameters, or rewrite the event in terms of $X$ | Simulate, transform, summarize; rewrite the event in terms of $X$ to check |

@@ -246,47 +246,250 @@ Answers will vary slightly. The simulated variances of the total and the differe
 
 ### 8. Sum of binomials
 
-::: answer
--   Part a: parameters: $\sum_{i=1}^m n_i$ and $p$
--   Part b: Not given
--   Part c: $p(1-p)\sum_{i=1}^m n_i$
-:::
+Let $X_i\sim \text{Binomial}(n_i,p)$ be independent RVs for $i=1,\ldots,m$.
 
-### 9. Voters at a polling station
+#### Part a
+
+What does the RV $X=\sum_{i=1}^mX_i$ count, and what is the distribution of $X$? Make sure to specify the parameters of $X$'s distribution.
 
 ::: answer
--   Part a: Exponential distribution
--   Part b: $\lambda = 240$
--   Part c: Not given
+$X \sim \text{Binomial}\left(\sum_{i=1}^m n_i, \ p\right)$
 :::
 
-### 10. Pizza delivery
+#### Part b
 
-::: answer
-0.252
-:::
-
-### 11. Smoking policy and education
+Find $\mathbb{E}[X]$.
 
 ::: answer
 Not given
 :::
 
-### 12. Maximum of i.i.d. RVs
+#### Part c
+
+Find $Var(X)$.
 
 ::: answer
-$f_Z(z) = nF_X(z)^{n-1}f_X(z)$
+$Var(X) = p(1-p)\sum_{i=1}^m n_i$
 :::
 
-### 13. Minimum of a uniform and an exponential
+### 9. Quitting smoking
+
+Suppose that each time an adult who smokes tries to quit, they have a 0.25 chance of staying smoke-free for a full year. Assume the attempts are independent. Let $X$ be the number of quit attempts up to and including the first successful one.
+
+#### Part a
+
+What is the distribution of $X$? Give its parameter and say what the parameter means in this problem.
 
 ::: answer
--   Part b: $P(X<Y) = 0.099995$
--   Part d: $f_Z(z) = \dfrac{11-2z}{5}e^{-2z}$ for $0 \leq z \leq 5$
+$X \sim \text{Geometric}(p = 0.25)$
 :::
 
-### 14. CDF of a ratio
+#### Part b
+
+Find $P(X = 3)$ and $P(X \leq 3)$.
 
 ::: answer
-2 cases: when $0< z < 1$ and $1 \leq z \leq 2$
+Not given
+:::
+
+#### Part c
+
+Find $\mathbb{E}[X]$, $Var(X)$, and $SD(X)$. Explain $\mathbb{E}[X]$ in the context of the problem.
+
+::: answer
+$\mathbb{E}[X] = 4$ attempts, $Var(X) = 12$, and $SD(X) \approx 3.464$ attempts
+:::
+
+#### Part d
+
+Use R to check your answers to Part b.
+
+::: answer
+Not given (should match your answers in Part b)
+:::
+
+#### Part e
+
+Simulate 10,000 people who are trying to quit to check your answers to Parts b and c.
+
+::: answer
+```{r}
+#| label: "q9e-simulate"
+
+set.seed(4747)
+reps <- 10000
+p <- 0.25
+
+quit_sims <- tibble(sim = 1:reps) |>
+  mutate(failures = rgeom(n(), prob = p),
+         X = failures + 1)
+
+quit_summary <- quit_sims |>
+  summarise(average = mean(X),
+            variance = mean((X - mean(X))^2))
+```
+
+-   $\mathbb{E}[X] \approx$ `r round(quit_summary$average, 3)`
+-   $Var(X) \approx$ `r round(quit_summary$variance, 3)`
+
+Answers will vary slightly, but should be close to your answers in Parts b and c.
+:::
+
+### 10. Voters at a polling station
+
+Suppose that voters arrive at a polling station at the rate of 120 per hour.
+
+#### Part a
+
+The probability that the next voter will arrive in less than 30 seconds.
+
+::: answer
+$T \sim \text{Exp}(\lambda = 2)$ voters per minute (or $\lambda = 120$ per hour), and we want $P(T < 0.5)$ (in minutes)
+:::
+
+#### Part b
+
+The probability that exactly 200 voters will arrive in a two-hour period.
+
+::: answer
+Not given
+:::
+
+#### Part c
+
+The probability that the $50^{th}$ voter will arrive between 15 and 30 minutes from now.
+
+::: answer
+$T_{50} \sim \text{Gamma}(r = 50, \lambda = 2)$ (per minute), and we want $P(15 < T_{50} < 30)$
+:::
+
+#### Part d
+
+Use R to compute the probabilities you set up in Parts a–c.
+
+::: answer
+```{r}
+#| label: "q10d-probs"
+
+prob_a <- pexp(0.5, rate = 2)
+prob_c <- pgamma(30, shape = 50, rate = 2) - pgamma(15, shape = 50, rate = 2)
+```
+
+-   Part a: $P(T < 0.5) \approx$ `r round(prob_a, 4)`
+-   Part b: Not given
+-   Part c: $P(15 < T_{50} < 30) \approx$ `r round(prob_c, 4)`
+:::
+
+### 11. Pizza delivery
+
+Suppose that the times until Hector, Ivan, and Jacob's pizzas arrive are independent exponential RVs $X$, $Y$, and $Z$, each with an average of 20 minutes.
+
+#### Part a
+
+Find $P(\max(X, Y,Z) \leq 20)$.
+
+::: answer
+$(1 - e^{-1})^3 \approx 0.2526$
+:::
+
+#### Part b
+
+Simulate 10,000 nights of pizza delivery to check your answer to Part a.
+
+::: answer
+```{r}
+#| label: "q11b-simulate"
+
+set.seed(8484)
+reps <- 10000
+n_people <- 3
+
+pizza_sims <- expand_grid(sim = 1:reps, person = 1:n_people) |>
+  mutate(wait = rexp(n(), rate = 1/20)) |>
+  group_by(sim) |>
+  summarise(longest = max(wait))
+
+pizza_prob <- mean(pizza_sims$longest <= 20)
+```
+
+$P(\max(X, Y,Z) \leq 20) \approx$ `r round(pizza_prob, 4)`
+
+Answers will vary slightly, but should be close to your answer in Part a.
+:::
+
+### 12. Blood pressure
+
+Suppose that systolic blood pressure (SBP, in mmHg) among adults in a community is $X \sim \text{Normal}(120, 15^2)$.
+
+#### Part a
+
+What is the probability that an adult's SBP is above 140 mmHg?
+
+::: answer
+$P(X > 140) \approx 0.0912$
+:::
+
+#### Part b
+
+Find the SBP value $t$ where 90% of adults have an SBP at $t$ or lower.
+
+::: answer
+Not given
+:::
+
+#### Part c
+
+What is the probability that an adult's SBP is between 110 and 130 mmHg?
+
+::: answer
+$P(110 \leq X \leq 130) \approx 0.4950$
+:::
+
+#### Part d
+
+Let $Z = \dfrac{X - 120}{15}$. Find $\mathbb{E}[Z]$ and $Var(Z)$.
+
+::: answer
+Not given
+:::
+
+#### Part e
+
+Simulate the SBP of 10,000 adults to check your answers to Parts a–c.
+
+::: answer
+```{r}
+#| label: "q12e-simulate"
+
+set.seed(9191)
+reps <- 10000
+
+sbp_sims <- tibble(sim = 1:reps) |>
+  mutate(X = rnorm(n(), mean = 120, sd = 15))
+
+sbp_summary <- sbp_sims |>
+  summarise(prob_a = mean(X > 140),
+            prob_c = mean(X >= 110 & X <= 130))
+```
+
+-   Part a: $P(X > 140) \approx$ `r round(sbp_summary$prob_a, 4)`
+-   Part c: $P(110 \leq X \leq 130) \approx$ `r round(sbp_summary$prob_c, 4)`
+
+Answers will vary slightly, but should be close to your answers in Parts a–c.
+:::
+
+### 13. Reference table of distributions
+
+Fill out the reference table for the important distributions.
+
+::: answer
+Not given (the first row is given in the homework)
+:::
+
+### 14. Relationships between distributions
+
+Describe each relationship in the web of distributions.
+
+::: answer
+Not given, except #3: the Poisson approximates the Binomial when $n$ is large and $p$ is small
 :::

@@ -31,8 +31,3 @@ editor_options:
     - (c) $\frac{4}{7}$
 
 4. Not given
-
-5. First row given in homework problem
-
-
-6. #3: Poisson approximation of Binomial when $n$ is large and $p$ is small

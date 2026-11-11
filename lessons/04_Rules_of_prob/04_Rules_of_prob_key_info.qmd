@@ -11,7 +11,7 @@ editor_options:
 ## Announcements
 
 - Office hours are set!
-  - Madi has one today at 3:15-4:15pm and tomorrow 3-4pm
+  - Madi: Wednesdays 3:15-5:15pm, Thursdays 3-4pm and 5:30-6:30pm
 - I will be out of town next week! 
   - Async class in place of 10/12 class
   - Virtual class in place of 10/14 class

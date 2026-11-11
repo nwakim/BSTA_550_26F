@@ -3,7 +3,7 @@ title: "Lesson 14: Transformations"
 author: "Nicky Wakim"
 title-slide-attributes:
     data-background-color: "#006a4e"
-date: "`r library(here); source(here('class_dates.R')); w7d2`"
+date: "`r library(here); source(here('class_dates.R')); w8d1`"
 format:
   revealjs:
     theme: "../simple_NW.scss"

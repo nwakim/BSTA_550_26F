@@ -1,7 +1,7 @@
 ---
 title: "Lesson 15: Joint distributions"
 author: "Meike Niederhausen and Nicky Wakim"
-date: "`r library(here); source(here('class_dates.R')); w7d2`"
+date: "`r library(here); source(here('class_dates.R')); w8d2`"
 title-slide-attributes:
     data-background-color: "#006a4e"
 format: 

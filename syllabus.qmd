@@ -113,6 +113,7 @@ Contact info and office hours are on the [instructor page](instructors.qmd).
 
 - `{r} w3d1 %>% format("%m/%d")`: Async, optional class
 - `{r} w3d2 %>% format("%m/%d")`: Virtual class
+- `{r} w7d2 %>% format("%m/%d")`: No class
 - `{r} w9d2 %>% format("%m/%d")`: No class
 
 ## Materials {.sec3}

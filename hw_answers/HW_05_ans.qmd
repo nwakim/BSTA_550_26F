@@ -124,44 +124,7 @@ absorb_summary <- absorb_sims |>
 Answers will vary slightly. The simulated $\mathbb{E}[X^2]$, variance, and standard deviation should be close to your answers in Parts a and b.
 :::
 
-### 3. Variance of an exponential RV
-
-Let $f_X(x)=\lambda e^{-\lambda x}$ for $x>0$, where $\lambda>0$.
-
-#### Part a
-
-Show $Var(X)=\dfrac{1}{\lambda^2}$.
-
-::: answer
-Not given
-:::
-
-#### Part b
-
-Now let $\lambda = 0.5$. Simulate 10,000 values of $X$ and check that your simulated mean and variance are close to $\mathbb{E}[X] = \dfrac{1}{\lambda}$ and $Var(X) = \dfrac{1}{\lambda^2}$.
-
-::: answer
-```{r}
-#| label: "q3b-simulate"
-
-set.seed(5151)
-reps <- 10000
-
-exp_sims <- tibble(u = runif(n = reps, min = 0, max = 1)) |>
-  mutate(x = -log(1 - u) / 0.5)
-
-exp_summary <- exp_sims |>
-  summarise(mean_x = mean(x),
-            variance = mean((x - mean(x))^2))
-```
-
--   Simulated mean $\approx$ `r round(exp_summary$mean_x, 3)` (exact: $\mathbb{E}[X] = 1/0.5 = 2$)
--   Simulated variance $\approx$ `r round(exp_summary$variance, 3)` (exact: $Var(X) = 1/0.5^2 = 4$)
-
-Answers will vary slightly, but should be close to 2 and 4.
-:::
-
-### 4. Variance of a linear function
+### 3. Variance of a linear function
 
 Prove that for a random variable $X$ and constants $a$ and $b$, $$Var(aX+b)=a^2Var(X).$$
 
@@ -169,7 +132,7 @@ Prove that for a random variable $X$ and constants $a$ and $b$, $$Var(aX+b)=a^2V
 Not given
 :::
 
-### 5. The sample mean (revisited)
+### 4. The sample mean (revisited)
 
 Find $Var(\overline{X})$.
 
@@ -177,25 +140,7 @@ Find $Var(\overline{X})$.
 Not given
 :::
 
-### 6. Shipping containers (revisited)
-
-#### Part a
-
-Assuming that $X_1,X_2,X_3$ are independent, calculate the variance of the total volume shipped.
-
-::: answer
-$Var(V) = 19{,}100{,}116 \ (\text{ft}^3)^2$
-:::
-
-#### Part b
-
-Would your calculation necessarily be correct if the $X_i$'s were not independent? Explain.
-
-::: answer
-Not given
-:::
-
-### 7. Waiting for the bus (revisited)
+### 5. Waiting for the bus (revisited)
 
 #### Part a
 
@@ -227,7 +172,7 @@ Simulate 10,000 weeks of bus rides to check your answers to Parts a and c.
 
 ::: answer
 ```{r}
-#| label: "q7d-simulate"
+#| label: "q5d-simulate"
 
 set.seed(6161)
 reps <- 10000
@@ -244,35 +189,7 @@ bus_weeks <- expand_grid(sim = 1:reps, day = 1:n_days) |>
 Answers will vary slightly. The simulated variances of the total and the difference should be close to your answers in Parts a and c.
 :::
 
-### 8. Sum of binomials
-
-Let $X_i\sim \text{Binomial}(n_i,p)$ be independent RVs for $i=1,\ldots,m$.
-
-#### Part a
-
-What does the RV $X=\sum_{i=1}^mX_i$ count, and what is the distribution of $X$? Make sure to specify the parameters of $X$'s distribution.
-
-::: answer
-$X \sim \text{Binomial}\left(\sum_{i=1}^m n_i, \ p\right)$
-:::
-
-#### Part b
-
-Find $\mathbb{E}[X]$.
-
-::: answer
-Not given
-:::
-
-#### Part c
-
-Find $Var(X)$.
-
-::: answer
-$Var(X) = p(1-p)\sum_{i=1}^m n_i$
-:::
-
-### 9. Quitting smoking
+### 6. Quitting smoking
 
 Suppose that each time an adult who smokes tries to quit, they have a 0.25 chance of staying smoke-free for a full year. Assume the attempts are independent. Let $X$ be the number of quit attempts up to and including the first successful one.
 
@@ -314,7 +231,7 @@ Simulate 10,000 people who are trying to quit to check your answers to Parts b a
 
 ::: answer
 ```{r}
-#| label: "q9e-simulate"
+#| label: "q6e-simulate"
 
 set.seed(4747)
 reps <- 10000
@@ -335,7 +252,7 @@ quit_summary <- quit_sims |>
 Answers will vary slightly, but should be close to your answers in Parts b and c.
 :::
 
-### 10. Voters at a polling station
+### 7. Voters at a polling station
 
 Suppose that voters arrive at a polling station at the rate of 120 per hour.
 
@@ -369,7 +286,7 @@ Use R to compute the probabilities you set up in Parts a–c.
 
 ::: answer
 ```{r}
-#| label: "q10d-probs"
+#| label: "q7d-probs"
 
 prob_a <- pexp(0.5, rate = 2)
 prob_c <- pgamma(30, shape = 50, rate = 2) - pgamma(15, shape = 50, rate = 2)
@@ -380,7 +297,7 @@ prob_c <- pgamma(30, shape = 50, rate = 2) - pgamma(15, shape = 50, rate = 2)
 -   Part c: $P(15 < T_{50} < 30) \approx$ `r round(prob_c, 4)`
 :::
 
-### 11. Pizza delivery
+### 8. Pizza delivery
 
 Suppose that the times until Hector, Ivan, and Jacob's pizzas arrive are independent exponential RVs $X$, $Y$, and $Z$, each with an average of 20 minutes.
 
@@ -398,7 +315,7 @@ Simulate 10,000 nights of pizza delivery to check your answer to Part a.
 
 ::: answer
 ```{r}
-#| label: "q11b-simulate"
+#| label: "q8b-simulate"
 
 set.seed(8484)
 reps <- 10000
@@ -417,7 +334,7 @@ $P(\max(X, Y,Z) \leq 20) \approx$ `r round(pizza_prob, 4)`
 Answers will vary slightly, but should be close to your answer in Part a.
 :::
 
-### 12. Blood pressure
+### 9. Blood pressure
 
 Suppose that systolic blood pressure (SBP, in mmHg) among adults in a community is $X \sim \text{Normal}(120, 15^2)$.
 
@@ -459,7 +376,7 @@ Simulate the SBP of 10,000 adults to check your answers to Parts a–c.
 
 ::: answer
 ```{r}
-#| label: "q12e-simulate"
+#| label: "q9e-simulate"
 
 set.seed(9191)
 reps <- 10000
@@ -478,7 +395,7 @@ sbp_summary <- sbp_sims |>
 Answers will vary slightly, but should be close to your answers in Parts a–c.
 :::
 
-### 13. Reference table of distributions
+### 10. Reference table of distributions
 
 Fill out the reference table for the important distributions.
 
@@ -486,9 +403,9 @@ Fill out the reference table for the important distributions.
 Not given (the first row is given in the homework)
 :::
 
-### 14. Relationships between distributions
+### 11. Relationships between distributions
 
-Describe each relationship in the web of distributions.
+It is also important to know how different RVs/distributions relate to one another. In the following web, please fill in the relationships between each distribution. You can recreate the web or you can write out the relationships in a numbered list.
 
 ::: answer
 Not given, except #3: the Poisson approximates the Binomial when $n$ is large and $p$ is small

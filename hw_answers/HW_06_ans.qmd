@@ -2,32 +2,359 @@
 title: "Homework 6 Answers"
 subtitle: "BSTA 550"
 date-modified: "today"
-format: 
-  html: 
-    link-external-newwindow: true
+format:
+  html:
     toc: true
-  pdf: default 
-editor_options: 
+    embed-resources: true
+    link-external-newwindow: true
+editor_options:
   chunk_output_type: console
 ---
 
-## Questions
+```{=html}
+<style>
+div.answer { background-color: #f8eded; border-left: 4px solid #8B0000; border-radius: 5px; padding: 1em 1.25em; margin-bottom: 1em; }
+</style>
+```
 
-1. Partial answers:
+Below are some select answers from the homework.
 
- - (g) $p_{X|Y}(X=\text{high school}| Y=\text{no smoking at all}) = 0.476$
+```{r}
+#| label: "setup"
+#| include: false
 
- - (h) $p_{Y|X}( Y=\text{no smoking at all}|X=\text{high school}) = 0.200$
+knitr::opts_chunk$set(echo = FALSE, message = FALSE)
+library(tidyverse)
+```
 
-2. 
-    
-    - (a) $p_{X,Y}(x,y) = [0.99^{x-1}0.01][0.97^{y-1}0.03]$ for $x,y = 0, 1, 2, ...$
-    - (b) ![](./images/HW_04_NTB_2_B.png) And hint: ![](./images/Hint_NTB_9_02.png)
-        
-    - (c) ![](./images/HW_04_NTB_2_C.png)
 
-3.  
-    - (a) $f_{X|Y}(x|y)=\frac{1}{2}$ for (need $x$ and $y$ domains) 
-    - (c) $\frac{4}{7}$
+### 1. Medication absorption (transformed)
 
-4. Not given
+In Homeworks 4 and 5, the proportion $X$ of a medication dose that is absorbed in the first hour had pdf $f_X(x) = 3x^2$ for $0 \leq x \leq 1$ and CDF $F_X(x) = x^3$ for $0 \leq x \leq 1$.
+
+#### Part a
+
+Let $Y = 100X$. What are the possible values of $Y$? Find the pdf of $Y$.
+
+::: answer
+Not given
+:::
+
+#### Part b
+
+Let $W = -\ln(X)$. What are the possible values of $W$? Find the CDF of $W$, then the pdf of $W$.
+
+::: answer
+$W \geq 0$, with $F_W(w) = 1 - e^{-3w}$ and $f_W(w) = 3e^{-3w}$ for $w \geq 0$
+:::
+
+#### Part c
+
+What is the name of the distribution of $W$, and what is its parameter? Use it to find $\mathbb{E}[W]$.
+
+::: answer
+Not given
+:::
+
+#### Part d
+
+Simulate 10,000 values of $X$, $Y$, and $W$ to check your answers to Parts a and b.
+
+::: answer
+```{r}
+#| label: "q1d-simulate"
+#| fig-width: 7
+#| fig-height: 4
+
+set.seed(1414)
+reps <- 10000
+
+dose_sims <- tibble(u = runif(n = reps, min = 0, max = 1)) |>
+  mutate(x = u^(1/3),
+         y = 100 * x,
+         w = -log(x))
+
+prob_w <- mean(dose_sims$w <= 0.5)
+
+ggplot(dose_sims, aes(x = w)) +
+  geom_histogram(aes(y = after_stat(density)),
+                 binwidth = 0.1, boundary = 0,
+                 color = "black", fill = "lightblue") +
+  geom_line(aes(y = 3 * exp(-3 * w)), color = "red", linewidth = 1) +
+  labs(title = "Simulated W (histogram) and pdf of W (red)",
+       x = "w", y = "Density") +
+  theme_minimal(base_size = 12)
+```
+
+$P(W \leq 0.5) \approx$ `r round(prob_w, 4)` (exact: $1 - e^{-1.5} \approx 0.7769$). The simulated $P(Y \leq 50)$ should be close to your exact answer from Part a.
+
+Answers will vary slightly, but should be close to your answers in Parts a and b.
+:::
+
+### 2. Maximum of i.i.d. RVs
+
+Let $X_1, X_2, \ldots, X_n$ be i.i.d. random variables with common pdf $f_X(x)$ and CDF $F_X(x)$.
+
+#### Part a
+
+Find the pdf for the random variable $Z = \max(X_1, X_2, \ldots, X_n)$.
+
+::: answer
+$f_Z(z) = n\left[F_X(z)\right]^{n-1}f_X(z)$
+:::
+
+#### Part b
+
+Now suppose $n = 3$ and each $X_i \sim \text{U}[0, 1]$. Find the pdf of $Z$.
+
+::: answer
+Not given
+:::
+
+### 3. Smoking policy and education
+
+Let $X=$ highest education level and $Y=$ policy favored, from the table of 300 adults.
+
+#### Part a
+
+Make a table for the joint pmf $p_{X,Y}(x,y)$.
+
+::: answer
+Not given
+:::
+
+#### Part b
+
+Find the marginal pmf $p_{X}(x)$.
+
+::: answer
+$p_X(\text{college}) = 0.25$, $p_X(\text{high school}) = 0.50$, $p_X(\text{grade school}) = 0.25$
+:::
+
+#### Part c
+
+Find the marginal pmf $p_{Y}(y)$.
+
+::: answer
+Not given
+:::
+
+#### Part d
+
+Make a table for the joint CDF $F_{X,Y}(x,y)$.
+
+::: answer
+Partial answer: $F_{X,Y}(\text{high school}, \text{designated areas only}) = \dfrac{5 + 44 + 15 + 100}{300} \approx 0.547$
+:::
+
+#### Part e
+
+Find the marginal CDF $F_{X}(x)$.
+
+::: answer
+Not given
+:::
+
+#### Part f
+
+Find the marginal CDF $F_{Y}(y)$.
+
+::: answer
+Not given
+:::
+
+#### Part g
+
+Make a table for the conditional pmf $p_{X|Y}(x|y)$.
+
+::: answer
+Partial answer: $p_{X|Y}(\text{high school} \mid \text{no smoking at all}) = \dfrac{30}{63} \approx 0.476$
+:::
+
+#### Part h
+
+Make a table for the conditional pmf $p_{Y|X}(y|x)$.
+
+::: answer
+Partial answer: $p_{Y|X}(\text{no smoking at all} \mid \text{high school}) = \dfrac{30}{150} = 0.200$
+:::
+
+#### Part i
+
+Are $X$ and $Y$ independent? Explain using your answers above.
+
+::: answer
+No. For example, $p_{X,Y}(\text{college}, \text{no restrictions}) = \frac{5}{300} \approx 0.017$, but $p_X(\text{college})\,p_Y(\text{no restrictions}) = 0.25 \times \frac{35}{300} \approx 0.029$.
+:::
+
+### 4. Expected value from a joint pdf
+
+Consider the joint density $f_{X,Y}(x,y)= \dfrac32 x y$ for $0 \leq x$, $0 \leq y$, and $x+y \leq 2$. Find $\mathbb{E}[Y]$.
+
+::: answer
+$\mathbb{E}[Y] = \dfrac{4}{5}$
+:::
+
+### 5. CDF of a ratio
+
+Set up the equation for the CDF of $Z = X/Y$, where $0<x<1$ and $\frac{1}{2}<y<1$.
+
+::: answer
+There are 2 cases: $0 < z < 1$ and $1 \leq z < 2$
+:::
+
+### 6. Maude's phone and breakfast
+
+Let $X$ be the number of days until Maude first loses her cell phone (1% chance each day), and $Y$ the number of days until she first forgets to eat breakfast (3% chance each day). $X$ and $Y$ are independent.
+
+#### Part a
+
+Find the joint pmf of $X$ and $Y$.
+
+::: answer
+$p_{X,Y}(x,y) = \left[0.99^{x-1}(0.01)\right]\left[0.97^{y-1}(0.03)\right]$ for $x = 1, 2, 3, \ldots$ and $y = 1, 2, 3, \ldots$
+:::
+
+#### Part b
+
+Find the joint CDF of $X$ and $Y$ and briefly explain what $F_{X,Y}(x,y)$ represents.
+
+::: answer
+Not given
+:::
+
+#### Part c
+
+Find the conditional pmf $p_{Y|X}(y|x)$.
+
+::: answer
+$p_{Y|X}(y|x) = 0.97^{y-1}(0.03)$ for $y = 1, 2, 3, \ldots$ (the same as $p_Y(y)$, since $X$ and $Y$ are independent)
+:::
+
+#### Part d
+
+Find $F_{X,Y}(30, 10)$, then simulate 10,000 pairs of $(X, Y)$ to check your answer.
+
+::: answer
+```{r}
+#| label: "q6d-simulate"
+
+set.seed(2424)
+reps <- 10000
+
+maude_sims <- tibble(sim = 1:reps) |>
+  mutate(X = rgeom(n(), prob = 0.01) + 1,
+         Y = rgeom(n(), prob = 0.03) + 1)
+
+prob_maude <- mean(maude_sims$X <= 30 & maude_sims$Y <= 10)
+```
+
+-   Exact: $F_{X,Y}(30, 10) \approx 0.0683$
+-   Simulated: $\approx$ `r round(prob_maude, 4)`
+
+Answers will vary slightly, but should be close to 0.0683.
+:::
+
+### 7. Minimum of a uniform and an exponential
+
+Let $X$ and $Y$ be independent with $f_X(x)=\frac{1}{5}$ for $0\leq x\leq 5$, and $f_Y(y)=2e^{-2y}$ for $y>0$.
+
+#### Part a
+
+Find the joint pdf $f_{X,Y}(x,y)$.
+
+::: answer
+Not given
+:::
+
+#### Part b
+
+Find the probability that $X$ is less than $Y$.
+
+::: answer
+$P(X<Y) = \dfrac{1 - e^{-10}}{10} \approx 0.099995$
+:::
+
+#### Part c
+
+Let $Z$ be the smaller of $X$ and $Y$. Find the CDF of $Z$.
+
+::: answer
+Not given
+:::
+
+#### Part d
+
+Find the pdf of $Z$.
+
+::: answer
+$f_Z(z) = \dfrac{11-2z}{5}e^{-2z}$ for $0 \leq z \leq 5$
+:::
+
+#### Part e
+
+Simulate 10,000 pairs of $(X, Y)$ to check your answers to Parts b and c.
+
+::: answer
+```{r}
+#| label: "q7e-simulate"
+
+set.seed(3535)
+reps <- 10000
+
+min_sims <- tibble(sim = 1:reps) |>
+  mutate(X = runif(n(), min = 0, max = 5),
+         Y = rexp(n(), rate = 2),
+         Z = if_else(X < Y, X, Y))
+
+prob_x_less <- mean(min_sims$X < min_sims$Y)
+```
+
+$P(X < Y) \approx$ `r round(prob_x_less, 4)`
+
+Answers will vary slightly, but should be close to your answers in Parts b and c.
+:::
+
+### 8. Constant density on a quadrilateral
+
+$X$ and $Y$ have constant joint density on the quadrilateral with vertices $(0,0)$, $(2,0)$, $(2,6)$, $(0,12)$.
+
+#### Part a
+
+For $0 \leq y \leq 6$, find the conditional density $f_{X|Y}(x|y)$.
+
+::: answer
+$f_{X|Y}(x|y) = \dfrac{1}{2}$ for $0 \leq x \leq 2$
+:::
+
+#### Part b
+
+For $6 \leq y \leq 12$, find the conditional density $f_{X|Y}(x|y)$.
+
+::: answer
+Not given
+:::
+
+#### Part c
+
+Find the conditional probability that $X \leq 1$, given $3 \leq Y \leq 9$.
+
+::: answer
+$\dfrac{4}{7}$
+:::
+
+#### Part d
+
+Find $P(0.5 \leq X \leq 3 \mid Y=4)$.
+
+::: answer
+Not given
+:::
+
+#### Part e
+
+Find $P(0.5 \leq X \leq 3 \mid Y=7)$.
+
+::: answer
+$0.7$
+:::

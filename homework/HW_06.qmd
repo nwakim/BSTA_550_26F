@@ -1,61 +1,472 @@
 ---
 title: "Homework 6"
 subtitle: "BSTA 550"
-description: "Due: `r library(here); source(here('class_dates.R')); hw6 %>% format('%m/%d')` at 11pm"
+author: "Your name here"
 date-modified: "today"
-format: 
+format:
   html:
-    link-external-newwindow: true
     toc: true
-  pdf: default 
-editor_options: 
+    embed-resources: true
+    link-external-newwindow: true
+  typst:
+    toc: true
+    papersize: us-letter
+    margin:
+      x: 1in
+      y: 1in
+editor_options:
   chunk_output_type: console
 ---
 
+<!--
+HOW TO USE THIS FILE
+- Put your name in the "author" line at the very top.
+- Type your answers after each "Answer:" line.
+- Put R code inside the gray code chunks (between ```{r} and ```).
+- You don't need to change anything between the --- lines at the top (YAML)
+  or any line starting with :::
+- Click the arrow next to "Render" and choose "Render HTML" or
+  "Render Typst" (Typst makes a PDF). Submit that file.
+-->
+
+```{r}
+#| label: "setup"
+#| include: false
+
+knitr::opts_chunk$set(echo = TRUE)
+
+# Uses the course date file when it's available;
+# otherwise falls back to the due date below.
+if (requireNamespace("here", quietly = TRUE) &&
+    file.exists(here::here("class_dates.R"))) {
+  source(here::here("class_dates.R"))
+} else {
+  hw6 <- as.Date("2026-12-06")
+}
+```
+
+::: {.callout-tip appearance="minimal"}
+**Due `r format(hw6, "%m/%d")` at 11pm**
+:::
+
+## Assignment information
 
 ### Lessons covered
 
--   Lesson 12: Important discrete RVs
--   Lesson 13: Important continuous RVs
+-   Lesson 14: Transformations of distributions
+-   Lesson 15: Joint distributions
 -   Lesson 16: Independence and Conditioning
 
-## Directions
+### Directions
 
-**Please turn in this homework on Sakai.** Please submit your homework in pdf or html format. 
+**Please turn in this homework on Brightspace.** Please submit your homework as a pdf or html file. You can type your work in this file and render it, or submit a single file with photos of your written work or any other method that can be turned into a pdf. Please let me know if you prefer to submit a physical copy, we can arrange for a physical "turn in" during Monday's class.
 
-You can type your work on your computer or submit a photo of your written work or any other method that can be turned into a pdf. The Adobe Scan phone app is an easy way to scan photos and compile into a PDF. Please let me know if you greatly prefer to submit a physical copy. We can work out another way for you to turn in homework.
+**Get the .qmd file:** You can download this homework as a `.qmd` file from [GitHub](https://github.com/nwakim/BSTA_550_26F/blob/main/homework/HW_06.qmd). On that page, click the download button ("Download raw file") near the top right of the file.
 
 *You must show all of your work to receive credit.*
 
 Extra problems do not need to be turned in!
 
+::: {.callout-warning collapse="false"}
+#### If you are editing this file to turn in
+
+If you are editing this `.qmd` file, then you will see a section right below the YAML called "HOW TO USE THIS FILE." Please follow those instructions to make sure you are not deleting essential parts of this file. When you render, that section will not show up.
+:::
+
+::: {.callout-note collapse="false"}
+#### AI Use Statement
+
+**Using AI is not required in this class.** If you *did* use an AI tool (ChatGPT, Claude, Copilot, Gemini, an RStudio assistant, etc.) on this homework, add a brief AI Use Statement at the very top of your submission. Include:
+
+-   **Which tool(s)** you used
+-   **What for** (a sentence or two, with question numbers)
+-   **Where** it contributed to any written interpretations (if at all)
+-   *You do NOT need to link your conversation.*
+
+For example:
+
+> *AI Use Statement: Claude was used to explain an error message in Question 3. All statistical reasoning, code review, and conclusions are my own.*
+
+OR
+
+> *AI Use Statement: AI was not used in this assignment.*
+
+Before using AI, check the table of allowed uses in the [Generative AI Policy](https://nwakim.github.io/BSTA_550_26F/syllabus.html#generative-ai-policy). For homework, AI can help you *understand* (explain an error or a concept, check an answer you already worked out, give feedback on your own writing), but it should not do the problem for you. A half-finished answer that shows your thinking is always better than a polished one from AI!
+:::
+
 ## Questions
 
-1.  From last homework: The following table shows the results of a survey in which the subjects were a sample of 300 adults residing in a certain metropolitan area. Each subject was asked to indicate which of three policies they favored with respect to smoking in public places. (Table is from *Biostatistics: A Foundation for Analysis in the Health Sciences*, 10th Edition, Daniel, Wayne W.; Cross, Chad L., pg. 630)
 
-    ![](Table_Smoking_vs_Education_Level.png){fig-align="center" width="6in"}
+**Load packages.** This chunk is done for you. Run it before any of the R code below.
 
-    Let $X=$ highest education level and $Y=$ policy favored. We can let $X=1$ for college graduate, $X=2$ for high-school graduate, etc., and similarly for $Y$, or just keep the category names for the different levels of $X$ and $Y$
+```{r}
+#| label: "load-packages"
+#| message: false
 
-    g.  Make a table for the conditional pmf $p_{X|Y}(x|y)$ and briefly describe in words what the values are the probability of.
+library(tidyverse)
+```
 
-    h.  Make a table for the conditional pmf $p_{Y|X}(y|x)$ and briefly describe in words what the values are the probability of.
-    
-2.  Each day, Maude has a 1% chance of losing her cell phone (her behavior on different days is independent). Each day, Maude has a 3% chance of forgetting to eat breakfast (again, her behavior on different days is independent). Her breakfast and cell phone habits are independent. Let $X$ be the number of days until she first loses her cell phone. Let $Y$ be the number of days until she first forgets to eat breakfast. (Here, $X$ and $Y$ are independent.)
+Questions 1–2 practice transformations of RVs (Lesson 14), Questions 3–5 practice joint distributions (Lesson 15), and Questions 6–8 practice independence and conditioning (Lesson 16).
 
-    a.  Find the joint probability mass function of $X$ and $Y$.
+### 1. Medication absorption (transformed)
 
-    b.  Find the joint cdf of $X$ and $Y$ and briefly explain what $F_{X,Y}(x,y)$ represents in the context of the problem. (Hint: $\sum_{n=1}^{N} r^{n-1} = \frac{1-r^N}{1-r}$ for $r \neq 1$.)
+In Homeworks 4 and 5, the proportion $X$ of a medication dose that is absorbed in the first hour had pdf $$f_X(x) = \begin{cases} 3x^2 & \text{if } 0 \leq x \leq 1 \\ 0 & \text{otherwise} \end{cases}$$ and CDF $F_X(x) = x^3$ for $0 \leq x \leq 1$.
 
-    c.  Find the conditional pmf $p_{Y|X}(y|x)$.
+#### Part a
 
-3. Consider a pair of random variables $X$, $Y$ with constant joint density on the quadrilateral with vertices $(0,0)$, $(2,0)$, $(2,6)$, $(0,12)$.
+Let $Y = 100X$ be the *percent* of the dose absorbed in the first hour. What are the possible values of $Y$? Find the pdf of $Y$.
 
-    a. For $0 \leq y \leq 6$, find the conditional density $f_{X|Y}(x,y)$ of $X$, given $Y=y$.
-    b. For $6 \leq y \leq 12$, find the conditional density $f_{X|Y}(x,y)$ of $X$, given $Y=y$.
-    c. Find the conditional probability that $X \leq 1$, given $3 \leq Y \leq 9$.
-    d. Find $P(0.5 \leq X \leq 3 | Y=4)$
-    e. Find $P(0.5 \leq X \leq 3 | Y=7)$
+-   *Hint:* This is a linear rescaling (Lesson 14, Example 1). You can use the CDF method, or the summary formula $f_Y(y) = \dfrac{1}{|b|} f_X\left(\dfrac{y-a}{b}\right)$ for $Y = a + bX$.
 
-4. Consider the joint density of $X$ and $Y$: $$f_{X,Y}(x,y)= \dfrac32 x y$$ for $0 \leq x$ and $0 \leq y$ and $x+y \leq 2$
-and $f_{X,Y}(x,y)=0$ otherwise. Find $E(Y)$.
+***Answer:***
+
+#### Part b
+
+Researchers sometimes work with $W = -\ln(X)$. What are the possible values of $W$? Use the CDF method to find the CDF of $W$, then the pdf of $W$.
+
+-   *Hint:* Follow the four steps of the CDF method in Lesson 14. To get $X$ alone in $-\ln(X) \leq w$, multiply both sides by $-1$ (which flips the inequality), then take $e$ to both sides.
+
+***Answer:***
+
+#### Part c
+
+What is the name of the distribution of $W$, and what is its parameter? Use it to find $\mathbb{E}[W]$.
+
+***Answer:***
+
+#### Part d
+
+Simulate 10,000 values of $X$, $Y$, and $W$ to check your answers to Parts a and b.
+
+**Step 1: Set up.** This chunk is done for you. Run it before the others.
+
+```{r}
+#| label: "q1d-setup"
+
+set.seed(1414)    # so you get the same "random" doses each time
+reps <- 10000     # number of simulated doses
+```
+
+**Step 2: Simulate.** Simulate $X$ with the inverse CDF method, then transform each simulated `x` into `y` and `w`.
+
+-   *Hint:* Follow "Let's simulate Example 1" in Lesson 14. Start with `tibble(u = runif(n = reps, min = 0, max = 1))`, then use `mutate()` to make `x = u^(1/3)` (the inverse CDF from Homework 5), `y = 100 * x`, and `w = -log(x)`. In R, $\ln$ is `log()`.
+
+***Answer:***
+
+```{r}
+#| label: "q1d-simulate"
+
+# Your code here
+
+```
+
+**Step 3: Summarize.** Use `summarise()` to approximate $P(Y \leq 50)$ and $P(W \leq 0.5)$. Then find the exact values with your CDFs from Parts a and b.
+
+-   *Hint:* `mean(y <= 50)` is the proportion of simulated doses with $Y \leq 50$.
+
+***Answer:***
+
+```{r}
+#| label: "q1d-summarize"
+
+# Your code here
+
+```
+
+**Step 4: Plot.** Make a histogram of the simulated `w` values, scaled like a pdf, and add your pdf of $W$ from Part b as a red line.
+
+-   *Hint:* Follow the plot in "Let's simulate Example 2" in Lesson 14: `geom_histogram(aes(y = after_stat(density)), ...)`, then `geom_line(aes(y = ...), color = "red")`, where `...` is your pdf from Part b written with `w`. In R, $e^{w}$ is `exp(w)`.
+
+***Answer:***
+
+```{r}
+#| label: "q1d-plot"
+
+# Your code here
+
+```
+
+Are your simulated answers close to your exact answers? Does the red line follow the histogram? (They do not need to match exactly!)
+
+***Answer:***
+
+### 2. Maximum of i.i.d. RVs
+
+Let $X_1, X_2, \ldots, X_n$ be i.i.d. random variables with common pdf $f_X(x)$ and CDF $F_X(x)$.
+
+#### Part a
+
+Find the pdf for the random variable $Z$, where $Z = \max(X_1, X_2, \ldots, X_n)$.
+
+-   *Hint:* Use the CDF method: find $F_Z(z) = P(Z \leq z)$ first, then take the derivative. The largest value is $z$ or less only if *every* $X_i$ is $z$ or less. Then use independence, and the chain rule when you take the derivative.
+
+***Answer:***
+
+#### Part b
+
+Now suppose $n = 3$ and each $X_i \sim \text{U}[0, 1]$. Use your answer to Part a to find the pdf of $Z$.
+
+***Answer:***
+
+### 3. Smoking policy and education
+
+The following table shows the results of a survey in which the subjects were a sample of 300 adults residing in a certain metropolitan area. Each subject was asked to indicate which of three policies they favored with respect to smoking in public places, or that they had no opinion. (Table is from *Biostatistics: A Foundation for Analysis in the Health Sciences*, 10th Edition, Daniel, Wayne W.; Cross, Chad L., pg. 630)
+
+| Highest education level | No restrictions on smoking | Smoking allowed in designated areas only | No smoking at all | No opinion | Total |
+|:----------------------|:-------------:|:------------------:|:-------------:|:---------:|:------:|
+| College graduate | 5 | 44 | 23 | 3 | 75 |
+| High-school graduate | 15 | 100 | 30 | 5 | 150 |
+| Grade-school graduate | 15 | 40 | 10 | 10 | 75 |
+| **Total** | **35** | **184** | **63** | **18** | **300** |
+
+Let $X=$ highest education level and $Y=$ policy favored. We can let $X=1$ for college graduate, $X=2$ for high-school graduate, etc., and similarly for $Y$, or just keep the category names for the different levels of $X$ and $Y$.
+
+#### Part a
+
+Make a table for the joint pmf $p_{X,Y}(x,y)$ and briefly describe in words what the values are the probability of.
+
+***Answer:***
+
+#### Part b
+
+Find the marginal pmf $p_{X}(x)$ and briefly describe in words what the values are the probability of.
+
+***Answer:***
+
+#### Part c
+
+Find the marginal pmf $p_{Y}(y)$ and briefly describe in words what the values are the probability of.
+
+***Answer:***
+
+#### Part d
+
+Make a table for the joint CDF $F_{X,Y}(x,y)$ and briefly describe in words what the values are the probability of.
+
+***Answer:***
+
+#### Part e
+
+Find the marginal CDF $F_{X}(x)$ and briefly describe in words what the values are the probability of.
+
+***Answer:***
+
+#### Part f
+
+Find the marginal CDF $F_{Y}(y)$ and briefly describe in words what the values are the probability of.
+
+***Answer:***
+
+#### Part g
+
+Make a table for the conditional pmf $p_{X|Y}(x|y)$ and briefly describe in words what the values are the probability of.
+
+***Answer:***
+
+#### Part h
+
+Make a table for the conditional pmf $p_{Y|X}(y|x)$ and briefly describe in words what the values are the probability of.
+
+***Answer:***
+
+#### Part i
+
+Are $X$ and $Y$ independent? Explain using your answers above.
+
+-   *Hint:* $X$ and $Y$ are independent only if $p_{X,Y}(x,y) = p_X(x)\,p_Y(y)$ for *every* pair $(x, y)$ (Lesson 16). How many pairs do you need to check to show they are *not* independent?
+
+***Answer:***
+
+### 4. Expected value from a joint pdf
+
+Consider the joint density of $X$ and $Y$: $$f_{X,Y}(x,y)= \dfrac32 x y$$ for $0 \leq x$ and $0 \leq y$ and $x+y \leq 2$, and $f_{X,Y}(x,y)=0$ otherwise. Find $\mathbb{E}[Y]$.
+
+-   *Hint:* Draw the domain first. Then either find the marginal pdf $f_Y(y)$ first, or find $\mathbb{E}[Y]$ directly from the joint pdf (Lesson 15, Options 1 and 2).
+
+***Answer:***
+
+### 5. CDF of a ratio
+
+Suppose that the random variables $X$ and $Y$ have joint density $f_{X,Y}(x,y)$, for $0<x<1$, and $\frac{1}{2}<y<1$. Set up the equation for the CDF of $Z$, where $Z=X/Y$. (You do not need to know $f_{X,Y}(x,y)$ to set up the integrals.)
+
+-   *Hint:* First determine what the possible values for $Z$ are. Then make a sketch of the domain of the joint pdf and shade in the region representing the CDF of $Z$ for different values of $z$. Make sure to pay close attention to how the region we need to integrate over changes as $z$ changes. The CDF has two different cases depending on the value of $z$. Plug in specific values of $z$ and shade in the region representing the CDF to see why two different cases are needed.
+
+***Answer:***
+
+### 6. Maude's phone and breakfast
+
+Each day, Maude has a 1% chance of losing her cell phone (her behavior on different days is independent). Each day, Maude has a 3% chance of forgetting to eat breakfast (again, her behavior on different days is independent). Her breakfast and cell phone habits are independent. Let $X$ be the number of days until she first loses her cell phone. Let $Y$ be the number of days until she first forgets to eat breakfast. (Here, $X$ and $Y$ are independent.)
+
+#### Part a
+
+Find the joint pmf of $X$ and $Y$.
+
+-   *Hint:* What is the distribution of $X$? Of $Y$? Then use independence (Lesson 16).
+
+***Answer:***
+
+#### Part b
+
+Find the joint CDF of $X$ and $Y$ and briefly explain what $F_{X,Y}(x,y)$ represents in the context of the problem.
+
+-   *Hint:* $\sum_{n=1}^{N} r^{n-1} = \dfrac{1-r^N}{1-r}$ for $r \neq 1$.
+
+***Answer:***
+
+#### Part c
+
+Find the conditional pmf $p_{Y|X}(y|x)$.
+
+***Answer:***
+
+#### Part d
+
+Use your joint CDF from Part b to find the probability that Maude loses her phone within the first 30 days *and* forgets breakfast within the first 10 days, $F_{X,Y}(30, 10)$. Then simulate 10,000 pairs of $(X, Y)$ to check your answer.
+
+-   *Hint:* Follow "Let's simulate the bullseye example" in Lesson 12. Start with `tibble(sim = 1:reps)`, then use `mutate()` with `rgeom(n(), prob = 0.01) + 1` for `X` and `rgeom(n(), prob = 0.03) + 1` for `Y`. Then `summarise()` with `mean(X <= 30 & Y <= 10)`.
+
+***Answer:***
+
+```{r}
+#| label: "q6d-simulate"
+
+set.seed(2424)
+reps <- 10000
+
+# Your code here
+
+```
+
+Is your simulated answer close to your answer from the joint CDF? (They do not need to match exactly!)
+
+***Answer:***
+
+### 7. Minimum of a uniform and an exponential
+
+Let $X$ and $Y$ be independent random variables with respective pdfs $f_X(x)=\frac{1}{5}$, for $0\leq x\leq 5$, and $f_Y(y)=2e^{-2y}$, for $y>0$.
+
+#### Part a
+
+Find the joint pdf $f_{X,Y}(x,y)$.
+
+***Answer:***
+
+#### Part b
+
+Find the probability that $X$ is less than $Y$.
+
+-   *Hint:* Draw the domain and shade the region where $x < y$. Think about which variable is easier to integrate over first.
+
+***Answer:***
+
+#### Part c
+
+Let $Z$ be the random variable that is the smaller of $X$ and $Y$. Find the CDF of $Z$.
+
+-   *Hint:* $P(\min(X, Y) \leq z) = 1 - P(\min(X,Y) > z)$, and the smaller value is greater than $z$ only if *both* $X$ and $Y$ are greater than $z$.
+
+***Answer:***
+
+#### Part d
+
+Find the pdf of $Z$.
+
+***Answer:***
+
+#### Part e
+
+Simulate 10,000 pairs of $(X, Y)$ to check your answers to Parts b and c.
+
+**Step 1: Set up.** This chunk is done for you. Run it before the others.
+
+```{r}
+#| label: "q7e-setup"
+
+set.seed(3535)    # so you get the same "random" pairs each time
+reps <- 10000     # number of simulated pairs
+```
+
+**Step 2: Simulate.** Simulate $X$ and $Y$, then find $Z$, the smaller of the two, for each pair.
+
+-   *Hint:* Start with `tibble(sim = 1:reps)`, then use `mutate()` with `runif(n(), min = 0, max = 5)` for `X` and `rexp(n(), rate = 2)` for `Y`. For `Z`, use `if_else(X < Y, X, Y)` (we used `if_else()` in Lesson 4): it keeps `X` when `X` is smaller and `Y` otherwise.
+
+***Answer:***
+
+```{r}
+#| label: "q7e-simulate"
+
+# Your code here
+
+```
+
+**Step 3: Summarize.** Approximate $P(X < Y)$ and $P(Z \leq 0.5)$. Use your CDF from Part c to find the exact $P(Z \leq 0.5)$.
+
+***Answer:***
+
+```{r}
+#| label: "q7e-summarize"
+
+# Your code here
+
+```
+
+**Step 4: Plot.** Plot the simulated CDF of $Z$ with `stat_ecdf()`, and add your CDF from Part c as a red line.
+
+-   *Hint:* Follow the CDF plot in Lesson 9: `ggplot(..., aes(x = Z)) + stat_ecdf() + geom_line(aes(y = ...), color = "red")`, where `...` is your CDF from Part c written with `Z`.
+
+***Answer:***
+
+```{r}
+#| label: "q7e-plot"
+
+# Your code here
+
+```
+
+Are your simulated answers close to your answers in Parts b and c? Does the red line sit on top of the simulated CDF? (They do not need to match exactly!)
+
+***Answer:***
+
+### 8. Constant density on a quadrilateral
+
+Consider a pair of random variables $X$, $Y$ with constant joint density on the quadrilateral with vertices $(0,0)$, $(2,0)$, $(2,6)$, $(0,12)$.
+
+-   *Hint:* Start by drawing the quadrilateral. Find the equation of the line through $(2,6)$ and $(0,12)$.
+
+#### Part a
+
+For $0 \leq y \leq 6$, find the conditional density $f_{X|Y}(x|y)$ of $X$, given $Y=y$.
+
+***Answer:***
+
+#### Part b
+
+For $6 \leq y \leq 12$, find the conditional density $f_{X|Y}(x|y)$ of $X$, given $Y=y$.
+
+***Answer:***
+
+#### Part c
+
+Find the conditional probability that $X \leq 1$, given $3 \leq Y \leq 9$.
+
+***Answer:***
+
+#### Part d
+
+Find $P(0.5 \leq X \leq 3 \mid Y=4)$.
+
+***Answer:***
+
+#### Part e
+
+Find $P(0.5 \leq X \leq 3 \mid Y=7)$.
+
+***Answer:***
+
+## Extra problems
+
+**You do NOT need to complete the extra problems!**
+
+### 1. Freddy and Jane's winnings
+
+Freddy and Jane have entered a game in which they each win between 0 and 2 dollars. If $X$ is the amount Freddy wins, and $Y$ is the amount that Jane wins, they believe that the joint density of their winnings will be $$f_{X,Y}(x, y) = \dfrac{1}{4}xy \text{ for } 0 \leq x \leq 2 \text{ and } 0 \leq y \leq 2$$ and $f_{X,Y}(x, y) = 0$ otherwise. Find the probability that their combined winnings exceed 2, i.e., find $P(X + Y > 2)$.

@@ -105,7 +105,7 @@ Before using AI, check the table of allowed uses in the [Generative AI Policy](h
 library(tidyverse)
 ```
 
-Questions 1–7 practice expected values of functions of RVs and variance (Lesson 11). Questions 1, 2, 5, 6, and 7 revisit setups from Homework 4, so you can reuse your expected values from there. Questions 8–14 practice the named distributions from Lessons 12 and 13.
+Questions 1–5 practice expected values of functions of RVs and variance (Lesson 11). Questions 1, 2, 4, and 5 revisit setups from Homework 4, so you can reuse your expected values from there. Questions 6–11 practice the named distributions from Lessons 12 and 13.
 
 ### 1. Asthma ER visits (revisited)
 
@@ -133,7 +133,7 @@ Find $Var(X)$ two ways: with the definition, $Var(X) = \mathbb{E}\left[(X - \mat
 
 Suppose each ER visit costs a patient a \$250 copay, plus every patient pays a \$100 yearly fee. So the patient's yearly cost is $C = 250X + 100$. Find $SD(C)$.
 
--   *Hint:* You can use the result for $Var(aX+b)$ (Lesson 11, Lemma 7). You will prove this result in Question 4!
+-   *Hint:* You can use the result for $Var(aX+b)$ (Lesson 11, Lemma 7). You will prove this result in Question 3!
 
 ***Answer:***
 
@@ -221,37 +221,7 @@ Are your simulated answers close to your answers in Parts a and b? (They do not 
 
 ***Answer:***
 
-### 3. Variance of an exponential RV
-
-Let $f_X(x)=\lambda e^{-\lambda x}$ for $x>0$, where $\lambda>0$.
-
-#### Part a
-
-Show $Var(X)=\dfrac{1}{\lambda^2}$. You may use the result from class for $\mathbb{E}[X]$ without first proving it.
-
--   *Hint:* Start by finding $\mathbb{E}[X^2]$. You will need integration by parts (Lesson 10, Example 6) twice.
-
-***Answer:***
-
-#### Part b
-
-Now let $\lambda = 0.5$. Simulate 10,000 values of $X$ and check that your simulated mean and variance are close to $\mathbb{E}[X] = \dfrac{1}{\lambda}$ and $Var(X) = \dfrac{1}{\lambda^2}$.
-
--   *Hint:* Use the code from Lesson 10 ("Picking up our exponential simulation from Lesson 9"), but change $\lambda$ from 2 to 0.5. With $\lambda = 0.5$, the inverse CDF is $x = -\ln(1-u)/0.5$. In R, $\ln$ is `log()`. Then use `summarise()` like in Question 1.
-
-***Answer:***
-
-```{r}
-#| label: "q3b-simulate"
-
-set.seed(5151)
-reps <- 10000
-
-# Your code here
-
-```
-
-### 4. Variance of a linear function
+### 3. Variance of a linear function
 
 Prove that for a random variable $X$ and constants $a$ and $b$, $$Var(aX+b)=a^2Var(X).$$
 
@@ -259,29 +229,13 @@ Prove that for a random variable $X$ and constants $a$ and $b$, $$Var(aX+b)=a^2V
 
 ***Answer:***
 
-### 5. The sample mean (revisited)
+### 4. The sample mean (revisited)
 
 Let $\overline{X}$ be the random variable for the sample mean, $\overline{X}=\dfrac{\sum_{i=1}^nX_i}{n}$, where the $X_i$ are i.i.d. random variables with common mean $\mu$ and variance $\sigma^2$. In Homework 4, you found $\mathbb{E}[\overline{X}]$. Find $Var(\overline{X})$.
 
 ***Answer:***
 
-### 6. Shipping containers (revisited)
-
-A shipping company handles containers in three different sizes: (1) 27 $ft^3$ (3 x 3 x 3), (2) 125 $ft^3$, and (3) 512 $ft^3$. Let $X_i$ ($i = 1, 2, 3$) denote the number of type $i$ containers shipped during a given week. Suppose that $\mu_1 =200,\sigma_1=10,\mu_2 =250,\sigma_2=12,\mu_3 =100,\sigma_3=8$.
-
-#### Part a
-
-Assuming that $X_1,X_2,X_3$ are independent, calculate the variance of the total volume shipped.
-
-***Answer:***
-
-#### Part b
-
-Would your calculation necessarily be correct if the $X_i$'s were not independent? Explain. How is this different from your answer for the expected value in Homework 4?
-
-***Answer:***
-
-### 7. Waiting for the bus (revisited)
+### 5. Waiting for the bus (revisited)
 
 Suppose your waiting time for a bus in the morning is uniformly distributed on \[0, 8\] (minutes), whereas waiting time in the evening is uniformly distributed on \[0, 10\] (minutes) independent of morning waiting time. *Make sure to FIRST set up an equation for the total waiting time in each question before calculating its variance.* *You may use results from class for the expected value and variance of uniform RVs without proving them.*
 
@@ -310,7 +264,7 @@ Simulate 10,000 weeks of bus rides to check your answers to Parts a and c.
 **Step 1: Set up.** This chunk is done for you. Run it before the others.
 
 ```{r}
-#| label: "q7d-setup"
+#| label: "q5d-setup"
 
 set.seed(6161)  # so you get the same "random" weeks each time
 reps <- 10000   # number of simulated weeks
@@ -324,7 +278,7 @@ n_days <- 7     # number of days in a week
 ***Answer:***
 
 ```{r}
-#| label: "q7d-simulate"
+#| label: "q5d-simulate"
 
 # Your code here
 
@@ -337,7 +291,7 @@ n_days <- 7     # number of days in a week
 ***Answer:***
 
 ```{r}
-#| label: "q7d-summarize"
+#| label: "q5d-summarize"
 
 # Your code here
 
@@ -347,29 +301,7 @@ Are your simulated answers close to your answers in Parts a and c? (They do not 
 
 ***Answer:***
 
-### 8. Sum of binomials
-
-Let $X_i\sim \text{Binomial}(n_i,p)$ be independent RVs for $i=1,\ldots,m$.
-
-#### Part a
-
-What does the RV $X=\sum_{i=1}^mX_i$ count, and what is the distribution of $X$? Make sure to specify the parameters of $X$'s distribution.
-
-***Answer:***
-
-#### Part b
-
-Find $\mathbb{E}[X]$. *Make sure to show your work for Parts b and c. However, you may use without proof what you know about the mean and variance of each* $X_i$.
-
-***Answer:***
-
-#### Part c
-
-Find $Var(X)$.
-
-***Answer:***
-
-### 9. Quitting smoking
+### 6. Quitting smoking
 
 Suppose that each time an adult who smokes tries to quit, they have a 0.25 chance of staying smoke-free for a full year. Assume the attempts are independent. Let $X$ be the number of quit attempts up to and including the first successful one.
 
@@ -400,7 +332,7 @@ Use R to check your answers to Part b.
 ***Answer:***
 
 ```{r}
-#| label: "q9d-geom"
+#| label: "q6d-geom"
 
 # Your code here
 
@@ -413,7 +345,7 @@ Simulate 10,000 people who are trying to quit to check your answers to Parts b a
 **Step 1: Set up.** This chunk is done for you. Run it before the others.
 
 ```{r}
-#| label: "q9e-setup"
+#| label: "q6e-setup"
 
 set.seed(4747)    # so you get the same "random" people each time
 reps <- 10000     # number of simulated people
@@ -427,7 +359,7 @@ p <- 0.25         # chance that one quit attempt works
 ***Answer:***
 
 ```{r}
-#| label: "q9e-simulate"
+#| label: "q6e-simulate"
 
 # Your code here
 
@@ -440,7 +372,7 @@ p <- 0.25         # chance that one quit attempt works
 ***Answer:***
 
 ```{r}
-#| label: "q9e-summarize"
+#| label: "q6e-summarize"
 
 # Your code here
 
@@ -450,7 +382,7 @@ Are your simulated answers close to your answers in Parts b and c? (They do not 
 
 ***Answer:***
 
-### 10. Voters at a polling station
+### 7. Voters at a polling station
 
 Suppose that voters arrive at a polling station at the rate of 120 per hour. For Parts a–c, [give the name and parameter(s) of the distribution]{.underline} to be used to model the event and [set up the expression]{.underline} to find the specified probability. *You do not need to compute the probability in Parts a–c.*
 
@@ -481,13 +413,13 @@ Use R to compute the probabilities you set up in Parts a–c.
 ***Answer:***
 
 ```{r}
-#| label: "q10d-probs"
+#| label: "q7d-probs"
 
 # Your code here
 
 ```
 
-### 11. Pizza delivery
+### 8. Pizza delivery
 
 Suppose that the times until Hector, Ivan, and Jacob's pizzas arrive are independent exponential RVs $X$, $Y$, and $Z$, each with an average of 20 minutes.
 
@@ -506,7 +438,7 @@ Simulate 10,000 nights of pizza delivery to check your answer to Part a.
 **Step 1: Set up.** This chunk is done for you. Run it before the others.
 
 ```{r}
-#| label: "q11b-setup"
+#| label: "q8b-setup"
 
 set.seed(8484)    # so you get the same "random" nights each time
 reps <- 10000     # number of simulated nights
@@ -520,7 +452,7 @@ n_people <- 3     # Hector, Ivan, and Jacob
 ***Answer:***
 
 ```{r}
-#| label: "q11b-simulate"
+#| label: "q8b-simulate"
 
 # Your code here
 
@@ -533,7 +465,7 @@ n_people <- 3     # Hector, Ivan, and Jacob
 ***Answer:***
 
 ```{r}
-#| label: "q11b-longest"
+#| label: "q8b-longest"
 
 # Your code here
 
@@ -543,7 +475,7 @@ Is your simulated answer close to your answer in Part a? (They do not need to ma
 
 ***Answer:***
 
-### 12. Blood pressure
+### 9. Blood pressure
 
 Suppose that systolic blood pressure (SBP, in mmHg) among adults in a community is $X \sim \text{Normal}(120, 15^2)$.
 
@@ -556,7 +488,7 @@ What is the probability that an adult's SBP is above 140 mmHg?
 ***Answer:***
 
 ```{r}
-#| label: "q12a-pnorm"
+#| label: "q9a-pnorm"
 
 # Your code here
 
@@ -571,7 +503,7 @@ Find the SBP value $t$ where 90% of adults have an SBP at $t$ or lower.
 ***Answer:***
 
 ```{r}
-#| label: "q12b-qnorm"
+#| label: "q9b-qnorm"
 
 # Your code here
 
@@ -584,7 +516,7 @@ What is the probability that an adult's SBP is between 110 and 130 mmHg?
 ***Answer:***
 
 ```{r}
-#| label: "q12c-pnorm"
+#| label: "q9c-pnorm"
 
 # Your code here
 
@@ -594,7 +526,7 @@ What is the probability that an adult's SBP is between 110 and 130 mmHg?
 
 Let $Z = \dfrac{X - 120}{15}$. Find $\mathbb{E}[Z]$ and $Var(Z)$.
 
--   *Hint:* Write $Z = aX + b$ with $a = \frac{1}{15}$ and $b = -\frac{120}{15}$. Then use $\mathbb{E}[aX+b]$ (Lesson 10) and $Var(aX+b)$ (Question 4). This is how we get the standard Normal in Lesson 13.
+-   *Hint:* Write $Z = aX + b$ with $a = \frac{1}{15}$ and $b = -\frac{120}{15}$. Then use $\mathbb{E}[aX+b]$ (Lesson 10) and $Var(aX+b)$ (Question 3). This is how we get the standard Normal in Lesson 13.
 
 ***Answer:***
 
@@ -607,7 +539,7 @@ Simulate the SBP of 10,000 adults to check your answers to Parts a–c.
 ***Answer:***
 
 ```{r}
-#| label: "q12e-simulate"
+#| label: "q9e-simulate"
 
 set.seed(9191)
 reps <- 10000
@@ -620,7 +552,7 @@ Are your simulated answers close to your answers in Parts a–c? (They do not ne
 
 ***Answer:***
 
-### 13. Reference table of distributions
+### 10. Reference table of distributions
 
 Let's create a reference table for the important distributions. Fill out the following table and save it for future reference. The first row is done for you.
 
@@ -640,21 +572,53 @@ Let's create a reference table for the important distributions. Fill out the fol
 
 ***Answer:***
 
-### 14. Relationships between distributions
+### 11. Relationships between distributions
 
-It is also important to know how the distributions relate to one another. Each row of the table below is an arrow in a web of distributions, like the one at the end of Lesson 13. Describe each relationship in a sentence. You can fill in the table or write the relationships as a numbered list.
+It is also important to know how different RVs/distributions relate to one another. In the following web, please fill in the relationships between each distribution. You can recreate the web or you can write out the relationships in a numbered list.
 
-| \# | From | To | Relationship |
-|:--:|:--------------|:------------------|:--------------------------------------------------|
-| 1 | Bernoulli | Geometric |  |
-| 2 | Bernoulli | Binomial |  |
-| 3 | Poisson | Binomial |  |
-| 4 | Normal | Binomial |  |
-| 5 | Normal | Chi-squared |  |
-| 6 | Gamma | Exponential |  |
-| 7 | Poisson | Exponential |  |
-| 8 | Geometric | Negative Binomial |  |
-| 9 | Binomial | Hypergeometric |  |
+```{mermaid}
+%%| fig-width: 6.5
+
+graph TD
+    
+    %% Define Node Styles
+    classDef discrete fill:#D6EAF8,stroke:#5DADE2,color:#333
+    classDef continuous fill:#D5F5E3,stroke:#58D68D,color:#333
+
+    %% === NODES ===
+    
+    %% Discrete Distributions
+    Bern(Bernoulli)
+    Geo(Geometric)
+    Bin(Binomial)
+    NegBin(Negative Binomial)
+    Hyper(Hypergeometric)
+    Pois(Poisson)
+    
+    %% Continuous Distributions
+    Exp(Exponential)
+    Gam(Gamma)
+    Norm(Normal)
+    Chi(Chi-Squared)
+    
+    %% === CONNECTIONS ===
+    Bern -- "1" --> Geo
+    Bern -- "2" --> Bin
+    Pois -- "3" --> Bin
+    Bin -- "9" --> Hyper
+    Norm -- "4" --> Bin
+    Norm -- "5" --> Chi
+        
+    Geo -- "8" --> NegBin
+    Pois -- "7" --> Exp
+    Gam -- "6" --> Exp
+
+
+
+    %% Apply Styles
+    class Bern,Bin,Geo,NegBin,Hyper,DiscUnif,Pois discrete
+    class ContUnif,Exp,Gam,Norm,Chi continuous
+```
 
 ***Answer:***
 
@@ -662,6 +626,52 @@ It is also important to know how the distributions relate to one another. Each r
 
 **You do NOT need to complete the extra problems!**
 
-### 1. The sample proportion (revisited)
+### 1. Variance of an exponential RV
+
+Let $f_X(x)=\lambda e^{-\lambda x}$ for $x>0$, where $\lambda>0$.
+
+#### Part a
+
+Show $Var(X)=\dfrac{1}{\lambda^2}$. You may use the result from class for $\mathbb{E}[X]$ without first proving it.
+
+-   *Hint:* Start by finding $\mathbb{E}[X^2]$. You will need integration by parts (Lesson 10, Example 6) twice.
+
+#### Part b
+
+Now let $\lambda = 0.5$. Simulate 10,000 values of $X$ and check that your simulated mean and variance are close to $\mathbb{E}[X] = \dfrac{1}{\lambda}$ and $Var(X) = \dfrac{1}{\lambda^2}$.
+
+-   *Hint:* Use the code from Lesson 10 ("Picking up our exponential simulation from Lesson 9"), but change $\lambda$ from 2 to 0.5. With $\lambda = 0.5$, the inverse CDF is $x = -\ln(1-u)/0.5$. In R, $\ln$ is `log()`. Then use `summarise()` like in Question 1.
+
+Use `set.seed(5151)` and `reps <- 10000` so your answers match the solutions.
+
+### 2. Shipping containers (revisited)
+
+A shipping company handles containers in three different sizes: (1) 27 $ft^3$ (3 x 3 x 3), (2) 125 $ft^3$, and (3) 512 $ft^3$. Let $X_i$ ($i = 1, 2, 3$) denote the number of type $i$ containers shipped during a given week. Suppose that $\mu_1 =200,\sigma_1=10,\mu_2 =250,\sigma_2=12,\mu_3 =100,\sigma_3=8$.
+
+#### Part a
+
+Assuming that $X_1,X_2,X_3$ are independent, calculate the variance of the total volume shipped.
+
+#### Part b
+
+Would your calculation necessarily be correct if the $X_i$'s were not independent? Explain. How is this different from your answer for the expected value in Homework 4?
+
+### 3. The sample proportion (revisited)
 
 Let $\hat{p}$ be the random variable for the sample proportion, $\hat{p}=\dfrac{X}{n}$, where $X$ is the number of successes in a random sample of size $n$. Assume the probability of success is $p$. Find $Var(\hat{p})$.
+
+### 4. Sum of binomials
+
+Let $X_i\sim \text{Binomial}(n_i,p)$ be independent RVs for $i=1,\ldots,m$.
+
+#### Part a
+
+What does the RV $X=\sum_{i=1}^mX_i$ count, and what is the distribution of $X$? Make sure to specify the parameters of $X$'s distribution.
+
+#### Part b
+
+Find $\mathbb{E}[X]$. *Make sure to show your work for Parts b and c. However, you may use without proof what you know about the mean and variance of each* $X_i$.
+
+#### Part c
+
+Find $Var(X)$.

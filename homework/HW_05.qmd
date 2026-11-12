@@ -614,7 +614,19 @@ graph TD
     class ContUnif,Exp,Gam,Norm,Chi continuous
 ```
 
-***Answer:***
+***Answer:*** Fill in the relationship for each numbered arrow.
+
+| \# | From | To | Relationship |
+|:--:|:--------------|:------------------|:--------------------------------------------------|
+| 1 | Bernoulli | Geometric |  |
+| 2 | Bernoulli | Binomial |  |
+| 3 | Poisson | Binomial |  |
+| 4 | Normal | Binomial |  |
+| 5 | Normal | Chi-squared |  |
+| 6 | Gamma | Exponential |  |
+| 7 | Poisson | Exponential |  |
+| 8 | Geometric | Negative Binomial |  |
+| 9 | Binomial | Hypergeometric |  |
 
 ## Extra problems
 

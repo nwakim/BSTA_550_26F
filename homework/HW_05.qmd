@@ -105,7 +105,7 @@ Before using AI, check the table of allowed uses in the [Generative AI Policy](h
 library(tidyverse)
 ```
 
-Questions 1–5 practice expected values of functions of RVs and variance (Lesson 11). Questions 1, 2, 4, and 5 revisit setups from Homework 4, so you can reuse your expected values from there. Questions 6–11 practice the named distributions from Lessons 12 and 13.
+Questions 1–4 practice expected values of functions of RVs and variance (Lesson 11). Questions 1, 2, and 4 revisit setups from Homework 4, so you can reuse your expected values from there. Questions 5–10 practice the named distributions from Lessons 12 and 13.
 
 ### 1. Asthma ER visits (revisited)
 
@@ -229,13 +229,7 @@ Prove that for a random variable $X$ and constants $a$ and $b$, $$Var(aX+b)=a^2V
 
 ***Answer:***
 
-### 4. The sample mean (revisited)
-
-Let $\overline{X}$ be the random variable for the sample mean, $\overline{X}=\dfrac{\sum_{i=1}^nX_i}{n}$, where the $X_i$ are i.i.d. random variables with common mean $\mu$ and variance $\sigma^2$. In Homework 4, you found $\mathbb{E}[\overline{X}]$. Find $Var(\overline{X})$.
-
-***Answer:***
-
-### 5. Waiting for the bus (revisited)
+### 4. Waiting for the bus (revisited)
 
 Suppose your waiting time for a bus in the morning is uniformly distributed on \[0, 8\] (minutes), whereas waiting time in the evening is uniformly distributed on \[0, 10\] (minutes) independent of morning waiting time. *Make sure to FIRST set up an equation for the total waiting time in each question before calculating its variance.* *You may use results from class for the expected value and variance of uniform RVs without proving them.*
 
@@ -264,7 +258,7 @@ Simulate 10,000 weeks of bus rides to check your answers to Parts a and c.
 **Step 1: Set up.** This chunk is done for you. Run it before the others.
 
 ```{r}
-#| label: "q5d-setup"
+#| label: "q4d-setup"
 
 set.seed(6161)  # so you get the same "random" weeks each time
 reps <- 10000   # number of simulated weeks
@@ -278,7 +272,7 @@ n_days <- 7     # number of days in a week
 ***Answer:***
 
 ```{r}
-#| label: "q5d-simulate"
+#| label: "q4d-simulate"
 
 # Your code here
 
@@ -291,7 +285,7 @@ n_days <- 7     # number of days in a week
 ***Answer:***
 
 ```{r}
-#| label: "q5d-summarize"
+#| label: "q4d-summarize"
 
 # Your code here
 
@@ -301,7 +295,7 @@ Are your simulated answers close to your answers in Parts a and c? (They do not 
 
 ***Answer:***
 
-### 6. Quitting smoking
+### 5. Quitting smoking
 
 Suppose that each time an adult who smokes tries to quit, they have a 0.25 chance of staying smoke-free for a full year. Assume the attempts are independent. Let $X$ be the number of quit attempts up to and including the first successful one.
 
@@ -332,7 +326,7 @@ Use R to check your answers to Part b.
 ***Answer:***
 
 ```{r}
-#| label: "q6d-geom"
+#| label: "q5d-geom"
 
 # Your code here
 
@@ -345,7 +339,7 @@ Simulate 10,000 people who are trying to quit to check your answers to Parts b a
 **Step 1: Set up.** This chunk is done for you. Run it before the others.
 
 ```{r}
-#| label: "q6e-setup"
+#| label: "q5e-setup"
 
 set.seed(4747)    # so you get the same "random" people each time
 reps <- 10000     # number of simulated people
@@ -359,7 +353,7 @@ p <- 0.25         # chance that one quit attempt works
 ***Answer:***
 
 ```{r}
-#| label: "q6e-simulate"
+#| label: "q5e-simulate"
 
 # Your code here
 
@@ -372,7 +366,7 @@ p <- 0.25         # chance that one quit attempt works
 ***Answer:***
 
 ```{r}
-#| label: "q6e-summarize"
+#| label: "q5e-summarize"
 
 # Your code here
 
@@ -382,7 +376,7 @@ Are your simulated answers close to your answers in Parts b and c? (They do not 
 
 ***Answer:***
 
-### 7. Voters at a polling station
+### 6. Voters at a polling station
 
 Suppose that voters arrive at a polling station at the rate of 120 per hour. For Parts a–c, [give the name and parameter(s) of the distribution]{.underline} to be used to model the event and [set up the expression]{.underline} to find the specified probability. *You do not need to compute the probability in Parts a–c.*
 
@@ -413,13 +407,13 @@ Use R to compute the probabilities you set up in Parts a–c.
 ***Answer:***
 
 ```{r}
-#| label: "q7d-probs"
+#| label: "q6d-probs"
 
 # Your code here
 
 ```
 
-### 8. Pizza delivery
+### 7. Pizza delivery
 
 Suppose that the times until Hector, Ivan, and Jacob's pizzas arrive are independent exponential RVs $X$, $Y$, and $Z$, each with an average of 20 minutes.
 
@@ -438,7 +432,7 @@ Simulate 10,000 nights of pizza delivery to check your answer to Part a.
 **Step 1: Set up.** This chunk is done for you. Run it before the others.
 
 ```{r}
-#| label: "q8b-setup"
+#| label: "q7b-setup"
 
 set.seed(8484)    # so you get the same "random" nights each time
 reps <- 10000     # number of simulated nights
@@ -452,7 +446,7 @@ n_people <- 3     # Hector, Ivan, and Jacob
 ***Answer:***
 
 ```{r}
-#| label: "q8b-simulate"
+#| label: "q7b-simulate"
 
 # Your code here
 
@@ -465,7 +459,7 @@ n_people <- 3     # Hector, Ivan, and Jacob
 ***Answer:***
 
 ```{r}
-#| label: "q8b-longest"
+#| label: "q7b-longest"
 
 # Your code here
 
@@ -475,7 +469,7 @@ Is your simulated answer close to your answer in Part a? (They do not need to ma
 
 ***Answer:***
 
-### 9. Blood pressure
+### 8. Blood pressure
 
 Suppose that systolic blood pressure (SBP, in mmHg) among adults in a community is $X \sim \text{Normal}(120, 15^2)$.
 
@@ -488,7 +482,7 @@ What is the probability that an adult's SBP is above 140 mmHg?
 ***Answer:***
 
 ```{r}
-#| label: "q9a-pnorm"
+#| label: "q8a-pnorm"
 
 # Your code here
 
@@ -503,7 +497,7 @@ Find the SBP value $t$ where 90% of adults have an SBP at $t$ or lower.
 ***Answer:***
 
 ```{r}
-#| label: "q9b-qnorm"
+#| label: "q8b-qnorm"
 
 # Your code here
 
@@ -516,7 +510,7 @@ What is the probability that an adult's SBP is between 110 and 130 mmHg?
 ***Answer:***
 
 ```{r}
-#| label: "q9c-pnorm"
+#| label: "q8c-pnorm"
 
 # Your code here
 
@@ -539,7 +533,7 @@ Simulate the SBP of 10,000 adults to check your answers to Parts a–c.
 ***Answer:***
 
 ```{r}
-#| label: "q9e-simulate"
+#| label: "q8e-simulate"
 
 set.seed(9191)
 reps <- 10000
@@ -552,7 +546,7 @@ Are your simulated answers close to your answers in Parts a–c? (They do not ne
 
 ***Answer:***
 
-### 10. Reference table of distributions
+### 9. Reference table of distributions
 
 Let's create a reference table for the important distributions. Fill out the following table and save it for future reference. The first row is done for you.
 
@@ -572,7 +566,7 @@ Let's create a reference table for the important distributions. Fill out the fol
 
 ***Answer:***
 
-### 11. Relationships between distributions
+### 10. Relationships between distributions
 
 It is also important to know how different RVs/distributions relate to one another. In the following web, please fill in the relationships between each distribution. You can recreate the web or you can write out the relationships in a numbered list.
 
@@ -656,11 +650,15 @@ Assuming that $X_1,X_2,X_3$ are independent, calculate the variance of the total
 
 Would your calculation necessarily be correct if the $X_i$'s were not independent? Explain. How is this different from your answer for the expected value in Homework 4?
 
-### 3. The sample proportion (revisited)
+### 3. The sample mean (revisited)
+
+Let $\overline{X}$ be the random variable for the sample mean, $\overline{X}=\dfrac{\sum_{i=1}^nX_i}{n}$, where the $X_i$ are i.i.d. random variables with common mean $\mu$ and variance $\sigma^2$. In Homework 4, you found $\mathbb{E}[\overline{X}]$. Find $Var(\overline{X})$.
+
+### 4. The sample proportion (revisited)
 
 Let $\hat{p}$ be the random variable for the sample proportion, $\hat{p}=\dfrac{X}{n}$, where $X$ is the number of successes in a random sample of size $n$. Assume the probability of success is $p$. Find $Var(\hat{p})$.
 
-### 4. Sum of binomials
+### 5. Sum of binomials
 
 Let $X_i\sim \text{Binomial}(n_i,p)$ be independent RVs for $i=1,\ldots,m$.
 

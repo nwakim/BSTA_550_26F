@@ -32,7 +32,7 @@ theme_set(theme_bw(base_size = 28))
 # Learning Objectives
 
 1. Use the simulation method (simulate, transform, summarize) to transform a random variable
-3. Use simulation to approximate probabilities and the shape of the distribution of a *linear* transformation
+2. Use simulation to approximate probabilities and the shape of the distribution of a *linear* transformation
 3. Use simulation to approximate probabilities and the shape of the distribution of a *nonlinear* transformation
 
 ## Distributions of transformations of random variables
@@ -54,9 +54,8 @@ theme_set(theme_bw(base_size = 28))
 ::: lob
 1. Use the simulation method (simulate, transform, summarize) to transform a random variable
 :::
-2. Describe how a linear rescaling changes a random variable, and identify the new distribution for Normal, Uniform, Exponential, and Gamma random variables
-3. Use simulation to approximate probabilities and the shape of the distribution of a nonlinear transformation
-4. Rewrite events about a transformation $g(X)$ as events about $X$
+2. Use simulation to approximate probabilities and the shape of the distribution of a *linear* transformation
+3. Use simulation to approximate probabilities and the shape of the distribution of a *nonlinear* transformation
 
 ## Our main tool: simulate, transform, summarize {#sim-method}
 
@@ -79,6 +78,24 @@ To learn about the distribution of $Y = g(X)$:
 
 - This works for **any** function $g$, as long as we can simulate $X$
 - We do not need the CDF of $X$, the CDF of $Y$, or a `p*()` function for $Y$
+
+## Rewriting events {#rewrite-events}
+
+- For linear *and* nonlinear transformations, rewriting an event about $Y = g(X)$ as an event about $X$ helps us:
+    - Find the possible values of $Y$ (Step 1 in our main tool)
+    - Check that our simulation summary is counting the right thing (Step 4)
+    - Find an exact answer when we *can* find probabilities for $X$ (a `p*()` function or a rectangle's area)
+
+- Examples:
+
+| Event about $Y$ | Same event about $X$ |
+|---|---|
+| $1 - X \leq -0.5$ | $X \geq 1.5$ (multiplying by $-1$ flips the inequality!) |
+| $\log(X) \leq 0.5$ | $X \leq e^{0.5}$ |
+| $X^2 \leq 0.25$ | $-0.5 \leq X \leq 0.5$ (two sides!) |
+| $\dfrac{1}{X} > 2$ | $0 < X < 0.5$ (the inequality flips, and $X$ must be positive!) |
+
+- Graph $g$ to see which values of $X$ land in the event
 
 ## For step 2 simulation: four ways
 
@@ -217,10 +234,9 @@ The larger we make `reps` and `length.out`, the closer we get to the exact pdf.
 1. Use the simulation method (simulate, transform, summarize) to transform a random variable
 
 ::: lob
-2. Describe how a linear rescaling changes a random variable, and identify the new distribution for Normal, Uniform, Exponential, and Gamma random variables
+2. Use simulation to approximate probabilities and the shape of the distribution of a *linear* transformation
 :::
-3. Use simulation to approximate probabilities and the shape of the distribution of a nonlinear transformation
-4. Rewrite events about a transformation $g(X)$ as events about $X$
+3. Use simulation to approximate probabilities and the shape of the distribution of a *nonlinear* transformation
 
 ## Linear rescaling
 
@@ -397,11 +413,10 @@ $$Z = \dfrac{X - \mu}{\sigma} \sim \text{Normal}(0, 1)$$
 # Learning Objectives
 
 1. Use the simulation method (simulate, transform, summarize) to transform a random variable
-2. Describe how a linear rescaling changes a random variable, and identify the new distribution for Normal, Uniform, Exponential, and Gamma random variables
+2. Use simulation to approximate probabilities and the shape of the distribution of a *linear* transformation
 
 ::: lob
-3. Use simulation to approximate probabilities and the shape of the distribution of a nonlinear transformation
-4. Rewrite events about a transformation $g(X)$ as events about $X$
+3. Use simulation to approximate probabilities and the shape of the distribution of a *nonlinear* transformation
 :::
 
 ## Nonlinear transformations
@@ -420,25 +435,6 @@ $$Z = \dfrac{X - \mu}{\sigma} \sim \text{Normal}(0, 1)$$
     -   $g(u) = \log(u)$
     -   $g(u) = e^u$
     -   $g(u) = \dfrac{1}{u}$
-
-## Rewriting events {#rewrite-events}
-
-<!-- @claude: should this be moved to the first learning objective since this is true for linear transformations, too? -->
-
-- Rewriting an event about $Y = g(X)$ as an event about $X$ helps us:
-    - Find the possible values of $Y$ (Step 1 in our main tool)
-    - Check that our simulation summary is counting the right thing
-    - Find an exact answer when we *can* find probabilities for $X$ (a `p*()` function or a rectangle's area)
-
-- Examples:
-
-| Event about $Y$ | Same event about $X$ |
-|---|---|
-| $\log(X) \leq 0.5$ | $X \leq e^{0.5}$ |
-| $X^2 \leq 0.25$ | $-0.5 \leq X \leq 0.5$ (two sides!) |
-| $\dfrac{1}{X} > 2$ | $0 < X < 0.5$ (the inequality flips, and $X$ must be positive!) |
-
-- Graph $g$ to see which values of $X$ land in the event
 
 ## [Example of nonlinear transformation (1/4)]{style="display: none;"}
 
@@ -837,9 +833,8 @@ ggplot(accuracy_sims, # <4>
 # Learning Objectives
 
 1. Use the simulation method (simulate, transform, summarize) to transform a random variable
-2. Describe how a linear rescaling changes a random variable, and identify the new distribution for Normal, Uniform, Exponential, and Gamma random variables
-3. Use simulation to approximate probabilities and the shape of the distribution of a nonlinear transformation
-4. Rewrite events about a transformation $g(X)$ as events about $X$
+2. Use simulation to approximate probabilities and the shape of the distribution of a *linear* transformation
+3. Use simulation to approximate probabilities and the shape of the distribution of a *nonlinear* transformation
 
 ## Summary of transformations
 

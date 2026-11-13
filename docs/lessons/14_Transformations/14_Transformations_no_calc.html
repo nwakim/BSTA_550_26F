@@ -240,7 +240,7 @@ Nicky Wakim
 <li>Linear rescalings: <span class="math inline">\(g(u) = a + bu\)</span></li>
 <li>Nonlinear transformations: e.g.&nbsp;<span class="math inline">\(g(u) = u^2\)</span>, <span class="math inline">\(g(u) = \log(u)\)</span></li>
 </ul></li>
-<li>Our main tool today: <strong>simulate <span class="math inline">\(X\)</span>, transform every simulated value, then summarize</strong></li>
+<li>Our main tool today: <strong>simulate</strong> <span class="math inline">\(X\)</span>, transform every simulated value, then summarize</li>
 </ul>
 </section></section>
 <section>
@@ -295,30 +295,36 @@ Nicky Wakim
 </ul>
 <table class="caption-top">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
+<th><span class="math inline">\(Y=g(X)\)</span></th>
 <th>Event about <span class="math inline">\(Y\)</span></th>
 <th>Same event about <span class="math inline">\(X\)</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><span class="math inline">\(1 - X \leq -0.5\)</span></td>
+<td><span class="math inline">\(Y = 1 - X\)</span> (linear)</td>
+<td><span class="math inline">\(Y \leq -0.5\)</span></td>
 <td><span class="math inline">\(X \geq 1.5\)</span> (multiplying by <span class="math inline">\(-1\)</span> flips the inequality!)</td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(\log(X) \leq 0.5\)</span></td>
+<td><span class="math inline">\(Y = \log(X)\)</span> (nonlinear)</td>
+<td><span class="math inline">\(Y \leq 0.5\)</span></td>
 <td><span class="math inline">\(X \leq e^{0.5}\)</span></td>
 </tr>
 <tr class="odd">
-<td><span class="math inline">\(X^2 \leq 0.25\)</span></td>
+<td><span class="math inline">\(Y = X^2\)</span> (nonlinear)</td>
+<td><span class="math inline">\(Y \leq 0.25\)</span></td>
 <td><span class="math inline">\(-0.5 \leq X \leq 0.5\)</span> (two sides!)</td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(\dfrac{1}{X} &gt; 2\)</span></td>
+<td><span class="math inline">\(Y = \dfrac{1}{X}\)</span> (nonlinear)</td>
+<td><span class="math inline">\(Y &gt; 2\)</span></td>
 <td><span class="math inline">\(0 &lt; X &lt; 0.5\)</span> (the inequality flips, and <span class="math inline">\(X\)</span> must be positive!)</td>
 </tr>
 </tbody>

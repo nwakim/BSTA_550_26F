@@ -32,9 +32,8 @@ theme_set(theme_bw(base_size = 28))
 # Learning Objectives
 
 1. Use the simulation method (simulate, transform, summarize) to transform a random variable
-2. Describe how a linear rescaling changes a random variable, and identify the new distribution for Normal, Uniform, Exponential, and Gamma random variables
-3. Use simulation to approximate probabilities and the shape of the distribution of a nonlinear transformation
-4. Rewrite events about a transformation $g(X)$ as events about $X$
+3. Use simulation to approximate probabilities and the shape of the distribution of a *linear* transformation
+3. Use simulation to approximate probabilities and the shape of the distribution of a *nonlinear* transformation
 
 ## Distributions of transformations of random variables
 
@@ -87,17 +86,17 @@ How do we get simulated values of $X$ in step 2?
 
 1. **Named distribution:** use its `r*()` function from Lessons 12 and 13 (`runif()`, `rexp()`, `rgamma()`, `rnorm()`)
 
- 
+ 
 
 2. **Build it from simpler pieces:** like the Gamma as a sum of exponentials (Lesson 13)
 
- 
+ 
 
 3. **Have the CDF?** Use the [**inverse CDF method**]{style="color:#E25D3B;"} from Lesson 9
     - Plug Uniform(0, 1) values into $F_X^{-1}$
     - Needs a CDF we can write down *and* solve for $x$
 
- 
+ 
 
 4. **Only have the pdf?** Use [**grid sampling**]{style="color:#E25D3B;"} (next slide)
     - Only needs the *height* of the pdf: no CDF required
@@ -424,6 +423,8 @@ $$Z = \dfrac{X - \mu}{\sigma} \sim \text{Normal}(0, 1)$$
 
 ## Rewriting events {#rewrite-events}
 
+<!-- @claude: should this be moved to the first learning objective since this is true for linear transformations, too? -->
+
 - Rewriting an event about $Y = g(X)$ as an event about $X$ helps us:
     - Find the possible values of $Y$ (Step 1 in our main tool)
     - Check that our simulation summary is counting the right thing
@@ -567,9 +568,6 @@ ggplot(u_sims, aes(x = log_u)) + # <6>
 6. Histogram of the simulated values of $V = \log(U)$, scaled like a pdf, with 30 bars between 0 and $\log(2)$.
 7. For reference, the pdf of $V$ in red: $f_V(v) = \frac{4}{15}e^{4v}$ for $0 \leq v \leq \log(2)$ (finding it takes calculus). The histogram follows it.
 8. Add a subtitle and axis labels.
-
-- Substituting $u = e^v$ into $f_U$ gives $\frac{4}{15}e^{3v}$, which is **not** the pdf of $V$
-    - For nonlinear transformations, the histogram shows us the real shape
 
 :::
 :::
@@ -836,7 +834,12 @@ ggplot(accuracy_sims, # <4>
 :::
 :::
 
-# Learning objectives
+# Learning Objectives
+
+1. Use the simulation method (simulate, transform, summarize) to transform a random variable
+2. Describe how a linear rescaling changes a random variable, and identify the new distribution for Normal, Uniform, Exponential, and Gamma random variables
+3. Use simulation to approximate probabilities and the shape of the distribution of a nonlinear transformation
+4. Rewrite events about a transformation $g(X)$ as events about $X$
 
 ## Summary of transformations
 

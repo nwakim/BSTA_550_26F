@@ -29152,7 +29152,7 @@
     "href": "lessons/14_Transformations/14_Transformations_no_calc.html#sim-method",
     "title": "Lesson 14: Transformations",
     "section": "Our main tool: simulate, transform, summarize",
-    "text": "Our main tool: simulate, transform, summarize\n\n\n\nThe simulation method for transformations\n\n\nTo learn about the distribution of \\(Y = g(X)\\):\n\nPossible values: Find the possible values of \\(Y\\) (graph \\(g\\) over the possible values of \\(X\\))\nSimulate: Simulate many values of \\(X\\)\nTransform: Apply \\(g\\) to every simulated value: mutate(y = g(x))\nSummarize:\n\nProbabilities: mean(y &lt;= c) approximates \\(P(Y \\leq c)\\)\nShape: a histogram of y\nCenter and spread: mean(y), sd(y)\n\n\n\n\n\nThis works for any function \\(g\\), as long as we can simulate \\(X\\)\nWe do not need the CDF of \\(X\\), the CDF of \\(Y\\), or a p*() function for \\(Y\\)"
+    "text": "Our main tool: simulate, transform, summarize\n\n\nThe simulation method for transformations\n\n\nTo learn about the distribution of \\(Y = g(X)\\):\n\nPossible values: Find the possible values of \\(Y\\) (graph \\(g\\) over the possible values of \\(X\\))\nSimulate: Simulate many values of \\(X\\)\nTransform: Apply \\(g\\) to every simulated value: mutate(y = g(x))\nSummarize:\n\nProbabilities: mean(y &lt;= c) approximates \\(P(Y \\leq c)\\)\nShape: a histogram of y\nCenter and spread: mean(y), sd(y)\n\n\n\n\n\nThis works for any function \\(g\\), as long as we can simulate \\(X\\)\nWe do not need the CDF of \\(X\\), the CDF of \\(Y\\), or a p*() function for \\(Y\\)"
   },
   {
     "objectID": "lessons/14_Transformations/14_Transformations_no_calc.html#simulating-x-three-ways",
@@ -29243,7 +29243,7 @@
     "href": "lessons/14_Transformations/14_Transformations_no_calc.html#rewrite-events",
     "title": "Lesson 14: Transformations",
     "section": "Rewriting events",
-    "text": "Rewriting events\n\nRewriting an event about \\(Y = g(X)\\) as an event about \\(X\\) helps us:\n\nFind the possible values of \\(Y\\) (Step 1 in our main tool)\nCheck that our simulation summary is counting the right thing\nFind an exact answer when we can find probabilities for \\(X\\) (a p*() function or a rectangle’s area)\n\nExamples:\n\n\n\n\nEvent about \\(Y\\)\nSame event about \\(X\\)\n\n\n\n\n\\(\\log(X) \\leq 0.5\\)\n\\(X \\leq e^{0.5}\\)\n\n\n\\(X^2 \\leq 0.25\\)\n\\(-0.5 \\leq X \\leq 0.5\\) (two sides!)\n\n\n\\(\\dfrac{1}{X} &gt; 2\\) (for \\(X &gt; 0\\))\n\\(X &lt; 0.5\\) (the inequality flips!)\n\n\n\n\n\nGraph \\(g\\) to see which values of \\(X\\) land in the event"
+    "text": "Rewriting events\n\nRewriting an event about \\(Y = g(X)\\) as an event about \\(X\\) helps us:\n\nFind the possible values of \\(Y\\) (Step 1 in our main tool)\nCheck that our simulation summary is counting the right thing\nFind an exact answer when we can find probabilities for \\(X\\) (a p*() function or a rectangle’s area)\n\nExamples:\n\n\n\n\n\n\n\n\nEvent about \\(Y\\)\nSame event about \\(X\\)\n\n\n\n\n\\(\\log(X) \\leq 0.5\\)\n\\(X \\leq e^{0.5}\\)\n\n\n\\(X^2 \\leq 0.25\\)\n\\(-0.5 \\leq X \\leq 0.5\\) (two sides!)\n\n\n\\(\\dfrac{1}{X} &gt; 2\\)\n\\(0 &lt; X &lt; 0.5\\) (the inequality flips, and \\(X\\) must be positive!)\n\n\n\n\nGraph \\(g\\) to see which values of \\(X\\) land in the event"
   },
   {
     "objectID": "lessons/14_Transformations/14_Transformations_no_calc.html#example-of-nonlinear-transformation-13",
@@ -29313,21 +29313,21 @@
     "href": "lessons/14_Transformations/14_Transformations_no_calc.html#how-accurate-is-a-simulation-12",
     "title": "Lesson 14: Transformations",
     "section": "How accurate is a simulation? (1/2)",
-    "text": "How accurate is a simulation? (1/2)\n\nA simulation gives an approximation. Run it again with a new seed and the answer moves a little\nHow much it moves depends on the number of simulations\nLet’s repeat the simulation from Example 3 200 times for each of 100, 1,000, and 10,000 simulations\n\n\n1accuracy_sims &lt;- expand_grid(\n    n_sims = c(100, 1000, 10000),\n    run = 1:200\n  ) |&gt;\n2  uncount(n_sims, .remove = FALSE) |&gt;\n3  mutate(\n    u = sample(u_grid, size = n(), replace = TRUE, prob = u_grid^3)\n  ) |&gt;\n4  group_by(n_sims, run) |&gt;\n5  summarise(estimate = mean(log(u) &lt;= 0.5), .groups = \"drop\")\n\n\n1\n\nOne row for every combination of simulation size and repeat: 3 sizes \\(\\times\\) 200 runs.\n\n2\n\nuncount() copies each row n_sims times, so each run gets 100, 1,000, or 10,000 rows.\n\n3\n\nGrid sample one \\(U\\) for every row, like before.\n\n4\n\nTreat each run of each size separately.\n\n5\n\nEach run’s approximation of \\(P(V \\leq 0.5) = P(\\log(U) \\leq 0.5)\\)."
+    "text": "How accurate is a simulation? (1/2)\n\nA single simulation gives an approximation. Run it again with a new seed and the answer moves a little\nHow much it moves depends on the number of simulations\nLet’s repeat the simulation from Example 3 200 times for each of 100, 1,000, and 10,000 simulations\n\n\n\n\n\nMeasure average estimate and spread\n1accuracy_sims |&gt;\n  group_by(n_sims) |&gt;\n  summarise(\n2    avg_estimate = mean(estimate),\n3    spread = sd(estimate)\n  )\n\n\n\n1\n\nSummarize the 200 approximations for each simulation size.\n\n2\n\nOn average, every size is close to the exact answer, 0.4260.\n\n3\n\nThe SD of the 200 approximations: how much one simulation’s answer moves around.\n\n\n\n\n# A tibble: 3 × 3\n  n_sims avg_estimate  spread\n   &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;\n1    100        0.428 0.0480 \n2   1000        0.426 0.0157 \n3  10000        0.426 0.00491\n\n\n \n\n100 times more simulations makes the spread about 10 times smaller\n\nWe will see this again with the Central Limit Theorem\n\n\n\n\n\nPlot code\n4ggplot(accuracy_sims,\n       aes(x = factor(n_sims), y = estimate)) +\n5  geom_jitter(width = 0.2, alpha = 0.4, size = 2) +\n6  geom_hline(yintercept = (exp(2) - 1) / 15,\n             color = \"red\", linewidth = 1.5) +\n7  labs(subtitle = \"200 approximations of P(V &lt;= 0.5)\",\n       x = \"Number of simulations\", y = \"Approximation\")\n\n\n\n4\n\nOne column of points for each simulation size.\n\n5\n\nEach point is one run’s approximation. geom_jitter() spreads the points sideways so they don’t overlap.\n\n6\n\nThe exact answer in red.\n\n7\n\nAdd a title and axis labels."
   },
   {
     "objectID": "lessons/14_Transformations/14_Transformations_no_calc.html#how-accurate-is-a-simulation-22",
     "href": "lessons/14_Transformations/14_Transformations_no_calc.html#how-accurate-is-a-simulation-22",
     "title": "Lesson 14: Transformations",
     "section": "How accurate is a simulation? (2/2)",
-    "text": "How accurate is a simulation? (2/2)\n\n\n\n1accuracy_sims |&gt;\n  group_by(n_sims) |&gt;\n  summarise(\n2    avg_estimate = mean(estimate),\n3    spread = sd(estimate)\n  )\n\n\n1\n\nSummarize the 200 approximations for each simulation size.\n\n2\n\nOn average, every size is close to the exact answer, 0.4260.\n\n3\n\nThe SD of the 200 approximations: how much one simulation’s answer moves around.\n\n\n\n\n# A tibble: 3 × 3\n  n_sims avg_estimate  spread\n   &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;\n1    100        0.423 0.0502 \n2   1000        0.425 0.0162 \n3  10000        0.426 0.00476\n\n\n\n100 times more simulations makes the spread about 10 times smaller\n\nSpread shrinks like \\(\\dfrac{1}{\\sqrt{\\text{number of simulations}}}\\)\nWe will see this again with the Central Limit Theorem\n\n\n\n\n\nPlot code\n4ggplot(accuracy_sims,\n       aes(x = factor(n_sims), y = estimate)) +\n5  geom_jitter(width = 0.2, alpha = 0.4, size = 2) +\n6  geom_hline(yintercept = (exp(2) - 1) / 15,\n             color = \"red\", linewidth = 1.5) +\n7  labs(title = \"200 approximations of P(V &lt;= 0.5)\",\n       x = \"Number of simulations\", y = \"Approximation\")\n\n\n\n4\n\nOne column of points for each simulation size.\n\n5\n\nEach point is one run’s approximation. geom_jitter() spreads the points sideways so they don’t overlap.\n\n6\n\nThe exact answer in red.\n\n7\n\nAdd a title and axis labels."
+    "text": "How accurate is a simulation? (2/2)\n\n\n\n1accuracy_sims |&gt;\n  group_by(n_sims) |&gt;\n  summarise(\n2    avg_estimate = mean(estimate),\n3    spread = sd(estimate)\n  )\n\n\n1\n\nSummarize the 200 approximations for each simulation size.\n\n2\n\nOn average, every size is close to the exact answer, 0.4260.\n\n3\n\nThe SD of the 200 approximations: how much one simulation’s answer moves around.\n\n\n\n\n# A tibble: 3 × 3\n  n_sims avg_estimate  spread\n   &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;\n1    100        0.428 0.0480 \n2   1000        0.426 0.0157 \n3  10000        0.426 0.00491\n\n\n\n100 times more simulations makes the spread about 10 times smaller\n\nSpread shrinks like \\(\\dfrac{1}{\\sqrt{\\text{number of simulations}}}\\)\nWe will see this again with the Central Limit Theorem\n\n\n\n\n\nPlot code\n4ggplot(accuracy_sims,\n       aes(x = factor(n_sims), y = estimate)) +\n5  geom_jitter(width = 0.2, alpha = 0.4, size = 2) +\n6  geom_hline(yintercept = (exp(2) - 1) / 15,\n             color = \"red\", linewidth = 1.5) +\n7  labs(title = \"200 approximations of P(V &lt;= 0.5)\",\n       x = \"Number of simulations\", y = \"Approximation\")\n\n\n\n4\n\nOne column of points for each simulation size.\n\n5\n\nEach point is one run’s approximation. geom_jitter() spreads the points sideways so they don’t overlap.\n\n6\n\nThe exact answer in red.\n\n7\n\nAdd a title and axis labels."
   },
   {
     "objectID": "lessons/14_Transformations/14_Transformations_no_calc.html#summary-of-transformations",
     "href": "lessons/14_Transformations/14_Transformations_no_calc.html#summary-of-transformations",
     "title": "Lesson 14: Transformations",
     "section": "Summary of transformations",
-    "text": "Summary of transformations\n\nLinear rescalings keep the shape. Named distributions stay in the same family, with new parameters\nNonlinear transformations can change the shape of a distribution\n\nSubstituting into the pdf does not work\n\\(\\mathbb{E}[g(X)]\\) is not \\(g(\\mathbb{E}[X])\\)\n\nThe simulation method works for any transformation: simulate \\(X\\), transform, summarize\nRewrite events about \\(Y\\) in terms of \\(X\\) to find possible values, check your simulation, and get exact answers when you can\n\n\n\n\n\n\n\n\n\n\nLinear rescaling\nNonlinear transformation\n\n\n\n\nChanges the distribution?\nYes\nYes\n\n\nChanges the “shape”?\nNo\nUsually\n\n\nHow to find probabilities\nSame family with new parameters, or rewrite the event in terms of \\(X\\)\nSimulate, transform, summarize; rewrite the event in terms of \\(X\\) to check"
+    "text": "Summary of transformations\nSummary of changes for linear and nonlinear transformations:\n\n\n\n\n\n\n\n\n\nLinear rescaling\nNonlinear transformation\n\n\n\n\nChanges the distribution?\nYes\nYes\n\n\nChanges the “shape”?\nNo\nUsually\n\n\nHow to find probabilities\nSame family with new parameters, or rewrite the event in terms of \\(X\\)\nSimulate, transform, summarize; rewrite the event in terms of \\(X\\) to check\n\n\n\n \n\nThe simulation method works for any transformation: simulate \\(X\\), transform, summarize\nRewrite events about \\(Y\\) in terms of \\(X\\) to find possible values, check your simulation, and get exact answers when you can"
   },
   {
     "objectID": "lessons/14_Transformations/14_Transformations_no_calc.html#grid-sampling-code-and-plot",
@@ -29377,5 +29377,138 @@
     "title": "Lesson 14: Transformations",
     "section": "Example of nonlinear transformation (2/3)",
     "text": "Example of nonlinear transformation (2/3)\n\n\nExample 3: Log transformation of \\(U\\)\n\n\nLet \\(U\\) be a random variable with \\(f_U(u)= \\dfrac{4}{15}u^3\\) for \\(1\\leq u \\leq 2\\). Define \\(V=\\log(U)\\)\n\nRewrite the event \\(V \\leq 0.5\\) in terms of \\(U\\)."
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations_no_calc.html#for-step-2-simulation-four-ways",
+    "href": "lessons/14_Transformations/14_Transformations_no_calc.html#for-step-2-simulation-four-ways",
+    "title": "Lesson 14: Transformations",
+    "section": "For step 2 simulation: four ways",
+    "text": "For step 2 simulation: four ways\nHow do we get simulated values of \\(X\\) in step 2?\n\nNamed distribution: use its r*() function from Lessons 12 and 13 (runif(), rexp(), rgamma(), rnorm())\nBuild it from simpler pieces: like the Gamma as a sum of exponentials (Lesson 13)\nHave the CDF? Use the inverse CDF method from Lesson 9\n\nPlug Uniform(0, 1) values into \\(F_X^{-1}\\)\nNeeds a CDF we can write down and solve for \\(x\\)\n\nOnly have the pdf? Use grid sampling (next slide)\n\nOnly needs the height of the pdf: no CDF required"
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations_no_calc.html#example-of-linear-rescaling-14",
+    "href": "lessons/14_Transformations/14_Transformations_no_calc.html#example-of-linear-rescaling-14",
+    "title": "Lesson 14: Transformations",
+    "section": "Example of linear rescaling (1/4)",
+    "text": "Example of linear rescaling (1/4)\n\n\nExample 1: Linear rescaling of \\(U\\)\n\n\nLet \\(U\\) be a random variable with \\(f_U(u)= \\dfrac{4}{15}u^3\\) for \\(1\\leq u \\leq 2\\). Define \\(V=1-U\\)\n\nWhat are the possible values of \\(V\\)?\nIs \\(V\\) the same random variable as \\(U\\)?\nRewrite the event \\(V \\le -0.5\\) in terms of \\(U\\). Then approximate \\(P(V \\le -0.5)\\) with simulation."
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations_no_calc.html#example-of-linear-rescaling-24",
+    "href": "lessons/14_Transformations/14_Transformations_no_calc.html#example-of-linear-rescaling-24",
+    "title": "Lesson 14: Transformations",
+    "section": "Example of linear rescaling (2/4)",
+    "text": "Example of linear rescaling (2/4)\n\n\nExample 1: Linear rescaling of \\(U\\)\n\n\nLet \\(U\\) be a random variable with \\(f_U(u)= \\dfrac{4}{15}u^3\\) for \\(1\\leq u \\leq 2\\). Define \\(V=1-U\\)\n\nWhat are the possible values of \\(V\\)?\nIs \\(V\\) the same random variable as \\(U\\)?"
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations_no_calc.html#example-of-linear-rescaling-34",
+    "href": "lessons/14_Transformations/14_Transformations_no_calc.html#example-of-linear-rescaling-34",
+    "title": "Lesson 14: Transformations",
+    "section": "Example of linear rescaling (3/4)",
+    "text": "Example of linear rescaling (3/4)\n\n\nExample 1: Linear rescaling of \\(U\\)\n\n\nLet \\(U\\) be a random variable with \\(f_U(u)= \\dfrac{4}{15}u^3\\) for \\(1\\leq u \\leq 2\\). Define \\(V=1-U\\)\n\nRewrite the event \\(V \\le -0.5\\) in terms of \\(U\\). Then approximate \\(P(V \\le -0.5)\\) with simulation."
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations_no_calc.html#example-of-linear-rescaling-44-simulate",
+    "href": "lessons/14_Transformations/14_Transformations_no_calc.html#example-of-linear-rescaling-44-simulate",
+    "title": "Lesson 14: Transformations",
+    "section": "Example of linear rescaling (4/4): simulate",
+    "text": "Example of linear rescaling (4/4): simulate\n\n\n\nRewrite the event \\(V \\le -0.5\\) in terms of \\(U\\). Then approximate \\(P(V \\le -0.5)\\) with simulation.\n\n\n\n\n\n\n1u_sims &lt;- u_sims |&gt;\n2  mutate(v = 1 - u)\n\n3u_sims |&gt;\n  summarise(\n4    prob_V = mean(v &lt;= -0.5),\n5    prob_U = mean(u &gt;= 1.5)\n  )\n\n\n1\n\nReuse the 10,000 grid-sampled values of \\(U\\).\n\n2\n\nThe linear rescaling: each simulated u becomes v = 1 - u.\n\n3\n\nOne row of summaries of the 10,000 simulations.\n\n4\n\nThe proportion of simulations with \\(V \\leq -0.5\\) approximates \\(P(V \\leq -0.5)\\).\n\n5\n\nSame answer: \\(V \\leq -0.5\\) is the same event as \\(U \\geq 1.5\\).\n\n\n\n\n# A tibble: 1 × 2\n  prob_V prob_U\n   &lt;dbl&gt;  &lt;dbl&gt;\n1  0.731  0.731\n\n\n\n\nFor reference, the exact answer is \\(P(V \\leq -0.5) \\approx 0.7292\\)\n\n\n\n\n\nPlot code\n6ggplot(u_sims) +\n7  geom_histogram(aes(x = u, y = after_stat(density)),\n                 binwidth = 0.05, boundary = 1,\n                 color = \"black\", fill = \"lightblue\") +\n8  geom_histogram(aes(x = v, y = after_stat(density)),\n                 binwidth = 0.05, boundary = -1,\n                 color = \"black\", fill = \"#E89543\") +\n9  labs(title = \"Simulated U (blue) and V = 1 - U (orange)\",\n       x = \"Value\", y = \"Density\")\n\n\n\n6\n\nStart a plot of the simulations. Each histogram below picks its own column.\n\n7\n\nHistogram of the simulated u values, scaled like a pdf.\n\n8\n\nHistogram of the simulated v values, on the same axes.\n\n9\n\nAdd a title and axis labels."
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations_no_calc.html#example-of-nonlinear-transformation-14",
+    "href": "lessons/14_Transformations/14_Transformations_no_calc.html#example-of-nonlinear-transformation-14",
+    "title": "Lesson 14: Transformations",
+    "section": "Example of nonlinear transformation (1/4)",
+    "text": "Example of nonlinear transformation (1/4)\n\n\nExample 3: Log transformation of \\(U\\)\n\n\nLet \\(U\\) be a random variable with \\(f_U(u)= \\dfrac{4}{15}u^3\\) for \\(1\\leq u \\leq 2\\). Define \\(V=\\log(U)\\)\n\nWhat are the possible values of \\(V\\)?\nRewrite the event \\(V \\leq 0.5\\) in terms of \\(U\\).\nApproximate \\(P(V \\leq 0.5)\\) with simulation."
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations_no_calc.html#example-of-nonlinear-transformation-24",
+    "href": "lessons/14_Transformations/14_Transformations_no_calc.html#example-of-nonlinear-transformation-24",
+    "title": "Lesson 14: Transformations",
+    "section": "Example of nonlinear transformation (2/4)",
+    "text": "Example of nonlinear transformation (2/4)\n\n\nExample 3: Log transformation of \\(U\\)\n\n\nLet \\(U\\) be a random variable with \\(f_U(u)= \\dfrac{4}{15}u^3\\) for \\(1\\leq u \\leq 2\\). Define \\(V=\\log(U)\\)\n\nWhat are the possible values of \\(V\\)?"
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations_no_calc.html#example-of-nonlinear-transformation-34",
+    "href": "lessons/14_Transformations/14_Transformations_no_calc.html#example-of-nonlinear-transformation-34",
+    "title": "Lesson 14: Transformations",
+    "section": "Example of nonlinear transformation (3/4)",
+    "text": "Example of nonlinear transformation (3/4)\n\n\nExample 3: Log transformation of \\(U\\)\n\n\nLet \\(U\\) be a random variable with \\(f_U(u)= \\dfrac{4}{15}u^3\\) for \\(1\\leq u \\leq 2\\). Define \\(V=\\log(U)\\)\n\nRewrite the event \\(V \\leq 0.5\\) in terms of \\(U\\)."
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations_no_calc.html#example-of-nonlinear-transformation-44-simulate",
+    "href": "lessons/14_Transformations/14_Transformations_no_calc.html#example-of-nonlinear-transformation-44-simulate",
+    "title": "Lesson 14: Transformations",
+    "section": "Example of nonlinear transformation (4/4): simulate",
+    "text": "Example of nonlinear transformation (4/4): simulate\n\n\n\nApproximate \\(P(V \\leq 0.5)\\) with simulation.\n\n\n\n\n\n\n1u_sims &lt;- u_sims |&gt;\n2  mutate(log_u = log(u))\n\n3u_sims |&gt;\n  summarise(\n4    prob_V = mean(log_u &lt;= 0.5),\n5    prob_U = mean(u &lt;= exp(0.5))\n  )\n\n\n1\n\nReuse the 10,000 grid-sampled values of \\(U\\) from Example 1.\n\n2\n\nThe nonlinear transformation: \\(V = \\log(U)\\). We name the column log_u so it does not replace v \\(= 1 - U\\) from Example 1.\n\n3\n\nOne row of summaries.\n\n4\n\nThe proportion of simulations with \\(\\log(U) \\leq 0.5\\) approximates \\(P(V \\leq 0.5)\\).\n\n5\n\nSame answer: \\(\\log(U) \\leq 0.5\\) is the same event as \\(U \\leq e^{0.5}\\). exp() is \\(e\\) to a power.\n\n\n\n\n# A tibble: 1 × 2\n  prob_V prob_U\n   &lt;dbl&gt;  &lt;dbl&gt;\n1  0.423  0.423\n\n\n\n\nFor reference, the exact answer is \\(P(V \\leq 0.5) \\approx 0.4260\\)\n\n\n\n\n\nPlot code\nggplot(u_sims, aes(x = log_u)) +\n  geom_histogram(aes(y = after_stat(density)),\n                 binwidth = log(2) / 30, boundary = 0,\n                 color = \"black\", fill = \"lightblue\") +\n  geom_function(fun = function(v) 4/15 * exp(3 * v),\n                linetype = \"dashed\", linewidth = 1.5) +\n  labs(title = \"Simulated V = log(U)\",\n       x = \"v\", y = \"Density\")\n\n\n\n\n\n\n\n\n\n\n\nHistogram of the simulated values of \\(V = \\log(U)\\), scaled like a pdf, with 30 bars between 0 and \\(\\log(2)\\).\nThe guess from substituting \\(u = e^v\\) into \\(f_U\\): \\(\\frac{4}{15}e^{3v}\\), dashed. It does not match the histogram!\nAdd a title and axis labels.\n\n\n\nSubstituting into the pdf does not work for nonlinear transformations. The histogram shows us the real shape."
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations_no_calc.html#example-of-nonlinear-transformation-squaring-14",
+    "href": "lessons/14_Transformations/14_Transformations_no_calc.html#example-of-nonlinear-transformation-squaring-14",
+    "title": "Lesson 14: Transformations",
+    "section": "Example of nonlinear transformation: squaring (1/4)",
+    "text": "Example of nonlinear transformation: squaring (1/4)\n\n\nExample 4: Squaring a Uniform RV\n\n\nLet \\(X \\sim \\text{Uniform}[-1, 1]\\), so \\(f_X(x)= \\dfrac{1}{2}\\) for \\(-1\\leq x \\leq 1\\). Define \\(Y=X^2\\)\n\nWhat are the possible values of \\(Y\\)?\nRewrite the event \\(Y \\leq 0.25\\) in terms of \\(X\\).\nFind \\(P(Y \\leq 0.25)\\) exactly using the distribution of \\(X\\). Check it with simulation."
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations_no_calc.html#example-of-nonlinear-transformation-squaring-24",
+    "href": "lessons/14_Transformations/14_Transformations_no_calc.html#example-of-nonlinear-transformation-squaring-24",
+    "title": "Lesson 14: Transformations",
+    "section": "Example of nonlinear transformation: squaring (2/4)",
+    "text": "Example of nonlinear transformation: squaring (2/4)\n\n\nExample 4: Squaring a Uniform RV\n\n\nLet \\(X \\sim \\text{Uniform}[-1, 1]\\), so \\(f_X(x)= \\dfrac{1}{2}\\) for \\(-1\\leq x \\leq 1\\). Define \\(Y=X^2\\)\n\nWhat are the possible values of \\(Y\\)?"
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations_no_calc.html#example-of-nonlinear-transformation-squaring-34",
+    "href": "lessons/14_Transformations/14_Transformations_no_calc.html#example-of-nonlinear-transformation-squaring-34",
+    "title": "Lesson 14: Transformations",
+    "section": "Example of nonlinear transformation: squaring (3/4)",
+    "text": "Example of nonlinear transformation: squaring (3/4)\n\n\nExample 4: Squaring a Uniform RV\n\n\nLet \\(X \\sim \\text{Uniform}[-1, 1]\\), so \\(f_X(x)= \\dfrac{1}{2}\\) for \\(-1\\leq x \\leq 1\\). Define \\(Y=X^2\\)\n\nRewrite the event \\(Y \\leq 0.25\\) in terms of \\(X\\).\nFind \\(P(Y \\leq 0.25)\\) exactly using the distribution of \\(X\\)."
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations_no_calc.html#example-of-nonlinear-transformation-squaring-44-simulate",
+    "href": "lessons/14_Transformations/14_Transformations_no_calc.html#example-of-nonlinear-transformation-squaring-44-simulate",
+    "title": "Lesson 14: Transformations",
+    "section": "Example of nonlinear transformation: squaring (4/4): simulate",
+    "text": "Example of nonlinear transformation: squaring (4/4): simulate\n\n\n\nCheck \\(P(Y \\leq 0.25)\\) with simulation.\n\n\n\n\n\n\n1x_sims &lt;- tibble(sim = 1:reps) |&gt;\n  mutate(\n2    x = runif(n(), min = -1, max = 1),\n3    y = x^2\n  )\n\n4x_sims |&gt;\n  summarise(\n    prob_Y = mean(y &lt;= 0.25)\n  )\n\n5punif(0.5, min = -1, max = 1) -\n  punif(-0.5, min = -1, max = 1)\n\n\n1\n\nOne row per simulation.\n\n2\n\n\\(X \\sim \\text{Uniform}[-1, 1]\\) has a named distribution, so we simulate it with runif().\n\n3\n\nThe nonlinear transformation: square each simulated x.\n\n4\n\nThe proportion of simulations with \\(Y \\leq 0.25\\) approximates \\(P(Y \\leq 0.25)\\).\n\n5\n\nExact: \\(P(-0.5 \\leq X \\leq 0.5)\\), a rectangle with width 1 and height \\(\\frac{1}{2}\\).\n\n\n\n\n# A tibble: 1 × 1\n  prob_Y\n   &lt;dbl&gt;\n1  0.498\n[1] 0.5\n\n\n\n\n\nPlot code\n6ggplot(x_sims, aes(x = y)) +\n  geom_histogram(aes(y = after_stat(density)),\n                 binwidth = 0.02, boundary = 0,\n                 color = \"black\", fill = \"lightblue\") +\n7  labs(title = \"Simulated Y = X^2\",\n       x = \"y\", y = \"Density\")\n\n\n\n6\n\nHistogram of the simulated values of \\(Y\\), scaled like a pdf.\n\n7\n\nAdd a title and axis labels.\n\n\n\n\n\n\n\n\n\n\n\n\n\\(X\\) was flat, but \\(Y = X^2\\) piles up near 0\n\nHalf of the values of \\(X\\) (from \\(-0.5\\) to \\(0.5\\)) get squeezed into \\([0, 0.25]\\)"
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations_no_calc.html#example-squaring-a-standard-normal-13",
+    "href": "lessons/14_Transformations/14_Transformations_no_calc.html#example-squaring-a-standard-normal-13",
+    "title": "Lesson 14: Transformations",
+    "section": "Example: squaring a standard Normal (1/3)",
+    "text": "Example: squaring a standard Normal (1/3)\n\n\nExample 5: \\(Z^2\\) and the chi-squared distribution\n\n\nLet \\(Z \\sim \\text{Normal}(0, 1)\\) and \\(W = Z^2\\).\n\nWhat are the possible values of \\(W\\)?\nRewrite \\(W \\leq 4\\) in terms of \\(Z\\), and find \\(P(W \\leq 4)\\) with pnorm().\nIn Lesson 13, we said \\(Z^2 \\sim \\chi^2_{(1)}\\). Check with pchisq() and with simulation."
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations_no_calc.html#example-squaring-a-standard-normal-23",
+    "href": "lessons/14_Transformations/14_Transformations_no_calc.html#example-squaring-a-standard-normal-23",
+    "title": "Lesson 14: Transformations",
+    "section": "Example: squaring a standard Normal (2/3)",
+    "text": "Example: squaring a standard Normal (2/3)\n\n\nExample 5: \\(Z^2\\) and the chi-squared distribution\n\n\nLet \\(Z \\sim \\text{Normal}(0, 1)\\) and \\(W = Z^2\\).\n\nWhat are the possible values of \\(W\\)?\nRewrite \\(W \\leq 4\\) in terms of \\(Z\\), and find \\(P(W \\leq 4)\\) with pnorm()."
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations_no_calc.html#example-squaring-a-standard-normal-33-simulate",
+    "href": "lessons/14_Transformations/14_Transformations_no_calc.html#example-squaring-a-standard-normal-33-simulate",
+    "title": "Lesson 14: Transformations",
+    "section": "Example: squaring a standard Normal (3/3): simulate",
+    "text": "Example: squaring a standard Normal (3/3): simulate\n\n\n\nIn Lesson 13, we said \\(Z^2 \\sim \\chi^2_{(1)}\\). Check with pchisq() and with simulation.\n\n\n\n\n\n\n1z_sims &lt;- tibble(sim = 1:reps) |&gt;\n  mutate(\n    z = rnorm(n(), mean = 0, sd = 1),\n2    w = z^2\n  )\n\n3z_sims |&gt; summarise(prob_W = mean(w &lt;= 4))\n\n4pnorm(2) - pnorm(-2)\n5pchisq(4, df = 1)\n\n\n1\n\nSimulate the standard Normal \\(Z\\) with rnorm().\n\n2\n\nThe nonlinear transformation: \\(W = Z^2\\).\n\n3\n\nApproximates \\(P(W \\leq 4)\\).\n\n4\n\n\\(Z^2 \\leq 4\\) is the same event as \\(-2 \\leq Z \\leq 2\\) (two sides, like Example 4).\n\n5\n\nThe chi-squared distribution with 1 degree of freedom gives the same answer.\n\n\n\n\n# A tibble: 1 × 1\n  prob_W\n   &lt;dbl&gt;\n1  0.954\n[1] 0.9544997\n[1] 0.9544997\n\n\n\n\n\nPlot code\n6ggplot(z_sims, aes(x = w)) +\n  geom_histogram(aes(y = after_stat(density)),\n                 binwidth = 0.2, boundary = 0,\n                 color = \"black\", fill = \"lightblue\") +\n7  geom_function(fun = function(w) dchisq(w, df = 1),\n                color = \"red\", linewidth = 1.5) +\n8  coord_cartesian(xlim = c(0, 8), ylim = c(0, 2)) +\n9  labs(title = \"Simulated W = Z^2\", x = \"w\", y = \"Density\")\n\n\n\n6\n\nHistogram of the simulated values of \\(W\\), scaled like a pdf.\n\n7\n\nThe \\(\\chi^2_{(1)}\\) pdf from dchisq(), in red.\n\n8\n\nZoom in, because the pdf shoots up near 0 and has a long right tail.\n\n9\n\nAdd a title and axis labels."
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations_no_calc.html#example-when-there-is-no-p-function-13",
+    "href": "lessons/14_Transformations/14_Transformations_no_calc.html#example-when-there-is-no-p-function-13",
+    "title": "Lesson 14: Transformations",
+    "section": "Example: when there is no p*() function (1/3)",
+    "text": "Example: when there is no p*() function (1/3)\n\n\nExample 6: Buses per hour\n\n\nFrom Lesson 13: the time until 4 buses arrive is \\(X \\sim \\text{Gamma}(r = 4, \\lambda = 1/10)\\), in minutes. The average number of buses per hour while we wait is\n\\[Y = \\dfrac{4 \\text{ buses}}{X \\text{ minutes}} \\times 60 \\ \\dfrac{\\text{minutes}}{\\text{hour}} = \\dfrac{240}{X}\\]\n\nWhat are the possible values of \\(Y\\)?\nRewrite the event \\(Y &gt; 6\\) in terms of \\(X\\).\nApproximate \\(P(Y &gt; 6)\\) with simulation. Check it with pgamma().\n\\(\\mathbb{E}[X] = \\frac{r}{\\lambda} = 40\\) minutes. Is \\(\\mathbb{E}[Y]\\) equal to \\(\\frac{240}{40} = 6\\) buses per hour?\n\n\n\n\n\\(Y\\) is not Gamma, and base R has no p*() or r*() function for \\(Y\\). We don’t need one!"
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations_no_calc.html#example-when-there-is-no-p-function-23",
+    "href": "lessons/14_Transformations/14_Transformations_no_calc.html#example-when-there-is-no-p-function-23",
+    "title": "Lesson 14: Transformations",
+    "section": "Example: when there is no p*() function (2/3)",
+    "text": "Example: when there is no p*() function (2/3)\n\n\nExample 6: Buses per hour\n\n\nFrom Lesson 13: the time until 4 buses arrive is \\(X \\sim \\text{Gamma}(r = 4, \\lambda = 1/10)\\), in minutes. The average number of buses per hour while we wait is\n\\[Y = \\dfrac{4 \\text{ buses}}{X \\text{ minutes}} \\times 60 \\ \\dfrac{\\text{minutes}}{\\text{hour}} = \\dfrac{240}{X}\\]\n\nWhat are the possible values of \\(Y\\)?\nRewrite the event \\(Y &gt; 6\\) in terms of \\(X\\)."
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations_no_calc.html#example-when-there-is-no-p-function-33-simulate",
+    "href": "lessons/14_Transformations/14_Transformations_no_calc.html#example-when-there-is-no-p-function-33-simulate",
+    "title": "Lesson 14: Transformations",
+    "section": "Example: when there is no p*() function (3/3): simulate",
+    "text": "Example: when there is no p*() function (3/3): simulate\n\n\n\nApproximate \\(P(Y &gt; 6)\\) with simulation. Check it with pgamma().\n\\(\\mathbb{E}[X] = \\frac{r}{\\lambda} = 40\\) minutes. Is \\(\\mathbb{E}[Y]\\) equal to \\(\\frac{240}{40} = 6\\) buses per hour?\n\n\n\n\n\n\n1bus_sims &lt;- tibble(sim = 1:reps) |&gt;\n  mutate(\n    x = rgamma(n(), shape = 4, rate = 1/10),\n2    y = 240 / x\n  )\n\n3bus_sims |&gt;\n  summarise(\n4    prob_Y = mean(y &gt; 6),\n5    prob_X = pgamma(40, shape = 4, rate = 1/10),\n6    mean_Y = mean(y)\n  )\n\n\n1\n\nSimulate the time until 4 buses with rgamma(), like Lesson 13.\n\n2\n\nThe nonlinear transformation: buses per hour.\n\n3\n\nOne row of summaries.\n\n4\n\nApproximates \\(P(Y &gt; 6)\\).\n\n5\n\nExact: \\(Y &gt; 6\\) is the same event as \\(X &lt; 40\\) (the inequality flips!).\n\n6\n\nApproximates \\(\\mathbb{E}[Y]\\). It is about 8, not 6!\n\n\n\n\n# A tibble: 1 × 3\n  prob_Y prob_X mean_Y\n   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n1  0.567  0.567   8.00\n\n\n\n\n\nPlot code\n7ggplot(bus_sims, aes(x = y)) +\n  geom_histogram(aes(y = after_stat(density)),\n                 binwidth = 0.5, boundary = 0,\n                 color = \"black\", fill = \"lightblue\") +\n8  geom_vline(xintercept = 6, linetype = \"dashed\", linewidth = 1.5) +\n9  coord_cartesian(xlim = c(0, 30)) +\n10  labs(title = \"Simulated buses per hour, Y = 240 / X\",\n       x = \"y\", y = \"Density\")\n\n\n\n7\n\nHistogram of the simulated values of \\(Y\\), scaled like a pdf.\n\n8\n\nDashed line at \\(\\frac{240}{\\mathbb{E}[X]} = 6\\).\n\n9\n\nZoom in: a few very short waits give a very large \\(Y\\).\n\n10\n\nAdd a title and axis labels.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor a nonlinear \\(g\\), \\(\\mathbb{E}[g(X)] \\neq g(\\mathbb{E}[X])\\) in general. The long right tail pulls the mean of \\(Y\\) up"
   }
 ]

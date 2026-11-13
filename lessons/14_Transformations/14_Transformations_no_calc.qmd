@@ -114,7 +114,7 @@ How do we get simulated values of $X$ in step 2?
 
 2. **Make a grid:** many evenly spaced values across the possible values. Each value is a ticket in the box
 
-    - e.g. 1, 1.001, 1.002, ..., 2 (1001 tickets)
+    - e.g. 1, 1.0001, 1.0002, ..., 2 (10,001 tickets)
 
 3. **Find the pdf's height** at each ticket: $f_U(1) \approx 0.27$, ..., $f_U(2) \approx 2.13$
 
@@ -142,18 +142,18 @@ ggplot(small_grid, aes(x = u, y = chance)) +
   geom_text(aes(label = round(chance, 3)), vjust = -1, size = 6) +
   scale_x_continuous(breaks = seq(1, 2, by = 0.1)) +
   coord_cartesian(ylim = c(0, 0.22)) +
-  labs(title = "A small example grid: 11 tickets",
+  labs(subtitle = "A small example grid: 11 tickets",
        x = "Ticket (u)", y = "Chance of being drawn")
 ```
 
-*Real grid has 1001 tickets, so draws look continuous*
+*Real grid has 10,001 tickets, so draws look continuous*
 
 :::
 :::
 
 ## Grid sampling: code and plot
 
-- Simulate 10,000 values of $U$, with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2$, by grid sampling
+- Simulate 100,000 values of $U$, with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2$, by grid sampling
 
 ::: columns
 ::: {.column width="55%"}
@@ -180,7 +180,7 @@ u_sims <- tibble(sim = 1:reps) |> # <4>
 
 1. Set the random seed once, so we get the same simulation every time.
 2. Save the number of simulations as `reps`, so it is easy to change later.
-3. Steps 1 and 2: the "tickets" are 1001 evenly spaced values from 1 to 2 (1, 1.001, 1.002, ..., 2).
+3. Steps 1 and 2: the "tickets" are 10,001 evenly spaced values from 1 to 2 (1, 1.0001, 1.0002, ..., 2).
 4. One row per simulation.
 5. Step 5: `sample()` draws one ticket for every row, with replacement, like in Lesson 2.
 6. Steps 3 and 4: `prob` gives each ticket the pdf's height there, so taller tickets are more likely to be drawn. R rescales `prob` to add to 1, so `prob = u_grid^3` gives the same draws: the constant $\frac{4}{15}$ is not even needed!
@@ -201,13 +201,13 @@ ggplot(u_sims, aes(x = u)) + # <7>
                  color = "black", fill = "lightblue") + # <7>
   geom_function(fun = function(u) 4/15 * u^3, # <8>
                 color = "red", linewidth = 1.5) + # <8>
-  labs(title = "Grid sampling from f(u) = (4/15) u^3", # <9>
+  labs(subtitle = "Grid sampling from f(u) = (4/15) u^3", # <9>
        x = "u", y = "Density") # <9>
 ```
 
 7. Histogram of the simulated values of $U$, scaled like a pdf (Lesson 8).
 8. Step 6: the pdf $f_U(u)$ in red. The histogram follows it.
-9. Add a title and axis labels.
+9. Add a subtitle and axis labels.
 
 The larger we make `reps` and `length.out`, the closer we get to the exact pdf. 
 :::
@@ -238,7 +238,7 @@ A **linear rescaling** is a transformation of the form $g(u) = a + bu$, where $a
 
 - For example, converting temperature from Celsius to Fahrenheit using $g(u) = 32 + 1.8u$ is a linear rescaling.
 
-## Example of linear rescaling (1/4)
+## [Example of linear rescaling (1/4)]{style="display: none;"}
 
 ::: example
 ::: ex-title
@@ -253,7 +253,7 @@ Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2
 :::
 :::
 
-## Example of linear rescaling (2/4)
+## [Example of linear rescaling (2/4)]{style="display: none;"}
 
 ::: example
 ::: ex-title
@@ -267,7 +267,7 @@ Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2
 :::
 :::
 
-## Example of linear rescaling (3/4)
+## [Example of linear rescaling (3/4)]{style="display: none;"}
 
 ::: example
 ::: ex-title
@@ -280,7 +280,7 @@ Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2
 :::
 :::
 
-## Example of linear rescaling (4/4): simulate
+## [Example of linear rescaling (4/4): simulate]{style="display: none;"}
 
 ::: example
 ::: ex-cont
@@ -302,9 +302,9 @@ u_sims |> # <3>
   )
 ```
 
-1. Reuse the 10,000 grid-sampled values of $U$.
+1. Reuse the 100,000 grid-sampled values of $U$.
 2. The linear rescaling: each simulated `u` becomes `v = 1 - u`.
-3. One row of summaries of the 10,000 simulations.
+3. One row of summaries of the 100,000 simulations.
 4. The proportion of simulations with $V \leq -0.5$ approximates $P(V \leq -0.5)$.
 5. Same answer: $V \leq -0.5$ is the same event as $U \geq 1.5$.
 
@@ -322,7 +322,7 @@ For reference, the exact answer is $P(V \leq -0.5) \approx 0.7292$
 #| code-fold: true
 #| code-summary: "Plot code"
 #| fig-width: 10
-#| fig-height: 7.5
+#| fig-height: 6
 
 ggplot(u_sims) + # <6>
   geom_histogram(aes(x = u, y = after_stat(density)), # <7>
@@ -331,14 +331,14 @@ ggplot(u_sims) + # <6>
   geom_histogram(aes(x = v, y = after_stat(density)), # <8>
                  binwidth = 0.05, boundary = -1, # <8>
                  color = "black", fill = "#E89543") + # <8>
-  labs(title = "Simulated U (blue) and V = 1 - U (orange)", # <9>
+  labs(subtitle = "Simulated U (blue) and V = 1 - U (orange)", # <9>
        x = "Value", y = "Density") # <9>
 ```
 
 6. Start a plot of the simulations. Each histogram below picks its own column.
 7. Histogram of the simulated `u` values, scaled like a pdf.
 8. Histogram of the simulated `v` values, on the same axes.
-9. Add a title and axis labels.
+9. Add a subtitle and axis labels.
 
 :::
 :::
@@ -443,7 +443,7 @@ $$Z = \dfrac{X - \mu}{\sigma} \sim \text{Normal}(0, 1)$$
 
 ::: example
 ::: ex-title
-Example 3: Log transformation of $U$
+Example 2: Log transformation of $U$
 :::
 ::: ex-cont
 Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2$. Define $V=\log(U)$
@@ -458,7 +458,7 @@ Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2
 
 ::: example
 ::: ex-title
-Example 3: Log transformation of $U$
+Example 2: Log transformation of $U$
 :::
 ::: ex-cont
 Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2$. Define $V=\log(U)$
@@ -500,7 +500,7 @@ ggplot(domain_u_v, aes(x = u, y = v)) +
 
 ::: example
 ::: ex-title
-Example 3: Log transformation of $U$
+Example 2: Log transformation of $U$
 :::
 ::: ex-cont
 Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2$. Define $V=\log(U)$
@@ -531,7 +531,7 @@ u_sims |> # <3>
   )
 ```
 
-1. Reuse the 10,000 grid-sampled values of $U$ from Example 1.
+1. Reuse the 100,000 grid-sampled values of $U$ from Example 1.
 2. The nonlinear transformation: $V = \log(U)$. We name the column `log_u` so it does not replace `v` $= 1 - U$ from Example 1.
 3. One row of summaries.
 4. The proportion of simulations with $\log(U) \leq 0.5$ approximates $P(V \leq 0.5)$.
@@ -551,34 +551,34 @@ For reference, the exact answer is $P(V \leq 0.5) \approx 0.4260$
 #| code-fold: true
 #| code-summary: "Plot code"
 #| fig-width: 10
-#| fig-height: 8
+#| fig-height: 6
 
 ggplot(u_sims, aes(x = log_u)) + # <6>
   geom_histogram(aes(y = after_stat(density)), # <6>
                  binwidth = log(2) / 30, boundary = 0, # <6>
                  color = "black", fill = "lightblue") + # <6>
-  geom_function(fun = function(v) 4/15 * exp(3 * v), # <7>
-                linetype = "dashed", linewidth = 1.5) + # <7>
-  labs(title = "Simulated V = log(U)", # <8>
+  geom_function(fun = function(v) 4/15 * exp(4 * v), # <7>
+                xlim = c(0, log(2)), # <7>
+                color = "red", linewidth = 1.5) + # <7>
+  labs(subtitle = "Simulated V = log(U)", # <8>
        x = "v", y = "Density") # <8>
 ```
 
-<!-- @claude: the function and the histrogram don't line up... -->
-
 6. Histogram of the simulated values of $V = \log(U)$, scaled like a pdf, with 30 bars between 0 and $\log(2)$.
-7. The guess from substituting $u = e^v$ into $f_U$: $\frac{4}{15}e^{3v}$, dashed. It does not match the histogram!
-8. Add a title and axis labels.
+7. For reference, the pdf of $V$ in red: $f_V(v) = \frac{4}{15}e^{4v}$ for $0 \leq v \leq \log(2)$ (finding it takes calculus). The histogram follows it.
+8. Add a subtitle and axis labels.
+
+- Substituting $u = e^v$ into $f_U$ gives $\frac{4}{15}e^{3v}$, which is **not** the pdf of $V$
+    - For nonlinear transformations, the histogram shows us the real shape
 
 :::
 :::
-
-- Substituting into the pdf does **not** work for nonlinear transformations. The histogram shows us the real shape.
 
 ## [Example of nonlinear transformation: squaring (1/4)]{style="display: none;"}
 
 ::: example
 ::: ex-title
-Example 4: Squaring a Uniform RV
+Example 3: Squaring a Uniform RV
 :::
 ::: ex-cont
 Let $X \sim \text{Uniform}[-1, 1]$, so $f_X(x)= \dfrac{1}{2}$ for $-1\leq x \leq 1$. Define $Y=X^2$
@@ -593,7 +593,7 @@ Let $X \sim \text{Uniform}[-1, 1]$, so $f_X(x)= \dfrac{1}{2}$ for $-1\leq x \leq
 
 ::: example
 ::: ex-title
-Example 4: Squaring a Uniform RV
+Example 3: Squaring a Uniform RV
 :::
 ::: ex-cont
 Let $X \sim \text{Uniform}[-1, 1]$, so $f_X(x)= \dfrac{1}{2}$ for $-1\leq x \leq 1$. Define $Y=X^2$
@@ -621,7 +621,7 @@ ggplot(domain_x_y, aes(x = x, y = y)) +
            fill = "#E89543", alpha = 0.15) +
   geom_line(linewidth = 1.2) +
   labs(
-    title = "Transformation: Y = X^2",
+    subtitle = "Transformation: Y = X^2",
     x = "x",
     y = "y = x^2"
   )
@@ -635,7 +635,7 @@ ggplot(domain_x_y, aes(x = x, y = y)) +
 
 ::: example
 ::: ex-title
-Example 4: Squaring a Uniform RV
+Example 3: Squaring a Uniform RV
 :::
 ::: ex-cont
 Let $X \sim \text{Uniform}[-1, 1]$, so $f_X(x)= \dfrac{1}{2}$ for $-1\leq x \leq 1$. Define $Y=X^2$
@@ -692,27 +692,83 @@ ggplot(x_sims, aes(x = y)) + # <6>
   geom_histogram(aes(y = after_stat(density)), # <6>
                  binwidth = 0.02, boundary = 0, # <6>
                  color = "black", fill = "lightblue") + # <6>
-  labs(title = "Simulated Y = X^2", # <7>
+  labs(subtitle = "Simulated Y = X^2", # <7>
        x = "y", y = "Density") # <7>
 ```
 
 6. Histogram of the simulated values of $Y$, scaled like a pdf.
-7. Add a title and axis labels.
+7. Add a subtitle and axis labels.
 
-- $X$ was flat, but $Y = X^2$ piles up near 0
+:::
+:::
+
+## [Example of nonlinear transformation: squaring: compare X and Y]{style="display: none;"}
+
+::: example
+::: ex-cont
+How does the distribution of $Y = X^2$ compare to the distribution of $X$?
+:::
+:::
+
+::: columns
+::: {.column width="50%"}
+
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 10
+#| fig-height: 6
+
+ggplot(x_sims, aes(x = x)) + # <1>
+  geom_histogram(aes(y = after_stat(density)), # <1>
+                 binwidth = 0.05, boundary = -1, # <1>
+                 color = "black", fill = "lightblue") + # <1>
+  coord_cartesian(ylim = c(0, 5)) + # <2>
+  labs(subtitle = "Simulated X ~ Uniform[-1, 1]", # <3>
+       x = "x", y = "Density") # <3>
+```
+
+1. Histogram of the simulated values of $X$, scaled like a pdf.
+2. Use the same y-axis for both plots, so we can compare heights.
+3. Add a subtitle and axis labels.
+
+- $X$ is flat: every part of $[-1, 1]$ is equally likely
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 10
+#| fig-height: 6
+
+ggplot(x_sims, aes(x = y)) + # <1>
+  geom_histogram(aes(y = after_stat(density)), # <1>
+                 binwidth = 0.05, boundary = 0, # <1>
+                 color = "black", fill = "#E89543") + # <1>
+  coord_cartesian(ylim = c(0, 5)) + # <2>
+  labs(subtitle = "Simulated Y = X^2", # <3>
+       x = "y", y = "Density") # <3>
+```
+
+1. Histogram of the simulated values of $Y$, from the same simulations as $X$.
+2. Same y-axis as the plot of $X$.
+3. Add a subtitle and axis labels.
+
+- $Y = X^2$ piles up near 0: the shape changed!
     - Half of the values of $X$ (from $-0.5$ to $0.5$) get squeezed into $[0, 0.25]$
 
 :::
 :::
-
-<!-- @claude: actually, can you make another slide where we have the side-by-side comparison of the density for X and Y. -->
 
 
 ## How accurate is a simulation? (1/2)
 
 - A single simulation gives an **approximation**. Run it again with a new seed and the answer moves a little
 - How much it moves depends on the number of simulations
-- Let's repeat the simulation from Example 3 **200 times** for each of 100, 1,000, and 10,000 simulations
+- Let's repeat the simulation from Example 2 **200 times** for each of 100, 1,000, and 10,000 simulations
 
 ```{r}
 #| echo: false 
@@ -775,7 +831,7 @@ ggplot(accuracy_sims, # <4>
 4. One column of points for each simulation size.
 5. Each point is one run's approximation. `geom_jitter()` spreads the points sideways so they don't overlap.
 6. The exact answer in red.
-7. Add a title and axis labels.
+7. Add a subtitle and axis labels.
 
 :::
 :::
@@ -799,11 +855,11 @@ Summary of changes for linear and nonlinear transformations:
 
 # Some more reference slides
 
-## Example: squaring a standard Normal (1/3)
+## [Example: squaring a standard Normal (1/3)]{style="display: none;"}
 
 ::: example
 ::: ex-title
-Example 5: $Z^2$ and the chi-squared distribution
+Example 4: $Z^2$ and the chi-squared distribution
 :::
 ::: ex-cont
 Let $Z \sim \text{Normal}(0, 1)$ and $W = Z^2$.
@@ -814,11 +870,11 @@ Let $Z \sim \text{Normal}(0, 1)$ and $W = Z^2$.
 :::
 :::
 
-## Example: squaring a standard Normal (2/3)
+## [Example: squaring a standard Normal (2/3)]{style="display: none;"}
 
 ::: example
 ::: ex-title
-Example 5: $Z^2$ and the chi-squared distribution
+Example 4: $Z^2$ and the chi-squared distribution
 :::
 ::: ex-cont
 Let $Z \sim \text{Normal}(0, 1)$ and $W = Z^2$.
@@ -828,7 +884,7 @@ Let $Z \sim \text{Normal}(0, 1)$ and $W = Z^2$.
 :::
 :::
 
-## Example: squaring a standard Normal (3/3): simulate
+## [Example: squaring a standard Normal (3/3): simulate]{style="display: none;"}
 
 ::: example
 ::: ex-cont
@@ -855,7 +911,7 @@ pchisq(4, df = 1) # <5>
 1. Simulate the standard Normal $Z$ with `rnorm()`.
 2. The nonlinear transformation: $W = Z^2$.
 3. Approximates $P(W \leq 4)$.
-4. $Z^2 \leq 4$ is the same event as $-2 \leq Z \leq 2$ (two sides, like Example 4).
+4. $Z^2 \leq 4$ is the same event as $-2 \leq Z \leq 2$ (two sides, like Example 3).
 5. The chi-squared distribution with 1 degree of freedom gives the same answer.
 
 :::
@@ -866,7 +922,7 @@ pchisq(4, df = 1) # <5>
 #| code-fold: true
 #| code-summary: "Plot code"
 #| fig-width: 10
-#| fig-height: 7
+#| fig-height: 6
 
 ggplot(z_sims, aes(x = w)) + # <6>
   geom_histogram(aes(y = after_stat(density)), # <6>
@@ -875,13 +931,13 @@ ggplot(z_sims, aes(x = w)) + # <6>
   geom_function(fun = function(w) dchisq(w, df = 1), # <7>
                 color = "red", linewidth = 1.5) + # <7>
   coord_cartesian(xlim = c(0, 8), ylim = c(0, 2)) + # <8>
-  labs(title = "Simulated W = Z^2", x = "w", y = "Density") # <9>
+  labs(subtitle = "Simulated W = Z^2", x = "w", y = "Density") # <9>
 ```
 
 6. Histogram of the simulated values of $W$, scaled like a pdf.
 7. The $\chi^2_{(1)}$ pdf from `dchisq()`, in red.
 8. Zoom in, because the pdf shoots up near 0 and has a long right tail.
-9. Add a title and axis labels.
+9. Add a subtitle and axis labels.
 
 :::
 :::

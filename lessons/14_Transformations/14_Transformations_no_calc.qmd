@@ -91,10 +91,10 @@ To learn about the distribution of $Y = g(X)$:
 
 | $Y=g(X)$ | Event about $Y$ | Same event about $X$ |
 |--------------------|-----------------------------------|-----------------------------------|
-| $Y = 1 - X$ (linear) | $Y \leq -0.5$, so $1 - X \leq -0.5$ | $X \geq 1.5$ (multiplying by $-1$ flips the inequality!) |
-| $Y = \log(X)$ (nonlinear) | $Y \leq 0.5$, so $\log(X) \leq 0.5$ | $X \leq e^{0.5}$ |
-| $Y = X^2$ (nonlinear) | $Y \leq 0.25$, so $X^2 \leq 0.25$ | $-0.5 \leq X \leq 0.5$ (two sides!) |
-| $Y = \dfrac{1}{X}$ (nonlinear) | $Y > 2$, so $\dfrac{1}{X} > 2$ | $0 < X < 0.5$ (the inequality flips, and $X$ must be positive!) |
+| $Y = 1 - X$ (linear) | $Y \leq -0.5$ | $X \geq 1.5$ (multiplying by $-1$ flips the inequality!) |
+| $Y = \log(X)$ (nonlinear) | $Y \leq 0.5$ | $X \leq e^{0.5}$ |
+| $Y = X^2$ (nonlinear) | $Y \leq 0.25$ | $-0.5 \leq X \leq 0.5$ (two sides!) |
+| $Y = \dfrac{1}{X}$ (nonlinear) | $Y > 2$ | $0 < X < 0.5$ (the inequality flips, and $X$ must be positive!) |
 
 - Graph $g$ to see which values of $X$ land in the event
 

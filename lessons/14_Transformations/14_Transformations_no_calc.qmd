@@ -51,6 +51,8 @@ theme_set(theme_bw(base_size = 28))
 
 ## Our main tool: simulate, transform, summarize {#sim-method}
 
+<!-- @claude: make a learning objective for this tool and the grid sampling -->
+
 ::: definition
 ::: def-title
 The simulation method for transformations
@@ -71,7 +73,9 @@ To learn about the distribution of $Y = g(X)$:
 - This works for **any** function $g$, as long as we can simulate $X$
 - We do not need the CDF of $X$, the CDF of $Y$, or a `p*()` function for $Y$
 
-## Simulating X: three ways
+## For step 2 simulation: three ways
+
+<!-- @claude: can you make this 4 ways? split inverse CDF methods and grid sampling -->
 
 How do we get simulated values of $X$ in step 2?
 
@@ -194,6 +198,7 @@ ggplot(u_sims, aes(x = u)) + # <7>
 8. Step 6: the pdf $f_U(u)$ in red. The histogram follows it.
 9. Add a title and axis labels.
 
+The larger we make `reps` and `length.out`, the closer we get to the exact pdf. 
 :::
 :::
 
@@ -232,7 +237,6 @@ Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2
 1.  What are the possible values of $V$?
 2.  Is $V$ the same random variable as $U$?
 3.  Rewrite the event $V \le -0.5$ in terms of $U$. Then approximate $P(V \le -0.5)$ with simulation.
-4.  Does $V$ have the same distribution as $U$? Does it have the same shape?
 :::
 :::
 
@@ -247,11 +251,29 @@ Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2
 
 1.  What are the possible values of $V$?
 2.  Is $V$ the same random variable as $U$?
-3.  Rewrite the event $V \le -0.5$ in terms of $U$.
+:::
+:::
+
+## Example of linear rescaling (2/3)
+
+::: example
+::: ex-title
+Example 1: Linear rescaling of $U$
+:::
+::: ex-cont
+Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2$. Define $V=1-U$
+
+3.  Rewrite the event $V \le -0.5$ in terms of $U$. Then approximate $P(V \le -0.5)$ with simulation.
 :::
 :::
 
 ## Example of linear rescaling (3/3): simulate
+
+::: example
+::: ex-cont
+3.  Rewrite the event $V \le -0.5$ in terms of $U$. Then approximate $P(V \le -0.5)$ with simulation.
+:::
+:::
 
 ::: columns
 ::: {.column width="50%"}
@@ -308,15 +330,26 @@ ggplot(u_sims) + # <6>
 :::
 :::
 
-## Why the shape does not change
+## What happens to the distribution?
 
 - $V = 1 - U$ flips $U$ around: same shape, mirrored
-- In general, $a + bX$ can **shift** (add $a$), **stretch or squeeze** (multiply by $|b|$), and **flip** ($b < 0$)
+
+ 
+
+- In general, linear rescaling can **shift** (add $a$), **stretch or condense** (multiply by $|b|$), and **flip** ($b < 0$) a distribution
     - Stretching the values out by $|b|$ makes the histogram $|b|$ times wider...
     - ...so it must get $|b|$ times shorter to keep the total area equal to 1
+    
+ 
+
+- We say this is a preservation of shape: only scaled 
+    
+ 
+
 - Center and spread change the way we saw in Lessons 10 and 11:
     - $\mathbb{E}[a + bX] = a + b\,\mathbb{E}[X]$
     - $Var(a + bX) = b^2\, Var(X)$ and $SD(a + bX) = |b|\, SD(X)$
+
 
 ## Linear rescaling of named distributions
 
@@ -329,88 +362,25 @@ For most named distributions, a linear rescaling stays in the **same family**, w
 | $\text{Exponential}(\lambda)$ | $cX$ (with $c > 0$) | $\text{Exponential}(\lambda / c)$ |
 | $\text{Gamma}(r, \lambda)$ | $cX$ (with $c > 0$) | $\text{Gamma}(r,\ \lambda / c)$ |
 
+ 
+
 - Exponential and Gamma: only multiply, do not shift! $X + 3$ can't be close to 0, so it is not Exponential
 
 - [**Standardizing**]{style="color:#E25D3B;"} is a linear rescaling: if $X \sim \text{Normal}(\mu, \sigma^2)$, then
 
 $$Z = \dfrac{X - \mu}{\sigma} \sim \text{Normal}(0, 1)$$
 
-## Example of a Normal rescaling (1/2)
-
-::: example
-::: ex-title
-Example 2: Temperature in Celsius and Fahrenheit
-:::
-::: ex-cont
-The high temperature in Portland on a June day, in Celsius, is $C \sim \text{Normal}(\mu = 20, \sigma^2 = 5^2)$. In Fahrenheit, the temperature is $F = 32 + 1.8C$.
-
-1.  What is the distribution of $F$?
-2.  Find $P(F > 80)$ using the distribution of $F$ and `pnorm()`.
-3.  Rewrite the event $F > 80$ in terms of $C$. Find $P(F > 80)$ again using the distribution of $C$.
-4.  Check your answers with simulation.
-:::
-:::
-
-## Example of a Normal rescaling (2/2): simulate
-
-::: columns
-::: {.column width="50%"}
-
-```{r}
-temp_sims <- tibble(sim = 1:reps) |> # <1>
-  mutate(
-    celsius = rnorm(n(), mean = 20, sd = 5), # <2>
-    fahrenheit = 32 + 1.8 * celsius # <3>
-  )
-
-temp_sims |> # <4>
-  summarise( # <4>
-    prob_F = mean(fahrenheit > 80), # <5>
-    mean_F = mean(fahrenheit), # <6>
-    sd_F = sd(fahrenheit) # <6>
-  )
-```
-
-1. One row per simulated day.
-2. `rnorm()` draws one Celsius temperature for every row. `sd` is $\sigma = 5$, not $\sigma^2$.
-3. The linear rescaling to Fahrenheit.
-4. One row of summaries.
-5. Approximates $P(F > 80)$.
-6. Should be close to $32 + 1.8(20) = 68$ and $1.8(5) = 9$.
-
-:::
-
-::: {.column width="50%"}
-
-```{r}
-pnorm(80, mean = 68, sd = 9, # <7>
-      lower.tail = FALSE) # <7>
-
-pnorm((80 - 32) / 1.8, mean = 20, sd = 5, # <8>
-      lower.tail = FALSE) # <8>
-```
-
-7. Part 2: $P(F > 80)$ with $F \sim \text{Normal}(68, 9^2)$.
-8. Part 3: $F > 80$ is the same event as $C > \frac{80 - 32}{1.8} \approx 26.67$.
-
-- Both standardize to the same $z$: $\dfrac{80 - 68}{9} = \dfrac{26.67 - 20}{5} \approx 1.33$
-
-:::
-:::
-
-## Summary of linear rescaling
-
--   A linear rescaling of a random variable does not change the basic shape of its distribution, just the range of possible values.
-
-    - It can flip it, widen it, condense it, and/or shift it
-
-    - But it is not the same distribution: the possible values change
-
--   Normal, Uniform, Exponential, and Gamma RVs stay in the same family, with new parameters
+## Linear rescaling: final words
 
 -   Remember, do NOT confuse a [**random variable**]{style="color:#29abe0;"} with its [**distribution**]{style="color:#E25D3B;"}
-    -   The random variable is the numerical quantity being measured
-    -   The distribution is the long run pattern of variation of many observed values of the random variable
+    -   The [**random variable**]{style="color:#29abe0;"} is the numerical quantity being measured
+    -   The [**distribution**]{style="color:#E25D3B;"} is the long run pattern of variation of many observed values of the random variable
+    
+
+ 
+
+- Ultimately, a transformed [**random variable**]{style="color:#29abe0;"} does NOT have the same [**distribution**]{style="color:#E25D3B;"} - *possible values change*
+    
 
 # Learning Objectives
 
@@ -424,7 +394,12 @@ pnorm((80 - 32) / 1.8, mean = 20, sd = 5, # <8>
 ## Nonlinear transformations
 
 - What happens when we make a **nonlinear transformation**, like a logarithmic or square root transformation?
+
+ 
+
 - Nonlinear transformations do *not* necessarily preserve the distribution shape
+
+ 
 
 - Examples of nonlinear transformations:
     -   $g(u) = u^2$
@@ -433,12 +408,10 @@ pnorm((80 - 32) / 1.8, mean = 20, sd = 5, # <8>
     -   $g(u) = e^u$
     -   $g(u) = \dfrac{1}{u}$
 
-- There is usually no shortcut like the table for linear rescalings, so we use the [**simulation method**](#sim-method)
-
 ## Rewriting events {#rewrite-events}
 
 - Rewriting an event about $Y = g(X)$ as an event about $X$ helps us:
-    - Find the possible values of $Y$
+    - Find the possible values of $Y$ (Step 1 in our main tool)
     - Check that our simulation summary is counting the right thing
     - Find an exact answer when we *can* find probabilities for $X$ (a `p*()` function or a rectangle's area)
 
@@ -449,6 +422,8 @@ pnorm((80 - 32) / 1.8, mean = 20, sd = 5, # <8>
 | $\log(X) \leq 0.5$ | $X \leq e^{0.5}$ |
 | $X^2 \leq 0.25$ | $-0.5 \leq X \leq 0.5$ (two sides!) |
 | $\dfrac{1}{X} > 2$ (for $X > 0$) | $X < 0.5$ (the inequality flips!) |
+
+<!-- @claude: for the last line in the table above, should X also be greater than 0? -->
 
 - Graph $g$ to see which values of $X$ land in the event
 
@@ -478,11 +453,8 @@ Example 3: Log transformation of $U$
 Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2$. Define $V=\log(U)$
 
 1.  What are the possible values of $V$?
-2.  Rewrite the event $V \leq 0.5$ in terms of $U$.
 :::
 :::
-
-- In this class (and in R), $\log$ is the natural log, $\ln$
 
 ::: columns
 ::: {.column width="40%"}
@@ -503,13 +475,26 @@ ggplot(domain_u_v, aes(x = u, y = v)) +
            fill = "#E89543", alpha = 0.15) +
   geom_line(linewidth = 1.2) +
   labs(
-    title = "Transformation: V = log(U)",
+    subtitle = "Transformation: V = log(U)",
     x = "u",
     y = "v = log(u)"
   )
 ```
 :::
 ::: column
+:::
+:::
+
+## Example of nonlinear transformation (2/3)
+
+::: example
+::: ex-title
+Example 3: Log transformation of $U$
+:::
+::: ex-cont
+Let $U$ be a random variable with $f_U(u)= \dfrac{4}{15}u^3$ for $1\leq u \leq 2$. Define $V=\log(U)$
+
+2.  Rewrite the event $V \leq 0.5$ in terms of $U$.
 :::
 :::
 

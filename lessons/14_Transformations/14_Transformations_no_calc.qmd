@@ -31,7 +31,7 @@ theme_set(theme_bw(base_size = 28))
 
 # Learning Objectives
 
-1. Use the simulation method (simulate, transform, summarize) to study a transformation, including grid sampling to simulate a random variable from its pdf
+1. Use the simulation method (simulate, transform, summarize) to transform a random variable
 2. Describe how a linear rescaling changes a random variable, and identify the new distribution for Normal, Uniform, Exponential, and Gamma random variables
 3. Use simulation to approximate probabilities and the shape of the distribution of a nonlinear transformation
 4. Rewrite events about a transformation $g(X)$ as events about $X$
@@ -53,7 +53,7 @@ theme_set(theme_bw(base_size = 28))
 # Learning Objectives
 
 ::: lob
-1. Use the simulation method (simulate, transform, summarize) to study a transformation, including grid sampling to simulate a random variable from its pdf
+1. Use the simulation method (simulate, transform, summarize) to transform a random variable
 :::
 2. Describe how a linear rescaling changes a random variable, and identify the new distribution for Normal, Uniform, Exponential, and Gamma random variables
 3. Use simulation to approximate probabilities and the shape of the distribution of a nonlinear transformation
@@ -215,7 +215,7 @@ The larger we make `reps` and `length.out`, the closer we get to the exact pdf.
 
 # Learning Objectives
 
-1. Use the simulation method (simulate, transform, summarize) to study a transformation, including grid sampling to simulate a random variable from its pdf
+1. Use the simulation method (simulate, transform, summarize) to transform a random variable
 
 ::: lob
 2. Describe how a linear rescaling changes a random variable, and identify the new distribution for Normal, Uniform, Exponential, and Gamma random variables
@@ -397,7 +397,7 @@ $$Z = \dfrac{X - \mu}{\sigma} \sim \text{Normal}(0, 1)$$
 
 # Learning Objectives
 
-1. Use the simulation method (simulate, transform, summarize) to study a transformation, including grid sampling to simulate a random variable from its pdf
+1. Use the simulation method (simulate, transform, summarize) to transform a random variable
 2. Describe how a linear rescaling changes a random variable, and identify the new distribution for Normal, Uniform, Exponential, and Gamma random variables
 
 ::: lob

@@ -219,7 +219,6 @@ Nicky Wakim
 <li>Use the simulation method (simulate, transform, summarize) to transform a random variable</li>
 <li>Use simulation to approximate probabilities and the shape of the distribution of a <em>linear</em> transformation</li>
 <li>Use simulation to approximate probabilities and the shape of the distribution of a <em>nonlinear</em> transformation</li>
-<li>Rewrite events about a transformation <span class="math inline">\(g(X)\)</span> as events about <span class="math inline">\(X\)</span></li>
 </ol>
 </section>
 <section id="distributions-of-transformations-of-random-variables" class="slide level2">
@@ -253,9 +252,8 @@ Nicky Wakim
 </ol>
 </div>
 <ol start="2" type="1">
-<li>Describe how a linear rescaling changes a random variable, and identify the new distribution for Normal, Uniform, Exponential, and Gamma random variables</li>
-<li>Use simulation to approximate probabilities and the shape of the distribution of a nonlinear transformation</li>
-<li>Rewrite events about a transformation <span class="math inline">\(g(X)\)</span> as events about <span class="math inline">\(X\)</span></li>
+<li>Use simulation to approximate probabilities and the shape of the distribution of a <em>linear</em> transformation</li>
+<li>Use simulation to approximate probabilities and the shape of the distribution of a <em>nonlinear</em> transformation</li>
 </ol>
 </section>
 <section id="sim-method" class="slide level2">
@@ -282,6 +280,51 @@ Nicky Wakim
 <ul>
 <li>This works for <strong>any</strong> function <span class="math inline">\(g\)</span>, as long as we can simulate <span class="math inline">\(X\)</span></li>
 <li>We do not need the CDF of <span class="math inline">\(X\)</span>, the CDF of <span class="math inline">\(Y\)</span>, or a <code>p*()</code> function for <span class="math inline">\(Y\)</span></li>
+</ul>
+</section>
+<section id="rewrite-events" class="slide level2">
+<h2>For step 1: possible values and rewriting events</h2>
+<ul>
+<li>For linear <em>and</em> nonlinear transformations, rewriting an event about <span class="math inline">\(Y = g(X)\)</span> as an event about <span class="math inline">\(X\)</span> helps us:
+<ul>
+<li>Find the possible values of <span class="math inline">\(Y\)</span> (Step 1 in our main tool)</li>
+<li>Check that our simulation summary is counting the right thing (Step 4)</li>
+<li>Find an exact answer when we <em>can</em> find probabilities for <span class="math inline">\(X\)</span> (a <code>p*()</code> function or a rectangle’s area)</li>
+</ul></li>
+<li>Examples:</li>
+</ul>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Event about <span class="math inline">\(Y\)</span></th>
+<th>Same event about <span class="math inline">\(X\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(1 - X \leq -0.5\)</span></td>
+<td><span class="math inline">\(X \geq 1.5\)</span> (multiplying by <span class="math inline">\(-1\)</span> flips the inequality!)</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\log(X) \leq 0.5\)</span></td>
+<td><span class="math inline">\(X \leq e^{0.5}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(X^2 \leq 0.25\)</span></td>
+<td><span class="math inline">\(-0.5 \leq X \leq 0.5\)</span> (two sides!)</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\dfrac{1}{X} &gt; 2\)</span></td>
+<td><span class="math inline">\(0 &lt; X &lt; 0.5\)</span> (the inequality flips, and <span class="math inline">\(X\)</span> must be positive!)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Graph <span class="math inline">\(g\)</span> to see which values of <span class="math inline">\(X\)</span> land in the event</li>
 </ul>
 </section>
 <section id="for-step-2-simulation-four-ways" class="slide level2">
@@ -446,12 +489,11 @@ Nicky Wakim
 </ol>
 <div class="lob">
 <ol start="2" type="1">
-<li>Describe how a linear rescaling changes a random variable, and identify the new distribution for Normal, Uniform, Exponential, and Gamma random variables</li>
+<li>Use simulation to approximate probabilities and the shape of the distribution of a <em>linear</em> transformation</li>
 </ol>
 </div>
 <ol start="3" type="1">
-<li>Use simulation to approximate probabilities and the shape of the distribution of a nonlinear transformation</li>
-<li>Rewrite events about a transformation <span class="math inline">\(g(X)\)</span> as events about <span class="math inline">\(X\)</span></li>
+<li>Use simulation to approximate probabilities and the shape of the distribution of a <em>nonlinear</em> transformation</li>
 </ol>
 </section>
 <section id="linear-rescaling" class="slide level2">
@@ -705,12 +747,11 @@ Nicky Wakim
 <h1>Learning Objectives</h1>
 <ol type="1">
 <li>Use the simulation method (simulate, transform, summarize) to transform a random variable</li>
-<li>Describe how a linear rescaling changes a random variable, and identify the new distribution for Normal, Uniform, Exponential, and Gamma random variables</li>
+<li>Use simulation to approximate probabilities and the shape of the distribution of a <em>linear</em> transformation</li>
 </ol>
 <div class="lob">
 <ol start="3" type="1">
-<li>Use simulation to approximate probabilities and the shape of the distribution of a nonlinear transformation</li>
-<li>Rewrite events about a transformation <span class="math inline">\(g(X)\)</span> as events about <span class="math inline">\(X\)</span></li>
+<li>Use simulation to approximate probabilities and the shape of the distribution of a <em>nonlinear</em> transformation</li>
 </ol>
 </div>
 </section>
@@ -733,47 +774,6 @@ Nicky Wakim
 <li><span class="math inline">\(g(u) = e^u\)</span></li>
 <li><span class="math inline">\(g(u) = \dfrac{1}{u}\)</span></li>
 </ul></li>
-</ul>
-</section>
-<section id="rewrite-events" class="slide level2">
-<h2>Rewriting events</h2>
-<ul>
-<li>Rewriting an event about <span class="math inline">\(Y = g(X)\)</span> as an event about <span class="math inline">\(X\)</span> helps us:
-<ul>
-<li>Find the possible values of <span class="math inline">\(Y\)</span> (Step 1 in our main tool)</li>
-<li>Check that our simulation summary is counting the right thing</li>
-<li>Find an exact answer when we <em>can</em> find probabilities for <span class="math inline">\(X\)</span> (a <code>p*()</code> function or a rectangle’s area)</li>
-</ul></li>
-<li>Examples:</li>
-</ul>
-<table class="caption-top">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Event about <span class="math inline">\(Y\)</span></th>
-<th>Same event about <span class="math inline">\(X\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(\log(X) \leq 0.5\)</span></td>
-<td><span class="math inline">\(X \leq e^{0.5}\)</span></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(X^2 \leq 0.25\)</span></td>
-<td><span class="math inline">\(-0.5 \leq X \leq 0.5\)</span> (two sides!)</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(\dfrac{1}{X} &gt; 2\)</span></td>
-<td><span class="math inline">\(0 &lt; X &lt; 0.5\)</span> (the inequality flips, and <span class="math inline">\(X\)</span> must be positive!)</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>Graph <span class="math inline">\(g\)</span> to see which values of <span class="math inline">\(X\)</span> land in the event</li>
 </ul>
 </section>
 <section id="example-of-nonlinear-transformation-14" class="slide level2">
@@ -928,12 +928,6 @@ Nicky Wakim
 </div>
 </div>
 </div>
-<ul>
-<li>Substituting <span class="math inline">\(u = e^v\)</span> into <span class="math inline">\(f_U\)</span> gives <span class="math inline">\(\frac{4}{15}e^{3v}\)</span>, which is <strong>not</strong> the pdf of <span class="math inline">\(V\)</span>
-<ul>
-<li>For nonlinear transformations, the histogram shows us the real shape</li>
-</ul></li>
-</ul>
 </div></div>
 </section>
 <section id="example-of-nonlinear-transformation-squaring-14" class="slide level2">
@@ -1274,9 +1268,8 @@ Nicky Wakim
 <h1>Learning Objectives</h1>
 <ol type="1">
 <li>Use the simulation method (simulate, transform, summarize) to transform a random variable</li>
-<li>Describe how a linear rescaling changes a random variable, and identify the new distribution for Normal, Uniform, Exponential, and Gamma random variables</li>
-<li>Use simulation to approximate probabilities and the shape of the distribution of a nonlinear transformation</li>
-<li>Rewrite events about a transformation <span class="math inline">\(g(X)\)</span> as events about <span class="math inline">\(X\)</span></li>
+<li>Use simulation to approximate probabilities and the shape of the distribution of a <em>linear</em> transformation</li>
+<li>Use simulation to approximate probabilities and the shape of the distribution of a <em>nonlinear</em> transformation</li>
 </ol>
 </section>
 <section id="summary-of-transformations" class="slide level2">

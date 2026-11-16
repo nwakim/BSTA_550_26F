@@ -17,11 +17,11 @@ source(here("class_dates.R"))
 
 ## Announcements
 
-- Quiz 1 grades look pretty good! Everyone got score above 11/15
-  - Feedback released at 12:10pm today
-  - Will go over questions next class
+- ASA Oregon Chapter meeting tomorrow at 6pm!!
+  - Chipotle catering - free for students!
+  - RSVP!!
 
 ## Key Dates
 
-- Homework 4 due `r hw4 %>% format("%m/%d")` at 11pm
+- Homework 5 due `r hw5 %>% format("%m/%d")` at 11pm
 

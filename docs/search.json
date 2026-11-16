@@ -29818,5 +29818,26 @@
     "title": "Lesson 14: Transformations",
     "section": "Summary of nonlinear transformations",
     "text": "Summary of nonlinear transformations\n\nNonlinear transformations can change the shape of a distribution\nAlways use the CDF method to find the pdf of a nonlinear transformation of a random variable\nRemember to carefully determine the possible values (domain) of the transformed random variable\n\n \n\n\n\n\n\n\n\n\n\nLinear rescaling\nNonlinear transformation\n\n\n\n\nChanges the distribution?\nYes\nYes\n\n\nChanges the “shape”?\nNo\nUsually\n\n\nHow to find the pdf\nSubstitute into \\(f_X\\) (and divide by \\(\\lvert b \\rvert\\))\nCDF method"
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations_key_info.html",
+    "href": "lessons/14_Transformations/14_Transformations_key_info.html",
+    "title": "Key Info",
+    "section": "",
+    "text": "ASA Oregon Chapter meeting tomorrow at 6pm!!\n\nChipotle catering - free for students!\nRSVP!!"
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations_key_info.html#announcements",
+    "href": "lessons/14_Transformations/14_Transformations_key_info.html#announcements",
+    "title": "Key Info",
+    "section": "",
+    "text": "ASA Oregon Chapter meeting tomorrow at 6pm!!\n\nChipotle catering - free for students!\nRSVP!!"
+  },
+  {
+    "objectID": "lessons/14_Transformations/14_Transformations_key_info.html#key-dates",
+    "href": "lessons/14_Transformations/14_Transformations_key_info.html#key-dates",
+    "title": "Key Info",
+    "section": "Key Dates",
+    "text": "Key Dates\n\nHomework 5 due 11/22 at 11pm"
   }
 ]

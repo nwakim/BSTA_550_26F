@@ -92,6 +92,20 @@ draw_pdf_volume <- function(f, x_vals, y_vals, domain_corners,
 }
 ```
 
+## New R functions in this lesson
+
+| Function | What it does | First used |
+|------|--------------------------------|------|
+| `first()`, `last()` | The first or last value in each group | Example 1 |
+| `&` | "And": `TRUE` only when both conditions are `TRUE` | Example 1, part 5 |
+| `pivot_wider()` | Spreads one column's values into separate columns, to make a table | Example 1, part 5 |
+| `slice_sample()` | Draws whole rows from a table; `weight_by` makes some rows more likely | 2D grid sampling |
+| `abs()` | Absolute value: $\lvert x \rvert$ | Example 3 |
+| `pmax()`, `pmin()` | The larger or smaller value in **each row** of two columns | Example 3 |
+| `if_else()` | Picks one of two values, depending on a condition | Example 6 |
+
+- Also new: `expand_grid()` with a table inside (Example 1, part 5); in plot code, `coord_equal()` and `scale_color_manual()`
+
 # Learning Objectives
 
 1.  Define **joint and marginal** distributions (pmf's, pdf's, and CDF's) for discrete and continuous random variables
@@ -684,6 +698,8 @@ title("A small grid for f(x, y) = (3/2) y^2", font.main = 1)
 ```
 
 *Each stick is a ticket: taller sticks are more likely to be drawn*
+
+[[Rotate this plot (interactive) ↗](15_Joint_distributions_3d_plots.qmd#grid-sampling){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
 :::
 :::::
 
@@ -727,7 +743,7 @@ domain_2
 #| echo: false
 #| fig-width: 8
 #| fig-height: 6.5
-#| out-width: "54%"
+#| out-width: "48%"
 #| fig-align: center
 
 draw_pdf_volume(
@@ -740,6 +756,8 @@ draw_pdf_volume(
   title = "Volume = P(0 <= X <= 1, 0 <= Y <= 1/2)"
 )
 ```
+
+[[Rotate this plot (interactive) ↗](15_Joint_distributions_3d_plots.qmd#ex2-volume){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
 :::::
 ::::::
 
@@ -801,7 +819,28 @@ For reference, the exact answer is $\mathbb{P}(0 \leq X \leq 1, 0 \leq Y \leq \f
 ::::
 
 ::::: columns
-::: {.column width="50%"}
+::: {.column width="30%"}
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 6.5
+
+draw_pdf_volume(
+  f = function(x, y) 3/2 * y^2,
+  x_vals = seq(0, 2, by = 0.125), y_vals = seq(0, 1, by = 0.0625),
+  domain_corners = rbind(c(0, 0), c(2, 0), c(2, 1), c(0, 1)),
+  zlim = c(0, 1.5),
+  title = "Joint pdf f(x, y) = (3/2) y^2"
+)
+```
+
+[[Rotate this plot (interactive) ↗](15_Joint_distributions_3d_plots.qmd#ex2-pdf){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
+
+- Marginal of $X$: squash the volume onto the $x$ axis (add up over $y$)
+- Marginal of $Y$: squash it onto the $y$ axis
+:::
+
+::: {.column width="35%"}
 ```{r}
 #| code-fold: true
 #| code-summary: "Plot code"
@@ -826,7 +865,7 @@ ggplot(ex2_sims, aes(x = x)) + # <1>
 - $X$ is flat: Uniform$[0, 2]$
 :::
 
-::: {.column width="50%"}
+::: {.column width="35%"}
 ```{r}
 #| code-fold: true
 #| code-summary: "Plot code"
@@ -886,7 +925,7 @@ ggplot(ex2_sims, aes(x = y)) + # <1>
 
 -   Rewriting an event about $M$ as a region of $(x, y)$ points checks the simulation, and gives an exact answer when the density is constant (area $\times$ height)
 
-## [Example of a joint pdf with a transformation (1/4)]{style="display: none;"}
+## [Example of a joint pdf with a transformation (1/5)]{style="display: none;"}
 
 ::::: example
 ::: ex-title
@@ -925,7 +964,55 @@ domain_square
 #| echo: false
 #| fig-width: 8
 #| fig-height: 6.5
-#| out-width: "54%"
+#| out-width: "48%"
+#| fig-align: center
+
+draw_pdf_volume(
+  f = function(x, y) 1/16 + 0 * x,
+  x_vals = seq(0, 4, by = 0.25), y_vals = seq(0, 4, by = 0.25),
+  domain_corners = rbind(c(0, 0), c(4, 0), c(4, 4), c(0, 4)),
+  zlim = c(0, 0.1),
+  title = "Joint pdf: f(x, y) = 1/16 on the square"
+)
+```
+
+[[Rotate this plot (interactive) ↗](15_Joint_distributions_3d_plots.qmd#ex3-pdf){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
+:::::
+::::::
+
+## [Example of a joint pdf with a transformation (2/5): the event as a volume]{style="display: none;"}
+
+:::: example
+::: ex-cont
+1.  Shade the event $|X-Y| < 2$. Find $\mathbb{P}(|X-Y| < 2)$ using areas.
+:::
+::::
+
+:::::: columns
+::::: {.column width="34%"}
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 5.5
+
+domain_square +
+  annotate("polygon", x = c(0, 2, 4, 4, 2, 0), y = c(0, 0, 2, 4, 4, 2),
+           fill = "#E89543", alpha = 0.5)
+```
+
+- Area of the event: $16 - 2 \cdot \frac12 \cdot 2 \cdot 2 = 12$
+- Volume = area $\times$ height $= 12 \cdot \frac{1}{16} = \frac34$
+:::::
+
+::::: {.column width="2%"}
+:::::
+
+::::: {.column width="64%"}
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 6.5
+#| out-width: "48%"
 #| fig-align: center
 
 draw_pdf_volume(
@@ -937,10 +1024,12 @@ draw_pdf_volume(
   title = "Volume = P(|X - Y| < 2)"
 )
 ```
+
+[[Rotate this plot (interactive) ↗](15_Joint_distributions_3d_plots.qmd#ex3-abs){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
 :::::
 ::::::
 
-## [Example of a joint pdf with a transformation (2/4): simulate]{style="display: none;"}
+## [Example of a joint pdf with a transformation (3/5): simulate]{style="display: none;"}
 
 :::: example
 ::: ex-cont
@@ -997,7 +1086,7 @@ ex3_sims |>
 :::
 :::::::
 
-## [Example of a joint pdf with a transformation (3/4)]{style="display: none;"}
+## [Example of a joint pdf with a transformation (4/5)]{style="display: none;"}
 
 ::::: example
 ::: ex-title
@@ -1030,7 +1119,7 @@ domain_square
 #| echo: false
 #| fig-width: 8
 #| fig-height: 6.5
-#| out-width: "54%"
+#| out-width: "48%"
 #| fig-align: center
 
 draw_pdf_volume(
@@ -1042,10 +1131,12 @@ draw_pdf_volume(
   title = "Volume = P(M <= 2) = P(X <= 2, Y <= 2)"
 )
 ```
+
+[[Rotate this plot (interactive) ↗](15_Joint_distributions_3d_plots.qmd#ex3-max){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
 :::::
 ::::::
 
-## [Example of a joint pdf with a transformation (4/4): simulate]{style="display: none;"}
+## [Example of a joint pdf with a transformation (5/5): simulate]{style="display: none;"}
 
 :::: example
 ::: ex-cont
@@ -1170,7 +1261,7 @@ domain_triangle
 #| echo: false
 #| fig-width: 8
 #| fig-height: 6.5
-#| out-width: "54%"
+#| out-width: "48%"
 #| fig-align: center
 
 draw_pdf_volume(
@@ -1182,6 +1273,8 @@ draw_pdf_volume(
   title = "Total volume = 1: tallest near (0, 0)"
 )
 ```
+
+[[Rotate this plot (interactive) ↗](15_Joint_distributions_3d_plots.qmd#ex4-pdf){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
 :::::
 ::::::
 
@@ -1443,6 +1536,8 @@ draw_pdf_volume(
   title = "Volume = P(Y < 3)"
 )
 ```
+
+[[Rotate this plot (interactive) ↗](15_Joint_distributions_3d_plots.qmd#ex5-volume){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
 :::::
 :::::::
 
@@ -1528,6 +1623,8 @@ draw_pdf_volume(
   title = "Volume = P(Z <= 2)"
 )
 ```
+
+[[Rotate this plot (interactive) ↗](15_Joint_distributions_3d_plots.qmd#ex3-min){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
 :::::
 :::::::
 
@@ -1675,6 +1772,8 @@ draw_pdf_volume(
   title = "Volume = P(Z <= 1/4)"
 )
 ```
+
+[[Rotate this plot (interactive) ↗](15_Joint_distributions_3d_plots.qmd#ex6-volume){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
 :::::
 :::::::
 

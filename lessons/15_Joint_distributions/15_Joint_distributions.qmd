@@ -218,7 +218,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, & Y \leq y) = \\
 
 5.  Use simulation to approximate expected values from a joint distribution
 
-## [Joint distribution for two discrete random variables (1/7)]{style="display: none;"}
+## [Joint distribution for two discrete random variables (1/9)]{style="display: none;"}
 
 ::::::: columns
 :::::: {.column width="100%"}
@@ -246,7 +246,7 @@ Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, a
 ::::::
 :::::::
 
-## [Joint distribution for two discrete random variables (2/7)]{style="display: none;"}
+## [Joint distribution for two discrete random variables (2/9)]{style="display: none;"}
 
 ::::::: columns
 :::::: {.column width="35%"}
@@ -267,7 +267,7 @@ Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, a
 ::::::
 :::::::
 
-## [Joint distribution for two discrete random variables (3/7)]{style="display: none;"}
+## [Joint distribution for two discrete random variables (3/9)]{style="display: none;"}
 
 ::::::: columns
 :::::: {.column width="35%"}
@@ -288,7 +288,7 @@ Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, a
 ::::::
 :::::::
 
-## [Joint distribution for two discrete random variables (4/7): simulate]{style="display: none;"}
+## [Joint distribution for two discrete random variables (4/9): simulate]{style="display: none;"}
 
 
 :::: example
@@ -345,7 +345,7 @@ so $p_{X,Y}(1,1) = 0$
 :::
 :::::::
 
-## [Joint distribution for two discrete random variables (5/7): simulate]{style="display: none;"}
+## [Joint distribution for two discrete random variables (5/9): simulate]{style="display: none;"}
 
 :::: example
 ::: ex-cont
@@ -377,7 +377,7 @@ For reference, the exact answers are $p_{X,Y}(x,y) = \frac16 \approx 0.1667$ for
 :::
 :::::::
 
-## [Joint distribution for two discrete random variables (6/7)]{style="display: none;"}
+## [Joint distribution for two discrete random variables (6/9)]{style="display: none;"}
 
 ::::::: columns
 :::::: {.column width="35%"}
@@ -396,7 +396,67 @@ Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, a
 ::::::
 :::::::
 
-## [Joint distribution for two discrete random variables (7/7)]{style="display: none;"}
+## [Joint distribution for two discrete random variables (7/9): simulate]{style="display: none;"}
+
+:::: example
+::: ex-cont
+5.  Check the joint CDF with simulation: $F_{X,Y}(x,y) = \mathbb{P}(X \leq x, Y \leq y)$
+:::
+::::
+
+::::::: columns
+::::: {.column width="54%"}
+```{r}
+ex1_cdf <- expand_grid( # <1>
+    ex1_sims, # <1>
+    x_cut = 1:3, # <2>
+    y_cut = 1:3 # <2>
+  ) |>
+  group_by(x_cut, y_cut) |> # <3>
+  summarise( # <4>
+    F_xy = mean(x <= x_cut & y <= y_cut), # <4>
+    .groups = "drop" # <5>
+  )
+```
+
+1.  Reuse the 100,000 simulated pairs. `expand_grid()` with a table makes a copy of every simulation for each combination of cutoffs: $100{,}000 \times 9$ rows.
+2.  The cutoffs are the cells of the CDF table: $x = 1, 2, 3$ and $y = 1, 2, 3$. Between these values the CDF stays flat, so 9 cells fill the table.
+3.  One group for each cell $(x, y)$ of the table.
+4.  `&` means "and": both must be `TRUE`. The proportion of simulations with $X \leq x$ and $Y \leq y$ approximates $F_{X,Y}(x,y)$.
+5.  Remove the grouping when we are done.
+
+:::: proof1
+::: proof-cont
+For reference, the exact joint CDF $F_{X,Y}(x,y)$:
+
+|         | $y = 1$ | $y = 2$       | $y = 3$       |
+|---------|---------|---------------|---------------|
+| $x = 1$ | 0       | $\frac16$     | $\frac26$     |
+| $x = 2$ | $\frac16$ | $\frac26$  | $\frac46$     |
+| $x = 3$ | $\frac26$ | $\frac46$  | 1             |
+:::
+::::
+:::::
+
+::::: {.column width="2%"}
+:::::
+
+::: {.column width="44%"}
+```{r}
+ex1_cdf |> # <6>
+  pivot_wider( # <6>
+    names_from = y_cut, # <6>
+    names_prefix = "y_", # <7>
+    values_from = F_xy # <6>
+  )
+```
+
+6.  `pivot_wider()` spreads the `y_cut` values into columns, so the output looks like our table: rows are $x$, columns are $y$.
+7.  Start each new column name with `y_`, so the columns are `y_1`, `y_2`, and `y_3`.
+:::
+:::::::
+
+## [Joint distribution for two discrete random variables (8/9)]{style="display: none;"}
 
 ::::::: columns
 :::::: {.column width="35%"}
@@ -413,6 +473,51 @@ Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, a
 :::::
 ![](/lessons/img_slides/joint_pmf.png){width="520"}
 ::::::
+:::::::
+
+## [Joint distribution for two discrete random variables (9/9): simulate]{style="display: none;"}
+
+:::: example
+::: ex-cont
+6.  Check the marginal CDFs with simulation: $F_X(x) = \mathbb{P}(X \leq x)$ and $F_Y(y) = \mathbb{P}(Y \leq y)$
+:::
+::::
+
+::::::: columns
+::::: {.column width="54%"}
+```{r}
+expand_grid( # <1>
+    ex1_sims, # <1>
+    cut = 1:3 # <1>
+  ) |>
+  group_by(cut) |> # <2>
+  summarise( # <3>
+    F_X = mean(x <= cut), # <3>
+    F_Y = mean(y <= cut) # <4>
+  )
+```
+
+1.  Same idea as part 5, with one cutoff at a time: a copy of every simulation for each cutoff 1, 2, and 3.
+2.  One group for each cutoff.
+3.  Marginal CDF of $X$: only uses the `x` column. The proportion with $X \leq$ `cut` approximates $F_X$(`cut`).
+4.  Marginal CDF of $Y$: only uses the `y` column.
+:::::
+
+::::: {.column width="2%"}
+:::::
+
+::: {.column width="44%"}
+Compare with the joint CDF table from part 5:
+
+- `F_X` matches the rightmost column (`y_3`), where $Y$ is largest
+- `F_Y` matches the bottom row ($x = 3$), where $X$ is largest
+
+:::: proof1
+::: proof-cont
+For reference, the exact marginal CDFs are $F_X(1) = \frac13$, $F_X(2) = \frac23$, $F_X(3) = 1$, and the same for $F_Y$
+:::
+::::
+:::
 :::::::
 
 ## Quick remarks on the joint and marginal CDF
@@ -490,20 +595,31 @@ To learn about $X$ and $Y$ with joint pdf $f_{X,Y}(x,y)$:
 #| fig-width: 9
 #| fig-height: 7
 
-small_grid_2d <- expand_grid(
-    x = seq(0, 2, by = 0.25),
-    y = seq(0, 1, by = 0.125)
-  ) |>
+x_vals <- seq(0, 2, by = 0.5)
+y_vals <- seq(0, 1, by = 0.25)
+
+small_grid_2d <- expand_grid(x = x_vals, y = y_vals) |>
   mutate(height = 3/2 * y^2)
 
-ggplot(small_grid_2d, aes(x = x, y = y, size = height)) +
-  geom_point(color = "#29abe0") +
-  scale_size_area(max_size = 12) +
-  labs(subtitle = "A small grid for f(x, y) = (3/2) y^2",
-       x = "x", y = "y", size = "Height")
+pdf_heights <- outer(x_vals, y_vals, function(x, y) 3/2 * y^2)
+
+par(mar = c(1, 1, 2.5, 1), cex = 2)
+view_3d <- persp(x_vals, y_vals, pdf_heights,
+                 theta = 35, phi = 25, expand = 0.75,
+                 zlim = c(0, 1.5), col = NA, border = "grey75",
+                 xlab = "x", ylab = "y", zlab = "Height")
+
+stick_bottom <- trans3d(small_grid_2d$x, small_grid_2d$y, 0, view_3d)
+stick_top <- trans3d(small_grid_2d$x, small_grid_2d$y,
+                     small_grid_2d$height, view_3d)
+
+segments(stick_bottom$x, stick_bottom$y, stick_top$x, stick_top$y,
+         col = "#29abe0", lwd = 3)
+points(stick_top, pch = 19, col = "#29abe0", cex = 1)
+title("A small grid for f(x, y) = (3/2) y^2", font.main = 1)
 ```
 
-*Bigger dots: taller pdf, so more likely to be drawn. A real grid has about 1,000,000 tickets*
+*Each stick is a ticket: taller sticks are more likely to be drawn*
 :::
 :::::
 

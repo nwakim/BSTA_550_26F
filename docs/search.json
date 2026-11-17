@@ -29908,14 +29908,14 @@
     "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#grid-sampling-2d",
     "title": "Lesson 15: Joint distributions",
     "section": "2D grid sampling: the steps",
-    "text": "2D grid sampling: the steps\n\nSame idea as Lesson 14: a box of tickets, where tickets in taller parts of the pdf are more likely to be drawn\nNow each ticket is a point \\((x, y)\\)\n\n\n\n\nFind the possible values of \\((X, Y)\\): the region where \\(f_{X,Y}(x,y) &gt; 0\\)\nMake a grid: many evenly spaced points that cover the region, made with expand_grid(). Each point is a ticket in the box\nFind the joint pdf’s height at each ticket\nDraw many tickets with replacement: slice_sample() draws whole rows (points). Each draw is one simulated pair \\((x, y)\\)\n\nEach ticket has a chance of being drawn proportional to its height\n\nCheck: the simulated points should pile up where the pdf is tall\n\n\n\n\n\n\n\n\n\n\n\nBigger dots: taller pdf, so more likely to be drawn. A real grid has about 1,000,000 tickets"
+    "text": "2D grid sampling: the steps\n\nSame idea as Lesson 14: a box of tickets, where tickets in taller parts of the pdf are more likely to be drawn\nNow each ticket is a point \\((x, y)\\)\n\n\n\n\nFind the possible values of \\((X, Y)\\): the region where \\(f_{X,Y}(x,y) &gt; 0\\)\nMake a grid: many evenly spaced points that cover the region, made with expand_grid(). Each point is a ticket in the box\nFind the joint pdf’s height at each ticket\nDraw many tickets with replacement: slice_sample() draws whole rows (points). Each draw is one simulated pair \\((x, y)\\)\n\nEach ticket has a chance of being drawn proportional to its height\n\nCheck: the simulated points should pile up where the pdf is tall\n\n\n\n\n\n\n\n\n\n\n\nEach stick is a ticket: taller sticks are more likely to be drawn"
   },
   {
     "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-2-joint-pdf-13",
     "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-2-joint-pdf-13",
     "title": "Lesson 15: Joint distributions",
     "section": "Example 2: Joint pdf (1/3)",
-    "text": "Example 2: Joint pdf (1/3)\n\n\n\n\nExample 2: Joint pdf on a rectangle\n\n\nLet \\(f_{X,Y}(x,y)= \\frac32 y^2\\), for \\(0 \\leq x \\leq 2, \\ 0 \\leq y \\leq 1\\).\n\nShade the event \\(\\{0 \\leq X \\leq 1, 0 \\leq Y \\leq \\frac12\\}\\). Approximate its probability with simulation.\nUse simulation to look at the marginal distributions of \\(X\\) and \\(Y\\)."
+    "text": "Example 2: Joint pdf (1/3)\n\n\nExample 2: Joint pdf on a rectangle\n\n\nLet \\(f_{X,Y}(x,y)= \\frac32 y^2\\), for \\(0 \\leq x \\leq 2, \\ 0 \\leq y \\leq 1\\).\n\nShade the event \\(\\{0 \\leq X \\leq 1, 0 \\leq Y \\leq \\frac12\\}\\). Approximate its probability with simulation.\nUse simulation to look at the marginal distributions of \\(X\\) and \\(Y\\)."
   },
   {
     "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-2-joint-pdf-23-simulate",
@@ -30007,5 +30007,68 @@
     "title": "Lesson 15: Joint distributions",
     "section": "Example of a joint pdf with a transformation: part 3 for home",
     "text": "Example of a joint pdf with a transformation: part 3 for home\n\n\n\n\nExample 3: Constant density on a square (for home)\n\n\nLet \\(X\\) and \\(Y\\) have constant density on the square \\(0 \\leq X \\leq 4, 0 \\leq Y \\leq 4\\).\n\nLet \\(Z = \\min(X,Y)\\). Find \\(\\mathbb{P}(Z \\leq 2)\\) using areas. Check it with simulation, and look at the distribution of \\(Z\\).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDo this problem at home for extra practice. I’ll add the solution to the annotated notes!\n\n\n\n\nHint: start from the code for part 2, and use pmin() instead of pmax()"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-19",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-19",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Joint distribution for two discrete random variables (1/9)",
+    "text": "Joint distribution for two discrete random variables (1/9)\n\n\n\n\nExample 1\n\n\nLet \\(X\\) and \\(Y\\) be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.\n\nFind \\(p_{X,Y}(x,y)\\)\nFind \\(\\mathbb{P}(X+Y=3)\\)\nFind \\(\\mathbb{P}(Y = 1)\\)\nFind \\(\\mathbb{P}(Y \\leq 2)\\)\nFind the joint CDF \\(F_{X,Y}(x,y)\\) for the joint pmf \\(p_{X,Y}(x,y)\\)\nFind the marginal CDFs \\(F_{X}(x)\\) and \\(F_{Y}(y)\\)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-29",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-29",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Joint distribution for two discrete random variables (2/9)",
+    "text": "Joint distribution for two discrete random variables (2/9)\n\n\n\n\nExample 1\n\n\nLet \\(X\\) and \\(Y\\) be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.\n\nFind \\(p_{X,Y}(x,y)\\)\nFind \\(\\mathbb{P}(X+Y=3)\\)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-39",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-39",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Joint distribution for two discrete random variables (3/9)",
+    "text": "Joint distribution for two discrete random variables (3/9)\n\n\n\n\nExample 1\n\n\nLet \\(X\\) and \\(Y\\) be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.\n\nFind \\(\\mathbb{P}(Y = 1)\\)\nFind \\(\\mathbb{P}(Y \\leq 2)\\)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-49-simulate",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-49-simulate",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Joint distribution for two discrete random variables (4/9): simulate",
+    "text": "Joint distribution for two discrete random variables (4/9): simulate\n\n\n\nCheck the joint pmf with simulation: draw two balls from the box, many times.\n\n\n\n\n\n\n1set.seed(1111)\n2reps &lt;- 100000\n\n3ex1_sims &lt;- expand_grid(\n    sim = 1:reps,\n    draw = 1:2\n  ) |&gt;\n4  group_by(sim) |&gt;\n5  mutate(ball = sample(1:3, size = n())) |&gt;\n6  summarise(\n    x = first(ball),\n    y = last(ball)\n  )\n\n\n1\n\nSet the random seed once, so we get the same simulation every time.\n\n2\n\nSave the number of simulations as reps, so it is easy to change later.\n\n3\n\nOne row per draw: 2 draws for each of the 100,000 simulations, like in Lesson 2.\n\n4\n\nWork within each simulation separately.\n\n5\n\nn() is 2 here (two draws per simulation). With no replace = TRUE, sample() draws without replacement, so the two balls are different, just like the box.\n\n6\n\nOne row per simulation: first() is the first ball drawn (\\(X\\)) and last() is the second (\\(Y\\)).\n\n\n\n\n\n\n\n\n7ex1_sims |&gt;\n  group_by(x, y) |&gt;\n8  summarise(\n    prob = n() / reps,\n    .groups = \"drop\"\n  )\n\n\n7\n\nOne group for each pair \\((x, y)\\) that showed up in the simulations.\n\n8\n\nn() counts the simulations in each group. Dividing by reps gives relative frequencies: this approximates the joint pmf. .groups = \"drop\" removes the grouping when we are done.\n\n\n\n\n# A tibble: 6 × 3\n      x     y  prob\n  &lt;int&gt; &lt;int&gt; &lt;dbl&gt;\n1     1     2 0.167\n2     1     3 0.166\n3     2     1 0.166\n4     2     3 0.166\n5     3     1 0.168\n6     3     2 0.167\n\n\nPairs like \\((1, 1)\\) never show up,\nso \\(p_{X,Y}(1,1) = 0\\)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-59-simulate",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-59-simulate",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Joint distribution for two discrete random variables (5/9): simulate",
+    "text": "Joint distribution for two discrete random variables (5/9): simulate\n\n\nParts 2 to 4: check \\(\\mathbb{P}(X+Y=3)\\), \\(\\mathbb{P}(Y = 1)\\), and \\(\\mathbb{P}(Y \\leq 2)\\) with simulation.\n\n\n\n\n\n1ex1_sims |&gt;\n  summarise(\n    prob_sum_3 = mean(x + y == 3),\n2    prob_Y_1 = mean(y == 1),\n    prob_Y_le_2 = mean(y &lt;= 2)\n  )\n\n\n1\n\nReuse the 100,000 simulated pairs. mean() of a TRUE/FALSE condition is the proportion of simulations where it is TRUE: this approximates \\(\\mathbb{P}(X+Y=3)\\).\n\n2\n\nMarginal probabilities only use the y column.\n\n\n\n\n# A tibble: 1 × 3\n  prob_sum_3 prob_Y_1 prob_Y_le_2\n       &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;\n1      0.333    0.334       0.668\n\n\n\n\n\nFor reference, the exact answers are \\(p_{X,Y}(x,y) = \\frac16 \\approx 0.1667\\) for each possible pair, \\(\\mathbb{P}(X+Y=3) = \\mathbb{P}(Y=1) = \\frac13\\), and \\(\\mathbb{P}(Y \\leq 2) = \\frac23\\)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-69",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-69",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Joint distribution for two discrete random variables (6/9)",
+    "text": "Joint distribution for two discrete random variables (6/9)\n\n\n\n\nExample 1\n\n\nLet \\(X\\) and \\(Y\\) be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.\n\nFind the joint CDF \\(F_{X,Y}(x,y)\\) for the joint pmf \\(p_{X,Y}(x,y)\\)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-79-simulate",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-79-simulate",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Joint distribution for two discrete random variables (7/9): simulate",
+    "text": "Joint distribution for two discrete random variables (7/9): simulate\n\n\n\nCheck the joint CDF with simulation: \\(F_{X,Y}(x,y) = \\mathbb{P}(X \\leq x, Y \\leq y)\\)\n\n\n\n\n\n\n1ex1_cdf &lt;- expand_grid(\n    ex1_sims,\n2    x_cut = 1:3,\n    y_cut = 1:3\n  ) |&gt;\n3  group_by(x_cut, y_cut) |&gt;\n4  summarise(\n    F_xy = mean(x &lt;= x_cut & y &lt;= y_cut),\n5    .groups = \"drop\"\n  )\n\n\n1\n\nReuse the 100,000 simulated pairs. expand_grid() with a table makes a copy of every simulation for each combination of cutoffs: \\(100{,}000 \\times 9\\) rows.\n\n2\n\nThe cutoffs are the cells of the CDF table: \\(x = 1, 2, 3\\) and \\(y = 1, 2, 3\\). Between these values the CDF stays flat, so 9 cells fill the table.\n\n3\n\nOne group for each cell \\((x, y)\\) of the table.\n\n4\n\n& means “and”: both must be TRUE. The proportion of simulations with \\(X \\leq x\\) and \\(Y \\leq y\\) approximates \\(F_{X,Y}(x,y)\\).\n\n5\n\nRemove the grouping when we are done.\n\n\n\n\n\n\nFor reference, the exact joint CDF \\(F_{X,Y}(x,y)\\):\n\n\n\n\n\\(y = 1\\)\n\\(y = 2\\)\n\\(y = 3\\)\n\n\n\n\n\\(x = 1\\)\n0\n\\(\\frac16\\)\n\\(\\frac26\\)\n\n\n\\(x = 2\\)\n\\(\\frac16\\)\n\\(\\frac26\\)\n\\(\\frac46\\)\n\n\n\\(x = 3\\)\n\\(\\frac26\\)\n\\(\\frac46\\)\n1\n\n\n\n\n\n\n\n\n\n6ex1_cdf |&gt;\n  pivot_wider(\n    names_from = y_cut,\n7    names_prefix = \"y_\",\n    values_from = F_xy\n  )\n\n\n6\n\npivot_wider() spreads the y_cut values into columns, so the output looks like our table: rows are \\(x\\), columns are \\(y\\).\n\n7\n\nStart each new column name with y_, so the columns are y_1, y_2, and y_3.\n\n\n\n\n# A tibble: 3 × 4\n  x_cut   y_1   y_2   y_3\n  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1     1 0     0.167 0.334\n2     2 0.166 0.333 0.666\n3     3 0.334 0.668 1"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-89",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-89",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Joint distribution for two discrete random variables (8/9)",
+    "text": "Joint distribution for two discrete random variables (8/9)\n\n\n\n\nExample 1\n\n\nLet \\(X\\) and \\(Y\\) be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.\n\nFind the marginal CDFs \\(F_{X}(x)\\) and \\(F_{Y}(y)\\)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-99-simulate",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-99-simulate",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Joint distribution for two discrete random variables (9/9): simulate",
+    "text": "Joint distribution for two discrete random variables (9/9): simulate\n\n\n\nCheck the marginal CDFs with simulation: \\(F_X(x) = \\mathbb{P}(X \\leq x)\\) and \\(F_Y(y) = \\mathbb{P}(Y \\leq y)\\)\n\n\n\n\n\n\n1expand_grid(\n    ex1_sims,\n    cut = 1:3\n  ) |&gt;\n2  group_by(cut) |&gt;\n3  summarise(\n    F_X = mean(x &lt;= cut),\n4    F_Y = mean(y &lt;= cut)\n  )\n\n\n1\n\nSame idea as part 5, with one cutoff at a time: a copy of every simulation for each cutoff 1, 2, and 3.\n\n2\n\nOne group for each cutoff.\n\n3\n\nMarginal CDF of \\(X\\): only uses the x column. The proportion with \\(X \\leq\\) cut approximates \\(F_X\\)(cut).\n\n4\n\nMarginal CDF of \\(Y\\): only uses the y column.\n\n\n\n\n# A tibble: 3 × 3\n    cut   F_X   F_Y\n  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n1     1 0.334 0.334\n2     2 0.666 0.668\n3     3 1     1    \n\n\n\n\n\nCompare with the joint CDF table from part 5:\n\nF_X matches the rightmost column (y_3), where \\(Y\\) is largest\nF_Y matches the bottom row (\\(x = 3\\)), where \\(X\\) is largest\n\n\n\nFor reference, the exact marginal CDFs are \\(F_X(1) = \\frac13\\), \\(F_X(2) = \\frac23\\), \\(F_X(3) = 1\\), and the same for \\(F_Y\\)"
   }
 ]

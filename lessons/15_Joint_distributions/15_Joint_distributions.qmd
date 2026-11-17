@@ -625,8 +625,6 @@ title("A small grid for f(x, y) = (3/2) y^2", font.main = 1)
 
 ## [Example 2: Joint pdf (1/3)]{style="display: none;"}
 
-::::::: columns
-:::::: {.column width="30%"}
 ::::: example
 ::: ex-title
 Example 2: Joint pdf on a rectangle
@@ -639,9 +637,7 @@ Let $f_{X,Y}(x,y)= \frac32 y^2$, for $0 \leq x \leq 2, \ 0 \leq y \leq 1$.
 2.  Use simulation to look at the marginal distributions of $X$ and $Y$.
 :::
 :::::
-::::::
 
-:::::: {.column width="30%"}
 ```{r}
 #| echo: false
 #| fig-width: 6
@@ -655,8 +651,7 @@ domain_2 <- ggplot() +
   labs(x = "x", y = "y")
 domain_2
 ```
-::::::
-:::::::
+
 
 ## [Example 2: Joint pdf (2/3): simulate]{style="display: none;"}
 

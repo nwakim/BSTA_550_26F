@@ -1,0 +1,215 @@
+---
+title: "Lesson 15: Interactive 3D plots"
+author: "Nicky Wakim"
+format:
+  html:
+    toc: true
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup}
+library(tidyverse)
+library(plotly)
+
+# Interactive 3D picture of a joint pdf: the domain as a blue floor, the pdf
+# as a surface, and an event's volume in orange (top plus walls to the floor)
+plotly_pdf_volume <- function(f, x_lim, y_lim,
+                              in_domain = function(x, y) rep(TRUE, length(x)),
+                              domain_corners,
+                              in_event = NULL, event_corners = NULL,
+                              z_max, z_ratio = 0.7, n = 121) {
+  xs <- seq(x_lim[1], x_lim[2], length.out = n)
+  ys <- seq(y_lim[1], y_lim[2], length.out = n)
+  grid <- expand_grid(y = ys, x = xs) |>
+    mutate(domain = in_domain(x, y),
+           height = if_else(domain, f(x, y), NA_real_),
+           event = if (is.null(in_event)) 0 else as.numeric(domain & in_event(x, y)))
+  as_mat <- function(v) matrix(v, nrow = n, ncol = n, byrow = TRUE)
+  grey_orange <- list(c(0, "#9fb8c8"), c(1, "#E89543"))
+
+  # Floor: one flat polygon at height 0 over the domain
+  floor_x <- domain_corners[, 1]
+  floor_y <- domain_corners[, 2]
+  p <- plot_ly(height = 650) |>
+    add_trace(type = "mesh3d", x = floor_x, y = floor_y, z = 0 * floor_x,
+              delaunayaxis = "z", color = I("#29abe0"), opacity = 0.3,
+              hoverinfo = "skip", name = "Possible values (domain)") |>
+    add_surface(x = xs, y = ys, z = as_mat(grid$height),
+                surfacecolor = as_mat(grid$event), cmin = 0, cmax = 1,
+                colorscale = grey_orange, opacity = 0.9, showscale = FALSE,
+                name = "Joint pdf",
+                hovertemplate = "x = %{x:.2f}<br>y = %{y:.2f}<br>f(x, y) = %{z:.3f}<extra></extra>")
+
+  if (!is.null(event_corners)) {
+    corners <- rbind(event_corners, event_corners[1, ])
+    for (k in 1:(nrow(corners) - 1)) {
+      s <- seq(0, 1, length.out = 40)
+      wall_x <- corners[k, 1] + s * (corners[k + 1, 1] - corners[k, 1])
+      wall_y <- corners[k, 2] + s * (corners[k + 1, 2] - corners[k, 2])
+      wall_top <- f(wall_x, wall_y)
+      p <- p |> add_surface(x = rbind(wall_x, wall_x), y = rbind(wall_y, wall_y),
+                            z = rbind(0 * wall_top, wall_top),
+                            surfacecolor = matrix(1, 2, 40), cmin = 0, cmax = 1,
+                            colorscale = grey_orange, opacity = 0.55,
+                            showscale = FALSE, hoverinfo = "skip")
+    }
+  }
+
+  p |> layout(
+    showlegend = FALSE,
+    margin = list(l = 0, r = 0, t = 0, b = 0),
+    scene = list(
+      xaxis = list(title = "x"), yaxis = list(title = "y"),
+      zaxis = list(title = "f(x, y)", range = c(0, z_max)),
+      aspectmode = "manual", aspectratio = list(x = 1, y = 1, z = z_ratio),
+      camera = list(eye = list(x = 1.5, y = -1.6, z = 0.9))))
+}
+```
+
+Each plot below is an interactive version of a static 3D plot in the [Lesson 15 slides](15_Joint_distributions.qmd).
+
+-   **Drag** to rotate, **scroll** to zoom, and **double-click** to reset the view.
+-   **Hover** over the surface to see $x$, $y$, and the height $f_{X,Y}(x,y)$.
+-   **Blue floor:** the possible values (where $f_{X,Y}(x,y) > 0$).
+-   **Orange:** the event. Its volume, from the floor up to the pdf, is the probability we approximate with simulation.
+
+## 2D grid sampling {#grid-sampling}
+
+A small grid for $f_{X,Y}(x,y) = \frac32 y^2$, $0 \leq x \leq 2$, $0 \leq y \leq 1$. Each stick is one ticket: taller sticks are more likely to be drawn.
+
+```{r}
+small_grid_2d <- expand_grid(x = seq(0, 2, by = 0.5), y = seq(0, 1, by = 0.25)) |>
+  mutate(height = 3/2 * y^2)
+
+sticks <- small_grid_2d |>
+  mutate(id = row_number()) |>
+  reframe(x = c(x, x, NA), y = c(y, y, NA), z = c(0, height, NA), .by = id)
+
+plotly_pdf_volume(
+  f = function(x, y) 3/2 * y^2, x_lim = c(0, 2), y_lim = c(0, 1),
+  domain_corners = rbind(c(0, 0), c(2, 0), c(2, 1), c(0, 1)), z_max = 1.6
+) |>
+  add_trace(data = sticks, x = ~x, y = ~y, z = ~z, type = "scatter3d",
+            mode = "lines", line = list(color = "#29abe0", width = 6),
+            hoverinfo = "skip") |>
+  add_trace(data = small_grid_2d, x = ~x, y = ~y, z = ~height,
+            type = "scatter3d", mode = "markers",
+            marker = list(color = "#29abe0", size = 5),
+            hovertemplate = "ticket (%{x}, %{y})<br>height = %{z:.3f}<extra></extra>") |>
+  style(opacity = 0.25, traces = 2)
+```
+
+## Example 2: the joint pdf {#ex2-pdf}
+
+$f_{X,Y}(x,y) = \frac32 y^2$, for $0 \leq x \leq 2$, $0 \leq y \leq 1$. The total volume under the surface is 1.
+
+```{r}
+plotly_pdf_volume(
+  f = function(x, y) 3/2 * y^2, x_lim = c(0, 2), y_lim = c(0, 1),
+  domain_corners = rbind(c(0, 0), c(2, 0), c(2, 1), c(0, 1)), z_max = 1.6
+)
+```
+
+## Example 2: volume for $\mathbb{P}(0 \leq X \leq 1, 0 \leq Y \leq \frac12)$ {#ex2-volume}
+
+```{r}
+plotly_pdf_volume(
+  f = function(x, y) 3/2 * y^2, x_lim = c(0, 2), y_lim = c(0, 1),
+  domain_corners = rbind(c(0, 0), c(2, 0), c(2, 1), c(0, 1)),
+  in_event = function(x, y) x <= 1 & y <= 0.5,
+  event_corners = rbind(c(0, 0), c(1, 0), c(1, 0.5), c(0, 0.5)), z_max = 1.6
+)
+```
+
+## Example 3: the joint pdf {#ex3-pdf}
+
+Constant density on the square $0 \leq x \leq 4$, $0 \leq y \leq 4$: $f_{X,Y}(x,y) = \frac{1}{16}$.
+
+```{r}
+plotly_pdf_volume(
+  f = function(x, y) 1/16 + 0 * x, x_lim = c(0, 4), y_lim = c(0, 4),
+  domain_corners = rbind(c(0, 0), c(4, 0), c(4, 4), c(0, 4)), z_max = 0.1
+)
+```
+
+## Example 3, part 1: volume for $\mathbb{P}(|X - Y| < 2)$ {#ex3-abs}
+
+```{r}
+plotly_pdf_volume(
+  f = function(x, y) 1/16 + 0 * x, x_lim = c(0, 4), y_lim = c(0, 4),
+  domain_corners = rbind(c(0, 0), c(4, 0), c(4, 4), c(0, 4)),
+  in_event = function(x, y) abs(x - y) < 2,
+  event_corners = rbind(c(0, 0), c(2, 0), c(4, 2), c(4, 4), c(2, 4), c(0, 2)),
+  z_max = 0.1
+)
+```
+
+## Example 3, part 2: volume for $\mathbb{P}(M \leq 2)$ {#ex3-max}
+
+$M = \max(X, Y) \leq 2$ is the same event as $X \leq 2$ and $Y \leq 2$.
+
+```{r}
+plotly_pdf_volume(
+  f = function(x, y) 1/16 + 0 * x, x_lim = c(0, 4), y_lim = c(0, 4),
+  domain_corners = rbind(c(0, 0), c(4, 0), c(4, 4), c(0, 4)),
+  in_event = function(x, y) pmax(x, y) <= 2,
+  event_corners = rbind(c(0, 0), c(2, 0), c(2, 2), c(0, 2)), z_max = 0.1
+)
+```
+
+## Example 4: the joint pdf {#ex4-pdf}
+
+$f_{X,Y}(x,y) = 2e^{-(x+y)}$, for $0 \leq x \leq y$ (shown up to 4; it keeps going). The surface is tallest near $(0, 0)$.
+
+```{r}
+plotly_pdf_volume(
+  f = function(x, y) 2 * exp(-(x + y)), x_lim = c(0, 4), y_lim = c(0, 4),
+  in_domain = function(x, y) x <= y,
+  domain_corners = rbind(c(0, 0), c(0, 4), c(4, 4)), z_max = 2
+)
+```
+
+## Example 5 (for home): volume for $\mathbb{P}(Y < 3)$ {#ex5-volume}
+
+```{r}
+plotly_pdf_volume(
+  f = function(x, y) 2 * exp(-(x + y)), x_lim = c(0, 4), y_lim = c(0, 4),
+  in_domain = function(x, y) x <= y,
+  domain_corners = rbind(c(0, 0), c(0, 4), c(4, 4)),
+  in_event = function(x, y) y < 3,
+  event_corners = rbind(c(0, 0), c(0, 3), c(3, 3)), z_max = 2
+)
+```
+
+## Example 3, part 3 (for home): volume for $\mathbb{P}(Z \leq 2)$ {#ex3-min}
+
+$Z = \min(X, Y) \leq 2$: at least one of $X$ and $Y$ is at most 2.
+
+```{r}
+plotly_pdf_volume(
+  f = function(x, y) 1/16 + 0 * x, x_lim = c(0, 4), y_lim = c(0, 4),
+  domain_corners = rbind(c(0, 0), c(4, 0), c(4, 4), c(0, 4)),
+  in_event = function(x, y) pmin(x, y) <= 2,
+  event_corners = rbind(c(0, 0), c(4, 0), c(4, 2), c(2, 2), c(2, 4), c(0, 4)),
+  z_max = 0.1
+)
+```
+
+## Example 6 (for home): volume for $\mathbb{P}(Z \leq \frac14)$ {#ex6-volume}
+
+$f_{X,Y}(x,y) = \frac85(x + y)$, for $0 < x < 1$, $\frac12 < y < 1$, and $Z = XY$.
+
+```{r}
+curve_y <- seq(0.5, 1, by = 0.05)
+
+plotly_pdf_volume(
+  f = function(x, y) 8/5 * (x + y), x_lim = c(0, 1), y_lim = c(0.5, 1),
+  domain_corners = rbind(c(0, 0.5), c(1, 0.5), c(1, 1), c(0, 1)),
+  in_event = function(x, y) x * y <= 1/4,
+  event_corners = rbind(c(0, 0.5), cbind(1 / (4 * curve_y), curve_y), c(0, 1)),
+  z_max = 3.3
+)
+```

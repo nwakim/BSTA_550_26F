@@ -212,6 +212,63 @@ Nicky Wakim
 
   <p class="date">2026-11-18</p>
 </section>
+<section id="new-r-functions-in-this-lesson" class="slide level2">
+<h2>New R functions in this lesson</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 72%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>What it does</th>
+<th>First used</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>first()</code>, <code>last()</code></td>
+<td>The first or last value in each group</td>
+<td>Example 1</td>
+</tr>
+<tr class="even">
+<td><code>&amp;</code></td>
+<td>“And”: <code>TRUE</code> only when both conditions are <code>TRUE</code></td>
+<td>Example 1, part 5</td>
+</tr>
+<tr class="odd">
+<td><code>pivot_wider()</code></td>
+<td>Spreads one column’s values into separate columns, to make a table</td>
+<td>Example 1, part 5</td>
+</tr>
+<tr class="even">
+<td><code>slice_sample()</code></td>
+<td>Draws whole rows from a table; <code>weight_by</code> makes some rows more likely</td>
+<td>2D grid sampling</td>
+</tr>
+<tr class="odd">
+<td><code>abs()</code></td>
+<td>Absolute value: <span class="math inline">\(\lvert x \rvert\)</span></td>
+<td>Example 3</td>
+</tr>
+<tr class="even">
+<td><code>pmax()</code>, <code>pmin()</code></td>
+<td>The larger or smaller value in <strong>each row</strong> of two columns</td>
+<td>Example 3</td>
+</tr>
+<tr class="odd">
+<td><code>if_else()</code></td>
+<td>Picks one of two values, depending on a condition</td>
+<td>Example 6</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Also new: <code>expand_grid()</code> with a table inside (Example 1, part 5); in plot code, <code>coord_equal()</code> and <code>scale_color_manual()</code></li>
+</ul>
+</section>
 <section>
 <section id="learning-objectives" class="title-slide slide level1 center">
 <h1>Learning Objectives</h1>
@@ -878,6 +935,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 </div>
 </div>
 <p><em>Each stick is a ticket: taller sticks are more likely to be drawn</em></p>
+<p><span style="display: block; text-align: center; font-size: 0.5em;"><a href="15_Joint_distributions_3d_plots.qmd#grid-sampling" target="_blank">Rotate this plot (interactive) ↗</a></span></p>
 </div></div>
 </section>
 <section id="example-2-joint-pdf-13" class="slide level2">
@@ -894,8 +952,32 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 </ol>
 </div>
 </div>
+<div class="columns">
+<div class="column" style="width:34%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-8-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:2%;">
 
-<img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-8-1.png" width="576" class="r-stretch"></section>
+</div><div class="column" style="width:64%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" style="width:48.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span style="display: block; text-align: center; font-size: 0.5em;"><a href="15_Joint_distributions_3d_plots.qmd#ex2-volume" target="_blank">Rotate this plot (interactive) ↗</a></span></p>
+</div></div>
+</section>
 <section id="example-2-joint-pdf-23-simulate" class="slide level2">
 <h2><span style="display: none;">Example 2: Joint pdf (2/3): simulate</span></h2>
 <div class="example">
@@ -977,7 +1059,22 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 </div>
 </div>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:30%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-11-1.png" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span style="display: block; text-align: center; font-size: 0.5em;"><a href="15_Joint_distributions_3d_plots.qmd#ex2-pdf" target="_blank">Rotate this plot (interactive) ↗</a></span></p>
+<ul>
+<li>Marginal of <span class="math inline">\(X\)</span>: squash the volume onto the <span class="math inline">\(x\)</span> axis (add up over <span class="math inline">\(y\)</span>)</li>
+<li>Marginal of <span class="math inline">\(Y\)</span>: squash it onto the <span class="math inline">\(y\)</span> axis</li>
+</ul>
+</div><div class="column" style="width:35%;">
 <div class="cell">
 <details class="code-fold">
 <summary>Plot code</summary>
@@ -1010,7 +1107,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1018,7 +1115,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <ul>
 <li><span class="math inline">\(X\)</span> is flat: Uniform<span class="math inline">\([0, 2]\)</span></li>
 </ul>
-</div><div class="column" style="width:50%;">
+</div><div class="column" style="width:35%;">
 <div class="cell">
 <details class="code-fold">
 <summary>Plot code</summary>
@@ -1051,7 +1148,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1096,10 +1193,8 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <li>Rewriting an event about <span class="math inline">\(M\)</span> as a region of <span class="math inline">\((x, y)\)</span> points checks the simulation, and gives an exact answer when the density is constant (area <span class="math inline">\(\times\)</span> height)</li>
 </ul>
 </section>
-<section id="example-of-a-joint-pdf-with-a-transformation-14" class="slide level2">
-<h2><span style="display: none;">Example of a joint pdf with a transformation (1/4)</span></h2>
-<div class="columns">
-<div class="column" style="width:30%;">
+<section id="example-of-a-joint-pdf-with-a-transformation-15" class="slide level2">
+<h2><span style="display: none;">Example of a joint pdf with a transformation (1/5)</span></h2>
 <div class="example">
 <div class="ex-title">
 <p>Example 3: Constant density on a square</p>
@@ -1111,20 +1206,73 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 </ol>
 </div>
 </div>
-</div><div class="column" style="width:30%;">
+<div class="columns">
+<div class="column" style="width:34%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-12-1.png" width="576"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-14-1.png" width="576"></p>
 </figure>
 </div>
 </div>
 </div>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:64%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" style="width:48.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span style="display: block; text-align: center; font-size: 0.5em;"><a href="15_Joint_distributions_3d_plots.qmd#ex3-pdf" target="_blank">Rotate this plot (interactive) ↗</a></span></p>
 </div></div>
 </section>
-<section id="example-of-a-joint-pdf-with-a-transformation-24-simulate" class="slide level2">
-<h2><span style="display: none;">Example of a joint pdf with a transformation (2/4): simulate</span></h2>
+<section id="example-of-a-joint-pdf-with-a-transformation-25-the-event-as-a-volume" class="slide level2">
+<h2><span style="display: none;">Example of a joint pdf with a transformation (2/5): the event as a volume</span></h2>
+<div class="example">
+<div class="ex-cont">
+<ol type="1">
+<li>Shade the event <span class="math inline">\(|X-Y| &lt; 2\)</span>. Find <span class="math inline">\(\mathbb{P}(|X-Y| &lt; 2)\)</span> using areas.</li>
+</ol>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:34%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-16-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Area of the event: <span class="math inline">\(16 - 2 \cdot \frac12 \cdot 2 \cdot 2 = 12\)</span></li>
+<li>Volume = area <span class="math inline">\(\times\)</span> height <span class="math inline">\(= 12 \cdot \frac{1}{16} = \frac34\)</span></li>
+</ul>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:64%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center" style="width:48.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span style="display: block; text-align: center; font-size: 0.5em;"><a href="15_Joint_distributions_3d_plots.qmd#ex3-abs" target="_blank">Rotate this plot (interactive) ↗</a></span></p>
+</div></div>
+</section>
+<section id="example-of-a-joint-pdf-with-a-transformation-35-simulate" class="slide level2">
+<h2><span style="display: none;">Example of a joint pdf with a transformation (3/5): simulate</span></h2>
 <div class="example">
 <div class="ex-cont">
 <ol type="1">
@@ -1135,13 +1283,13 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="columns">
 <div class="column" style="width:52%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-15"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1">1</button><span id="annotated-cell-15-1" class="code-annotation-target"><a href="#annotated-cell-15-1" aria-label="1"></a>ex4_sims <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps) <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-15"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1">1</button><span id="annotated-cell-15-1" class="code-annotation-target"><a href="#annotated-cell-15-1" aria-label="1"></a>ex3_sims <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps) <span class="sc">|&gt;</span></span>
 <span id="annotated-cell-15-2"><a href="#annotated-cell-15-2" aria-label="2"></a>  <span class="fu">mutate</span>(</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="2">2</button><span id="annotated-cell-15-3" class="code-annotation-target"><a href="#annotated-cell-15-3" aria-label="3"></a>    <span class="at">x =</span> <span class="fu">runif</span>(<span class="fu">n</span>(), <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">4</span>),</span>
 <span id="annotated-cell-15-4"><a href="#annotated-cell-15-4" aria-label="4"></a>    <span class="at">y =</span> <span class="fu">runif</span>(<span class="fu">n</span>(), <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">4</span>)</span>
 <span id="annotated-cell-15-5"><a href="#annotated-cell-15-5" aria-label="5"></a>  )</span>
 <span id="annotated-cell-15-6"><a href="#annotated-cell-15-6" aria-label="6"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="3">3</button><span id="annotated-cell-15-7" class="code-annotation-target"><a href="#annotated-cell-15-7" aria-label="7"></a>ex4_sims <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="3">3</button><span id="annotated-cell-15-7" class="code-annotation-target"><a href="#annotated-cell-15-7" aria-label="7"></a>ex3_sims <span class="sc">|&gt;</span></span>
 <span id="annotated-cell-15-8"><a href="#annotated-cell-15-8" aria-label="8"></a>  <span class="fu">summarise</span>(<span class="at">prob =</span> <span class="fu">mean</span>(<span class="fu">abs</span>(x <span class="sc">-</span> y) <span class="sc">&lt;</span> <span class="dv">2</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
@@ -1175,7 +1323,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="cell">
 <details class="code-fold">
 <summary>Plot code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-17"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-17-1"><a href="#annotated-cell-17-1" aria-label="1"></a>ex4_sims <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-17"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-17-1"><a href="#annotated-cell-17-1" aria-label="1"></a>ex3_sims <span class="sc">|&gt;</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="4">4</button><span id="annotated-cell-17-2" class="code-annotation-target"><a href="#annotated-cell-17-2" aria-label="2"></a>  <span class="fu">filter</span>(sim <span class="sc">&lt;=</span> <span class="dv">2000</span>) <span class="sc">|&gt;</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="5">5</button><span id="annotated-cell-17-3" class="code-annotation-target"><a href="#annotated-cell-17-3" aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> <span class="fu">abs</span>(x <span class="sc">-</span> y) <span class="sc">&lt;</span> <span class="dv">2</span>)) <span class="sc">+</span></span>
 <span id="annotated-cell-17-4"><a href="#annotated-cell-17-4" aria-label="4"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
@@ -1211,17 +1359,15 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
 </section>
-<section id="example-of-a-joint-pdf-with-a-transformation-34" class="slide level2">
-<h2><span style="display: none;">Example of a joint pdf with a transformation (3/4)</span></h2>
-<div class="columns">
-<div class="column" style="width:30%;">
+<section id="example-of-a-joint-pdf-with-a-transformation-45" class="slide level2">
+<h2><span style="display: none;">Example of a joint pdf with a transformation (4/5)</span></h2>
 <div class="example">
 <div class="ex-title">
 <p>Example 3: Constant density on a square</p>
@@ -1233,20 +1379,34 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 </ol>
 </div>
 </div>
-</div><div class="column" style="width:30%;">
+<div class="columns">
+<div class="column" style="width:34%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-15-1.png" width="576"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-20-1.png" width="576"></p>
 </figure>
 </div>
 </div>
 </div>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:64%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center" style="width:48.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span style="display: block; text-align: center; font-size: 0.5em;"><a href="15_Joint_distributions_3d_plots.qmd#ex3-max" target="_blank">Rotate this plot (interactive) ↗</a></span></p>
 </div></div>
 </section>
-<section id="example-of-a-joint-pdf-with-a-transformation-44-simulate" class="slide level2">
-<h2><span style="display: none;">Example of a joint pdf with a transformation (4/4): simulate</span></h2>
+<section id="example-of-a-joint-pdf-with-a-transformation-55-simulate" class="slide level2">
+<h2><span style="display: none;">Example of a joint pdf with a transformation (5/5): simulate</span></h2>
 <div class="example">
 <div class="ex-cont">
 <ol start="2" type="1">
@@ -1257,10 +1417,10 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="columns">
 <div class="column" style="width:52%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-18"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="1">1</button><span id="annotated-cell-18-1" class="code-annotation-target"><a href="#annotated-cell-18-1" aria-label="1"></a>ex4_sims <span class="ot">&lt;-</span> ex4_sims <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-18"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="1">1</button><span id="annotated-cell-18-1" class="code-annotation-target"><a href="#annotated-cell-18-1" aria-label="1"></a>ex3_sims <span class="ot">&lt;-</span> ex3_sims <span class="sc">|&gt;</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="2">2</button><span id="annotated-cell-18-2" class="code-annotation-target"><a href="#annotated-cell-18-2" aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">pmax</span>(x, y))</span>
 <span id="annotated-cell-18-3"><a href="#annotated-cell-18-3" aria-label="3"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="3">3</button><span id="annotated-cell-18-4" class="code-annotation-target"><a href="#annotated-cell-18-4" aria-label="4"></a>ex4_sims <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="3">3</button><span id="annotated-cell-18-4" class="code-annotation-target"><a href="#annotated-cell-18-4" aria-label="4"></a>ex3_sims <span class="sc">|&gt;</span></span>
 <span id="annotated-cell-18-5"><a href="#annotated-cell-18-5" aria-label="5"></a>  <span class="fu">summarise</span>(<span class="at">prob_M =</span> <span class="fu">mean</span>(m <span class="sc">&lt;=</span> <span class="dv">2</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
@@ -1294,7 +1454,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="cell">
 <details class="code-fold">
 <summary>Plot code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-20"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="4">4</button><span id="annotated-cell-20-1" class="code-annotation-target"><a href="#annotated-cell-20-1" aria-label="1"></a><span class="fu">ggplot</span>(ex4_sims, <span class="fu">aes</span>(<span class="at">x =</span> m)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-20"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="4">4</button><span id="annotated-cell-20-1" class="code-annotation-target"><a href="#annotated-cell-20-1" aria-label="1"></a><span class="fu">ggplot</span>(ex3_sims, <span class="fu">aes</span>(<span class="at">x =</span> m)) <span class="sc">+</span></span>
 <span id="annotated-cell-20-2"><a href="#annotated-cell-20-2" aria-label="2"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)),</span>
 <span id="annotated-cell-20-3"><a href="#annotated-cell-20-3" aria-label="3"></a>                 <span class="at">binwidth =</span> <span class="fl">0.1</span>, <span class="at">boundary =</span> <span class="dv">0</span>,</span>
 <span id="annotated-cell-20-4"><a href="#annotated-cell-20-4" aria-label="4"></a>                 <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
@@ -1323,7 +1483,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1363,8 +1523,6 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 </section>
 <section id="example-4-expected-value-from-a-joint-pdf-12" class="slide level2">
 <h2><span style="display: none;">Example 4: Expected value from a joint pdf (1/2)</span></h2>
-<div class="columns">
-<div class="column" style="width:30%;">
 <div class="example">
 <div class="ex-title">
 <p>Example 4: Expected value from a joint pdf</p>
@@ -1373,24 +1531,33 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <p>Let <span class="math inline">\(f_{X,Y}(x,y)= 2e^{-(x+y)}\)</span>, for <span class="math inline">\(0 \leq x \leq y\)</span>. Approximate <span class="math inline">\(\mathbb{E}[X]\)</span> and <span class="math inline">\(\mathbb{E}[Y]\)</span> with simulation.</p>
 </div>
 </div>
-</div><div class="column" style="width:30%;">
+<ul>
+<li>Same joint pdf as Example 5 (for home, in the reference slides). Possible values: <span class="math inline">\(0 \leq x \leq y\)</span>, with no upper limit, but <span class="math inline">\(f_{X,Y}(x,y)\)</span> is almost 0 once <span class="math inline">\(y\)</span> is past 10, so our grid can stop at 10</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:34%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-18-1.png" width="576"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-24-1.png" width="576"></p>
 </figure>
 </div>
 </div>
 </div>
-</div><div class="column" style="width:40%;">
-<ul>
-<li>Same joint pdf as Example 5 (for home, in the reference slides)</li>
-<li>Possible values: <span class="math inline">\(0 \leq x \leq y\)</span>, with no upper limit
-<ul>
-<li>But <span class="math inline">\(f_{X,Y}(x,y) = 2e^{-(x+y)}\)</span> is almost 0 once <span class="math inline">\(y\)</span> is past 10, so our grid can stop at 10</li>
-</ul></li>
-</ul>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:64%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-25-1.png" class="quarto-figure quarto-figure-center" style="width:48.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span style="display: block; text-align: center; font-size: 0.5em;"><a href="15_Joint_distributions_3d_plots.qmd#ex4-pdf" target="_blank">Rotate this plot (interactive) ↗</a></span></p>
 </div></div>
 </section>
 <section id="example-4-expected-value-from-a-joint-pdf-22-simulate" class="slide level2">
@@ -1403,14 +1570,14 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="columns">
 <div class="column" style="width:55%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-21"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="1">1</button><span id="annotated-cell-21-1" class="code-annotation-target"><a href="#annotated-cell-21-1" aria-label="1"></a>ex6_grid <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-21"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="1">1</button><span id="annotated-cell-21-1" class="code-annotation-target"><a href="#annotated-cell-21-1" aria-label="1"></a>ex4_grid <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
 <span id="annotated-cell-21-2"><a href="#annotated-cell-21-2" aria-label="2"></a>    <span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="at">length.out =</span> <span class="dv">1001</span>),</span>
 <span id="annotated-cell-21-3"><a href="#annotated-cell-21-3" aria-label="3"></a>    <span class="at">y =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="at">length.out =</span> <span class="dv">1001</span>)</span>
 <span id="annotated-cell-21-4"><a href="#annotated-cell-21-4" aria-label="4"></a>  ) <span class="sc">|&gt;</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="2">2</button><span id="annotated-cell-21-5" class="code-annotation-target"><a href="#annotated-cell-21-5" aria-label="5"></a>  <span class="fu">filter</span>(x <span class="sc">&lt;=</span> y) <span class="sc">|&gt;</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="3">3</button><span id="annotated-cell-21-6" class="code-annotation-target"><a href="#annotated-cell-21-6" aria-label="6"></a>  <span class="fu">mutate</span>(<span class="at">height =</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>(x <span class="sc">+</span> y)))</span>
 <span id="annotated-cell-21-7"><a href="#annotated-cell-21-7" aria-label="7"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="4">4</button><span id="annotated-cell-21-8" class="code-annotation-target"><a href="#annotated-cell-21-8" aria-label="8"></a>ex6_sims <span class="ot">&lt;-</span> ex6_grid <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="4">4</button><span id="annotated-cell-21-8" class="code-annotation-target"><a href="#annotated-cell-21-8" aria-label="8"></a>ex4_sims <span class="ot">&lt;-</span> ex4_grid <span class="sc">|&gt;</span></span>
 <span id="annotated-cell-21-9"><a href="#annotated-cell-21-9" aria-label="9"></a>  <span class="fu">slice_sample</span>(</span>
 <span id="annotated-cell-21-10"><a href="#annotated-cell-21-10" aria-label="10"></a>    <span class="at">n =</span> reps,</span>
 <span id="annotated-cell-21-11"><a href="#annotated-cell-21-11" aria-label="11"></a>    <span class="at">weight_by =</span> height,</span>
@@ -1439,7 +1606,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 </div>
 </div><div class="column" style="width:45%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-22"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="5">5</button><span id="annotated-cell-22-1" class="code-annotation-target"><a href="#annotated-cell-22-1" aria-label="1"></a>ex6_sims <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-22"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="5">5</button><span id="annotated-cell-22-1" class="code-annotation-target"><a href="#annotated-cell-22-1" aria-label="1"></a>ex4_sims <span class="sc">|&gt;</span></span>
 <span id="annotated-cell-22-2"><a href="#annotated-cell-22-2" aria-label="2"></a>  <span class="fu">summarise</span>(</span>
 <span id="annotated-cell-22-3"><a href="#annotated-cell-22-3" aria-label="3"></a>    <span class="at">avg_X =</span> <span class="fu">mean</span>(x),</span>
 <span id="annotated-cell-22-4"><a href="#annotated-cell-22-4" aria-label="4"></a>    <span class="at">avg_Y =</span> <span class="fu">mean</span>(y)</span>
@@ -1525,7 +1692,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="callout callout-important no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Do this problem at home for extra practice. I’ll add the solution to the annotated notes!</p>
+<p>Do this problem at home for extra practice! Try it first, then check the solution.</p>
 </div>
 </div>
 </div>
@@ -1547,7 +1714,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-21-1.png" width="576"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-28-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -1563,7 +1730,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="callout callout-important no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Do this problem at home for extra practice. I’ll add the solution to the annotated notes!</p>
+<p>Do this problem at home for extra practice! Try it first, then check the solution.</p>
 </div>
 </div>
 </div>
@@ -1585,11 +1752,170 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-22-1.png" width="576"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-29-1.png" width="576"></p>
 </figure>
 </div>
 </div>
 </div>
+</div></div>
+</section>
+<section id="example-5-joint-pdf-on-a-triangle-solution-12" class="slide level2">
+<h2><span style="display: none;">Example 5: Joint pdf on a triangle: solution (1/2)</span></h2>
+<div class="example">
+<div class="ex-cont">
+<p>Solution, part 1: Use simulation to look at the marginal distributions of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
+</div>
+</div>
+<ul>
+<li>Same joint pdf as Example 4, so we reuse its 100,000 simulated pairs, <code>ex4_sims</code></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:49%;">
+<div class="cell">
+<details class="code-fold">
+<summary>Plot code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-24"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="1">1</button><span id="annotated-cell-24-1" class="code-annotation-target"><a href="#annotated-cell-24-1" aria-label="1"></a><span class="fu">ggplot</span>(ex4_sims, <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
+<span id="annotated-cell-24-2"><a href="#annotated-cell-24-2" aria-label="2"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)),</span>
+<span id="annotated-cell-24-3"><a href="#annotated-cell-24-3" aria-label="3"></a>                 <span class="at">binwidth =</span> <span class="fl">0.05</span>, <span class="at">boundary =</span> <span class="dv">0</span>,</span>
+<span id="annotated-cell-24-4"><a href="#annotated-cell-24-4" aria-label="4"></a>                 <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="2">2</button><span id="annotated-cell-24-5" class="code-annotation-target"><a href="#annotated-cell-24-5" aria-label="5"></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> <span class="cf">function</span>(x) <span class="dv">2</span> <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="dv">2</span> <span class="sc">*</span> x),</span>
+<span id="annotated-cell-24-6"><a href="#annotated-cell-24-6" aria-label="6"></a>                <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">3</span>),</span>
+<span id="annotated-cell-24-7"><a href="#annotated-cell-24-7" aria-label="7"></a>                <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="3">3</button><span id="annotated-cell-24-8" class="code-annotation-target"><a href="#annotated-cell-24-8" aria-label="8"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">3</span>)) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="4">4</button><span id="annotated-cell-24-9" class="code-annotation-target"><a href="#annotated-cell-24-9" aria-label="9"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">"Simulated X (the x column only)"</span>,</span>
+<span id="annotated-cell-24-10"><a href="#annotated-cell-24-10" aria-label="10"></a>       <span class="at">x =</span> <span class="st">"x"</span>, <span class="at">y =</span> <span class="st">"Density"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-24" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-24" data-code-lines="1,2,3,4" data-code-annotation="1">Histogram of only the <code>x</code> column, scaled like a pdf: the marginal distribution of <span class="math inline">\(X\)</span>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-24" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-24" data-code-lines="5,6,7" data-code-annotation="2">For reference, the marginal pdf <span class="math inline">\(f_X(x) = 2e^{-2x}\)</span> for <span class="math inline">\(x \geq 0\)</span>, in red.</span>
+</dd>
+<dt data-target-cell="annotated-cell-24" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-24" data-code-lines="8" data-code-annotation="3">Zoom in to where almost all of the values are.</span>
+</dd>
+<dt data-target-cell="annotated-cell-24" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-24" data-code-lines="9,10" data-code-annotation="4">Add a subtitle and axis labels.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><span class="math inline">\(X \sim \text{Exponential}(2)\)</span></li>
+</ul>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:49%;">
+<div class="cell">
+<details class="code-fold">
+<summary>Plot code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-25"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="1">1</button><span id="annotated-cell-25-1" class="code-annotation-target"><a href="#annotated-cell-25-1" aria-label="1"></a><span class="fu">ggplot</span>(ex4_sims, <span class="fu">aes</span>(<span class="at">x =</span> y)) <span class="sc">+</span></span>
+<span id="annotated-cell-25-2"><a href="#annotated-cell-25-2" aria-label="2"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)),</span>
+<span id="annotated-cell-25-3"><a href="#annotated-cell-25-3" aria-label="3"></a>                 <span class="at">binwidth =</span> <span class="fl">0.1</span>, <span class="at">boundary =</span> <span class="dv">0</span>,</span>
+<span id="annotated-cell-25-4"><a href="#annotated-cell-25-4" aria-label="4"></a>                 <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"#E89543"</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="2">2</button><span id="annotated-cell-25-5" class="code-annotation-target"><a href="#annotated-cell-25-5" aria-label="5"></a>  <span class="fu">geom_function</span>(</span>
+<span id="annotated-cell-25-6"><a href="#annotated-cell-25-6" aria-label="6"></a>    <span class="at">fun =</span> <span class="cf">function</span>(y) <span class="dv">2</span> <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>y) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">exp</span>(<span class="sc">-</span>y)),</span>
+<span id="annotated-cell-25-7"><a href="#annotated-cell-25-7" aria-label="7"></a>    <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">8</span>), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span></span>
+<span id="annotated-cell-25-8"><a href="#annotated-cell-25-8" aria-label="8"></a>  ) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="3">3</button><span id="annotated-cell-25-9" class="code-annotation-target"><a href="#annotated-cell-25-9" aria-label="9"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">8</span>)) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="4">4</button><span id="annotated-cell-25-10" class="code-annotation-target"><a href="#annotated-cell-25-10" aria-label="10"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">"Simulated Y (the y column only)"</span>,</span>
+<span id="annotated-cell-25-11"><a href="#annotated-cell-25-11" aria-label="11"></a>       <span class="at">x =</span> <span class="st">"y"</span>, <span class="at">y =</span> <span class="st">"Density"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-25" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-25" data-code-lines="1,2,3,4" data-code-annotation="1">Histogram of only the <code>y</code> column: the marginal distribution of <span class="math inline">\(Y\)</span>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-25" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-25" data-code-lines="5,6,7" data-code-annotation="2">For reference, the marginal pdf <span class="math inline">\(f_Y(y) = 2e^{-y}(1 - e^{-y})\)</span> for <span class="math inline">\(y \geq 0\)</span>, in red.</span>
+</dd>
+<dt data-target-cell="annotated-cell-25" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-25" data-code-lines="9" data-code-annotation="3">Zoom in to where almost all of the values are.</span>
+</dd>
+<dt data-target-cell="annotated-cell-25" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-25" data-code-lines="10,11" data-code-annotation="4">Add a subtitle and axis labels.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><span class="math inline">\(Y\)</span> starts at 0, since <span class="math inline">\(Y \geq X \geq 0\)</span>, and is usually bigger than <span class="math inline">\(X\)</span></li>
+</ul>
+</div></div>
+</section>
+<section id="example-5-joint-pdf-on-a-triangle-solution-22" class="slide level2">
+<h2><span style="display: none;">Example 5: Joint pdf on a triangle: solution (2/2)</span></h2>
+<div class="example">
+<div class="ex-cont">
+<p>Solution, part 2: Approximate <span class="math inline">\(\mathbb{P}(Y &lt; 3)\)</span> with simulation.</p>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:44%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-26"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="1">1</button><span id="annotated-cell-26-1" class="code-annotation-target"><a href="#annotated-cell-26-1" aria-label="1"></a>ex4_sims <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="2">2</button><span id="annotated-cell-26-2" class="code-annotation-target"><a href="#annotated-cell-26-2" aria-label="2"></a>  <span class="fu">summarise</span>(<span class="at">prob_Y =</span> <span class="fu">mean</span>(y <span class="sc">&lt;</span> <span class="dv">3</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-26" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-26" data-code-lines="1" data-code-annotation="1">Reuse the simulated pairs from Example 4.</span>
+</dd>
+<dt data-target-cell="annotated-cell-26" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-26" data-code-lines="2" data-code-annotation="2">The proportion of simulations with <span class="math inline">\(Y &lt; 3\)</span> approximates <span class="math inline">\(\mathbb{P}(Y &lt; 3)\)</span>. Only the <code>y</code> column is needed.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  prob_Y
+   &lt;dbl&gt;
+1  0.902</code></pre>
+</div>
+</div>
+<div class="proof1">
+<div class="proof-cont">
+<p>For reference, the exact answer is <span class="math inline">\(\mathbb{P}(Y &lt; 3) = 1 - 2e^{-3} + e^{-6} \approx 0.9029\)</span></p>
+</div>
+</div>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:54%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-33-1.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span style="display: block; text-align: center; font-size: 0.5em;"><a href="15_Joint_distributions_3d_plots.qmd#ex5-volume" target="_blank">Rotate this plot (interactive) ↗</a></span></p>
 </div></div>
 </section>
 <section id="example-of-a-joint-pdf-with-a-transformation-part-3-for-home" class="slide level2">
@@ -1612,7 +1938,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-23-1.png" width="576"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-34-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -1621,7 +1947,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="callout callout-important no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Do this problem at home for extra practice. I’ll add the solution to the annotated notes!</p>
+<p>Do this problem at home for extra practice! Try it first, then check the solution.</p>
 </div>
 </div>
 </div>
@@ -1630,12 +1956,137 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 </ul>
 </div></div>
 </section>
+<section id="example-of-a-joint-pdf-with-a-transformation-part-3-solution-12" class="slide level2">
+<h2><span style="display: none;">Example of a joint pdf with a transformation: part 3 solution (1/2)</span></h2>
+<div class="example">
+<div class="ex-cont">
+<p>Solution, part 3: Let <span class="math inline">\(Z = \min(X,Y)\)</span>. Find <span class="math inline">\(\mathbb{P}(Z \leq 2)\)</span> using areas.</p>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:44%;">
+<ul>
+<li>Possible values of <span class="math inline">\(Z\)</span>: from 0 to 4</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><span class="math inline">\(Z \leq 2\)</span> means <em>at least one</em> of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is <span class="math inline">\(\leq 2\)</span>: an L-shaped region</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>Easier with the complement: <span class="math inline">\(Z &gt; 2\)</span> means <em>both</em> <span class="math inline">\(X &gt; 2\)</span> and <span class="math inline">\(Y &gt; 2\)</span>, a <span class="math inline">\(2 \times 2\)</span> square</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><span class="math inline">\(\mathbb{P}(Z \leq 2) = 1 - \mathbb{P}(Z &gt; 2) = 1 - \frac{2 \cdot 2}{16} = \frac34\)</span></li>
+</ul>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:54%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-35-1.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span style="display: block; text-align: center; font-size: 0.5em;"><a href="15_Joint_distributions_3d_plots.qmd#ex3-min" target="_blank">Rotate this plot (interactive) ↗</a></span></p>
+</div></div>
+</section>
+<section id="example-of-a-joint-pdf-with-a-transformation-part-3-solution-22-simulate" class="slide level2">
+<h2><span style="display: none;">Example of a joint pdf with a transformation: part 3 solution (2/2): simulate</span></h2>
+<div class="example">
+<div class="ex-cont">
+<p>Solution, part 3: Check <span class="math inline">\(\mathbb{P}(Z \leq 2)\)</span> with simulation, and look at the distribution of <span class="math inline">\(Z\)</span>.</p>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:52%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-28"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-28" data-target-annotation="1">1</button><span id="annotated-cell-28-1" class="code-annotation-target"><a href="#annotated-cell-28-1" aria-label="1"></a>ex3_sims <span class="ot">&lt;-</span> ex3_sims <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-28" data-target-annotation="2">2</button><span id="annotated-cell-28-2" class="code-annotation-target"><a href="#annotated-cell-28-2" aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">z =</span> <span class="fu">pmin</span>(x, y))</span>
+<span id="annotated-cell-28-3"><a href="#annotated-cell-28-3" aria-label="3"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-28" data-target-annotation="3">3</button><span id="annotated-cell-28-4" class="code-annotation-target"><a href="#annotated-cell-28-4" aria-label="4"></a>ex3_sims <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-28-5"><a href="#annotated-cell-28-5" aria-label="5"></a>  <span class="fu">summarise</span>(<span class="at">prob_Z =</span> <span class="fu">mean</span>(z <span class="sc">&lt;=</span> <span class="dv">2</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-28" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-28" data-code-lines="1" data-code-annotation="1">Reuse the 100,000 simulated pairs from Example 3.</span>
+</dd>
+<dt data-target-cell="annotated-cell-28" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-28" data-code-lines="2" data-code-annotation="2">The only change from part 2: <code>pmin()</code> takes the smaller of <code>x</code> and <code>y</code> in each row.</span>
+</dd>
+<dt data-target-cell="annotated-cell-28" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-28" data-code-lines="4,5" data-code-annotation="3">The proportion of simulations with <span class="math inline">\(Z \leq 2\)</span> approximates <span class="math inline">\(\mathbb{P}(Z \leq 2)\)</span>.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  prob_Z
+   &lt;dbl&gt;
+1  0.751</code></pre>
+</div>
+</div>
+<div class="proof1">
+<div class="proof-cont">
+<p>For reference, the exact answer is <span class="math inline">\(\mathbb{P}(Z \leq 2) = \frac34\)</span></p>
+</div>
+</div>
+</div><div class="column" style="width:48%;">
+<div class="cell">
+<details class="code-fold">
+<summary>Plot code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-30"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="4">4</button><span id="annotated-cell-30-1" class="code-annotation-target"><a href="#annotated-cell-30-1" aria-label="1"></a><span class="fu">ggplot</span>(ex3_sims, <span class="fu">aes</span>(<span class="at">x =</span> z)) <span class="sc">+</span></span>
+<span id="annotated-cell-30-2"><a href="#annotated-cell-30-2" aria-label="2"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)),</span>
+<span id="annotated-cell-30-3"><a href="#annotated-cell-30-3" aria-label="3"></a>                 <span class="at">binwidth =</span> <span class="fl">0.1</span>, <span class="at">boundary =</span> <span class="dv">0</span>,</span>
+<span id="annotated-cell-30-4"><a href="#annotated-cell-30-4" aria-label="4"></a>                 <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="5">5</button><span id="annotated-cell-30-5" class="code-annotation-target"><a href="#annotated-cell-30-5" aria-label="5"></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> <span class="cf">function</span>(z) (<span class="dv">4</span> <span class="sc">-</span> z) <span class="sc">/</span> <span class="dv">8</span>,</span>
+<span id="annotated-cell-30-6"><a href="#annotated-cell-30-6" aria-label="6"></a>                <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>),</span>
+<span id="annotated-cell-30-7"><a href="#annotated-cell-30-7" aria-label="7"></a>                <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="6">6</button><span id="annotated-cell-30-8" class="code-annotation-target"><a href="#annotated-cell-30-8" aria-label="8"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">"Simulated Z = min(X, Y)"</span>,</span>
+<span id="annotated-cell-30-9"><a href="#annotated-cell-30-9" aria-label="9"></a>       <span class="at">x =</span> <span class="st">"z"</span>, <span class="at">y =</span> <span class="st">"Density"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-30" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-30" data-code-lines="1,2,3,4" data-code-annotation="4">Histogram of the simulated values of <span class="math inline">\(Z\)</span>, scaled like a pdf.</span>
+</dd>
+<dt data-target-cell="annotated-cell-30" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-30" data-code-lines="5,6,7" data-code-annotation="5">For reference, the pdf of <span class="math inline">\(Z\)</span> in red: <span class="math inline">\(f_Z(z) = \frac{4 - z}{8}\)</span> for <span class="math inline">\(0 \leq z \leq 4\)</span>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-30" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-30" data-code-lines="8,9" data-code-annotation="6">Add a subtitle and axis labels.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-37-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>The mirror image of <span class="math inline">\(M = \max(X, Y)\)</span>: the smaller of two values is more likely to be small</li>
+</ul>
+</div></div>
+</section>
 <section id="last-example-for-home-more-complicated-transformation" class="slide level2">
 <h2><span style="display: none;">Last example <em>for home</em>: more complicated transformation</span></h2>
 <div class="callout callout-important no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Do this problem at home for extra practice. I’ll add the solution to the annotated notes!</p>
+<p>Do this problem at home for extra practice! Try it first, then check the solution.</p>
 </div>
 </div>
 </div>
@@ -1658,7 +2109,155 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-24-1.png" width="576"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-38-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="last-example-for-home-solution-12" class="slide level2">
+<h2><span style="display: none;">Last example <em>for home</em>: solution (1/2)</span></h2>
+<div class="example">
+<div class="ex-cont">
+<p>Solution, part 1: What are the possible values of <span class="math inline">\(Z = XY\)</span>?</p>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:44%;">
+<ul>
+<li><span class="math inline">\(X\)</span> is between 0 and 1, and <span class="math inline">\(Y\)</span> is between <span class="math inline">\(\frac12\)</span> and 1</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>So <span class="math inline">\(Z = XY\)</span> is between <span class="math inline">\(0 \cdot \frac12 = 0\)</span> and <span class="math inline">\(1 \cdot 1 = 1\)</span></li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>The event <span class="math inline">\(Z \leq \frac14\)</span> is the region under the curve <span class="math inline">\(x = \frac{1}{4y}\)</span>: not a rectangle, so its volume is hard to find by hand</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>Simulation does not care about the shape!</li>
+</ul>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:54%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-39-1.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span style="display: block; text-align: center; font-size: 0.5em;"><a href="15_Joint_distributions_3d_plots.qmd#ex6-volume" target="_blank">Rotate this plot (interactive) ↗</a></span></p>
+</div></div>
+</section>
+<section id="last-example-for-home-solution-22-simulate" class="slide level2">
+<h2><span style="display: none;">Last example <em>for home</em>: solution (2/2): simulate</span></h2>
+<div class="example">
+<div class="ex-cont">
+<p>Solution, part 2: Use 2D grid sampling to simulate <span class="math inline">\(Z\)</span>. Approximate <span class="math inline">\(\mathbb{P}(Z \leq \frac14)\)</span> and make a histogram of <span class="math inline">\(Z\)</span>.</p>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:52%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-31"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="1">1</button><span id="annotated-cell-31-1" class="code-annotation-target"><a href="#annotated-cell-31-1" aria-label="1"></a>ex6_grid <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
+<span id="annotated-cell-31-2"><a href="#annotated-cell-31-2" aria-label="2"></a>    <span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">1001</span>),</span>
+<span id="annotated-cell-31-3"><a href="#annotated-cell-31-3" aria-label="3"></a>    <span class="at">y =</span> <span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">501</span>)</span>
+<span id="annotated-cell-31-4"><a href="#annotated-cell-31-4" aria-label="4"></a>  ) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="2">2</button><span id="annotated-cell-31-5" class="code-annotation-target"><a href="#annotated-cell-31-5" aria-label="5"></a>  <span class="fu">mutate</span>(<span class="at">height =</span> <span class="dv">8</span><span class="sc">/</span><span class="dv">5</span> <span class="sc">*</span> (x <span class="sc">+</span> y))</span>
+<span id="annotated-cell-31-6"><a href="#annotated-cell-31-6" aria-label="6"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="3">3</button><span id="annotated-cell-31-7" class="code-annotation-target"><a href="#annotated-cell-31-7" aria-label="7"></a>ex6_sims <span class="ot">&lt;-</span> ex6_grid <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-31-8"><a href="#annotated-cell-31-8" aria-label="8"></a>  <span class="fu">slice_sample</span>(</span>
+<span id="annotated-cell-31-9"><a href="#annotated-cell-31-9" aria-label="9"></a>    <span class="at">n =</span> reps,</span>
+<span id="annotated-cell-31-10"><a href="#annotated-cell-31-10" aria-label="10"></a>    <span class="at">weight_by =</span> height,</span>
+<span id="annotated-cell-31-11"><a href="#annotated-cell-31-11" aria-label="11"></a>    <span class="at">replace =</span> <span class="cn">TRUE</span></span>
+<span id="annotated-cell-31-12"><a href="#annotated-cell-31-12" aria-label="12"></a>  ) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="4">4</button><span id="annotated-cell-31-13" class="code-annotation-target"><a href="#annotated-cell-31-13" aria-label="13"></a>  <span class="fu">mutate</span>(<span class="at">z =</span> x <span class="sc">*</span> y)</span>
+<span id="annotated-cell-31-14"><a href="#annotated-cell-31-14" aria-label="14"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-31" data-target-annotation="5">5</button><span id="annotated-cell-31-15" class="code-annotation-target"><a href="#annotated-cell-31-15" aria-label="15"></a>ex6_sims <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-31-16"><a href="#annotated-cell-31-16" aria-label="16"></a>  <span class="fu">summarise</span>(<span class="at">prob_Z =</span> <span class="fu">mean</span>(z <span class="sc">&lt;=</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-31" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-31" data-code-lines="1,2,3" data-code-annotation="1">A grid of tickets covering the rectangle <span class="math inline">\(0 &lt; x &lt; 1\)</span>, <span class="math inline">\(\frac12 &lt; y &lt; 1\)</span>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-31" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-31" data-code-lines="5" data-code-annotation="2">The joint pdf’s height at each ticket.</span>
+</dd>
+<dt data-target-cell="annotated-cell-31" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-31" data-code-lines="7,8,9,10,11" data-code-annotation="3">Draw <code>reps</code> tickets, weighted by height, like Example 2.</span>
+</dd>
+<dt data-target-cell="annotated-cell-31" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-31" data-code-lines="13" data-code-annotation="4">The transformation: <span class="math inline">\(Z = XY\)</span> for each simulated pair.</span>
+</dd>
+<dt data-target-cell="annotated-cell-31" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-31" data-code-lines="15,16" data-code-annotation="5">The proportion of simulations with <span class="math inline">\(Z \leq \frac14\)</span> approximates <span class="math inline">\(\mathbb{P}(Z \leq \frac14)\)</span>.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  prob_Z
+   &lt;dbl&gt;
+1  0.250</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:48%;">
+<div class="proof1">
+<div class="proof-cont">
+<p>For reference, the exact answer is <span class="math inline">\(\mathbb{P}(Z \leq \frac14) = \frac14\)</span></p>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Plot code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-33"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="6">6</button><span id="annotated-cell-33-1" class="code-annotation-target"><a href="#annotated-cell-33-1" aria-label="1"></a>f_Z <span class="ot">&lt;-</span> <span class="cf">function</span>(z) {</span>
+<span id="annotated-cell-33-2"><a href="#annotated-cell-33-2" aria-label="2"></a>  <span class="fu">if_else</span>(z <span class="sc">&lt;</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>, <span class="dv">8</span><span class="sc">/</span><span class="dv">5</span> <span class="sc">*</span> (z <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>), <span class="dv">16</span><span class="sc">/</span><span class="dv">5</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> z))</span>
+<span id="annotated-cell-33-3"><a href="#annotated-cell-33-3" aria-label="3"></a>}</span>
+<span id="annotated-cell-33-4"><a href="#annotated-cell-33-4" aria-label="4"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="7">7</button><span id="annotated-cell-33-5" class="code-annotation-target"><a href="#annotated-cell-33-5" aria-label="5"></a><span class="fu">ggplot</span>(ex6_sims, <span class="fu">aes</span>(<span class="at">x =</span> z)) <span class="sc">+</span></span>
+<span id="annotated-cell-33-6"><a href="#annotated-cell-33-6" aria-label="6"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)),</span>
+<span id="annotated-cell-33-7"><a href="#annotated-cell-33-7" aria-label="7"></a>                 <span class="at">binwidth =</span> <span class="fl">0.02</span>, <span class="at">boundary =</span> <span class="dv">0</span>,</span>
+<span id="annotated-cell-33-8"><a href="#annotated-cell-33-8" aria-label="8"></a>                 <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="8">8</button><span id="annotated-cell-33-9" class="code-annotation-target"><a href="#annotated-cell-33-9" aria-label="9"></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> f_Z, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="annotated-cell-33-10"><a href="#annotated-cell-33-10" aria-label="10"></a>                <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-33" data-target-annotation="9">9</button><span id="annotated-cell-33-11" class="code-annotation-target"><a href="#annotated-cell-33-11" aria-label="11"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">"Simulated Z = XY"</span>,</span>
+<span id="annotated-cell-33-12"><a href="#annotated-cell-33-12" aria-label="12"></a>       <span class="at">x =</span> <span class="st">"z"</span>, <span class="at">y =</span> <span class="st">"Density"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-33" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-33" data-code-lines="1,2" data-code-annotation="6">For reference, the pdf of <span class="math inline">\(Z\)</span>: <span class="math inline">\(f_Z(z) = \frac85\left(z + \frac12\right)\)</span> for <span class="math inline">\(0 &lt; z &lt; \frac12\)</span>, and <span class="math inline">\(\frac{16}{5}(1 - z)\)</span> for <span class="math inline">\(\frac12 \leq z &lt; 1\)</span>. <code>if_else()</code> picks the piece.</span>
+</dd>
+<dt data-target-cell="annotated-cell-33" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-33" data-code-lines="5,6,7,8" data-code-annotation="7">Histogram of the simulated values of <span class="math inline">\(Z\)</span>, scaled like a pdf.</span>
+</dd>
+<dt data-target-cell="annotated-cell-33" data-target-annotation="8">8</dt>
+<dd>
+<span data-code-cell="annotated-cell-33" data-code-lines="9,10" data-code-annotation="8">The pdf of <span class="math inline">\(Z\)</span> in red. The histogram follows it.</span>
+</dd>
+<dt data-target-cell="annotated-cell-33" data-target-annotation="9">9</dt>
+<dd>
+<span data-code-cell="annotated-cell-33" data-code-lines="11,12" data-code-annotation="9">Add a subtitle and axis labels.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-41-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1670,7 +2269,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="callout callout-important no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Do this problem at home for extra practice. I’ll add the solution to the annotated notes!</p>
+<p>Do this problem at home for extra practice! Try it first, then check the solution.</p>
 </div>
 </div>
 </div>
@@ -1684,6 +2283,12 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <p>Solve the following integral: <span class="math inline">\(\displaystyle\int_{2}^{3}\displaystyle\int_{0}^{1} xy dydx\)</span></p>
 </div>
 </div>
+</div><div class="column" style="width:70%;">
+<p>Work:</p>
+<p><span class="math display">\[\begin{aligned}
+\int_{2}^{3}\int_{0}^{1} xy \, dy\,dx &amp;= \int_{2}^{3} x \left[\frac{y^2}{2}\right]_{0}^{1} dx = \int_{2}^{3} \frac{x}{2}\, dx \\
+&amp;= \left[\frac{x^2}{4}\right]_{2}^{3} = \frac{9}{4} - \frac{4}{4} = \frac54
+\end{aligned}\]</span></p>
 </div></div>
 </section>
 <section id="double-integrals-mini-lesson-23" class="slide level2">
@@ -1691,7 +2296,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="callout callout-important no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Do this problem at home for extra practice. I’ll add the solution to the annotated notes!</p>
+<p>Do this problem at home for extra practice! Try it first, then check the solution.</p>
 </div>
 </div>
 </div>
@@ -1705,6 +2310,12 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <p>Solve the following integral: <span class="math inline">\(\displaystyle\int_{2}^{3}\displaystyle\int_{0}^{1} (x+y) dydx\)</span></p>
 </div>
 </div>
+</div><div class="column" style="width:70%;">
+<p>Work:</p>
+<p><span class="math display">\[\begin{aligned}
+\int_{2}^{3}\int_{0}^{1} (x+y) \, dy\,dx &amp;= \int_{2}^{3} \left[xy + \frac{y^2}{2}\right]_{0}^{1} dx = \int_{2}^{3} \left(x + \frac12\right) dx \\
+&amp;= \left[\frac{x^2}{2} + \frac{x}{2}\right]_{2}^{3} = (4.5 + 1.5) - (2 + 1) = 3
+\end{aligned}\]</span></p>
 </div></div>
 </section>
 <section id="double-integrals-mini-lesson-33" class="slide level2">
@@ -1712,7 +2323,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="callout callout-important no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Do this problem at home for extra practice. I’ll add the solution to the annotated notes!</p>
+<p>Do this problem at home for extra practice! Try it first, then check the solution.</p>
 </div>
 </div>
 </div>
@@ -1726,6 +2337,12 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <p>Solve the following integral: <span class="math inline">\(\displaystyle\int_{2}^{3}\displaystyle\int_{0}^{1} e^{x+y} dydx\)</span></p>
 </div>
 </div>
+</div><div class="column" style="width:70%;">
+<p>Work: <span class="math inline">\(e^{x+y} = e^x e^y\)</span>, so the integral splits into two single integrals</p>
+<p><span class="math display">\[\begin{aligned}
+\int_{2}^{3}\int_{0}^{1} e^{x+y} \, dy\,dx &amp;= \int_{2}^{3} e^x \left[e^y\right]_{0}^{1} dx = (e - 1)\int_{2}^{3} e^x \, dx \\
+&amp;= (e - 1)\left(e^3 - e^2\right) \approx 21.8
+\end{aligned}\]</span></p>
 </div></div>
 
 

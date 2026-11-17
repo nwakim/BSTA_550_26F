@@ -30076,7 +30076,7 @@
     "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#new-r-functions-in-this-lesson",
     "title": "Lesson 15: Joint distributions",
     "section": "New R functions in this lesson",
-    "text": "New R functions in this lesson\n\n\n\n\n\n\n\n\nFunction\nWhat it does\nFirst used\n\n\n\n\nfirst(), last()\nThe first or last value in each group\nExample 1\n\n\n&\n“And”: TRUE only when both conditions are TRUE\nExample 1, part 5\n\n\npivot_wider()\nSpreads one column’s values into separate columns, to make a table\nExample 1, part 5\n\n\nslice_sample()\nDraws whole rows from a table; weight_by makes some rows more likely\n2D grid sampling\n\n\nabs()\nAbsolute value: \\(\\lvert x \\rvert\\)\nExample 3\n\n\npmax(), pmin()\nThe larger or smaller value in each row of two columns\nExample 3\n\n\nif_else()\nPicks one of two values, depending on a condition\nExample 6\n\n\n\n\nAlso new: expand_grid() with a table inside (Example 1, part 5); in plot code, coord_equal() and scale_color_manual()"
+    "text": "New R functions in this lesson\n\n\n\n\n\n\n\n\nFunction\nWhat it does\nFirst used\n\n\n\n\nfirst(), last()\nThe first or last value in each group\nExample 1\n\n\npivot_wider()\nSpreads one column’s values into separate columns, to make a table\nExample 1, part 5\n\n\nslice_sample()\nDraws whole rows from a table; weight_by makes some rows more likely\n2D grid sampling\n\n\npmax(), pmin()\nThe larger or smaller value in each row of two columns\nExample 3"
   },
   {
     "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-of-a-joint-pdf-with-a-transformation-15",

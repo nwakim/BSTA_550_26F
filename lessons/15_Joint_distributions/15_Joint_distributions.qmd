@@ -92,20 +92,6 @@ draw_pdf_volume <- function(f, x_vals, y_vals, domain_corners,
 }
 ```
 
-## New R functions in this lesson
-
-| Function | What it does | First used |
-|------|--------------------------------|------|
-| `first()`, `last()` | The first or last value in each group | Example 1 |
-| `&` | "And": `TRUE` only when both conditions are `TRUE` | Example 1, part 5 |
-| `pivot_wider()` | Spreads one column's values into separate columns, to make a table | Example 1, part 5 |
-| `slice_sample()` | Draws whole rows from a table; `weight_by` makes some rows more likely | 2D grid sampling |
-| `abs()` | Absolute value: $\lvert x \rvert$ | Example 3 |
-| `pmax()`, `pmin()` | The larger or smaller value in **each row** of two columns | Example 3 |
-| `if_else()` | Picks one of two values, depending on a condition | Example 6 |
-
-- Also new: `expand_grid()` with a table inside (Example 1, part 5); in plot code, `coord_equal()` and `scale_color_manual()`
-
 # Learning Objectives
 
 1.  Define **joint and marginal** distributions (pmf's, pdf's, and CDF's) for discrete and continuous random variables
@@ -121,6 +107,16 @@ draw_pdf_volume <- function(f, x_vals, y_vals, domain_corners,
 ## Where are we?
 
 ![](../img_slides/course_map.png){fig-align="center"}
+
+## New R functions in this lesson
+
+| Function | What it does | First used |
+|------|--------------------------------|------|
+| `first()`, `last()` | The first or last value in each group | Example 1 |
+| `pivot_wider()` | Spreads one column's values into separate columns, to make a table | Example 1, part 5 |
+| `slice_sample()` | Draws whole rows from a table; `weight_by` makes some rows more likely | 2D grid sampling |
+| `pmax()`, `pmin()` | The larger or smaller value in **each row** of two columns | Example 3 |
+
 
 # Learning Objectives
 
@@ -1349,6 +1345,8 @@ For reference, the exact answers are $\mathbb{E}[X] = \frac12$ and $\mathbb{E}[Y
 - Practice at home: Examples 3 (part 3), 5, and 6 are in the reference slides at the end
 
 # Some more reference slides
+
+<!-- @claude: can you hide all the reference slides and remove any references to them in earlier slides? -->
 
 ## [Example 5: Joint pdf on a triangle (1/2)]{style="display: none;"}
 

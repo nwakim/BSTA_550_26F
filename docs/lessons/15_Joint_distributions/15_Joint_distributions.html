@@ -212,6 +212,21 @@ Nicky Wakim
 
   <p class="date">2026-11-18</p>
 </section>
+<section>
+<section id="learning-objectives" class="title-slide slide level1 center">
+<h1>Learning Objectives</h1>
+<ol type="1">
+<li><p>Define <strong>joint and marginal</strong> distributions (pmf’s, pdf’s, and CDF’s) for discrete and continuous random variables</p></li>
+<li><p>Find and simulate <strong>joint and marginal</strong> probabilities and pmf’s for discrete random variables</p></li>
+<li><p>Use simulation to approximate <strong>joint and marginal</strong> probabilities and pdf’s for continuous random variables</p></li>
+<li><p>Use simulation to approximate the distribution of a transformation of two random variables</p></li>
+<li><p>Use simulation to approximate expected values from a joint distribution</p></li>
+</ol>
+</section>
+<section id="where-are-we" class="slide level2">
+<h2>Where are we?</h2>
+
+<img data-src="../img_slides/course_map.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="new-r-functions-in-this-lesson" class="slide level2">
 <h2>New R functions in this lesson</h2>
 <table class="caption-top">
@@ -234,56 +249,23 @@ Nicky Wakim
 <td>Example 1</td>
 </tr>
 <tr class="even">
-<td><code>&amp;</code></td>
-<td>“And”: <code>TRUE</code> only when both conditions are <code>TRUE</code></td>
-<td>Example 1, part 5</td>
-</tr>
-<tr class="odd">
 <td><code>pivot_wider()</code></td>
 <td>Spreads one column’s values into separate columns, to make a table</td>
 <td>Example 1, part 5</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>slice_sample()</code></td>
 <td>Draws whole rows from a table; <code>weight_by</code> makes some rows more likely</td>
 <td>2D grid sampling</td>
-</tr>
-<tr class="odd">
-<td><code>abs()</code></td>
-<td>Absolute value: <span class="math inline">\(\lvert x \rvert\)</span></td>
-<td>Example 3</td>
 </tr>
 <tr class="even">
 <td><code>pmax()</code>, <code>pmin()</code></td>
 <td>The larger or smaller value in <strong>each row</strong> of two columns</td>
 <td>Example 3</td>
 </tr>
-<tr class="odd">
-<td><code>if_else()</code></td>
-<td>Picks one of two values, depending on a condition</td>
-<td>Example 6</td>
-</tr>
 </tbody>
 </table>
-<ul>
-<li>Also new: <code>expand_grid()</code> with a table inside (Example 1, part 5); in plot code, <code>coord_equal()</code> and <code>scale_color_manual()</code></li>
-</ul>
-</section>
-<section>
-<section id="learning-objectives" class="title-slide slide level1 center">
-<h1>Learning Objectives</h1>
-<ol type="1">
-<li><p>Define <strong>joint and marginal</strong> distributions (pmf’s, pdf’s, and CDF’s) for discrete and continuous random variables</p></li>
-<li><p>Find and simulate <strong>joint and marginal</strong> probabilities and pmf’s for discrete random variables</p></li>
-<li><p>Use simulation to approximate <strong>joint and marginal</strong> probabilities and pdf’s for continuous random variables</p></li>
-<li><p>Use simulation to approximate the distribution of a transformation of two random variables</p></li>
-<li><p>Use simulation to approximate expected values from a joint distribution</p></li>
-</ol>
-</section>
-<section id="where-are-we" class="slide level2">
-<h2>Where are we?</h2>
-
-<img data-src="../img_slides/course_map.png" class="quarto-figure quarto-figure-center r-stretch"></section></section>
+</section></section>
 <section>
 <section id="learning-objectives-1" class="title-slide slide level1 center">
 <h1>Learning Objectives</h1>
@@ -1685,7 +1667,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <section>
 <section id="some-more-reference-slides" class="title-slide slide level1 center">
 <h1>Some more reference slides</h1>
-
+<!-- @claude: can you hide all the reference slides and remove any references to them in earlier slides? -->
 </section>
 <section id="example-5-joint-pdf-on-a-triangle-12" class="slide level2">
 <h2><span style="display: none;">Example 5: Joint pdf on a triangle (1/2)</span></h2>

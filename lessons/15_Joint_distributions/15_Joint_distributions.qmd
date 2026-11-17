@@ -645,80 +645,6 @@ ggplot(ex2_sims, aes(x = y)) + # <1>
 :::
 :::::
 
-## [Example 3: Joint pdf on a triangle (1/2)]{style="display: none;"}
-
-::: {.callout-important appearance="simple" icon="false"}
-Do this problem at home for extra practice. I'll add the solution to the annotated notes!
-:::
-
-::::::: columns
-:::::: {.column width="30%"}
-::::: example
-::: ex-title
-Example 3: Joint pdf on a triangle
-:::
-
-::: ex-cont
-Let $f_{X,Y}(x,y)= 2 e^{-(x+y)}$, for $0 \leq x \leq y$.
-
-1.  Use simulation to look at the marginal distributions of $X$ and $Y$.
-:::
-:::::
-::::::
-
-:::::: {.column width="30%"}
-```{r}
-#| echo: false
-#| fig-width: 6
-#| fig-height: 5.5
-
-domain_3 <- ggplot() +
-  annotate("polygon", x = c(0, 0, 4), y = c(0, 4, 4),
-           fill = "#29abe0", alpha = 0.15) +
-  scale_x_continuous(breaks = 0:4, limits = c(0, 4)) +
-  scale_y_continuous(breaks = 0:4, limits = c(0, 4)) +
-  labs(x = "x", y = "y", subtitle = "(keeps going up and right)")
-domain_3
-```
-::::::
-
-:::::: {.column width="40%"}
-- Hint: Example 6 simulates this same joint pdf. The grid only needs to go up to about 10, because $f_{X,Y}(x,y)$ is almost 0 past there
-::::::
-:::::::
-
-## [Example 3: Joint pdf on a triangle (2/2)]{style="display: none;"}
-
-::: {.callout-important appearance="simple" icon="false"}
-Do this problem at home for extra practice. I'll add the solution to the annotated notes!
-:::
-
-::::::: columns
-:::::: {.column width="30%"}
-::::: example
-::: ex-title
-Example 3: Joint pdf on a triangle
-:::
-
-::: ex-cont
-Let $f_{X,Y}(x,y)= 2 e^{-(x+y)}$, for $0 \leq x \leq y$.
-
-2.  Approximate $\mathbb{P}(Y < 3)$ with simulation.
-:::
-:::::
-::::::
-
-:::::: {.column width="30%"}
-```{r}
-#| echo: false
-#| fig-width: 6
-#| fig-height: 5.5
-
-domain_3
-```
-::::::
-:::::::
-
 # Learning Objectives
 
 1.  Define **joint and marginal** distributions (pmf's, pdf's, and CDF's) for discrete and continuous random variables
@@ -753,13 +679,13 @@ domain_3
 
 -   Rewriting an event about $M$ as a region of $(x, y)$ points checks the simulation, and gives an exact answer when the density is constant (area $\times$ height)
 
-## [Example of a joint pdf with a transformation (1/5)]{style="display: none;"}
+## [Example of a joint pdf with a transformation (1/4)]{style="display: none;"}
 
 ::::::: columns
 :::::: {.column width="30%"}
 ::::: example
 ::: ex-title
-Example 4: Constant density on a square
+Example 3: Constant density on a square
 :::
 
 ::: ex-cont
@@ -776,19 +702,19 @@ Let $X$ and $Y$ have constant density on the square $0 \leq X \leq 4, 0 \leq Y \
 #| fig-width: 6
 #| fig-height: 5.5
 
-domain_4 <- ggplot() +
+domain_square <- ggplot() +
   annotate("rect", xmin = 0, xmax = 4, ymin = 0, ymax = 4,
            fill = "#29abe0", alpha = 0.15) +
   scale_x_continuous(breaks = c(0, 2, 4), limits = c(0, 4)) +
   scale_y_continuous(breaks = c(0, 2, 4), limits = c(0, 4)) +
   labs(x = "x", y = "y")
-domain_4
+domain_square
 ```
 
 ::::::
 :::::::
 
-## [Example of a joint pdf with a transformation (2/5): simulate]{style="display: none;"}
+## [Example of a joint pdf with a transformation (2/4): simulate]{style="display: none;"}
 
 :::: example
 ::: ex-cont
@@ -810,7 +736,7 @@ ex4_sims |> # <3>
 ```
 
 1.  One row per simulation.
-2.  Constant density on the square means every point is equally likely. Picking `x` and `y` each with `runif()` does this, so we don't need a grid. (Lesson 16 explains why this works here, and why it does *not* work for Examples 2 and 3.)
+2.  Constant density on the square means every point is equally likely. Picking `x` and `y` each with `runif()` does this, so we don't need a grid. (Lesson 16 explains why this works here, and why it does *not* work for Examples 2 and 4.)
 3.  `abs()` is the absolute value. The proportion of simulations with $|X - Y| < 2$ approximates the probability.
 
 :::: proof1
@@ -845,13 +771,13 @@ ex4_sims |>
 :::
 :::::::
 
-## [Example of a joint pdf with a transformation (3/5)]{style="display: none;"}
+## [Example of a joint pdf with a transformation (3/4)]{style="display: none;"}
 
 ::::::: columns
 :::::: {.column width="30%"}
 ::::: example
 ::: ex-title
-Example 4: Constant density on a square
+Example 3: Constant density on a square
 :::
 
 ::: ex-cont
@@ -868,13 +794,13 @@ Let $X$ and $Y$ have constant density on the square $0 \leq X \leq 4, 0 \leq Y \
 #| fig-width: 6
 #| fig-height: 5.5
 
-domain_4
+domain_square
 ```
 
 ::::::
 :::::::
 
-## [Example of a joint pdf with a transformation (4/5): simulate]{style="display: none;"}
+## [Example of a joint pdf with a transformation (4/4): simulate]{style="display: none;"}
 
 :::: example
 ::: ex-cont
@@ -929,82 +855,6 @@ ggplot(ex4_sims, aes(x = m)) + # <4>
 :::
 :::::::
 
-## [Example of a joint pdf with a transformation (5/5)]{style="display: none;"}
-
-::::::: columns
-:::::: {.column width="30%"}
-::::: example
-::: ex-title
-Example 4: Constant density on a square
-:::
-
-::: ex-cont
-Let $X$ and $Y$ have constant density on the square $0 \leq X \leq 4, 0 \leq Y \leq 4$.
-
-3.  Let $Z = \min(X,Y)$. Find $\mathbb{P}(Z \leq 2)$ using areas. Check it with simulation, and look at the distribution of $Z$.
-:::
-:::::
-::::::
-
-:::::: {.column width="30%"}
-```{r}
-#| echo: false
-#| fig-width: 6
-#| fig-height: 5.5
-
-domain_4
-```
-
-::::::
-
-:::::: {.column width="40%"}
-::: {.callout-important appearance="simple" icon="false"}
-Do this problem at home for extra practice. I'll add the solution to the annotated notes!
-:::
-
-- Hint: start from the code for part 2, and use `pmin()` instead of `pmax()`
-::::::
-:::::::
-
-## [Last example *for home*: more complicated transformation]{style="display: none;"}
-
-::: {.callout-important appearance="simple" icon="false"}
-Do this problem at home for extra practice. I'll add the solution to the annotated notes!
-:::
-
-::::::: columns
-:::::: {.column width="30%"}
-::::: example
-::: ex-title
-Example 5: Product of two RVs (for home)
-:::
-
-::: ex-cont
-Let $X$ and $Y$ have joint density $f_{X,Y}(x,y)= \frac85(x+y)$ in the region $0 < x < 1,\ \frac12 < y <1$. Let $Z=XY$.
-
-1.  What are the possible values of $Z$?
-2.  Use 2D grid sampling to simulate $Z$. Approximate $\mathbb{P}(Z \leq \frac14)$ and make a histogram of $Z$.
-:::
-:::::
-::::::
-
-:::::: {.column width="30%"}
-```{r}
-#| echo: false
-#| fig-width: 6
-#| fig-height: 5.5
-
-ggplot() +
-  annotate("rect", xmin = 0, xmax = 1, ymin = 0.5, ymax = 1,
-           fill = "#29abe0", alpha = 0.15) +
-  scale_x_continuous(breaks = c(0, 0.5, 1), limits = c(0, 1)) +
-  scale_y_continuous(breaks = c(0, 0.5, 1), limits = c(0, 1)) +
-  labs(x = "x", y = "y")
-```
-
-::::::
-:::::::
-
 # Learning Objectives
 
 1.  Define **joint and marginal** distributions (pmf's, pdf's, and CDF's) for discrete and continuous random variables
@@ -1036,13 +886,13 @@ You can do the same for $\mathbb{E}[Y]$!
 
 -   With simulation, there is a third option: simulate pairs $(x, y)$, then `mean(x)` approximates $\mathbb{E}[X]$. No integral needed!
 
-## [Example 6: Expected value from a joint pdf (1/2)]{style="display: none;"}
+## [Example 4: Expected value from a joint pdf (1/2)]{style="display: none;"}
 
 ::::::: columns
 :::::: {.column width="30%"}
 ::::: example
 ::: ex-title
-Example 6: Expected value from a joint pdf
+Example 4: Expected value from a joint pdf
 :::
 
 ::: ex-cont
@@ -1057,18 +907,24 @@ Let $f_{X,Y}(x,y)= 2e^{-(x+y)}$, for $0 \leq x \leq y$. Approximate $\mathbb{E}[
 #| fig-width: 6
 #| fig-height: 5.5
 
-domain_3
+domain_triangle <- ggplot() +
+  annotate("polygon", x = c(0, 0, 4), y = c(0, 4, 4),
+           fill = "#29abe0", alpha = 0.15) +
+  scale_x_continuous(breaks = 0:4, limits = c(0, 4)) +
+  scale_y_continuous(breaks = 0:4, limits = c(0, 4)) +
+  labs(x = "x", y = "y", subtitle = "(keeps going up and right)")
+domain_triangle
 ```
 ::::::
 
 :::::: {.column width="40%"}
-- Same joint pdf as Example 3
+- Same joint pdf as Example 5 (for home, in the reference slides)
 - Possible values: $0 \leq x \leq y$, with no upper limit
   - But $f_{X,Y}(x,y) = 2e^{-(x+y)}$ is almost 0 once $y$ is past 10, so our grid can stop at 10
 ::::::
 :::::::
 
-## [Example 6: Expected value from a joint pdf (2/2): simulate]{style="display: none;"}
+## [Example 4: Expected value from a joint pdf (2/2): simulate]{style="display: none;"}
 
 :::: example
 ::: ex-cont
@@ -1136,8 +992,153 @@ For reference, the exact answers are $\mathbb{E}[X] = \frac12$ and $\mathbb{E}[Y
 
 - The [**joint distribution**]{style="color:#E25D3B;"} describes $X$ and $Y$ together; a [**marginal distribution**]{style="color:#E25D3B;"} describes one of them alone
 - With simulation: joint probabilities use both columns, marginals use one column, and transformations add a new column with `mutate()`
+- Practice at home: Examples 3 (part 3), 5, and 6 are in the reference slides at the end
 
 # Some more reference slides
+
+## [Example 5: Joint pdf on a triangle (1/2)]{style="display: none;"}
+
+::: {.callout-important appearance="simple" icon="false"}
+Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+:::
+
+::::::: columns
+:::::: {.column width="30%"}
+::::: example
+::: ex-title
+Example 5: Joint pdf on a triangle (for home)
+:::
+
+::: ex-cont
+Let $f_{X,Y}(x,y)= 2 e^{-(x+y)}$, for $0 \leq x \leq y$.
+
+1.  Use simulation to look at the marginal distributions of $X$ and $Y$.
+:::
+:::::
+::::::
+
+:::::: {.column width="30%"}
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 5.5
+
+domain_triangle
+```
+::::::
+
+:::::: {.column width="40%"}
+- Hint: Example 4 simulates this same joint pdf. The grid only needs to go up to about 10, because $f_{X,Y}(x,y)$ is almost 0 past there
+::::::
+:::::::
+
+## [Example 5: Joint pdf on a triangle (2/2)]{style="display: none;"}
+
+::: {.callout-important appearance="simple" icon="false"}
+Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+:::
+
+::::::: columns
+:::::: {.column width="30%"}
+::::: example
+::: ex-title
+Example 5: Joint pdf on a triangle (for home)
+:::
+
+::: ex-cont
+Let $f_{X,Y}(x,y)= 2 e^{-(x+y)}$, for $0 \leq x \leq y$.
+
+2.  Approximate $\mathbb{P}(Y < 3)$ with simulation.
+:::
+:::::
+::::::
+
+:::::: {.column width="30%"}
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 5.5
+
+domain_triangle
+```
+::::::
+:::::::
+
+## [Example of a joint pdf with a transformation: part 3 for home]{style="display: none;"}
+
+::::::: columns
+:::::: {.column width="30%"}
+::::: example
+::: ex-title
+Example 3: Constant density on a square (for home)
+:::
+
+::: ex-cont
+Let $X$ and $Y$ have constant density on the square $0 \leq X \leq 4, 0 \leq Y \leq 4$.
+
+3.  Let $Z = \min(X,Y)$. Find $\mathbb{P}(Z \leq 2)$ using areas. Check it with simulation, and look at the distribution of $Z$.
+:::
+:::::
+::::::
+
+:::::: {.column width="30%"}
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 5.5
+
+domain_square
+```
+
+::::::
+
+:::::: {.column width="40%"}
+::: {.callout-important appearance="simple" icon="false"}
+Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+:::
+
+- Hint: start from the code for part 2, and use `pmin()` instead of `pmax()`
+::::::
+:::::::
+
+## [Last example *for home*: more complicated transformation]{style="display: none;"}
+
+::: {.callout-important appearance="simple" icon="false"}
+Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+:::
+
+::::::: columns
+:::::: {.column width="30%"}
+::::: example
+::: ex-title
+Example 6: Product of two RVs (for home)
+:::
+
+::: ex-cont
+Let $X$ and $Y$ have joint density $f_{X,Y}(x,y)= \frac85(x+y)$ in the region $0 < x < 1,\ \frac12 < y <1$. Let $Z=XY$.
+
+1.  What are the possible values of $Z$?
+2.  Use 2D grid sampling to simulate $Z$. Approximate $\mathbb{P}(Z \leq \frac14)$ and make a histogram of $Z$.
+:::
+:::::
+::::::
+
+:::::: {.column width="30%"}
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 5.5
+
+ggplot() +
+  annotate("rect", xmin = 0, xmax = 1, ymin = 0.5, ymax = 1,
+           fill = "#29abe0", alpha = 0.15) +
+  scale_x_continuous(breaks = c(0, 0.5, 1), limits = c(0, 1)) +
+  scale_y_continuous(breaks = c(0, 0.5, 1), limits = c(0, 1)) +
+  labs(x = "x", y = "y")
+```
+
+::::::
+:::::::
 
 ## Double Integrals Mini Lesson (1/3)
 

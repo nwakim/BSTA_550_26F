@@ -27941,14 +27941,14 @@
     "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#important-properties-of-joint-distributions",
     "title": "Lesson 15: Joint distributions",
     "section": "Important properties of joint distributions",
-    "text": "Important properties of joint distributions\n\n\n\n\nProperties of joint pmf’s\n\n\n\nA joint pmf \\(p_{X,Y}(x,y)\\) must satisfy the following properties:\n\n\\(0 \\geq p_{X,Y}(x,y) \\leq 1\\) for all \\(x, y\\)\n\n \n\n\\(\\sum \\limits_{\\{all\\ x\\}} \\sum \\limits_{\\{all\\ y\\}} p_{X,Y}(x,y)=1\\)\n\n\n\n\n\n\n\nProperties of joint pdf’s\n\n\n\nA joint pdf \\(f_{X,Y}(x,y)\\) must satisfy the following properties:\n\n\\(f_{X,Y}(x,y)\\geq 0\\) for all \\(x,y\\)\n\n \n\n\\(\\displaystyle\\int_{-\\infty}^{\\infty}\\displaystyle\\int_{-\\infty}^{\\infty} f_{X,Y}(x,y)dxdy=1\\)\n\n\n \n\nRemember that \\(f_{X,Y}(x,y)\\neq \\mathbb{P}(X=x, Y=y)\\)!!!"
+    "text": "Important properties of joint distributions\n\n\n\n\nProperties of joint pmf’s\n\n\n\nA joint pmf \\(p_{X,Y}(x,y)\\) must satisfy the following properties:\n\n\\(0 \\leq p_{X,Y}(x,y) \\leq 1\\) for all \\(x, y\\)\n\n \n\n\\(\\sum \\limits_{\\{all\\ x\\}} \\sum \\limits_{\\{all\\ y\\}} p_{X,Y}(x,y)=1\\)\n\n\n\n\n\n\n\nProperties of joint pdf’s\n\n\n\nA joint pdf \\(f_{X,Y}(x,y)\\) must satisfy the following properties:\n\n\\(f_{X,Y}(x,y)\\geq 0\\) for all \\(x,y\\)\n\n \n\n\\(\\displaystyle\\int_{-\\infty}^{\\infty}\\displaystyle\\int_{-\\infty}^{\\infty} f_{X,Y}(x,y)dxdy=1\\)\n\n\n \n\nRemember that \\(f_{X,Y}(x,y)\\neq \\mathbb{P}(X=x, Y=y)\\)!!!"
   },
   {
     "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#marginal-distributions",
     "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#marginal-distributions",
     "title": "Lesson 15: Joint distributions",
     "section": "Marginal distributions",
-    "text": "Marginal distributions\n\n\n\n\nMarginal pmf’s\n\n\nSuppose \\(X\\) and \\(Y\\) are discrete RV’s, with joint pmf \\(p_{X,Y}(x,y)\\). Then the marginal probability mass functions are\n\\[p_X(x) = \\sum \\limits_{\\{all\\ y\\}} p_{X,Y}(x,y)\\]\n\\[p_Y(y) = \\sum \\limits_{\\{all\\ x\\}} p_{X,Y}(x,y)\\]\n\n\n\n\n\nMarginal pdf’s\n\n\nSuppose \\(X\\) and \\(Y\\) are continuous RV’s, with joint pdf \\(f_{X,Y}(x,y)\\). Then the marginal probability density functions are \\[\\begin{aligned}\nf_X(x)&=& \\int_{-\\infty}^{\\infty} f_{X,Y}(x,y)dy\\\\\nf_Y(y)&=& \\int_{-\\infty}^{\\infty} f_{X,Y}(x,y)dx\n\\end{aligned}\\]"
+    "text": "Marginal distributions\n\n\n\n\nMarginal pmf’s\n\n\nSuppose \\(X\\) and \\(Y\\) are discrete RV’s, with joint pmf \\(p_{X,Y}(x,y)\\). Then the marginal probability mass functions are\n\\[p_X(x) = \\sum \\limits_{\\{all\\ y\\}} p_{X,Y}(x,y)\\]\n\\[p_Y(y) = \\sum \\limits_{\\{all\\ x\\}} p_{X,Y}(x,y)\\]\n\n\n\n\n\nMarginal pdf’s\n\n\nSuppose \\(X\\) and \\(Y\\) are continuous RV’s, with joint pdf \\(f_{X,Y}(x,y)\\). Then the marginal probability density functions are \\[\\begin{aligned}\nf_X(x)&= \\int_{-\\infty}^{\\infty} f_{X,Y}(x,y)dy\\\\\nf_Y(y)&= \\int_{-\\infty}^{\\infty} f_{X,Y}(x,y)dx\n\\end{aligned}\\]"
   },
   {
     "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-cumulative-distribution-functions-cdfs",
@@ -27997,7 +27997,7 @@
     "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#quick-remarks-on-the-joint-and-marginal-cdf",
     "title": "Lesson 15: Joint distributions",
     "section": "Quick remarks on the joint and marginal CDF",
-    "text": "Quick remarks on the joint and marginal CDF\n\n\\(F_X(x)\\): right most columns of the CDF table (where the \\(Y\\) values are largest)\n\\(F_Y(y)\\): bottom row of the table (where X values are largest)\n\\(F_X(x)=\\lim\\limits_{y\\rightarrow\\infty}F_{X, Y}(x,y)\\)\n\\(F_Y(y)=\\lim\\limits_{x\\rightarrow\\infty}F_{X, Y}(x,y)\\)"
+    "text": "Quick remarks on the joint and marginal CDF\n\n\\(F_X(x)\\): rightmost column of the CDF table (where the \\(Y\\) values are largest)\n\\(F_Y(y)\\): bottom row of the table (where the \\(X\\) values are largest)\n\\(F_X(x)=\\lim\\limits_{y\\rightarrow\\infty}F_{X, Y}(x,y)\\)\n\\(F_Y(y)=\\lim\\limits_{x\\rightarrow\\infty}F_{X, Y}(x,y)\\)"
   },
   {
     "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#common-steps-for-joint-pdfs-and-cdfs",
@@ -28067,14 +28067,14 @@
     "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#last-example-for-home-more-complicated-transformation",
     "title": "Lesson 15: Joint distributions",
     "section": "Last example for home: more complicated transformation",
-    "text": "Last example for home: more complicated transformation\n\n\n\n\nExample 5\n\n\nLet \\(X\\) and \\(Y\\) have joint density \\(f_{X,Y}(x,y)= \\frac85(x+y)\\) in the region \\(0 &lt; x &lt; 1,\\ \\frac12 &lt; y &lt;1\\). Find the pdf of the RV \\(Z\\), where \\(Z=XY\\).\n\n\n\njoint3 = tibble(\n  x = seq(0, 1, 0.5), \n  y = seq(0, 1, 0.5)\n)\n\nx_y_plot3 = ggplot(joint3, aes(x = x, y = y)) +\n  labs(x = \"x\", y = \"y\") +\n  scale_x_continuous(breaks = c(0, 0.5, 1)) +\n  scale_y_continuous(breaks = c(0, 0.5, 1)) +\n  theme_bw() +\n  theme(text = element_text(size=30))\nx_y_plot3"
+    "text": "Last example for home: more complicated transformation\n\n\n\nDo this problem at home for extra practice. I’ll add the solution to the annotated notes!\n\n\n\n\n\n\n\nExample 6: Product of two RVs (for home)\n\n\nLet \\(X\\) and \\(Y\\) have joint density \\(f_{X,Y}(x,y)= \\frac85(x+y)\\) in the region \\(0 &lt; x &lt; 1,\\ \\frac12 &lt; y &lt;1\\). Let \\(Z=XY\\).\n\nWhat are the possible values of \\(Z\\)?\nUse 2D grid sampling to simulate \\(Z\\). Approximate \\(\\mathbb{P}(Z \\leq \\frac14)\\) and make a histogram of \\(Z\\)."
   },
   {
     "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#expected-value-of-one-rv-from-joint-pdf",
     "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#expected-value-of-one-rv-from-joint-pdf",
     "title": "Lesson 15: Joint distributions",
     "section": "Expected value of one RV from joint pdf",
-    "text": "Expected value of one RV from joint pdf\nIf you have a joint distribution \\(f_{X,Y}(x,y)\\) and want to calculate \\(\\mathbb{E}[X]\\), you have two options:\n\nFind \\(f_X(x)\\) and use it to calculate \\(\\mathbb{E}[X]\\).\nCalculate \\(\\mathbb{E}[X]\\) using the joint density: \\[\\mathbb{E}[X] = \\int_{-\\infty}^{\\infty}\\int_{-\\infty}^{\\infty}x f_{X,Y}(x,y)dydx.\\]\n\nYou can do the same for \\(\\mathbb{E}[Y]\\)!"
+    "text": "Expected value of one RV from joint pdf\nIf you have a joint distribution \\(f_{X,Y}(x,y)\\) and want to calculate \\(\\mathbb{E}[X]\\), you have two options:\n\nFind \\(f_X(x)\\) and use it to calculate \\(\\mathbb{E}[X]\\).\nCalculate \\(\\mathbb{E}[X]\\) using the joint density: \\[\\mathbb{E}[X] = \\int_{-\\infty}^{\\infty}\\int_{-\\infty}^{\\infty}x f_{X,Y}(x,y)dydx.\\]\n\nYou can do the same for \\(\\mathbb{E}[Y]\\)!\n \n\nWith simulation, there is a third option: simulate pairs \\((x, y)\\), then mean(x) approximates \\(\\mathbb{E}[X]\\). No integral needed!"
   },
   {
     "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#option-1-find-marginal-first",
@@ -28095,21 +28095,21 @@
     "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#double-integrals-mini-lesson-13",
     "title": "Lesson 15: Joint distributions",
     "section": "Double Integrals Mini Lesson (1/3)",
-    "text": "Double Integrals Mini Lesson (1/3)\n\n\n\n\n\n\nDo this problem at home for extra practice. I’ll add the solution to the annotated notes!\n\n\n\n\n\n\n\nMini Lesson Example 1\n\n\nSolve the following integral: \\(\\displaystyle\\int_{2}^{3}\\displaystyle\\int_{0}^{1} xy dydx\\)"
+    "text": "Double Integrals Mini Lesson (1/3)\n\n\n\nDo this problem at home for extra practice. I’ll add the solution to the annotated notes!\n\n\n\n\n\n\n\nMini Lesson Example 1\n\n\nSolve the following integral: \\(\\displaystyle\\int_{2}^{3}\\displaystyle\\int_{0}^{1} xy dydx\\)"
   },
   {
     "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#double-integrals-mini-lesson-23",
     "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#double-integrals-mini-lesson-23",
     "title": "Lesson 15: Joint distributions",
     "section": "Double Integrals Mini Lesson (2/3)",
-    "text": "Double Integrals Mini Lesson (2/3)\n\n\n\n\n\n\nDo this problem at home for extra practice. I’ll add the solution to the annotated notes!\n\n\n\n\n\n\n\nMini Lesson Example 2\n\n\nSolve the following integral: \\(\\displaystyle\\int_{2}^{3}\\displaystyle\\int_{0}^{1} (x+y) dydx\\)"
+    "text": "Double Integrals Mini Lesson (2/3)\n\n\n\nDo this problem at home for extra practice. I’ll add the solution to the annotated notes!\n\n\n\n\n\n\n\nMini Lesson Example 2\n\n\nSolve the following integral: \\(\\displaystyle\\int_{2}^{3}\\displaystyle\\int_{0}^{1} (x+y) dydx\\)"
   },
   {
     "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#double-integrals-mini-lesson-33",
     "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#double-integrals-mini-lesson-33",
     "title": "Lesson 15: Joint distributions",
     "section": "Double Integrals Mini Lesson (3/3)",
-    "text": "Double Integrals Mini Lesson (3/3)\n\n\n\n\n\n\nDo this problem at home for extra practice. I’ll add the solution to the annotated notes!\n\n\n\n\n\n\n\nMini Lesson Example 3\n\n\nSolve the following integral: \\(\\displaystyle\\int_{2}^{3}\\displaystyle\\int_{0}^{1} e^{x+y} dydx\\)"
+    "text": "Double Integrals Mini Lesson (3/3)\n\n\n\nDo this problem at home for extra practice. I’ll add the solution to the annotated notes!\n\n\n\n\n\n\n\nMini Lesson Example 3\n\n\nSolve the following integral: \\(\\displaystyle\\int_{2}^{3}\\displaystyle\\int_{0}^{1} e^{x+y} dydx\\)"
   },
   {
     "objectID": "lessons/11_Variance/11_Variance.html#find-the-mean-and-sd-from-word-problem-13",
@@ -29839,5 +29839,173 @@
     "title": "Key Info",
     "section": "Key Dates",
     "text": "Key Dates\n\nHomework 5 due 11/22 at 11pm"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#where-are-we",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#where-are-we",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Where are we?",
+    "text": "Where are we?"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-17",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-17",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Joint distribution for two discrete random variables (1/7)",
+    "text": "Joint distribution for two discrete random variables (1/7)\n\n\n\n\nExample 1\n\n\nLet \\(X\\) and \\(Y\\) be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.\n\nFind \\(p_{X,Y}(x,y)\\)\nFind \\(\\mathbb{P}(X+Y=3)\\)\nFind \\(\\mathbb{P}(Y = 1)\\)\nFind \\(\\mathbb{P}(Y \\leq 2)\\)\nFind the joint CDF \\(F_{X,Y}(x,y)\\) for the joint pmf \\(p_{X,Y}(x,y)\\)\nFind the marginal CDFs \\(F_{X}(x)\\) and \\(F_{Y}(y)\\)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-27",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-27",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Joint distribution for two discrete random variables (2/7)",
+    "text": "Joint distribution for two discrete random variables (2/7)\n\n\n\n\nExample 1\n\n\nLet \\(X\\) and \\(Y\\) be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.\n\nFind \\(p_{X,Y}(x,y)\\)\nFind \\(\\mathbb{P}(X+Y=3)\\)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-37",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-37",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Joint distribution for two discrete random variables (3/7)",
+    "text": "Joint distribution for two discrete random variables (3/7)\n\n\n\n\nExample 1\n\n\nLet \\(X\\) and \\(Y\\) be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.\n\nFind \\(\\mathbb{P}(Y = 1)\\)\nFind \\(\\mathbb{P}(Y \\leq 2)\\)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-47-simulate",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-47-simulate",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Joint distribution for two discrete random variables (4/7): simulate",
+    "text": "Joint distribution for two discrete random variables (4/7): simulate\n\n\n\nCheck the joint pmf with simulation: draw two balls from the box, many times.\n\n\n\n\n\n\n1set.seed(1111)\n2reps &lt;- 100000\n\n3ex1_sims &lt;- expand_grid(\n    sim = 1:reps,\n    draw = 1:2\n  ) |&gt;\n4  group_by(sim) |&gt;\n5  mutate(ball = sample(1:3, size = n())) |&gt;\n6  summarise(\n    x = first(ball),\n    y = last(ball)\n  )\n\n\n1\n\nSet the random seed once, so we get the same simulation every time.\n\n2\n\nSave the number of simulations as reps, so it is easy to change later.\n\n3\n\nOne row per draw: 2 draws for each of the 100,000 simulations, like in Lesson 2.\n\n4\n\nWork within each simulation separately.\n\n5\n\nn() is 2 here (two draws per simulation). With no replace = TRUE, sample() draws without replacement, so the two balls are different, just like the box.\n\n6\n\nOne row per simulation: first() is the first ball drawn (\\(X\\)) and last() is the second (\\(Y\\)).\n\n\n\n\n\n\n\n\n7ex1_sims |&gt;\n  group_by(x, y) |&gt;\n8  summarise(\n    prob = n() / reps,\n    .groups = \"drop\"\n  )\n\n\n7\n\nOne group for each pair \\((x, y)\\) that showed up in the simulations.\n\n8\n\nn() counts the simulations in each group. Dividing by reps gives relative frequencies: this approximates the joint pmf. .groups = \"drop\" removes the grouping when we are done.\n\n\n\n\n# A tibble: 6 × 3\n      x     y  prob\n  &lt;int&gt; &lt;int&gt; &lt;dbl&gt;\n1     1     2 0.167\n2     1     3 0.166\n3     2     1 0.166\n4     2     3 0.166\n5     3     1 0.168\n6     3     2 0.167\n\n\nPairs like \\((1, 1)\\) never show up,\nso \\(p_{X,Y}(1,1) = 0\\)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-57-simulate",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-57-simulate",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Joint distribution for two discrete random variables (5/7): simulate",
+    "text": "Joint distribution for two discrete random variables (5/7): simulate\n\n\nParts 2 to 4: check \\(\\mathbb{P}(X+Y=3)\\), \\(\\mathbb{P}(Y = 1)\\), and \\(\\mathbb{P}(Y \\leq 2)\\) with simulation.\n\n\n\n\n\n1ex1_sims |&gt;\n  summarise(\n    prob_sum_3 = mean(x + y == 3),\n2    prob_Y_1 = mean(y == 1),\n    prob_Y_le_2 = mean(y &lt;= 2)\n  )\n\n\n1\n\nReuse the 100,000 simulated pairs. mean() of a TRUE/FALSE condition is the proportion of simulations where it is TRUE: this approximates \\(\\mathbb{P}(X+Y=3)\\).\n\n2\n\nMarginal probabilities only use the y column.\n\n\n\n\n# A tibble: 1 × 3\n  prob_sum_3 prob_Y_1 prob_Y_le_2\n       &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;\n1      0.333    0.334       0.668\n\n\n\n\n\nFor reference, the exact answers are \\(p_{X,Y}(x,y) = \\frac16 \\approx 0.1667\\) for each possible pair, \\(\\mathbb{P}(X+Y=3) = \\mathbb{P}(Y=1) = \\frac13\\), and \\(\\mathbb{P}(Y \\leq 2) = \\frac23\\)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-67",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-67",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Joint distribution for two discrete random variables (6/7)",
+    "text": "Joint distribution for two discrete random variables (6/7)\n\n\n\n\nExample 1\n\n\nLet \\(X\\) and \\(Y\\) be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.\n\nFind the joint CDF \\(F_{X,Y}(x,y)\\) for the joint pmf \\(p_{X,Y}(x,y)\\)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-77",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#joint-distribution-for-two-discrete-random-variables-77",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Joint distribution for two discrete random variables (7/7)",
+    "text": "Joint distribution for two discrete random variables (7/7)\n\n\n\n\nExample 1\n\n\nLet \\(X\\) and \\(Y\\) be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.\n\nFind the marginal CDFs \\(F_{X}(x)\\) and \\(F_{Y}(y)\\)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#our-main-tool-for-joint-distributions-simulate-pairs",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#our-main-tool-for-joint-distributions-simulate-pairs",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Our main tool for joint distributions: simulate pairs",
+    "text": "Our main tool for joint distributions: simulate pairs\n\n\nThe simulation method for joint distributions\n\n\nTo learn about \\(X\\) and \\(Y\\) with joint pdf \\(f_{X,Y}(x,y)\\):\n\nPossible values: Draw the region where \\(f_{X,Y}(x,y) &gt; 0\\)\nSimulate: Simulate many pairs \\((x, y)\\): one row per simulation, with an x column and a y column\nSummarize:\n\nJoint probabilities: mean(x &lt;= 1 & y &lt;= 0.5) approximates \\(\\mathbb{P}(X \\leq 1, Y \\leq 0.5)\\)\nMarginal distribution of \\(X\\): use only the x column (histogram of x)\n\n\n\n\n \n\nSame simulation method as Lesson 14, now with two columns\nMost joint pdfs have no r*() function, so we use grid sampling from Lesson 14, in 2D (next slide)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#grid-sampling-2d",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#grid-sampling-2d",
+    "title": "Lesson 15: Joint distributions",
+    "section": "2D grid sampling: the steps",
+    "text": "2D grid sampling: the steps\n\nSame idea as Lesson 14: a box of tickets, where tickets in taller parts of the pdf are more likely to be drawn\nNow each ticket is a point \\((x, y)\\)\n\n\n\n\nFind the possible values of \\((X, Y)\\): the region where \\(f_{X,Y}(x,y) &gt; 0\\)\nMake a grid: many evenly spaced points that cover the region, made with expand_grid(). Each point is a ticket in the box\nFind the joint pdf’s height at each ticket\nDraw many tickets with replacement: slice_sample() draws whole rows (points). Each draw is one simulated pair \\((x, y)\\)\n\nEach ticket has a chance of being drawn proportional to its height\n\nCheck: the simulated points should pile up where the pdf is tall\n\n\n\n\n\n\n\n\n\n\n\nBigger dots: taller pdf, so more likely to be drawn. A real grid has about 1,000,000 tickets"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-2-joint-pdf-13",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-2-joint-pdf-13",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Example 2: Joint pdf (1/3)",
+    "text": "Example 2: Joint pdf (1/3)\n\n\n\n\nExample 2: Joint pdf on a rectangle\n\n\nLet \\(f_{X,Y}(x,y)= \\frac32 y^2\\), for \\(0 \\leq x \\leq 2, \\ 0 \\leq y \\leq 1\\).\n\nShade the event \\(\\{0 \\leq X \\leq 1, 0 \\leq Y \\leq \\frac12\\}\\). Approximate its probability with simulation.\nUse simulation to look at the marginal distributions of \\(X\\) and \\(Y\\)."
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-2-joint-pdf-23-simulate",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-2-joint-pdf-23-simulate",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Example 2: Joint pdf (2/3): simulate",
+    "text": "Example 2: Joint pdf (2/3): simulate\n\n\n\nShade the event \\(\\{0 \\leq X \\leq 1, 0 \\leq Y \\leq \\frac12\\}\\). Approximate its probability with simulation.\n\n\n\n\n\n\n1ex2_grid &lt;- expand_grid(\n    x = seq(0, 2, length.out = 1001),\n    y = seq(0, 1, length.out = 1001)\n  ) |&gt;\n2  mutate(height = 3/2 * y^2)\n\n3ex2_sims &lt;- ex2_grid |&gt;\n  slice_sample(\n    n = reps,\n4    weight_by = height,\n    replace = TRUE\n  )\n\n5ex2_sims |&gt;\n  summarise(prob = mean(x &lt;= 1 & y &lt;= 0.5))\n\n\n1\n\nSteps 1 and 2: expand_grid() makes every combination of 1,001 values of \\(x\\) and 1,001 values of \\(y\\): about 1 million tickets covering the rectangle.\n\n2\n\nStep 3: the joint pdf’s height at each ticket.\n\n3\n\nStep 4: slice_sample() draws reps rows from the grid, with replacement. Each row drawn is one simulated pair \\((x, y)\\).\n\n4\n\nweight_by gives each ticket the pdf’s height, so taller tickets are more likely to be drawn. It works like prob in sample().\n\n5\n\n& means “and”: both conditions must be TRUE. The proportion approximates \\(\\mathbb{P}(0 \\leq X \\leq 1, 0 \\leq Y \\leq \\frac12)\\).\n\n\n\n\n# A tibble: 1 × 1\n    prob\n   &lt;dbl&gt;\n1 0.0623\n\n\n\n\n\nFor reference, the exact answer is \\(\\mathbb{P}(0 \\leq X \\leq 1, 0 \\leq Y \\leq \\frac12) = \\frac{1}{16} = 0.0625\\)\n\n\n \n\nThe volume under \\(f_{X,Y}(x,y)\\) over the event is the probability (the double integral in the definition)\nThe simulation counts the proportion of points that land in the event instead"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-2-joint-pdf-33-marginals",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-2-joint-pdf-33-marginals",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Example 2: Joint pdf (3/3): marginals",
+    "text": "Example 2: Joint pdf (3/3): marginals\n\n\n\nUse simulation to look at the marginal distributions of \\(X\\) and \\(Y\\).\n\n\n\n\n\n\n\nPlot code\n1ggplot(ex2_sims, aes(x = x)) +\n  geom_histogram(aes(y = after_stat(density)),\n                 binwidth = 0.05, boundary = 0,\n                 color = \"black\", fill = \"lightblue\") +\n2  geom_function(fun = function(x) 1/2 + 0 * x,\n                xlim = c(0, 2),\n                color = \"red\", linewidth = 1.5) +\n3  labs(subtitle = \"Simulated X (the x column only)\",\n       x = \"x\", y = \"Density\")\n\n\n\n1\n\nHistogram of only the x column, scaled like a pdf. Ignoring y gives the marginal distribution of \\(X\\).\n\n2\n\nFor reference, the marginal pdf \\(f_X(x) = \\frac12\\) for \\(0 \\leq x \\leq 2\\), in red. (0 * x keeps the line flat.)\n\n3\n\nAdd a subtitle and axis labels.\n\n\n\n\n\n\n\n\n\n\n\n\n\\(X\\) is flat: Uniform\\([0, 2]\\)\n\n\n\n\nPlot code\n1ggplot(ex2_sims, aes(x = y)) +\n  geom_histogram(aes(y = after_stat(density)),\n                 binwidth = 0.025, boundary = 0,\n                 color = \"black\", fill = \"#E89543\") +\n2  geom_function(fun = function(y) 3 * y^2,\n                xlim = c(0, 1),\n                color = \"red\", linewidth = 1.5) +\n3  labs(subtitle = \"Simulated Y (the y column only)\",\n       x = \"y\", y = \"Density\")\n\n\n\n1\n\nHistogram of only the y column: the marginal distribution of \\(Y\\).\n\n2\n\nFor reference, the marginal pdf \\(f_Y(y) = 3y^2\\) for \\(0 \\leq y \\leq 1\\), in red.\n\n3\n\nAdd a subtitle and axis labels.\n\n\n\n\n\n\n\n\n\n\n\n\n\\(Y\\) piles up near 1, where the joint pdf is tallest"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#recall-simulate-transform-summarize-lesson-14",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#recall-simulate-transform-summarize-lesson-14",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Recall: simulate, transform, summarize (Lesson 14)",
+    "text": "Recall: simulate, transform, summarize (Lesson 14)\n\nLet \\(M\\) be a transformation of \\(X\\) and \\(Y\\): \\(M = g(X, Y)\\)\n\\(M\\) is a random variable, so it has a distribution\nWe use the same simulation method as Lesson 14, now with two columns:\n\n\nPossible values: Find the possible values of \\(M\\) from the region where \\(f_{X,Y}(x, y) &gt; 0\\)\nSimulate: Simulate many pairs \\((x, y)\\)\nTransform: Apply \\(g\\) to every simulated pair: mutate(m = g(x, y))\nSummarize: mean(m &lt;= c) approximates \\(\\mathbb{P}(M \\leq c)\\), and a histogram of m shows its shape\n\n \n\nRewriting an event about \\(M\\) as a region of \\((x, y)\\) points checks the simulation, and gives an exact answer when the density is constant (area \\(\\times\\) height)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-of-a-joint-pdf-with-a-transformation-14",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-of-a-joint-pdf-with-a-transformation-14",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Example of a joint pdf with a transformation (1/4)",
+    "text": "Example of a joint pdf with a transformation (1/4)\n\n\n\n\nExample 3: Constant density on a square\n\n\nLet \\(X\\) and \\(Y\\) have constant density on the square \\(0 \\leq X \\leq 4, 0 \\leq Y \\leq 4\\).\n\nShade the event \\(|X-Y| &lt; 2\\). Find \\(\\mathbb{P}(|X-Y| &lt; 2)\\) using areas, and check it with simulation."
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-of-a-joint-pdf-with-a-transformation-24-simulate",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-of-a-joint-pdf-with-a-transformation-24-simulate",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Example of a joint pdf with a transformation (2/4): simulate",
+    "text": "Example of a joint pdf with a transformation (2/4): simulate\n\n\n\nShade the event \\(|X-Y| &lt; 2\\). Find \\(\\mathbb{P}(|X-Y| &lt; 2)\\) using areas, and check it with simulation.\n\n\n\n\n\n\n1ex4_sims &lt;- tibble(sim = 1:reps) |&gt;\n  mutate(\n2    x = runif(n(), min = 0, max = 4),\n    y = runif(n(), min = 0, max = 4)\n  )\n\n3ex4_sims |&gt;\n  summarise(prob = mean(abs(x - y) &lt; 2))\n\n\n1\n\nOne row per simulation.\n\n2\n\nConstant density on the square means every point is equally likely. Picking x and y each with runif() does this, so we don’t need a grid. (Lesson 16 explains why this works here, and why it does not work for Examples 2 and 4.)\n\n3\n\nabs() is the absolute value. The proportion of simulations with \\(|X - Y| &lt; 2\\) approximates the probability.\n\n\n\n\n# A tibble: 1 × 1\n   prob\n  &lt;dbl&gt;\n1 0.749\n\n\n\n\nFor reference, the exact answer is \\(\\mathbb{P}(|X-Y| &lt; 2) = \\frac{16 - 2 \\cdot 2}{16} = \\frac34 = 0.75\\): the square’s area minus two corner triangles, times the height \\(\\frac{1}{16}\\)\n\n\n\n\n\nPlot code\nex4_sims |&gt;\n4  filter(sim &lt;= 2000) |&gt;\n5  ggplot(aes(x = x, y = y, color = abs(x - y) &lt; 2)) +\n  geom_point(alpha = 0.6, size = 2) +\n6  scale_color_manual(values = c(\"grey60\", \"#29abe0\")) +\n7  coord_equal() +\n8  labs(subtitle = \"First 2,000 simulated points\",\n       x = \"x\", y = \"y\", color = \"|x - y| &lt; 2\")\n\n\n\n4\n\nPlot only the first 2,000 simulations, so the points don’t cover each other.\n\n5\n\nOne point per simulated pair, colored by whether it is in the event.\n\n6\n\nGrey for FALSE, blue for TRUE.\n\n7\n\nMake the square look like a square.\n\n8\n\nAdd a subtitle and labels."
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-of-a-joint-pdf-with-a-transformation-34",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-of-a-joint-pdf-with-a-transformation-34",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Example of a joint pdf with a transformation (3/4)",
+    "text": "Example of a joint pdf with a transformation (3/4)\n\n\n\n\nExample 3: Constant density on a square\n\n\nLet \\(X\\) and \\(Y\\) have constant density on the square \\(0 \\leq X \\leq 4, 0 \\leq Y \\leq 4\\).\n\nLet \\(M = \\max(X,Y)\\). What are the possible values of \\(M\\)? Shade the event \\(M \\leq 2\\) and find \\(\\mathbb{P}(M \\leq 2)\\) using areas."
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-of-a-joint-pdf-with-a-transformation-44-simulate",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-of-a-joint-pdf-with-a-transformation-44-simulate",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Example of a joint pdf with a transformation (4/4): simulate",
+    "text": "Example of a joint pdf with a transformation (4/4): simulate\n\n\n\nLet \\(M = \\max(X,Y)\\). Check \\(\\mathbb{P}(M \\leq 2)\\) with simulation, and look at the distribution of \\(M\\).\n\n\n\n\n\n\n1ex4_sims &lt;- ex4_sims |&gt;\n2  mutate(m = pmax(x, y))\n\n3ex4_sims |&gt;\n  summarise(prob_M = mean(m &lt;= 2))\n\n\n1\n\nReuse the 100,000 simulated pairs from part 1.\n\n2\n\nThe transformation: pmax() takes the larger of x and y in each row. (max() would give one number: the largest value in the whole column!)\n\n3\n\nThe proportion of simulations with \\(M \\leq 2\\) approximates \\(\\mathbb{P}(M \\leq 2)\\).\n\n\n\n\n# A tibble: 1 × 1\n  prob_M\n   &lt;dbl&gt;\n1  0.249\n\n\n\n\nFor reference, the exact answer is \\(\\mathbb{P}(M \\leq 2) = \\mathbb{P}(X \\leq 2, Y \\leq 2) = \\frac{2 \\cdot 2}{16} = \\frac14\\)\n\n\n\n\n\nPlot code\n4ggplot(ex4_sims, aes(x = m)) +\n  geom_histogram(aes(y = after_stat(density)),\n                 binwidth = 0.1, boundary = 0,\n                 color = \"black\", fill = \"lightblue\") +\n5  geom_function(fun = function(m) m / 8,\n                xlim = c(0, 4),\n                color = \"red\", linewidth = 1.5) +\n6  labs(subtitle = \"Simulated M = max(X, Y)\",\n       x = \"m\", y = \"Density\")\n\n\n\n4\n\nHistogram of the simulated values of \\(M\\), scaled like a pdf.\n\n5\n\nFor reference, the pdf of \\(M\\) in red: \\(f_M(m) = \\frac{m}{8}\\) for \\(0 \\leq m \\leq 4\\). The histogram follows it.\n\n6\n\nAdd a subtitle and axis labels.\n\n\n\n\n\n\n\n\n\n\n\n\n\\(X\\) and \\(Y\\) are flat, but \\(M\\) is not: the larger of two values is more likely to be big"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-4-expected-value-from-a-joint-pdf-12",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-4-expected-value-from-a-joint-pdf-12",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Example 4: Expected value from a joint pdf (1/2)",
+    "text": "Example 4: Expected value from a joint pdf (1/2)\n\n\n\n\nExample 4: Expected value from a joint pdf\n\n\nLet \\(f_{X,Y}(x,y)= 2e^{-(x+y)}\\), for \\(0 \\leq x \\leq y\\). Approximate \\(\\mathbb{E}[X]\\) and \\(\\mathbb{E}[Y]\\) with simulation.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSame joint pdf as Example 5 (for home, in the reference slides)\nPossible values: \\(0 \\leq x \\leq y\\), with no upper limit\n\nBut \\(f_{X,Y}(x,y) = 2e^{-(x+y)}\\) is almost 0 once \\(y\\) is past 10, so our grid can stop at 10"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-4-expected-value-from-a-joint-pdf-22-simulate",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-4-expected-value-from-a-joint-pdf-22-simulate",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Example 4: Expected value from a joint pdf (2/2): simulate",
+    "text": "Example 4: Expected value from a joint pdf (2/2): simulate\n\n\nLet \\(f_{X,Y}(x,y)= 2e^{-(x+y)}\\), for \\(0 \\leq x \\leq y\\). Approximate \\(\\mathbb{E}[X]\\) and \\(\\mathbb{E}[Y]\\) with simulation.\n\n\n\n\n\n1ex6_grid &lt;- expand_grid(\n    x = seq(0, 10, length.out = 1001),\n    y = seq(0, 10, length.out = 1001)\n  ) |&gt;\n2  filter(x &lt;= y) |&gt;\n3  mutate(height = 2 * exp(-(x + y)))\n\n4ex6_sims &lt;- ex6_grid |&gt;\n  slice_sample(\n    n = reps,\n    weight_by = height,\n    replace = TRUE\n  )\n\n\n1\n\nMake a grid of tickets from 0 to 10 in both directions.\n\n2\n\nKeep only the possible values, where \\(x \\leq y\\): a triangle.\n\n3\n\nThe joint pdf’s height at each ticket.\n\n4\n\nDraw reps tickets, weighted by height, like Example 2.\n\n\n\n\n\n\n5ex6_sims |&gt;\n  summarise(\n    avg_X = mean(x),\n    avg_Y = mean(y)\n  )\n\n\n5\n\nThe averages of the x and y columns approximate \\(\\mathbb{E}[X]\\) and \\(\\mathbb{E}[Y]\\).\n\n\n\n\n# A tibble: 1 × 2\n  avg_X avg_Y\n  &lt;dbl&gt; &lt;dbl&gt;\n1 0.495  1.50\n\n\n\n\nFor reference, the exact answers are \\(\\mathbb{E}[X] = \\frac12\\) and \\(\\mathbb{E}[Y] = \\frac32\\)\n\n\n \n\nmean(x + y) would approximate \\(\\mathbb{E}[X + Y]\\): transform first, then average"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#summary-of-joint-distributions",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#summary-of-joint-distributions",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Summary of joint distributions",
+    "text": "Summary of joint distributions\n\n\n\n\n\n\n\n\n\nDiscrete \\(X\\) and \\(Y\\)\nContinuous \\(X\\) and \\(Y\\)\n\n\n\n\nJoint distribution\njoint pmf: \\(p_{X,Y}(x,y) = \\mathbb{P}(X=x, Y=y)\\)\njoint pdf \\(f_{X,Y}(x,y)\\): probabilities are volumes (double integrals)\n\n\nMarginal distribution\nsum the joint pmf over the other variable\nintegrate the joint pdf over the other variable\n\n\nSimulate pairs with\nsample(), like the box\nrunif() for constant density; otherwise 2D grid sampling\n\n\nSummarize\ngroup_by(x, y), mean(...)\nmean(...), histogram of one column\n\n\n\n \n\nThe joint distribution describes \\(X\\) and \\(Y\\) together; a marginal distribution describes one of them alone\nWith simulation: joint probabilities use both columns, marginals use one column, and transformations add a new column with mutate()\nPractice at home: Examples 3 (part 3), 5, and 6 are in the reference slides at the end"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-5-joint-pdf-on-a-triangle-12",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-5-joint-pdf-on-a-triangle-12",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Example 5: Joint pdf on a triangle (1/2)",
+    "text": "Example 5: Joint pdf on a triangle (1/2)\n\n\n\nDo this problem at home for extra practice. I’ll add the solution to the annotated notes!\n\n\n\n\n\n\n\nExample 5: Joint pdf on a triangle (for home)\n\n\nLet \\(f_{X,Y}(x,y)= 2 e^{-(x+y)}\\), for \\(0 \\leq x \\leq y\\).\n\nUse simulation to look at the marginal distributions of \\(X\\) and \\(Y\\).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint: Example 4 simulates this same joint pdf. The grid only needs to go up to about 10, because \\(f_{X,Y}(x,y)\\) is almost 0 past there"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-5-joint-pdf-on-a-triangle-22",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-5-joint-pdf-on-a-triangle-22",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Example 5: Joint pdf on a triangle (2/2)",
+    "text": "Example 5: Joint pdf on a triangle (2/2)\n\n\n\nDo this problem at home for extra practice. I’ll add the solution to the annotated notes!\n\n\n\n\n\n\n\nExample 5: Joint pdf on a triangle (for home)\n\n\nLet \\(f_{X,Y}(x,y)= 2 e^{-(x+y)}\\), for \\(0 \\leq x \\leq y\\).\n\nApproximate \\(\\mathbb{P}(Y &lt; 3)\\) with simulation."
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-of-a-joint-pdf-with-a-transformation-part-3-for-home",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-of-a-joint-pdf-with-a-transformation-part-3-for-home",
+    "title": "Lesson 15: Joint distributions",
+    "section": "Example of a joint pdf with a transformation: part 3 for home",
+    "text": "Example of a joint pdf with a transformation: part 3 for home\n\n\n\n\nExample 3: Constant density on a square (for home)\n\n\nLet \\(X\\) and \\(Y\\) have constant density on the square \\(0 \\leq X \\leq 4, 0 \\leq Y \\leq 4\\).\n\nLet \\(Z = \\min(X,Y)\\). Find \\(\\mathbb{P}(Z \\leq 2)\\) using areas. Check it with simulation, and look at the distribution of \\(Z\\).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDo this problem at home for extra practice. I’ll add the solution to the annotated notes!\n\n\n\n\nHint: start from the code for part 2, and use pmin() instead of pmax()"
   }
 ]

@@ -224,7 +224,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, & Y \leq y) = \\
 :::::: {.column width="100%"}
 ::::: example
 ::: ex-title
-Example 1: Two draws without replacement
+Example 1
 :::
 
 ::: ex-cont
@@ -252,7 +252,7 @@ Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, a
 :::::: {.column width="35%"}
 ::::: example
 ::: ex-title
-Example 1: Two draws without replacement
+Example 1
 :::
 
 ::: ex-cont
@@ -273,7 +273,7 @@ Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, a
 :::::: {.column width="35%"}
 ::::: example
 ::: ex-title
-Example 1: Two draws without replacement
+Example 1
 :::
 
 ::: ex-cont
@@ -290,6 +290,7 @@ Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, a
 
 ## [Joint distribution for two discrete random variables (4/7): simulate]{style="display: none;"}
 
+
 :::: example
 ::: ex-cont
 1.  Check the joint pmf with simulation: draw two balls from the box, many times.
@@ -297,7 +298,7 @@ Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, a
 ::::
 
 ::::::: columns
-::::: {.column width="55%"}
+::::: {.column width="54%"}
 ```{r}
 set.seed(1111) # <1>
 reps <- 100000 # <2>
@@ -322,7 +323,10 @@ ex1_sims <- expand_grid( # <3>
 6.  One row per simulation: `first()` is the first ball drawn ($X$) and `last()` is the second ($Y$).
 :::::
 
-::: {.column width="45%"}
+::::: {.column width="2%"}
+:::::
+
+::: {.column width="44%"}
 ```{r}
 ex1_sims |> # <7>
   group_by(x, y) |> # <7>
@@ -335,7 +339,9 @@ ex1_sims |> # <7>
 7.  One group for each pair $(x, y)$ that showed up in the simulations.
 8.  `n()` counts the simulations in each group. Dividing by `reps` gives relative frequencies: this approximates the joint pmf. `.groups = "drop"` removes the grouping when we are done.
 
-- Pairs like $(1, 1)$ never show up, so $p_{X,Y}(1,1) = 0$
+Pairs like $(1, 1)$ never show up, 
+
+so $p_{X,Y}(1,1) = 0$
 :::
 :::::::
 
@@ -377,7 +383,7 @@ For reference, the exact answers are $p_{X,Y}(x,y) = \frac16 \approx 0.1667$ for
 :::::: {.column width="35%"}
 ::::: example
 ::: ex-title
-Example 1: Two draws without replacement
+Example 1
 :::
 
 ::: ex-cont
@@ -396,7 +402,7 @@ Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, a
 :::::: {.column width="35%"}
 ::::: example
 ::: ex-title
-Example 1: Two draws without replacement
+Example 1
 :::
 
 ::: ex-cont

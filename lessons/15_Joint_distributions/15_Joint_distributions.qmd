@@ -595,20 +595,31 @@ To learn about $X$ and $Y$ with joint pdf $f_{X,Y}(x,y)$:
 #| fig-width: 9
 #| fig-height: 7
 
-small_grid_2d <- expand_grid(
-    x = seq(0, 2, by = 0.25),
-    y = seq(0, 1, by = 0.125)
-  ) |>
+x_vals <- seq(0, 2, by = 0.5)
+y_vals <- seq(0, 1, by = 0.25)
+
+small_grid_2d <- expand_grid(x = x_vals, y = y_vals) |>
   mutate(height = 3/2 * y^2)
 
-ggplot(small_grid_2d, aes(x = x, y = y, size = height)) +
-  geom_point(color = "#29abe0") +
-  scale_size_area(max_size = 12) +
-  labs(subtitle = "A small grid for f(x, y) = (3/2) y^2",
-       x = "x", y = "y", size = "Height")
+pdf_heights <- outer(x_vals, y_vals, function(x, y) 3/2 * y^2)
+
+par(mar = c(1, 1, 2.5, 1), cex = 2)
+view_3d <- persp(x_vals, y_vals, pdf_heights,
+                 theta = 35, phi = 25, expand = 0.75,
+                 zlim = c(0, 1.5), col = NA, border = "grey75",
+                 xlab = "x", ylab = "y", zlab = "Height")
+
+stick_bottom <- trans3d(small_grid_2d$x, small_grid_2d$y, 0, view_3d)
+stick_top <- trans3d(small_grid_2d$x, small_grid_2d$y,
+                     small_grid_2d$height, view_3d)
+
+segments(stick_bottom$x, stick_bottom$y, stick_top$x, stick_top$y,
+         col = "#29abe0", lwd = 3)
+points(stick_top, pch = 19, col = "#29abe0", cex = 1)
+title("A small grid for f(x, y) = (3/2) y^2", font.main = 1)
 ```
 
-*Bigger dots: taller pdf, so more likely to be drawn. A real grid has about 1,000,000 tickets*
+*Each stick is a ticket: taller sticks are more likely to be drawn*
 :::
 :::::
 

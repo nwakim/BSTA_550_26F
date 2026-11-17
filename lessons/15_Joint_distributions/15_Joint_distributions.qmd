@@ -66,7 +66,21 @@ draw_pdf_volume <- function(f, x_vals, y_vals, domain_corners,
       edge_top <- f(edge_x, edge_y)
       wall <- trans3d(c(edge_x, rev(edge_x)), c(edge_y, rev(edge_y)),
                       c(0 * edge_top, rev(edge_top)), view_3d)
-      polygon(wall, col = adjustcolor("#E89543", 0.35), border = "#E89543")
+      polygon(wall, col = adjustcolor("#E89543", 0.35), border = NA)
+      lines(trans3d(edge_x, edge_y, edge_top, view_3d), col = "#E89543")
+      lines(trans3d(edge_x, edge_y, 0, view_3d), col = "#E89543")
+    }
+    # Vertical edges only at real corners (where the boundary turns)
+    n_c <- nrow(event_corners)
+    for (k in 1:n_c) {
+      before <- event_corners[k, ] - event_corners[ifelse(k == 1, n_c, k - 1), ]
+      after <- event_corners[ifelse(k == n_c, 1, k + 1), ] - event_corners[k, ]
+      turn <- abs(atan2(after[2], after[1]) - atan2(before[2], before[1]))
+      if (min(turn, 2 * pi - turn) > pi / 12) {
+        cx <- event_corners[k, 1]; cy <- event_corners[k, 2]
+        lines(trans3d(c(cx, cx), c(cy, cy), c(0, f(cx, cy)), view_3d),
+              col = "#E89543")
+      }
     }
     if (flat_top) {
       lid <- trans3d(event_corners[, 1], event_corners[, 2],
@@ -937,13 +951,13 @@ draw_pdf_volume(
 ::::::: columns
 ::::: {.column width="52%"}
 ```{r}
-ex4_sims <- tibble(sim = 1:reps) |> # <1>
+ex3_sims <- tibble(sim = 1:reps) |> # <1>
   mutate(
     x = runif(n(), min = 0, max = 4), # <2>
     y = runif(n(), min = 0, max = 4) # <2>
   )
 
-ex4_sims |> # <3>
+ex3_sims |> # <3>
   summarise(prob = mean(abs(x - y) < 2)) # <3>
 ```
 
@@ -965,7 +979,7 @@ For reference, the exact answer is $\mathbb{P}(|X-Y| < 2) = \frac{16 - 2 \cdot 2
 #| fig-width: 10
 #| fig-height: 8
 
-ex4_sims |>
+ex3_sims |>
   filter(sim <= 2000) |> # <4>
   ggplot(aes(x = x, y = y, color = abs(x - y) < 2)) + # <5>
   geom_point(alpha = 0.6, size = 2) + # <5>
@@ -1042,10 +1056,10 @@ draw_pdf_volume(
 ::::::: columns
 ::::: {.column width="52%"}
 ```{r}
-ex4_sims <- ex4_sims |> # <1>
+ex3_sims <- ex3_sims |> # <1>
   mutate(m = pmax(x, y)) # <2>
 
-ex4_sims |> # <3>
+ex3_sims |> # <3>
   summarise(prob_M = mean(m <= 2)) # <3>
 ```
 
@@ -1067,7 +1081,7 @@ For reference, the exact answer is $\mathbb{P}(M \leq 2) = \mathbb{P}(X \leq 2, 
 #| fig-width: 10
 #| fig-height: 6
 
-ggplot(ex4_sims, aes(x = m)) + # <4>
+ggplot(ex3_sims, aes(x = m)) + # <4>
   geom_histogram(aes(y = after_stat(density)), # <4>
                  binwidth = 0.1, boundary = 0, # <4>
                  color = "black", fill = "lightblue") + # <4>
@@ -1182,14 +1196,14 @@ Let $f_{X,Y}(x,y)= 2e^{-(x+y)}$, for $0 \leq x \leq y$. Approximate $\mathbb{E}[
 ::::::: columns
 ::::: {.column width="55%"}
 ```{r}
-ex6_grid <- expand_grid( # <1>
+ex4_grid <- expand_grid( # <1>
     x = seq(0, 10, length.out = 1001), # <1>
     y = seq(0, 10, length.out = 1001) # <1>
   ) |>
   filter(x <= y) |> # <2>
   mutate(height = 2 * exp(-(x + y))) # <3>
 
-ex6_sims <- ex6_grid |> # <4>
+ex4_sims <- ex4_grid |> # <4>
   slice_sample( # <4>
     n = reps, # <4>
     weight_by = height, # <4>
@@ -1205,7 +1219,7 @@ ex6_sims <- ex6_grid |> # <4>
 
 ::: {.column width="45%"}
 ```{r}
-ex6_sims |> # <5>
+ex4_sims |> # <5>
   summarise( # <5>
     avg_X = mean(x), # <5>
     avg_Y = mean(y) # <5>
@@ -1246,7 +1260,7 @@ For reference, the exact answers are $\mathbb{E}[X] = \frac12$ and $\mathbb{E}[Y
 ## [Example 5: Joint pdf on a triangle (1/2)]{style="display: none;"}
 
 ::: {.callout-important appearance="simple" icon="false"}
-Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+Do this problem at home for extra practice! Try it first, then check the solution.
 :::
 
 ::::::: columns
@@ -1282,7 +1296,7 @@ domain_triangle
 ## [Example 5: Joint pdf on a triangle (2/2)]{style="display: none;"}
 
 ::: {.callout-important appearance="simple" icon="false"}
-Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+Do this problem at home for extra practice! Try it first, then check the solution.
 :::
 
 ::::::: columns
@@ -1309,6 +1323,127 @@ Let $f_{X,Y}(x,y)= 2 e^{-(x+y)}$, for $0 \leq x \leq y$.
 domain_triangle
 ```
 ::::::
+:::::::
+
+## [Example 5: Joint pdf on a triangle: solution (1/2)]{style="display: none;"}
+
+:::: example
+::: ex-cont
+Solution, part 1: Use simulation to look at the marginal distributions of $X$ and $Y$.
+:::
+::::
+
+- Same joint pdf as Example 4, so we reuse its 100,000 simulated pairs, `ex4_sims`
+
+::::: columns
+::: {.column width="49%"}
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 10
+#| fig-height: 6
+
+ggplot(ex4_sims, aes(x = x)) + # <1>
+  geom_histogram(aes(y = after_stat(density)), # <1>
+                 binwidth = 0.05, boundary = 0, # <1>
+                 color = "black", fill = "lightblue") + # <1>
+  geom_function(fun = function(x) 2 * exp(-2 * x), # <2>
+                xlim = c(0, 3), # <2>
+                color = "red", linewidth = 1.5) + # <2>
+  coord_cartesian(xlim = c(0, 3)) + # <3>
+  labs(subtitle = "Simulated X (the x column only)", # <4>
+       x = "x", y = "Density") # <4>
+```
+
+1.  Histogram of only the `x` column, scaled like a pdf: the marginal distribution of $X$.
+2.  For reference, the marginal pdf $f_X(x) = 2e^{-2x}$ for $x \geq 0$, in red.
+3.  Zoom in to where almost all of the values are.
+4.  Add a subtitle and axis labels.
+
+- $X \sim \text{Exponential}(2)$
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="49%"}
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 10
+#| fig-height: 6
+
+ggplot(ex4_sims, aes(x = y)) + # <1>
+  geom_histogram(aes(y = after_stat(density)), # <1>
+                 binwidth = 0.1, boundary = 0, # <1>
+                 color = "black", fill = "#E89543") + # <1>
+  geom_function( # <2>
+    fun = function(y) 2 * exp(-y) * (1 - exp(-y)), # <2>
+    xlim = c(0, 8), color = "red", linewidth = 1.5 # <2>
+  ) +
+  coord_cartesian(xlim = c(0, 8)) + # <3>
+  labs(subtitle = "Simulated Y (the y column only)", # <4>
+       x = "y", y = "Density") # <4>
+```
+
+1.  Histogram of only the `y` column: the marginal distribution of $Y$.
+2.  For reference, the marginal pdf $f_Y(y) = 2e^{-y}(1 - e^{-y})$ for $y \geq 0$, in red.
+3.  Zoom in to where almost all of the values are.
+4.  Add a subtitle and axis labels.
+
+- $Y$ starts at 0, since $Y \geq X \geq 0$, and is usually bigger than $X$
+:::
+:::::
+
+## [Example 5: Joint pdf on a triangle: solution (2/2)]{style="display: none;"}
+
+:::: example
+::: ex-cont
+Solution, part 2: Approximate $\mathbb{P}(Y < 3)$ with simulation.
+:::
+::::
+
+::::::: columns
+::::: {.column width="44%"}
+```{r}
+
+ex4_sims |> # <1>
+  summarise(prob_Y = mean(y < 3)) # <2>
+```
+
+1.  Reuse the simulated pairs from Example 4.
+2.  The proportion of simulations with $Y < 3$ approximates $\mathbb{P}(Y < 3)$. Only the `y` column is needed.
+
+:::: proof1
+::: proof-cont
+For reference, the exact answer is $\mathbb{P}(Y < 3) = 1 - 2e^{-3} + e^{-6} \approx 0.9029$
+:::
+::::
+:::::
+
+::::: {.column width="2%"}
+:::::
+
+::::: {.column width="54%"}
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 6.5
+#| out-width: "80%"
+#| fig-align: center
+
+draw_pdf_volume(
+  f = function(x, y) 2 * exp(-(x + y)),
+  x_vals = seq(0, 4, by = 0.2), y_vals = seq(0, 4, by = 0.2),
+  domain_corners = rbind(c(0, 0), c(0, 4), c(4, 4)),
+  in_domain = function(x, y) x <= y,
+  event_corners = rbind(c(0, 0), c(0, 3), c(3, 3)),
+  in_event = function(x, y) x <= y & y < 3,
+  zlim = c(0, 2),
+  title = "Volume = P(Y < 3)"
+)
+```
+:::::
 :::::::
 
 ## [Example of a joint pdf with a transformation: part 3 for home]{style="display: none;"}
@@ -1341,17 +1476,121 @@ domain_square
 
 :::::: {.column width="40%"}
 ::: {.callout-important appearance="simple" icon="false"}
-Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+Do this problem at home for extra practice! Try it first, then check the solution.
 :::
 
 - Hint: start from the code for part 2, and use `pmin()` instead of `pmax()`
 ::::::
 :::::::
 
+## [Example of a joint pdf with a transformation: part 3 solution (1/2)]{style="display: none;"}
+
+:::: example
+::: ex-cont
+Solution, part 3: Let $Z = \min(X,Y)$. Find $\mathbb{P}(Z \leq 2)$ using areas.
+:::
+::::
+
+::::::: columns
+::::: {.column width="44%"}
+- Possible values of $Z$: from 0 to 4
+
+  
+
+- $Z \leq 2$ means *at least one* of $X$ and $Y$ is $\leq 2$: an L-shaped region
+
+  
+
+- Easier with the complement: $Z > 2$ means *both* $X > 2$ and $Y > 2$, a $2 \times 2$ square
+
+  
+
+- $\mathbb{P}(Z \leq 2) = 1 - \mathbb{P}(Z > 2) = 1 - \frac{2 \cdot 2}{16} = \frac34$
+:::::
+
+::::: {.column width="2%"}
+:::::
+
+::::: {.column width="54%"}
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 6.5
+#| out-width: "80%"
+#| fig-align: center
+
+draw_pdf_volume(
+  f = function(x, y) 1/16 + 0 * x,
+  x_vals = seq(0, 4, by = 0.25), y_vals = seq(0, 4, by = 0.25),
+  domain_corners = rbind(c(0, 0), c(4, 0), c(4, 4), c(0, 4)),
+  event_corners = rbind(c(0, 0), c(4, 0), c(4, 2), c(2, 2), c(2, 4), c(0, 4)),
+  flat_top = TRUE, zlim = c(0, 0.1),
+  title = "Volume = P(Z <= 2)"
+)
+```
+:::::
+:::::::
+
+## [Example of a joint pdf with a transformation: part 3 solution (2/2): simulate]{style="display: none;"}
+
+:::: example
+::: ex-cont
+Solution, part 3: Check $\mathbb{P}(Z \leq 2)$ with simulation, and look at the distribution of $Z$.
+:::
+::::
+
+::::::: columns
+::::: {.column width="52%"}
+```{r}
+
+ex3_sims <- ex3_sims |> # <1>
+  mutate(z = pmin(x, y)) # <2>
+
+ex3_sims |> # <3>
+  summarise(prob_Z = mean(z <= 2)) # <3>
+```
+
+1.  Reuse the 100,000 simulated pairs from Example 3.
+2.  The only change from part 2: `pmin()` takes the smaller of `x` and `y` in each row.
+3.  The proportion of simulations with $Z \leq 2$ approximates $\mathbb{P}(Z \leq 2)$.
+
+:::: proof1
+::: proof-cont
+For reference, the exact answer is $\mathbb{P}(Z \leq 2) = \frac34$
+:::
+::::
+:::::
+
+::: {.column width="48%"}
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 10
+#| fig-height: 6
+
+ggplot(ex3_sims, aes(x = z)) + # <4>
+  geom_histogram(aes(y = after_stat(density)), # <4>
+                 binwidth = 0.1, boundary = 0, # <4>
+                 color = "black", fill = "lightblue") + # <4>
+  geom_function(fun = function(z) (4 - z) / 8, # <5>
+                xlim = c(0, 4), # <5>
+                color = "red", linewidth = 1.5) + # <5>
+  labs(subtitle = "Simulated Z = min(X, Y)", # <6>
+       x = "z", y = "Density") # <6>
+```
+
+4.  Histogram of the simulated values of $Z$, scaled like a pdf.
+5.  For reference, the pdf of $Z$ in red: $f_Z(z) = \frac{4 - z}{8}$ for $0 \leq z \leq 4$.
+6.  Add a subtitle and axis labels.
+
+- The mirror image of $M = \max(X, Y)$: the smaller of two values is more likely to be small
+:::
+:::::::
+
 ## [Last example *for home*: more complicated transformation]{style="display: none;"}
 
 ::: {.callout-important appearance="simple" icon="false"}
-Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+Do this problem at home for extra practice! Try it first, then check the solution.
 :::
 
 ::::::: columns
@@ -1387,10 +1626,133 @@ ggplot() +
 ::::::
 :::::::
 
+## [Last example *for home*: solution (1/2)]{style="display: none;"}
+
+:::: example
+::: ex-cont
+Solution, part 1: What are the possible values of $Z = XY$?
+:::
+::::
+
+::::::: columns
+::::: {.column width="44%"}
+- $X$ is between 0 and 1, and $Y$ is between $\frac12$ and 1
+
+  
+
+- So $Z = XY$ is between $0 \cdot \frac12 = 0$ and $1 \cdot 1 = 1$
+
+  
+
+- The event $Z \leq \frac14$ is the region under the curve $x = \frac{1}{4y}$: not a rectangle, so its volume is hard to find by hand
+
+  
+
+- Simulation does not care about the shape!
+:::::
+
+::::: {.column width="2%"}
+:::::
+
+::::: {.column width="54%"}
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 6.5
+#| out-width: "80%"
+#| fig-align: center
+
+curve_y <- seq(0.5, 1, by = 0.05)
+
+draw_pdf_volume(
+  f = function(x, y) 8/5 * (x + y),
+  x_vals = seq(0, 1, by = 0.0625), y_vals = seq(0.5, 1, by = 0.03125),
+  domain_corners = rbind(c(0, 0.5), c(1, 0.5), c(1, 1), c(0, 1)),
+  event_corners = rbind(c(0, 0.5), cbind(1 / (4 * curve_y), curve_y),
+                        c(0, 1)),
+  in_event = function(x, y) x * y <= 1/4,
+  zlim = c(0, 3.2),
+  title = "Volume = P(Z <= 1/4)"
+)
+```
+:::::
+:::::::
+
+## [Last example *for home*: solution (2/2): simulate]{style="display: none;"}
+
+:::: example
+::: ex-cont
+Solution, part 2: Use 2D grid sampling to simulate $Z$. Approximate $\mathbb{P}(Z \leq \frac14)$ and make a histogram of $Z$.
+:::
+::::
+
+::::::: columns
+::::: {.column width="52%"}
+```{r}
+
+ex6_grid <- expand_grid( # <1>
+    x = seq(0, 1, length.out = 1001), # <1>
+    y = seq(0.5, 1, length.out = 501) # <1>
+  ) |>
+  mutate(height = 8/5 * (x + y)) # <2>
+
+ex6_sims <- ex6_grid |> # <3>
+  slice_sample( # <3>
+    n = reps, # <3>
+    weight_by = height, # <3>
+    replace = TRUE # <3>
+  ) |>
+  mutate(z = x * y) # <4>
+
+ex6_sims |> # <5>
+  summarise(prob_Z = mean(z <= 1/4)) # <5>
+```
+
+1.  A grid of tickets covering the rectangle $0 < x < 1$, $\frac12 < y < 1$.
+2.  The joint pdf's height at each ticket.
+3.  Draw `reps` tickets, weighted by height, like Example 2.
+4.  The transformation: $Z = XY$ for each simulated pair.
+5.  The proportion of simulations with $Z \leq \frac14$ approximates $\mathbb{P}(Z \leq \frac14)$.
+:::::
+
+::: {.column width="48%"}
+:::: proof1
+::: proof-cont
+For reference, the exact answer is $\mathbb{P}(Z \leq \frac14) = \frac14$
+:::
+::::
+
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 10
+#| fig-height: 6
+
+f_Z <- function(z) { # <6>
+  if_else(z < 1/2, 8/5 * (z + 1/2), 16/5 * (1 - z)) # <6>
+}
+
+ggplot(ex6_sims, aes(x = z)) + # <7>
+  geom_histogram(aes(y = after_stat(density)), # <7>
+                 binwidth = 0.02, boundary = 0, # <7>
+                 color = "black", fill = "lightblue") + # <7>
+  geom_function(fun = f_Z, xlim = c(0, 1), # <8>
+                color = "red", linewidth = 1.5) + # <8>
+  labs(subtitle = "Simulated Z = XY", # <9>
+       x = "z", y = "Density") # <9>
+```
+
+6.  For reference, the pdf of $Z$: $f_Z(z) = \frac85\left(z + \frac12\right)$ for $0 < z < \frac12$, and $\frac{16}{5}(1 - z)$ for $\frac12 \leq z < 1$. `if_else()` picks the piece.
+7.  Histogram of the simulated values of $Z$, scaled like a pdf.
+8.  The pdf of $Z$ in red. The histogram follows it.
+9.  Add a subtitle and axis labels.
+:::
+:::::::
+
 ## Double Integrals Mini Lesson (1/3)
 
 ::: {.callout-important appearance="simple" icon="false"}
-Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+Do this problem at home for extra practice! Try it first, then check the solution.
 :::
 
 ::::::: columns
@@ -1405,12 +1767,21 @@ Solve the following integral: $\displaystyle\int_{2}^{3}\displaystyle\int_{0}^{1
 :::
 :::::
 ::::::
+
+:::::: {.column width="70%"}
+Work:
+
+$$\begin{aligned}
+\int_{2}^{3}\int_{0}^{1} xy \, dy\,dx &= \int_{2}^{3} x \left[\frac{y^2}{2}\right]_{0}^{1} dx = \int_{2}^{3} \frac{x}{2}\, dx \\
+&= \left[\frac{x^2}{4}\right]_{2}^{3} = \frac{9}{4} - \frac{4}{4} = \frac54
+\end{aligned}$$
+::::::
 :::::::
 
 ## Double Integrals Mini Lesson (2/3)
 
 ::: {.callout-important appearance="simple" icon="false"}
-Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+Do this problem at home for extra practice! Try it first, then check the solution.
 :::
 
 ::::::: columns
@@ -1425,12 +1796,21 @@ Solve the following integral: $\displaystyle\int_{2}^{3}\displaystyle\int_{0}^{1
 :::
 :::::
 ::::::
+
+:::::: {.column width="70%"}
+Work:
+
+$$\begin{aligned}
+\int_{2}^{3}\int_{0}^{1} (x+y) \, dy\,dx &= \int_{2}^{3} \left[xy + \frac{y^2}{2}\right]_{0}^{1} dx = \int_{2}^{3} \left(x + \frac12\right) dx \\
+&= \left[\frac{x^2}{2} + \frac{x}{2}\right]_{2}^{3} = (4.5 + 1.5) - (2 + 1) = 3
+\end{aligned}$$
+::::::
 :::::::
 
 ## Double Integrals Mini Lesson (3/3)
 
 ::: {.callout-important appearance="simple" icon="false"}
-Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+Do this problem at home for extra practice! Try it first, then check the solution.
 :::
 
 ::::::: columns
@@ -1444,5 +1824,14 @@ Mini Lesson Example 3
 Solve the following integral: $\displaystyle\int_{2}^{3}\displaystyle\int_{0}^{1} e^{x+y} dydx$
 :::
 :::::
+::::::
+
+:::::: {.column width="70%"}
+Work: $e^{x+y} = e^x e^y$, so the integral splits into two single integrals
+
+$$\begin{aligned}
+\int_{2}^{3}\int_{0}^{1} e^{x+y} \, dy\,dx &= \int_{2}^{3} e^x \left[e^y\right]_{0}^{1} dx = (e - 1)\int_{2}^{3} e^x \, dx \\
+&= (e - 1)\left(e^3 - e^2\right) \approx 21.8
+\end{aligned}$$
 ::::::
 :::::::

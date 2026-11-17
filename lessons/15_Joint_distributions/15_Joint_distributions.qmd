@@ -26,6 +26,56 @@ source(here("class_dates.R"))
 library(tidyverse)
 
 theme_set(theme_bw(base_size = 28))
+
+# Draws a static 3D picture of a joint pdf: the domain as a blue floor,
+# the pdf as a grey wireframe, and an event's volume in orange
+draw_pdf_volume <- function(f, x_vals, y_vals, domain_corners,
+                            in_domain = function(x, y) rep(TRUE, length(x)),
+                            event_corners = NULL,
+                            in_event = function(x, y) rep(FALSE, length(x)),
+                            flat_top = FALSE,
+                            zlim, title = "", theta = 35, phi = 25) {
+  heights <- outer(x_vals, y_vals, f)
+  heights[!outer(x_vals, y_vals, in_domain)] <- NA
+
+  x_mid <- (head(x_vals, -1) + tail(x_vals, -1)) / 2
+  y_mid <- (head(y_vals, -1) + tail(y_vals, -1)) / 2
+  facet_in_event <- outer(x_mid, y_mid, in_event) & !flat_top
+  facet_colors <- ifelse(facet_in_event, adjustcolor("#E89543", 0.85), NA)
+
+  par(mar = c(0, 0, 2, 0), cex = 1.8)
+  view_args <- list(x = x_vals, y = y_vals, z = heights, zlim = zlim,
+                    theta = theta, phi = phi, expand = 0.8, r = 4,
+                    xlab = "x", ylab = "y", zlab = "f(x, y)")
+  # 1. Set up the 3D view and axes, without the surface
+  view_3d <- do.call(persp, c(view_args, list(border = NA)))
+  # 2. Floor: the possible values (domain), at height 0
+  floor <- trans3d(domain_corners[, 1], domain_corners[, 2], 0, view_3d)
+  polygon(floor, col = adjustcolor("#29abe0", 0.25), border = "#29abe0")
+  # 3. The joint pdf surface, drawn on top of the floor
+  par(new = TRUE)
+  do.call(persp, c(view_args, list(col = facet_colors, border = "grey60",
+                                   box = FALSE)))
+  # 4. The event's volume: walls from the floor up to the surface
+  if (!is.null(event_corners)) {
+    corners <- rbind(event_corners, event_corners[1, ])
+    for (k in 1:(nrow(corners) - 1)) {
+      s <- seq(0, 1, length.out = 50)
+      edge_x <- corners[k, 1] + s * (corners[k + 1, 1] - corners[k, 1])
+      edge_y <- corners[k, 2] + s * (corners[k + 1, 2] - corners[k, 2])
+      edge_top <- f(edge_x, edge_y)
+      wall <- trans3d(c(edge_x, rev(edge_x)), c(edge_y, rev(edge_y)),
+                      c(0 * edge_top, rev(edge_top)), view_3d)
+      polygon(wall, col = adjustcolor("#E89543", 0.35), border = "#E89543")
+    }
+    if (flat_top) {
+      lid <- trans3d(event_corners[, 1], event_corners[, 2],
+                     f(event_corners[, 1], event_corners[, 2]), view_3d)
+      polygon(lid, col = adjustcolor("#E89543", 0.6), border = "#E89543")
+    }
+  }
+  title(title, font.main = 1)
+}
 ```
 
 # Learning Objectives
@@ -638,6 +688,8 @@ Let $f_{X,Y}(x,y)= \frac32 y^2$, for $0 \leq x \leq 2, \ 0 \leq y \leq 1$.
 :::
 :::::
 
+:::::: columns
+::::: {.column width="34%"}
 ```{r}
 #| echo: false
 #| fig-width: 6
@@ -651,7 +703,31 @@ domain_2 <- ggplot() +
   labs(x = "x", y = "y")
 domain_2
 ```
+:::::
 
+::::: {.column width="2%"}
+:::::
+
+::::: {.column width="64%"}
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 6.5
+#| out-width: "54%"
+#| fig-align: center
+
+draw_pdf_volume(
+  f = function(x, y) 3/2 * y^2,
+  x_vals = seq(0, 2, by = 0.125), y_vals = seq(0, 1, by = 0.0625),
+  domain_corners = rbind(c(0, 0), c(2, 0), c(2, 1), c(0, 1)),
+  event_corners = rbind(c(0, 0), c(1, 0), c(1, 0.5), c(0, 0.5)),
+  in_event = function(x, y) x <= 1 & y <= 0.5,
+  zlim = c(0, 1.5),
+  title = "Volume = P(0 <= X <= 1, 0 <= Y <= 1/2)"
+)
+```
+:::::
+::::::
 
 ## [Example 2: Joint pdf (2/3): simulate]{style="display: none;"}
 
@@ -798,8 +874,6 @@ ggplot(ex2_sims, aes(x = y)) + # <1>
 
 ## [Example of a joint pdf with a transformation (1/4)]{style="display: none;"}
 
-::::::: columns
-:::::: {.column width="30%"}
 ::::: example
 ::: ex-title
 Example 3: Constant density on a square
@@ -811,9 +885,9 @@ Let $X$ and $Y$ have constant density on the square $0 \leq X \leq 4, 0 \leq Y \
 1.  Shade the event $|X-Y| < 2$. Find $\mathbb{P}(|X-Y| < 2)$ using areas, and check it with simulation.
 :::
 :::::
-::::::
 
-:::::: {.column width="30%"}
+:::::: columns
+::::: {.column width="34%"}
 ```{r}
 #| echo: false
 #| fig-width: 6
@@ -827,9 +901,30 @@ domain_square <- ggplot() +
   labs(x = "x", y = "y")
 domain_square
 ```
+:::::
 
+::::: {.column width="2%"}
+:::::
+
+::::: {.column width="64%"}
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 6.5
+#| out-width: "54%"
+#| fig-align: center
+
+draw_pdf_volume(
+  f = function(x, y) 1/16 + 0 * x,
+  x_vals = seq(0, 4, by = 0.25), y_vals = seq(0, 4, by = 0.25),
+  domain_corners = rbind(c(0, 0), c(4, 0), c(4, 4), c(0, 4)),
+  event_corners = rbind(c(0, 0), c(2, 0), c(4, 2), c(4, 4), c(2, 4), c(0, 2)),
+  flat_top = TRUE, zlim = c(0, 0.1),
+  title = "Volume = P(|X - Y| < 2)"
+)
+```
+:::::
 ::::::
-:::::::
 
 ## [Example of a joint pdf with a transformation (2/4): simulate]{style="display: none;"}
 
@@ -890,8 +985,6 @@ ex4_sims |>
 
 ## [Example of a joint pdf with a transformation (3/4)]{style="display: none;"}
 
-::::::: columns
-:::::: {.column width="30%"}
 ::::: example
 ::: ex-title
 Example 3: Constant density on a square
@@ -903,9 +996,9 @@ Let $X$ and $Y$ have constant density on the square $0 \leq X \leq 4, 0 \leq Y \
 2.  Let $M = \max(X,Y)$. What are the possible values of $M$? Shade the event $M \leq 2$ and find $\mathbb{P}(M \leq 2)$ using areas.
 :::
 :::::
-::::::
 
-:::::: {.column width="30%"}
+:::::: columns
+::::: {.column width="34%"}
 ```{r}
 #| echo: false
 #| fig-width: 6
@@ -913,9 +1006,30 @@ Let $X$ and $Y$ have constant density on the square $0 \leq X \leq 4, 0 \leq Y \
 
 domain_square
 ```
+:::::
 
+::::: {.column width="2%"}
+:::::
+
+::::: {.column width="64%"}
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 6.5
+#| out-width: "54%"
+#| fig-align: center
+
+draw_pdf_volume(
+  f = function(x, y) 1/16 + 0 * x,
+  x_vals = seq(0, 4, by = 0.25), y_vals = seq(0, 4, by = 0.25),
+  domain_corners = rbind(c(0, 0), c(4, 0), c(4, 4), c(0, 4)),
+  event_corners = rbind(c(0, 0), c(2, 0), c(2, 2), c(0, 2)),
+  flat_top = TRUE, zlim = c(0, 0.1),
+  title = "Volume = P(M <= 2) = P(X <= 2, Y <= 2)"
+)
+```
+:::::
 ::::::
-:::::::
 
 ## [Example of a joint pdf with a transformation (4/4): simulate]{style="display: none;"}
 
@@ -1005,8 +1119,6 @@ You can do the same for $\mathbb{E}[Y]$!
 
 ## [Example 4: Expected value from a joint pdf (1/2)]{style="display: none;"}
 
-::::::: columns
-:::::: {.column width="30%"}
 ::::: example
 ::: ex-title
 Example 4: Expected value from a joint pdf
@@ -1016,9 +1128,11 @@ Example 4: Expected value from a joint pdf
 Let $f_{X,Y}(x,y)= 2e^{-(x+y)}$, for $0 \leq x \leq y$. Approximate $\mathbb{E}[X]$ and $\mathbb{E}[Y]$ with simulation.
 :::
 :::::
-::::::
 
-:::::: {.column width="30%"}
+- Same joint pdf as Example 5 (for home, in the reference slides). Possible values: $0 \leq x \leq y$, with no upper limit, but $f_{X,Y}(x,y)$ is almost 0 once $y$ is past 10, so our grid can stop at 10
+
+:::::: columns
+::::: {.column width="34%"}
 ```{r}
 #| echo: false
 #| fig-width: 6
@@ -1032,14 +1146,30 @@ domain_triangle <- ggplot() +
   labs(x = "x", y = "y", subtitle = "(keeps going up and right)")
 domain_triangle
 ```
-::::::
+:::::
 
-:::::: {.column width="40%"}
-- Same joint pdf as Example 5 (for home, in the reference slides)
-- Possible values: $0 \leq x \leq y$, with no upper limit
-  - But $f_{X,Y}(x,y) = 2e^{-(x+y)}$ is almost 0 once $y$ is past 10, so our grid can stop at 10
+::::: {.column width="2%"}
+:::::
+
+::::: {.column width="64%"}
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 6.5
+#| out-width: "54%"
+#| fig-align: center
+
+draw_pdf_volume(
+  f = function(x, y) 2 * exp(-(x + y)),
+  x_vals = seq(0, 4, by = 0.2), y_vals = seq(0, 4, by = 0.2),
+  domain_corners = rbind(c(0, 0), c(0, 4), c(4, 4)),
+  in_domain = function(x, y) x <= y,
+  zlim = c(0, 2),
+  title = "Total volume = 1: tallest near (0, 0)"
+)
+```
+:::::
 ::::::
-:::::::
 
 ## [Example 4: Expected value from a joint pdf (2/2): simulate]{style="display: none;"}
 

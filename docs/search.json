@@ -29971,7 +29971,7 @@
     "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-4-expected-value-from-a-joint-pdf-12",
     "title": "Lesson 15: Joint distributions",
     "section": "Example 4: Expected value from a joint pdf (1/2)",
-    "text": "Example 4: Expected value from a joint pdf (1/2)\n\n\nExample 4: Expected value from a joint pdf\n\n\nLet \\(f_{X,Y}(x,y)= 2e^{-(x+y)}\\), for \\(0 \\leq x \\leq y\\). Approximate \\(\\mathbb{E}[X]\\) and \\(\\mathbb{E}[Y]\\) with simulation.\n\n\n\nSame joint pdf as Example 5 (for home, in the reference slides). Possible values: \\(0 \\leq x \\leq y\\), with no upper limit, but \\(f_{X,Y}(x,y)\\) is almost 0 once \\(y\\) is past 10, so our grid can stop at 10\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRotate this plot (interactive) ↗"
+    "text": "Example 4: Expected value from a joint pdf (1/2)\n\n\nExample 4: Expected value from a joint pdf\n\n\nLet \\(f_{X,Y}(x,y)= 2e^{-(x+y)}\\), for \\(0 \\leq x \\leq y\\). Approximate \\(\\mathbb{E}[X]\\) and \\(\\mathbb{E}[Y]\\) with simulation.\n\n\n\nPossible values: \\(0 \\leq x \\leq y\\), with no upper limit, but \\(f_{X,Y}(x,y)\\) is almost 0 once \\(y\\) is past 10, so our grid can stop at 10\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRotate this plot (interactive) ↗"
   },
   {
     "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-4-expected-value-from-a-joint-pdf-22-simulate",
@@ -29985,7 +29985,7 @@
     "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#summary-of-joint-distributions",
     "title": "Lesson 15: Joint distributions",
     "section": "Summary of joint distributions",
-    "text": "Summary of joint distributions\n\n\n\n\n\n\n\n\n\nDiscrete \\(X\\) and \\(Y\\)\nContinuous \\(X\\) and \\(Y\\)\n\n\n\n\nJoint distribution\njoint pmf: \\(p_{X,Y}(x,y) = \\mathbb{P}(X=x, Y=y)\\)\njoint pdf \\(f_{X,Y}(x,y)\\): probabilities are volumes (double integrals)\n\n\nMarginal distribution\nsum the joint pmf over the other variable\nintegrate the joint pdf over the other variable\n\n\nSimulate pairs with\nsample(), like the box\nrunif() for constant density; otherwise 2D grid sampling\n\n\nSummarize\ngroup_by(x, y), mean(...)\nmean(...), histogram of one column\n\n\n\n \n\nThe joint distribution describes \\(X\\) and \\(Y\\) together; a marginal distribution describes one of them alone\nWith simulation: joint probabilities use both columns, marginals use one column, and transformations add a new column with mutate()\nPractice at home: Examples 3 (part 3), 5, and 6 are in the reference slides at the end"
+    "text": "Summary of joint distributions\n\n\n\n\n\n\n\n\n\nDiscrete \\(X\\) and \\(Y\\)\nContinuous \\(X\\) and \\(Y\\)\n\n\n\n\nJoint distribution\njoint pmf: \\(p_{X,Y}(x,y) = \\mathbb{P}(X=x, Y=y)\\)\njoint pdf \\(f_{X,Y}(x,y)\\): probabilities are volumes (double integrals)\n\n\nMarginal distribution\nsum the joint pmf over the other variable\nintegrate the joint pdf over the other variable\n\n\nSimulate pairs with\nsample(), like the box\nrunif() for constant density; otherwise 2D grid sampling\n\n\nSummarize\ngroup_by(x, y), mean(...)\nmean(...), histogram of one column\n\n\n\n \n\nThe joint distribution describes \\(X\\) and \\(Y\\) together; a marginal distribution describes one of them alone\nWith simulation: joint probabilities use both columns, marginals use one column, and transformations add a new column with mutate()"
   },
   {
     "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-5-joint-pdf-on-a-triangle-12",
@@ -30076,7 +30076,7 @@
     "href": "lessons/15_Joint_distributions/15_Joint_distributions.html#new-r-functions-in-this-lesson",
     "title": "Lesson 15: Joint distributions",
     "section": "New R functions in this lesson",
-    "text": "New R functions in this lesson\n\n\n\n\n\n\n\n\nFunction\nWhat it does\nFirst used\n\n\n\n\nfirst(), last()\nThe first or last value in each group\nExample 1\n\n\npivot_wider()\nSpreads one column’s values into separate columns, to make a table\nExample 1, part 5\n\n\nslice_sample()\nDraws whole rows from a table; weight_by makes some rows more likely\n2D grid sampling\n\n\npmax(), pmin()\nThe larger or smaller value in each row of two columns\nExample 3"
+    "text": "New R functions in this lesson\n\n\n\n\n\n\n\n\nFunction\nWhat it does\nFirst used\n\n\n\n\nfirst(), last()\nThe first or last value in each group\nExample 1\n\n\npivot_wider()\nSpreads one column’s values into separate columns, to make a table\nExample 1, part 5\n\n\nslice_sample()\nDraws whole rows from a table; weight_by makes some rows more likely\n2D grid sampling\n\n\npmax()\nThe larger value in each row of two columns\nExample 3"
   },
   {
     "objectID": "lessons/15_Joint_distributions/15_Joint_distributions.html#example-of-a-joint-pdf-with-a-transformation-15",
@@ -30154,5 +30154,82 @@
     "title": "Lesson 15: Joint distributions",
     "section": "Last example for home: solution (2/2): simulate",
     "text": "Last example for home: solution (2/2): simulate\n\n\nSolution, part 2: Use 2D grid sampling to simulate \\(Z\\). Approximate \\(\\mathbb{P}(Z \\leq \\frac14)\\) and make a histogram of \\(Z\\).\n\n\n\n\n\n1ex6_grid &lt;- expand_grid(\n    x = seq(0, 1, length.out = 1001),\n    y = seq(0.5, 1, length.out = 501)\n  ) |&gt;\n2  mutate(height = 8/5 * (x + y))\n\n3ex6_sims &lt;- ex6_grid |&gt;\n  slice_sample(\n    n = reps,\n    weight_by = height,\n    replace = TRUE\n  ) |&gt;\n4  mutate(z = x * y)\n\n5ex6_sims |&gt;\n  summarise(prob_Z = mean(z &lt;= 1/4))\n\n\n1\n\nA grid of tickets covering the rectangle \\(0 &lt; x &lt; 1\\), \\(\\frac12 &lt; y &lt; 1\\).\n\n2\n\nThe joint pdf’s height at each ticket.\n\n3\n\nDraw reps tickets, weighted by height, like Example 2.\n\n4\n\nThe transformation: \\(Z = XY\\) for each simulated pair.\n\n5\n\nThe proportion of simulations with \\(Z \\leq \\frac14\\) approximates \\(\\mathbb{P}(Z \\leq \\frac14)\\).\n\n\n\n\n# A tibble: 1 × 1\n  prob_Z\n   &lt;dbl&gt;\n1  0.250\n\n\n\n\n\nFor reference, the exact answer is \\(\\mathbb{P}(Z \\leq \\frac14) = \\frac14\\)\n\n\n\n\nPlot code\n6f_Z &lt;- function(z) {\n  if_else(z &lt; 1/2, 8/5 * (z + 1/2), 16/5 * (1 - z))\n}\n\n7ggplot(ex6_sims, aes(x = z)) +\n  geom_histogram(aes(y = after_stat(density)),\n                 binwidth = 0.02, boundary = 0,\n                 color = \"black\", fill = \"lightblue\") +\n8  geom_function(fun = f_Z, xlim = c(0, 1),\n                color = \"red\", linewidth = 1.5) +\n9  labs(subtitle = \"Simulated Z = XY\",\n       x = \"z\", y = \"Density\")\n\n\n\n6\n\nFor reference, the pdf of \\(Z\\): \\(f_Z(z) = \\frac85\\left(z + \\frac12\\right)\\) for \\(0 &lt; z &lt; \\frac12\\), and \\(\\frac{16}{5}(1 - z)\\) for \\(\\frac12 \\leq z &lt; 1\\). if_else() picks the piece.\n\n7\n\nHistogram of the simulated values of \\(Z\\), scaled like a pdf.\n\n8\n\nThe pdf of \\(Z\\) in red. The histogram follows it.\n\n9\n\nAdd a subtitle and axis labels."
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions_3d_plots.html",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions_3d_plots.html",
+    "title": "Lesson 15: Interactive 3D plots",
+    "section": "",
+    "text": "Each plot below is an interactive version of a static 3D plot in the Lesson 15 slides."
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions_3d_plots.html#grid-sampling",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions_3d_plots.html#grid-sampling",
+    "title": "Lesson 15: Interactive 3D plots",
+    "section": "2D grid sampling",
+    "text": "2D grid sampling\nA small grid for \\(f_{X,Y}(x,y) = \\frac32 y^2\\), \\(0 \\leq x \\leq 2\\), \\(0 \\leq y \\leq 1\\). Each stick is one ticket: taller sticks are more likely to be drawn."
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions_3d_plots.html#ex2-pdf",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions_3d_plots.html#ex2-pdf",
+    "title": "Lesson 15: Interactive 3D plots",
+    "section": "Example 2: the joint pdf",
+    "text": "Example 2: the joint pdf\n\\(f_{X,Y}(x,y) = \\frac32 y^2\\), for \\(0 \\leq x \\leq 2\\), \\(0 \\leq y \\leq 1\\). The total volume under the surface is 1."
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions_3d_plots.html#ex2-volume",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions_3d_plots.html#ex2-volume",
+    "title": "Lesson 15: Interactive 3D plots",
+    "section": "Example 2: volume for \\(\\mathbb{P}(0 \\leq X \\leq 1, 0 \\leq Y \\leq \\frac12)\\)",
+    "text": "Example 2: volume for \\(\\mathbb{P}(0 \\leq X \\leq 1, 0 \\leq Y \\leq \\frac12)\\)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions_3d_plots.html#ex3-pdf",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions_3d_plots.html#ex3-pdf",
+    "title": "Lesson 15: Interactive 3D plots",
+    "section": "Example 3: the joint pdf",
+    "text": "Example 3: the joint pdf\nConstant density on the square \\(0 \\leq x \\leq 4\\), \\(0 \\leq y \\leq 4\\): \\(f_{X,Y}(x,y) = \\frac{1}{16}\\)."
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions_3d_plots.html#ex3-abs",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions_3d_plots.html#ex3-abs",
+    "title": "Lesson 15: Interactive 3D plots",
+    "section": "Example 3, part 1: volume for \\(\\mathbb{P}(|X - Y| < 2)\\)",
+    "text": "Example 3, part 1: volume for \\(\\mathbb{P}(|X - Y| &lt; 2)\\)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions_3d_plots.html#ex3-max",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions_3d_plots.html#ex3-max",
+    "title": "Lesson 15: Interactive 3D plots",
+    "section": "Example 3, part 2: volume for \\(\\mathbb{P}(M \\leq 2)\\)",
+    "text": "Example 3, part 2: volume for \\(\\mathbb{P}(M \\leq 2)\\)\n\\(M = \\max(X, Y) \\leq 2\\) is the same event as \\(X \\leq 2\\) and \\(Y \\leq 2\\)."
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions_3d_plots.html#ex4-pdf",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions_3d_plots.html#ex4-pdf",
+    "title": "Lesson 15: Interactive 3D plots",
+    "section": "Example 4: the joint pdf",
+    "text": "Example 4: the joint pdf\n\\(f_{X,Y}(x,y) = 2e^{-(x+y)}\\), for \\(0 \\leq x \\leq y\\) (shown up to 4; it keeps going). The surface is tallest near \\((0, 0)\\)."
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions_3d_plots.html#ex5-volume",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions_3d_plots.html#ex5-volume",
+    "title": "Lesson 15: Interactive 3D plots",
+    "section": "Example 5 (for home): volume for \\(\\mathbb{P}(Y < 3)\\)",
+    "text": "Example 5 (for home): volume for \\(\\mathbb{P}(Y &lt; 3)\\)"
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions_3d_plots.html#ex3-min",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions_3d_plots.html#ex3-min",
+    "title": "Lesson 15: Interactive 3D plots",
+    "section": "Example 3, part 3 (for home): volume for \\(\\mathbb{P}(Z \\leq 2)\\)",
+    "text": "Example 3, part 3 (for home): volume for \\(\\mathbb{P}(Z \\leq 2)\\)\n\\(Z = \\min(X, Y) \\leq 2\\): at least one of \\(X\\) and \\(Y\\) is at most 2."
+  },
+  {
+    "objectID": "lessons/15_Joint_distributions/15_Joint_distributions_3d_plots.html#ex6-volume",
+    "href": "lessons/15_Joint_distributions/15_Joint_distributions_3d_plots.html#ex6-volume",
+    "title": "Lesson 15: Interactive 3D plots",
+    "section": "Example 6 (for home): volume for \\(\\mathbb{P}(Z \\leq \\frac14)\\)",
+    "text": "Example 6 (for home): volume for \\(\\mathbb{P}(Z \\leq \\frac14)\\)\n\\(f_{X,Y}(x,y) = \\frac85(x + y)\\), for \\(0 &lt; x &lt; 1\\), \\(\\frac12 &lt; y &lt; 1\\), and \\(Z = XY\\)."
   }
 ]

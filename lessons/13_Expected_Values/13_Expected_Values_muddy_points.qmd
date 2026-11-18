@@ -1,0 +1,108 @@
+---
+title: "Muddy Points"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Fall 2025
+
+### 1. Going through integration by parts again
+
+[Here's a pretty good video on integration by parts!](https://www.youtube.com/watch?v=bLhxQIdbWW8)
+
+Here's the [Calc review muddy points](https://nwakim.github.io/BSTA_550_25F/lessons/06_Calculus_review/06_Calculus_review_muddy_points.html#how-to-know-what-to-use-as-u-and-dv-for-integration-by-parts) with a few words on integration by parts.
+
+### 2. Maybe expand on why the "Expected Value" is sum/integral "x" times the pmf (for discrete) and pdf (for continuous)?
+
+[Got a little help from Chatgpt:](https://chatgpt.com/share/69127ad6-50bc-8006-825c-5e49559beac9)
+
+Think back to our discrete example with the die. Our expected value was the weighted average of all the possible outcomes (weighted by their probability). So our expected value for discrete RVs will always be that weighted average: $$\mathbb{E}[X] = \sum_{i=1}^n x_ip_X(x_i)$$
+
+For continuous RVs, they can take infinite possible values, so we cannot sum across the pdf the same way. We still want the weighted average, so we need to find a way to "sum" the weighted outcomes for the continuous RV, which translates to an integral. 
+
+[Here's a fairly good explanation on StackExchange.](https://math.stackexchange.com/questions/629419/please-explain-to-me-why-the-expected-value-is-ex-int-infty-infty#:~:text=In%20essence%2C%20then%2C%20an%20integral,b%E2%88%92ank).)
+
+### 3. Muddiest point may be the last example with making sure I get the bounds correct.
+
+**Final example: Let $f_{X,Y}(x,y)= 2e^{-(x+y)}$, for $0 \leq x \leq y$. Find
+$\mathbb{E}[X]$.**
+
+Let's start with a plot for the domain. We have $0 \leq x \leq y$, so we know that $x\geq0$ and because $y\geq x$, then $y\geq0$, so we'll have a plot of all positive values of $x$ and $y$:
+
+```{r}
+#| fig-width: 5
+#| fig-height: 4.5
+#| warning: false
+#| message: false
+#| echo: false
+#| fig-align: center
+
+library(tidyverse)
+
+joint3 = tibble(
+  x = seq(0, 5, 0.5), 
+  y = seq(0, 5, 0.5)
+)
+
+x_y_plot3 = ggplot(joint3, aes(x = x, y = y)) +
+  labs(x = "x", y = "y") +
+  scale_x_continuous(breaks = 1:5) +
+  scale_y_continuous(breaks = 1:5) +
+  theme_bw() +
+  theme(text = element_text(size=22))
+x_y_plot3
+```
+
+Okay, now let's add the information that $y \geq x$. We can look at the line, $y=x$, and identify the area on the side of the line that upholds $y \geq x$:
+
+```{r}
+#| fig-width: 5
+#| fig-height: 4.5
+#| warning: false
+#| message: false
+#| echo: false
+#| fig-align: center
+
+x_y_plot4 = x_y_plot3 + geom_line(colour = "#E25D3B")
+x_y_plot4
+```
+
+The area above the line is where $y\geq x$:
+
+```{r}
+#| fig-width: 5
+#| fig-height: 4.5
+#| warning: false
+#| message: false
+#| echo: false
+#| fig-align: center
+
+x_y_plot5 = x_y_plot3 +
+  geom_polygon(
+    data = tibble(
+      x = c(0, 0, 5, 5),
+      y = c(0, 5, 5, 0)
+    ) %>% 
+      dplyr::filter(y >= x),  # keep area above diagonal
+    aes(x = x, y = y),
+    fill = "#E25D3B", alpha = 0.2
+  ) +
+  geom_abline(intercept = 0, slope = 1, colour = "#E25D3B", linewidth = 1) +
+  theme_bw() +
+  theme(text = element_text(size = 22))
+
+x_y_plot5
+```
+
+So we need to find the bounds for the orange region in terms of $x$ and $y$.
+
+Whichever random variable is on the inner integral will need to incorporate the $y=x$ line. If we integrate over $y$ first, we will integrate from $y=x$ to $y=\infty$. Once we have incorporated the line into our first integral, then we no longer need to worry about the $y=x$ line. For $x$, we can integrate from $x=0$ to $x=\infty$.
+
+
+
+
+

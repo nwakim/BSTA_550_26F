@@ -350,5 +350,8 @@
   },
   "lessons/14_Transformations/14_Transformations_calc.qmd": {
     "14_Transformations_calc.html": "cbd07ba1"
+  },
+  "lessons/15_Joint_distributions/15_Joint_distributions_3d_plots.qmd": {
+    "15_Joint_distributions_3d_plots.html": "792464f1"
   }
 }

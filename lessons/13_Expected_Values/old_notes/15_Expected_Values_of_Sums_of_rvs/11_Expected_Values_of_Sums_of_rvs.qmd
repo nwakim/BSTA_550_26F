@@ -1,0 +1,140 @@
+---
+title: "Chapter 11: Expected Values of Sums of Discrete RVs"
+author: "Meike Niederhausen and Nicky Wakim"
+title-slide-attributes:
+    data-background-color: "#006a4e"
+date: "10/23/2024"
+format: 
+  revealjs:
+    theme: "../simple_NW.scss"
+    slide-number: true
+    show-slide-number: all
+    width: 1955
+    height: 1100
+    footer: Chapter 11 Slides
+    html-math-method: mathjax
+---
+
+## Learning Objectives
+
+1. Calculate the mean (expected value) of *sums of* discrete random variables
+
+## Where are we?
+
+![](../img_slides/course_map.png){fig-align="center"}
+
+## Revisiting our two card draw
+
+::: columns
+::: {.column width="40%"}
+::: example
+::: ex-title
+Example 1
+:::
+
+::: ex-cont
+Suppose you draw 2 cards from a standard deck of cards *with* replacement. Let $X$ be the number of hearts you draw. Find $\mathbb{E}[X]$.
+:::
+:::
+
+::: example
+::: ex-cont
+<font size=6ex>Recall Binomial RV with $n=2$:
+
+$$p_X(x) = {2 \choose x}p^x(1-p)^{2-x} \text{  for } x = 0, 1, 2$$
+
+</font>
+:::
+:::
+
+:::
+:::
+
+## What if we draw A LOT of cards?
+
+::: columns
+::: {.column width="40%"}
+::: example
+::: ex-title
+Example 2
+:::
+
+::: ex-cont
+What is the expected number of hearts in Example 1 if you draw 200 cards?
+:::
+:::
+
+::: example
+::: ex-cont
+<font size=6ex>Recall Binomial RV with $n=200$:
+
+$$p_X(x) = {200 \choose x}p^x(1-p)^{200-x}$$
+$$\text{  for } x = 0, 1, 2, ..., 200$$
+
+</font>
+:::
+:::
+
+:::
+:::
+
+## Sum of discrete RVs
+
+::: theorem
+::: thm-title
+Theorem 11.1: Sum of discrete RVs
+:::
+
+::: thm-cont
+For discrete r.v.'s $X_i$ and constants $a_i$, $i=1,2,\dots, n$, $$\mathbb{E}\Bigg[\sum_{i=1}^n a_iX_i\Bigg] = \sum_{i=1}^n a_i\mathbb{E}[X_i] .$$ **Remark:** The theorem holds for infinitely r.v.'s $X_i$ as well.
+:::
+:::
+
+-   For two RVs, $X$ and $Y$:
+    -   We can say $E[X+Y] = E[X] + E[Y]$
+    -   ... and constant numbers $a$ and $b$, we can also say $E[aX+bY] = aE[X] + bE[Y]$
+    -   We can also also say $E[X-Y] = E[X] - E[Y]$, since $b=-1$
+
+## Corollaries from Thm 11.1
+
+::: columns
+::: {.column width="50%"}
+::: proposition
+::: prop-title
+Corollary 11.1.1
+:::
+
+::: prop-cont
+For a discrete r.v. $X$, and constants $a$ and $b$, $$\mathbb{E}[aX+b] = a\mathbb{E}[X] + b.$$
+:::
+:::
+:::
+
+::: {.column width="50%"}
+::: proposition
+::: prop-title
+Corollary 11.1.2
+:::
+
+::: prop-cont
+If $X_i$, $i=1,2,\dots, n$, are identically distributed r.v.'s, then $$\mathbb{E}\bigg[\sum_{i=1}^n X_i\bigg] = n\mathbb{E}[X_1] .$$
+:::
+:::
+:::
+:::
+
+## Cost of hotel rooms
+
+::: columns
+::: {.column width="40%"}
+::: example
+::: ex-title
+Example 4
+:::
+
+::: ex-cont
+A tour group is planning a visit to the city of Minneapolis and needs to book 30 hotel rooms. The average price of a room is \$200. In addition, there is a 10% tourism tax for each room. What is the expected cost for the 30 hotel rooms?
+:::
+:::
+:::
+:::

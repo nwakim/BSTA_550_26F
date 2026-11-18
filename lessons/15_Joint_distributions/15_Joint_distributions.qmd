@@ -113,7 +113,6 @@ draw_pdf_volume <- function(f, x_vals, y_vals, domain_corners,
 | Function | What it does | First used |
 |------|--------------------------------|------|
 | `first()`, `last()` | The first or last value in each group | Example 1 |
-| `pivot_wider()` | Spreads one column's values into separate columns, to make a table | Example 1, part 5 |
 | `slice_sample()` | Draws whole rows from a table; `weight_by` makes some rows more likely | 2D grid sampling |
 | `pmax()` | The larger value in **each row** of two columns | Example 3 |
 
@@ -292,7 +291,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, & Y \leq y) = \\
 
 5.  Use simulation to approximate expected values from a joint distribution
 
-## [Joint distribution for two discrete random variables (1/9)]{style="display: none;"}
+## [Joint distribution for two discrete random variables (1/5)]{style="display: none;"}
 
 ::::::: columns
 :::::: {.column width="100%"}
@@ -311,16 +310,12 @@ Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, a
 3.  Find $\mathbb{P}(Y = 1)$
 
 4.  Find $\mathbb{P}(Y \leq 2)$
-
-5.  Find the joint CDF $F_{X,Y}(x,y)$ for the joint pmf $p_{X,Y}(x,y)$
-
-6.  Find the marginal CDFs $F_{X}(x)$ and $F_{Y}(y)$
 :::
 :::::
 ::::::
 :::::::
 
-## [Joint distribution for two discrete random variables (2/9)]{style="display: none;"}
+## [Joint distribution for two discrete random variables (2/5)]{style="display: none;"}
 
 ::::::: columns
 :::::: {.column width="35%"}
@@ -341,7 +336,7 @@ Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, a
 ::::::
 :::::::
 
-## [Joint distribution for two discrete random variables (3/9)]{style="display: none;"}
+## [Joint distribution for two discrete random variables (3/5)]{style="display: none;"}
 
 ::::::: columns
 :::::: {.column width="35%"}
@@ -362,7 +357,7 @@ Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, a
 ::::::
 :::::::
 
-## [Joint distribution for two discrete random variables (4/9): simulate]{style="display: none;"}
+## [Joint distribution for two discrete random variables (4/5): simulate]{style="display: none;"}
 
 
 :::: example
@@ -419,7 +414,7 @@ so $p_{X,Y}(1,1) = 0$
 :::
 :::::::
 
-## [Joint distribution for two discrete random variables (5/9): simulate]{style="display: none;"}
+## [Joint distribution for two discrete random variables (5/5): simulate]{style="display: none;"}
 
 :::: example
 ::: ex-cont
@@ -451,7 +446,7 @@ For reference, the exact answers are $p_{X,Y}(x,y) = \frac16 \approx 0.1667$ for
 :::
 :::::::
 
-## [Joint distribution for two discrete random variables (6/9)]{style="display: none;"}
+## [Joint distribution for two discrete random variables part 5]{style="display: none;"} {visibility="hidden"}
 
 ::::::: columns
 :::::: {.column width="35%"}
@@ -470,7 +465,7 @@ Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, a
 ::::::
 :::::::
 
-## [Joint distribution for two discrete random variables (7/9): simulate]{style="display: none;"}
+## [Joint distribution for two discrete random variables part 5: simulate]{style="display: none;"} {visibility="hidden"}
 
 :::: example
 ::: ex-cont
@@ -530,7 +525,7 @@ ex1_cdf |> # <6>
 :::
 :::::::
 
-## [Joint distribution for two discrete random variables (8/9)]{style="display: none;"}
+## [Joint distribution for two discrete random variables part 6]{style="display: none;"} {visibility="hidden"}
 
 ::::::: columns
 :::::: {.column width="35%"}
@@ -549,7 +544,7 @@ Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, a
 ::::::
 :::::::
 
-## [Joint distribution for two discrete random variables (9/9): simulate]{style="display: none;"}
+## [Joint distribution for two discrete random variables part 6: simulate]{style="display: none;"} {visibility="hidden"}
 
 :::: example
 ::: ex-cont
@@ -594,7 +589,7 @@ For reference, the exact marginal CDFs are $F_X(1) = \frac13$, $F_X(2) = \frac23
 :::
 :::::::
 
-## Quick remarks on the joint and marginal CDF
+## Quick remarks on the joint and marginal CDF {visibility="hidden"}
 
 -   $F_X(x)$: rightmost column of the CDF table (where the $Y$ values are largest)
 

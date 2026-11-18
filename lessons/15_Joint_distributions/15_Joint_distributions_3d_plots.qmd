@@ -76,6 +76,54 @@ Each plot below is an interactive version of a static 3D plot in the [Lesson 15 
 -   **Blue floor:** the possible values (where $f_{X,Y}(x,y) > 0$).
 -   **Orange:** the event. Its volume, from the floor up to the pdf, is the probability we approximate with simulation.
 
+## Example 1: the joint pmf {#ex1-pmf}
+
+Two draws without replacement from a box with balls 1, 2, and 3. Each stick stands on a pair $(x, y)$, and its height is $p_{X,Y}(x,y)$: $\frac16$ for each pair of different balls, and 0 on the diagonal (the $\times$ marks), because the same ball can't be drawn twice.
+
+```{r}
+ex1_pmf <- expand_grid(x = 1:3, y = 1:3) |>
+  mutate(prob = if_else(x == y, 0, 1/6))
+
+ex1_sticks <- ex1_pmf |>
+  filter(prob > 0) |>
+  mutate(id = row_number()) |>
+  reframe(x = c(x, x, NA), y = c(y, y, NA), z = c(0, prob, NA), .by = id)
+
+floor_lines <- bind_rows(
+  tibble(x = rep(c(0.5, 3.5, NA), 3), y = rep(1:3, each = 3)),
+  tibble(x = rep(1:3, each = 3), y = rep(c(0.5, 3.5, NA), 3))
+) |>
+  mutate(z = if_else(is.na(x) | is.na(y), NA_real_, 0))
+
+plot_ly(height = 650) |>
+  add_trace(type = "mesh3d", x = c(0.5, 3.5, 3.5, 0.5), y = c(0.5, 0.5, 3.5, 3.5),
+            z = c(0, 0, 0, 0), delaunayaxis = "z", color = I("#29abe0"),
+            opacity = 0.3, hoverinfo = "skip") |>
+  add_trace(data = floor_lines, x = ~x, y = ~y, z = ~z, type = "scatter3d",
+            mode = "lines", line = list(color = "#bbbbbb", width = 2),
+            hoverinfo = "skip") |>
+  add_trace(data = ex1_sticks, x = ~x, y = ~y, z = ~z, type = "scatter3d",
+            mode = "lines", line = list(color = "#E89543", width = 10),
+            hoverinfo = "skip") |>
+  add_trace(data = filter(ex1_pmf, prob > 0), x = ~x, y = ~y, z = ~prob,
+            type = "scatter3d", mode = "markers",
+            marker = list(color = "#E89543", size = 6),
+            hovertemplate = "(x, y) = (%{x}, %{y})<br>p(x, y) = %{z:.4f}<extra></extra>") |>
+  add_trace(data = filter(ex1_pmf, prob == 0), x = ~x, y = ~y, z = ~prob,
+            type = "scatter3d", mode = "markers",
+            marker = list(color = "#666666", size = 6, symbol = "x"),
+            hovertemplate = "(x, y) = (%{x}, %{y})<br>p(x, y) = 0<extra></extra>") |>
+  layout(
+    showlegend = FALSE,
+    margin = list(l = 0, r = 0, t = 0, b = 0),
+    scene = list(
+      xaxis = list(title = "x", tickvals = 1:3),
+      yaxis = list(title = "y", tickvals = 1:3),
+      zaxis = list(title = "p(x, y)", range = c(0, 0.25)),
+      aspectmode = "manual", aspectratio = list(x = 1, y = 1, z = 0.7),
+      camera = list(eye = list(x = 1.5, y = -1.6, z = 0.9))))
+```
+
 ## 2D grid sampling {#grid-sampling}
 
 A small grid for $f_{X,Y}(x,y) = \frac32 y^2$, $0 \leq x \leq 2$, $0 \leq y \leq 1$. Each stick is one ticket: taller sticks are more likely to be drawn.

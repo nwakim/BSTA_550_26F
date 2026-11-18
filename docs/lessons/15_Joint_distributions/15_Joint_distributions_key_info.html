@@ -74,35 +74,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -189,7 +160,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">October 25, 2026</p>
+      <p class="date-modified">November 18, 2026</p>
     </div>
   </div>
     
@@ -203,26 +174,13 @@ window.Quarto = {
 <section id="announcements" class="level2">
 <h2 class="anchored" data-anchor-id="announcements">Announcements</h2>
 <ul>
-<li>Midterm feedback!</li>
-<li>Homework
-<ul>
-<li>You NEED to show your work! I am asking Charles to give half credit if you do not show sufficient work</li>
-<li>If you have an html file and images of work, please insert the image into your html!</li>
-</ul></li>
-<li>Homework 2 feedback from Charles
-<ul>
-<li>People forgot to use combinations for binary distribution</li>
-<li>Some people didn’t get all of the combinations for question 3</li>
-<li>Some didn’t know how to break up the venn diagram to find each prob. Or label it correctly</li>
-<li>Some people inserted <span class="math inline">\(A \cup B\)</span>, <span class="math inline">\(A \cup C\)</span>, <span class="math inline">\(B \cup C\)</span> into the equation for <span class="math inline">\(A \cup B \cup C\)</span> …somehow it gets the same probability for A&amp;B&amp;C even though that the wrong way to do it</li>
-</ul></li>
+<li><a href="https://ohsu-psu-sph.org/graduate-scholarships/">Apply to Graduate Scholarships</a></li>
 </ul>
 </section>
 <section id="key-dates" class="level2">
 <h2 class="anchored" data-anchor-id="key-dates">Key Dates</h2>
 <ul>
-<li>HW 04 due this Sunday!</li>
-<li>Midterm feedback due Sunday as well!</li>
+<li>Homework 5 due 11/22 at 11pm</li>
 </ul>
 
 

@@ -1,0 +1,15 @@
+{
+  "hash": "8173afba42c0b1592c1e2bd6dc5b648f",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Key Info\"\ndate-modified: \"today\"\nformat: \n  html:\n    link-external-newwindow: true\neditor_options: \n  chunk_output_type: console\n---\n\n\n\n## Announcements\n\n- [Apply to Graduate Scholarships](https://ohsu-psu-sph.org/graduate-scholarships/)\n\n\n## Key Dates\n\n- Homework 5 due 11/22 at 11pm\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

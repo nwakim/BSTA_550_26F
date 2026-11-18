@@ -8,19 +8,17 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r setup, include=FALSE}
+library(here)
+source(here("class_dates.R"))
+```
+
 ## Announcements
 
-- Midterm feedback!
-- Homework
-  - You NEED to show your work! I am asking Charles to give half credit if you do not show sufficient work
-  - If you have an html file and images of work, please insert the image into your html!
-- Homework 2 feedback from Charles
-  - People forgot to use combinations for binary distribution
-  - Some people didn't get all of the combinations for question 3
-  - Some didn't know how to break up the venn diagram to find each prob. Or label it correctly
-  - Some people inserted $A \cup B$, $A \cup C$, $B \cup C$ into the equation for $A \cup B \cup C$ ...somehow it gets the same probability for A&B&C even though that the wrong way to do it
+- [Apply to Graduate Scholarships](https://ohsu-psu-sph.org/graduate-scholarships/)
+
 
 ## Key Dates
 
-- HW 04 due this Sunday!
-- Midterm feedback due Sunday as well!
+- Homework 5 due `r hw5 %>% format("%m/%d")` at 11pm
+

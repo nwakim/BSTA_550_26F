@@ -421,8 +421,8 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <li><p>Use simulation to approximate expected values from a joint distribution</p></li>
 </ol>
 </section>
-<section id="joint-distribution-for-two-discrete-random-variables-15" class="slide level2">
-<h2><span style="display: none;">Joint distribution for two discrete random variables (1/5)</span></h2>
+<section id="joint-distribution-for-two-discrete-random-variables-16" class="slide level2">
+<h2><span style="display: none;">Joint distribution for two discrete random variables (1/6)</span></h2>
 <div class="columns">
 <div class="column" style="width:100%;">
 <div class="example">
@@ -441,8 +441,8 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 </div>
 </div></div>
 </section>
-<section id="joint-distribution-for-two-discrete-random-variables-25" class="slide level2">
-<h2><span style="display: none;">Joint distribution for two discrete random variables (2/5)</span></h2>
+<section id="joint-distribution-for-two-discrete-random-variables-26" class="slide level2">
+<h2><span style="display: none;">Joint distribution for two discrete random variables (2/6)</span></h2>
 <div class="columns">
 <div class="column" style="width:35%;">
 <div class="example">
@@ -460,8 +460,8 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <p><img data-src="../../lessons/img_slides/joint_pmf.png" width="520"></p>
 </div></div>
 </section>
-<section id="joint-distribution-for-two-discrete-random-variables-35" class="slide level2">
-<h2><span style="display: none;">Joint distribution for two discrete random variables (3/5)</span></h2>
+<section id="joint-distribution-for-two-discrete-random-variables-36" class="slide level2">
+<h2><span style="display: none;">Joint distribution for two discrete random variables (3/6)</span></h2>
 <div class="columns">
 <div class="column" style="width:35%;">
 <div class="example">
@@ -479,8 +479,8 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <p><img data-src="../../lessons/img_slides/joint_pmf.png" width="520"></p>
 </div></div>
 </section>
-<section id="joint-distribution-for-two-discrete-random-variables-45-simulate" class="slide level2">
-<h2><span style="display: none;">Joint distribution for two discrete random variables (4/5): simulate</span></h2>
+<section id="joint-distribution-for-two-discrete-random-variables-46-simulate" class="slide level2">
+<h2><span style="display: none;">Joint distribution for two discrete random variables (4/6): simulate</span></h2>
 <div class="example">
 <div class="ex-cont">
 <ol type="1">
@@ -571,8 +571,45 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <p>so <span class="math inline">\(p_{X,Y}(1,1) = 0\)</span></p>
 </div></div>
 </section>
-<section id="joint-distribution-for-two-discrete-random-variables-55-simulate" class="slide level2">
-<h2><span style="display: none;">Joint distribution for two discrete random variables (5/5): simulate</span></h2>
+<section id="joint-distribution-for-two-discrete-random-variables-56-3d-picture" class="slide level2">
+<h2><span style="display: none;">Joint distribution for two discrete random variables (5/6): 3D picture</span></h2>
+<div class="example">
+<div class="ex-cont">
+<ol type="1">
+<li>Picture the simulated joint pmf in 3D.</li>
+</ol>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li>Each stick stands on one pair <span class="math inline">\((x, y)\)</span>. Its height is the simulated <span class="math inline">\(p_{X,Y}(x,y) \approx \frac16\)</span></li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>The <span class="math inline">\(\times\)</span> marks <span class="math inline">\((1, 1)\)</span>, <span class="math inline">\((2, 2)\)</span>, and <span class="math inline">\((3, 3)\)</span>: height 0, because we can’t draw the same ball twice</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li>The heights add up to 1: the discrete version of “total volume = 1” for a joint pdf</li>
+</ul>
+<p><span style="display: block; text-align: center; font-size: 0.5em;"><a href="../../lessons/15_Joint_distributions/15_Joint_distributions_3d_plots.html#ex1-pmf" target="_blank">Rotate this plot (interactive) ↗</a></span></p>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:58%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center" style="width:85.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="joint-distribution-for-two-discrete-random-variables-66-simulate" class="slide level2">
+<h2><span style="display: none;">Joint distribution for two discrete random variables (6/6): simulate</span></h2>
 <div class="example">
 <div class="ex-cont">
 <p>Parts 2 to 4: check <span class="math inline">\(\mathbb{P}(X+Y=3)\)</span>, <span class="math inline">\(\mathbb{P}(Y = 1)\)</span>, and <span class="math inline">\(\mathbb{P}(Y \leq 2)\)</span> with simulation.</p>
@@ -684,7 +721,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-7-1.png" width="864"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-8-1.png" width="864"></p>
 </figure>
 </div>
 </div>
@@ -713,7 +750,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-8-1.png" width="576"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-9-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -725,7 +762,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" style="width:48.0%"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" style="width:48.0%"></p>
 </figure>
 </div>
 </div>
@@ -819,7 +856,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-11-1.png" width="768"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-12-1.png" width="768"></p>
 </figure>
 </div>
 </div>
@@ -862,7 +899,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-12-1.png" width="768"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-13-1.png" width="768"></p>
 </figure>
 </div>
 </div>
@@ -903,7 +940,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-13-1.png" width="768"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-14-1.png" width="768"></p>
 </figure>
 </div>
 </div>
@@ -967,7 +1004,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-14-1.png" width="576"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-15-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -979,7 +1016,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" style="width:48.0%"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center" style="width:48.0%"></p>
 </figure>
 </div>
 </div>
@@ -1002,7 +1039,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-16-1.png" width="576"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-17-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -1017,7 +1054,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center" style="width:48.0%"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center" style="width:48.0%"></p>
 </figure>
 </div>
 </div>
@@ -1037,31 +1074,41 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 </ol>
 </div>
 </div>
-<!-- @claude: in the below simulation, can you use the joint pdf to simulate? -->
 <div class="columns">
 <div class="column" style="width:52%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-15"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1">1</button><span id="annotated-cell-15-1" class="code-annotation-target"><a href="#annotated-cell-15-1" aria-label="1"></a>ex3_sims <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-15-2"><a href="#annotated-cell-15-2" aria-label="2"></a>  <span class="fu">mutate</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="2">2</button><span id="annotated-cell-15-3" class="code-annotation-target"><a href="#annotated-cell-15-3" aria-label="3"></a>    <span class="at">x =</span> <span class="fu">runif</span>(<span class="fu">n</span>(), <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">4</span>),</span>
-<span id="annotated-cell-15-4"><a href="#annotated-cell-15-4" aria-label="4"></a>    <span class="at">y =</span> <span class="fu">runif</span>(<span class="fu">n</span>(), <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">4</span>)</span>
-<span id="annotated-cell-15-5"><a href="#annotated-cell-15-5" aria-label="5"></a>  )</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-15"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1">1</button><span id="annotated-cell-15-1" class="code-annotation-target"><a href="#annotated-cell-15-1" aria-label="1"></a>ex3_grid <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
+<span id="annotated-cell-15-2"><a href="#annotated-cell-15-2" aria-label="2"></a>    <span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="at">length.out =</span> <span class="dv">1001</span>),</span>
+<span id="annotated-cell-15-3"><a href="#annotated-cell-15-3" aria-label="3"></a>    <span class="at">y =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="at">length.out =</span> <span class="dv">1001</span>)</span>
+<span id="annotated-cell-15-4"><a href="#annotated-cell-15-4" aria-label="4"></a>  ) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="2">2</button><span id="annotated-cell-15-5" class="code-annotation-target"><a href="#annotated-cell-15-5" aria-label="5"></a>  <span class="fu">mutate</span>(<span class="at">height =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">16</span>)</span>
 <span id="annotated-cell-15-6"><a href="#annotated-cell-15-6" aria-label="6"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="3">3</button><span id="annotated-cell-15-7" class="code-annotation-target"><a href="#annotated-cell-15-7" aria-label="7"></a>ex3_sims <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-15-8"><a href="#annotated-cell-15-8" aria-label="8"></a>  <span class="fu">summarise</span>(<span class="at">prob =</span> <span class="fu">mean</span>(<span class="fu">abs</span>(x <span class="sc">-</span> y) <span class="sc">&lt;</span> <span class="dv">2</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="3">3</button><span id="annotated-cell-15-7" class="code-annotation-target"><a href="#annotated-cell-15-7" aria-label="7"></a>ex3_sims <span class="ot">&lt;-</span> ex3_grid <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-15-8"><a href="#annotated-cell-15-8" aria-label="8"></a>  <span class="fu">slice_sample</span>(</span>
+<span id="annotated-cell-15-9"><a href="#annotated-cell-15-9" aria-label="9"></a>    <span class="at">n =</span> reps,</span>
+<span id="annotated-cell-15-10"><a href="#annotated-cell-15-10" aria-label="10"></a>    <span class="at">weight_by =</span> height,</span>
+<span id="annotated-cell-15-11"><a href="#annotated-cell-15-11" aria-label="11"></a>    <span class="at">replace =</span> <span class="cn">TRUE</span></span>
+<span id="annotated-cell-15-12"><a href="#annotated-cell-15-12" aria-label="12"></a>  )</span>
+<span id="annotated-cell-15-13"><a href="#annotated-cell-15-13" aria-label="13"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="4">4</button><span id="annotated-cell-15-14" class="code-annotation-target"><a href="#annotated-cell-15-14" aria-label="14"></a>ex3_sims <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-15-15"><a href="#annotated-cell-15-15" aria-label="15"></a>  <span class="fu">summarise</span>(<span class="at">prob =</span> <span class="fu">mean</span>(<span class="fu">abs</span>(x <span class="sc">-</span> y) <span class="sc">&lt;</span> <span class="dv">2</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-15" data-code-lines="1" data-code-annotation="1">One row per simulation.</span>
+<span data-code-cell="annotated-cell-15" data-code-lines="1,2,3" data-code-annotation="1">Steps 1 and 2 of 2D grid sampling: a grid of about 1 million tickets covering the square.</span>
 </dd>
 <dt data-target-cell="annotated-cell-15" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-15" data-code-lines="3,4" data-code-annotation="2">Constant density on the square means every point is equally likely. Picking <code>x</code> and <code>y</code> each with <code>runif()</code> does this, so we don’t need a grid. (Lesson 16 explains why this works here, and why it does <em>not</em> work for Examples 2 and 4.)</span>
+<span data-code-cell="annotated-cell-15" data-code-lines="5" data-code-annotation="2">Step 3: the joint pdf’s height at each ticket. The density is constant, so every ticket has the same height, <span class="math inline">\(\frac{1}{16}\)</span>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-15" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-15" data-code-lines="7,8" data-code-annotation="3"><code>abs()</code> is the absolute value. The proportion of simulations with <span class="math inline">\(|X - Y| &lt; 2\)</span> approximates the probability.</span>
+<span data-code-cell="annotated-cell-15" data-code-lines="7,8,9,10,11" data-code-annotation="3">Step 4: draw <code>reps</code> tickets, weighted by height, like Example 2. Equal heights mean every ticket is equally likely.</span>
+</dd>
+<dt data-target-cell="annotated-cell-15" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-15" data-code-lines="14,15" data-code-annotation="4"><code>abs()</code> is the absolute value. The proportion of simulations with <span class="math inline">\(|X - Y| &lt; 2\)</span> approximates the probability.</span>
 </dd>
 </dl>
 </div>
@@ -1069,12 +1116,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <pre><code># A tibble: 1 × 1
    prob
   &lt;dbl&gt;
-1 0.749</code></pre>
-</div>
-</div>
-<div class="proof1">
-<div class="proof-cont">
-<p>For reference, the exact answer is <span class="math inline">\(\mathbb{P}(|X-Y| &lt; 2) = \frac{16 - 2 \cdot 2}{16} = \frac34 = 0.75\)</span>: the square’s area minus two corner triangles, times the height <span class="math inline">\(\frac{1}{16}\)</span></p>
+1 0.748</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:48%;">
@@ -1082,44 +1124,49 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <details class="code-fold">
 <summary>Plot code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-17"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-17-1"><a href="#annotated-cell-17-1" aria-label="1"></a>ex3_sims <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="4">4</button><span id="annotated-cell-17-2" class="code-annotation-target"><a href="#annotated-cell-17-2" aria-label="2"></a>  <span class="fu">filter</span>(sim <span class="sc">&lt;=</span> <span class="dv">2000</span>) <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="5">5</button><span id="annotated-cell-17-3" class="code-annotation-target"><a href="#annotated-cell-17-3" aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> <span class="fu">abs</span>(x <span class="sc">-</span> y) <span class="sc">&lt;</span> <span class="dv">2</span>)) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="5">5</button><span id="annotated-cell-17-2" class="code-annotation-target"><a href="#annotated-cell-17-2" aria-label="2"></a>  <span class="fu">head</span>(<span class="dv">2000</span>) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="6">6</button><span id="annotated-cell-17-3" class="code-annotation-target"><a href="#annotated-cell-17-3" aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> <span class="fu">abs</span>(x <span class="sc">-</span> y) <span class="sc">&lt;</span> <span class="dv">2</span>)) <span class="sc">+</span></span>
 <span id="annotated-cell-17-4"><a href="#annotated-cell-17-4" aria-label="4"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="6">6</button><span id="annotated-cell-17-5" class="code-annotation-target"><a href="#annotated-cell-17-5" aria-label="5"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"grey60"</span>, <span class="st">"#29abe0"</span>)) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="7">7</button><span id="annotated-cell-17-6" class="code-annotation-target"><a href="#annotated-cell-17-6" aria-label="6"></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="8">8</button><span id="annotated-cell-17-7" class="code-annotation-target"><a href="#annotated-cell-17-7" aria-label="7"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">"First 2,000 simulated points"</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="7">7</button><span id="annotated-cell-17-5" class="code-annotation-target"><a href="#annotated-cell-17-5" aria-label="5"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"grey60"</span>, <span class="st">"#29abe0"</span>)) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="8">8</button><span id="annotated-cell-17-6" class="code-annotation-target"><a href="#annotated-cell-17-6" aria-label="6"></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="9">9</button><span id="annotated-cell-17-7" class="code-annotation-target"><a href="#annotated-cell-17-7" aria-label="7"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">"First 2,000 simulated points"</span>,</span>
 <span id="annotated-cell-17-8"><a href="#annotated-cell-17-8" aria-label="8"></a>       <span class="at">x =</span> <span class="st">"x"</span>, <span class="at">y =</span> <span class="st">"y"</span>, <span class="at">color =</span> <span class="st">"|x - y| &lt; 2"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-17" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-cell="annotated-cell-17" data-code-lines="2" data-code-annotation="4">Plot only the first 2,000 simulations, so the points don’t cover each other.</span>
-</dd>
 <dt data-target-cell="annotated-cell-17" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-17" data-code-lines="3,4" data-code-annotation="5">One point per simulated pair, colored by whether it is in the event.</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="2" data-code-annotation="5">Plot only the first 2,000 simulated pairs, so the points don’t cover each other.</span>
 </dd>
 <dt data-target-cell="annotated-cell-17" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-17" data-code-lines="5" data-code-annotation="6">Grey for <code>FALSE</code>, blue for <code>TRUE</code>.</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="3,4" data-code-annotation="6">One point per simulated pair, colored by whether it is in the event.</span>
 </dd>
 <dt data-target-cell="annotated-cell-17" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-17" data-code-lines="6" data-code-annotation="7">Make the square look like a square.</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="5" data-code-annotation="7">Grey for <code>FALSE</code>, blue for <code>TRUE</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-17" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-cell="annotated-cell-17" data-code-lines="7,8" data-code-annotation="8">Add a subtitle and labels.</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="6" data-code-annotation="8">Make the square look like a square.</span>
+</dd>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="9">9</dt>
+<dd>
+<span data-code-cell="annotated-cell-17" data-code-lines="7,8" data-code-annotation="9">Add a subtitle and labels.</span>
 </dd>
 </dl>
 </div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-20-1.png" width="960"></p>
 </figure>
 </div>
+</div>
+</div>
+<div class="proof1">
+<div class="proof-cont">
+<p>For reference, the exact answer is <span class="math inline">\(\mathbb{P}(|X-Y| &lt; 2) = \frac34 = 0.75\)</span> (previous slide)</p>
 </div>
 </div>
 </div></div>
@@ -1143,7 +1190,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-20-1.png" width="576"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-21-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -1155,7 +1202,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center" style="width:48.0%"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-22-1.png" class="quarto-figure quarto-figure-center" style="width:48.0%"></p>
 </figure>
 </div>
 </div>
@@ -1241,7 +1288,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-24-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1298,7 +1345,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-24-1.png" width="576"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-25-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -1310,7 +1357,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-25-1.png" class="quarto-figure quarto-figure-center" style="width:48.0%"></p>
+<p><img data-src="15_Joint_distributions_files/figure-revealjs/unnamed-chunk-26-1.png" class="quarto-figure quarto-figure-center" style="width:48.0%"></p>
 </figure>
 </div>
 </div>
@@ -1381,7 +1428,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <pre><code># A tibble: 1 × 2
   avg_X avg_Y
   &lt;dbl&gt; &lt;dbl&gt;
-1 0.495  1.50</code></pre>
+1 0.493  1.50</code></pre>
 </div>
 </div>
 <div class="proof1">
@@ -1424,7 +1471,7 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, &amp; Y \leq y) = \\
 <tr class="odd">
 <td>Simulate pairs with</td>
 <td><code>sample()</code>, like the box</td>
-<td><code>runif()</code> for constant density; otherwise 2D grid sampling</td>
+<td>2D grid sampling from the joint pdf</td>
 </tr>
 <tr class="even">
 <td>Summarize</td>

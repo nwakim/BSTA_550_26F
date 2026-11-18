@@ -115,7 +115,7 @@ draw_pdf_volume <- function(f, x_vals, y_vals, domain_corners,
 | `first()`, `last()` | The first or last value in each group | Example 1 |
 | `pivot_wider()` | Spreads one column's values into separate columns, to make a table | Example 1, part 5 |
 | `slice_sample()` | Draws whole rows from a table; `weight_by` makes some rows more likely | 2D grid sampling |
-| `pmax()`, `pmin()` | The larger or smaller value in **each row** of two columns | Example 3 |
+| `pmax()` | The larger value in **each row** of two columns | Example 3 |
 
 
 # Learning Objectives
@@ -1230,7 +1230,7 @@ Let $f_{X,Y}(x,y)= 2e^{-(x+y)}$, for $0 \leq x \leq y$. Approximate $\mathbb{E}[
 :::
 :::::
 
-- Same joint pdf as Example 5 (for home, in the reference slides). Possible values: $0 \leq x \leq y$, with no upper limit, but $f_{X,Y}(x,y)$ is almost 0 once $y$ is past 10, so our grid can stop at 10
+- Possible values: $0 \leq x \leq y$, with no upper limit, but $f_{X,Y}(x,y)$ is almost 0 once $y$ is past 10, so our grid can stop at 10
 
 :::::: columns
 ::::: {.column width="34%"}
@@ -1342,13 +1342,10 @@ For reference, the exact answers are $\mathbb{E}[X] = \frac12$ and $\mathbb{E}[Y
 
 - The [**joint distribution**]{style="color:#E25D3B;"} describes $X$ and $Y$ together; a [**marginal distribution**]{style="color:#E25D3B;"} describes one of them alone
 - With simulation: joint probabilities use both columns, marginals use one column, and transformations add a new column with `mutate()`
-- Practice at home: Examples 3 (part 3), 5, and 6 are in the reference slides at the end
 
-# Some more reference slides
+## Some more reference slides {visibility="hidden"}
 
-<!-- @claude: can you hide all the reference slides and remove any references to them in earlier slides? -->
-
-## [Example 5: Joint pdf on a triangle (1/2)]{style="display: none;"}
+## [Example 5: Joint pdf on a triangle (1/2)]{style="display: none;"} {visibility="hidden"}
 
 ::: {.callout-important appearance="simple" icon="false"}
 Do this problem at home for extra practice! Try it first, then check the solution.
@@ -1384,7 +1381,7 @@ domain_triangle
 ::::::
 :::::::
 
-## [Example 5: Joint pdf on a triangle (2/2)]{style="display: none;"}
+## [Example 5: Joint pdf on a triangle (2/2)]{style="display: none;"} {visibility="hidden"}
 
 ::: {.callout-important appearance="simple" icon="false"}
 Do this problem at home for extra practice! Try it first, then check the solution.
@@ -1416,7 +1413,7 @@ domain_triangle
 ::::::
 :::::::
 
-## [Example 5: Joint pdf on a triangle: solution (1/2)]{style="display: none;"}
+## [Example 5: Joint pdf on a triangle: solution (1/2)]{style="display: none;"} {visibility="hidden"}
 
 :::: example
 ::: ex-cont
@@ -1486,7 +1483,7 @@ ggplot(ex4_sims, aes(x = y)) + # <1>
 :::
 :::::
 
-## [Example 5: Joint pdf on a triangle: solution (2/2)]{style="display: none;"}
+## [Example 5: Joint pdf on a triangle: solution (2/2)]{style="display: none;"} {visibility="hidden"}
 
 :::: example
 ::: ex-cont
@@ -1539,7 +1536,7 @@ draw_pdf_volume(
 :::::
 :::::::
 
-## [Example of a joint pdf with a transformation: part 3 for home]{style="display: none;"}
+## [Example of a joint pdf with a transformation: part 3 for home]{style="display: none;"} {visibility="hidden"}
 
 ::::::: columns
 :::::: {.column width="30%"}
@@ -1576,7 +1573,7 @@ Do this problem at home for extra practice! Try it first, then check the solutio
 ::::::
 :::::::
 
-## [Example of a joint pdf with a transformation: part 3 solution (1/2)]{style="display: none;"}
+## [Example of a joint pdf with a transformation: part 3 solution (1/2)]{style="display: none;"} {visibility="hidden"}
 
 :::: example
 ::: ex-cont
@@ -1626,7 +1623,7 @@ draw_pdf_volume(
 :::::
 :::::::
 
-## [Example of a joint pdf with a transformation: part 3 solution (2/2): simulate]{style="display: none;"}
+## [Example of a joint pdf with a transformation: part 3 solution (2/2): simulate]{style="display: none;"} {visibility="hidden"}
 
 :::: example
 ::: ex-cont
@@ -1682,7 +1679,7 @@ ggplot(ex3_sims, aes(x = z)) + # <4>
 :::
 :::::::
 
-## [Last example *for home*: more complicated transformation]{style="display: none;"}
+## [Last example *for home*: more complicated transformation]{style="display: none;"} {visibility="hidden"}
 
 ::: {.callout-important appearance="simple" icon="false"}
 Do this problem at home for extra practice! Try it first, then check the solution.
@@ -1721,7 +1718,7 @@ ggplot() +
 ::::::
 :::::::
 
-## [Last example *for home*: solution (1/2)]{style="display: none;"}
+## [Last example *for home*: solution (1/2)]{style="display: none;"} {visibility="hidden"}
 
 :::: example
 ::: ex-cont
@@ -1775,7 +1772,7 @@ draw_pdf_volume(
 :::::
 :::::::
 
-## [Last example *for home*: solution (2/2): simulate]{style="display: none;"}
+## [Last example *for home*: solution (2/2): simulate]{style="display: none;"} {visibility="hidden"}
 
 :::: example
 ::: ex-cont
@@ -1846,7 +1843,7 @@ ggplot(ex6_sims, aes(x = z)) + # <7>
 :::
 :::::::
 
-## Double Integrals Mini Lesson (1/3)
+## Double Integrals Mini Lesson (1/3) {visibility="hidden"}
 
 ::: {.callout-important appearance="simple" icon="false"}
 Do this problem at home for extra practice! Try it first, then check the solution.
@@ -1875,7 +1872,7 @@ $$\begin{aligned}
 ::::::
 :::::::
 
-## Double Integrals Mini Lesson (2/3)
+## Double Integrals Mini Lesson (2/3) {visibility="hidden"}
 
 ::: {.callout-important appearance="simple" icon="false"}
 Do this problem at home for extra practice! Try it first, then check the solution.
@@ -1904,7 +1901,7 @@ $$\begin{aligned}
 ::::::
 :::::::
 
-## Double Integrals Mini Lesson (3/3)
+## Double Integrals Mini Lesson (3/3) {visibility="hidden"}
 
 ::: {.callout-important appearance="simple" icon="false"}
 Do this problem at home for extra practice! Try it first, then check the solution.

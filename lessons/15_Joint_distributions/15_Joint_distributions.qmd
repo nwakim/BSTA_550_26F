@@ -111,7 +111,7 @@ draw_pdf_volume <- function(f, x_vals, y_vals, domain_corners,
 ## New R functions in this lesson
 
 | Function | What it does | First used |
-|------|--------------------------------|------|
+|------|----------------------------|----------|
 | `first()`, `last()` | The first or last value in each group | Example 1 |
 | `slice_sample()` | Draws whole rows from a table; `weight_by` makes some rows more likely | 2D grid sampling |
 | `pmax()` | The larger value in **each row** of two columns | Example 3 |
@@ -810,11 +810,11 @@ For reference, the exact answer is $\mathbb{P}(0 \leq X \leq 1, 0 \leq Y \leq \f
 ::::
 
 ::::: columns
-::: {.column width="30%"}
+::: {.column width="34%"}
 ```{r}
 #| echo: false
 #| fig-width: 8
-#| fig-height: 6.5
+#| fig-height: 7
 
 draw_pdf_volume(
   f = function(x, y) 3/2 * y^2,
@@ -831,11 +831,11 @@ draw_pdf_volume(
 - Marginal of $Y$: squash it onto the $y$ axis
 :::
 
-::: {.column width="35%"}
+::: {.column width="33%"}
 ```{r}
 #| code-fold: true
 #| code-summary: "Plot code"
-#| fig-width: 10
+#| fig-width: 8
 #| fig-height: 6
 
 ggplot(ex2_sims, aes(x = x)) + # <1>
@@ -856,11 +856,11 @@ ggplot(ex2_sims, aes(x = x)) + # <1>
 - $X$ is flat: Uniform$[0, 2]$
 :::
 
-::: {.column width="35%"}
+::: {.column width="33%"}
 ```{r}
 #| code-fold: true
 #| code-summary: "Plot code"
-#| fig-width: 10
+#| fig-width: 8
 #| fig-height: 6
 
 ggplot(ex2_sims, aes(x = y)) + # <1>
@@ -992,7 +992,6 @@ domain_square +
 ```
 
 - Area of the event: $16 - 2 \cdot \frac12 \cdot 2 \cdot 2 = 12$
-- Volume = area $\times$ height $= 12 \cdot \frac{1}{16} = \frac34$
 :::::
 
 ::::: {.column width="2%"}
@@ -1017,6 +1016,8 @@ draw_pdf_volume(
 ```
 
 [[Rotate this plot (interactive) ↗](15_Joint_distributions_3d_plots.qmd#ex3-abs){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
+
+- Volume = area $\times$ height $= 12 \cdot \frac{1}{16} = \frac34$
 :::::
 ::::::
 
@@ -1027,6 +1028,8 @@ draw_pdf_volume(
 1.  Shade the event $|X-Y| < 2$. Find $\mathbb{P}(|X-Y| < 2)$ using areas, and check it with simulation.
 :::
 ::::
+
+<!-- @claude: in the below simulation, can you use the joint pdf to simulate? -->
 
 ::::::: columns
 ::::: {.column width="52%"}

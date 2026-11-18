@@ -1029,30 +1029,30 @@ draw_pdf_volume(
 :::
 ::::
 
-<!-- @claude: in the below simulation, can you use the joint pdf to simulate? -->
-
 ::::::: columns
 ::::: {.column width="52%"}
 ```{r}
-ex3_sims <- tibble(sim = 1:reps) |> # <1>
-  mutate(
-    x = runif(n(), min = 0, max = 4), # <2>
-    y = runif(n(), min = 0, max = 4) # <2>
+ex3_grid <- expand_grid( # <1>
+    x = seq(0, 4, length.out = 1001), # <1>
+    y = seq(0, 4, length.out = 1001) # <1>
+  ) |>
+  mutate(height = 1/16) # <2>
+
+ex3_sims <- ex3_grid |> # <3>
+  slice_sample( # <3>
+    n = reps, # <3>
+    weight_by = height, # <3>
+    replace = TRUE # <3>
   )
 
-ex3_sims |> # <3>
-  summarise(prob = mean(abs(x - y) < 2)) # <3>
+ex3_sims |> # <4>
+  summarise(prob = mean(abs(x - y) < 2)) # <4>
 ```
 
-1.  One row per simulation.
-2.  Constant density on the square means every point is equally likely. Picking `x` and `y` each with `runif()` does this, so we don't need a grid. (Lesson 16 explains why this works here, and why it does *not* work for Examples 2 and 4.)
-3.  `abs()` is the absolute value. The proportion of simulations with $|X - Y| < 2$ approximates the probability.
-
-:::: proof1
-::: proof-cont
-For reference, the exact answer is $\mathbb{P}(|X-Y| < 2) = \frac{16 - 2 \cdot 2}{16} = \frac34 = 0.75$: the square's area minus two corner triangles, times the height $\frac{1}{16}$
-:::
-::::
+1.  Steps 1 and 2 of 2D grid sampling: a grid of about 1 million tickets covering the square.
+2.  Step 3: the joint pdf's height at each ticket. The density is constant, so every ticket has the same height, $\frac{1}{16}$.
+3.  Step 4: draw `reps` tickets, weighted by height, like Example 2. Equal heights mean every ticket is equally likely.
+4.  `abs()` is the absolute value. The proportion of simulations with $|X - Y| < 2$ approximates the probability.
 :::::
 
 ::: {.column width="48%"}
@@ -1060,23 +1060,29 @@ For reference, the exact answer is $\mathbb{P}(|X-Y| < 2) = \frac{16 - 2 \cdot 2
 #| code-fold: true
 #| code-summary: "Plot code"
 #| fig-width: 10
-#| fig-height: 8
+#| fig-height: 6.5
 
 ex3_sims |>
-  filter(sim <= 2000) |> # <4>
-  ggplot(aes(x = x, y = y, color = abs(x - y) < 2)) + # <5>
-  geom_point(alpha = 0.6, size = 2) + # <5>
-  scale_color_manual(values = c("grey60", "#29abe0")) + # <6>
-  coord_equal() + # <7>
-  labs(subtitle = "First 2,000 simulated points", # <8>
-       x = "x", y = "y", color = "|x - y| < 2") # <8>
+  head(2000) |> # <5>
+  ggplot(aes(x = x, y = y, color = abs(x - y) < 2)) + # <6>
+  geom_point(alpha = 0.6, size = 2) + # <6>
+  scale_color_manual(values = c("grey60", "#29abe0")) + # <7>
+  coord_equal() + # <8>
+  labs(subtitle = "First 2,000 simulated points", # <9>
+       x = "x", y = "y", color = "|x - y| < 2") # <9>
 ```
 
-4.  Plot only the first 2,000 simulations, so the points don't cover each other.
-5.  One point per simulated pair, colored by whether it is in the event.
-6.  Grey for `FALSE`, blue for `TRUE`.
-7.  Make the square look like a square.
-8.  Add a subtitle and labels.
+5.  Plot only the first 2,000 simulated pairs, so the points don't cover each other.
+6.  One point per simulated pair, colored by whether it is in the event.
+7.  Grey for `FALSE`, blue for `TRUE`.
+8.  Make the square look like a square.
+9.  Add a subtitle and labels.
+
+:::: proof1
+::: proof-cont
+For reference, the exact answer is $\mathbb{P}(|X-Y| < 2) = \frac34 = 0.75$ (previous slide)
+:::
+::::
 :::
 :::::::
 
@@ -1333,7 +1339,7 @@ For reference, the exact answers are $\mathbb{E}[X] = \frac12$ and $\mathbb{E}[Y
 |----|----|----|
 | Joint distribution | joint pmf: $p_{X,Y}(x,y) = \mathbb{P}(X=x, Y=y)$ | joint pdf $f_{X,Y}(x,y)$: probabilities are volumes (double integrals) |
 | Marginal distribution | sum the joint pmf over the other variable | integrate the joint pdf over the other variable |
-| Simulate pairs with | `sample()`, like the box | `runif()` for constant density; otherwise 2D grid sampling |
+| Simulate pairs with | `sample()`, like the box | 2D grid sampling from the joint pdf |
 | Summarize | `group_by(x, y)`, `mean(...)` | `mean(...)`, histogram of one column |
 
   

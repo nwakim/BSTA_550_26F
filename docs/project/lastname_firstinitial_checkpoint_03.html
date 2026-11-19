@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Your name here!">
+<meta name="author" content="Your name(s) here!">
 
 <title>Checkpoint 3: Averages and the Central Limit Theorem – Introduction to Probability</title>
 <style>
@@ -4207,10 +4207,11 @@ window.Quarto = {
   <li><a href="#your-scenario" id="toc-your-scenario" class="nav-link active" data-scroll-target="#your-scenario">Your scenario</a></li>
   <li><a href="#define-your-random-variable" id="toc-define-your-random-variable" class="nav-link" data-scroll-target="#define-your-random-variable"><span class="header-section-number">1</span> Define your random variable</a></li>
   <li><a href="#justify-the-distribution" id="toc-justify-the-distribution" class="nav-link" data-scroll-target="#justify-the-distribution"><span class="header-section-number">2</span> Justify the distribution</a></li>
-  <li><a href="#solve-it-analytically" id="toc-solve-it-analytically" class="nav-link" data-scroll-target="#solve-it-analytically"><span class="header-section-number">3</span> Solve it analytically</a></li>
-  <li><a href="#simulate-the-central-limit-theorem" id="toc-simulate-the-central-limit-theorem" class="nav-link" data-scroll-target="#simulate-the-central-limit-theorem"><span class="header-section-number">4</span> Simulate the Central Limit Theorem</a></li>
-  <li><a href="#answer-a-question-about-an-average" id="toc-answer-a-question-about-an-average" class="nav-link" data-scroll-target="#answer-a-question-about-an-average"><span class="header-section-number">5</span> Answer a question about an average</a></li>
-  <li><a href="#say-it" id="toc-say-it" class="nav-link" data-scroll-target="#say-it"><span class="header-section-number">6</span> Say it</a></li>
+  <li><a href="#solve-it-analytically-for-one-person" id="toc-solve-it-analytically-for-one-person" class="nav-link" data-scroll-target="#solve-it-analytically-for-one-person"><span class="header-section-number">3</span> Solve it analytically (for one person)</a></li>
+  <li><a href="#simulate-averages-and-discover-the-central-limit-theorem" id="toc-simulate-averages-and-discover-the-central-limit-theorem" class="nav-link" data-scroll-target="#simulate-averages-and-discover-the-central-limit-theorem"><span class="header-section-number">4</span> Simulate averages and discover the Central Limit Theorem</a></li>
+  <li><a href="#answer-your-guiding-question" id="toc-answer-your-guiding-question" class="nav-link" data-scroll-target="#answer-your-guiding-question"><span class="header-section-number">5</span> Answer your guiding question</a></li>
+  <li><a href="#stretch-optional-1-bonus" id="toc-stretch-optional-1-bonus" class="nav-link" data-scroll-target="#stretch-optional-1-bonus"><span class="header-section-number">6</span> Stretch (optional, +1 bonus)</a></li>
+  <li><a href="#say-it" id="toc-say-it" class="nav-link" data-scroll-target="#say-it"><span class="header-section-number">7</span> Say it</a></li>
   </ul>
 </nav>
     </div>
@@ -4230,7 +4231,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Your name here! </p>
+             <p>Your name(s) here! </p>
           </div>
   </div>
     
@@ -4238,7 +4239,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">September 30, 2026</p>
+      <p class="date-modified">November 18, 2026</p>
     </div>
   </div>
     
@@ -4260,11 +4261,16 @@ Warning
 </div>
 <div class="callout-body-container callout-body">
 <p>Note that this is the editing file. <strong>There are detailed instructions on our course page for Checkpoint 3 that are not in this file.</strong></p>
+<ul>
+<li>Please do not remove anything from this file. Only add your work to it.</li>
+<li>Name your files <code>lastname_firstinitial_checkpoint_03.qmd</code> and <code>.html</code> (or <code>lastname1_lastname2_checkpoint_03.qmd</code> and <code>.html</code> for a pair). One submission per team.</li>
+</ul>
 </div>
 </div>
 <section id="your-scenario" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="your-scenario">Your scenario</h2>
 <p>Scenario (A, B, or C):</p>
+<p><strong>My Checkpoint 3 guiding question</strong> (with any changes from feedback):</p>
 </section>
 <section id="define-your-random-variable" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="define-your-random-variable"><span class="header-section-number">1</span> Define your random variable</h2>
@@ -4284,6 +4290,8 @@ Warning
 </ul>
 </div>
 </div>
+<p><strong><span class="math inline">\(Y\)</span> =</strong></p>
+<p><strong>Support of <span class="math inline">\(Y\)</span>:</strong></p>
 </section>
 <section id="justify-the-distribution" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="justify-the-distribution"><span class="header-section-number">2</span> Justify the distribution</h2>
@@ -4298,15 +4306,38 @@ Warning
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>State the distribution for your scenario and its parameter(s), citing where each value came from.</li>
+<li>State the distribution for your scenario and its parameter(s), citing where each value came from. For a Gamma, show how you found the shape and rate from the mean and SD.</li>
 <li>Explain why this distribution is a reasonable choice, and where it might not match the real quantity.</li>
 <li>Plot the PDF of your distribution.</li>
 </ul>
 </div>
 </div>
+<p><strong>Distribution:</strong> <span class="math inline">\(Y \sim\)</span></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why it is reasonable, and where it might not match:</strong></p>
 </section>
-<section id="solve-it-analytically" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="solve-it-analytically"><span class="header-section-number">3</span> Solve it analytically</h2>
+<section id="solve-it-analytically-for-one-person" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="solve-it-analytically-for-one-person"><span class="header-section-number">3</span> Solve it analytically (for one person)</h2>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -4318,14 +4349,14 @@ Warning
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Find <span class="math inline">\(E(Y)\)</span> and <span class="math inline">\(\text{Var}(Y)\)</span>.</li>
-<li>Calculate <strong>two</strong> probabilities or quantiles that answer practical questions for your program. Show the setup (integral or CDF) for at least one of them, then compute with R.</li>
+<li>Find <span class="math inline">\(E(Y)\)</span>, <span class="math inline">\(\text{Var}(Y)\)</span>, and <span class="math inline">\(\text{SD}(Y)\)</span>.</li>
+<li>Find the probability that <strong>one</strong> person is beyond the cutoff in your guiding question. Show the setup (integral or CDF), then compute with R.</li>
 </ul>
 </div>
 </div>
 </section>
-<section id="simulate-the-central-limit-theorem" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="simulate-the-central-limit-theorem"><span class="header-section-number">4</span> Simulate the Central Limit Theorem</h2>
+<section id="simulate-averages-and-discover-the-central-limit-theorem" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="simulate-averages-and-discover-the-central-limit-theorem"><span class="header-section-number">4</span> Simulate averages and discover the Central Limit Theorem</h2>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -4337,16 +4368,16 @@ Warning
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>For <span class="math inline">\(n = 5\)</span>, <span class="math inline">\(30\)</span>, and <span class="math inline">\(100\)</span>, simulate at least 5,000 sample means.</li>
-<li>For each <span class="math inline">\(n\)</span>, plot a histogram of the sample means with the normal curve predicted by the CLT overlaid.</li>
-<li>Compare the mean and SD of your simulated sample means with the CLT’s predictions.</li>
-<li>In 2–3 sentences, describe how quickly the distribution of <span class="math inline">\(\bar{Y}_n\)</span> looks normal, and how the shape (skewness) of <span class="math inline">\(Y\)</span> affects this.</li>
+<li>For <span class="math inline">\(n = 5\)</span>, <span class="math inline">\(30\)</span>, and <span class="math inline">\(100\)</span> (and your scenario’s <span class="math inline">\(n\)</span> if it is not one of these), simulate at least 10,000 sample means.</li>
+<li>For each <span class="math inline">\(n\)</span>, make a histogram of the sample means with the Normal curve <span class="math inline">\(N(\mu, \sigma^2/n)\)</span> overlaid.</li>
+<li>Compare the mean and SD of your simulated sample means with <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma/\sqrt{n}\)</span>.</li>
+<li>In 2–3 sentences, describe what happens to the distribution of <span class="math inline">\(\bar{Y}_n\)</span> as <span class="math inline">\(n\)</span> gets bigger, and how the shape (skewness) of <span class="math inline">\(Y\)</span> affects this.</li>
 </ul>
 </div>
 </div>
 </section>
-<section id="answer-a-question-about-an-average" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="answer-a-question-about-an-average"><span class="header-section-number">5</span> Answer a question about an average</h2>
+<section id="answer-your-guiding-question" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="answer-your-guiding-question"><span class="header-section-number">5</span> Answer your guiding question</h2>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -4358,15 +4389,15 @@ Warning
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Use the CLT to answer a practical question about <span class="math inline">\(\bar{Y}_n\)</span>, using the <span class="math inline">\(n\)</span> for your scenario.</li>
+<li>Use the Central Limit Theorem to find the probability in your Checkpoint 3 guiding question.</li>
 <li>Check it with your simulation.</li>
-<li>Compare it with the probability that a <strong>single</strong> observation is beyond the same cutoff, and explain why the two answers differ.</li>
+<li>Compare it with your probability for <strong>one</strong> person from Task 3, and explain why the two answers are so different.</li>
 </ul>
 </div>
 </div>
 </section>
-<section id="say-it" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="say-it"><span class="header-section-number">6</span> Say it</h2>
+<section id="stretch-optional-1-bonus" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="stretch-optional-1-bonus"><span class="header-section-number">6</span> Stretch (optional, +1 bonus)</h2>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -4377,9 +4408,36 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Write a short paragraph (4–6 sentences) for the program manager or health department that explains the difference between what happens to <em>one</em> person and what happens <em>on average</em> across many people. Why does this difference matter when the program reports averages to the public?</p>
+<p>How good is the CLT approximation for your scenario? Compare it with the exact answer (Scenarios A and B) or check it at <span class="math inline">\(n = 5\)</span> (Scenario C).</p>
 </div>
 </div>
+</section>
+<section id="say-it" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="say-it"><span class="header-section-number">7</span> Say it</h2>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Task
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Write a short paragraph (4–6 sentences) for the program manager or health department who reports these averages. Use plain language, with no probability notation. Answer in order:
+<ol type="1">
+<li>What should we expect for one tumor, case, or baby? (Use <span class="math inline">\(E(Y)\)</span> and <span class="math inline">\(\text{SD}(Y)\)</span>.)</li>
+<li>How often is one beyond the cutoff? (Use your one-person probability as a natural frequency, with the probability in parentheses.)</li>
+<li>How often is the average of <span class="math inline">\(n\)</span> beyond the cutoff? (Use your guiding-question probability as a natural frequency, with the probability in parentheses.)</li>
+<li>Why are these so different, and what does it mean for what we report?</li>
+</ol></li>
+<li>Answer your Checkpoint 3 guiding question in one sentence, using the probability.</li>
+</ul>
+</div>
+</div>
+<p><strong>Paragraph for the program manager:</strong></p>
+<p><strong>Answer to my Checkpoint 3 guiding question:</strong></p>
 
 
 </section>

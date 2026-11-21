@@ -27486,7 +27486,7 @@
     "href": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#showing-independence-from-joint-pdf-1",
     "title": "Lesson 16: Independence and Conditioning",
     "section": "Showing independence from joint pdf",
-    "text": "Showing independence from joint pdf\n\n\n\n\n\n\nDo this problem at home for extra practice. The solution is available in Meike’s video!\n\n\n\n\n\n\n\nExample 3\n\n\nLet \\(f_{X,Y}(x,y)= 2 e^{-(x+y)}\\), for \\(0 \\leq x \\leq y\\). Are \\(X\\) and \\(Y\\) independent?"
+    "text": "Showing independence from joint pdf\n\n\n\nDo this problem at home for extra practice. The solution is available in Meike’s video!\n\n\n\n\n\n\n\nExample 3\n\n\nLet \\(f_{X,Y}(x,y)= 2 e^{-(x+y)}\\), for \\(0 \\leq x \\leq y\\). Are \\(X\\) and \\(Y\\) independent?"
   },
   {
     "objectID": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#final-statement-on-independence",
@@ -27521,14 +27521,14 @@
     "href": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#example-starting-from-a-joint-pdf",
     "title": "Lesson 16: Independence and Conditioning",
     "section": "Example starting from a joint pdf",
-    "text": "Example starting from a joint pdf\n\n\n\n\n\n\nDo this problem at home for extra practice. The solution is available in Meike’s video!\n\n\n\n\n\n\n\nExample 1.2\n\n\nLet \\(f_{X,Y}(x,y)= 5 e^{-x-3y}\\), for \\(0 &lt; y &lt; \\frac{x}{2}\\).\n\nFind \\(\\mathbb{P}(X&gt;20 |Y=5)\\)"
+    "text": "Example starting from a joint pdf\n\n\n\nDo this problem at home for extra practice. The solution is available in Meike’s video!\n\n\n\n\n\n\n\nExample 1.2\n\n\nLet \\(f_{X,Y}(x,y)= 5 e^{-x-3y}\\), for \\(0 &lt; y &lt; \\frac{x}{2}\\).\n\nFind \\(\\mathbb{P}(X&gt;20 |Y=5)\\)"
   },
   {
     "objectID": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#finding-probability-with-conditional-domain-and-pdf",
     "href": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#finding-probability-with-conditional-domain-and-pdf",
     "title": "Lesson 16: Independence and Conditioning",
     "section": "Finding probability with conditional domain and pdf",
-    "text": "Finding probability with conditional domain and pdf\n\n\n\n\n\n\nDo this problem at home for extra practice. The solution is available in Meike’s video!\n\n\n\n\n\n\n\nExample 2\n\n\nRandomly choose a point \\(X\\) from the interval \\([0,1]\\), and given \\(X=x\\), randomly choose a point \\(Y\\) from \\([0,x]\\). Find \\(\\mathbb{P}(0 &lt; Y &lt; \\frac14)\\)."
+    "text": "Finding probability with conditional domain and pdf\n\n\n\nDo this problem at home for extra practice. The solution is available in Meike’s video!\n\n\n\n\n\n\n\nExample 2\n\n\nRandomly choose a point \\(X\\) from the interval \\([0,1]\\), and given \\(X=x\\), randomly choose a point \\(Y\\) from \\([0,x]\\). Find \\(\\mathbb{P}(0 &lt; Y &lt; \\frac14)\\)."
   },
   {
     "objectID": "lessons/11_Variance/old_lessons/29_Variance_and_Sums_of_rv.html",
@@ -30406,5 +30406,12 @@
     "title": "Checkpoint 3: Averages and the Central Limit Theorem",
     "section": "6 Stretch (optional, +1 bonus)",
     "text": "6 Stretch (optional, +1 bonus)\n\n\n\n\n\n\nImportantTask\n\n\n\nHow good is the CLT approximation for your scenario? Compare it with the exact answer (Scenarios A and B) or check it at \\(n = 5\\) (Scenario C)."
+  },
+  {
+    "objectID": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#where-are-we",
+    "href": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#where-are-we",
+    "title": "Lesson 16: Independence and Conditioning",
+    "section": "Where are we?",
+    "text": "Where are we?"
   }
 ]

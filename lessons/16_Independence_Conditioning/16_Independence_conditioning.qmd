@@ -151,12 +151,18 @@ domain_wedge <- ggplot() +
 
 ## How do we represent conditional pmfs/pdfs?
 
-For events, the [**conditional probability**]{style="color:#E25D3B;"} is:
-
-$$P(A | B) = \dfrac{P(A \cap B)}{P(B)}$$
 
 ::: columns
-::: {.column width="48%"}
+::: {.column width="40%"}
+For events, the [**conditional probability**]{style="color:#E25D3B;"} is:
+:::
+::: {.column width="20%"}
+$$P(A | B) = \dfrac{P(A \cap B)}{P(B)}$$
+:::
+:::
+
+::: columns
+::: {.column width="49%"}
 ::::: proof1
 ::: proof-title
 For discrete RVs:
@@ -166,16 +172,16 @@ For discrete RVs:
 $$p_{X|Y}(x|y) = P(X=x|Y=y) = \dfrac{p_{X,Y}(x,y)}{p_Y(y)}$$
 $$p_{Y|X}(y|x) = P(Y=y|X=x) = \dfrac{p_{X,Y}(x,y)}{p_X(x)}$$
 
-if denominator is greater than 0 ($p_Y(y) > 0$ or $p_X(x) > 0$)
+if denominator is greater than 0
 
 :::
 :::::
 :::
 
-::: {.column width="4%"}
+::: {.column width="2%"}
 :::
 
-::: {.column width="48%"}
+::: {.column width="49%"}
 ::: theorem
 ::: thm-title
 For continuous RVs:
@@ -185,7 +191,7 @@ For continuous RVs:
 $$f_{X|Y}(x|y) = \dfrac{f_{X,Y}(x,y)}{f_Y(y)}$$
 $$f_{Y|X}(y|x) = \dfrac{f_{X,Y}(x,y)}{f_X(x)}$$
 
-if denominator is greater than 0 ($f_Y(y) > 0$ or $f_X(x) > 0$)
+if denominator is greater than 0
 
 :::
 :::
@@ -197,14 +203,30 @@ if denominator is greater than 0 ($f_Y(y) > 0$ or $f_X(x) > 0$)
 
 ## How do we represent independent RVs in a joint pmf/pdf?
 
-**What do we know about independence for events?**
+::: columns
+::: {.column width="15%"}
+If $A \perp B$, then
+:::
 
-For events: If $A \perp B$
+::: {.column width="30%"}
 
-$$P(A \cap B) = P(A)P(B)$$ $$P(A|B) = P(A)$$
+$$P(A \cap B) = P(A)P(B)$$
+:::
+
+::: {.column width="10%"}
+and 
+:::
+
+::: {.column width="20%"}
+$$P(A|B) = P(A)$$
+:::
+
+::: {.column width="25%"}
+:::
+:::
 
 ::: columns
-::: {.column width="48%"}
+::: {.column width="49%"}
 ::::: proof1
 ::: proof-title
 For discrete RVs: If $X \perp Y$
@@ -218,10 +240,10 @@ $$p_{Y|X}(y|x) = p_{Y}(y)$$
 :::::
 :::
 
-::: {.column width="4%"}
+::: {.column width="2%"}
 :::
 
-::: {.column width="48%"}
+::: {.column width="49%"}
 ::: theorem
 ::: thm-title
 For continuous RVs: If $X \perp Y$
@@ -240,7 +262,7 @@ $$f_{Y|X}(y|x) = f_{Y}(y)$$
 ## Remember: our probability rules must hold for these!
 
 ::: columns
-::: {.column width="48%"}
+::: {.column width="49%"}
 ::::: proof1
 ::: proof-title
 For discrete RVs
@@ -259,10 +281,10 @@ For a valid conditional pmf, we need:
 :::::
 :::
 
-::: {.column width="4%"}
+::: {.column width="2%"}
 :::
 
-::: {.column width="48%"}
+::: {.column width="49%"}
 ::: theorem
 ::: thm-title
 For continuous RVs
@@ -318,7 +340,7 @@ Example 1 (from Lesson 15)
 ::: ex-cont
 Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.
 
-7.  Find $p_{X|Y}(x|y)$.
+1.  Find $p_{X|Y}(x|y)$.
 :::
 :::
 
@@ -339,7 +361,7 @@ Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, a
 ::::
 
 ::::::: columns
-::::: {.column width="54%"}
+::::: {.column width="50%"}
 ```{r}
 #| code-fold: true
 #| code-summary: "Same simulation as Lesson 15"
@@ -414,7 +436,7 @@ Example 1 (from Lesson 15)
 ::: ex-cont
 Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.
 
-8.  Are $X$ and $Y$ independent? Why or why not?
+2.  Are $X$ and $Y$ independent? Why or why not?
 :::
 :::
 
@@ -441,32 +463,12 @@ Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, a
 
 :::: example
 ::: ex-cont
-8.  Check with simulation: compare the conditional pmf of $X$ given $Y = y$ with the marginal pmf of $X$.
+2.  Check with simulation: compare the conditional pmf of $X$ given $Y = y$ with the marginal pmf of $X$.
 :::
 ::::
 
 ::::::: columns
-::::: {.column width="54%"}
-```{r}
-ex1_sims |> # <1>
-  summarise( # <1>
-    p_x1 = mean(x == 1), # <1>
-    p_x2 = mean(x == 2), # <1>
-    p_x3 = mean(x == 3) # <1>
-  )
-```
-
-1.  No `filter()`: all 100,000 simulations. This approximates the marginal pmf $p_X(x)$.
-
-- Marginal: each value of $X$ has probability about $\frac13$
-- Given $Y = 1$: $p_{X|Y}(1|1) = 0$, not $\frac13$
-- Knowing $Y$ changes the distribution of $X$, so $X$ and $Y$ are **not** [**independent**]{style="color:#20c997;"}
-:::::
-
-::::: {.column width="2%"}
-:::::
-
-::: {.column width="44%"}
+::: {.column width="50%"}
 ```{r}
 ex1_sims |> # <2>
   summarise( # <2>
@@ -478,6 +480,13 @@ ex1_sims |> # <2>
 2.  The joint probability $p_{X,Y}(1,1)$: the proportion of simulations with $X = 1$ **and** $Y = 1$.
 3.  The product of the marginal probabilities, $p_X(1)\,p_Y(1)$. If $X \perp Y$, these two would match.
 
+:::
+
+::::: {.column width="2%"}
+:::::
+
+::::: {.column width="48%"}
+
 :::: proof1
 ::: proof-cont
 For reference, the exact answers are $p_{X,Y}(1,1) = 0$ and $p_X(1)\,p_Y(1) = \frac13 \cdot \frac13 = \frac19 \approx 0.111$
@@ -485,7 +494,8 @@ For reference, the exact answers are $p_{X,Y}(1,1) = 0$ and $p_X(1)\,p_Y(1) = \f
 ::::
 
 - One counterexample is enough!
-:::
+:::::
+
 :::::::
 
 # Learning Objectives

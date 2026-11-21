@@ -27416,21 +27416,21 @@
     "href": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#how-do-we-represent-conditional-pmfspdfs",
     "title": "Lesson 16: Independence and Conditioning",
     "section": "How do we represent conditional pmfs/pdfs?",
-    "text": "How do we represent conditional pmfs/pdfs?\nFor events:\n\\[P(A | B) = \\dfrac{P(A \\cap B)}{P(B)}\\]\n\n\n\n\nFor discrete RVs:\n\n\n\\[p_{X|Y}(x|y) = P(X=x|Y=y) = \\dfrac{p_{X,Y}(x,y)}{p_Y(y)}\\] \\[p_{Y|X}(y|x) = P(Y=y|X=x) = \\dfrac{p_{X,Y}(x,y)}{p_X(x)}\\]\nif denominator is greater than 0 (\\(p_Y(y) &gt; 0\\) or \\(p_X(x) &gt; 0\\))\n\n\n\n\n\n\n\nFor continuous RVs:\n\n\n\\[f_{X|Y}(x|y) = \\dfrac{f_{X,Y}(x,y)}{f_Y(y)}\\] \\[f_{Y|X}(y|x) = \\dfrac{f_{X,Y}(x,y)}{f_X(x)}\\]\nif denominator is greater than 0 (\\(f_Y(y) &gt; 0\\) or \\(f_X(x) &gt; 0\\))"
+    "text": "How do we represent conditional pmfs/pdfs?\n\n\nFor events, the conditional probability is:\n\n\\[P(A | B) = \\dfrac{P(A \\cap B)}{P(B)}\\]\n\n\n\n\n\nFor discrete RVs:\n\n\n\\[p_{X|Y}(x|y) = P(X=x|Y=y) = \\dfrac{p_{X,Y}(x,y)}{p_Y(y)}\\] \\[p_{Y|X}(y|x) = P(Y=y|X=x) = \\dfrac{p_{X,Y}(x,y)}{p_X(x)}\\]\nif denominator is greater than 0\n\n\n\n\n\n\n\nFor continuous RVs:\n\n\n\\[f_{X|Y}(x|y) = \\dfrac{f_{X,Y}(x,y)}{f_Y(y)}\\] \\[f_{Y|X}(y|x) = \\dfrac{f_{X,Y}(x,y)}{f_X(x)}\\]\nif denominator is greater than 0\n\n\n\n\nWith simulation: conditioning on \\(Y = y\\) means keeping only the simulations where \\(Y = y\\), with filter() (Lesson 2)"
   },
   {
     "objectID": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#how-do-we-represent-independent-rvs-in-a-joint-pmfpdf",
     "href": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#how-do-we-represent-independent-rvs-in-a-joint-pmfpdf",
     "title": "Lesson 16: Independence and Conditioning",
     "section": "How do we represent independent RVs in a joint pmf/pdf?",
-    "text": "How do we represent independent RVs in a joint pmf/pdf?\nWhat do we know about independence for events?\nFor events: If \\(A \\perp B\\)\n\\[P(A \\cap B) = P(A)P(B)\\] \\[P(A|B) = P(A)\\]\n\n\n\n\nFor discrete RVs: If \\(X \\perp Y\\)\n\n\n\\[p_{X,Y}(x,y) = p_{X}(x)p_{Y}(y)\\] \\[F_{X,Y}(x,y) = F_{X}(x)F_{Y}(y)\\] \\[p_{X|Y}(x|y) = p_{X}(x)\\] \\[p_{Y|X}(y|x) = p_{Y}(y)\\]\n\n\n\n\n\n\n\nFor continuous RVs: If \\(X \\perp Y\\)\n\n\n\\[f_{X,Y}(x,y) = f_{X}(x)f_{Y}(y)\\] \\[F_{X,Y}(x,y) = F_{X}(x)F_{Y}(y)\\] \\[f_{X|Y}(x|y) = f_{X}(x)\\] \\[f_{Y|X}(y|x) = f_{Y}(y)\\]"
+    "text": "How do we represent independent RVs in a joint pmf/pdf?\n\n\nIf \\(A \\perp B\\), then\n\n\\[P(A \\cap B) = P(A)P(B)\\]\n\nand\n\n\\[P(A|B) = P(A)\\]\n\n\n\n\n\n\n\nFor discrete RVs: If \\(X \\perp Y\\)\n\n\n\\[p_{X,Y}(x,y) = p_{X}(x)p_{Y}(y)\\] \\[F_{X,Y}(x,y) = F_{X}(x)F_{Y}(y)\\] \\[p_{X|Y}(x|y) = p_{X}(x)\\] \\[p_{Y|X}(y|x) = p_{Y}(y)\\]\n\n\n\n\n\n\n\nFor continuous RVs: If \\(X \\perp Y\\)\n\n\n\\[f_{X,Y}(x,y) = f_{X}(x)f_{Y}(y)\\] \\[F_{X,Y}(x,y) = F_{X}(x)F_{Y}(y)\\] \\[f_{X|Y}(x|y) = f_{X}(x)\\] \\[f_{Y|X}(y|x) = f_{Y}(y)\\]"
   },
   {
     "objectID": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#remember-our-probability-rules-must-hold-for-these",
     "href": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#remember-our-probability-rules-must-hold-for-these",
     "title": "Lesson 16: Independence and Conditioning",
     "section": "Remember: our probability rules must hold for these!",
-    "text": "Remember: our probability rules must hold for these!\n\n\n\n\nFor discrete RVs\n\n\nFor a valid joint pmf, we need:\n\n\\(0 \\geq p_{X,Y}(x,y) \\leq 1\\) for all \\(x, y\\)\n\\(\\sum \\limits_{\\{all\\ x\\}} \\sum \\limits_{\\{all\\ y\\}} p_{X,Y}(x,y)=1\\)\n\nFor a valid conditional pmf, we need:\n\n\\(0 \\geq p_{X|Y}(x|y) \\leq 1\\) for all \\(x, y\\)\n\\(\\sum \\limits_{\\{all\\ x\\}} p_{X|Y}(x|y)=1\\)\n\n\n\n\n\n\n\n\nFor continuous RVs\n\n\nFor a valid joint pdf, we need:\n\n\\(f_{X,Y}(x,y)\\geq 0\\) for all \\(x,y\\)\n\\(\\displaystyle\\int_{-\\infty}^{\\infty}\\displaystyle\\int_{-\\infty}^{\\infty} f_{X,Y}(x,y)dxdy=1\\)\n\nFor a valid conditional pdf, we need:\n\n\\(f_{X|Y}(x|y)\\geq 0\\) for all \\(x\\) and \\(y\\)\n\\(\\displaystyle\\int_{-\\infty}^{\\infty} f_{X|Y}(x|y)dx =1\\)"
+    "text": "Remember: our probability rules must hold for these!\n\n\n\n\nFor discrete RVs\n\n\nFor a valid joint pmf, we need:\n\n\\(0 \\leq p_{X,Y}(x,y) \\leq 1\\) for all \\(x, y\\)\n\\(\\sum \\limits_{\\{all\\ x\\}} \\sum \\limits_{\\{all\\ y\\}} p_{X,Y}(x,y)=1\\)\n\nFor a valid conditional pmf, we need:\n\n\\(0 \\leq p_{X|Y}(x|y) \\leq 1\\) for all \\(x, y\\)\n\\(\\sum \\limits_{\\{all\\ x\\}} p_{X|Y}(x|y)=1\\)\n\n\n\n\n\n\n\n\nFor continuous RVs\n\n\nFor a valid joint pdf, we need:\n\n\\(f_{X,Y}(x,y)\\geq 0\\) for all \\(x,y\\)\n\\(\\displaystyle\\int_{-\\infty}^{\\infty}\\displaystyle\\int_{-\\infty}^{\\infty} f_{X,Y}(x,y)dxdy=1\\)\n\nFor a valid conditional pdf, we need:\n\n\\(f_{X|Y}(x|y)\\geq 0\\) for all \\(x\\) and \\(y\\)\n\\(\\displaystyle\\int_{-\\infty}^{\\infty} f_{X|Y}(x|y)dx =1\\)"
   },
   {
     "objectID": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#extra-notes",
@@ -27458,28 +27458,28 @@
     "href": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#constructing-a-joint-pdf-from-two-independent-continuous-rvs",
     "title": "Lesson 16: Independence and Conditioning",
     "section": "Constructing a joint pdf from two independent, continuous RVs",
-    "text": "Constructing a joint pdf from two independent, continuous RVs\n\n\n\n\nExample 1.1\n\n\nLet \\(X\\) and \\(Y\\) be independent r.v.’s with \\(f_X(x)= \\frac12\\), for \\(0 \\leq x \\leq 2\\) and \\(f_Y(y)= 3y^2\\), for \\(0 \\leq y \\leq 1\\).\n\nFind \\(f_{X,Y}(x,y)\\)"
+    "text": "Constructing a joint pdf from two independent, continuous RVs\n\n\nExample 2: Independent \\(X\\) and \\(Y\\)\n\n\nLet \\(X\\) and \\(Y\\) be independent r.v.’s with \\(f_X(x)= \\frac12\\), for \\(0 \\leq x \\leq 2\\) and \\(f_Y(y)= 3y^2\\), for \\(0 \\leq y \\leq 1\\).\n\nFind \\(f_{X,Y}(x,y)\\)"
   },
   {
     "objectID": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#probability-from-joint-pdf-from-two-independent-continuous-rvs",
     "href": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#probability-from-joint-pdf-from-two-independent-continuous-rvs",
     "title": "Lesson 16: Independence and Conditioning",
     "section": "Probability from joint pdf from two independent, continuous RVs",
-    "text": "Probability from joint pdf from two independent, continuous RVs\n\n\n\n\nExample 1.2\n\n\nLet \\(X\\) and \\(Y\\) be independent r.v.’s with \\(f_X(x)= \\frac12\\), for \\(0 \\leq x \\leq 2\\) and \\(f_Y(y)= 3y^2\\), for \\(0 \\leq y \\leq 1\\).\n\nFind \\(\\mathbb{P}(0 \\leq X \\leq 1, 0 \\leq Y \\leq \\frac12)\\)"
+    "text": "Probability from joint pdf from two independent, continuous RVs\n\n\nExample 2: Independent \\(X\\) and \\(Y\\)\n\n\nLet \\(X\\) and \\(Y\\) be independent r.v.’s with \\(f_X(x)= \\frac12\\), for \\(0 \\leq x \\leq 2\\) and \\(f_Y(y)= 3y^2\\), for \\(0 \\leq y \\leq 1\\).\n\nFind \\(\\mathbb{P}(0 \\leq X \\leq 1, 0 \\leq Y \\leq \\frac12)\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRotate this plot (interactive) ↗"
   },
   {
     "objectID": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#showing-independence-from-joint-pdf",
     "href": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#showing-independence-from-joint-pdf",
     "title": "Lesson 16: Independence and Conditioning",
     "section": "Showing independence from joint pdf",
-    "text": "Showing independence from joint pdf\n\n\n\n\nExample 2.1\n\n\nLet \\(f_{X,Y}(x,y)= 18 x^2 y^5\\), for \\(0 \\leq x \\leq 1, \\ 0 \\leq y \\leq 1\\).\n\nAre \\(X\\) and \\(Y\\) independent?"
+    "text": "Showing independence from joint pdf\n\n\nExample 3: Joint pdf on a square\n\n\nLet \\(f_{X,Y}(x,y)= 18 x^2 y^5\\), for \\(0 \\leq x \\leq 1, \\ 0 \\leq y \\leq 1\\).\n\nAre \\(X\\) and \\(Y\\) independent?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRotate this plot and see its slices (interactive) ↗"
   },
   {
     "objectID": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#finding-cdf-from-two-independent-rvs",
     "href": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#finding-cdf-from-two-independent-rvs",
     "title": "Lesson 16: Independence and Conditioning",
     "section": "Finding CDF from two independent RVs",
-    "text": "Finding CDF from two independent RVs\n\n\n\n\nExample 2.2\n\n\nLet \\(f_{X,Y}(x,y)= 18 x^2 y^5\\), for \\(0 \\leq x \\leq 1, \\ 0 \\leq y \\leq 1\\).\n\nFind \\(F_{X,Y}(x,y)\\)."
+    "text": "Finding CDF from two independent RVs\n\n\nExample 3: Joint pdf on a square\n\n\nLet \\(f_{X,Y}(x,y)= 18 x^2 y^5\\), for \\(0 \\leq x \\leq 1, \\ 0 \\leq y \\leq 1\\).\n\nFind \\(F_{X,Y}(x,y)\\)."
   },
   {
     "objectID": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#showing-independence-from-joint-pdf-1",
@@ -27500,14 +27500,14 @@
     "href": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#example-starting-from-a-joint-pdf-first-try",
     "title": "Lesson 16: Independence and Conditioning",
     "section": "Example starting from a joint pdf: first try!",
-    "text": "Example starting from a joint pdf: first try!\n\n\n\n\nExample 1.1\n\n\nLet \\(f_{X,Y}(x,y)= 5 e^{-x-3y}\\), for \\(0 &lt; y &lt; \\frac{x}{2}\\).\n\nFind \\(\\mathbb{P}(2&lt;X&lt;10|Y=4)\\)"
+    "text": "Example starting from a joint pdf: first try!\n\n\nExample 5: Conditional pdf from a joint pdf\n\n\nLet \\(f_{X,Y}(x,y)= 5 e^{-x-3y}\\), for \\(0 &lt; y &lt; \\frac{x}{2}\\).\n\nFind \\(\\mathbb{P}(2&lt;X&lt;10|Y=4)\\)"
   },
   {
     "objectID": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#example-starting-from-a-joint-pdf-second-try-12",
     "href": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#example-starting-from-a-joint-pdf-second-try-12",
     "title": "Lesson 16: Independence and Conditioning",
     "section": "Example starting from a joint pdf: second try! (1/2)",
-    "text": "Example starting from a joint pdf: second try! (1/2)\n\n\n\n\nExample 1.1\n\n\nLet \\(f_{X,Y}(x,y)= 5 e^{-x-3y}\\), for \\(0 &lt; y &lt; \\frac{x}{2}\\).\n\nFind \\(\\mathbb{P}(2&lt;X&lt;10|Y=4)\\)"
+    "text": "Example starting from a joint pdf: second try! (1/2)\n\n\nExample 5: Conditional pdf from a joint pdf\n\n\nLet \\(f_{X,Y}(x,y)= 5 e^{-x-3y}\\), for \\(0 &lt; y &lt; \\frac{x}{2}\\).\n\nFind \\(\\mathbb{P}(2&lt;X&lt;10|Y=4)\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSee the conditional pdf for every y in 3D (interactive) ↗"
   },
   {
     "objectID": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#example-starting-from-a-joint-pdf-second-try-22",
@@ -27528,7 +27528,7 @@
     "href": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#finding-probability-with-conditional-domain-and-pdf",
     "title": "Lesson 16: Independence and Conditioning",
     "section": "Finding probability with conditional domain and pdf",
-    "text": "Finding probability with conditional domain and pdf\n\n\n\nDo this problem at home for extra practice. The solution is available in Meike’s video!\n\n\n\n\n\n\n\nExample 2\n\n\nRandomly choose a point \\(X\\) from the interval \\([0,1]\\), and given \\(X=x\\), randomly choose a point \\(Y\\) from \\([0,x]\\). Find \\(\\mathbb{P}(0 &lt; Y &lt; \\frac14)\\)."
+    "text": "Finding probability with conditional domain and pdf\n\n\n\nDo this problem at home for extra practice. The solution is available in Meike’s video!\n\n\n\n\n\n\n\nExample 6: Choose a point, then another (for home)\n\n\nRandomly choose a point \\(X\\) from the interval \\([0,1]\\), and given \\(X=x\\), randomly choose a point \\(Y\\) from \\([0,x]\\). Find \\(\\mathbb{P}(0 &lt; Y &lt; \\frac14)\\)."
   },
   {
     "objectID": "lessons/11_Variance/old_lessons/29_Variance_and_Sums_of_rv.html",
@@ -30413,5 +30413,75 @@
     "title": "Lesson 16: Independence and Conditioning",
     "section": "Where are we?",
     "text": "Where are we?"
+  },
+  {
+    "objectID": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#last-class-joint-distribution-for-two-discrete-random-variables-14",
+    "href": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#last-class-joint-distribution-for-two-discrete-random-variables-14",
+    "title": "Lesson 16: Independence and Conditioning",
+    "section": "Last class: joint distribution for two discrete random variables (1/4)",
+    "text": "Last class: joint distribution for two discrete random variables (1/4)\n\n\n\n\nExample 1 (from Lesson 15)\n\n\nLet \\(X\\) and \\(Y\\) be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.\n\nFind \\(p_{X|Y}(x|y)\\).\n\n\n\n\nSee the slice Y = 1 in 3D (interactive) ↗"
+  },
+  {
+    "objectID": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#last-class-joint-distribution-for-two-discrete-random-variables-24-simulate",
+    "href": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#last-class-joint-distribution-for-two-discrete-random-variables-24-simulate",
+    "title": "Lesson 16: Independence and Conditioning",
+    "section": "Last class: joint distribution for two discrete random variables (2/4): simulate",
+    "text": "Last class: joint distribution for two discrete random variables (2/4): simulate\n\n\n\nCheck \\(p_{X|Y}(x|y)\\) with simulation: keep only the simulations where \\(Y = y\\).\n\n\n\n\n\n\n\nSame simulation as Lesson 15\n1set.seed(1111)\nreps &lt;- 100000\n\n2ex1_sims &lt;- expand_grid(\n    sim = 1:reps,\n    draw = 1:2\n  ) |&gt;\n  group_by(sim) |&gt;\n  mutate(ball = sample(1:3, size = n())) |&gt;\n  summarise(\n    x = first(ball),\n    y = last(ball)\n  )\n\n\n\n1\n\nSame seed and number of simulations as Lesson 15.\n\n2\n\nSame code as Lesson 15: draw two balls without replacement, 100,000 times. x is the first ball and y is the second.\n\n\n\n\n\n3ex1_sims |&gt;\n4  filter(y == 1) |&gt;\n5  summarise(\n    p_x1 = mean(x == 1),\n    p_x2 = mean(x == 2),\n    p_x3 = mean(x == 3)\n  )\n\n\n3\n\nStart from the 100,000 simulated pairs.\n\n4\n\nConditioning on \\(Y = 1\\): keep only the simulations where the second ball is 1.\n\n5\n\nAmong those simulations, the proportion with each value of \\(X\\) approximates \\(p_{X|Y}(x|1)\\).\n\n\n\n\n# A tibble: 1 × 3\n   p_x1  p_x2  p_x3\n  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1     0 0.498 0.502\n\n\n\n\n\n\n6ex1_sims |&gt;\n  group_by(y) |&gt;\n7  summarise(\n    p_x1 = mean(x == 1),\n    p_x2 = mean(x == 2),\n    p_x3 = mean(x == 3)\n  )\n\n\n6\n\nSame idea for every value of \\(Y\\) at once: one group for each value of y.\n\n7\n\nEach row is the conditional pmf of \\(X\\) given that value of \\(Y\\). Each row adds up to 1.\n\n\n\n\n# A tibble: 3 × 4\n      y  p_x1  p_x2  p_x3\n  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1     1 0     0.498 0.502\n2     2 0.501 0     0.499\n3     3 0.500 0.500 0    \n\n\n\n\nFor reference, the exact answer is \\(p_{X|Y}(x|y) = \\frac12\\) for \\(x \\neq y\\), and \\(p_{X|Y}(x|y) = 0\\) for \\(x = y\\)"
+  },
+  {
+    "objectID": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#last-class-joint-distribution-for-two-discrete-random-variables-34",
+    "href": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#last-class-joint-distribution-for-two-discrete-random-variables-34",
+    "title": "Lesson 16: Independence and Conditioning",
+    "section": "Last class: joint distribution for two discrete random variables (3/4)",
+    "text": "Last class: joint distribution for two discrete random variables (3/4)\n\n\n\n\nExample 1 (from Lesson 15)\n\n\nLet \\(X\\) and \\(Y\\) be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.\n\nAre \\(X\\) and \\(Y\\) independent? Why or why not?\n\n\n\n\n\nRemark:\n\nTo show that \\(X\\) and \\(Y\\) are not independent, we just need to find one counter example\nHowever, to show that they are independent, we need to verify this for all possible pairs of \\(x\\) and \\(y\\)"
+  },
+  {
+    "objectID": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#last-class-joint-distribution-for-two-discrete-random-variables-44-simulate",
+    "href": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#last-class-joint-distribution-for-two-discrete-random-variables-44-simulate",
+    "title": "Lesson 16: Independence and Conditioning",
+    "section": "Last class: joint distribution for two discrete random variables (4/4): simulate",
+    "text": "Last class: joint distribution for two discrete random variables (4/4): simulate\n\n\n\nCheck with simulation: compare the conditional pmf of \\(X\\) given \\(Y = y\\) with the marginal pmf of \\(X\\).\n\n\n\n\n\n\n2ex1_sims |&gt;\n  summarise(\n    joint = mean(x == 1 & y == 1),\n3    product = mean(x == 1) * mean(y == 1)\n  )\n\n\n2\n\nThe joint probability \\(p_{X,Y}(1,1)\\): the proportion of simulations with \\(X = 1\\) and \\(Y = 1\\).\n\n3\n\nThe product of the marginal probabilities, \\(p_X(1)\\,p_Y(1)\\). If \\(X \\perp Y\\), these two would match.\n\n\n\n\n# A tibble: 1 × 2\n  joint product\n  &lt;dbl&gt;   &lt;dbl&gt;\n1     0   0.111\n\n\n\n\n\n\n\nFor reference, the exact answers are \\(p_{X,Y}(1,1) = 0\\) and \\(p_X(1)\\,p_Y(1) = \\frac13 \\cdot \\frac13 = \\frac19 \\approx 0.111\\)\n\n\n\nOne counterexample is enough!"
+  },
+  {
+    "objectID": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#probability-from-joint-pdf-from-two-independent-continuous-rvs-simulate",
+    "href": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#probability-from-joint-pdf-from-two-independent-continuous-rvs-simulate",
+    "title": "Lesson 16: Independence and Conditioning",
+    "section": "Probability from joint pdf from two independent, continuous RVs: simulate",
+    "text": "Probability from joint pdf from two independent, continuous RVs: simulate\n\n\n\nCheck with simulation: because \\(X \\perp Y\\), we can simulate \\(X\\) and \\(Y\\) separately, then put them side by side.\n\n\n\n\n\n\n1y_grid &lt;- seq(0, 1, length.out = 10001)\n\n2ex2_sims &lt;- tibble(sim = 1:reps) |&gt;\n  mutate(\n3    x = runif(n(), min = 0, max = 2),\n4    y = sample(y_grid, size = n(), replace = TRUE,\n               prob = 3 * y_grid^2)\n  )\n\n5ex2_sims |&gt;\n  summarise(\n    joint = mean(x &lt;= 1 & y &lt;= 0.5),\n6    product = mean(x &lt;= 1) * mean(y &lt;= 0.5)\n  )\n\n\n1\n\nTickets for grid sampling \\(Y\\) (Lesson 14): 10,001 evenly spaced values from 0 to 1.\n\n2\n\nOne row per simulation.\n\n3\n\n\\(X \\sim \\text{Uniform}[0, 2]\\), so runif() simulates it (Lesson 13).\n\n4\n\nGrid sampling from \\(f_Y(y) = 3y^2\\). The x and y columns are drawn separately: knowing x tells us nothing about y. That is what independence means!\n\n5\n\nThe proportion of simulations in the event approximates \\(\\mathbb{P}(0 \\leq X \\leq 1, 0 \\leq Y \\leq \\frac12)\\).\n\n6\n\nThe product of the two marginal probabilities. For independent \\(X\\) and \\(Y\\), these match.\n\n\n\n\n# A tibble: 1 × 2\n   joint product\n   &lt;dbl&gt;   &lt;dbl&gt;\n1 0.0635  0.0624\n\n\n\n\n\nFor reference, the exact answers are \\(f_{X,Y}(x,y) = \\frac12 \\cdot 3y^2 = \\frac32 y^2\\) for \\(0 \\leq x \\leq 2, \\ 0 \\leq y \\leq 1\\), and \\(\\mathbb{P}(0 \\leq X \\leq 1, 0 \\leq Y \\leq \\frac12) = \\frac12 \\cdot \\frac18 = \\frac{1}{16} = 0.0625\\)\n\n\n \n\nSame joint pdf as Lesson 15, Example 2!\n\nIn Lesson 15, we simulated pairs from the joint pdf with 2D grid sampling\nHere, we simulated \\(X\\) and \\(Y\\) separately and got the same answer"
+  },
+  {
+    "objectID": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#showing-independence-from-joint-pdf-simulate",
+    "href": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#showing-independence-from-joint-pdf-simulate",
+    "title": "Lesson 16: Independence and Conditioning",
+    "section": "Showing independence from joint pdf: simulate",
+    "text": "Showing independence from joint pdf: simulate\n\n\nCheck parts 1 and 2 with simulation: is \\(F_{X,Y}(0.8, 0.8) = \\mathbb{P}(X \\leq 0.8, Y \\leq 0.8)\\) the same as \\(\\mathbb{P}(X \\leq 0.8)\\,\\mathbb{P}(Y \\leq 0.8)\\)?\n\n\n\n\n\n1ex3_grid &lt;- expand_grid(\n    x = seq(0, 1, length.out = 1001),\n    y = seq(0, 1, length.out = 1001)\n  ) |&gt;\n2  mutate(height = 18 * x^2 * y^5)\n\n3ex3_sims &lt;- ex3_grid |&gt;\n  slice_sample(\n    n = reps,\n    weight_by = height,\n    replace = TRUE\n  )\n\n\n1\n\n2D grid sampling (Lesson 15): about 1 million tickets covering the square.\n\n2\n\nThe joint pdf’s height at each ticket.\n\n3\n\nDraw reps tickets, weighted by height. Each row drawn is one simulated pair \\((x, y)\\).\n\n\n\n\n\njoint and product are close, which agrees with independence\nOne check can’t prove independence, but a big mismatch would show they are not independent\n\n\n\n\n\n4ex3_sims |&gt;\n  summarise(\n    joint = mean(x &lt;= 0.8 & y &lt;= 0.8),\n5    product = mean(x &lt;= 0.8) * mean(y &lt;= 0.8)\n  )\n\n\n4\n\nThe proportion with \\(X \\leq 0.8\\) and \\(Y \\leq 0.8\\) approximates \\(F_{X,Y}(0.8, 0.8)\\).\n\n5\n\nThe product of the marginal probabilities, \\(F_X(0.8)\\,F_Y(0.8)\\).\n\n\n\n\n# A tibble: 1 × 2\n  joint product\n  &lt;dbl&gt;   &lt;dbl&gt;\n1 0.132   0.134\n\n\n\n\nFor reference, the exact answers are \\(F_{X,Y}(x,y) = x^3 y^6\\) for \\(0 \\leq x \\leq 1, \\ 0 \\leq y \\leq 1\\), so \\(F_{X,Y}(0.8, 0.8) = 0.8^3 \\cdot 0.8^6 \\approx 0.1342\\)"
+  },
+  {
+    "objectID": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#showing-independence-from-joint-pdf-for-home",
+    "href": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#showing-independence-from-joint-pdf-for-home",
+    "title": "Lesson 16: Independence and Conditioning",
+    "section": "Showing independence from joint pdf: for home",
+    "text": "Showing independence from joint pdf: for home\n\n\n\nDo this problem at home for extra practice. The solution is available in Meike’s video!\n\n\n\n\n\n\n\nExample 4: Joint pdf on a triangle (for home)\n\n\nLet \\(f_{X,Y}(x,y)= 2 e^{-(x+y)}\\), for \\(0 \\leq x \\leq y\\). Are \\(X\\) and \\(Y\\) independent?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint: this is the same joint pdf as Lesson 15, Example 4. Look closely at its possible values!\n\nSee this joint pdf in 3D (interactive) ↗"
+  },
+  {
+    "objectID": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#example-starting-from-a-joint-pdf-simulate",
+    "href": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#example-starting-from-a-joint-pdf-simulate",
+    "title": "Lesson 16: Independence and Conditioning",
+    "section": "Example starting from a joint pdf: simulate",
+    "text": "Example starting from a joint pdf: simulate\n\n\n\nCheck \\(\\mathbb{P}(2&lt;X&lt;10|Y=4)\\) with simulation: grid sampling along the slice \\(Y = 4\\).\n\n\n\n\n\n\n1x_grid &lt;- seq(8, 20, length.out = 10001)\n\n2ex5_sims &lt;- tibble(sim = 1:reps) |&gt;\n  mutate(\n3    x = sample(x_grid, size = n(), replace = TRUE,\n4               prob = 5 * exp(-x_grid - 3 * 4))\n  )\n\n5ex5_sims |&gt;\n  summarise(prob = mean(2 &lt; x & x &lt; 10))\n\n\n1\n\nGiven \\(Y = 4\\), the possible values of \\(X\\) are \\(x &gt; 2 \\cdot 4 = 8\\) (from \\(0 &lt; y &lt; \\frac{x}{2}\\)). The pdf is almost 0 past 20, so the grid can stop there.\n\n2\n\nOne row per simulation.\n\n3\n\nGrid sampling, like Lesson 14.\n\n4\n\nThe heights are the joint pdf along the slice, \\(f_{X,Y}(x, 4)\\). We don’t need to divide by \\(f_Y(4)\\): R rescales prob to add to 1, so the heights only need to be proportional to \\(f_{X|Y}(x|4)\\).\n\n5\n\nThe proportion of simulations with \\(2 &lt; X &lt; 10\\) approximates \\(\\mathbb{P}(2&lt;X&lt;10|Y=4)\\).\n\n\n\n\n# A tibble: 1 × 1\n   prob\n  &lt;dbl&gt;\n1 0.864\n\n\n\nWhy not filter(y == 4)? \\(Y\\) is continuous, so \\(\\mathbb{P}(Y = 4) = 0\\): no simulated pair lands exactly on \\(y = 4\\)\n\n\n\n\n\n\nPlot code\n6ggplot(ex5_sims, aes(x = x)) +\n  geom_histogram(aes(y = after_stat(density)),\n                 binwidth = 0.1, boundary = 8,\n                 color = \"black\", fill = \"lightblue\") +\n7  geom_function(fun = function(x) exp(-(x - 8)),\n                xlim = c(8, 14),\n                color = \"red\", linewidth = 1.5) +\n8  coord_cartesian(xlim = c(8, 14)) +\n9  labs(subtitle = \"Simulated X given Y = 4\",\n       x = \"x\", y = \"Density\")\n\n\n\n6\n\nHistogram of the simulated values of \\(X\\) given \\(Y = 4\\), scaled like a pdf.\n\n7\n\nFor reference, the conditional pdf \\(f_{X|Y}(x|4) = e^{-(x-8)}\\) for \\(x &gt; 8\\), in red.\n\n8\n\nZoom in to where almost all of the values are.\n\n9\n\nAdd a subtitle and axis labels.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor reference, the exact answer is \\(\\mathbb{P}(2&lt;X&lt;10|Y=4) = \\mathbb{P}(8&lt;X&lt;10|Y=4) = 1 - e^{-2} \\approx 0.8647\\)"
+  },
+  {
+    "objectID": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#example-starting-from-a-joint-pdf-part-2",
+    "href": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#example-starting-from-a-joint-pdf-part-2",
+    "title": "Lesson 16: Independence and Conditioning",
+    "section": "Example starting from a joint pdf: part 2",
+    "text": "Example starting from a joint pdf: part 2\n\n\n\nDo this problem at home for extra practice. The solution is available in Meike’s video!\n\n\n\n\n\n\n\nExample 5: Conditional pdf from a joint pdf (for home)\n\n\nLet \\(f_{X,Y}(x,y)= 5 e^{-x-3y}\\), for \\(0 &lt; y &lt; \\frac{x}{2}\\).\n\nFind \\(\\mathbb{P}(X&gt;20 |Y=5)\\)"
+  },
+  {
+    "objectID": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#summary-of-independence-and-conditioning",
+    "href": "lessons/16_Independence_Conditioning/16_Independence_conditioning.html#summary-of-independence-and-conditioning",
+    "title": "Lesson 16: Independence and Conditioning",
+    "section": "Summary of independence and conditioning",
+    "text": "Summary of independence and conditioning\n\n\n\n\n\n\n\n\n\nDiscrete \\(X\\) and \\(Y\\)\nContinuous \\(X\\) and \\(Y\\)\n\n\n\n\nConditional distribution\n\\(p_{X \\mid Y}(x \\mid y) = \\dfrac{p_{X,Y}(x,y)}{p_Y(y)}\\)\n\\(f_{X \\mid Y}(x \\mid y) = \\dfrac{f_{X,Y}(x,y)}{f_Y(y)}\\): a slice of the joint pdf, rescaled to area 1\n\n\nIndependent if\n\\(p_{X,Y}(x,y) = p_X(x)\\,p_Y(y)\\) for every pair\n\\(f_{X,Y}(x,y) = f_X(x)\\,f_Y(y)\\), and the possible values are a rectangle\n\n\nSimulate a conditional distribution\nfilter(y == 1): keep the simulations where \\(Y = 1\\)\nGrid sampling along the slice: prob is \\(f_{X,Y}(x, y)\\) at that \\(y\\)\n\n\nSimulate independent \\(X\\) and \\(Y\\)\nDraw x and y separately\nDraw x and y separately\n\n\nCheck independence\njoint vs. product of the marginal probabilities\njoint vs. product of the marginal probabilities\n\n\n\n \n\nIf \\(X \\perp Y\\), knowing \\(Y\\) tells us nothing about \\(X\\): \\(p_{X|Y}(x|y) = p_X(x)\\) and \\(f_{X|Y}(x|y) = f_X(x)\\)\nOne mismatch is enough to show \\(X\\) and \\(Y\\) are not independent"
   }
 ]

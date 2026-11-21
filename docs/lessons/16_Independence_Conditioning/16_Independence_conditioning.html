@@ -9,7 +9,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.10.18">
 
-  <meta name="author" content="Meike Niederhausen and Nicky Wakim">
+  <meta name="author" content="Nicky Wakim">
   <meta name="dcterms.date" content="2026-11-23">
   <title>Introduction to Probability – Lesson 16: Independence and Conditioning</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -35,6 +35,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-3333d45258dffb4a9947a865be2a043d.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -139,7 +205,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Meike Niederhausen and Nicky Wakim
+Nicky Wakim
 </div>
 </div>
 </div>
@@ -150,10 +216,10 @@ Meike Niederhausen and Nicky Wakim
 <section id="learning-objectives" class="title-slide slide level1 center">
 <h1>Learning Objectives</h1>
 <ol type="1">
-<li><p>Identify the formula for joint distributions for independent RVs and conditional distributions (PMFs/PDFs)</p></li>
-<li><p>Find conditional pmf from a joint pmf and check if two RVs are independent.</p></li>
-<li><p>Construct a joint distribution for two independent continuous RVs from their marginal distributions.</p></li>
-<li><p>Calculate conditional probabilities and distributions for continuous RVs.</p></li>
+<li><p>Identify the formulas for joint distributions of <strong>independent</strong> RVs and for <strong>conditional</strong> distributions (pmf’s and pdf’s)</p></li>
+<li><p>Find and simulate the <strong>conditional</strong> pmf from a joint pmf, and check if two discrete RVs are <strong>independent</strong></p></li>
+<li><p>Construct a joint pdf for two <strong>independent</strong> continuous RVs from their marginal pdfs, and check it with simulation</p></li>
+<li><p>Calculate and simulate <strong>conditional</strong> probabilities and distributions for continuous RVs</p></li>
 </ol>
 </section>
 <section id="where-are-we" class="slide level2">
@@ -165,51 +231,67 @@ Meike Niederhausen and Nicky Wakim
 <h1>Learning Objectives</h1>
 <div class="lob">
 <ol type="1">
-<li>Identify the formula for joint distributions for independent RVs and conditional distributions (PMFs/PDFs)</li>
+<li>Identify the formulas for joint distributions of <strong>independent</strong> RVs and for <strong>conditional</strong> distributions (pmf’s and pdf’s)</li>
 </ol>
 </div>
 <ol start="2" type="1">
-<li><p>Find conditional pmf from a joint pmf and check if two RVs are independent.</p></li>
-<li><p>Construct a joint distribution for two independent continuous RVs from their marginal distributions.</p></li>
-<li><p>Calculate conditional probabilities and distributions for continuous RVs.</p></li>
+<li><p>Find and simulate the <strong>conditional</strong> pmf from a joint pmf, and check if two discrete RVs are <strong>independent</strong></p></li>
+<li><p>Construct a joint pdf for two <strong>independent</strong> continuous RVs from their marginal pdfs, and check it with simulation</p></li>
+<li><p>Calculate and simulate <strong>conditional</strong> probabilities and distributions for continuous RVs</p></li>
 </ol>
 </section>
 <section id="how-do-we-represent-conditional-pmfspdfs" class="slide level2">
 <h2>How do we represent conditional pmfs/pdfs?</h2>
-<p>For events:</p>
-<p><span class="math display">\[P(A | B) = \dfrac{P(A \cap B)}{P(B)}\]</span></p>
 <div class="columns">
-<div class="column" style="width:48%;">
+<div class="column" style="width:40%;">
+<p>For events, the <span style="color:#E25D3B;"><strong>conditional probability</strong></span> is:</p>
+</div><div class="column" style="width:20%;">
+<p><span class="math display">\[P(A | B) = \dfrac{P(A \cap B)}{P(B)}\]</span></p>
+</div></div>
+<div class="columns">
+<div class="column" style="width:49%;">
 <div class="proof1">
 <div class="proof-title">
 <p>For discrete RVs:</p>
 </div>
 <div class="proof-cont">
 <p><span class="math display">\[p_{X|Y}(x|y) = P(X=x|Y=y) = \dfrac{p_{X,Y}(x,y)}{p_Y(y)}\]</span> <span class="math display">\[p_{Y|X}(y|x) = P(Y=y|X=x) = \dfrac{p_{X,Y}(x,y)}{p_X(x)}\]</span></p>
-<p>if denominator is greater than 0 (<span class="math inline">\(p_Y(y) &gt; 0\)</span> or <span class="math inline">\(p_X(x) &gt; 0\)</span>)</p>
+<p>if denominator is greater than 0</p>
 </div>
 </div>
-</div><div class="column" style="width:4%;">
+</div><div class="column" style="width:2%;">
 
-</div><div class="column" style="width:48%;">
+</div><div class="column" style="width:49%;">
 <div class="theorem">
 <div class="thm-title">
 <p>For continuous RVs:</p>
 </div>
 <div class="thm-cont">
 <p><span class="math display">\[f_{X|Y}(x|y) = \dfrac{f_{X,Y}(x,y)}{f_Y(y)}\]</span> <span class="math display">\[f_{Y|X}(y|x) = \dfrac{f_{X,Y}(x,y)}{f_X(x)}\]</span></p>
-<p>if denominator is greater than 0 (<span class="math inline">\(f_Y(y) &gt; 0\)</span> or <span class="math inline">\(f_X(x) &gt; 0\)</span>)</p>
+<p>if denominator is greater than 0</p>
 </div>
 </div>
 </div></div>
+<ul>
+<li>With simulation: conditioning on <span class="math inline">\(Y = y\)</span> means keeping only the simulations where <span class="math inline">\(Y = y\)</span>, with <code>filter()</code> (Lesson 2)</li>
+</ul>
 </section>
 <section id="how-do-we-represent-independent-rvs-in-a-joint-pmfpdf" class="slide level2">
 <h2>How do we represent independent RVs in a joint pmf/pdf?</h2>
-<p><strong>What do we know about independence for events?</strong></p>
-<p>For events: If <span class="math inline">\(A \perp B\)</span></p>
-<p><span class="math display">\[P(A \cap B) = P(A)P(B)\]</span> <span class="math display">\[P(A|B) = P(A)\]</span></p>
 <div class="columns">
-<div class="column" style="width:48%;">
+<div class="column" style="width:15%;">
+<p>If <span class="math inline">\(A \perp B\)</span>, then</p>
+</div><div class="column" style="width:30%;">
+<p><span class="math display">\[P(A \cap B) = P(A)P(B)\]</span></p>
+</div><div class="column" style="width:10%;">
+<p>and</p>
+</div><div class="column" style="width:20%;">
+<p><span class="math display">\[P(A|B) = P(A)\]</span></p>
+</div><div class="column" style="width:25%;">
+
+</div></div>
+<div class="columns">
+<div class="column" style="width:49%;">
 <div class="proof1">
 <div class="proof-title">
 <p>For discrete RVs: If <span class="math inline">\(X \perp Y\)</span></p>
@@ -218,9 +300,9 @@ Meike Niederhausen and Nicky Wakim
 <p><span class="math display">\[p_{X,Y}(x,y) = p_{X}(x)p_{Y}(y)\]</span> <span class="math display">\[F_{X,Y}(x,y) = F_{X}(x)F_{Y}(y)\]</span> <span class="math display">\[p_{X|Y}(x|y) = p_{X}(x)\]</span> <span class="math display">\[p_{Y|X}(y|x) = p_{Y}(y)\]</span></p>
 </div>
 </div>
-</div><div class="column" style="width:4%;">
+</div><div class="column" style="width:2%;">
 
-</div><div class="column" style="width:48%;">
+</div><div class="column" style="width:49%;">
 <div class="theorem">
 <div class="thm-title">
 <p>For continuous RVs: If <span class="math inline">\(X \perp Y\)</span></p>
@@ -234,7 +316,7 @@ Meike Niederhausen and Nicky Wakim
 <section id="remember-our-probability-rules-must-hold-for-these" class="slide level2">
 <h2>Remember: our probability rules must hold for these!</h2>
 <div class="columns">
-<div class="column" style="width:48%;">
+<div class="column" style="width:49%;">
 <div class="proof1">
 <div class="proof-title">
 <p>For discrete RVs</p>
@@ -242,19 +324,19 @@ Meike Niederhausen and Nicky Wakim
 <div class="proof-cont">
 <p>For a valid joint pmf, we need:</p>
 <ul>
-<li><span class="math inline">\(0 \geq p_{X,Y}(x,y) \leq 1\)</span> for all <span class="math inline">\(x, y\)</span></li>
+<li><span class="math inline">\(0 \leq p_{X,Y}(x,y) \leq 1\)</span> for all <span class="math inline">\(x, y\)</span></li>
 <li><span class="math inline">\(\sum \limits_{\{all\ x\}} \sum \limits_{\{all\ y\}} p_{X,Y}(x,y)=1\)</span></li>
 </ul>
 <p>For a valid conditional pmf, we need:</p>
 <ul>
-<li><span class="math inline">\(0 \geq p_{X|Y}(x|y) \leq 1\)</span> for all <span class="math inline">\(x, y\)</span></li>
+<li><span class="math inline">\(0 \leq p_{X|Y}(x|y) \leq 1\)</span> for all <span class="math inline">\(x, y\)</span></li>
 <li><span class="math inline">\(\sum \limits_{\{all\ x\}} p_{X|Y}(x|y)=1\)</span></li>
 </ul>
 </div>
 </div>
-</div><div class="column" style="width:4%;">
+</div><div class="column" style="width:2%;">
 
-</div><div class="column" style="width:48%;">
+</div><div class="column" style="width:49%;">
 <div class="theorem">
 <div class="thm-title">
 <p>For continuous RVs</p>
@@ -288,47 +370,159 @@ Meike Niederhausen and Nicky Wakim
 <section id="learning-objectives-2" class="title-slide slide level1 center">
 <h1>Learning Objectives</h1>
 <ol type="1">
-<li>Identify the formula for joint distributions for independent RVs and conditional distributions (PMFs/PDFs)</li>
+<li>Identify the formulas for joint distributions of <strong>independent</strong> RVs and for <strong>conditional</strong> distributions (pmf’s and pdf’s)</li>
 </ol>
 <div class="lob">
 <ol start="2" type="1">
-<li>Find conditional pmf from a joint pmf and check if two RVs are independent.</li>
+<li>Find and simulate the <strong>conditional</strong> pmf from a joint pmf, and check if two discrete RVs are <strong>independent</strong></li>
 </ol>
 </div>
 <ol start="3" type="1">
-<li><p>Construct a joint distribution for two independent continuous RVs from their marginal distributions.</p></li>
-<li><p>Calculate conditional probabilities and distributions for continuous RVs.</p></li>
+<li><p>Construct a joint pdf for two <strong>independent</strong> continuous RVs from their marginal pdfs, and check it with simulation</p></li>
+<li><p>Calculate and simulate <strong>conditional</strong> probabilities and distributions for continuous RVs</p></li>
 </ol>
 </section>
-<section id="last-class-joint-distribution-for-two-discrete-random-variables-12" class="slide level2">
-<h2>Last class: joint distribution for two discrete random variables (1/2)</h2>
+<section id="last-class-joint-distribution-for-two-discrete-random-variables-14" class="slide level2">
+<h2><span style="display: none;">Last class: joint distribution for two discrete random variables (1/4)</span></h2>
 <div class="columns">
 <div class="column" style="width:35%;">
 <div class="example">
 <div class="ex-title">
-<p>Example 1</p>
+<p>Example 1 (from Lesson 15)</p>
 </div>
 <div class="ex-cont">
 <p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.</p>
-<ol start="7" type="1">
+<ol type="1">
 <li>Find <span class="math inline">\(p_{X|Y}(x|y)\)</span>.</li>
 </ol>
 </div>
 </div>
 <p><img data-src="../../lessons/img_slides/joint_pmf.png" width="520"></p>
+<p><span style="display: block; text-align: center; font-size: 0.5em;"><a href="16_Independence_conditioning_3d_plots.qmd#ex1-slice" target="_blank">See the slice Y = 1 in 3D (interactive) ↗</a></span></p>
 </div></div>
 </section>
-<section id="last-class-joint-distribution-for-two-discrete-random-variables-22" class="slide level2">
-<h2>Last class: joint distribution for two discrete random variables (2/2)</h2>
+<section id="last-class-joint-distribution-for-two-discrete-random-variables-24-simulate" class="slide level2">
+<h2><span style="display: none;">Last class: joint distribution for two discrete random variables (2/4): simulate</span></h2>
+<div class="example">
+<div class="ex-cont">
+<ol start="7" type="1">
+<li>Check <span class="math inline">\(p_{X|Y}(x|y)\)</span> with simulation: keep only the simulations where <span class="math inline">\(Y = y\)</span>.</li>
+</ol>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<details class="code-fold">
+<summary>Same simulation as Lesson 15</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1" aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">1111</span>)</span>
+<span id="annotated-cell-1-2"><a href="#annotated-cell-1-2" aria-label="2"></a>reps <span class="ot">&lt;-</span> <span class="dv">100000</span></span>
+<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3" aria-label="3"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2">2</button><span id="annotated-cell-1-4" class="code-annotation-target"><a href="#annotated-cell-1-4" aria-label="4"></a>ex1_sims <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
+<span id="annotated-cell-1-5"><a href="#annotated-cell-1-5" aria-label="5"></a>    <span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps,</span>
+<span id="annotated-cell-1-6"><a href="#annotated-cell-1-6" aria-label="6"></a>    <span class="at">draw =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span></span>
+<span id="annotated-cell-1-7"><a href="#annotated-cell-1-7" aria-label="7"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-1-8"><a href="#annotated-cell-1-8" aria-label="8"></a>  <span class="fu">group_by</span>(sim) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-1-9"><a href="#annotated-cell-1-9" aria-label="9"></a>  <span class="fu">mutate</span>(<span class="at">ball =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">size =</span> <span class="fu">n</span>())) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-1-10"><a href="#annotated-cell-1-10" aria-label="10"></a>  <span class="fu">summarise</span>(</span>
+<span id="annotated-cell-1-11"><a href="#annotated-cell-1-11" aria-label="11"></a>    <span class="at">x =</span> <span class="fu">first</span>(ball),</span>
+<span id="annotated-cell-1-12"><a href="#annotated-cell-1-12" aria-label="12"></a>    <span class="at">y =</span> <span class="fu">last</span>(ball)</span>
+<span id="annotated-cell-1-13"><a href="#annotated-cell-1-13" aria-label="13"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="1,2" data-code-annotation="1">Same seed and number of simulations as Lesson 15.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="4,5,6,8,9,10,11,12" data-code-annotation="2">Same code as Lesson 15: draw two balls without replacement, 100,000 times. <code>x</code> is the first ball and <code>y</code> is the second.</span>
+</dd>
+</dl>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3">3</button><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-label="1"></a>ex1_sims <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="4">4</button><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2" aria-label="2"></a>  <span class="fu">filter</span>(y <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="5">5</button><span id="annotated-cell-2-3" class="code-annotation-target"><a href="#annotated-cell-2-3" aria-label="3"></a>  <span class="fu">summarise</span>(</span>
+<span id="annotated-cell-2-4"><a href="#annotated-cell-2-4" aria-label="4"></a>    <span class="at">p_x1 =</span> <span class="fu">mean</span>(x <span class="sc">==</span> <span class="dv">1</span>),</span>
+<span id="annotated-cell-2-5"><a href="#annotated-cell-2-5" aria-label="5"></a>    <span class="at">p_x2 =</span> <span class="fu">mean</span>(x <span class="sc">==</span> <span class="dv">2</span>),</span>
+<span id="annotated-cell-2-6"><a href="#annotated-cell-2-6" aria-label="6"></a>    <span class="at">p_x3 =</span> <span class="fu">mean</span>(x <span class="sc">==</span> <span class="dv">3</span>)</span>
+<span id="annotated-cell-2-7"><a href="#annotated-cell-2-7" aria-label="7"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="3">Start from the 100,000 simulated pairs.</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="2" data-code-annotation="4">Conditioning on <span class="math inline">\(Y = 1\)</span>: keep only the simulations where the second ball is 1.</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="3,4,5,6" data-code-annotation="5">Among those simulations, the proportion with each value of <span class="math inline">\(X\)</span> approximates <span class="math inline">\(p_{X|Y}(x|1)\)</span>.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+   p_x1  p_x2  p_x3
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1     0 0.498 0.502</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:44%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="6">6</button><span id="annotated-cell-4-1" class="code-annotation-target"><a href="#annotated-cell-4-1" aria-label="1"></a>ex1_sims <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-4-2"><a href="#annotated-cell-4-2" aria-label="2"></a>  <span class="fu">group_by</span>(y) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="7">7</button><span id="annotated-cell-4-3" class="code-annotation-target"><a href="#annotated-cell-4-3" aria-label="3"></a>  <span class="fu">summarise</span>(</span>
+<span id="annotated-cell-4-4"><a href="#annotated-cell-4-4" aria-label="4"></a>    <span class="at">p_x1 =</span> <span class="fu">mean</span>(x <span class="sc">==</span> <span class="dv">1</span>),</span>
+<span id="annotated-cell-4-5"><a href="#annotated-cell-4-5" aria-label="5"></a>    <span class="at">p_x2 =</span> <span class="fu">mean</span>(x <span class="sc">==</span> <span class="dv">2</span>),</span>
+<span id="annotated-cell-4-6"><a href="#annotated-cell-4-6" aria-label="6"></a>    <span class="at">p_x3 =</span> <span class="fu">mean</span>(x <span class="sc">==</span> <span class="dv">3</span>)</span>
+<span id="annotated-cell-4-7"><a href="#annotated-cell-4-7" aria-label="7"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-4" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="1,2" data-code-annotation="6">Same idea for every value of <span class="math inline">\(Y\)</span> at once: one group for each value of <code>y</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="3,4,5,6" data-code-annotation="7">Each row is the conditional pmf of <span class="math inline">\(X\)</span> given that value of <span class="math inline">\(Y\)</span>. Each row adds up to 1.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 4
+      y  p_x1  p_x2  p_x3
+  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1     1 0     0.498 0.502
+2     2 0.501 0     0.499
+3     3 0.500 0.500 0    </code></pre>
+</div>
+</div>
+<div class="proof1">
+<div class="proof-cont">
+<p>For reference, the exact answer is <span class="math inline">\(p_{X|Y}(x|y) = \frac12\)</span> for <span class="math inline">\(x \neq y\)</span>, and <span class="math inline">\(p_{X|Y}(x|y) = 0\)</span> for <span class="math inline">\(x = y\)</span></p>
+</div>
+</div>
+</div></div>
+</section>
+<section id="last-class-joint-distribution-for-two-discrete-random-variables-34" class="slide level2">
+<h2><span style="display: none;">Last class: joint distribution for two discrete random variables (3/4)</span></h2>
 <div class="columns">
 <div class="column" style="width:35%;">
 <div class="example">
 <div class="ex-title">
-<p>Example 1</p>
+<p>Example 1 (from Lesson 15)</p>
 </div>
 <div class="ex-cont">
 <p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be two random draws from a box containing balls labelled 1, 2, and 3 without replacement.</p>
-<ol start="8" type="1">
+<ol start="2" type="1">
 <li>Are <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> independent? Why or why not?</li>
 </ol>
 </div>
@@ -346,47 +540,103 @@ Meike Niederhausen and Nicky Wakim
 </div><div class="column" style="width:65%;">
 <p><img data-src="../../lessons/img_slides/joint_pmf.png" width="520"></p>
 </div></div>
+</section>
+<section id="last-class-joint-distribution-for-two-discrete-random-variables-44-simulate" class="slide level2">
+<h2><span style="display: none;">Last class: joint distribution for two discrete random variables (4/4): simulate</span></h2>
+<div class="example">
+<div class="ex-cont">
+<ol start="2" type="1">
+<li>Check with simulation: compare the conditional pmf of <span class="math inline">\(X\)</span> given <span class="math inline">\(Y = y\)</span> with the marginal pmf of <span class="math inline">\(X\)</span>.</li>
+</ol>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-6"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2">2</button><span id="annotated-cell-6-1" class="code-annotation-target"><a href="#annotated-cell-6-1" aria-label="1"></a>ex1_sims <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-6-2"><a href="#annotated-cell-6-2" aria-label="2"></a>  <span class="fu">summarise</span>(</span>
+<span id="annotated-cell-6-3"><a href="#annotated-cell-6-3" aria-label="3"></a>    <span class="at">joint =</span> <span class="fu">mean</span>(x <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> y <span class="sc">==</span> <span class="dv">1</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="3">3</button><span id="annotated-cell-6-4" class="code-annotation-target"><a href="#annotated-cell-6-4" aria-label="4"></a>    <span class="at">product =</span> <span class="fu">mean</span>(x <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">mean</span>(y <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="annotated-cell-6-5"><a href="#annotated-cell-6-5" aria-label="5"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="1,2,3" data-code-annotation="2">The joint probability <span class="math inline">\(p_{X,Y}(1,1)\)</span>: the proportion of simulations with <span class="math inline">\(X = 1\)</span> <strong>and</strong> <span class="math inline">\(Y = 1\)</span>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="4" data-code-annotation="3">The product of the marginal probabilities, <span class="math inline">\(p_X(1)\,p_Y(1)\)</span>. If <span class="math inline">\(X \perp Y\)</span>, these two would match.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  joint product
+  &lt;dbl&gt;   &lt;dbl&gt;
+1     0   0.111</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:48%;">
+<div class="proof1">
+<div class="proof-cont">
+<p>For reference, the exact answers are <span class="math inline">\(p_{X,Y}(1,1) = 0\)</span> and <span class="math inline">\(p_X(1)\,p_Y(1) = \frac13 \cdot \frac13 = \frac19 \approx 0.111\)</span></p>
+</div>
+</div>
+<ul>
+<li>One counterexample is enough!</li>
+</ul>
+</div></div>
 </section></section>
 <section>
 <section id="learning-objectives-3" class="title-slide slide level1 center">
 <h1>Learning Objectives</h1>
 <ol type="1">
-<li><p>Identify the formula for joint distributions for independent RVs and conditional distributions (PMFs/PDFs)</p></li>
-<li><p>Find conditional pmf from a joint pmf and check if two RVs are independent.</p></li>
+<li><p>Identify the formulas for joint distributions of <strong>independent</strong> RVs and for <strong>conditional</strong> distributions (pmf’s and pdf’s)</p></li>
+<li><p>Find and simulate the <strong>conditional</strong> pmf from a joint pmf, and check if two discrete RVs are <strong>independent</strong></p></li>
 </ol>
 <div class="lob">
 <ol start="3" type="1">
-<li>Construct a joint distribution for two independent continuous RVs from their marginal distributions.</li>
+<li>Construct a joint pdf for two <strong>independent</strong> continuous RVs from their marginal pdfs, and check it with simulation</li>
 </ol>
 </div>
 <ol start="4" type="1">
-<li>Calculate conditional probabilities and distributions for continuous RVs.</li>
+<li>Calculate and simulate <strong>conditional</strong> probabilities and distributions for continuous RVs</li>
 </ol>
 </section>
 <section id="constructing-a-joint-pdf-from-two-independent-continuous-rvs" class="slide level2">
-<h2>Constructing a joint pdf from two independent, continuous RVs</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
+<h2><span style="display: none;">Constructing a joint pdf from two independent, continuous RVs</span></h2>
 <div class="example">
 <div class="ex-title">
-<p>Example 1.1</p>
+<p>Example 2: Independent <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></p>
 </div>
 <div class="ex-cont">
-<p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be independent r.v.’s with <span class="math inline">\(f_X(x)= \frac12\)</span>, for <span class="math inline">\(0 \leq x \leq 2\)</span> and <span class="math inline">\(f_Y(y)= 3y^2\)</span>, for <span class="math inline">\(0 \leq y \leq 1\)</span>.</p>
+<p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be <span style="color:#20c997;"><strong>independent</strong></span> r.v.’s with <span class="math inline">\(f_X(x)= \frac12\)</span>, for <span class="math inline">\(0 \leq x \leq 2\)</span> and <span class="math inline">\(f_Y(y)= 3y^2\)</span>, for <span class="math inline">\(0 \leq y \leq 1\)</span>.</p>
 <ol type="1">
 <li>Find <span class="math inline">\(f_{X,Y}(x,y)\)</span></li>
 </ol>
 </div>
 </div>
+<div class="columns">
+<div class="column" style="width:34%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="16_Independence_conditioning_files/figure-revealjs/unnamed-chunk-5-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
 </div></div>
 </section>
 <section id="probability-from-joint-pdf-from-two-independent-continuous-rvs" class="slide level2">
-<h2>Probability from joint pdf from two independent, continuous RVs</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
+<h2><span style="display: none;">Probability from joint pdf from two independent, continuous RVs</span></h2>
 <div class="example">
 <div class="ex-title">
-<p>Example 1.2</p>
+<p>Example 2: Independent <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></p>
 </div>
 <div class="ex-cont">
 <p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be independent r.v.’s with <span class="math inline">\(f_X(x)= \frac12\)</span>, for <span class="math inline">\(0 \leq x \leq 2\)</span> and <span class="math inline">\(f_Y(y)= 3y^2\)</span>, for <span class="math inline">\(0 \leq y \leq 1\)</span>.</p>
@@ -395,15 +645,114 @@ Meike Niederhausen and Nicky Wakim
 </ol>
 </div>
 </div>
+<div class="columns">
+<div class="column" style="width:34%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="16_Independence_conditioning_files/figure-revealjs/unnamed-chunk-6-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:64%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="16_Independence_conditioning_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center" style="width:48.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span style="display: block; text-align: center; font-size: 0.5em;"><a href="16_Independence_conditioning_3d_plots.qmd#ex2-volume" target="_blank">Rotate this plot (interactive) ↗</a></span></p>
+</div></div>
+</section>
+<section id="probability-from-joint-pdf-from-two-independent-continuous-rvs-simulate" class="slide level2">
+<h2><span style="display: none;">Probability from joint pdf from two independent, continuous RVs: simulate</span></h2>
+<div class="example">
+<div class="ex-cont">
+<ol start="2" type="1">
+<li>Check with simulation: because <span class="math inline">\(X \perp Y\)</span>, we can simulate <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> <strong>separately</strong>, then put them side by side.</li>
+</ol>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-8"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1">1</button><span id="annotated-cell-8-1" class="code-annotation-target"><a href="#annotated-cell-8-1" aria-label="1"></a>y_grid <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">10001</span>)</span>
+<span id="annotated-cell-8-2"><a href="#annotated-cell-8-2" aria-label="2"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="2">2</button><span id="annotated-cell-8-3" class="code-annotation-target"><a href="#annotated-cell-8-3" aria-label="3"></a>ex2_sims <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-8-4"><a href="#annotated-cell-8-4" aria-label="4"></a>  <span class="fu">mutate</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="3">3</button><span id="annotated-cell-8-5" class="code-annotation-target"><a href="#annotated-cell-8-5" aria-label="5"></a>    <span class="at">x =</span> <span class="fu">runif</span>(<span class="fu">n</span>(), <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">2</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="4">4</button><span id="annotated-cell-8-6" class="code-annotation-target"><a href="#annotated-cell-8-6" aria-label="6"></a>    <span class="at">y =</span> <span class="fu">sample</span>(y_grid, <span class="at">size =</span> <span class="fu">n</span>(), <span class="at">replace =</span> <span class="cn">TRUE</span>,</span>
+<span id="annotated-cell-8-7"><a href="#annotated-cell-8-7" aria-label="7"></a>               <span class="at">prob =</span> <span class="dv">3</span> <span class="sc">*</span> y_grid<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="annotated-cell-8-8"><a href="#annotated-cell-8-8" aria-label="8"></a>  )</span>
+<span id="annotated-cell-8-9"><a href="#annotated-cell-8-9" aria-label="9"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="5">5</button><span id="annotated-cell-8-10" class="code-annotation-target"><a href="#annotated-cell-8-10" aria-label="10"></a>ex2_sims <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-8-11"><a href="#annotated-cell-8-11" aria-label="11"></a>  <span class="fu">summarise</span>(</span>
+<span id="annotated-cell-8-12"><a href="#annotated-cell-8-12" aria-label="12"></a>    <span class="at">joint =</span> <span class="fu">mean</span>(x <span class="sc">&lt;=</span> <span class="dv">1</span> <span class="sc">&amp;</span> y <span class="sc">&lt;=</span> <span class="fl">0.5</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="6">6</button><span id="annotated-cell-8-13" class="code-annotation-target"><a href="#annotated-cell-8-13" aria-label="13"></a>    <span class="at">product =</span> <span class="fu">mean</span>(x <span class="sc">&lt;=</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">mean</span>(y <span class="sc">&lt;=</span> <span class="fl">0.5</span>)</span>
+<span id="annotated-cell-8-14"><a href="#annotated-cell-8-14" aria-label="14"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="1" data-code-annotation="1">Tickets for grid sampling <span class="math inline">\(Y\)</span> (Lesson 14): 10,001 evenly spaced values from 0 to 1.</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="3" data-code-annotation="2">One row per simulation.</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="5" data-code-annotation="3"><span class="math inline">\(X \sim \text{Uniform}[0, 2]\)</span>, so <code>runif()</code> simulates it (Lesson 13).</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="6,7" data-code-annotation="4">Grid sampling from <span class="math inline">\(f_Y(y) = 3y^2\)</span>. The <code>x</code> and <code>y</code> columns are drawn separately: knowing <code>x</code> tells us nothing about <code>y</code>. That is what independence means!</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="10,11,12" data-code-annotation="5">The proportion of simulations in the event approximates <span class="math inline">\(\mathbb{P}(0 \leq X \leq 1, 0 \leq Y \leq \frac12)\)</span>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="13" data-code-annotation="6">The product of the two marginal probabilities. For independent <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, these match.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+   joint product
+   &lt;dbl&gt;   &lt;dbl&gt;
+1 0.0635  0.0624</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="proof1">
+<div class="proof-cont">
+<p>For reference, the exact answers are <span class="math inline">\(f_{X,Y}(x,y) = \frac12 \cdot 3y^2 = \frac32 y^2\)</span> for <span class="math inline">\(0 \leq x \leq 2, \ 0 \leq y \leq 1\)</span>, and <span class="math inline">\(\mathbb{P}(0 \leq X \leq 1, 0 \leq Y \leq \frac12) = \frac12 \cdot \frac18 = \frac{1}{16} = 0.0625\)</span></p>
+</div>
+</div>
+<p>&nbsp;</p>
+<ul>
+<li>Same joint pdf as Lesson 15, Example 2!
+<ul>
+<li>In Lesson 15, we simulated pairs from the joint pdf with 2D grid sampling</li>
+<li>Here, we simulated <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> separately and got the same answer</li>
+</ul></li>
+</ul>
 </div></div>
 </section>
 <section id="showing-independence-from-joint-pdf" class="slide level2">
-<h2>Showing independence from joint pdf</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
+<h2><span style="display: none;">Showing independence from joint pdf</span></h2>
 <div class="example">
 <div class="ex-title">
-<p>Example 2.1</p>
+<p>Example 3: Joint pdf on a square</p>
 </div>
 <div class="ex-cont">
 <p>Let <span class="math inline">\(f_{X,Y}(x,y)= 18 x^2 y^5\)</span>, for <span class="math inline">\(0 \leq x \leq 1, \ 0 \leq y \leq 1\)</span>.</p>
@@ -412,15 +761,37 @@ Meike Niederhausen and Nicky Wakim
 </ol>
 </div>
 </div>
+<div class="columns">
+<div class="column" style="width:34%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="16_Independence_conditioning_files/figure-revealjs/unnamed-chunk-9-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:64%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="16_Independence_conditioning_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" style="width:48.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span style="display: block; text-align: center; font-size: 0.5em;"><a href="16_Independence_conditioning_3d_plots.qmd#ex3-pdf" target="_blank">Rotate this plot and see its slices (interactive) ↗</a></span></p>
 </div></div>
 </section>
 <section id="finding-cdf-from-two-independent-rvs" class="slide level2">
-<h2>Finding CDF from two independent RVs</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
+<h2><span style="display: none;">Finding CDF from two independent RVs</span></h2>
 <div class="example">
 <div class="ex-title">
-<p>Example 2.2</p>
+<p>Example 3: Joint pdf on a square</p>
 </div>
 <div class="ex-cont">
 <p>Let <span class="math inline">\(f_{X,Y}(x,y)= 18 x^2 y^5\)</span>, for <span class="math inline">\(0 \leq x \leq 1, \ 0 \leq y \leq 1\)</span>.</p>
@@ -429,10 +800,99 @@ Meike Niederhausen and Nicky Wakim
 </ol>
 </div>
 </div>
+<div class="columns">
+<div class="column" style="width:34%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="16_Independence_conditioning_files/figure-revealjs/unnamed-chunk-11-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
 </div></div>
 </section>
-<section id="showing-independence-from-joint-pdf-1" class="slide level2">
-<h2>Showing independence from joint pdf</h2>
+<section id="showing-independence-from-joint-pdf-simulate" class="slide level2">
+<h2><span style="display: none;">Showing independence from joint pdf: simulate</span></h2>
+<div class="example">
+<div class="ex-cont">
+<p>Check parts 1 and 2 with simulation: is <span class="math inline">\(F_{X,Y}(0.8, 0.8) = \mathbb{P}(X \leq 0.8, Y \leq 0.8)\)</span> the same as <span class="math inline">\(\mathbb{P}(X \leq 0.8)\,\mathbb{P}(Y \leq 0.8)\)</span>?</p>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:52%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-10"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1">1</button><span id="annotated-cell-10-1" class="code-annotation-target"><a href="#annotated-cell-10-1" aria-label="1"></a>ex3_grid <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
+<span id="annotated-cell-10-2"><a href="#annotated-cell-10-2" aria-label="2"></a>    <span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">1001</span>),</span>
+<span id="annotated-cell-10-3"><a href="#annotated-cell-10-3" aria-label="3"></a>    <span class="at">y =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">1001</span>)</span>
+<span id="annotated-cell-10-4"><a href="#annotated-cell-10-4" aria-label="4"></a>  ) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="2">2</button><span id="annotated-cell-10-5" class="code-annotation-target"><a href="#annotated-cell-10-5" aria-label="5"></a>  <span class="fu">mutate</span>(<span class="at">height =</span> <span class="dv">18</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> y<span class="sc">^</span><span class="dv">5</span>)</span>
+<span id="annotated-cell-10-6"><a href="#annotated-cell-10-6" aria-label="6"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="3">3</button><span id="annotated-cell-10-7" class="code-annotation-target"><a href="#annotated-cell-10-7" aria-label="7"></a>ex3_sims <span class="ot">&lt;-</span> ex3_grid <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-10-8"><a href="#annotated-cell-10-8" aria-label="8"></a>  <span class="fu">slice_sample</span>(</span>
+<span id="annotated-cell-10-9"><a href="#annotated-cell-10-9" aria-label="9"></a>    <span class="at">n =</span> reps,</span>
+<span id="annotated-cell-10-10"><a href="#annotated-cell-10-10" aria-label="10"></a>    <span class="at">weight_by =</span> height,</span>
+<span id="annotated-cell-10-11"><a href="#annotated-cell-10-11" aria-label="11"></a>    <span class="at">replace =</span> <span class="cn">TRUE</span></span>
+<span id="annotated-cell-10-12"><a href="#annotated-cell-10-12" aria-label="12"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="1,2,3" data-code-annotation="1">2D grid sampling (Lesson 15): about 1 million tickets covering the square.</span>
+</dd>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="5" data-code-annotation="2">The joint pdf’s height at each ticket.</span>
+</dd>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="7,8,9,10,11" data-code-annotation="3">Draw <code>reps</code> tickets, weighted by height. Each row drawn is one simulated pair <span class="math inline">\((x, y)\)</span>.</span>
+</dd>
+</dl>
+</div>
+</div>
+<ul>
+<li><code>joint</code> and <code>product</code> are close, which agrees with independence</li>
+<li>One check can’t <em>prove</em> independence, but a big mismatch would show they are not independent</li>
+</ul>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:46%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-11"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="4">4</button><span id="annotated-cell-11-1" class="code-annotation-target"><a href="#annotated-cell-11-1" aria-label="1"></a>ex3_sims <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-11-2"><a href="#annotated-cell-11-2" aria-label="2"></a>  <span class="fu">summarise</span>(</span>
+<span id="annotated-cell-11-3"><a href="#annotated-cell-11-3" aria-label="3"></a>    <span class="at">joint =</span> <span class="fu">mean</span>(x <span class="sc">&lt;=</span> <span class="fl">0.8</span> <span class="sc">&amp;</span> y <span class="sc">&lt;=</span> <span class="fl">0.8</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="5">5</button><span id="annotated-cell-11-4" class="code-annotation-target"><a href="#annotated-cell-11-4" aria-label="4"></a>    <span class="at">product =</span> <span class="fu">mean</span>(x <span class="sc">&lt;=</span> <span class="fl">0.8</span>) <span class="sc">*</span> <span class="fu">mean</span>(y <span class="sc">&lt;=</span> <span class="fl">0.8</span>)</span>
+<span id="annotated-cell-11-5"><a href="#annotated-cell-11-5" aria-label="5"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-11" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-11" data-code-lines="1,2,3" data-code-annotation="4">The proportion with <span class="math inline">\(X \leq 0.8\)</span> <strong>and</strong> <span class="math inline">\(Y \leq 0.8\)</span> approximates <span class="math inline">\(F_{X,Y}(0.8, 0.8)\)</span>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-11" data-code-lines="4" data-code-annotation="5">The product of the marginal probabilities, <span class="math inline">\(F_X(0.8)\,F_Y(0.8)\)</span>.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  joint product
+  &lt;dbl&gt;   &lt;dbl&gt;
+1 0.132   0.134</code></pre>
+</div>
+</div>
+<div class="proof1">
+<div class="proof-cont">
+<p>For reference, the exact answers are <span class="math inline">\(F_{X,Y}(x,y) = x^3 y^6\)</span> for <span class="math inline">\(0 \leq x \leq 1, \ 0 \leq y \leq 1\)</span>, so <span class="math inline">\(F_{X,Y}(0.8, 0.8) = 0.8^3 \cdot 0.8^6 \approx 0.1342\)</span></p>
+</div>
+</div>
+</div></div>
+</section>
+<section id="showing-independence-from-joint-pdf-for-home" class="slide level2">
+<h2><span style="display: none;">Showing independence from joint pdf: for home</span></h2>
 <div class="callout callout-important no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
@@ -444,12 +904,27 @@ Meike Niederhausen and Nicky Wakim
 <div class="column" style="width:30%;">
 <div class="example">
 <div class="ex-title">
-<p>Example 3</p>
+<p>Example 4: Joint pdf on a triangle (for home)</p>
 </div>
 <div class="ex-cont">
 <p>Let <span class="math inline">\(f_{X,Y}(x,y)= 2 e^{-(x+y)}\)</span>, for <span class="math inline">\(0 \leq x \leq y\)</span>. Are <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> independent?</p>
 </div>
 </div>
+</div><div class="column" style="width:30%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="16_Independence_conditioning_files/figure-revealjs/unnamed-chunk-14-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<ul>
+<li>Hint: this is the same joint pdf as Lesson 15, Example 4. Look closely at its possible values!</li>
+</ul>
+<p><span style="display: block; text-align: center; font-size: 0.5em;"><a href="16_Independence_conditioning_3d_plots.qmd#ex4-pdf" target="_blank">See this joint pdf in 3D (interactive) ↗</a></span></p>
 </div></div>
 </section>
 <section id="final-statement-on-independence" class="slide level2">
@@ -480,23 +955,21 @@ Meike Niederhausen and Nicky Wakim
 <section id="learning-objectives-4" class="title-slide slide level1 center">
 <h1>Learning Objectives</h1>
 <ol type="1">
-<li><p>Identify the formula for joint distributions for independent RVs and conditional distributions (PMFs/PDFs)</p></li>
-<li><p>Find conditional pmf from a joint pmf and check if two RVs are independent.</p></li>
-<li><p>Construct a joint distribution for two independent continuous RVs from their marginal distributions.</p></li>
+<li><p>Identify the formulas for joint distributions of <strong>independent</strong> RVs and for <strong>conditional</strong> distributions (pmf’s and pdf’s)</p></li>
+<li><p>Find and simulate the <strong>conditional</strong> pmf from a joint pmf, and check if two discrete RVs are <strong>independent</strong></p></li>
+<li><p>Construct a joint pdf for two <strong>independent</strong> continuous RVs from their marginal pdfs, and check it with simulation</p></li>
 </ol>
 <div class="lob">
 <ol start="4" type="1">
-<li>Calculate conditional probabilities and distributions for continuous RVs.</li>
+<li>Calculate and simulate <strong>conditional</strong> probabilities and distributions for continuous RVs</li>
 </ol>
 </div>
 </section>
 <section id="example-starting-from-a-joint-pdf-first-try" class="slide level2">
-<h2>Example starting from a joint pdf: first try!</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
+<h2><span style="display: none;">Example starting from a joint pdf: first try!</span></h2>
 <div class="example">
 <div class="ex-title">
-<p>Example 1.1</p>
+<p>Example 5: Conditional pdf from a joint pdf</p>
 </div>
 <div class="ex-cont">
 <p>Let <span class="math inline">\(f_{X,Y}(x,y)= 5 e^{-x-3y}\)</span>, for <span class="math inline">\(0 &lt; y &lt; \frac{x}{2}\)</span>.</p>
@@ -505,15 +978,12 @@ Meike Niederhausen and Nicky Wakim
 </ol>
 </div>
 </div>
-</div></div>
 </section>
 <section id="example-starting-from-a-joint-pdf-second-try-12" class="slide level2">
-<h2>Example starting from a joint pdf: second try! (1/2)</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
+<h2><span style="display: none;">Example starting from a joint pdf: second try! (1/2)</span></h2>
 <div class="example">
 <div class="ex-title">
-<p>Example 1.1</p>
+<p>Example 5: Conditional pdf from a joint pdf</p>
 </div>
 <div class="ex-cont">
 <p>Let <span class="math inline">\(f_{X,Y}(x,y)= 5 e^{-x-3y}\)</span>, for <span class="math inline">\(0 &lt; y &lt; \frac{x}{2}\)</span>.</p>
@@ -522,13 +992,133 @@ Meike Niederhausen and Nicky Wakim
 </ol>
 </div>
 </div>
+<div class="columns">
+<div class="column" style="width:34%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="16_Independence_conditioning_files/figure-revealjs/unnamed-chunk-15-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span style="display: block; text-align: center; font-size: 0.5em;"><a href="16_Independence_conditioning_3d_plots.qmd#ex5-conditional" target="_blank">See the conditional pdf for every y in 3D (interactive) ↗</a></span></p>
 </div></div>
 </section>
 <section id="example-starting-from-a-joint-pdf-second-try-22" class="slide level2">
-<h2>Example starting from a joint pdf: second try! (2/2)</h2>
+<h2><span style="display: none;">Example starting from a joint pdf: second try! (2/2)</span></h2>
 </section>
-<section id="example-starting-from-a-joint-pdf" class="slide level2">
-<h2>Example starting from a joint pdf</h2>
+<section id="example-starting-from-a-joint-pdf-simulate" class="slide level2">
+<h2><span style="display: none;">Example starting from a joint pdf: simulate</span></h2>
+<div class="example">
+<div class="ex-cont">
+<ol type="1">
+<li>Check <span class="math inline">\(\mathbb{P}(2&lt;X&lt;10|Y=4)\)</span> with simulation: grid sampling along the slice <span class="math inline">\(Y = 4\)</span>.</li>
+</ol>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:52%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-13"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="1">1</button><span id="annotated-cell-13-1" class="code-annotation-target"><a href="#annotated-cell-13-1" aria-label="1"></a>x_grid <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">8</span>, <span class="dv">20</span>, <span class="at">length.out =</span> <span class="dv">10001</span>)</span>
+<span id="annotated-cell-13-2"><a href="#annotated-cell-13-2" aria-label="2"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="2">2</button><span id="annotated-cell-13-3" class="code-annotation-target"><a href="#annotated-cell-13-3" aria-label="3"></a>ex5_sims <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-13-4"><a href="#annotated-cell-13-4" aria-label="4"></a>  <span class="fu">mutate</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="3">3</button><span id="annotated-cell-13-5" class="code-annotation-target"><a href="#annotated-cell-13-5" aria-label="5"></a>    <span class="at">x =</span> <span class="fu">sample</span>(x_grid, <span class="at">size =</span> <span class="fu">n</span>(), <span class="at">replace =</span> <span class="cn">TRUE</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="4">4</button><span id="annotated-cell-13-6" class="code-annotation-target"><a href="#annotated-cell-13-6" aria-label="6"></a>               <span class="at">prob =</span> <span class="dv">5</span> <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>x_grid <span class="sc">-</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">4</span>))</span>
+<span id="annotated-cell-13-7"><a href="#annotated-cell-13-7" aria-label="7"></a>  )</span>
+<span id="annotated-cell-13-8"><a href="#annotated-cell-13-8" aria-label="8"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="5">5</button><span id="annotated-cell-13-9" class="code-annotation-target"><a href="#annotated-cell-13-9" aria-label="9"></a>ex5_sims <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-13-10"><a href="#annotated-cell-13-10" aria-label="10"></a>  <span class="fu">summarise</span>(<span class="at">prob =</span> <span class="fu">mean</span>(<span class="dv">2</span> <span class="sc">&lt;</span> x <span class="sc">&amp;</span> x <span class="sc">&lt;</span> <span class="dv">10</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-13" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-13" data-code-lines="1" data-code-annotation="1">Given <span class="math inline">\(Y = 4\)</span>, the possible values of <span class="math inline">\(X\)</span> are <span class="math inline">\(x &gt; 2 \cdot 4 = 8\)</span> (from <span class="math inline">\(0 &lt; y &lt; \frac{x}{2}\)</span>). The pdf is almost 0 past 20, so the grid can stop there.</span>
+</dd>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-13" data-code-lines="3" data-code-annotation="2">One row per simulation.</span>
+</dd>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-13" data-code-lines="5" data-code-annotation="3">Grid sampling, like Lesson 14.</span>
+</dd>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-13" data-code-lines="6" data-code-annotation="4">The heights are the joint pdf along the slice, <span class="math inline">\(f_{X,Y}(x, 4)\)</span>. We don’t need to divide by <span class="math inline">\(f_Y(4)\)</span>: R rescales <code>prob</code> to add to 1, so the heights only need to be <em>proportional</em> to <span class="math inline">\(f_{X|Y}(x|4)\)</span>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-13" data-code-lines="9,10" data-code-annotation="5">The proportion of simulations with <span class="math inline">\(2 &lt; X &lt; 10\)</span> approximates <span class="math inline">\(\mathbb{P}(2&lt;X&lt;10|Y=4)\)</span>.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+   prob
+  &lt;dbl&gt;
+1 0.864</code></pre>
+</div>
+</div>
+<ul>
+<li>Why not <code>filter(y == 4)</code>? <span class="math inline">\(Y\)</span> is continuous, so <span class="math inline">\(\mathbb{P}(Y = 4) = 0\)</span>: no simulated pair lands exactly on <span class="math inline">\(y = 4\)</span></li>
+</ul>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:46%;">
+<div class="cell">
+<details class="code-fold">
+<summary>Plot code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-15"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="6">6</button><span id="annotated-cell-15-1" class="code-annotation-target"><a href="#annotated-cell-15-1" aria-label="1"></a><span class="fu">ggplot</span>(ex5_sims, <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
+<span id="annotated-cell-15-2"><a href="#annotated-cell-15-2" aria-label="2"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)),</span>
+<span id="annotated-cell-15-3"><a href="#annotated-cell-15-3" aria-label="3"></a>                 <span class="at">binwidth =</span> <span class="fl">0.1</span>, <span class="at">boundary =</span> <span class="dv">8</span>,</span>
+<span id="annotated-cell-15-4"><a href="#annotated-cell-15-4" aria-label="4"></a>                 <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="7">7</button><span id="annotated-cell-15-5" class="code-annotation-target"><a href="#annotated-cell-15-5" aria-label="5"></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> <span class="cf">function</span>(x) <span class="fu">exp</span>(<span class="sc">-</span>(x <span class="sc">-</span> <span class="dv">8</span>)),</span>
+<span id="annotated-cell-15-6"><a href="#annotated-cell-15-6" aria-label="6"></a>                <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">14</span>),</span>
+<span id="annotated-cell-15-7"><a href="#annotated-cell-15-7" aria-label="7"></a>                <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="8">8</button><span id="annotated-cell-15-8" class="code-annotation-target"><a href="#annotated-cell-15-8" aria-label="8"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">14</span>)) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="9">9</button><span id="annotated-cell-15-9" class="code-annotation-target"><a href="#annotated-cell-15-9" aria-label="9"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">"Simulated X given Y = 4"</span>,</span>
+<span id="annotated-cell-15-10"><a href="#annotated-cell-15-10" aria-label="10"></a>       <span class="at">x =</span> <span class="st">"x"</span>, <span class="at">y =</span> <span class="st">"Density"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-15" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-15" data-code-lines="1,2,3,4" data-code-annotation="6">Histogram of the simulated values of <span class="math inline">\(X\)</span> given <span class="math inline">\(Y = 4\)</span>, scaled like a pdf.</span>
+</dd>
+<dt data-target-cell="annotated-cell-15" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-15" data-code-lines="5,6,7" data-code-annotation="7">For reference, the conditional pdf <span class="math inline">\(f_{X|Y}(x|4) = e^{-(x-8)}\)</span> for <span class="math inline">\(x &gt; 8\)</span>, in red.</span>
+</dd>
+<dt data-target-cell="annotated-cell-15" data-target-annotation="8">8</dt>
+<dd>
+<span data-code-cell="annotated-cell-15" data-code-lines="8" data-code-annotation="8">Zoom in to where almost all of the values are.</span>
+</dd>
+<dt data-target-cell="annotated-cell-15" data-target-annotation="9">9</dt>
+<dd>
+<span data-code-cell="annotated-cell-15" data-code-lines="9,10" data-code-annotation="9">Add a subtitle and axis labels.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="16_Independence_conditioning_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="proof1">
+<div class="proof-cont">
+<p>For reference, the exact answer is <span class="math inline">\(\mathbb{P}(2&lt;X&lt;10|Y=4) = \mathbb{P}(8&lt;X&lt;10|Y=4) = 1 - e^{-2} \approx 0.8647\)</span></p>
+</div>
+</div>
+</div></div>
+</section>
+<section id="example-starting-from-a-joint-pdf-part-2" class="slide level2">
+<h2><span style="display: none;">Example starting from a joint pdf: part 2</span></h2>
 <div class="callout callout-important no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
@@ -540,7 +1130,7 @@ Meike Niederhausen and Nicky Wakim
 <div class="column" style="width:30%;">
 <div class="example">
 <div class="ex-title">
-<p>Example 1.2</p>
+<p>Example 5: Conditional pdf from a joint pdf (for home)</p>
 </div>
 <div class="ex-cont">
 <p>Let <span class="math inline">\(f_{X,Y}(x,y)= 5 e^{-x-3y}\)</span>, for <span class="math inline">\(0 &lt; y &lt; \frac{x}{2}\)</span>.</p>
@@ -552,7 +1142,7 @@ Meike Niederhausen and Nicky Wakim
 </div></div>
 </section>
 <section id="finding-probability-with-conditional-domain-and-pdf" class="slide level2">
-<h2>Finding probability with conditional domain and pdf</h2>
+<h2><span style="display: none;">Finding probability with conditional domain and pdf</span></h2>
 <div class="callout callout-important no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
@@ -564,16 +1154,64 @@ Meike Niederhausen and Nicky Wakim
 <div class="column" style="width:30%;">
 <div class="example">
 <div class="ex-title">
-<p>Example 2</p>
+<p>Example 6: Choose a point, then another (for home)</p>
 </div>
 <div class="ex-cont">
 <p>Randomly choose a point <span class="math inline">\(X\)</span> from the interval <span class="math inline">\([0,1]\)</span>, and given <span class="math inline">\(X=x\)</span>, randomly choose a point <span class="math inline">\(Y\)</span> from <span class="math inline">\([0,x]\)</span>. Find <span class="math inline">\(\mathbb{P}(0 &lt; Y &lt; \frac14)\)</span>.</p>
 </div>
 </div>
 </div></div>
-
-
-</section></section>
+</section>
+<section id="summary-of-independence-and-conditioning" class="slide level2">
+<h2>Summary of independence and conditioning</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Discrete <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></th>
+<th>Continuous <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Conditional distribution</td>
+<td><span class="math inline">\(p_{X \mid Y}(x \mid y) = \dfrac{p_{X,Y}(x,y)}{p_Y(y)}\)</span></td>
+<td><span class="math inline">\(f_{X \mid Y}(x \mid y) = \dfrac{f_{X,Y}(x,y)}{f_Y(y)}\)</span>: a slice of the joint pdf, rescaled to area 1</td>
+</tr>
+<tr class="even">
+<td>Independent if</td>
+<td><span class="math inline">\(p_{X,Y}(x,y) = p_X(x)\,p_Y(y)\)</span> for <strong>every</strong> pair</td>
+<td><span class="math inline">\(f_{X,Y}(x,y) = f_X(x)\,f_Y(y)\)</span>, <strong>and</strong> the possible values are a rectangle</td>
+</tr>
+<tr class="odd">
+<td>Simulate a conditional distribution</td>
+<td><code>filter(y == 1)</code>: keep the simulations where <span class="math inline">\(Y = 1\)</span></td>
+<td>Grid sampling along the slice: <code>prob</code> is <span class="math inline">\(f_{X,Y}(x, y)\)</span> at that <span class="math inline">\(y\)</span></td>
+</tr>
+<tr class="even">
+<td>Simulate independent <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></td>
+<td>Draw <code>x</code> and <code>y</code> separately</td>
+<td>Draw <code>x</code> and <code>y</code> separately</td>
+</tr>
+<tr class="odd">
+<td>Check independence</td>
+<td><code>joint</code> vs.&nbsp;<code>product</code> of the marginal probabilities</td>
+<td><code>joint</code> vs.&nbsp;<code>product</code> of the marginal probabilities</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<ul>
+<li>If <span class="math inline">\(X \perp Y\)</span>, knowing <span class="math inline">\(Y\)</span> tells us nothing about <span class="math inline">\(X\)</span>: <span class="math inline">\(p_{X|Y}(x|y) = p_X(x)\)</span> and <span class="math inline">\(f_{X|Y}(x|y) = f_X(x)\)</span></li>
+<li>One mismatch is enough to show <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are <strong>not</strong> <span style="color:#20c997;"><strong>independent</strong></span></li>
+</ul>
+</section>
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -956,6 +1594,158 @@ Meike Niederhausen and Nicky Wakim
             }
           });
         }
+            let selectedAnnoteEl;
+            const selectorForAnnotation = ( cell, annotation) => {
+              let cellAttr = 'data-code-cell="' + cell + '"';
+              let lineAttr = 'data-code-annotation="' +  annotation + '"';
+              const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+              return selector;
+            }
+            const selectCodeLines = (annoteEl) => {
+              const doc = window.document;
+              const targetCell = annoteEl.getAttribute("data-target-cell");
+              const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+              const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+              const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+              const lineIds = lines.map((line) => {
+                return targetCell + "-" + line;
+              })
+              let top = null;
+              let height = null;
+              let parent = null;
+              if (lineIds.length > 0) {
+                  //compute the position of the single el (top and bottom and make a div)
+                  const el = window.document.getElementById(lineIds[0]);
+                  top = el.offsetTop;
+                  height = el.offsetHeight;
+                  parent = el.parentElement.parentElement;
+                if (lineIds.length > 1) {
+                  const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+                  const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+                  height = bottom - top;
+                }
+                if (top !== null && height !== null && parent !== null) {
+                  // cook up a div (if necessary) and position it 
+                  let div = window.document.getElementById("code-annotation-line-highlight");
+                  if (div === null) {
+                    div = window.document.createElement("div");
+                    div.setAttribute("id", "code-annotation-line-highlight");
+                    div.style.position = 'absolute';
+                    parent.appendChild(div);
+                  }
+                  div.style.top = top - 2 + "px";
+                  div.style.height = height + 4 + "px";
+                  div.style.left = 0;
+                  let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+                  if (gutterDiv === null) {
+                    gutterDiv = window.document.createElement("div");
+                    gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                    gutterDiv.style.position = 'absolute';
+                    const codeCell = window.document.getElementById(targetCell);
+                    const gutter = codeCell.querySelector('.code-annotation-gutter');
+                    gutter.appendChild(gutterDiv);
+                  }
+                  gutterDiv.style.top = top - 2 + "px";
+                  gutterDiv.style.height = height + 4 + "px";
+                }
+                selectedAnnoteEl = annoteEl;
+              }
+            };
+            const unselectCodeLines = () => {
+              const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+              elementsIds.forEach((elId) => {
+                const div = window.document.getElementById(elId);
+                if (div) {
+                  div.remove();
+                }
+              });
+              selectedAnnoteEl = undefined;
+            };
+              // Handle positioning of the toggle
+          window.addEventListener(
+            "resize",
+            throttle(() => {
+              elRect = undefined;
+              if (selectedAnnoteEl) {
+                selectCodeLines(selectedAnnoteEl);
+              }
+            }, 10)
+          );
+          function throttle(fn, ms) {
+          let throttle = false;
+          let timer;
+            return (...args) => {
+              if(!throttle) { // first call gets through
+                  fn.apply(this, args);
+                  throttle = true;
+              } else { // all the others get throttled
+                  if(timer) clearTimeout(timer); // cancel #2
+                  timer = setTimeout(() => {
+                    fn.apply(this, args);
+                    timer = throttle = false;
+                  }, ms);
+              }
+            };
+          }
+            const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+            for (let i=0; i<annoteTargets.length; i++) {
+              const annoteTarget = annoteTargets[i];
+              const targetCell = annoteTarget.getAttribute("data-target-cell");
+              const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+              const contentFn = () => {
+                const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+                if (content) {
+                  const tipContent = content.cloneNode(true);
+                  tipContent.classList.add("code-annotation-tip-content");
+                  return tipContent.outerHTML;
+                }
+              }
+              const config = {
+                allowHTML: true,
+                content: contentFn,
+                onShow: (instance) => {
+                  selectCodeLines(instance.reference);
+                  instance.reference.classList.add('code-annotation-active');
+                  window.tippy.hideAll();
+                },
+                onHide: (instance) => {
+                  unselectCodeLines();
+                  instance.reference.classList.remove('code-annotation-active');
+                },
+                maxWidth: 300,
+                delay: [50, 0],
+                duration: [200, 0],
+                offset: [5, 10],
+                arrow: true,
+                appendTo: function(el) {
+                  return el.parentElement.parentElement.parentElement;
+                },
+                interactive: true,
+                interactiveBorder: 10,
+                theme: 'light-border',
+                placement: 'right',
+                popperOptions: {
+                  modifiers: [
+                  {
+                    name: 'flip',
+                    options: {
+                      flipVariations: false, // true by default
+                      allowedAutoPlacements: ['right'],
+                      fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+                    },
+                  },
+                  {
+                    name: 'preventOverflow',
+                    options: {
+                      mainAxis: false,
+                      altAxis: false
+                    }
+                  }
+                  ]        
+                }      
+              };
+              window.tippy(annoteTarget, config); 
+            }
         const findCites = (el) => {
           const parentEl = el.parentElement;
           if (parentEl) {

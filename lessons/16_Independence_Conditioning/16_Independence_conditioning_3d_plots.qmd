@@ -1,0 +1,215 @@
+---
+title: "Lesson 16: Interactive 3D plots"
+author: "Nicky Wakim"
+format:
+  html:
+    toc: true
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup}
+library(tidyverse)
+library(plotly)
+
+# Interactive 3D picture of a joint pdf: the domain as a blue floor, the pdf
+# as a surface, and an event's volume in orange (top plus walls to the floor)
+plotly_pdf_volume <- function(f, x_lim, y_lim,
+                              in_domain = function(x, y) rep(TRUE, length(x)),
+                              domain_corners,
+                              in_event = NULL, event_corners = NULL,
+                              z_max, z_ratio = 0.7, n = 121) {
+  xs <- seq(x_lim[1], x_lim[2], length.out = n)
+  ys <- seq(y_lim[1], y_lim[2], length.out = n)
+  grid <- expand_grid(y = ys, x = xs) |>
+    mutate(domain = in_domain(x, y),
+           height = if_else(domain, f(x, y), NA_real_),
+           event = if (is.null(in_event)) 0 else as.numeric(domain & in_event(x, y)))
+  as_mat <- function(v) matrix(v, nrow = n, ncol = n, byrow = TRUE)
+  grey_orange <- list(c(0, "#9fb8c8"), c(1, "#E89543"))
+
+  # Floor: one flat polygon at height 0 over the domain
+  floor_x <- domain_corners[, 1]
+  floor_y <- domain_corners[, 2]
+  p <- plot_ly(height = 650) |>
+    add_trace(type = "mesh3d", x = floor_x, y = floor_y, z = 0 * floor_x,
+              delaunayaxis = "z", color = I("#29abe0"), opacity = 0.3,
+              hoverinfo = "skip", name = "Possible values (domain)") |>
+    add_surface(x = xs, y = ys, z = as_mat(grid$height),
+                surfacecolor = as_mat(grid$event), cmin = 0, cmax = 1,
+                colorscale = grey_orange, opacity = 0.9, showscale = FALSE,
+                name = "Joint pdf",
+                hovertemplate = "x = %{x:.2f}<br>y = %{y:.2f}<br>f(x, y) = %{z:.3f}<extra></extra>")
+
+  if (!is.null(event_corners)) {
+    corners <- rbind(event_corners, event_corners[1, ])
+    for (k in 1:(nrow(corners) - 1)) {
+      s <- seq(0, 1, length.out = 40)
+      wall_x <- corners[k, 1] + s * (corners[k + 1, 1] - corners[k, 1])
+      wall_y <- corners[k, 2] + s * (corners[k + 1, 2] - corners[k, 2])
+      wall_top <- f(wall_x, wall_y)
+      p <- p |> add_surface(x = rbind(wall_x, wall_x), y = rbind(wall_y, wall_y),
+                            z = rbind(0 * wall_top, wall_top),
+                            surfacecolor = matrix(1, 2, 40), cmin = 0, cmax = 1,
+                            colorscale = grey_orange, opacity = 0.55,
+                            showscale = FALSE, hoverinfo = "skip")
+    }
+  }
+
+  p |> layout(
+    showlegend = FALSE,
+    margin = list(l = 0, r = 0, t = 0, b = 0),
+    scene = list(
+      xaxis = list(title = "x"), yaxis = list(title = "y"),
+      zaxis = list(title = "f(x, y)", range = c(0, z_max)),
+      aspectmode = "manual", aspectratio = list(x = 1, y = 1, z = z_ratio),
+      camera = list(eye = list(x = 1.5, y = -1.6, z = 0.9))))
+}
+```
+
+Each plot below is an interactive 3D picture for an example in the [Lesson 16 slides](16_Independence_conditioning.qmd).
+
+-   **Drag** to rotate, **scroll** to zoom, and **double-click** to reset the view.
+-   **Hover** over the surface to see $x$, $y$, and the height $f_{X,Y}(x,y)$.
+-   **Blue floor:** the possible values (where $f_{X,Y}(x,y) > 0$).
+-   **Orange:** the event. Its volume, from the floor up to the pdf, is the probability we approximate with simulation.
+-   **Orange lines:** a *slice* of the joint pdf at one value of $y$. Conditioning on $Y = y$ keeps only that slice.
+
+
+## Example 1: conditioning on $Y = 1$ {#ex1-slice}
+
+Two draws without replacement from a box with balls 1, 2, and 3 (from Lesson 15). Each stick stands on a pair $(x, y)$, and its height is $p_{X,Y}(x,y)$. The **orange** sticks are the slice $Y = 1$. Conditioning on $Y = 1$ keeps only those sticks, then rescales them so they add to 1: $p_{X|Y}(x|1) = \frac{1/6}{1/3} = \frac12$ for $x = 2, 3$.
+
+```{r}
+ex1_pmf <- expand_grid(x = 1:3, y = 1:3) |>
+  mutate(prob = if_else(x == y, 0, 1/6),
+         stick_color = if_else(y == 1, "#E89543", "#9fb8c8"))
+
+ex1_sticks <- ex1_pmf |>
+  filter(prob > 0) |>
+  mutate(id = row_number()) |>
+  reframe(x = c(x, x, NA), y = c(y, y, NA), z = c(0, prob, NA),
+          stick_color = stick_color[1], .by = id)
+
+floor_lines <- bind_rows(
+  tibble(x = rep(c(0.5, 3.5, NA), 3), y = rep(1:3, each = 3)),
+  tibble(x = rep(1:3, each = 3), y = rep(c(0.5, 3.5, NA), 3))
+) |>
+  mutate(z = if_else(is.na(x) | is.na(y), NA_real_, 0))
+
+p <- plot_ly(height = 650) |>
+  add_trace(type = "mesh3d", x = c(0.5, 3.5, 3.5, 0.5), y = c(0.5, 0.5, 3.5, 3.5),
+            z = c(0, 0, 0, 0), delaunayaxis = "z", color = I("#29abe0"),
+            opacity = 0.3, hoverinfo = "skip") |>
+  add_trace(data = floor_lines, x = ~x, y = ~y, z = ~z, type = "scatter3d",
+            mode = "lines", line = list(color = "#bbbbbb", width = 2),
+            hoverinfo = "skip")
+
+for (col in c("#9fb8c8", "#E89543")) {
+  p <- p |>
+    add_trace(data = filter(ex1_sticks, stick_color == col), x = ~x, y = ~y, z = ~z,
+              type = "scatter3d", mode = "lines",
+              line = list(color = col, width = 10), hoverinfo = "skip") |>
+    add_trace(data = filter(ex1_pmf, prob > 0, stick_color == col),
+              x = ~x, y = ~y, z = ~prob, type = "scatter3d", mode = "markers",
+              marker = list(color = col, size = 6),
+              hovertemplate = "(x, y) = (%{x}, %{y})<br>p(x, y) = %{z:.4f}<extra></extra>")
+}
+
+p |>
+  add_trace(data = filter(ex1_pmf, prob == 0), x = ~x, y = ~y, z = ~prob,
+            type = "scatter3d", mode = "markers",
+            marker = list(color = "#666666", size = 6, symbol = "x"),
+            hovertemplate = "(x, y) = (%{x}, %{y})<br>p(x, y) = 0<extra></extra>") |>
+  layout(
+    showlegend = FALSE,
+    margin = list(l = 0, r = 0, t = 0, b = 0),
+    scene = list(
+      xaxis = list(title = "x", tickvals = 1:3),
+      yaxis = list(title = "y", tickvals = 1:3),
+      zaxis = list(title = "p(x, y)", range = c(0, 0.25)),
+      aspectmode = "manual", aspectratio = list(x = 1, y = 1, z = 0.7),
+      camera = list(eye = list(x = 1.5, y = -1.6, z = 0.9))))
+```
+
+## Example 2: volume for $\mathbb{P}(0 \leq X \leq 1, 0 \leq Y \leq \frac12)$ {#ex2-volume}
+
+$X$ and $Y$ are independent, with $f_X(x) = \frac12$ for $0 \leq x \leq 2$ and $f_Y(y) = 3y^2$ for $0 \leq y \leq 1$, so $f_{X,Y}(x,y) = \frac32 y^2$ (the same joint pdf as Lesson 15, Example 2).
+
+```{r}
+plotly_pdf_volume(
+  f = function(x, y) 3/2 * y^2, x_lim = c(0, 2), y_lim = c(0, 1),
+  domain_corners = rbind(c(0, 0), c(2, 0), c(2, 1), c(0, 1)),
+  in_event = function(x, y) x <= 1 & y <= 0.5,
+  event_corners = rbind(c(0, 0), c(1, 0), c(1, 0.5), c(0, 0.5)), z_max = 1.6
+)
+```
+
+## Example 3: the joint pdf and its slices {#ex3-pdf}
+
+$f_{X,Y}(x,y) = 18x^2y^5$, for $0 \leq x \leq 1$, $0 \leq y \leq 1$. The orange lines are slices at $y = 0.6$, $0.8$, and $1$. Each slice is $18y^5 \cdot x^2$: a taller or shorter copy of the **same** curve, $x^2$. Rescale any slice to area 1 and you get $f_{X|Y}(x|y) = 3x^2 = f_X(x)$, whatever $y$ is. That is what independence looks like.
+
+```{r}
+slice_lines <- expand_grid(y = c(0.6, 0.8, 1), x = c(seq(0, 1, by = 0.01), NA)) |>
+  mutate(z = 18 * x^2 * y^5)
+
+plotly_pdf_volume(
+  f = function(x, y) 18 * x^2 * y^5, x_lim = c(0, 1), y_lim = c(0, 1),
+  domain_corners = rbind(c(0, 0), c(1, 0), c(1, 1), c(0, 1)), z_max = 18
+) |>
+  add_trace(data = slice_lines, x = ~x, y = ~y, z = ~z, type = "scatter3d",
+            mode = "lines", line = list(color = "#E89543", width = 8),
+            hovertemplate = "slice y = %{y}<br>x = %{x:.2f}<br>f(x, y) = %{z:.3f}<extra></extra>")
+```
+
+## Example 4 (for home): the joint pdf {#ex4-pdf}
+
+$f_{X,Y}(x,y) = 2e^{-(x+y)}$, for $0 \leq x \leq y$ (shown up to 4; it keeps going). The formula splits into $e^{-x}$ times $e^{-y}$, but look at the floor: it is a triangle, not a rectangle. The possible values of $X$ depend on $y$.
+
+```{r}
+plotly_pdf_volume(
+  f = function(x, y) 2 * exp(-(x + y)), x_lim = c(0, 4), y_lim = c(0, 4),
+  in_domain = function(x, y) x <= y,
+  domain_corners = rbind(c(0, 0), c(0, 4), c(4, 4)), z_max = 2
+)
+```
+
+## Example 5: the conditional pdf of $X$ for every $y$ {#ex5-conditional}
+
+$f_{X,Y}(x,y) = 5e^{-x-3y}$, for $0 < y < \frac{x}{2}$. Near $y = 4$, the joint pdf is so close to 0 that a 3D picture of it looks flat. So this surface shows the **conditional** pdf $f_{X|Y}(x|y) = e^{-(x - 2y)}$ for $x > 2y$: each slice (fixed $y$) has area 1. The orange line is the slice $Y = 4$: it starts at $x = 8$, which is why $\mathbb{P}(2 < X < 10 | Y = 4) = \mathbb{P}(8 < X < 10 | Y = 4)$.
+
+```{r}
+# Build the surface slice by slice: for each y, x runs from the edge of the
+# domain (x = 2y) to 14, so both edges stay smooth
+t_vals <- seq(0, 1, length.out = 141)
+y_vals <- seq(0, 5, length.out = 51)
+x_mat <- outer(y_vals, t_vals, function(y, t) 2 * y + t * (14 - 2 * y))
+y_mat <- outer(y_vals, t_vals, function(y, t) y + 0 * t)
+z_mat <- exp(-(x_mat - 2 * y_mat))
+
+slice_4 <- tibble(x = seq(8, 14, by = 0.05), y = 4) |>
+  mutate(z = exp(-(x - 8)))
+
+plot_ly(height = 650) |>
+  add_trace(type = "mesh3d", x = c(0, 14, 14, 10), y = c(0, 0, 5, 5),
+            z = c(0, 0, 0, 0), delaunayaxis = "z", color = I("#29abe0"),
+            opacity = 0.3, hoverinfo = "skip") |>
+  add_surface(x = x_mat, y = y_mat, z = z_mat,
+              colorscale = list(c(0, "#9fb8c8"), c(1, "#9fb8c8")),
+              opacity = 0.9, showscale = FALSE,
+              hovertemplate = "x = %{x:.2f}<br>y = %{y:.2f}<br>f(x | y) = %{z:.3f}<extra></extra>") |>
+  add_trace(data = slice_4, x = ~x, y = ~y, z = ~z, type = "scatter3d",
+            mode = "lines", line = list(color = "#E89543", width = 10),
+            hovertemplate = "slice y = 4<br>x = %{x:.2f}<br>f(x | 4) = %{z:.3f}<extra></extra>") |>
+  layout(
+    showlegend = FALSE,
+    margin = list(l = 0, r = 0, t = 0, b = 0),
+    scene = list(
+      xaxis = list(title = "x", range = c(0, 14)),
+      yaxis = list(title = "y", range = c(0, 5)),
+      zaxis = list(title = "f(x | y)", range = c(0, 1.1)),
+      aspectmode = "manual", aspectratio = list(x = 1.4, y = 1, z = 0.7),
+      camera = list(eye = list(x = 1.5, y = -1.6, z = 0.9))))
+```

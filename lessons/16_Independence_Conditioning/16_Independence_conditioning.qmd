@@ -324,6 +324,8 @@ Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, a
 
 ![](/lessons/img_slides/joint_pmf.png){width="520"}
 
+[[See the slice Y = 1 in 3D (interactive) ↗](16_Independence_conditioning_3d_plots.qmd#ex1-slice){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
+
 :::
 
 :::
@@ -572,6 +574,8 @@ draw_pdf_volume(
   title = "Volume = P(0 <= X <= 1, 0 <= Y <= 1/2)"
 )
 ```
+
+[[Rotate this plot (interactive) ↗](16_Independence_conditioning_3d_plots.qmd#ex2-volume){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
 :::::
 ::::::
 
@@ -669,6 +673,8 @@ draw_pdf_volume(
   title = "Joint pdf f(x, y) = 18 x^2 y^5"
 )
 ```
+
+[[Rotate this plot and see its slices (interactive) ↗](16_Independence_conditioning_3d_plots.qmd#ex3-pdf){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
 :::::
 ::::::
 
@@ -786,6 +792,8 @@ domain_triangle
 
 :::::: {.column width="40%"}
 - Hint: this is the same joint pdf as Lesson 15, Example 4. Look closely at its possible values!
+
+[[See this joint pdf in 3D (interactive) ↗](16_Independence_conditioning_3d_plots.qmd#ex4-pdf){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
 ::::::
 :::::::
 
@@ -866,6 +874,8 @@ $0 < y < \frac{x}{2}$.
 
 domain_wedge
 ```
+
+[[See the conditional pdf for every y in 3D (interactive) ↗](16_Independence_conditioning_3d_plots.qmd#ex5-conditional){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
 :::::
 ::::::
 
@@ -984,6 +994,21 @@ $\mathbb{P}(0 < Y < \frac14)$.
 :::::
 ::::::
 :::::::
+
+## Summary of independence and conditioning
+
+|   | Discrete $X$ and $Y$ | Continuous $X$ and $Y$ |
+|----|----|----|
+| Conditional distribution | $p_{X \mid Y}(x \mid y) = \dfrac{p_{X,Y}(x,y)}{p_Y(y)}$ | $f_{X \mid Y}(x \mid y) = \dfrac{f_{X,Y}(x,y)}{f_Y(y)}$: a slice of the joint pdf, rescaled to area 1 |
+| Independent if | $p_{X,Y}(x,y) = p_X(x)\,p_Y(y)$ for **every** pair | $f_{X,Y}(x,y) = f_X(x)\,f_Y(y)$, **and** the possible values are a rectangle |
+| Simulate a conditional distribution | `filter(y == 1)`: keep the simulations where $Y = 1$ | Grid sampling along the slice: `prob` is $f_{X,Y}(x, y)$ at that $y$ |
+| Simulate independent $X$ and $Y$ | Draw `x` and `y` separately | Draw `x` and `y` separately |
+| Check independence | `joint` vs. `product` of the marginal probabilities | `joint` vs. `product` of the marginal probabilities |
+
+ 
+
+- If $X \perp Y$, knowing $Y$ tells us nothing about $X$: $p_{X|Y}(x|y) = p_X(x)$ and $f_{X|Y}(x|y) = f_X(x)$
+- One mismatch is enough to show $X$ and $Y$ are **not** [**independent**]{style="color:#20c997;"}
 
 ## [Finding probability with conditional domain and pdf: simulate]{style="display: none;"} {visibility="hidden"}
 

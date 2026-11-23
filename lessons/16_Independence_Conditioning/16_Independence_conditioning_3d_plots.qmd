@@ -176,40 +176,45 @@ plotly_pdf_volume(
 )
 ```
 
-## Example 5: the conditional pdf of $X$ for every $y$ {#ex5-conditional}
+## Example 5: the plane $y = 0.2$ {#ex5-plane}
 
-$f_{X,Y}(x,y) = 5e^{-x-3y}$, for $0 < y < \frac{x}{2}$. Near $y = 4$, the joint pdf is so close to 0 that a 3D picture of it looks flat. So this surface shows the **conditional** pdf $f_{X|Y}(x|y) = e^{-(x - 2y)}$ for $x > 2y$: each slice (fixed $y$) has area 1. The orange line is the slice $Y = 4$: it starts at $x = 8$, which is why $\mathbb{P}(2 < X < 10 | Y = 4) = \mathbb{P}(8 < X < 10 | Y = 4)$.
+$f_{X,Y}(x,y) = 5e^{-x-3y}$, for $0 < y < \frac{x}{2}$ (shown up to $x = 6$; it keeps going). The **orange plane** is $y = 0.2$. It only crosses the possible values for $x > 0.4$, and the **dark orange curve** is the slice it cuts out of the joint pdf, $f_{X,Y}(x, 0.2)$. Conditioning on $Y = 0.2$ keeps only this slice. The simulation keeps the simulated pairs in a thin strip around the plane.
 
 ```{r}
 # Build the surface slice by slice: for each y, x runs from the edge of the
-# domain (x = 2y) to 14, so both edges stay smooth
-t_vals <- seq(0, 1, length.out = 141)
-y_vals <- seq(0, 5, length.out = 51)
-x_mat <- outer(y_vals, t_vals, function(y, t) 2 * y + t * (14 - 2 * y))
+# domain (x = 2y) to 6, so the edge x = 2y stays smooth
+f5 <- function(x, y) 5 * exp(-x - 3 * y)
+t_vals <- seq(0, 1, length.out = 121)
+y_vals <- seq(0, 3, length.out = 61)
+x_mat <- outer(y_vals, t_vals, function(y, t) 2 * y + t * (6 - 2 * y))
 y_mat <- outer(y_vals, t_vals, function(y, t) y + 0 * t)
-z_mat <- exp(-(x_mat - 2 * y_mat))
+z_mat <- f5(x_mat, y_mat)
 
-slice_4 <- tibble(x = seq(8, 14, by = 0.05), y = 4) |>
-  mutate(z = exp(-(x - 8)))
+slice_02 <- tibble(x = seq(0.4, 6, by = 0.02), y = 0.2) |>
+  mutate(z = f5(x, y))
 
 plot_ly(height = 650) |>
-  add_trace(type = "mesh3d", x = c(0, 14, 14, 10), y = c(0, 0, 5, 5),
-            z = c(0, 0, 0, 0), delaunayaxis = "z", color = I("#29abe0"),
+  add_trace(type = "mesh3d", x = c(0, 6, 6), y = c(0, 0, 3),
+            z = c(0, 0, 0), color = I("#29abe0"),
             opacity = 0.3, hoverinfo = "skip") |>
   add_surface(x = x_mat, y = y_mat, z = z_mat,
               colorscale = list(c(0, "#9fb8c8"), c(1, "#9fb8c8")),
-              opacity = 0.9, showscale = FALSE,
-              hovertemplate = "x = %{x:.2f}<br>y = %{y:.2f}<br>f(x | y) = %{z:.3f}<extra></extra>") |>
-  add_trace(data = slice_4, x = ~x, y = ~y, z = ~z, type = "scatter3d",
-            mode = "lines", line = list(color = "#E89543", width = 10),
-            hovertemplate = "slice y = 4<br>x = %{x:.2f}<br>f(x | 4) = %{z:.3f}<extra></extra>") |>
+              opacity = 0.85, showscale = FALSE,
+              hovertemplate = "x = %{x:.2f}<br>y = %{y:.2f}<br>f(x, y) = %{z:.3f}<extra></extra>") |>
+  add_surface(x = matrix(c(0, 6, 0, 6), 2, 2, byrow = TRUE),
+              y = matrix(0.2, 2, 2), z = matrix(c(0, 0, 5, 5), 2, 2, byrow = TRUE),
+              colorscale = list(c(0, "#E89543"), c(1, "#E89543")),
+              opacity = 0.45, showscale = FALSE, hoverinfo = "skip") |>
+  add_trace(data = slice_02, x = ~x, y = ~y, z = ~z, type = "scatter3d",
+            mode = "lines", line = list(color = "#d35400", width = 10),
+            hovertemplate = "slice y = 0.2<br>x = %{x:.2f}<br>f(x, 0.2) = %{z:.3f}<extra></extra>") |>
   layout(
     showlegend = FALSE,
     margin = list(l = 0, r = 0, t = 0, b = 0),
     scene = list(
-      xaxis = list(title = "x", range = c(0, 14)),
-      yaxis = list(title = "y", range = c(0, 5)),
-      zaxis = list(title = "f(x | y)", range = c(0, 1.1)),
+      xaxis = list(title = "x", range = c(0, 6)),
+      yaxis = list(title = "y", range = c(0, 3)),
+      zaxis = list(title = "f(x, y)", range = c(0, 5)),
       aspectmode = "manual", aspectratio = list(x = 1.4, y = 1, z = 0.7),
       camera = list(eye = list(x = 1.5, y = -1.6, z = 0.9))))
 ```

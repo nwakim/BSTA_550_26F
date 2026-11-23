@@ -828,7 +828,7 @@ $0 < y < \frac{x}{2}$.
 :::::
 
 :::::: columns
-::::: {.column width="34%"}
+::::: {.column width="30%"}
 ```{r}
 #| echo: false
 #| fig-width: 6
@@ -839,13 +839,65 @@ domain_wedge
 
 [[See the conditional pdf for every y in 3D (interactive) ↗](16_Independence_conditioning_3d_plots.qmd#ex5-conditional){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
 :::::
+
+::::: {.column width="2%"}
+:::::
+
+::::: {.column width="33%"}
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 7
+#| out-width: "100%"
+
+f5 <- function(x, y) 5 * exp(-x - 3 * y)
+x_vals <- seq(0, 12, by = 0.25)
+y_vals <- seq(0, 6, by = 0.25)
+heights <- outer(x_vals, y_vals, f5)
+heights[!outer(x_vals, y_vals, function(x, y) y < x / 2)] <- NA
+
+par(mar = c(0, 0, 2, 0), cex = 1.8)
+# 3D view and axes, then the domain floor, then the joint pdf surface
+view_3d <- persp(x_vals, y_vals, heights, zlim = c(0, 5),
+                 theta = 35, phi = 25, expand = 0.8, r = 4,
+                 col = NA, border = NA, xlab = "x", ylab = "y", zlab = "f(x, y)")
+polygon(trans3d(c(0, 12, 12), c(0, 0, 6), 0, view_3d),
+        col = adjustcolor("#29abe0", 0.25), border = "#29abe0")
+par(new = TRUE)
+persp(x_vals, y_vals, heights, zlim = c(0, 5), theta = 35, phi = 25,
+      expand = 0.8, r = 4, col = NA, border = "grey60", box = FALSE)
+# The plane y = 4, and where it crosses the possible values (x > 8)
+polygon(trans3d(c(0, 12, 12, 0), 4, c(0, 0, 5, 5), view_3d),
+        col = adjustcolor("#E89543", 0.3), border = "#E89543")
+lines(trans3d(c(8, 12), 4, 0, view_3d), col = "#E89543", lwd = 6)
+title("The plane y = 4", font.main = 1)
+```
+:::::
+
+::::: {.column width="2%"}
+:::::
+
+::::: {.column width="33%"}
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 7
+#| out-width: "100%"
+
+ggplot() +
+  geom_function(fun = function(x) 5 * exp(-x - 3 * 4), xlim = c(8, 14),
+                color = "#E89543", linewidth = 2) +
+  labs(subtitle = "What the plane cuts out: f(x, 4)",
+       x = "x", y = "f(x, 4)")
+```
+:::::
 ::::::
 
 ## [Example starting from a joint pdf: simulate]{style="display: none;"}
 
 :::: example
 ::: ex-cont
-1.  Find $\mathbb{P}(2<X<10|Y=4)$ with simulation: grid sampling along the slice $Y = 4$.
+1.  Find $\mathbb{P}(2<X<10|Y=4)$ with simulation, using only the joint pdf: grid sampling along the plane $y = 4$.
 :::
 ::::
 
@@ -867,10 +919,11 @@ ex5_sims |> # <5>
 1.  Given $Y = 4$, the possible values of $X$ are $x > 2 \cdot 4 = 8$ (from $0 < y < \frac{x}{2}$). The pdf is almost 0 past 20, so the grid can stop there.
 2.  One row per simulation.
 3.  Grid sampling, like Lesson 14.
-4.  The heights are the joint pdf along the slice, $f_{X,Y}(x, 4)$. We don't need to divide by $f_Y(4)$: R rescales `prob` to add to 1, so the heights only need to be *proportional* to $f_{X|Y}(x|4)$.
+4.  The heights are the joint pdf along the plane $y = 4$: $f_{X,Y}(x, 4)$, the curve the plane cuts out. We never find $f_Y(4)$ or $f_{X|Y}(x|4)$: R rescales `prob` to add to 1, which is exactly what dividing by $f_Y(4)$ does.
 5.  The proportion of simulations with $2 < X < 10$ approximates $\mathbb{P}(2<X<10|Y=4)$.
 
 - Why not `filter(y == 4)`? $Y$ is continuous, so $\mathbb{P}(Y = 4) = 0$: no simulated pair lands exactly on $y = 4$
+- Another common way: simulate pairs, then keep those with $Y$ *close* to 4. Here that fails: $\mathbb{P}(3.95 < Y < 4.05) \approx 10^{-9}$, so almost no pairs land there (next slide: it works near $y = 0.2$)
 :::::
 
 
@@ -894,7 +947,7 @@ ggplot(ex5_sims, aes(x = x)) + # <6>
 ```
 
 6.  Histogram of the simulated values of $X$ given $Y = 4$, scaled like a pdf.
-7.  For reference, the conditional pdf $f_{X|Y}(x|4) = e^{-(x-8)}$ for $x > 8$, in red.
+7.  For reference only, the conditional pdf $f_{X|Y}(x|4) = e^{-(x-8)}$ for $x > 8$, in red. The simulation did not use it.
 8.  Zoom in to where almost all of the values are.
 9.  Add a subtitle and axis labels.
 
@@ -903,6 +956,88 @@ ggplot(ex5_sims, aes(x = x)) + # <6>
 For reference, the exact answer is $\mathbb{P}(2<X<10|Y=4) = \mathbb{P}(8<X<10|Y=4) = 1 - e^{-2} \approx 0.8647$
 :::
 ::::
+:::
+:::::::
+
+## [Example starting from a joint pdf: filtering near y = 0.2]{style="display: none;"}
+
+:::: example
+::: ex-cont
+Same joint pdf, now given $Y = 0.2$: approximate $\mathbb{P}(X < 1.4 | Y = 0.2)$ two ways. Neither one needs the conditional pdf.
+:::
+::::
+
+::::::: columns
+::::: {.column width="52%"}
+**1. Simulate pairs, keep those with $Y$ close to 0.2**
+
+```{r}
+#| code-fold: true
+#| code-summary: "Simulate pairs from the joint pdf (2D grid sampling, like Lesson 15)"
+
+ex5_grid <- expand_grid( # <1>
+    x = seq(0, 15, length.out = 1501), # <1>
+    y = seq(0, 3, length.out = 1001) # <1>
+  ) |>
+  filter(y < x / 2) |> # <1>
+  mutate(height = 5 * exp(-x - 3 * y)) # <1>
+
+ex5_pairs <- ex5_grid |> # <2>
+  slice_sample( # <2>
+    n = reps, # <2>
+    weight_by = height, # <2>
+    replace = TRUE # <2>
+  )
+```
+
+1.  A grid of tickets over the possible values, $0 < y < \frac{x}{2}$, with the joint pdf's height at each ticket. The pdf is almost 0 past $x = 15$ and $y = 3$.
+2.  Draw 100,000 pairs $(x, y)$ from the joint pdf, like Lesson 15.
+
+```{r}
+near_02 <- ex5_pairs |> # <3>
+  filter(abs(y - 0.2) < 0.05) # <4>
+
+near_02 |> # <5>
+  summarise( # <5>
+    n_kept = n(), # <5>
+    prob = mean(x < 1.4) # <6>
+  )
+```
+
+3.  Start from the 100,000 simulated pairs.
+4.  Keep the pairs with $Y$ within 0.05 of 0.2. We can't ask for $Y$ exactly equal to 0.2, so we use a thin strip around it.
+5.  `n()` counts how many pairs we kept.
+6.  Among the kept pairs, the proportion with $X < 1.4$ approximates $\mathbb{P}(X < 1.4 | Y = 0.2)$.
+:::::
+
+::::: {.column width="2%"}
+:::::
+
+::: {.column width="46%"}
+**2. Grid sampling along the plane $y = 0.2$**
+
+```{r}
+x_grid_02 <- seq(0.4, 15, length.out = 10001) # <7>
+
+tibble(sim = 1:reps) |>
+  mutate(
+    x = sample(x_grid_02, size = n(), replace = TRUE,
+               prob = 5 * exp(-x_grid_02 - 3 * 0.2)) # <8>
+  ) |>
+  summarise(prob = mean(x < 1.4))
+```
+
+7.  Given $Y = 0.2$, the possible values are $x > 0.4$.
+8.  Same code as the slide before, with $y = 0.2$ instead of 4.
+
+:::: proof1
+::: proof-cont
+For reference, the exact answer is $\mathbb{P}(X < 1.4 | Y = 0.2) = 1 - e^{-1} \approx 0.6321$
+:::
+::::
+
+- Filtering only works when the condition is common: about 18% of the pairs have $Y$ near 0.2, but near 4 almost none do
+- A thinner strip is closer to "$Y = 0.2$", but keeps fewer pairs, so the answer is noisier: within 0.01 keeps about 4,000 pairs and gives 0.611
 :::
 :::::::
 

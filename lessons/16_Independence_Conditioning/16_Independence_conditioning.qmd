@@ -907,13 +907,14 @@ ggplot() +
 ::::
 
 ::::::: columns
-::::: {.column width="56%"}
+::::: {.column width="57%"}
 ```{r}
 x_grid <- seq(0.4, 15, length.out = 10001) # <1>
 
 ex5_sims <- tibble(sim = 1:reps) |> # <2>
   mutate(
-    x = sample(x_grid, size = n(), replace = TRUE, # <3>
+    x = sample(x_grid, size = n(), 
+               replace = TRUE, # <3>
                prob = 5 * exp(-x_grid - 3 * 0.2)) # <4>
   )
 
@@ -928,10 +929,9 @@ ex5_sims |> # <5>
 5.  The proportion of simulations with $X < 1.4$ approximates $\mathbb{P}(X < 1.4|Y=0.2)$.
 
 - $f_Y(0.2)$ is one number, the same for every $x$: dividing by it changes the curve's height, not its shape
-- Same idea as Lesson 14, where `prob = u_grid^3` worked without the $\frac{4}{15}$
 :::::
 
-::::: {.column width="2%"}
+::::: {.column width="1%"}
 :::::
 
 ::: {.column width="42%"}
@@ -939,7 +939,7 @@ ex5_sims |> # <5>
 #| code-fold: true
 #| code-summary: "Plot code"
 #| fig-width: 8
-#| fig-height: 5.5
+#| fig-height: 5
 
 ggplot(ex5_sims, aes(x = x)) + # <6>
   geom_histogram(aes(y = after_stat(density)), # <6>
@@ -957,11 +957,11 @@ ggplot(ex5_sims, aes(x = x)) + # <6>
 8.  Zoom in to where almost all of the values are.
 9.  Add a subtitle and axis labels.
 
-- No values below 0.4: given $Y = 0.2$, we need $x > 0.4$
-
 :::: proof1
 ::: proof-cont
-For reference, the exact answer is $\mathbb{P}(X < 1.4|Y=0.2) = \mathbb{P}(0.4 < X < 1.4|Y=0.2) = 1 - e^{-1} \approx 0.6321$
+Exact ans: 
+
+$\mathbb{P}(0.4 < X < 1.4|Y=0.2) = 1 - e^{-1} \approx 0.6321$
 :::
 ::::
 :::
@@ -970,14 +970,12 @@ For reference, the exact answer is $\mathbb{P}(X < 1.4|Y=0.2) = \mathbb{P}(0.4 <
 ## Summary of independence and conditioning
 
 |   | Discrete $X$ and $Y$ | Continuous $X$ and $Y$ |
-|----|----|----|
+|-----|--------|--------|
 | Conditional distribution | $p_{X \mid Y}(x \mid y) = \dfrac{p_{X,Y}(x,y)}{p_Y(y)}$ | $f_{X \mid Y}(x \mid y) = \dfrac{f_{X,Y}(x,y)}{f_Y(y)}$: a slice of the joint pdf, rescaled to area 1 |
 | Independent if | $p_{X,Y}(x,y) = p_X(x)\,p_Y(y)$ for **every** pair | $f_{X,Y}(x,y) = f_X(x)\,f_Y(y)$, **and** the possible values are a rectangle |
 | Simulate a conditional distribution | `filter(y == 1)`: keep the simulations where $Y = 1$ | Grid sampling along the plane $y = 0.2$: `prob` is the joint pdf with $y$ plugged in, $f_{X,Y}(x, 0.2)$ |
 | Simulate independent $X$ and $Y$ | Draw `x` and `y` separately | Draw `x` and `y` separately |
 | Check independence | `joint` vs. `product` of the marginal probabilities | `joint` vs. `product` of the marginal probabilities |
-
- 
 
 - If $X \perp Y$, knowing $Y$ tells us nothing about $X$: $p_{X|Y}(x|y) = p_X(x)$ and $f_{X|Y}(x|y) = f_X(x)$
 - One mismatch is enough to show $X$ and $Y$ are **not** [**independent**]{style="color:#20c997;"}

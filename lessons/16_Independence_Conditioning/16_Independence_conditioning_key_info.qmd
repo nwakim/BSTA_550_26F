@@ -8,20 +8,21 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r setup, include=FALSE}
+library(here)
+source(here("class_dates.R"))
+```
+
 ## Announcements
 
-- Did everyone turn in their midquarter feedback?
-- Quiz 2 opens on Wednesday
-  - Lessons 7-9: pmfs, pdfs, and CDFs
-- Finish up example from last class
+- No class on Wednesday!
 
 ## Key Dates
 
-- Checkpoint 3 due
-- Homework 6 due
-- Quiz 3 opens
-  - Quiz 3 closes
-- 
+- Checkpoint 3 due `r cp3 %>% format("%m/%d")`
+- Homework 6 due `r hw6 %>% format("%m/%d")`
+- Quiz 3 opens on `r q3_open %>% format("%m/%d")` at 3pm
+  - Closes `r q3_close %>% format("%m/%d")` at 11pm
 
 
   

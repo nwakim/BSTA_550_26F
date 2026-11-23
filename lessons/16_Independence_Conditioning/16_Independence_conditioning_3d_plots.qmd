@@ -178,7 +178,7 @@ plotly_pdf_volume(
 
 ## Example 5: the plane $y = 0.2$ {#ex5-plane}
 
-$f_{X,Y}(x,y) = 5e^{-x-3y}$, for $0 < y < \frac{x}{2}$ (shown up to $x = 6$; it keeps going). The **orange plane** is $y = 0.2$. It only crosses the possible values for $x > 0.4$, and the **dark orange curve** is the slice it cuts out of the joint pdf, $f_{X,Y}(x, 0.2)$. Conditioning on $Y = 0.2$ keeps only this slice. The simulation keeps the simulated pairs in a thin strip around the plane.
+$f_{X,Y}(x,y) = 5e^{-x-3y}$, for $0 < y < \frac{x}{2}$ (shown up to $x = 6$; it keeps going). The **orange plane** is $y = 0.2$. It only crosses the possible values for $x > 0.4$, and the **dark orange curve** is the slice it cuts out of the joint pdf, $f_{X,Y}(x, 0.2)$. Conditioning on $Y = 0.2$ keeps only this slice. The simulation samples $x$ along this slice, using its heights as the weights.
 
 ```{r}
 # Build the surface slice by slice: for each y, x runs from the edge of the

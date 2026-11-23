@@ -199,7 +199,7 @@ if denominator is greater than 0
 
 :::
 
-- With simulation: conditioning on $Y = y$ means keeping only the simulations where $Y = y$, with `filter()` (Lesson 2)
+- With simulation: for discrete RVs, conditioning on $Y = y$ means keeping only the simulations where $Y = y$, with `filter()` (Lesson 2)
 
 ## How do we represent independent RVs in a joint pmf/pdf?
 
@@ -902,81 +902,62 @@ ggplot() +
 
 :::: example
 ::: ex-cont
-1.  Find $\mathbb{P}(X < 1.4|Y=0.2)$: simulate pairs from the joint pdf, then keep the pairs with $Y$ **close** to 0.2
+1.  Find $\mathbb{P}(X < 1.4|Y=0.2)$: grid sampling along the plane $y = 0.2$, using only the joint pdf
 :::
 ::::
 
 ::::::: columns
-::::: {.column width="54%"}
+::::: {.column width="56%"}
 ```{r}
-#| code-fold: true
-#| code-summary: "Simulate pairs from the joint pdf"
+x_grid <- seq(0.4, 15, length.out = 10001) # <1>
 
-ex5_grid <- expand_grid( # <1>
-    x = seq(0, 15, length.out = 1501), # <1>
-    y = seq(0, 3, length.out = 1001) # <1>
-  ) |>
-  filter(y < x / 2) |> # <1>
-  mutate(height = 5 * exp(-x - 3 * y)) # <1>
-
-ex5_pairs <- ex5_grid |> # <2>
-  slice_sample( # <2>
-    n = reps, # <2>
-    weight_by = height, # <2>
-    replace = TRUE # <2>
+ex5_sims <- tibble(sim = 1:reps) |> # <2>
+  mutate(
+    x = sample(x_grid, size = n(), replace = TRUE, # <3>
+               prob = 5 * exp(-x_grid - 3 * 0.2)) # <4>
   )
+
+ex5_sims |> # <5>
+  summarise(prob = mean(x < 1.4)) # <5>
 ```
 
-1.  A grid of tickets over the possible values, $0 < y < \frac{x}{2}$, with the joint pdf's height at each ticket. The pdf is almost 0 past $x = 15$ and $y = 3$.
-2.  Draw 100,000 pairs $(x, y)$ from the joint pdf, like Lesson 15.
+1.  Given $Y = 0.2$, the possible values of $X$ are $x > 2 \cdot 0.2 = 0.4$ (from $0 < y < \frac{x}{2}$). The pdf is almost 0 past 15, so the grid can stop there.
+2.  One row per simulation.
+3.  Grid sampling, like Lesson 14.
+4.  The heights are the joint pdf with $y = 0.2$ plugged in: $f_{X,Y}(x, 0.2)$, the curve the plane cuts out. We never find $f_Y(0.2)$ or $f_{X|Y}(x|0.2)$: R rescales `prob` to add to 1, which is exactly what dividing by $f_Y(0.2)$ does.
+5.  The proportion of simulations with $X < 1.4$ approximates $\mathbb{P}(X < 1.4|Y=0.2)$.
 
-```{r}
-near_02 <- ex5_pairs |> # <3>
-  filter(abs(y - 0.2) < 0.05) # <4>
-
-near_02 |> # <5>
-  summarise( # <5>
-    n_kept = n(), # <5>
-    prob = mean(x < 1.4) # <6>
-  )
-```
-
-3.  Start from the 100,000 simulated pairs.
-4.  Keep the pairs with $Y$ within 0.05 of 0.2: a thin strip around the plane $y = 0.2$.
-5.  `n()` counts how many pairs we kept.
-6.  Among the kept pairs, the proportion with $X < 1.4$ approximates $\mathbb{P}(X < 1.4 | Y = 0.2)$.
-
-- Why not `filter(y == 0.2)`? $Y$ is continuous, so $\mathbb{P}(Y = 0.2) = 0$: no simulated pair lands exactly on $y = 0.2$
-- A thinner strip is closer to "$Y = 0.2$", but keeps fewer pairs, so the answer is noisier
+- $f_Y(0.2)$ is one number, the same for every $x$: dividing by it changes the curve's height, not its shape
+- Same idea as Lesson 14, where `prob = u_grid^3` worked without the $\frac{4}{15}$
 :::::
 
 ::::: {.column width="2%"}
 :::::
 
-::: {.column width="44%"}
+::: {.column width="42%"}
 ```{r}
 #| code-fold: true
 #| code-summary: "Plot code"
 #| fig-width: 8
 #| fig-height: 5.5
 
-ggplot(near_02, aes(x = x)) + # <7>
-  geom_histogram(aes(y = after_stat(density)), # <7>
-                 binwidth = 0.1, boundary = 0, # <7>
-                 color = "black", fill = "lightblue") + # <7>
-  geom_vline(xintercept = 1.4, # <8>
-             color = "#d35400", linewidth = 1.5) + # <8>
-  coord_cartesian(xlim = c(0, 5)) + # <9>
-  labs(subtitle = "Simulated X, for pairs with Y near 0.2", # <10>
-       x = "x", y = "Density") # <10>
+ggplot(ex5_sims, aes(x = x)) + # <6>
+  geom_histogram(aes(y = after_stat(density)), # <6>
+                 binwidth = 0.1, boundary = 0.4, # <6>
+                 color = "black", fill = "lightblue") + # <6>
+  geom_vline(xintercept = 1.4, # <7>
+             color = "#d35400", linewidth = 1.5) + # <7>
+  coord_cartesian(xlim = c(0, 5)) + # <8>
+  labs(subtitle = "Simulated X given Y = 0.2", # <9>
+       x = "x", y = "Density") # <9>
 ```
 
-7.  Histogram of the `x` values in the kept pairs, scaled like a pdf: this approximates the conditional distribution of $X$ given $Y = 0.2$.
-8.  A line at $x = 1.4$: the probability is the share of the histogram to its left.
-9.  Zoom in to where almost all of the values are.
-10. Add a subtitle and axis labels.
+6.  Histogram of the simulated values of $X$ given $Y = 0.2$, scaled like a pdf.
+7.  A line at $x = 1.4$: the probability is the share of the histogram to its left.
+8.  Zoom in to where almost all of the values are.
+9.  Add a subtitle and axis labels.
 
-- No values below about 0.4: given $Y = 0.2$, we need $x > 0.4$
+- No values below 0.4: given $Y = 0.2$, we need $x > 0.4$
 
 :::: proof1
 ::: proof-cont
@@ -992,7 +973,7 @@ For reference, the exact answer is $\mathbb{P}(X < 1.4|Y=0.2) = \mathbb{P}(0.4 <
 |----|----|----|
 | Conditional distribution | $p_{X \mid Y}(x \mid y) = \dfrac{p_{X,Y}(x,y)}{p_Y(y)}$ | $f_{X \mid Y}(x \mid y) = \dfrac{f_{X,Y}(x,y)}{f_Y(y)}$: a slice of the joint pdf, rescaled to area 1 |
 | Independent if | $p_{X,Y}(x,y) = p_X(x)\,p_Y(y)$ for **every** pair | $f_{X,Y}(x,y) = f_X(x)\,f_Y(y)$, **and** the possible values are a rectangle |
-| Simulate a conditional distribution | `filter(y == 1)`: keep the simulations where $Y = 1$ | `filter(abs(y - 0.2) < 0.05)`: keep the simulations with $Y$ *close to* 0.2 |
+| Simulate a conditional distribution | `filter(y == 1)`: keep the simulations where $Y = 1$ | Grid sampling along the plane $y = 0.2$: `prob` is the joint pdf with $y$ plugged in, $f_{X,Y}(x, 0.2)$ |
 | Simulate independent $X$ and $Y$ | Draw `x` and `y` separately | Draw `x` and `y` separately |
 | Check independence | `joint` vs. `product` of the marginal probabilities | `joint` vs. `product` of the marginal probabilities |
 

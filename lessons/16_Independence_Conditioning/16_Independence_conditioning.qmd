@@ -384,6 +384,8 @@ ex1_sims <- expand_grid( # <2>
 1.  Same seed and number of simulations as Lesson 15.
 2.  Same code as Lesson 15: draw two balls without replacement, 100,000 times. `x` is the first ball and `y` is the second.
 
+From the simulation, we can calculate an example, $p_{X|Y}(x|y=1)$:
+
 ```{r}
 ex1_sims |> # <3>
   filter(y == 1) |> # <4>
@@ -525,17 +527,6 @@ $0 \leq y \leq 1$.
 :::
 :::::
 
-:::::: columns
-::::: {.column width="34%"}
-```{r}
-#| echo: false
-#| fig-width: 6
-#| fig-height: 5.5
-
-domain_rect
-```
-:::::
-::::::
 
 ## [Probability from joint pdf from two independent, continuous RVs]{style="display: none;"}
 
@@ -563,15 +554,12 @@ domain_rect
 ```
 :::::
 
-::::: {.column width="2%"}
-:::::
-
-::::: {.column width="64%"}
+::::: {.column width="30%"}
 ```{r}
 #| echo: false
 #| fig-width: 8
-#| fig-height: 6.5
-#| out-width: "48%"
+#| fig-height: 8
+#| out-width: "100%"
 #| fig-align: center
 
 draw_pdf_volume(
@@ -585,7 +573,7 @@ draw_pdf_volume(
 )
 ```
 
-[[Rotate this plot (interactive) ↗](16_Independence_conditioning_3d_plots.qmd#ex2-volume){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
+[[Rotate this plot (interactive) ↗](16_Independence_conditioning_3d_plots.qmd#ex2-volume){target="_blank"}]{style="display: block; text-align: center; font-size: 0.7em;"}
 :::::
 ::::::
 
@@ -598,7 +586,7 @@ draw_pdf_volume(
 ::::
 
 ::::::: columns
-::::: {.column width="55%"}
+::::: {.column width="60%"}
 ```{r}
 y_grid <- seq(0, 1, length.out = 10001) # <1>
 
@@ -624,18 +612,28 @@ ex2_sims |> # <5>
 6.  The product of the two marginal probabilities. For independent $X$ and $Y$, these match.
 :::::
 
-::: {.column width="45%"}
-:::: proof1
-::: proof-cont
-For reference, the exact answers are $f_{X,Y}(x,y) = \frac12 \cdot 3y^2 = \frac32 y^2$ for $0 \leq x \leq 2, \ 0 \leq y \leq 1$, and $\mathbb{P}(0 \leq X \leq 1, 0 \leq Y \leq \frac12) = \frac12 \cdot \frac18 = \frac{1}{16} = 0.0625$
-:::
-::::
+::: {.column width="40%"}
 
- 
 
 - Same joint pdf as Lesson 15, Example 2!
   - In Lesson 15, we simulated pairs from the joint pdf with 2D grid sampling
   - Here, we simulated $X$ and $Y$ separately and got the same answer
+  
+ 
+
+ 
+
+ 
+
+:::: proof1
+::: proof-cont
+For reference, the exact answers is
+
+$\mathbb{P}(0 \leq X \leq 1, 0 \leq Y \leq \frac12) = \frac12 \cdot \frac18 = \frac{1}{16} = 0.0625$
+:::
+::::
+
+
 :::
 :::::::
 
@@ -654,25 +652,12 @@ $0 \leq x \leq 1, \ 0 \leq y \leq 1$.
 :::::
 
 :::::: columns
-::::: {.column width="34%"}
-```{r}
-#| echo: false
-#| fig-width: 6
-#| fig-height: 5.5
-
-domain_unit_square
-```
-:::::
-
-::::: {.column width="2%"}
-:::::
-
-::::: {.column width="64%"}
+::::: {.column width="30%"}
 ```{r}
 #| echo: false
 #| fig-width: 8
-#| fig-height: 6.5
-#| out-width: "48%"
+#| fig-height: 8
+#| out-width: "100%"
 #| fig-align: center
 
 draw_pdf_volume(
@@ -686,31 +671,18 @@ draw_pdf_volume(
 
 [[Rotate this plot and see its slices (interactive) ↗](16_Independence_conditioning_3d_plots.qmd#ex3-pdf){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
 :::::
-::::::
 
-## [Finding CDF from two independent RVs]{style="display: none;"}
 
-::::: example
-::: ex-title
-Example 3: Joint pdf on a square
-:::
-::: ex-cont
-Let $f_{X,Y}(x,y)= 18 x^2 y^5$, for
-$0 \leq x \leq 1, \ 0 \leq y \leq 1$.
-
-2.  Find $F_{X,Y}(x,y)$.
-:::
+::::: {.column width="2%"}
 :::::
 
-:::::: columns
-::::: {.column width="34%"}
-```{r}
-#| echo: false
-#| fig-width: 6
-#| fig-height: 5.5
+::::: {.column width="68%"}
+- **With integrals**, we would find the respective marginal distributions, $f_X(x)$ and $f_Y(y)$. 
+  - Then we check that our original $f_{X,Y}(x,y)$ is the same as $f_X(x) \times f_Y(y)$
 
-domain_unit_square
-```
+- **In simulations**, we can only pull example probabilities to provide evidence (not prove) or disprove independence. 
+  - For example, we could show: $\mathbb{P}(X \leq 0.4, Y \leq 0.7)$ is the same or different as $\mathbb{P}(X \leq 0.4) \times \mathbb{P}(Y \leq 0.7)$
+  - Then we could pull a few more probabilities to investigate
 :::::
 ::::::
 
@@ -718,12 +690,12 @@ domain_unit_square
 
 :::: example
 ::: ex-cont
-Check parts 1 and 2 with simulation: is $F_{X,Y}(0.8, 0.8) = \mathbb{P}(X \leq 0.8, Y \leq 0.8)$ the same as $\mathbb{P}(X \leq 0.8)\,\mathbb{P}(Y \leq 0.8)$?
+1.  Are $X$ and $Y$ independent? Text example: is $\mathbb{P}(X \leq 0.8, Y \leq 0.8) = \mathbb{P}(X \leq 0.8) \cdot \mathbb{P}(Y \leq 0.8)$?
 :::
 ::::
 
 ::::::: columns
-::::: {.column width="52%"}
+::::: {.column width="46%"}
 ```{r}
 ex3_grid <- expand_grid( # <1>
     x = seq(0, 1, length.out = 1001), # <1>
@@ -743,14 +715,16 @@ ex3_sims <- ex3_grid |> # <3>
 2.  The joint pdf's height at each ticket.
 3.  Draw `reps` tickets, weighted by height. Each row drawn is one simulated pair $(x, y)$.
 
-- `joint` and `product` are close, which agrees with independence
+ 
+
 - One check can't *prove* independence, but a big mismatch would show they are not independent
+
 :::::
 
 ::::: {.column width="2%"}
 :::::
 
-::: {.column width="46%"}
+::: {.column width="52%"}
 ```{r}
 ex3_sims |> # <4>
   summarise( # <4>
@@ -762,49 +736,17 @@ ex3_sims |> # <4>
 4.  The proportion with $X \leq 0.8$ **and** $Y \leq 0.8$ approximates $F_{X,Y}(0.8, 0.8)$.
 5.  The product of the marginal probabilities, $F_X(0.8)\,F_Y(0.8)$.
 
+- `joint` and `product` are close, which agrees with independence
+
 :::: proof1
 ::: proof-cont
-For reference, the exact answers are $F_{X,Y}(x,y) = x^3 y^6$ for $0 \leq x \leq 1, \ 0 \leq y \leq 1$, so $F_{X,Y}(0.8, 0.8) = 0.8^3 \cdot 0.8^6 \approx 0.1342$
+For reference, the exact answers is 
+
+$\mathbb{P}(X \leq 0.8, Y \leq 0.8) = 0.8^3 \cdot 0.8^6 \approx 0.1342$
 :::
 ::::
+
 :::
-:::::::
-
-## [Showing independence from joint pdf: for home]{style="display: none;"}
-
-::: {.callout-important appearance="simple" icon="false"}
-Do this problem at home for extra practice. The solution is available in
-Meike's video!
-:::
-
-::::::: columns
-:::::: {.column width="30%"}
-::::: example
-::: ex-title
-Example 4: Joint pdf on a triangle (for home)
-:::
-::: ex-cont
-Let $f_{X,Y}(x,y)= 2 e^{-(x+y)}$, for
-$0 \leq x \leq y$. Are $X$ and $Y$ independent?
-:::
-:::::
-::::::
-
-:::::: {.column width="30%"}
-```{r}
-#| echo: false
-#| fig-width: 6
-#| fig-height: 5.5
-
-domain_triangle
-```
-::::::
-
-:::::: {.column width="40%"}
-- Hint: this is the same joint pdf as Lesson 15, Example 4. Look closely at its possible values!
-
-[[See this joint pdf in 3D (interactive) ↗](16_Independence_conditioning_3d_plots.qmd#ex4-pdf){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
-::::::
 :::::::
 
 ## Final statement on independence
@@ -860,6 +802,16 @@ $0 < y < \frac{x}{2}$.
 :::
 :::::
 
+:::::: columns
+::::: {.column width="50%"}
+The **wrong** way to frame this:
+:::::
+
+::::: {.column width="50%"}
+The **right** way to frame this:
+:::::
+::::::
+
 ## [Example starting from a joint pdf: second try! (1/2)]{style="display: none;"}
 
 ::::: example
@@ -889,18 +841,16 @@ domain_wedge
 :::::
 ::::::
 
-## [Example starting from a joint pdf: second try! (2/2)]{style="display: none;"}
-
 ## [Example starting from a joint pdf: simulate]{style="display: none;"}
 
 :::: example
 ::: ex-cont
-1.  Check $\mathbb{P}(2<X<10|Y=4)$ with simulation: grid sampling along the slice $Y = 4$.
+1.  Find $\mathbb{P}(2<X<10|Y=4)$ with simulation: grid sampling along the slice $Y = 4$.
 :::
 ::::
 
 ::::::: columns
-::::: {.column width="52%"}
+::::: {.column width="60%"}
 ```{r}
 x_grid <- seq(8, 20, length.out = 10001) # <1>
 
@@ -923,14 +873,12 @@ ex5_sims |> # <5>
 - Why not `filter(y == 4)`? $Y$ is continuous, so $\mathbb{P}(Y = 4) = 0$: no simulated pair lands exactly on $y = 4$
 :::::
 
-::::: {.column width="2%"}
-:::::
 
-::: {.column width="46%"}
+::: {.column width="40%"}
 ```{r}
 #| code-fold: true
 #| code-summary: "Plot code"
-#| fig-width: 10
+#| fig-width: 8
 #| fig-height: 6
 
 ggplot(ex5_sims, aes(x = x)) + # <6>
@@ -956,53 +904,6 @@ For reference, the exact answer is $\mathbb{P}(2<X<10|Y=4) = \mathbb{P}(8<X<10|Y
 :::
 ::::
 :::
-:::::::
-
-## [Example starting from a joint pdf: part 2]{style="display: none;"}
-
-::: {.callout-important appearance="simple" icon="false"}
-Do this problem at home for extra practice. The solution is available in
-Meike's video!
-:::
-
-::::::: columns
-:::::: {.column width="30%"}
-::::: example
-::: ex-title
-Example 5: Conditional pdf from a joint pdf (for home)
-:::
-::: ex-cont
-Let $f_{X,Y}(x,y)= 5 e^{-x-3y}$, for
-$0 < y < \frac{x}{2}$.
-
-2.  Find $\mathbb{P}(X>20 |Y=5)$
-
-:::
-:::::
-::::::
-:::::::
-
-## [Finding probability with conditional domain and pdf]{style="display: none;"}
-
-::: {.callout-important appearance="simple" icon="false"}
-Do this problem at home for extra practice. The solution is available in
-Meike's video!
-:::
-
-::::::: columns
-:::::: {.column width="30%"}
-::::: example
-::: ex-title
-Example 6: Choose a point, then another (for home)
-:::
-::: ex-cont
-Randomly choose a point $X$ from the interval $[0,1]$,
-and given $X=x$, randomly choose a point $Y$ from $[0,x]$. Find
-$\mathbb{P}(0 < Y < \frac14)$.
-
-:::
-:::::
-::::::
 :::::::
 
 ## Summary of independence and conditioning

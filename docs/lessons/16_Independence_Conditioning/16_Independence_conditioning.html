@@ -442,6 +442,7 @@ Nicky Wakim
 </dl>
 </div>
 </div>
+<p>From the simulation, we can calculate an example, <span class="math inline">\(p_{X|Y}(x|y=1)\)</span>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3">3</button><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-label="1"></a>ex1_sims <span class="sc">|&gt;</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="4">4</button><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2" aria-label="2"></a>  <span class="fu">filter</span>(y <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
@@ -619,18 +620,6 @@ Nicky Wakim
 </ol>
 </div>
 </div>
-<div class="columns">
-<div class="column" style="width:34%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="16_Independence_conditioning_files/figure-revealjs/unnamed-chunk-5-1.png" width="576"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
 </section>
 <section id="probability-from-joint-pdf-from-two-independent-continuous-rvs" class="slide level2">
 <h2><span style="display: none;">Probability from joint pdf from two independent, continuous RVs</span></h2>
@@ -651,24 +640,22 @@ Nicky Wakim
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="16_Independence_conditioning_files/figure-revealjs/unnamed-chunk-6-1.png" width="576"></p>
+<p><img data-src="16_Independence_conditioning_files/figure-revealjs/unnamed-chunk-5-1.png" width="576"></p>
 </figure>
 </div>
 </div>
 </div>
-</div><div class="column" style="width:2%;">
-
-</div><div class="column" style="width:64%;">
+</div><div class="column" style="width:30%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="16_Independence_conditioning_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center" style="width:48.0%"></p>
+<p><img data-src="16_Independence_conditioning_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
 </div>
-<p><span style="display: block; text-align: center; font-size: 0.5em;"><a href="16_Independence_conditioning_3d_plots.qmd#ex2-volume" target="_blank">Rotate this plot (interactive) ↗</a></span></p>
+<p><span style="display: block; text-align: center; font-size: 0.7em;"><a href="16_Independence_conditioning_3d_plots.qmd#ex2-volume" target="_blank">Rotate this plot (interactive) ↗</a></span></p>
 </div></div>
 </section>
 <section id="probability-from-joint-pdf-from-two-independent-continuous-rvs-simulate" class="slide level2">
@@ -681,7 +668,7 @@ Nicky Wakim
 </div>
 </div>
 <div class="columns">
-<div class="column" style="width:55%;">
+<div class="column" style="width:60%;">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-8"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1">1</button><span id="annotated-cell-8-1" class="code-annotation-target"><a href="#annotated-cell-8-1" aria-label="1"></a>y_grid <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">10001</span>)</span>
 <span id="annotated-cell-8-2"><a href="#annotated-cell-8-2" aria-label="2"></a></span>
@@ -732,13 +719,7 @@ Nicky Wakim
 1 0.0635  0.0624</code></pre>
 </div>
 </div>
-</div><div class="column" style="width:45%;">
-<div class="proof1">
-<div class="proof-cont">
-<p>For reference, the exact answers are <span class="math inline">\(f_{X,Y}(x,y) = \frac12 \cdot 3y^2 = \frac32 y^2\)</span> for <span class="math inline">\(0 \leq x \leq 2, \ 0 \leq y \leq 1\)</span>, and <span class="math inline">\(\mathbb{P}(0 \leq X \leq 1, 0 \leq Y \leq \frac12) = \frac12 \cdot \frac18 = \frac{1}{16} = 0.0625\)</span></p>
-</div>
-</div>
-<p>&nbsp;</p>
+</div><div class="column" style="width:40%;">
 <ul>
 <li>Same joint pdf as Lesson 15, Example 2!
 <ul>
@@ -746,6 +727,15 @@ Nicky Wakim
 <li>Here, we simulated <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> separately and got the same answer</li>
 </ul></li>
 </ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div class="proof1">
+<div class="proof-cont">
+<p>For reference, the exact answers is</p>
+<p><span class="math inline">\(\mathbb{P}(0 \leq X \leq 1, 0 \leq Y \leq \frac12) = \frac12 \cdot \frac18 = \frac{1}{16} = 0.0625\)</span></p>
+</div>
+</div>
 </div></div>
 </section>
 <section id="showing-independence-from-joint-pdf" class="slide level2">
@@ -762,66 +752,44 @@ Nicky Wakim
 </div>
 </div>
 <div class="columns">
-<div class="column" style="width:34%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="16_Independence_conditioning_files/figure-revealjs/unnamed-chunk-9-1.png" width="576"></p>
-</figure>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:2%;">
-
-</div><div class="column" style="width:64%;">
+<div class="column" style="width:30%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="16_Independence_conditioning_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" style="width:48.0%"></p>
+<p><img data-src="16_Independence_conditioning_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <p><span style="display: block; text-align: center; font-size: 0.5em;"><a href="16_Independence_conditioning_3d_plots.qmd#ex3-pdf" target="_blank">Rotate this plot and see its slices (interactive) ↗</a></span></p>
-</div></div>
-</section>
-<section id="finding-cdf-from-two-independent-rvs" class="slide level2">
-<h2><span style="display: none;">Finding CDF from two independent RVs</span></h2>
-<div class="example">
-<div class="ex-title">
-<p>Example 3: Joint pdf on a square</p>
-</div>
-<div class="ex-cont">
-<p>Let <span class="math inline">\(f_{X,Y}(x,y)= 18 x^2 y^5\)</span>, for <span class="math inline">\(0 \leq x \leq 1, \ 0 \leq y \leq 1\)</span>.</p>
-<ol start="2" type="1">
-<li>Find <span class="math inline">\(F_{X,Y}(x,y)\)</span>.</li>
-</ol>
-</div>
-</div>
-<div class="columns">
-<div class="column" style="width:34%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="16_Independence_conditioning_files/figure-revealjs/unnamed-chunk-11-1.png" width="576"></p>
-</figure>
-</div>
-</div>
-</div>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:68%;">
+<ul>
+<li><strong>With integrals</strong>, we would find the respective marginal distributions, <span class="math inline">\(f_X(x)\)</span> and <span class="math inline">\(f_Y(y)\)</span>.
+<ul>
+<li>Then we check that our original <span class="math inline">\(f_{X,Y}(x,y)\)</span> is the same as <span class="math inline">\(f_X(x) \times f_Y(y)\)</span></li>
+</ul></li>
+<li><strong>In simulations</strong>, we can only pull example probabilities to provide evidence (not prove) or disprove independence.
+<ul>
+<li>For example, we could show: <span class="math inline">\(\mathbb{P}(X \leq 0.4, Y \leq 0.7)\)</span> is the same or different as <span class="math inline">\(\mathbb{P}(X \leq 0.4) \times \mathbb{P}(Y \leq 0.7)\)</span></li>
+<li>Then we could pull a few more probabilities to investigate</li>
+</ul></li>
+</ul>
 </div></div>
 </section>
 <section id="showing-independence-from-joint-pdf-simulate" class="slide level2">
 <h2><span style="display: none;">Showing independence from joint pdf: simulate</span></h2>
 <div class="example">
 <div class="ex-cont">
-<p>Check parts 1 and 2 with simulation: is <span class="math inline">\(F_{X,Y}(0.8, 0.8) = \mathbb{P}(X \leq 0.8, Y \leq 0.8)\)</span> the same as <span class="math inline">\(\mathbb{P}(X \leq 0.8)\,\mathbb{P}(Y \leq 0.8)\)</span>?</p>
+<ol type="1">
+<li>Are <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> independent? Text example: is <span class="math inline">\(\mathbb{P}(X \leq 0.8, Y \leq 0.8) = \mathbb{P}(X \leq 0.8) \cdot \mathbb{P}(Y \leq 0.8)\)</span>?</li>
+</ol>
 </div>
 </div>
 <div class="columns">
-<div class="column" style="width:52%;">
+<div class="column" style="width:46%;">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-10"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1">1</button><span id="annotated-cell-10-1" class="code-annotation-target"><a href="#annotated-cell-10-1" aria-label="1"></a>ex3_grid <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
 <span id="annotated-cell-10-2"><a href="#annotated-cell-10-2" aria-label="2"></a>    <span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">1001</span>),</span>
@@ -852,13 +820,13 @@ Nicky Wakim
 </dl>
 </div>
 </div>
+<p>&nbsp;</p>
 <ul>
-<li><code>joint</code> and <code>product</code> are close, which agrees with independence</li>
 <li>One check can’t <em>prove</em> independence, but a big mismatch would show they are not independent</li>
 </ul>
 </div><div class="column" style="width:2%;">
 
-</div><div class="column" style="width:46%;">
+</div><div class="column" style="width:52%;">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-11"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="4">4</button><span id="annotated-cell-11-1" class="code-annotation-target"><a href="#annotated-cell-11-1" aria-label="1"></a>ex3_sims <span class="sc">|&gt;</span></span>
 <span id="annotated-cell-11-2"><a href="#annotated-cell-11-2" aria-label="2"></a>  <span class="fu">summarise</span>(</span>
@@ -884,47 +852,15 @@ Nicky Wakim
 1 0.132   0.134</code></pre>
 </div>
 </div>
+<ul>
+<li><code>joint</code> and <code>product</code> are close, which agrees with independence</li>
+</ul>
 <div class="proof1">
 <div class="proof-cont">
-<p>For reference, the exact answers are <span class="math inline">\(F_{X,Y}(x,y) = x^3 y^6\)</span> for <span class="math inline">\(0 \leq x \leq 1, \ 0 \leq y \leq 1\)</span>, so <span class="math inline">\(F_{X,Y}(0.8, 0.8) = 0.8^3 \cdot 0.8^6 \approx 0.1342\)</span></p>
+<p>For reference, the exact answers is</p>
+<p><span class="math inline">\(\mathbb{P}(X \leq 0.8, Y \leq 0.8) = 0.8^3 \cdot 0.8^6 \approx 0.1342\)</span></p>
 </div>
 </div>
-</div></div>
-</section>
-<section id="showing-independence-from-joint-pdf-for-home" class="slide level2">
-<h2><span style="display: none;">Showing independence from joint pdf: for home</span></h2>
-<div class="callout callout-important no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
-<p>Do this problem at home for extra practice. The solution is available in Meike’s video!</p>
-</div>
-</div>
-</div>
-<div class="columns">
-<div class="column" style="width:30%;">
-<div class="example">
-<div class="ex-title">
-<p>Example 4: Joint pdf on a triangle (for home)</p>
-</div>
-<div class="ex-cont">
-<p>Let <span class="math inline">\(f_{X,Y}(x,y)= 2 e^{-(x+y)}\)</span>, for <span class="math inline">\(0 \leq x \leq y\)</span>. Are <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> independent?</p>
-</div>
-</div>
-</div><div class="column" style="width:30%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="16_Independence_conditioning_files/figure-revealjs/unnamed-chunk-14-1.png" width="576"></p>
-</figure>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:40%;">
-<ul>
-<li>Hint: this is the same joint pdf as Lesson 15, Example 4. Look closely at its possible values!</li>
-</ul>
-<p><span style="display: block; text-align: center; font-size: 0.5em;"><a href="16_Independence_conditioning_3d_plots.qmd#ex4-pdf" target="_blank">See this joint pdf in 3D (interactive) ↗</a></span></p>
 </div></div>
 </section>
 <section id="final-statement-on-independence" class="slide level2">
@@ -978,6 +914,12 @@ Nicky Wakim
 </ol>
 </div>
 </div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>The <strong>wrong</strong> way to frame this:</p>
+</div><div class="column" style="width:50%;">
+<p>The <strong>right</strong> way to frame this:</p>
+</div></div>
 </section>
 <section id="example-starting-from-a-joint-pdf-second-try-12" class="slide level2">
 <h2><span style="display: none;">Example starting from a joint pdf: second try! (1/2)</span></h2>
@@ -998,7 +940,7 @@ Nicky Wakim
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="16_Independence_conditioning_files/figure-revealjs/unnamed-chunk-15-1.png" width="576"></p>
+<p><img data-src="16_Independence_conditioning_files/figure-revealjs/unnamed-chunk-11-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -1006,20 +948,17 @@ Nicky Wakim
 <p><span style="display: block; text-align: center; font-size: 0.5em;"><a href="16_Independence_conditioning_3d_plots.qmd#ex5-conditional" target="_blank">See the conditional pdf for every y in 3D (interactive) ↗</a></span></p>
 </div></div>
 </section>
-<section id="example-starting-from-a-joint-pdf-second-try-22" class="slide level2">
-<h2><span style="display: none;">Example starting from a joint pdf: second try! (2/2)</span></h2>
-</section>
 <section id="example-starting-from-a-joint-pdf-simulate" class="slide level2">
 <h2><span style="display: none;">Example starting from a joint pdf: simulate</span></h2>
 <div class="example">
 <div class="ex-cont">
 <ol type="1">
-<li>Check <span class="math inline">\(\mathbb{P}(2&lt;X&lt;10|Y=4)\)</span> with simulation: grid sampling along the slice <span class="math inline">\(Y = 4\)</span>.</li>
+<li>Find <span class="math inline">\(\mathbb{P}(2&lt;X&lt;10|Y=4)\)</span> with simulation: grid sampling along the slice <span class="math inline">\(Y = 4\)</span>.</li>
 </ol>
 </div>
 </div>
 <div class="columns">
-<div class="column" style="width:52%;">
+<div class="column" style="width:60%;">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-13"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="1">1</button><span id="annotated-cell-13-1" class="code-annotation-target"><a href="#annotated-cell-13-1" aria-label="1"></a>x_grid <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">8</span>, <span class="dv">20</span>, <span class="at">length.out =</span> <span class="dv">10001</span>)</span>
 <span id="annotated-cell-13-2"><a href="#annotated-cell-13-2" aria-label="2"></a></span>
@@ -1065,9 +1004,7 @@ Nicky Wakim
 <ul>
 <li>Why not <code>filter(y == 4)</code>? <span class="math inline">\(Y\)</span> is continuous, so <span class="math inline">\(\mathbb{P}(Y = 4) = 0\)</span>: no simulated pair lands exactly on <span class="math inline">\(y = 4\)</span></li>
 </ul>
-</div><div class="column" style="width:2%;">
-
-</div><div class="column" style="width:46%;">
+</div><div class="column" style="width:40%;">
 <div class="cell">
 <details class="code-fold">
 <summary>Plot code</summary>
@@ -1105,7 +1042,7 @@ Nicky Wakim
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="16_Independence_conditioning_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
+<p><img data-src="16_Independence_conditioning_files/figure-revealjs/unnamed-chunk-13-1.png" width="768"></p>
 </figure>
 </div>
 </div>
@@ -1113,51 +1050,6 @@ Nicky Wakim
 <div class="proof1">
 <div class="proof-cont">
 <p>For reference, the exact answer is <span class="math inline">\(\mathbb{P}(2&lt;X&lt;10|Y=4) = \mathbb{P}(8&lt;X&lt;10|Y=4) = 1 - e^{-2} \approx 0.8647\)</span></p>
-</div>
-</div>
-</div></div>
-</section>
-<section id="example-starting-from-a-joint-pdf-part-2" class="slide level2">
-<h2><span style="display: none;">Example starting from a joint pdf: part 2</span></h2>
-<div class="callout callout-important no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
-<p>Do this problem at home for extra practice. The solution is available in Meike’s video!</p>
-</div>
-</div>
-</div>
-<div class="columns">
-<div class="column" style="width:30%;">
-<div class="example">
-<div class="ex-title">
-<p>Example 5: Conditional pdf from a joint pdf (for home)</p>
-</div>
-<div class="ex-cont">
-<p>Let <span class="math inline">\(f_{X,Y}(x,y)= 5 e^{-x-3y}\)</span>, for <span class="math inline">\(0 &lt; y &lt; \frac{x}{2}\)</span>.</p>
-<ol start="2" type="1">
-<li>Find <span class="math inline">\(\mathbb{P}(X&gt;20 |Y=5)\)</span></li>
-</ol>
-</div>
-</div>
-</div></div>
-</section>
-<section id="finding-probability-with-conditional-domain-and-pdf" class="slide level2">
-<h2><span style="display: none;">Finding probability with conditional domain and pdf</span></h2>
-<div class="callout callout-important no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
-<p>Do this problem at home for extra practice. The solution is available in Meike’s video!</p>
-</div>
-</div>
-</div>
-<div class="columns">
-<div class="column" style="width:30%;">
-<div class="example">
-<div class="ex-title">
-<p>Example 6: Choose a point, then another (for home)</p>
-</div>
-<div class="ex-cont">
-<p>Randomly choose a point <span class="math inline">\(X\)</span> from the interval <span class="math inline">\([0,1]\)</span>, and given <span class="math inline">\(X=x\)</span>, randomly choose a point <span class="math inline">\(Y\)</span> from <span class="math inline">\([0,x]\)</span>. Find <span class="math inline">\(\mathbb{P}(0 &lt; Y &lt; \frac14)\)</span>.</p>
 </div>
 </div>
 </div></div>

@@ -828,7 +828,7 @@ $0 < y < \frac{x}{2}$.
 :::::
 
 :::::: columns
-::::: {.column width="34%"}
+::::: {.column width="30%"}
 ```{r}
 #| echo: false
 #| fig-width: 6
@@ -839,13 +839,65 @@ domain_wedge
 
 [[See the conditional pdf for every y in 3D (interactive) ↗](16_Independence_conditioning_3d_plots.qmd#ex5-conditional){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
 :::::
+
+::::: {.column width="2%"}
+:::::
+
+::::: {.column width="33%"}
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 7
+#| out-width: "100%"
+
+f5 <- function(x, y) 5 * exp(-x - 3 * y)
+x_vals <- seq(0, 12, by = 0.25)
+y_vals <- seq(0, 6, by = 0.25)
+heights <- outer(x_vals, y_vals, f5)
+heights[!outer(x_vals, y_vals, function(x, y) y < x / 2)] <- NA
+
+par(mar = c(0, 0, 2, 0), cex = 1.8)
+# 3D view and axes, then the domain floor, then the joint pdf surface
+view_3d <- persp(x_vals, y_vals, heights, zlim = c(0, 5),
+                 theta = 35, phi = 25, expand = 0.8, r = 4,
+                 col = NA, border = NA, xlab = "x", ylab = "y", zlab = "f(x, y)")
+polygon(trans3d(c(0, 12, 12), c(0, 0, 6), 0, view_3d),
+        col = adjustcolor("#29abe0", 0.25), border = "#29abe0")
+par(new = TRUE)
+persp(x_vals, y_vals, heights, zlim = c(0, 5), theta = 35, phi = 25,
+      expand = 0.8, r = 4, col = NA, border = "grey60", box = FALSE)
+# The plane y = 4, and where it crosses the possible values (x > 8)
+polygon(trans3d(c(0, 12, 12, 0), 4, c(0, 0, 5, 5), view_3d),
+        col = adjustcolor("#E89543", 0.3), border = "#E89543")
+lines(trans3d(c(8, 12), 4, 0, view_3d), col = "#E89543", lwd = 6)
+title("The plane y = 4", font.main = 1)
+```
+:::::
+
+::::: {.column width="2%"}
+:::::
+
+::::: {.column width="33%"}
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 7
+#| out-width: "100%"
+
+ggplot() +
+  geom_function(fun = function(x) 5 * exp(-x - 3 * 4), xlim = c(8, 14),
+                color = "#E89543", linewidth = 2) +
+  labs(subtitle = "What the plane cuts out: f(x, 4)",
+       x = "x", y = "f(x, 4)")
+```
+:::::
 ::::::
 
 ## [Example starting from a joint pdf: simulate]{style="display: none;"}
 
 :::: example
 ::: ex-cont
-1.  Find $\mathbb{P}(2<X<10|Y=4)$ with simulation: grid sampling along the slice $Y = 4$.
+1.  Find $\mathbb{P}(2<X<10|Y=4)$ with simulation, using only the joint pdf: grid sampling along the plane $y = 4$.
 :::
 ::::
 
@@ -867,10 +919,11 @@ ex5_sims |> # <5>
 1.  Given $Y = 4$, the possible values of $X$ are $x > 2 \cdot 4 = 8$ (from $0 < y < \frac{x}{2}$). The pdf is almost 0 past 20, so the grid can stop there.
 2.  One row per simulation.
 3.  Grid sampling, like Lesson 14.
-4.  The heights are the joint pdf along the slice, $f_{X,Y}(x, 4)$. We don't need to divide by $f_Y(4)$: R rescales `prob` to add to 1, so the heights only need to be *proportional* to $f_{X|Y}(x|4)$.
+4.  The heights are the joint pdf along the plane $y = 4$: $f_{X,Y}(x, 4)$, the curve the plane cuts out. We never find $f_Y(4)$ or $f_{X|Y}(x|4)$: R rescales `prob` to add to 1, which is exactly what dividing by $f_Y(4)$ does.
 5.  The proportion of simulations with $2 < X < 10$ approximates $\mathbb{P}(2<X<10|Y=4)$.
 
 - Why not `filter(y == 4)`? $Y$ is continuous, so $\mathbb{P}(Y = 4) = 0$: no simulated pair lands exactly on $y = 4$
+- Another common way: simulate pairs, then keep those with $Y$ *close* to 4. Here that fails: $\mathbb{P}(3.95 < Y < 4.05) \approx 10^{-9}$, so almost no pairs land there
 :::::
 
 
@@ -894,7 +947,7 @@ ggplot(ex5_sims, aes(x = x)) + # <6>
 ```
 
 6.  Histogram of the simulated values of $X$ given $Y = 4$, scaled like a pdf.
-7.  For reference, the conditional pdf $f_{X|Y}(x|4) = e^{-(x-8)}$ for $x > 8$, in red.
+7.  For reference only, the conditional pdf $f_{X|Y}(x|4) = e^{-(x-8)}$ for $x > 8$, in red. The simulation did not use it.
 8.  Zoom in to where almost all of the values are.
 9.  Add a subtitle and axis labels.
 

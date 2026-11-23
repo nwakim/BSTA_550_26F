@@ -902,7 +902,7 @@ ggplot() +
 
 :::: example
 ::: ex-cont
-1.  Find $\mathbb{P}(X < 1.4|Y=0.2)$ with simulation, without finding the marginal pdf $f_Y(y)$: simulate pairs from the joint pdf, then keep the pairs with $Y$ close to 0.2.
+1.  Find $\mathbb{P}(X < 1.4|Y=0.2)$: simulate pairs from the joint pdf, then keep the pairs with $Y$ **close** to 0.2
 :::
 ::::
 
@@ -910,7 +910,7 @@ ggplot() +
 ::::: {.column width="54%"}
 ```{r}
 #| code-fold: true
-#| code-summary: "Simulate pairs from the joint pdf (2D grid sampling, like Lesson 15)"
+#| code-summary: "Simulate pairs from the joint pdf"
 
 ex5_grid <- expand_grid( # <1>
     x = seq(0, 15, length.out = 1501), # <1>

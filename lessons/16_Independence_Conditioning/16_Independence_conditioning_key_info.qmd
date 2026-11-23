@@ -17,9 +17,11 @@ editor_options:
 
 ## Key Dates
 
-- Homework 5 due this Sunday
-- Quiz 2 due this Sunday
-  - Opens Wednesday!
+- Checkpoint 3 due
+- Homework 6 due
+- Quiz 3 opens
+  - Quiz 3 closes
+- 
 
 
   

@@ -618,17 +618,38 @@ ggplot(xbar_by_n, aes(x = xbar)) +
     -   Recall from [Lesson 15](../15_Discrete_RVs/15_Discrete_RVs.qmd) that if
         $X_i \sim \text{Poisson}(\lambda_i)$ and $X_i$ independent, then
         $\sum_{i=1}^n X_i \sim \text{Poisson}(\sum_{i=1}^n \lambda_i)$
-    -   Rule of thumb: $\lambda \geq10$ to use Normal approximation 
-
-<!-- @claude: why is this normal approx not colored? -->
+    -   Rule of thumb: $\lambda \geq10$ to use [**Normal approximation**]{style="color:#006a4e;"}
 :::
 :::
 
-<!-- @claude: can you add another slide here about the normal vs poisson approx of the binomial? I have them in my handwritten notes -->
+## Normal vs. Poisson approximation of the Binomial
+
+-   $X \sim \text{Binomial}(n, p)$ has mean $\mu = np$ and SD $\sigma = \sqrt{np(1-p)}$
+    -   Both depend on $p$, so the **mean and SD are linked**: change the mean and the spread changes too
+
+::: columns
+::: {.column width="49.5%"}
+**[Normal approximation]{style="color:#006a4e;"}:** $X \approx \text{N}\big(np, \, np(1-p)\big)$
+
+-   Rule of thumb: $np \geq 10$ and $n(1-p) \geq 10$
+-   The Normal has **separate** parameters: knowing $\mu$ tells us nothing about $\sigma$
+-   Same assumption as **linear models** (linear regression): the variance stays the same, whatever the mean
+:::
+
+::: {.column width="1%"}
+:::
+
+::: {.column width="49.5%"}
+**[Poisson approximation]{style="color:#6B8CC4"}:** $X \approx \text{Poisson}(\lambda = np)$
+
+-   Rule of thumb (Lesson 15): $\frac{1}{10} \leq np(1-p) \leq 10$
+-   The Poisson's mean and variance are **both** $\lambda$, so they stay linked, like the Binomial's
+-   Same idea as **logistic** and **Poisson regression**: the variance depends on the mean
+:::
+:::
+
 
 ## Larger example (1/7) {.smaller}
-
-<!-- @claude: for the slides with handwritten R code, can you write out the solutions like we did in previous slides? -->
 
 ::: example
 ::: ex-title
@@ -685,6 +706,54 @@ women aged 40-49.
 :::
 :::
 
+## Larger example (2/7): solution {.smaller}
+
+::: example
+::: ex-title
+Example 3
+:::
+
+::: ex-cont
+Suppose that the probability of developing a specific type of breast
+cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
+are independent. Suppose you have data from a random sample of 20,000
+women aged 40-49.
+
+1.  How many of the 20,000 women would you expect to develop this type
+    of breast cancer, and what is the standard deviation?
+:::
+:::
+
+::: columns
+::: {.column width="50%"}
+-   Let $X$ = number of the 20,000 women who develop this type of breast cancer
+-   $X \sim \text{Binomial}(n = 20000, p = 0.001)$
+
+$$\begin{aligned}
+\mu &= np = 20000 \cdot 0.001 = 20 \\
+\sigma &= \sqrt{np(1-p)} = \sqrt{20000 \cdot 0.001 \cdot 0.999} \approx 4.4699
+\end{aligned}$$
+
+-   We expect **20 women**, with a standard deviation of about **4.47 women**
+:::
+
+::: {.column width="50%"}
+```{r}
+n_women <- 20000 # <1>
+p <- 0.001 # <1>
+
+mu <- n_women * p # <2>
+sigma <- sqrt(n_women * p * (1 - p)) # <2>
+c(mu = mu, sigma = sigma) # <3>
+```
+
+1. Save the Binomial parameters, so we can reuse them in the next parts.
+2. The mean $np$ and SD $\sqrt{np(1-p)}$ of a Binomial.
+3. `c()` puts the two values together, with names, so they print side by side.
+:::
+:::
+
+
 ## Larger example (3/7) {.smaller}
 
 ::: example
@@ -703,6 +772,47 @@ women aged 40-49.
 :::
 :::
 
+## Larger example (3/7): solution {.smaller}
+
+::: example
+::: ex-title
+Example 3
+:::
+
+::: ex-cont
+Suppose that the probability of developing a specific type of breast
+cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
+are independent. Suppose you have data from a random sample of 20,000
+women aged 40-49.
+
+2.  Find the **exact** probability that more than 15 of the 20,000 women
+    will develop this type of breast cancer.
+:::
+:::
+
+::: columns
+::: {.column width="50%"}
+-   "More than 15" means $X > 15$, which is the same as $X \geq 16$ for a count
+
+$$P(X > 15) = \sum_{x=16}^{20000} \binom{20000}{x} 0.001^x \, 0.999^{20000-x}$$
+
+-   Too many terms to add by hand, so we use R
+:::
+
+::: {.column width="50%"}
+```{r}
+pbinom(15, size = n_women, prob = p, # <1>
+       lower.tail = FALSE) # <2>
+```
+
+1. `pbinom()` is the Binomial CDF: by itself it gives $P(X \leq 15)$.
+2. `lower.tail = FALSE` gives the other side instead, $P(X > 15)$.
+
+-   The exact probability is about **0.8436**
+:::
+:::
+
+
 ## Larger example (4/7) {.smaller}
 
 ::: example
@@ -720,6 +830,49 @@ women aged 40-49.
     15 of the 20,000 women will develop this type of breast cancer.
 :::
 :::
+
+## Larger example (4/7): solution {.smaller}
+
+::: example
+::: ex-title
+Example 3
+:::
+
+::: ex-cont
+Suppose that the probability of developing a specific type of breast
+cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
+are independent. Suppose you have data from a random sample of 20,000
+women aged 40-49.
+
+3.  Use the CLT to find the **approximate** probability that more than
+    15 of the 20,000 women will develop this type of breast cancer.
+:::
+:::
+
+::: columns
+::: {.column width="50%"}
+-   Check the rule of thumb: $np = 20 \geq 10$ and $n(1-p) = 19{,}980 \geq 10$, so we can use the CLT
+-   $X \approx \text{N}(\mu = np = 20, \; \sigma^2 = np(1-p) = 19.98)$
+-   **Continuity correction:** $X$ is discrete but the Normal is continuous, so we split the difference between whole numbers
+    -   $P(X \leq k) \approx P(\text{Normal} \leq k + 0.5)$
+    -   $P(X \geq k) \approx P(\text{Normal} \geq k - 0.5)$
+
+$$P(X > 15) = P(X \geq 16) \approx P(\text{Normal} \geq 15.5)$$
+:::
+
+::: {.column width="50%"}
+```{r}
+pnorm(15.5, mean = mu, sd = sigma, # <1>
+      lower.tail = FALSE) # <2>
+```
+
+1. The Normal with the Binomial's mean (20) and SD (4.4699), at the continuity-corrected cutoff 15.5.
+2. Upper tail: $P(\text{Normal} \geq 15.5)$. Without the correction, `pnorm(15, ...)` gives about 0.868, much further from the exact answer.
+
+-   The CLT gives about **0.8430**, very close to the exact 0.8436
+:::
+:::
+
 
 ## Larger example (5/7) {.smaller}
 
@@ -763,6 +916,47 @@ women aged 40-49.
 :::
 :::
 
+## Larger example (6/7): solution {.smaller}
+
+::: example
+::: ex-title
+Example 3
+:::
+
+::: ex-cont
+Suppose that the probability of developing a specific type of breast
+cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
+are independent. Suppose you have data from a random sample of 20,000
+women aged 40-49.
+
+5.  Find the **approximate** probability that more than 15 of the 20,000
+    women will develop this type of breast cancer—not using the CLT!
+:::
+:::
+
+::: columns
+::: {.column width="50%"}
+-   **Poisson approximation of the Binomial:** $Y \sim \text{Poisson}(\lambda = np = 20)$
+-   Check the rule of thumb (Lesson 15): $np(1-p) = 19.98$ is **not** $\leq 10$, so it does **not** meet the requirement
+-   If we use it anyway:
+
+$$P(Y > 15) = \sum_{y=16}^{\infty} \frac{e^{-20} \, 20^y}{y!}$$
+:::
+
+::: {.column width="50%"}
+```{r}
+ppois(15, lambda = mu, # <1>
+      lower.tail = FALSE) # <2>
+```
+
+1. `ppois()` is the Poisson CDF, with $\lambda = np = 20$ (saved as `mu`).
+2. `lower.tail = FALSE` gives $P(Y > 15)$.
+
+-   About **0.8435**: still very close to the exact 0.8436
+:::
+:::
+
+
 ## Larger example (7/7) {.smaller}
 
 ::: example
@@ -778,6 +972,45 @@ women aged 40-49.
 
 6.  Use the CLT to approximate the approximate probability in the
     previous question!
+:::
+:::
+
+## Larger example (7/7): solution {.smaller}
+
+::: example
+::: ex-title
+Example 3
+:::
+
+::: ex-cont
+Suppose that the probability of developing a specific type of breast
+cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
+are independent. Suppose you have data from a random sample of 20,000
+women aged 40-49.
+
+6.  Use the CLT to approximate the approximate probability in the
+    previous question!
+:::
+:::
+
+::: columns
+::: {.column width="50%"}
+-   $Y \sim \text{Poisson}(\lambda = 20)$, and $\lambda = 20 \geq 10$, so we can use the CLT
+-   $Y \approx \text{N}(\mu = \lambda = 20, \; \sigma^2 = \lambda = 20)$
+-   With the continuity correction:
+
+$$P(Y > 15) = P(Y \geq 16) \approx P(\text{Normal} \geq 15.5)$$
+:::
+
+::: {.column width="50%"}
+```{r}
+pnorm(15.5, mean = 20, sd = sqrt(20), # <1>
+      lower.tail = FALSE) # <1>
+```
+
+1. For a Poisson, the variance is also $\lambda = 20$, so the SD is $\sqrt{20}$. Upper tail at the corrected cutoff 15.5.
+
+-   About **0.8428**. All four answers agree to about 0.84!
 :::
 :::
 

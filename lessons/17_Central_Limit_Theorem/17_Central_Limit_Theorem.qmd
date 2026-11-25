@@ -184,6 +184,14 @@ For both $\varepsilon$, $P(|\overline{X}_n - 10| > \varepsilon)$ shrinks toward 
 
 # Learning Objectives
 
+1.  Explain the Law of Large Numbers and convergence in probability
+
+::: lob
+2.  Calculate probability of a sample mean using a population mean and variance with unknown distribution
+:::
+
+3.  Use the Central Limit Theorem to construct the Normal approximation of the Binomial and Poisson distributions
+
 ## The Central Limit Theorem
 
 ::: theorem
@@ -578,6 +586,16 @@ ggplot(xbar_by_n, aes(x = xbar)) +
 ```
 
 :::
+:::
+
+# Learning Objectives
+
+1.  Explain the Law of Large Numbers and convergence in probability
+
+2.  Calculate probability of a sample mean using a population mean and variance with unknown distribution
+
+::: lob
+3.  Use the Central Limit Theorem to construct the Normal approximation of the Binomial and Poisson distributions
 :::
 
 ## CLT for Discrete RVs

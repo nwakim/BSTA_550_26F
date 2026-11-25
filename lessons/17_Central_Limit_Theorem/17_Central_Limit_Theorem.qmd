@@ -735,10 +735,8 @@ Example 3
 :::
 
 ::: ex-cont
-Suppose that the probability of developing a specific type of breast
-cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
-are independent. Suppose you have data from a random sample of 20,000
-women aged 40-49.
+Suppose the probability of developing a specific type of breast
+cancer in women aged 40-49 is 0.001. You have data from a random sample of 20,000 women aged 40-49. (Assume each woman is independent.)
 
 1.  How many of the 20,000 women would you expect to develop this type
     of breast cancer, and what is the standard deviation?
@@ -746,7 +744,7 @@ women aged 40-49.
 :::
 
 ::: columns
-::: {.column width="50%"}
+::: {.column width="53%"}
 -   Let $X$ = number of the 20,000 women who develop this type of breast cancer
 -   $X \sim \text{Binomial}(n = 20000, p = 0.001)$
 
@@ -758,7 +756,7 @@ $$\begin{aligned}
 -   We expect **20 women**, with a standard deviation of about **4.47 women**
 :::
 
-::: {.column width="50%"}
+::: {.column width="47%"}
 ```{r}
 n_women <- 20000 # <1>
 p <- 0.001 # <1>
@@ -783,10 +781,8 @@ Example 3
 :::
 
 ::: ex-cont
-Suppose that the probability of developing a specific type of breast
-cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
-are independent. Suppose you have data from a random sample of 20,000
-women aged 40-49.
+Suppose the probability of developing a specific type of breast
+cancer in women aged 40-49 is 0.001. You have data from a random sample of 20,000 women aged 40-49. (Assume each woman is independent.)
 
 2.  Find the **exact** probability that more than 15 of the 20,000 women
     will develop this type of breast cancer.
@@ -824,10 +820,8 @@ Example 3
 :::
 
 ::: ex-cont
-Suppose that the probability of developing a specific type of breast
-cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
-are independent. Suppose you have data from a random sample of 20,000
-women aged 40-49.
+Suppose the probability of developing a specific type of breast
+cancer in women aged 40-49 is 0.001. You have data from a random sample of 20,000 women aged 40-49. (Assume each woman is independent.)
 
 3.  Use the CLT to find the **approximate** probability that more than
     15 of the 20,000 women will develop this type of breast cancer.
@@ -870,10 +864,8 @@ Example 3
 :::
 
 ::: ex-cont
-Suppose that the probability of developing a specific type of breast
-cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
-are independent. Suppose you have data from a random sample of 20,000
-women aged 40-49.
+Suppose the probability of developing a specific type of breast
+cancer in women aged 40-49 is 0.001. You have data from a random sample of 20,000 women aged 40-49. (Assume each woman is independent.)
 
 4.  Let $\hat{p} = X/n$ be the proportion of $n$ women who develop this
     type of breast cancer. Find $P(|\hat{p} - 0.001| > 0.0005)$ for
@@ -915,10 +907,8 @@ Example 3
 :::
 
 ::: ex-cont
-Suppose that the probability of developing a specific type of breast
-cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
-are independent. Suppose you have data from a random sample of 20,000
-women aged 40-49.
+Suppose the probability of developing a specific type of breast
+cancer in women aged 40-49 is 0.001. You have data from a random sample of 20,000 women aged 40-49. (Assume each woman is independent.)
 
 5.  Find the **approximate** probability that more than 15 of the 20,000
     women will develop this type of breast cancer—not using the CLT!
@@ -956,10 +946,8 @@ Example 3
 :::
 
 ::: ex-cont
-Suppose that the probability of developing a specific type of breast
-cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
-are independent. Suppose you have data from a random sample of 20,000
-women aged 40-49.
+Suppose the probability of developing a specific type of breast
+cancer in women aged 40-49 is 0.001. You have data from a random sample of 20,000 women aged 40-49. (Assume each woman is independent.)
 
 6.  Use the CLT to approximate the approximate probability in the
     previous question!

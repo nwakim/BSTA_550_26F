@@ -28,16 +28,160 @@ library(tidyverse)
 
 # Learning Objectives
 
-1.  Calculate probability of a [**sample mean**]{style="color:#E89543;"} using a population mean and
+1.  Explain the [**Law of Large Numbers**]{style="color:#E89543;"} and [**convergence in probability**]{style="color:#E25D3B;"}
+2.  Calculate probability of a [**sample mean**]{style="color:#E89543;"} using a population mean and
     variance with unknown distribution
-2.  Use the [**Central Limit Theorem**]{style="color:#006a4e;"} to construct the [**Normal approximation**]{style="color:#006a4e;"}
+3.  Use the [**Central Limit Theorem**]{style="color:#006a4e;"} to construct the [**Normal approximation**]{style="color:#006a4e;"}
     of the Binomial and Poisson distributions
+
+## Convergence in probability
+
+-   Lesson 1: the running proportion of heads settled near 0.5
+-   Lesson 10: the running average of die rolls settled at $\mathbb{E}[X] = 4.14$
+-   Today we make "settles at" precise with [**convergence in probability**]{style="color:#E25D3B;"}
+
+::: definition
+::: def-title
+Definition: Convergence in probability
+:::
+
+::: def-cont
+A sequence of RVs $Y_1, Y_2, \ldots$ converges in probability to a constant $c$, written $Y_n \xrightarrow{P} c$, if for every $\varepsilon > 0$,
+$$P\big(|Y_n - c| > \varepsilon\big) \rightarrow 0 \quad \text{as } n \rightarrow \infty$$
+:::
+:::
+
+-   In words: pick any small window $(c - \varepsilon, c + \varepsilon)$ around $c$. As $n$ grows, the chance that $Y_n$ lands outside the window shrinks to 0.
+
+## Law of Large Numbers
+
+::: theorem
+::: thm-title
+Theorem 1: (Weak) Law of Large Numbers (LLN)
+:::
+
+::: thm-cont
+Let $X_i$ be iid RVs with common mean $\mu$ and variance $\sigma^2 < \infty$,
+for $i=1,2,\ldots,n$, and let $\overline{X}_n = \frac{1}{n}\sum_{i=1}^n X_i$. Then
+$$\overline{X}_n \xrightarrow{P} \mu$$
+:::
+:::
+
+-   The [**Law of Large Numbers**]{style="color:#E89543;"} is why long-run averages approximate $\mathbb{E}[X]$, and why our simulations work!
+-   Why is it true? The spread of $\overline{X}_n$ shrinks to 0:
+    -   $\mathbb{E}(\overline{X}_n) = \mu$
+    -   $Var(\overline{X}_n) = \frac{1}{n^2} Var\big(\sum_{i=1}^n X_i\big) = \frac{1}{n^2} \cdot n\sigma^2 = \frac{\sigma^2}{n} \rightarrow 0$ (Lesson 14, Corollary 3)
+-   We say $\overline{X}_n$ is a **consistent** estimator of $\mu$: it converges in probability to the value it estimates. You will see this word a lot in BSTA 551!
+
+## Seeing the LLN: simulate
+
+::::: proof1
+::: proof-title
+2.  Simulate
+:::
+:::::
+
+-   Back to the bus from Lesson 13: each morning's wait is $X_i \sim \text{Exp}(1/10)$, so $\mu = 10$ minutes
+-   Follow 1,000 people for 500 days each, and track each person's average wait so far, $\overline{X}_n$
+
+::: columns
+::: {.column width="60%"}
+
+```{r}
+set.seed(1124) # <1>
+reps <- 1000 # <2>
+max_days <- 500 # <2>
+
+waits <- expand_grid(sim = 1:reps, day = 1:max_days) |> # <3>
+  mutate(wait = rexp(n(), rate = 1/10)) # <3>
+
+running_sims <- waits |> # <4>
+  group_by(sim) |> # <4>
+  mutate(running_avg = cumsum(wait) / day) # <4>
+```
+
+1. Set the seed so we all get the same random numbers.
+2. 1,000 simulated people, each waiting for the bus for 500 days.
+3. One row for every day for every person (500,000 rows), each with its own wait from `rexp()`.
+4. Like the running average in Lesson 10: within each person (`group_by(sim)`), `cumsum(wait)` is the total wait so far, and dividing by `day` gives the average so far, $\overline{X}_n$ with $n$ = `day`.
+
+:::
+
+::: {.column width="40%"}
+
+```{r}
+head(running_sims) # <1>
+```
+
+1. The first 6 days for person 1. The last column is their average wait so far. The `# Groups` line is a reminder that the table is still grouped by `sim`.
+
+:::
+:::
+
+## Seeing the LLN: summarize
+
+::::: example
+::: ex-title
+3.  Summarize
+:::
+:::::
+
+::: columns
+::: {.column width="48%"}
+
+```{r}
+running_sims |> # <1>
+  filter(day %in% c(1, 10, 30, 100, 500)) |> # <1>
+  group_by(day) |> # <2>
+  summarise( # <2>
+    prob_far = mean(abs(running_avg - 10) > 1) # <3>
+  )
+```
+
+1. Keep only days 1, 10, 30, 100 and 500. `%in%` checks whether `day` is one of the values in the list.
+2. One row of summaries for each of those days.
+3. `abs()` is the absolute value. This is the proportion of people whose average so far is more than $\varepsilon = 1$ minute away from $\mu = 10$: it estimates $P(|\overline{X}_n - 10| > 1)$.
+
+-   $P(|\overline{X}_n - 10| > 1)$ shrinks toward 0, so $\overline{X}_n \xrightarrow{P} 10$
+
+:::
+
+::: {.column width="52%"}
+
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 10
+#| fig-height: 6.5
+
+running_sims |> # <4>
+  filter(sim <= 5) |> # <4>
+  ggplot(aes(x = day, y = running_avg, color = factor(sim))) + # <5>
+  annotate("rect", xmin = 0, xmax = max_days, ymin = 9, ymax = 11, # <6>
+           alpha = 0.2, fill = "grey40") + # <6>
+  geom_line(linewidth = 1) + # <7>
+  geom_hline(yintercept = 10, linetype = "dashed") + # <7>
+  coord_cartesian(ylim = c(0, 25)) + # <8>
+  labs(title = "Average wait so far for 5 people", # <8>
+       x = "Number of days", y = "Average wait so far", # <8>
+       color = "Person") + # <8>
+  theme_minimal(base_size = 20) # <8>
+```
+
+4. Plot only the first 5 simulated people.
+5. Days on the x-axis and the average so far on the y-axis, with one color per person.
+6. Shade the window from 9 to 11 minutes ($\mu \pm \varepsilon$).
+7. Draw each person's running average, and a dashed line at $\mu = 10$.
+8. Zoom the y-axis, then add a title, axis labels and a larger-text theme.
+
+:::
+:::
 
 ## The Central Limit Theorem
 
 ::: theorem
 ::: thm-title
-Theorem 1: Central Limit Theorem (CLT)
+Theorem 2: Central Limit Theorem (CLT)
 :::
 
 ::: thm-cont
@@ -46,6 +190,11 @@ for $i=1,2,\ldots,n$. Then
 $$\sum_{i=1}^n X_i \rightarrow \text{N}(n\mu, n\sigma^2)$$
 :::
 :::
+
+-   The $\rightarrow$ here is shorthand for "is approximately, for large $n$"
+-   Formally, the CLT is about **convergence in distribution**, written $\xrightarrow{d}$:
+    $$\frac{\overline{X}_n - \mu}{\sigma/\sqrt{n}} \xrightarrow{d} \text{N}(0, 1)$$
+    -   You will use this notation in BSTA 551
 
 ## Extension of the CLT
 
@@ -60,6 +209,9 @@ for $i=1,2,\ldots,n$. Then
 $$\overline{X}=\frac{\sum_{i=1}^n X_i}{n}  \rightarrow \text{N}\Bigg(\mu, \dfrac{\sigma^2}{n}\Bigg)$$
 :::
 :::
+
+-   **LLN:** $\overline{X}_n \xrightarrow{P} \mu$ tells us *where* $\overline{X}_n$ ends up
+-   **CLT:** $\overline{X}_n \approx \text{N}(\mu, \sigma^2/n)$ tells us *how* $\overline{X}_n$ is spread around $\mu$ along the way, with SD $\sigma/\sqrt{n}$
 
 ## Example of Corollary in use
 
@@ -114,7 +266,7 @@ Define the probability space and related random variables and events, including 
 :::
 :::::
 
--   Back to the bus from Lesson 13: each morning's wait is $X_i \sim \text{Exp}(1/10)$ minutes
+-   Same bus as in the LLN simulation: each morning's wait is $X_i \sim \text{Exp}(1/10)$ minutes
     -   $\mu = 1/\lambda = 10$ minutes and $\sigma = 1/\lambda = 10$ minutes
 -   **Random variable:** the [**sample mean**]{style="color:#E89543;"} $\overline{X}$, your average wait over $n = 30$ days
 -   **Assumptions:** waits on different days are independent and all $\text{Exp}(1/10)$
@@ -138,22 +290,20 @@ Run the simulation to generate outcomes according to the assumptions.
 ::: {.column width="62%"}
 
 ```{r}
-set.seed(1124) # <1>
-reps <- 10000 # <2>
-n_days <- 30 # <2>
+reps <- 10000 # <1>
+n_days <- 30 # <1>
 
-waits <- expand_grid(sim = 1:reps, day = 1:n_days) |> # <3>
-  mutate(wait = rexp(n(), rate = 1/10)) # <3>
+waits <- expand_grid(sim = 1:reps, day = 1:n_days) |> # <2>
+  mutate(wait = rexp(n(), rate = 1/10)) # <2>
 
-xbar_sims <- waits |> # <4>
-  group_by(sim) |> # <4>
-  summarise(xbar = mean(wait)) # <4>
+xbar_sims <- waits |> # <3>
+  group_by(sim) |> # <3>
+  summarise(xbar = mean(wait)) # <3>
 ```
 
-1. Set the seed so we all get the same random numbers.
-2. Save the settings: 10,000 simulations, each with 30 days of waiting.
-3. One row for every day in every simulation (300,000 rows). `rexp()` draws one wait for each row, like in Lesson 13.
-4. For each simulation, `mean()` averages its 30 waits. This is one simulated value of $\overline{X}$.
+1. Save the settings: 10,000 simulations, each with 30 days of waiting. (The seed was set once, in the LLN simulation.)
+2. One row for every day in every simulation (300,000 rows). `rexp()` draws one wait for each row, like in Lesson 13.
+3. For each simulation, `mean()` averages its 30 waits. This is one simulated value of $\overline{X}$.
 
 :::
 
@@ -323,11 +473,11 @@ Investigate how results change when assumptions or parameters of the model are a
 
  
 
--   With **30 days**, they were close: `r round(prob_30, 2)` vs. `r round(1 - pnorm(12, mean = 10, sd = 10 / sqrt(30)), 2)`
+-   With **30 days**, they agree: `r round(prob_30, 2)` vs. `r round(1 - pnorm(12, mean = 10, sd = 10 / sqrt(30)), 2)`
 
  
 
--   Same code with `n_days` = 1, 2, 5, and 30 (right): as $n$ grows, the histogram becomes bell-shaped, just like the [**CLT**]{style="color:#006a4e;"} promises
+-   Same code with `n_days` = 1, 2, 5, and 30 (right): as $n$ grows, the histogram becomes bell-shaped, just like the CLT promises
 -   The more skewed the $X_i$, the larger $n$ needs to be
 
 :::

@@ -13,18 +13,24 @@ format:
     height: 1100
     footer: Lesson 17 Slides
     html-math-method: mathjax
+    highlight-style: arrow
+    code-annotations: hover
+execute:
+  echo: true
 ---
 
 ```{r setup, include=FALSE}
 library(here)
 source(here("class_dates.R"))
+
+library(tidyverse)
 ```
 
 # Learning Objectives
 
-1.  Calculate probability of a sample mean using a population mean and
+1.  Calculate probability of a [**sample mean**]{style="color:#E89543;"} using a population mean and
     variance with unknown distribution
-2.  Use the Central Limit Theorem to construct the Normal approximation
+2.  Use the [**Central Limit Theorem**]{style="color:#006a4e;"} to construct the [**Normal approximation**]{style="color:#006a4e;"}
     of the Binomial and Poisson distributions
 
 ## The Central Limit Theorem
@@ -35,7 +41,7 @@ Theorem 1: Central Limit Theorem (CLT)
 :::
 
 ::: thm-cont
-Let $X_i$ be iid rv's with common mean $\mu$ and variance $\sigma^2$,
+Let $X_i$ be iid RVs with common mean $\mu$ and variance $\sigma^2$,
 for $i=1,2,\ldots,n$. Then
 $$\sum_{i=1}^n X_i \rightarrow \text{N}(n\mu, n\sigma^2)$$
 :::
@@ -49,7 +55,7 @@ Corollary 1
 :::
 
 ::: prop-cont
-Let $X_i$ be iid rv's with common mean $\mu$ and variance $\sigma^2$,
+Let $X_i$ be iid RVs with common mean $\mu$ and variance $\sigma^2$,
 for $i=1,2,\ldots,n$. Then
 $$\overline{X}=\frac{\sum_{i=1}^n X_i}{n}  \rightarrow \text{N}\Bigg(\mu, \dfrac{\sigma^2}{n}\Bigg)$$
 :::
@@ -66,7 +72,7 @@ Example 1
 
 ::: ex-cont
 According to a large US study, the mean resting heart rate of adult
-women is about 74 beats per minutes (bpm), with standard deviation 13
+women is about 74 beats per minute (bpm), with standard deviation 13
 bpm (NHANES 2003-2004).
 
 1.  Find the probability that the average resting heart rate for a
@@ -89,10 +95,277 @@ Example 2
 :::
 
 ::: ex-cont
-Let $X_i \sim Exp(\lambda)$ be iid RVs for $i=1,2,\ldots,n$. Then
+Let $X_i \sim \text{Exp}(\lambda)$ be iid RVs for $i=1,2,\ldots,n$. Then
 $$\sum_{i=1}^n X_i \rightarrow$$
 :::
 :::
+:::
+:::
+
+## Seeing the CLT: waiting for the bus
+
+::::: proposition
+::: prop-title
+1.  Set up
+:::
+
+::: prop-cont
+Define the probability space and related random variables and events, including assumptions.
+:::
+:::::
+
+-   Back to the bus from Lesson 13: each morning's wait is $X_i \sim \text{Exp}(1/10)$ minutes
+    -   $\mu = 1/\lambda = 10$ minutes and $\sigma = 1/\lambda = 10$ minutes
+-   **Random variable:** the [**sample mean**]{style="color:#E89543;"} $\overline{X}$, your average wait over $n = 30$ days
+-   **Assumptions:** waits on different days are independent and all $\text{Exp}(1/10)$
+-   The exponential pdf is very skewed, but the [**CLT**]{style="color:#006a4e;"} says
+    $$\overline{X} \approx \text{N}\Bigg(10, \dfrac{10^2}{30}\Bigg), \quad \text{so } SD(\overline{X}) = \dfrac{10}{\sqrt{30}} \approx 1.83$$
+-   **Goal:** check this with a simulation, and estimate $P(\overline{X} > 12)$
+
+## Seeing the CLT: simulate
+
+::::: proof1
+::: proof-title
+2.  Simulate
+:::
+
+::: proof-cont
+Run the simulation to generate outcomes according to the assumptions.
+:::
+:::::
+
+::: columns
+::: {.column width="62%"}
+
+```{r}
+set.seed(1124) # <1>
+reps <- 10000 # <2>
+n_days <- 30 # <2>
+
+waits <- expand_grid(sim = 1:reps, day = 1:n_days) |> # <3>
+  mutate(wait = rexp(n(), rate = 1/10)) # <3>
+
+xbar_sims <- waits |> # <4>
+  group_by(sim) |> # <4>
+  summarise(xbar = mean(wait)) # <4>
+```
+
+1. Set the seed so we all get the same random numbers.
+2. Save the settings: 10,000 simulations, each with 30 days of waiting.
+3. One row for every day in every simulation (300,000 rows). `rexp()` draws one wait for each row, like in Lesson 13.
+4. For each simulation, `mean()` averages its 30 waits. This is one simulated value of $\overline{X}$.
+
+:::
+
+::: {.column width="38%"}
+
+```{r}
+head(xbar_sims) # <1>
+```
+
+1. The first 6 simulated averages. Each one is the average of 30 waits.
+
+:::
+:::
+
+## Seeing the CLT: summarize
+
+::::: example
+::: ex-title
+3.  Summarize
+:::
+
+::: ex-cont
+Analyze the output using plots and summary statistics like relative frequencies and averages.
+:::
+:::::
+
+::: columns
+::: {.column width="48%"}
+
+```{r}
+xbar_sims |> # <1>
+  summarise( # <1>
+    average      = mean(xbar), # <2>
+    std_dev      = sd(xbar), # <2>
+    prob_over_12 = mean(xbar > 12) # <3>
+  )
+
+sigma_xbar <- 10 / sqrt(n_days) # <4>
+1 - pnorm(12, mean = 10, sd = sigma_xbar) # <4>
+```
+
+1. One row of summaries of the 10,000 simulated averages.
+2. Compare with the CLT: mean $\mu = 10$ and SD $\sigma/\sqrt{n} \approx 1.83$.
+3. The proportion of simulations with an average wait over 12 minutes. This estimates $P(\overline{X} > 12)$.
+4. The CLT answer: save $SD(\overline{X}) = 10/\sqrt{30}$, then use `pnorm()` for the Normal probability. (The exact answer is about 0.138, because the sum of 30 waits is $\text{Gamma}(30, 1/10)$ from Lesson 13.)
+
+```{r}
+#| echo: false
+prob_30 <- mean(xbar_sims$xbar > 12)
+```
+
+:::
+
+::: {.column width="52%"}
+
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 10
+#| fig-height: 5.5
+
+ggplot(xbar_sims, aes(x = xbar)) + # <5>
+  geom_histogram(aes(y = after_stat(density)), # <5>
+                 binwidth = 0.5, # <5>
+                 color = "black", fill = "lightblue") + # <5>
+  geom_function(fun = function(x) dnorm(x, mean = 10, sd = sigma_xbar), # <6>
+                color = "red", linewidth = 1.5) + # <6>
+  labs(title = "Average wait over 30 days (bars)\nand the CLT Normal pdf (red)", # <7>
+       x = "Average wait (minutes)", # <7>
+       y = "Density") + # <7>
+  theme_minimal(base_size = 20) # <7>
+```
+
+5. A histogram of the 10,000 simulated averages, scaled so the total area is 1, like a pdf (Lesson 8).
+6. The Normal pdf the CLT predicts, from `dnorm()`, drawn in red.
+7. Add a title and axis labels, with a clean theme and larger text.
+
+:::
+:::
+
+## Seeing the CLT: sensitivity analysis
+
+::::: extra
+::: ext-title
+4.  Sensitivity analysis
+:::
+
+::: ext-cont
+Investigate how results change when assumptions or parameters of the model are altered.
+:::
+:::::
+
+::: columns
+::: {.column width="60%"}
+
+-   What if we only average over **2 days**? Only `n_days` changes (highlighted)
+
+```{r}
+#| code-line-numbers: "2"
+reps <- 10000 # <1>
+n_days <- 2 # <2>
+
+waits <- expand_grid(sim = 1:reps, day = 1:n_days) |> # <3>
+  mutate(wait = rexp(n(), rate = 1/10)) # <3>
+
+xbar_sims <- waits |> # <3>
+  group_by(sim) |> # <3>
+  summarise(xbar = mean(wait)) # <3>
+
+sigma_xbar <- 10 / sqrt(n_days) # <4>
+```
+
+1. Still 10,000 simulations.
+2. The only change: each simulation averages 2 waits instead of 30.
+3. Exactly the same code as before. Because we wrote `n_days` instead of typing 30, each simulation now gets two rows automatically.
+4. The CLT's SD for $\overline{X}$ is now $10/\sqrt{2} \approx 7.07$.
+
+:::
+
+::: {.column width="40%"}
+
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 8
+#| fig-height: 6
+
+ggplot(xbar_sims, aes(x = xbar)) + # <5>
+  geom_histogram(aes(y = after_stat(density)), # <5>
+                 binwidth = 1, boundary = 0, # <5>
+                 color = "black", fill = "lightblue") + # <5>
+  geom_function(fun = function(x) dnorm(x, mean = 10, sd = sigma_xbar), # <5>
+                xlim = c(-10, 40), # <6>
+                color = "red", linewidth = 1.5) + # <5>
+  coord_cartesian(xlim = c(-10, 40)) + # <6>
+  labs(title = "Average wait over 2 days (bars)\nand the CLT Normal pdf (red)", # <7>
+       x = "Average wait (minutes)", # <7>
+       y = "Density") + # <7>
+  theme_minimal(base_size = 20) # <7>
+```
+
+5. Same plot code as before, with wider bars (`binwidth = 1`) and `boundary = 0` so bars start at 0.
+6. Draw the curve and the x-axis from −10 to 40, so we can see the Normal curve spill below 0, where no wait can be.
+7. A new title for 2 days.
+
+:::
+:::
+
+## 
+
+::::: extra
+::: ext-title
+4.  Sensitivity analysis
+:::
+
+::: ext-cont
+Investigate how results change when assumptions or parameters of the model are altered.
+:::
+:::::
+
+::: columns
+::: {.column width="38%"}
+
+-   With **2 days**, the Normal curve is a poor fit
+    -   Simulated $P(\overline{X} > 12) \approx$ `r round(mean(xbar_sims$xbar > 12), 2)`
+    -   CLT answer: `r round(1 - pnorm(12, mean = 10, sd = 10 / sqrt(2)), 2)`
+
+ 
+
+-   With **30 days**, they were close: `r round(prob_30, 2)` vs. `r round(1 - pnorm(12, mean = 10, sd = 10 / sqrt(30)), 2)`
+
+ 
+
+-   Same code with `n_days` = 1, 2, 5, and 30 (right): as $n$ grows, the histogram becomes bell-shaped, just like the [**CLT**]{style="color:#006a4e;"} promises
+-   The more skewed the $X_i$, the larger $n$ needs to be
+
+:::
+
+::: {.column width="62%"}
+
+```{r}
+#| echo: false
+#| fig-width: 12
+#| fig-height: 6.5
+
+n_values <- c(1, 2, 5, 30)
+
+xbar_by_n <- tibble(n_days = n_values) |>
+  mutate(sims = map(n_days, \(k) {
+    expand_grid(sim = 1:reps, day = 1:k) |>
+      mutate(wait = rexp(n(), rate = 1/10)) |>
+      group_by(sim) |>
+      summarise(xbar = mean(wait))
+  })) |>
+  unnest(sims)
+
+clt_curves <- expand_grid(n_days = n_values, x = seq(-10, 40, by = 0.1)) |>
+  mutate(density = dnorm(x, mean = 10, sd = 10 / sqrt(n_days)))
+
+ggplot(xbar_by_n, aes(x = xbar)) +
+  geom_histogram(aes(y = after_stat(density)),
+                 binwidth = 1, boundary = 0,
+                 color = "black", fill = "lightblue") +
+  geom_line(data = clt_curves, aes(x = x, y = density),
+            color = "red", linewidth = 1.2) +
+  facet_wrap(~ n_days, scales = "free_y",
+             labeller = labeller(n_days = \(n) paste("n_days =", n))) +
+  coord_cartesian(xlim = c(-10, 40)) +
+  labs(x = "Average wait (minutes)", y = "Density") +
+  theme_minimal(base_size = 20)
+```
+
 :::
 :::
 
@@ -100,30 +373,30 @@ $$\sum_{i=1}^n X_i \rightarrow$$
 
 ::: columns
 ::: {.column width="49.5%"}
-1.  [**Binomial rv's**]{style="color:#F08897"}: Let $X \sim Bin(n,p)$
+1.  [**Binomial RVs**]{style="color:#F08897"}: Let $X \sim \text{Binomial}(n,p)$
 
     -   $X = \displaystyle\sum_{i=1}^n X_i$, where $X_i$ are iid
         $\text{Bernoulli}(p)$
-    -   Rule of thumb: $np\geq10$ and $n(1-p)\geq 10$ to use Normal approximation
+    -   Rule of thumb: $np\geq10$ and $n(1-p)\geq 10$ to use [**Normal approximation**]{style="color:#006a4e;"}
 :::
 
 ::: {.column width="1%"}
 :::
 
 ::: {.column width="49.5%"}
-2.  [**Poisson rv's**]{style="color:#6B8CC4"}: Let $X \sim Poisson(\lambda)$
+2.  [**Poisson RVs**]{style="color:#6B8CC4"}: Let $X \sim \text{Poisson}(\lambda)$
 
     -   $X = \displaystyle\sum_{i=1}^n X_i$, where $X_i$ are iid
-        $\text{Poiss}(1)$
-    -   Recall from [Chapter 18](/slides/18_Poisson_rv.qmd) that if
-        $X_i \sim Poiss(\lambda_i)$ and $X_i$ independent, then
-        $\sum_{i=1}^n X_i \sim Poiss(\sum_{i=1}^n \lambda_i)$
+        $\text{Poisson}(\lambda/n)$
+    -   Recall from [Lesson 15](../15_Discrete_RVs/15_Discrete_RVs.qmd) that if
+        $X_i \sim \text{Poisson}(\lambda_i)$ and $X_i$ independent, then
+        $\sum_{i=1}^n X_i \sim \text{Poisson}(\sum_{i=1}^n \lambda_i)$
     -   Rule of thumb: $\lambda \geq10$ to use Normal approximation
 
 :::
 :::
 
-## Larger example (1/7) {.smaller} 
+## Larger example (1/7) {.smaller}
 
 ::: example
 ::: ex-title
@@ -155,14 +428,14 @@ women aged 40-49.
     c.  $\mathbb{P}(X < 20)$
 
 5.  Find the **approximate** probability that more than 15 of the 20,000
-    women will develop this type of breast cancer - not using the CLT!
+    women will develop this type of breast cancer—not using the CLT!
 
 6.  Use the CLT to approximate the approximate probability in the
     previous question!
 :::
 :::
 
-## Larger example (2/7) {.smaller} 
+## Larger example (2/7) {.smaller}
 
 ::: example
 ::: ex-title
@@ -180,7 +453,7 @@ women aged 40-49.
 :::
 :::
 
-## Larger example (3/7) {.smaller} 
+## Larger example (3/7) {.smaller}
 
 ::: example
 ::: ex-title
@@ -198,7 +471,7 @@ women aged 40-49.
 :::
 :::
 
-## Larger example (4/7) {.smaller} 
+## Larger example (4/7) {.smaller}
 
 ::: example
 ::: ex-title
@@ -216,7 +489,7 @@ women aged 40-49.
 :::
 :::
 
-## Larger example (5/7) {.smaller} 
+## Larger example (5/7) {.smaller}
 
 ::: example
 ::: ex-title
@@ -240,7 +513,7 @@ women aged 40-49.
 :::
 :::
 
-## Larger example (6/7) {.smaller} 
+## Larger example (6/7) {.smaller}
 
 ::: example
 ::: ex-title
@@ -254,11 +527,11 @@ are independent. Suppose you have data from a random sample of 20,000
 women aged 40-49.
 
 5.  Find the **approximate** probability that more than 15 of the 20,000
-    women will develop this type of breast cancer - not using the CLT!
+    women will develop this type of breast cancer—not using the CLT!
 :::
 :::
 
-## Larger example (7/7) {.smaller} 
+## Larger example (7/7) {.smaller}
 
 ::: example
 ::: ex-title

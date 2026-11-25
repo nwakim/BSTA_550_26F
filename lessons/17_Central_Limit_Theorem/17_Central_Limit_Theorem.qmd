@@ -533,13 +533,11 @@ Investigate how results change when assumptions or parameters of the model are a
 :::::
 
 ::: columns
-::: {.column width="42%"}
+::: {.column width="40%"}
 
 -   With **2 days**, the Normal curve is a poor fit
     -   Simulated $P(\overline{X} > 12) \approx$ `r round(mean(xbar_sims$xbar > 12), 2)`
     -   CLT answer: `r round(1 - pnorm(12, mean = 10, sd = 10 / sqrt(2)), 2)`
-
- 
 
 -   With **30 days**, they agree: `r round(prob_30, 2)` vs. `r round(1 - pnorm(12, mean = 10, sd = 10 / sqrt(30)), 2)`
 
@@ -550,12 +548,12 @@ Investigate how results change when assumptions or parameters of the model are a
 
 :::
 
-::: {.column width="58%"}
+::: {.column width="60%"}
 
 ```{r}
 #| echo: false
 #| fig-width: 10
-#| fig-height: 6
+#| fig-height: 7
 #| out-width: "100%"
 
 n_values <- c(2, 5, 30, 60)
@@ -574,15 +572,15 @@ clt_curves <- expand_grid(n_days = n_values, x = seq(-10, 40, by = 0.1)) |>
 
 ggplot(xbar_by_n, aes(x = xbar)) +
   geom_histogram(aes(y = after_stat(density)),
-                 binwidth = 1, boundary = 0,
+                 binwidth = 0.5, boundary = 0,
                  color = "black", fill = "lightblue") +
   geom_line(data = clt_curves, aes(x = x, y = density),
             color = "red", linewidth = 1.2) +
   facet_wrap(~ n_days, scales = "free_y",
              labeller = labeller(n_days = \(n) paste("n_days =", n))) +
-  coord_cartesian(xlim = c(-10, 40)) +
+  coord_cartesian(xlim = c(-0, 30)) +
   labs(x = "Average wait (minutes)", y = "Density") +
-  theme_minimal(base_size = 20)
+  theme_minimal(base_size = 23)
 ```
 
 :::
@@ -620,12 +618,17 @@ ggplot(xbar_by_n, aes(x = xbar)) +
     -   Recall from [Lesson 15](../15_Discrete_RVs/15_Discrete_RVs.qmd) that if
         $X_i \sim \text{Poisson}(\lambda_i)$ and $X_i$ independent, then
         $\sum_{i=1}^n X_i \sim \text{Poisson}(\sum_{i=1}^n \lambda_i)$
-    -   Rule of thumb: $\lambda \geq10$ to use Normal approximation
+    -   Rule of thumb: $\lambda \geq10$ to use Normal approximation 
 
+<!-- @claude: why is this normal approx not colored? -->
 :::
 :::
+
+<!-- @claude: can you add another slide here about the normal vs poisson approx of the binomial? I have them in my handwritten notes -->
 
 ## Larger example (1/7) {.smaller}
+
+<!-- @claude: for the slides with handwritten R code, can you write out the solutions like we did in previous slides? -->
 
 ::: example
 ::: ex-title

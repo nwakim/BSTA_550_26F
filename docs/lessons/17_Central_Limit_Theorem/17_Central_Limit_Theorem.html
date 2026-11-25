@@ -271,14 +271,14 @@ Meike Niederhausen and Nicky Wakim
 </div>
 <ul>
 <li>Back to the bus from Lesson 13: each morning’s wait is <span class="math inline">\(X_i \sim \text{Exp}(1/10)\)</span>, so <span class="math inline">\(\mu = 10\)</span> minutes</li>
-<li>Follow 1,000 people for 500 mornings each, and track each person’s average morning wait so far, <span class="math inline">\(\overline{X}_n\)</span></li>
+<li>Follow 1,000 people for 2,000 mornings each, and track each person’s average morning wait so far, <span class="math inline">\(\overline{X}_n\)</span></li>
 </ul>
 <div class="columns">
 <div class="column" style="width:65%;">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1" aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">1124</span>)</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2">2</button><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2" aria-label="2"></a>reps <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3" aria-label="3"></a>max_days <span class="ot">&lt;-</span> <span class="dv">500</span></span>
+<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3" aria-label="3"></a>max_days <span class="ot">&lt;-</span> <span class="dv">2000</span></span>
 <span id="annotated-cell-1-4"><a href="#annotated-cell-1-4" aria-label="4"></a></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3">3</button><span id="annotated-cell-1-5" class="code-annotation-target"><a href="#annotated-cell-1-5" aria-label="5"></a>waits <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps, <span class="at">day =</span> <span class="dv">1</span><span class="sc">:</span>max_days) <span class="sc">|&gt;</span></span>
 <span id="annotated-cell-1-6"><a href="#annotated-cell-1-6" aria-label="6"></a>  <span class="fu">mutate</span>(<span class="at">wait =</span> <span class="fu">rexp</span>(<span class="fu">n</span>(), <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>))</span>
@@ -294,11 +294,11 @@ Meike Niederhausen and Nicky Wakim
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="2,3" data-code-annotation="2">1,000 simulated people, each waiting for the bus for 500 days.</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="2,3" data-code-annotation="2">1,000 simulated people, each waiting for the bus for 2,000 days.</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="5,6" data-code-annotation="3">One row for every day for every person (500,000 rows), each with its own wait from <code>rexp()</code>.</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="5,6" data-code-annotation="3">One row for every day for every person (2,000,000 rows), each with its own wait from <code>rexp()</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="4">4</dt>
 <dd>
@@ -346,16 +346,17 @@ Meike Niederhausen and Nicky Wakim
 <div class="column" style="width:48%;">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1">1</button><span id="annotated-cell-4-1" class="code-annotation-target"><a href="#annotated-cell-4-1" aria-label="1"></a>running_sims <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-4-2"><a href="#annotated-cell-4-2" aria-label="2"></a>  <span class="fu">filter</span>(day <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">100</span>, <span class="dv">500</span>)) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-4-2"><a href="#annotated-cell-4-2" aria-label="2"></a>  <span class="fu">filter</span>(day <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">500</span>, <span class="dv">2000</span>)) <span class="sc">|&gt;</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2">2</button><span id="annotated-cell-4-3" class="code-annotation-target"><a href="#annotated-cell-4-3" aria-label="3"></a>  <span class="fu">group_by</span>(day) <span class="sc">|&gt;</span></span>
 <span id="annotated-cell-4-4"><a href="#annotated-cell-4-4" aria-label="4"></a>  <span class="fu">summarise</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="3">3</button><span id="annotated-cell-4-5" class="code-annotation-target"><a href="#annotated-cell-4-5" aria-label="5"></a>    <span class="at">prob_far =</span> <span class="fu">mean</span>(<span class="fu">abs</span>(running_avg <span class="sc">-</span> <span class="dv">10</span>) <span class="sc">&gt;</span> <span class="dv">1</span>)</span>
-<span id="annotated-cell-4-6"><a href="#annotated-cell-4-6" aria-label="6"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="3">3</button><span id="annotated-cell-4-5" class="code-annotation-target"><a href="#annotated-cell-4-5" aria-label="5"></a>    <span class="at">prob_eps_1   =</span> <span class="fu">mean</span>(<span class="fu">abs</span>(running_avg <span class="sc">-</span> <span class="dv">10</span>) <span class="sc">&gt;</span> <span class="dv">1</span>),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="4">4</button><span id="annotated-cell-4-6" class="code-annotation-target"><a href="#annotated-cell-4-6" aria-label="6"></a>    <span class="at">prob_eps_0.5 =</span> <span class="fu">mean</span>(<span class="fu">abs</span>(running_avg <span class="sc">-</span> <span class="dv">10</span>) <span class="sc">&gt;</span> <span class="fl">0.5</span>)</span>
+<span id="annotated-cell-4-7"><a href="#annotated-cell-4-7" aria-label="7"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="1,2" data-code-annotation="1">Keep only days 1, 10, 30, 100 and 500. <code>%in%</code> checks whether <code>day</code> is one of the values in the list.</span>
+<span data-code-cell="annotated-cell-4" data-code-lines="1,2" data-code-annotation="1">Keep only days 1, 10, 100, 500 and 2,000. <code>%in%</code> checks whether <code>day</code> is one of the values in the list.</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
 <dd>
@@ -365,22 +366,24 @@ Meike Niederhausen and Nicky Wakim
 <dd>
 <span data-code-cell="annotated-cell-4" data-code-lines="5" data-code-annotation="3"><code>abs()</code> is the absolute value. This is the proportion of people whose average so far is more than <span class="math inline">\(\varepsilon = 1\)</span> minute away from <span class="math inline">\(\mu = 10\)</span>: it estimates <span class="math inline">\(P(|\overline{X}_n - 10| &gt; 1)\)</span>.</span>
 </dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="6" data-code-annotation="4">The same with a smaller window, <span class="math inline">\(\varepsilon = 0.5\)</span>. It also shrinks to 0, just more slowly: halving <span class="math inline">\(\varepsilon\)</span> takes about 4 times as many days, because the SD of <span class="math inline">\(\overline{X}_n\)</span> is <span class="math inline">\(\sigma/\sqrt{n}\)</span>.</span>
+</dd>
 </dl>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 2
-    day prob_far
-  &lt;int&gt;    &lt;dbl&gt;
-1     1    0.932
-2    10    0.75 
-3    30    0.584
-4   100    0.321
-5   500    0.032</code></pre>
+<pre><code># A tibble: 5 × 3
+    day prob_eps_1 prob_eps_0.5
+  &lt;int&gt;      &lt;dbl&gt;        &lt;dbl&gt;
+1     1      0.944        0.972
+2    10      0.746        0.871
+3   100      0.287        0.633
+4   500      0.027        0.263
+5  2000      0            0.028</code></pre>
 </div>
 </div>
-<!-- @claude: is an epsilon of 1 small enough?? -->
 </div><div class="column" style="width:52%;">
-<!-- @claude: can you put the person legend inside the plot on the top right corner? -->
 <div class="cell">
 <details class="code-fold">
 <summary>Plot code</summary>
@@ -395,7 +398,10 @@ Meike Niederhausen and Nicky Wakim
 <span id="annotated-cell-6-9"><a href="#annotated-cell-6-9" aria-label="9"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Average wait so far for 5 people"</span>,</span>
 <span id="annotated-cell-6-10"><a href="#annotated-cell-6-10" aria-label="10"></a>       <span class="at">x =</span> <span class="st">"Number of days"</span>, <span class="at">y =</span> <span class="st">"Average wait so far"</span>,</span>
 <span id="annotated-cell-6-11"><a href="#annotated-cell-6-11" aria-label="11"></a>       <span class="at">color =</span> <span class="st">"Person"</span>) <span class="sc">+</span></span>
-<span id="annotated-cell-6-12"><a href="#annotated-cell-6-12" aria-label="12"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="annotated-cell-6-12"><a href="#annotated-cell-6-12" aria-label="12"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="9">9</button><span id="annotated-cell-6-13" class="code-annotation-target"><a href="#annotated-cell-6-13" aria-label="13"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"inside"</span>,</span>
+<span id="annotated-cell-6-14"><a href="#annotated-cell-6-14" aria-label="14"></a>        <span class="at">legend.position.inside =</span> <span class="fu">c</span>(<span class="fl">0.98</span>, <span class="fl">0.98</span>),</span>
+<span id="annotated-cell-6-15"><a href="#annotated-cell-6-15" aria-label="15"></a>        <span class="at">legend.justification =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
@@ -419,6 +425,10 @@ Meike Niederhausen and Nicky Wakim
 <dd>
 <span data-code-cell="annotated-cell-6" data-code-lines="8,9,10,11,12" data-code-annotation="8">Zoom the y-axis, then add a title, axis labels and a larger-text theme.</span>
 </dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="9">9</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="13,14,15" data-code-annotation="9">Move the legend inside the plot. <code>c(0.98, 0.98)</code> is near the top right corner (0 is the left or bottom edge, 1 is the right or top edge), and <code>legend.justification</code> lines up the legend’s own top right corner there.</span>
+</dd>
 </dl>
 </div>
 <div class="cell-output-display">
@@ -430,12 +440,22 @@ Meike Niederhausen and Nicky Wakim
 </div>
 </div>
 </div></div>
-<p><span class="math inline">\(P(|\overline{X}_n - 10| &gt; 1)\)</span> shrinks toward 0, so <span class="math inline">\(\overline{X}_n \xrightarrow{P} 10\)</span></p>
+<p>For both <span class="math inline">\(\varepsilon\)</span>, <span class="math inline">\(P(|\overline{X}_n - 10| &gt; \varepsilon)\)</span> shrinks toward 0, so <span class="math inline">\(\overline{X}_n \xrightarrow{P} 10\)</span>. A smaller <span class="math inline">\(\varepsilon\)</span> just needs a larger <span class="math inline">\(n\)</span>.</p>
 </section></section>
 <section>
 <section id="learning-objectives-1" class="title-slide slide level1 center">
 <h1>Learning Objectives</h1>
-
+<ol type="1">
+<li>Explain the Law of Large Numbers and convergence in probability</li>
+</ol>
+<div class="lob">
+<ol start="2" type="1">
+<li>Calculate probability of a sample mean using a population mean and variance with unknown distribution</li>
+</ol>
+</div>
+<ol start="3" type="1">
+<li>Use the Central Limit Theorem to construct the Normal approximation of the Binomial and Poisson distributions</li>
+</ol>
 </section>
 <section id="the-central-limit-theorem" class="slide level2">
 <h2>The Central Limit Theorem</h2>
@@ -472,7 +492,6 @@ Meike Niederhausen and Nicky Wakim
 </section>
 <section id="example-of-corollary-in-use" class="slide level2">
 <h2>Example of Corollary in use</h2>
-<!-- @claude: can you write out the exact answer for this using my notes and the code I handwrote in class?  -->
 <div class="columns">
 <div class="column" style="width:40%;">
 <div class="example">
@@ -487,6 +506,53 @@ Meike Niederhausen and Nicky Wakim
 </ol>
 </div>
 </div>
+</div></div>
+</section>
+<section id="example-of-corollary-in-use-solution" class="slide level2">
+<h2>Example of Corollary in use: solution</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="example">
+<div class="ex-title">
+<p>Example 1</p>
+</div>
+<div class="ex-cont">
+<p>According to a large US study, the mean resting heart rate of adult women is about 74 beats per minute (bpm), with standard deviation 13 bpm (NHANES 2003-2004).</p>
+<ol type="1">
+<li><p>Find the probability that the average resting heart rate for a random sample of 36 adult women is more than 3 bpm away from the mean.</p></li>
+<li><p>Repeat the previous question for a single adult woman.</p></li>
+</ol>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<p><strong>Part 1:</strong> <span class="math inline">\(n = 36 \geq 30\)</span>, so we can use the CLT with <span class="math inline">\(\mu = 74\)</span> and <span class="math inline">\(\sigma = 13\)</span></p>
+<ul>
+<li>By the CLT, <span class="math inline">\(\overline{X} \approx \text{N}\Big(74, \dfrac{13^2}{36}\Big)\)</span>, so <span class="math inline">\(SD(\overline{X}) = \dfrac{13}{\sqrt{36}} \approx 2.17\)</span></li>
+<li>“More than 3 bpm away from the mean” means <span class="math inline">\(\overline{X} &lt; 71\)</span> or <span class="math inline">\(\overline{X} &gt; 77\)</span></li>
+</ul>
+<p><span class="math display">\[\begin{aligned}
+P(\overline{X} &lt; 71 \text{ or } \overline{X} &gt; 77) &amp;= P(\overline{X} &lt; 71) + P(\overline{X} &gt; 77) \\
+&amp;= 2 \cdot P(\overline{X} &lt; 71) \quad \text{(the Normal is symmetric)}
+\end{aligned}\]</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1">1</button><span id="annotated-cell-7-1" class="code-annotation-target"><a href="#annotated-cell-7-1" aria-label="1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">pnorm</span>(<span class="dv">71</span>, <span class="at">mean =</span> <span class="dv">74</span>, <span class="at">sd =</span> <span class="dv">13</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">36</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="1" data-code-annotation="1"><code>pnorm()</code> gives <span class="math inline">\(P(\overline{X} &lt; 71)\)</span> for a Normal with mean 74 and SD <span class="math inline">\(13/\sqrt{36}\)</span>. Doubling it adds the matching upper tail, <span class="math inline">\(P(\overline{X} &gt; 77)\)</span>.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1661701</code></pre>
+</div>
+</div>
+<p><strong>Part 2:</strong> <span class="math inline">\(n = 1 &lt; 30\)</span>, so we <strong>cannot</strong> use the CLT</p>
+<ul>
+<li>We don’t know the distribution of a single woman’s heart rate, so we can’t find this probability</li>
+<li>Rule of thumb: <span class="math inline">\(n \geq 30\)</span> to use the CLT</li>
+</ul>
 </div></div>
 </section>
 <section id="example-of-clt-for-exponential-distribution" class="slide level2">
@@ -541,30 +607,30 @@ Meike Niederhausen and Nicky Wakim
 <div class="columns">
 <div class="column" style="width:65%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1">1</button><span id="annotated-cell-7-1" class="code-annotation-target"><a href="#annotated-cell-7-1" aria-label="1"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="annotated-cell-7-2"><a href="#annotated-cell-7-2" aria-label="2"></a>n_days <span class="ot">&lt;-</span> <span class="dv">30</span></span>
-<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3" aria-label="3"></a></span>
-<span id="annotated-cell-7-4"><a href="#annotated-cell-7-4" aria-label="4"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2">2</button><span id="annotated-cell-7-5" class="code-annotation-target"><a href="#annotated-cell-7-5" aria-label="5"></a>waits <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps, <span class="at">day =</span> <span class="dv">1</span><span class="sc">:</span>n_days) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-7-6"><a href="#annotated-cell-7-6" aria-label="6"></a>  <span class="fu">mutate</span>(<span class="at">wait =</span> <span class="fu">rexp</span>(<span class="fu">n</span>(), <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>))</span>
-<span id="annotated-cell-7-7"><a href="#annotated-cell-7-7" aria-label="7"></a></span>
-<span id="annotated-cell-7-8"><a href="#annotated-cell-7-8" aria-label="8"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="3">3</button><span id="annotated-cell-7-9" class="code-annotation-target"><a href="#annotated-cell-7-9" aria-label="9"></a>xbar_sims <span class="ot">&lt;-</span> waits <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-7-10"><a href="#annotated-cell-7-10" aria-label="10"></a>  <span class="fu">group_by</span>(sim) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-7-11"><a href="#annotated-cell-7-11" aria-label="11"></a>  <span class="fu">summarise</span>(<span class="at">xbar =</span> <span class="fu">mean</span>(wait))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-9"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1">1</button><span id="annotated-cell-9-1" class="code-annotation-target"><a href="#annotated-cell-9-1" aria-label="1"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="annotated-cell-9-2"><a href="#annotated-cell-9-2" aria-label="2"></a>n_days <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="annotated-cell-9-3"><a href="#annotated-cell-9-3" aria-label="3"></a></span>
+<span id="annotated-cell-9-4"><a href="#annotated-cell-9-4" aria-label="4"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2">2</button><span id="annotated-cell-9-5" class="code-annotation-target"><a href="#annotated-cell-9-5" aria-label="5"></a>waits <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps, <span class="at">day =</span> <span class="dv">1</span><span class="sc">:</span>n_days) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-9-6"><a href="#annotated-cell-9-6" aria-label="6"></a>  <span class="fu">mutate</span>(<span class="at">wait =</span> <span class="fu">rexp</span>(<span class="fu">n</span>(), <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>))</span>
+<span id="annotated-cell-9-7"><a href="#annotated-cell-9-7" aria-label="7"></a></span>
+<span id="annotated-cell-9-8"><a href="#annotated-cell-9-8" aria-label="8"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="3">3</button><span id="annotated-cell-9-9" class="code-annotation-target"><a href="#annotated-cell-9-9" aria-label="9"></a>xbar_sims <span class="ot">&lt;-</span> waits <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-9-10"><a href="#annotated-cell-9-10" aria-label="10"></a>  <span class="fu">group_by</span>(sim) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-9-11"><a href="#annotated-cell-9-11" aria-label="11"></a>  <span class="fu">summarise</span>(<span class="at">xbar =</span> <span class="fu">mean</span>(wait))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="1,2" data-code-annotation="1">Save the settings: 10,000 simulations, each with 30 days of waiting. (The seed was set once, in the LLN simulation.)</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="1,2" data-code-annotation="1">Save the settings: 10,000 simulations, each with 30 days of waiting. (The seed was set once, in the LLN simulation.)</span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="5,6" data-code-annotation="2">One row for every day in every simulation (300,000 rows). <code>rexp()</code> draws one wait for each row, like in Lesson 13.</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="5,6" data-code-annotation="2">One row for every day in every simulation (300,000 rows). <code>rexp()</code> draws one wait for each row, like in Lesson 13.</span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="9,10,11" data-code-annotation="3">For each simulation, <code>mean()</code> averages its 30 waits. This is one simulated value of <span class="math inline">\(\overline{X}\)</span>.</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="9,10,11" data-code-annotation="3">For each simulation, <code>mean()</code> averages its 30 waits. This is one simulated value of <span class="math inline">\(\overline{X}\)</span>.</span>
 </dd>
 </dl>
 </div>
@@ -573,12 +639,12 @@ Meike Niederhausen and Nicky Wakim
 
 </div><div class="column" style="width:33%;">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-8"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1">1</button><span id="annotated-cell-8-1" class="code-annotation-target"><a href="#annotated-cell-8-1" aria-label="1"></a><span class="fu">head</span>(xbar_sims)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-10"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1">1</button><span id="annotated-cell-10-1" class="code-annotation-target"><a href="#annotated-cell-10-1" aria-label="1"></a><span class="fu">head</span>(xbar_sims)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="1" data-code-annotation="1">The first 6 simulated averages. Each one is the average of 30 waits.</span>
+<span data-code-cell="annotated-cell-10" data-code-lines="1" data-code-annotation="1">The first 6 simulated averages. Each one is the average of 30 waits.</span>
 </dd>
 </dl>
 </div>
@@ -586,12 +652,12 @@ Meike Niederhausen and Nicky Wakim
 <pre><code># A tibble: 6 × 2
     sim  xbar
   &lt;int&gt; &lt;dbl&gt;
-1     1 11.0 
-2     2 11.6 
-3     3 11.8 
-4     4 11.6 
-5     5 11.4 
-6     6  7.74</code></pre>
+1     1 12.6 
+2     2  9.78
+3     3  8.78
+4     4 12.1 
+5     5 10.4 
+6     6 10.2 </code></pre>
 </div>
 </div>
 </div></div>
@@ -609,28 +675,28 @@ Meike Niederhausen and Nicky Wakim
 <div class="column" style="width:52%;">
 <p><strong>Probability based on our simulations:</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-10"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy"><code class="sourceCode r"><span id="annotated-cell-10-1"><a href="#annotated-cell-10-1" aria-label="1"></a>xbar_sims <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-10-2"><a href="#annotated-cell-10-2" aria-label="2"></a>  <span class="fu">summarise</span>(</span>
-<span id="annotated-cell-10-3"><a href="#annotated-cell-10-3" aria-label="3"></a>    <span class="at">average      =</span> <span class="fu">mean</span>(xbar),</span>
-<span id="annotated-cell-10-4"><a href="#annotated-cell-10-4" aria-label="4"></a>    <span class="at">std_dev      =</span> <span class="fu">sd</span>(xbar),</span>
-<span id="annotated-cell-10-5"><a href="#annotated-cell-10-5" aria-label="5"></a>    <span class="at">prob_over_12 =</span> <span class="fu">mean</span>(xbar <span class="sc">&gt;</span> <span class="dv">12</span>)</span>
-<span id="annotated-cell-10-6"><a href="#annotated-cell-10-6" aria-label="6"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-12"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy"><code class="sourceCode r"><span id="annotated-cell-12-1"><a href="#annotated-cell-12-1" aria-label="1"></a>xbar_sims <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-12-2"><a href="#annotated-cell-12-2" aria-label="2"></a>  <span class="fu">summarise</span>(</span>
+<span id="annotated-cell-12-3"><a href="#annotated-cell-12-3" aria-label="3"></a>    <span class="at">average      =</span> <span class="fu">mean</span>(xbar),</span>
+<span id="annotated-cell-12-4"><a href="#annotated-cell-12-4" aria-label="4"></a>    <span class="at">std_dev      =</span> <span class="fu">sd</span>(xbar),</span>
+<span id="annotated-cell-12-5"><a href="#annotated-cell-12-5" aria-label="5"></a>    <span class="at">prob_over_12 =</span> <span class="fu">mean</span>(xbar <span class="sc">&gt;</span> <span class="dv">12</span>)</span>
+<span id="annotated-cell-12-6"><a href="#annotated-cell-12-6" aria-label="6"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
   average std_dev prob_over_12
     &lt;dbl&gt;   &lt;dbl&gt;        &lt;dbl&gt;
-1    10.0    1.83        0.136</code></pre>
+1    10.0    1.82        0.140</code></pre>
 </div>
 </div>
-<p><strong>Exact probability:</strong></p>
+<p><strong>CLT (Normal) approximation:</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-11"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="4">4</button><span id="annotated-cell-11-1" class="code-annotation-target"><a href="#annotated-cell-11-1" aria-label="1"></a>sigma_xbar <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">/</span> <span class="fu">sqrt</span>(n_days)</span>
-<span id="annotated-cell-11-2"><a href="#annotated-cell-11-2" aria-label="2"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">12</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> sigma_xbar)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-13"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="4">4</button><span id="annotated-cell-13-1" class="code-annotation-target"><a href="#annotated-cell-13-1" aria-label="1"></a>sigma_xbar <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">/</span> <span class="fu">sqrt</span>(n_days)</span>
+<span id="annotated-cell-13-2"><a href="#annotated-cell-13-2" aria-label="2"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">12</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> sigma_xbar)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-11" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-11" data-code-lines="1,2" data-code-annotation="4">The CLT answer: save <span class="math inline">\(SD(\overline{X}) = 10/\sqrt{30}\)</span>, then use <code>pnorm()</code> for the Normal probability. (The exact answer is about 0.138, because the sum of 30 waits is <span class="math inline">\(\text{Gamma}(30, 1/10)\)</span> from Lesson 13.)</span>
+<span data-code-cell="annotated-cell-13" data-code-lines="1,2" data-code-annotation="4">The CLT answer: save <span class="math inline">\(SD(\overline{X}) = 10/\sqrt{30}\)</span>, then use <code>pnorm()</code> for the Normal probability. (The exact answer is about 0.138, because the sum of 30 waits is <span class="math inline">\(\text{Gamma}(30, 1/10)\)</span> from Lesson 13.)</span>
 </dd>
 </dl>
 </div>
@@ -642,37 +708,37 @@ Meike Niederhausen and Nicky Wakim
 <div class="cell">
 <details class="code-fold">
 <summary>Plot code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-14"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="5">5</button><span id="annotated-cell-14-1" class="code-annotation-target"><a href="#annotated-cell-14-1" aria-label="1"></a><span class="fu">ggplot</span>(xbar_sims, <span class="fu">aes</span>(<span class="at">x =</span> xbar)) <span class="sc">+</span></span>
-<span id="annotated-cell-14-2"><a href="#annotated-cell-14-2" aria-label="2"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)),</span>
-<span id="annotated-cell-14-3"><a href="#annotated-cell-14-3" aria-label="3"></a>                 <span class="at">binwidth =</span> <span class="fl">0.5</span>,</span>
-<span id="annotated-cell-14-4"><a href="#annotated-cell-14-4" aria-label="4"></a>                 <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="6">6</button><span id="annotated-cell-14-5" class="code-annotation-target"><a href="#annotated-cell-14-5" aria-label="5"></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> <span class="cf">function</span>(x) <span class="fu">dnorm</span>(x, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> sigma_xbar),</span>
-<span id="annotated-cell-14-6"><a href="#annotated-cell-14-6" aria-label="6"></a>                <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="7">7</button><span id="annotated-cell-14-7" class="code-annotation-target"><a href="#annotated-cell-14-7" aria-label="7"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Simulated average wait over 30 days (bars)</span><span class="sc">\n</span><span class="st">and the CLT Normal pdf (red)"</span>,</span>
-<span id="annotated-cell-14-8"><a href="#annotated-cell-14-8" aria-label="8"></a>       <span class="at">x =</span> <span class="st">"Average wait (minutes)"</span>,</span>
-<span id="annotated-cell-14-9"><a href="#annotated-cell-14-9" aria-label="9"></a>       <span class="at">y =</span> <span class="st">"Density"</span>) <span class="sc">+</span></span>
-<span id="annotated-cell-14-10"><a href="#annotated-cell-14-10" aria-label="10"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-16"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="5">5</button><span id="annotated-cell-16-1" class="code-annotation-target"><a href="#annotated-cell-16-1" aria-label="1"></a><span class="fu">ggplot</span>(xbar_sims, <span class="fu">aes</span>(<span class="at">x =</span> xbar)) <span class="sc">+</span></span>
+<span id="annotated-cell-16-2"><a href="#annotated-cell-16-2" aria-label="2"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)),</span>
+<span id="annotated-cell-16-3"><a href="#annotated-cell-16-3" aria-label="3"></a>                 <span class="at">binwidth =</span> <span class="fl">0.5</span>,</span>
+<span id="annotated-cell-16-4"><a href="#annotated-cell-16-4" aria-label="4"></a>                 <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="6">6</button><span id="annotated-cell-16-5" class="code-annotation-target"><a href="#annotated-cell-16-5" aria-label="5"></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> <span class="cf">function</span>(x) <span class="fu">dnorm</span>(x, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> sigma_xbar),</span>
+<span id="annotated-cell-16-6"><a href="#annotated-cell-16-6" aria-label="6"></a>                <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="7">7</button><span id="annotated-cell-16-7" class="code-annotation-target"><a href="#annotated-cell-16-7" aria-label="7"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Simulated average wait over 30 days (bars)</span><span class="sc">\n</span><span class="st">and the CLT Normal pdf (red)"</span>,</span>
+<span id="annotated-cell-16-8"><a href="#annotated-cell-16-8" aria-label="8"></a>       <span class="at">x =</span> <span class="st">"Average wait (minutes)"</span>,</span>
+<span id="annotated-cell-16-9"><a href="#annotated-cell-16-9" aria-label="9"></a>       <span class="at">y =</span> <span class="st">"Density"</span>) <span class="sc">+</span></span>
+<span id="annotated-cell-16-10"><a href="#annotated-cell-16-10" aria-label="10"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-14" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-16" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="1,2,3,4" data-code-annotation="5">A histogram of the 10,000 simulated averages, scaled so the total area is 1, like a pdf (Lesson 8).</span>
+<span data-code-cell="annotated-cell-16" data-code-lines="1,2,3,4" data-code-annotation="5">A histogram of the 10,000 simulated averages, scaled so the total area is 1, like a pdf (Lesson 8).</span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-16" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="5,6" data-code-annotation="6">The Normal pdf the CLT predicts, from <code>dnorm()</code>, drawn in red.</span>
+<span data-code-cell="annotated-cell-16" data-code-lines="5,6" data-code-annotation="6">The Normal pdf the CLT predicts, from <code>dnorm()</code>, drawn in red.</span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="7">7</dt>
+<dt data-target-cell="annotated-cell-16" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="7,8,9,10" data-code-annotation="7">Add a title and axis labels, with a clean theme and larger text.</span>
+<span data-code-cell="annotated-cell-16" data-code-lines="7,8,9,10" data-code-annotation="7">Add a title and axis labels, with a clean theme and larger text.</span>
 </dd>
 </dl>
 </div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="17_Central_Limit_Theorem_files/figure-revealjs/unnamed-chunk-10-1.png" width="768"></p>
+<p><img data-src="17_Central_Limit_Theorem_files/figure-revealjs/unnamed-chunk-11-1.png" width="768"></p>
 </figure>
 </div>
 </div>
@@ -697,34 +763,34 @@ Meike Niederhausen and Nicky Wakim
 <li>What if we only average over <strong>2 days</strong>? Only <code>n_days</code> changes (highlighted)</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-15" data-code-line-numbers="2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1">1</button><span id="annotated-cell-15-1" class="code-annotation-target"><a href="#annotated-cell-15-1" aria-label="1"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="2">2</button><span id="annotated-cell-15-2" class="code-annotation-target"><a href="#annotated-cell-15-2" aria-label="2"></a>n_days <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="annotated-cell-15-3"><a href="#annotated-cell-15-3" aria-label="3"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="3">3</button><span id="annotated-cell-15-4" class="code-annotation-target"><a href="#annotated-cell-15-4" aria-label="4"></a>waits <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps, <span class="at">day =</span> <span class="dv">1</span><span class="sc">:</span>n_days) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-15-5"><a href="#annotated-cell-15-5" aria-label="5"></a>  <span class="fu">mutate</span>(<span class="at">wait =</span> <span class="fu">rexp</span>(<span class="fu">n</span>(), <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>))</span>
-<span id="annotated-cell-15-6"><a href="#annotated-cell-15-6" aria-label="6"></a></span>
-<span id="annotated-cell-15-7"><a href="#annotated-cell-15-7" aria-label="7"></a>xbar_sims <span class="ot">&lt;-</span> waits <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-15-8"><a href="#annotated-cell-15-8" aria-label="8"></a>  <span class="fu">group_by</span>(sim) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-15-9"><a href="#annotated-cell-15-9" aria-label="9"></a>  <span class="fu">summarise</span>(<span class="at">xbar =</span> <span class="fu">mean</span>(wait))</span>
-<span id="annotated-cell-15-10"><a href="#annotated-cell-15-10" aria-label="10"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="4">4</button><span id="annotated-cell-15-11" class="code-annotation-target"><a href="#annotated-cell-15-11" aria-label="11"></a>sigma_xbar <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">/</span> <span class="fu">sqrt</span>(n_days)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-17" data-code-line-numbers="2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="1">1</button><span id="annotated-cell-17-1" class="code-annotation-target"><a href="#annotated-cell-17-1" aria-label="1"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="2">2</button><span id="annotated-cell-17-2" class="code-annotation-target"><a href="#annotated-cell-17-2" aria-label="2"></a>n_days <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="annotated-cell-17-3"><a href="#annotated-cell-17-3" aria-label="3"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="3">3</button><span id="annotated-cell-17-4" class="code-annotation-target"><a href="#annotated-cell-17-4" aria-label="4"></a>waits <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(<span class="at">sim =</span> <span class="dv">1</span><span class="sc">:</span>reps, <span class="at">day =</span> <span class="dv">1</span><span class="sc">:</span>n_days) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-17-5"><a href="#annotated-cell-17-5" aria-label="5"></a>  <span class="fu">mutate</span>(<span class="at">wait =</span> <span class="fu">rexp</span>(<span class="fu">n</span>(), <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>))</span>
+<span id="annotated-cell-17-6"><a href="#annotated-cell-17-6" aria-label="6"></a></span>
+<span id="annotated-cell-17-7"><a href="#annotated-cell-17-7" aria-label="7"></a>xbar_sims <span class="ot">&lt;-</span> waits <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-17-8"><a href="#annotated-cell-17-8" aria-label="8"></a>  <span class="fu">group_by</span>(sim) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-17-9"><a href="#annotated-cell-17-9" aria-label="9"></a>  <span class="fu">summarise</span>(<span class="at">xbar =</span> <span class="fu">mean</span>(wait))</span>
+<span id="annotated-cell-17-10"><a href="#annotated-cell-17-10" aria-label="10"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="4">4</button><span id="annotated-cell-17-11" class="code-annotation-target"><a href="#annotated-cell-17-11" aria-label="11"></a>sigma_xbar <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">/</span> <span class="fu">sqrt</span>(n_days)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-15" data-code-lines="1" data-code-annotation="1">Still 10,000 simulations.</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="1" data-code-annotation="1">Still 10,000 simulations.</span>
 </dd>
-<dt data-target-cell="annotated-cell-15" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-15" data-code-lines="2" data-code-annotation="2">The only change: each simulation averages 2 waits instead of 30.</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="2" data-code-annotation="2">The only change: each simulation averages 2 waits instead of 30.</span>
 </dd>
-<dt data-target-cell="annotated-cell-15" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-15" data-code-lines="4,5,7,8,9" data-code-annotation="3">Exactly the same code as before. Because we wrote <code>n_days</code> instead of typing 30, each simulation now gets two rows automatically.</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="4,5,7,8,9" data-code-annotation="3">Exactly the same code as before. Because we wrote <code>n_days</code> instead of typing 30, each simulation now gets two rows automatically.</span>
 </dd>
-<dt data-target-cell="annotated-cell-15" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-15" data-code-lines="11" data-code-annotation="4">The CLT’s SD for <span class="math inline">\(\overline{X}\)</span> is now <span class="math inline">\(10/\sqrt{2} \approx 7.07\)</span>.</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="11" data-code-annotation="4">The CLT’s SD for <span class="math inline">\(\overline{X}\)</span> is now <span class="math inline">\(10/\sqrt{2} \approx 7.07\)</span>.</span>
 </dd>
 </dl>
 </div>
@@ -733,39 +799,39 @@ Meike Niederhausen and Nicky Wakim
 <div class="cell">
 <details class="code-fold">
 <summary>Plot code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-16"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="5">5</button><span id="annotated-cell-16-1" class="code-annotation-target"><a href="#annotated-cell-16-1" aria-label="1"></a><span class="fu">ggplot</span>(xbar_sims, <span class="fu">aes</span>(<span class="at">x =</span> xbar)) <span class="sc">+</span></span>
-<span id="annotated-cell-16-2"><a href="#annotated-cell-16-2" aria-label="2"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)),</span>
-<span id="annotated-cell-16-3"><a href="#annotated-cell-16-3" aria-label="3"></a>                 <span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">boundary =</span> <span class="dv">0</span>,</span>
-<span id="annotated-cell-16-4"><a href="#annotated-cell-16-4" aria-label="4"></a>                 <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
-<span id="annotated-cell-16-5"><a href="#annotated-cell-16-5" aria-label="5"></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> <span class="cf">function</span>(x) <span class="fu">dnorm</span>(x, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> sigma_xbar),</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="6">6</button><span id="annotated-cell-16-6" class="code-annotation-target"><a href="#annotated-cell-16-6" aria-label="6"></a>                <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">40</span>),</span>
-<span id="annotated-cell-16-7"><a href="#annotated-cell-16-7" aria-label="7"></a>                <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="annotated-cell-16-8"><a href="#annotated-cell-16-8" aria-label="8"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">40</span>)) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="7">7</button><span id="annotated-cell-16-9" class="code-annotation-target"><a href="#annotated-cell-16-9" aria-label="9"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Average wait over 2 days (bars)</span><span class="sc">\n</span><span class="st">and the CLT Normal pdf (red)"</span>,</span>
-<span id="annotated-cell-16-10"><a href="#annotated-cell-16-10" aria-label="10"></a>       <span class="at">x =</span> <span class="st">"Average wait (minutes)"</span>,</span>
-<span id="annotated-cell-16-11"><a href="#annotated-cell-16-11" aria-label="11"></a>       <span class="at">y =</span> <span class="st">"Density"</span>) <span class="sc">+</span></span>
-<span id="annotated-cell-16-12"><a href="#annotated-cell-16-12" aria-label="12"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-18"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="5">5</button><span id="annotated-cell-18-1" class="code-annotation-target"><a href="#annotated-cell-18-1" aria-label="1"></a><span class="fu">ggplot</span>(xbar_sims, <span class="fu">aes</span>(<span class="at">x =</span> xbar)) <span class="sc">+</span></span>
+<span id="annotated-cell-18-2"><a href="#annotated-cell-18-2" aria-label="2"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)),</span>
+<span id="annotated-cell-18-3"><a href="#annotated-cell-18-3" aria-label="3"></a>                 <span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">boundary =</span> <span class="dv">0</span>,</span>
+<span id="annotated-cell-18-4"><a href="#annotated-cell-18-4" aria-label="4"></a>                 <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
+<span id="annotated-cell-18-5"><a href="#annotated-cell-18-5" aria-label="5"></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> <span class="cf">function</span>(x) <span class="fu">dnorm</span>(x, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> sigma_xbar),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="6">6</button><span id="annotated-cell-18-6" class="code-annotation-target"><a href="#annotated-cell-18-6" aria-label="6"></a>                <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">40</span>),</span>
+<span id="annotated-cell-18-7"><a href="#annotated-cell-18-7" aria-label="7"></a>                <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="annotated-cell-18-8"><a href="#annotated-cell-18-8" aria-label="8"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">40</span>)) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="7">7</button><span id="annotated-cell-18-9" class="code-annotation-target"><a href="#annotated-cell-18-9" aria-label="9"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Average wait over 2 days (bars)</span><span class="sc">\n</span><span class="st">and the CLT Normal pdf (red)"</span>,</span>
+<span id="annotated-cell-18-10"><a href="#annotated-cell-18-10" aria-label="10"></a>       <span class="at">x =</span> <span class="st">"Average wait (minutes)"</span>,</span>
+<span id="annotated-cell-18-11"><a href="#annotated-cell-18-11" aria-label="11"></a>       <span class="at">y =</span> <span class="st">"Density"</span>) <span class="sc">+</span></span>
+<span id="annotated-cell-18-12"><a href="#annotated-cell-18-12" aria-label="12"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-16" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-18" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="1,2,3,4,5,7" data-code-annotation="5">Same plot code as before, with wider bars (<code>binwidth = 1</code>) and <code>boundary = 0</code> so bars start at 0.</span>
+<span data-code-cell="annotated-cell-18" data-code-lines="1,2,3,4,5,7" data-code-annotation="5">Same plot code as before, with wider bars (<code>binwidth = 1</code>) and <code>boundary = 0</code> so bars start at 0.</span>
 </dd>
-<dt data-target-cell="annotated-cell-16" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-18" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="6,8" data-code-annotation="6">Draw the curve and the x-axis from −10 to 40, so we can see the Normal curve spill below 0, where no wait can be.</span>
+<span data-code-cell="annotated-cell-18" data-code-lines="6,8" data-code-annotation="6">Draw the curve and the x-axis from −10 to 40, so we can see the Normal curve spill below 0, where no wait can be.</span>
 </dd>
-<dt data-target-cell="annotated-cell-16" data-target-annotation="7">7</dt>
+<dt data-target-cell="annotated-cell-18" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="9,10,11,12" data-code-annotation="7">A new title for 2 days.</span>
+<span data-code-cell="annotated-cell-18" data-code-lines="9,10,11,12" data-code-annotation="7">A new title for 2 days.</span>
 </dd>
 </dl>
 </div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="17_Central_Limit_Theorem_files/figure-revealjs/unnamed-chunk-12-1.png" width="768"></p>
+<p><img data-src="17_Central_Limit_Theorem_files/figure-revealjs/unnamed-chunk-13-1.png" width="768"></p>
 </figure>
 </div>
 </div>
@@ -785,35 +851,44 @@ Meike Niederhausen and Nicky Wakim
 </div>
 </div>
 <div class="columns">
-<div class="column" style="width:42%;">
+<div class="column" style="width:40%;">
 <ul>
 <li>With <strong>2 days</strong>, the Normal curve is a poor fit
 <ul>
 <li>Simulated <span class="math inline">\(P(\overline{X} &gt; 12) \approx\)</span> 0.31</li>
 <li>CLT answer: 0.39</li>
 </ul></li>
-</ul>
-<p>&nbsp;</p>
-<ul>
 <li>With <strong>30 days</strong>, they agree: 0.14 vs.&nbsp;0.14</li>
 </ul>
 <p>&nbsp;</p>
 <ul>
-<li>Same code with <code>n_days</code> = 1, 2, 5, and 30 (right): as <span class="math inline">\(n\)</span> grows, the histogram becomes bell-shaped, just like the CLT promises</li>
+<li>Same code with <code>n_days</code> = 2, 5, 30, and 60 (right): as <span class="math inline">\(n\)</span> grows, the histogram becomes bell-shaped, just like the CLT promises</li>
 <li>The more skewed the <span class="math inline">\(X_i\)</span>, the larger <span class="math inline">\(n\)</span> needs to be</li>
 </ul>
-</div><div class="column" style="width:58%;">
-<!-- @claude: can you make sure these plots span the whole column? And can you change the days to what i put in the code below -->
+</div><div class="column" style="width:60%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="17_Central_Limit_Theorem_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
+<p><img data-src="17_Central_Limit_Theorem_files/figure-revealjs/unnamed-chunk-14-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
+</section></section>
+<section>
+<section id="learning-objectives-2" class="title-slide slide level1 center">
+<h1>Learning Objectives</h1>
+<ol type="1">
+<li><p>Explain the Law of Large Numbers and convergence in probability</p></li>
+<li><p>Calculate probability of a sample mean using a population mean and variance with unknown distribution</p></li>
+</ol>
+<div class="lob">
+<ol start="3" type="1">
+<li>Use the Central Limit Theorem to construct the Normal approximation of the Binomial and Poisson distributions</li>
+</ol>
+</div>
 </section>
 <section id="clt-for-discrete-rvs" class="slide level2">
 <h2>CLT for Discrete RVs</h2>
@@ -837,10 +912,13 @@ Meike Niederhausen and Nicky Wakim
 <li>Rule of thumb: <span class="math inline">\(\lambda \geq10\)</span> to use Normal approximation</li>
 </ul></li>
 </ol>
+<!-- @claude: why is this normal approx not colored? -->
 </div></div>
+<!-- @claude: can you add another slide here about the normal vs poisson approx of the binomial? I have them in my handwritten notes -->
 </section>
 <section id="larger-example-17" class="slide level2 smaller">
 <h2>Larger example (1/7)</h2>
+<!-- @claude: for the slides with handwritten R code, can you write out the solutions like we did in previous slides? -->
 <div class="example">
 <div class="ex-title">
 <p>Example 3</p>

@@ -19,20 +19,19 @@ execute:
   echo: true
 ---
 
+# Learning Objectives
+
+1.  Explain the [**Law of Large Numbers**]{style="color:#E89543;"} and [**convergence in probability**]{style="color:#E25D3B;"}
+2.  Calculate probability of a [**sample mean**]{style="color:#E89543;"} using a population mean and variance with unknown distribution
+3.  Use the [**Central Limit Theorem**]{style="color:#006a4e;"} to construct the [**Normal approximation**]{style="color:#006a4e;"}
+    of the Binomial and Poisson distributions
+    
 ```{r setup, include=FALSE}
 library(here)
 source(here("class_dates.R"))
 
 library(tidyverse)
 ```
-
-# Learning Objectives
-
-1.  Explain the [**Law of Large Numbers**]{style="color:#E89543;"} and [**convergence in probability**]{style="color:#E25D3B;"}
-2.  Calculate probability of a [**sample mean**]{style="color:#E89543;"} using a population mean and
-    variance with unknown distribution
-3.  Use the [**Central Limit Theorem**]{style="color:#006a4e;"} to construct the [**Normal approximation**]{style="color:#006a4e;"}
-    of the Binomial and Poisson distributions
 
 ## Convergence in probability
 
@@ -82,10 +81,10 @@ $$\overline{X}_n \xrightarrow{P} \mu$$
 :::::
 
 -   Back to the bus from Lesson 13: each morning's wait is $X_i \sim \text{Exp}(1/10)$, so $\mu = 10$ minutes
--   Follow 1,000 people for 500 days each, and track each person's average wait so far, $\overline{X}_n$
+-   Follow 1,000 people for 500 mornings each, and track each person's average morning wait so far, $\overline{X}_n$
 
 ::: columns
-::: {.column width="60%"}
+::: {.column width="65%"}
 
 ```{r}
 set.seed(1124) # <1>
@@ -107,7 +106,7 @@ running_sims <- waits |> # <4>
 
 :::
 
-::: {.column width="40%"}
+::: {.column width="35%"}
 
 ```{r}
 head(running_sims) # <1>
@@ -142,17 +141,19 @@ running_sims |> # <1>
 2. One row of summaries for each of those days.
 3. `abs()` is the absolute value. This is the proportion of people whose average so far is more than $\varepsilon = 1$ minute away from $\mu = 10$: it estimates $P(|\overline{X}_n - 10| > 1)$.
 
--   $P(|\overline{X}_n - 10| > 1)$ shrinks toward 0, so $\overline{X}_n \xrightarrow{P} 10$
+<!-- @claude: is an epsilon of 1 small enough?? -->
 
 :::
 
 ::: {.column width="52%"}
 
+<!-- @claude: can you put the person legend inside the plot on the top right corner? -->
+
 ```{r}
 #| code-fold: true
 #| code-summary: "Plot code"
-#| fig-width: 10
-#| fig-height: 6.5
+#| fig-width: 9
+#| fig-height: 6
 
 running_sims |> # <4>
   filter(sim <= 5) |> # <4>
@@ -176,6 +177,10 @@ running_sims |> # <4>
 
 :::
 :::
+
+$P(|\overline{X}_n - 10| > 1)$ shrinks toward 0, so $\overline{X}_n \xrightarrow{P} 10$
+
+# Learning Objectives
 
 ## The Central Limit Theorem
 
@@ -214,6 +219,8 @@ $$\overline{X}=\frac{\sum_{i=1}^n X_i}{n}  \rightarrow \text{N}\Bigg(\mu, \dfrac
 -   **CLT:** $\overline{X}_n \approx \text{N}(\mu, \sigma^2/n)$ tells us *how* $\overline{X}_n$ is spread around $\mu$ along the way, with SD $\sigma/\sqrt{n}$
 
 ## Example of Corollary in use
+
+<!-- @claude: can you write out the exact answer for this using my notes and the code I handwrote in class?  -->
 
 ::: columns
 ::: {.column width="40%"}
@@ -287,14 +294,16 @@ Run the simulation to generate outcomes according to the assumptions.
 :::::
 
 ::: columns
-::: {.column width="62%"}
+::: {.column width="65%"}
 
 ```{r}
 reps <- 10000 # <1>
 n_days <- 30 # <1>
 
+
 waits <- expand_grid(sim = 1:reps, day = 1:n_days) |> # <2>
   mutate(wait = rexp(n(), rate = 1/10)) # <2>
+
 
 xbar_sims <- waits |> # <3>
   group_by(sim) |> # <3>
@@ -307,7 +316,11 @@ xbar_sims <- waits |> # <3>
 
 :::
 
-::: {.column width="38%"}
+::: {.column width="2%"}
+:::
+
+
+::: {.column width="33%"}
 
 ```{r}
 head(xbar_sims) # <1>
@@ -324,15 +337,12 @@ head(xbar_sims) # <1>
 ::: ex-title
 3.  Summarize
 :::
-
-::: ex-cont
-Analyze the output using plots and summary statistics like relative frequencies and averages.
-:::
 :::::
 
 ::: columns
-::: {.column width="48%"}
+::: {.column width="52%"}
 
+**Probability based on our simulations:**
 ```{r}
 xbar_sims |> # <1>
   summarise( # <1>
@@ -340,7 +350,10 @@ xbar_sims |> # <1>
     std_dev      = sd(xbar), # <2>
     prob_over_12 = mean(xbar > 12) # <3>
   )
+```
 
+**Exact probability:**
+```{r}
 sigma_xbar <- 10 / sqrt(n_days) # <4>
 1 - pnorm(12, mean = 10, sd = sigma_xbar) # <4>
 ```
@@ -357,13 +370,13 @@ prob_30 <- mean(xbar_sims$xbar > 12)
 
 :::
 
-::: {.column width="52%"}
+::: {.column width="48%"}
 
 ```{r}
 #| code-fold: true
 #| code-summary: "Plot code"
-#| fig-width: 10
-#| fig-height: 5.5
+#| fig-width: 8
+#| fig-height: 6
 
 ggplot(xbar_sims, aes(x = xbar)) + # <5>
   geom_histogram(aes(y = after_stat(density)), # <5>
@@ -371,7 +384,7 @@ ggplot(xbar_sims, aes(x = xbar)) + # <5>
                  color = "black", fill = "lightblue") + # <5>
   geom_function(fun = function(x) dnorm(x, mean = 10, sd = sigma_xbar), # <6>
                 color = "red", linewidth = 1.5) + # <6>
-  labs(title = "Average wait over 30 days (bars)\nand the CLT Normal pdf (red)", # <7>
+  labs(title = "Simulated average wait over 30 days (bars)\nand the CLT Normal pdf (red)", # <7>
        x = "Average wait (minutes)", # <7>
        y = "Density") + # <7>
   theme_minimal(base_size = 20) # <7>
@@ -465,7 +478,7 @@ Investigate how results change when assumptions or parameters of the model are a
 :::::
 
 ::: columns
-::: {.column width="38%"}
+::: {.column width="42%"}
 
 -   With **2 days**, the Normal curve is a poor fit
     -   Simulated $P(\overline{X} > 12) \approx$ `r round(mean(xbar_sims$xbar > 12), 2)`
@@ -482,14 +495,16 @@ Investigate how results change when assumptions or parameters of the model are a
 
 :::
 
-::: {.column width="62%"}
+::: {.column width="58%"}
+
+<!-- @claude: can you make sure these plots span the whole column? And can you change the days to what i put in the code below -->
 
 ```{r}
 #| echo: false
-#| fig-width: 12
-#| fig-height: 6.5
+#| fig-width: 10
+#| fig-height: 6
 
-n_values <- c(1, 2, 5, 30)
+n_values <- c(2, 5, 30, 60)
 
 xbar_by_n <- tibble(n_days = n_values) |>
   mutate(sims = map(n_days, \(k) {

@@ -24154,35 +24154,35 @@
     "href": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#the-central-limit-theorem",
     "title": "Lesson 17: Central Limit Theorem",
     "section": "The Central Limit Theorem",
-    "text": "The Central Limit Theorem\n\n\nTheorem 1: Central Limit Theorem (CLT)\n\n\nLet \\(X_i\\) be iid rv’s with common mean \\(\\mu\\) and variance \\(\\sigma^2\\), for \\(i=1,2,\\ldots,n\\). Then \\[\\sum_{i=1}^n X_i \\rightarrow \\text{N}(n\\mu, n\\sigma^2)\\]"
+    "text": "The Central Limit Theorem\n\n\nTheorem 2: Central Limit Theorem (CLT)\n\n\nLet \\(X_i\\) be iid RVs with common mean \\(\\mu\\) and variance \\(\\sigma^2\\), for \\(i=1,2,\\ldots,n\\). Then \\[\\sum_{i=1}^n X_i \\rightarrow \\text{N}(n\\mu, n\\sigma^2)\\]\n\n\n\nThe \\(\\rightarrow\\) here is shorthand for “is approximately, for large \\(n\\)”\nFormally, the CLT is about convergence in distribution, written \\(\\xrightarrow{d}\\): \\[\\frac{\\overline{X}_n - \\mu}{\\sigma/\\sqrt{n}} \\xrightarrow{d} \\text{N}(0, 1)\\]\n\nYou will use this notation in BSTA 551"
   },
   {
     "objectID": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#extension-of-the-clt",
     "href": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#extension-of-the-clt",
     "title": "Lesson 17: Central Limit Theorem",
     "section": "Extension of the CLT",
-    "text": "Extension of the CLT\n\n\nCorollary 1\n\n\nLet \\(X_i\\) be iid rv’s with common mean \\(\\mu\\) and variance \\(\\sigma^2\\), for \\(i=1,2,\\ldots,n\\). Then \\[\\overline{X}=\\frac{\\sum_{i=1}^n X_i}{n}  \\rightarrow \\text{N}\\Bigg(\\mu, \\dfrac{\\sigma^2}{n}\\Bigg)\\]"
+    "text": "Extension of the CLT\n\n\nCorollary 1\n\n\nLet \\(X_i\\) be iid RVs with common mean \\(\\mu\\) and variance \\(\\sigma^2\\), for \\(i=1,2,\\ldots,n\\). Then \\[\\overline{X}=\\frac{\\sum_{i=1}^n X_i}{n}  \\rightarrow \\text{N}\\Bigg(\\mu, \\dfrac{\\sigma^2}{n}\\Bigg)\\]\n\n\n\nLLN: \\(\\overline{X}_n \\xrightarrow{P} \\mu\\) tells us where \\(\\overline{X}_n\\) ends up\nCLT: \\(\\overline{X}_n \\approx \\text{N}(\\mu, \\sigma^2/n)\\) tells us how \\(\\overline{X}_n\\) is spread around \\(\\mu\\) along the way, with SD \\(\\sigma/\\sqrt{n}\\)"
   },
   {
     "objectID": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#example-of-corollary-in-use",
     "href": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#example-of-corollary-in-use",
     "title": "Lesson 17: Central Limit Theorem",
     "section": "Example of Corollary in use",
-    "text": "Example of Corollary in use\n\n\n\n\nExample 1\n\n\nAccording to a large US study, the mean resting heart rate of adult women is about 74 beats per minutes (bpm), with standard deviation 13 bpm (NHANES 2003-2004).\n\nFind the probability that the average resting heart rate for a random sample of 36 adult women is more than 3 bpm away from the mean.\nRepeat the previous question for a single adult woman."
+    "text": "Example of Corollary in use\n\n\n\n\n\nExample 1\n\n\nAccording to a large US study, the mean resting heart rate of adult women is about 74 beats per minute (bpm), with standard deviation 13 bpm (NHANES 2003-2004).\n\nFind the probability that the average resting heart rate for a random sample of 36 adult women is more than 3 bpm away from the mean.\nRepeat the previous question for a single adult woman."
   },
   {
     "objectID": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#example-of-clt-for-exponential-distribution",
     "href": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#example-of-clt-for-exponential-distribution",
     "title": "Lesson 17: Central Limit Theorem",
     "section": "Example of CLT for exponential distribution",
-    "text": "Example of CLT for exponential distribution\n\n\n\n\nExample 2\n\n\nLet \\(X_i \\sim Exp(\\lambda)\\) be iid RVs for \\(i=1,2,\\ldots,n\\). Then \\[\\sum_{i=1}^n X_i \\rightarrow\\]"
+    "text": "Example of CLT for exponential distribution\n\n\n\n\nExample 2\n\n\nLet \\(X_i \\sim \\text{Exp}(\\lambda)\\) be iid RVs for \\(i=1,2,\\ldots,n\\). Then \\[\\sum_{i=1}^n X_i \\rightarrow\\]"
   },
   {
     "objectID": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#clt-for-discrete-rvs",
     "href": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#clt-for-discrete-rvs",
     "title": "Lesson 17: Central Limit Theorem",
     "section": "CLT for Discrete RVs",
-    "text": "CLT for Discrete RVs\n\n\n\nBinomial rv’s: Let \\(X \\sim Bin(n,p)\\)\n\n\\(X = \\displaystyle\\sum_{i=1}^n X_i\\), where \\(X_i\\) are iid \\(\\text{Bernoulli}(p)\\)\nRule of thumb: \\(np\\geq10\\) and \\(n(1-p)\\geq 10\\) to use Normal approximation\n\n\n\n\n\n\nPoisson rv’s: Let \\(X \\sim Poisson(\\lambda)\\)\n\n\\(X = \\displaystyle\\sum_{i=1}^n X_i\\), where \\(X_i\\) are iid \\(\\text{Poiss}(1)\\)\nRecall from Chapter 18 that if \\(X_i \\sim Poiss(\\lambda_i)\\) and \\(X_i\\) independent, then \\(\\sum_{i=1}^n X_i \\sim Poiss(\\sum_{i=1}^n \\lambda_i)\\)\nRule of thumb: \\(\\lambda \\geq10\\) to use Normal approximation"
+    "text": "CLT for Discrete RVs\n\n\n\nBinomial RVs: Let \\(X \\sim \\text{Binomial}(n,p)\\)\n\n\\(X = \\displaystyle\\sum_{i=1}^n X_i\\), where \\(X_i\\) are iid \\(\\text{Bernoulli}(p)\\)\nRule of thumb: \\(np\\geq10\\) and \\(n(1-p)\\geq 10\\) to use Normal approximation\n\n\n\n\n\n\nPoisson RVs: Let \\(X \\sim \\text{Poisson}(\\lambda)\\)\n\n\\(X = \\displaystyle\\sum_{i=1}^n X_i\\), where \\(X_i\\) are iid \\(\\text{Poisson}(\\lambda/n)\\)\nRecall from Lesson 15 that if \\(X_i \\sim \\text{Poisson}(\\lambda_i)\\) and \\(X_i\\) independent, then \\(\\sum_{i=1}^n X_i \\sim \\text{Poisson}(\\sum_{i=1}^n \\lambda_i)\\)\nRule of thumb: \\(\\lambda \\geq10\\) to use Normal approximation"
   },
   {
     "objectID": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#at-home-example",
@@ -24301,7 +24301,7 @@
     "href": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#larger-example-17",
     "title": "Lesson 17: Central Limit Theorem",
     "section": "Larger example (1/7)",
-    "text": "Larger example (1/7)\n\n\nExample 3\n\n\nSuppose that the probability of developing a specific type of breast cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer are independent. Suppose you have data from a random sample of 20,000 women aged 40-49.\n\nHow many of the 20,000 women would you expect to develop this type of breast cancer, and what is the standard deviation?\nFind the exact probability that more than 15 of the 20,000 women will develop this type of breast cancer.\nUse the CLT to find the approximate probability that more than 15 of the 20,000 women will develop this type of breast cancer.\nUse the CLT to approximate the following probabilities, where \\(X\\) is the number of women that will develop this type of breast cancer.\n\n\\(\\mathbb{P}(15 \\leq X \\leq 22)\\)\n\\(\\mathbb{P}(X &gt; 20)\\)\n\\(\\mathbb{P}(X &lt; 20)\\)\n\nFind the approximate probability that more than 15 of the 20,000 women will develop this type of breast cancer - not using the CLT!\nUse the CLT to approximate the approximate probability in the previous question!"
+    "text": "Larger example (1/7)\n\n\nExample 3\n\n\nSuppose that the probability of developing a specific type of breast cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer are independent. Suppose you have data from a random sample of 20,000 women aged 40-49.\n\nHow many of the 20,000 women would you expect to develop this type of breast cancer, and what is the standard deviation?\nFind the exact probability that more than 15 of the 20,000 women will develop this type of breast cancer.\nUse the CLT to find the approximate probability that more than 15 of the 20,000 women will develop this type of breast cancer.\nUse the CLT to approximate the following probabilities, where \\(X\\) is the number of women that will develop this type of breast cancer.\n\n\\(\\mathbb{P}(15 \\leq X \\leq 22)\\)\n\\(\\mathbb{P}(X &gt; 20)\\)\n\\(\\mathbb{P}(X &lt; 20)\\)\n\nFind the approximate probability that more than 15 of the 20,000 women will develop this type of breast cancer—not using the CLT!\nUse the CLT to approximate the approximate probability in the previous question!"
   },
   {
     "objectID": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#larger-example-17-1",
@@ -24378,7 +24378,7 @@
     "href": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#larger-example-67",
     "title": "Lesson 17: Central Limit Theorem",
     "section": "Larger example (6/7)",
-    "text": "Larger example (6/7)\n\n\nExample 3\n\n\nSuppose that the probability of developing a specific type of breast cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer are independent. Suppose you have data from a random sample of 20,000 women aged 40-49.\n\nFind the approximate probability that more than 15 of the 20,000 women will develop this type of breast cancer - not using the CLT!"
+    "text": "Larger example (6/7)\n\n\nExample 3\n\n\nSuppose that the probability of developing a specific type of breast cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer are independent. Suppose you have data from a random sample of 20,000 women aged 40-49.\n\nFind the approximate probability that more than 15 of the 20,000 women will develop this type of breast cancer—not using the CLT!"
   },
   {
     "objectID": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#larger-example-77",
@@ -30539,5 +30539,68 @@
     "title": "Lesson 16: Interactive 3D plots",
     "section": "Example 5: the plane \\(y = 0.2\\)",
     "text": "Example 5: the plane \\(y = 0.2\\)\n\\(f_{X,Y}(x,y) = 5e^{-x-3y}\\), for \\(0 &lt; y &lt; \\frac{x}{2}\\) (shown up to \\(x = 6\\); it keeps going). The orange plane is \\(y = 0.2\\). It only crosses the possible values for \\(x &gt; 0.4\\), and the dark orange curve is the slice it cuts out of the joint pdf, \\(f_{X,Y}(x, 0.2)\\). Conditioning on \\(Y = 0.2\\) keeps only this slice. The simulation samples \\(x\\) along this slice, using its heights as the weights."
+  },
+  {
+    "objectID": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#convergence-in-probability",
+    "href": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#convergence-in-probability",
+    "title": "Lesson 17: Central Limit Theorem",
+    "section": "Convergence in probability",
+    "text": "Convergence in probability\n\nLesson 1: the running proportion of heads settled near 0.5\nLesson 10: the running average of die rolls settled at \\(\\mathbb{E}[X] = 4.14\\)\nToday we make “settles at” precise with convergence in probability\n\n\n\nDefinition: Convergence in probability\n\n\nA sequence of RVs \\(Y_1, Y_2, \\ldots\\) converges in probability to a constant \\(c\\), written \\(Y_n \\xrightarrow{P} c\\), if for every \\(\\varepsilon &gt; 0\\), \\[P\\big(|Y_n - c| &gt; \\varepsilon\\big) \\rightarrow 0 \\quad \\text{as } n \\rightarrow \\infty\\]\n\n\n\nIn words: pick any small window \\((c - \\varepsilon, c + \\varepsilon)\\) around \\(c\\). As \\(n\\) grows, the chance that \\(Y_n\\) lands outside the window shrinks to 0."
+  },
+  {
+    "objectID": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#law-of-large-numbers",
+    "href": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#law-of-large-numbers",
+    "title": "Lesson 17: Central Limit Theorem",
+    "section": "Law of Large Numbers",
+    "text": "Law of Large Numbers\n\n\nTheorem 1: (Weak) Law of Large Numbers (LLN)\n\n\nLet \\(X_i\\) be iid RVs with common mean \\(\\mu\\) and variance \\(\\sigma^2 &lt; \\infty\\), for \\(i=1,2,\\ldots,n\\), and let \\(\\overline{X}_n = \\frac{1}{n}\\sum_{i=1}^n X_i\\). Then \\[\\overline{X}_n \\xrightarrow{P} \\mu\\]\n\n\n\nThe Law of Large Numbers is why long-run averages approximate \\(\\mathbb{E}[X]\\), and why our simulations work!\nWhy is it true? The spread of \\(\\overline{X}_n\\) shrinks to 0:\n\n\\(\\mathbb{E}(\\overline{X}_n) = \\mu\\)\n\\(Var(\\overline{X}_n) = \\frac{1}{n^2} Var\\big(\\sum_{i=1}^n X_i\\big) = \\frac{1}{n^2} \\cdot n\\sigma^2 = \\frac{\\sigma^2}{n} \\rightarrow 0\\) (Lesson 14, Corollary 3)\n\nWe say \\(\\overline{X}_n\\) is a consistent estimator of \\(\\mu\\): it converges in probability to the value it estimates. You will see this word a lot in BSTA 551!"
+  },
+  {
+    "objectID": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#seeing-the-lln-simulate",
+    "href": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#seeing-the-lln-simulate",
+    "title": "Lesson 17: Central Limit Theorem",
+    "section": "Seeing the LLN: simulate",
+    "text": "Seeing the LLN: simulate\n\n\n\nSimulate\n\n\n\n\nBack to the bus from Lesson 13: each morning’s wait is \\(X_i \\sim \\text{Exp}(1/10)\\), so \\(\\mu = 10\\) minutes\nFollow 1,000 people for 500 mornings each, and track each person’s average morning wait so far, \\(\\overline{X}_n\\)\n\n\n\n\n1set.seed(1124)\n2reps &lt;- 1000\nmax_days &lt;- 500\n\n3waits &lt;- expand_grid(sim = 1:reps, day = 1:max_days) |&gt;\n  mutate(wait = rexp(n(), rate = 1/10))\n\n4running_sims &lt;- waits |&gt;\n  group_by(sim) |&gt;\n  mutate(running_avg = cumsum(wait) / day)\n\n\n1\n\nSet the seed so we all get the same random numbers.\n\n2\n\n1,000 simulated people, each waiting for the bus for 500 days.\n\n3\n\nOne row for every day for every person (500,000 rows), each with its own wait from rexp().\n\n4\n\nLike the running average in Lesson 10: within each person (group_by(sim)), cumsum(wait) is the total wait so far, and dividing by day gives the average so far, \\(\\overline{X}_n\\) with \\(n\\) = day.\n\n\n\n\n\n\n1head(running_sims)\n\n\n1\n\nThe first 6 days for person 1. The last column is their average wait so far. The # Groups line is a reminder that the table is still grouped by sim.\n\n\n\n\n# A tibble: 6 × 4\n# Groups:   sim [1]\n    sim   day  wait running_avg\n  &lt;int&gt; &lt;int&gt; &lt;dbl&gt;       &lt;dbl&gt;\n1     1     1  2.36        2.36\n2     1     2 27.6        15.0 \n3     1     3 32.7        20.9 \n4     1     4 25.0        21.9 \n5     1     5 22.4        22.0 \n6     1     6  2.21       18.7"
+  },
+  {
+    "objectID": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#seeing-the-lln-summarize",
+    "href": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#seeing-the-lln-summarize",
+    "title": "Lesson 17: Central Limit Theorem",
+    "section": "Seeing the LLN: summarize",
+    "text": "Seeing the LLN: summarize\n\n\n\nSummarize\n\n\n\n\n\n\n1running_sims |&gt;\n  filter(day %in% c(1, 10, 30, 100, 500)) |&gt;\n2  group_by(day) |&gt;\n  summarise(\n3    prob_far = mean(abs(running_avg - 10) &gt; 1)\n  )\n\n\n1\n\nKeep only days 1, 10, 30, 100 and 500. %in% checks whether day is one of the values in the list.\n\n2\n\nOne row of summaries for each of those days.\n\n3\n\nabs() is the absolute value. This is the proportion of people whose average so far is more than \\(\\varepsilon = 1\\) minute away from \\(\\mu = 10\\): it estimates \\(P(|\\overline{X}_n - 10| &gt; 1)\\).\n\n\n\n\n# A tibble: 5 × 2\n    day prob_far\n  &lt;int&gt;    &lt;dbl&gt;\n1     1    0.932\n2    10    0.75 \n3    30    0.584\n4   100    0.321\n5   500    0.032\n\n\n\n\n\n\n\nPlot code\n4running_sims |&gt;\n  filter(sim &lt;= 5) |&gt;\n5  ggplot(aes(x = day, y = running_avg, color = factor(sim))) +\n6  annotate(\"rect\", xmin = 0, xmax = max_days, ymin = 9, ymax = 11,\n           alpha = 0.2, fill = \"grey40\") +\n7  geom_line(linewidth = 1) +\n  geom_hline(yintercept = 10, linetype = \"dashed\") +\n8  coord_cartesian(ylim = c(0, 25)) +\n  labs(title = \"Average wait so far for 5 people\",\n       x = \"Number of days\", y = \"Average wait so far\",\n       color = \"Person\") +\n  theme_minimal(base_size = 20)\n\n\n\n4\n\nPlot only the first 5 simulated people.\n\n5\n\nDays on the x-axis and the average so far on the y-axis, with one color per person.\n\n6\n\nShade the window from 9 to 11 minutes (\\(\\mu \\pm \\varepsilon\\)).\n\n7\n\nDraw each person’s running average, and a dashed line at \\(\\mu = 10\\).\n\n8\n\nZoom the y-axis, then add a title, axis labels and a larger-text theme.\n\n\n\n\n\n\n\n\n\n\n\n\n\\(P(|\\overline{X}_n - 10| &gt; 1)\\) shrinks toward 0, so \\(\\overline{X}_n \\xrightarrow{P} 10\\)"
+  },
+  {
+    "objectID": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#seeing-the-clt-waiting-for-the-bus",
+    "href": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#seeing-the-clt-waiting-for-the-bus",
+    "title": "Lesson 17: Central Limit Theorem",
+    "section": "Seeing the CLT: waiting for the bus",
+    "text": "Seeing the CLT: waiting for the bus\n\n\n\nSet up\n\n\n\nDefine the probability space and related random variables and events, including assumptions.\n\n\n\nSame bus as in the LLN simulation: each morning’s wait is \\(X_i \\sim \\text{Exp}(1/10)\\) minutes\n\n\\(\\mu = 1/\\lambda = 10\\) minutes and \\(\\sigma = 1/\\lambda = 10\\) minutes\n\nRandom variable: the sample mean \\(\\overline{X}\\), your average wait over \\(n = 30\\) days\nAssumptions: waits on different days are independent and all \\(\\text{Exp}(1/10)\\)\nThe exponential pdf is very skewed, but the CLT says \\[\\overline{X} \\approx \\text{N}\\Bigg(10, \\dfrac{10^2}{30}\\Bigg), \\quad \\text{so } SD(\\overline{X}) = \\dfrac{10}{\\sqrt{30}} \\approx 1.83\\]\nGoal: check this with a simulation, and estimate \\(P(\\overline{X} &gt; 12)\\)"
+  },
+  {
+    "objectID": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#seeing-the-clt-simulate",
+    "href": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#seeing-the-clt-simulate",
+    "title": "Lesson 17: Central Limit Theorem",
+    "section": "Seeing the CLT: simulate",
+    "text": "Seeing the CLT: simulate\n\n\n\nSimulate\n\n\n\nRun the simulation to generate outcomes according to the assumptions.\n\n\n\n\n\n1reps &lt;- 10000\nn_days &lt;- 30\n\n\n2waits &lt;- expand_grid(sim = 1:reps, day = 1:n_days) |&gt;\n  mutate(wait = rexp(n(), rate = 1/10))\n\n\n3xbar_sims &lt;- waits |&gt;\n  group_by(sim) |&gt;\n  summarise(xbar = mean(wait))\n\n\n1\n\nSave the settings: 10,000 simulations, each with 30 days of waiting. (The seed was set once, in the LLN simulation.)\n\n2\n\nOne row for every day in every simulation (300,000 rows). rexp() draws one wait for each row, like in Lesson 13.\n\n3\n\nFor each simulation, mean() averages its 30 waits. This is one simulated value of \\(\\overline{X}\\).\n\n\n\n\n\n\n\n\n1head(xbar_sims)\n\n\n1\n\nThe first 6 simulated averages. Each one is the average of 30 waits.\n\n\n\n\n# A tibble: 6 × 2\n    sim  xbar\n  &lt;int&gt; &lt;dbl&gt;\n1     1 11.0 \n2     2 11.6 \n3     3 11.8 \n4     4 11.6 \n5     5 11.4 \n6     6  7.74"
+  },
+  {
+    "objectID": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#seeing-the-clt-summarize",
+    "href": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#seeing-the-clt-summarize",
+    "title": "Lesson 17: Central Limit Theorem",
+    "section": "Seeing the CLT: summarize",
+    "text": "Seeing the CLT: summarize\n\n\n\nSummarize\n\n\n\n\n\nProbability based on our simulations:\n\nxbar_sims |&gt;\n  summarise(\n    average      = mean(xbar),\n    std_dev      = sd(xbar),\n    prob_over_12 = mean(xbar &gt; 12)\n  )\n\n# A tibble: 1 × 3\n  average std_dev prob_over_12\n    &lt;dbl&gt;   &lt;dbl&gt;        &lt;dbl&gt;\n1    10.0    1.83        0.136\n\n\nExact probability:\n\n4sigma_xbar &lt;- 10 / sqrt(n_days)\n1 - pnorm(12, mean = 10, sd = sigma_xbar)\n\n\n4\n\nThe CLT answer: save \\(SD(\\overline{X}) = 10/\\sqrt{30}\\), then use pnorm() for the Normal probability. (The exact answer is about 0.138, because the sum of 30 waits is \\(\\text{Gamma}(30, 1/10)\\) from Lesson 13.)\n\n\n\n\n[1] 0.1366608\n\n\n\n\n\nPlot code\n5ggplot(xbar_sims, aes(x = xbar)) +\n  geom_histogram(aes(y = after_stat(density)),\n                 binwidth = 0.5,\n                 color = \"black\", fill = \"lightblue\") +\n6  geom_function(fun = function(x) dnorm(x, mean = 10, sd = sigma_xbar),\n                color = \"red\", linewidth = 1.5) +\n7  labs(title = \"Simulated average wait over 30 days (bars)\\nand the CLT Normal pdf (red)\",\n       x = \"Average wait (minutes)\",\n       y = \"Density\") +\n  theme_minimal(base_size = 20)\n\n\n\n5\n\nA histogram of the 10,000 simulated averages, scaled so the total area is 1, like a pdf (Lesson 8).\n\n6\n\nThe Normal pdf the CLT predicts, from dnorm(), drawn in red.\n\n7\n\nAdd a title and axis labels, with a clean theme and larger text."
+  },
+  {
+    "objectID": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#seeing-the-clt-sensitivity-analysis",
+    "href": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#seeing-the-clt-sensitivity-analysis",
+    "title": "Lesson 17: Central Limit Theorem",
+    "section": "Seeing the CLT: sensitivity analysis",
+    "text": "Seeing the CLT: sensitivity analysis\n\n\n\nSensitivity analysis\n\n\n\nInvestigate how results change when assumptions or parameters of the model are altered.\n\n\n\n\n\nWhat if we only average over 2 days? Only n_days changes (highlighted)\n\n\n1reps &lt;- 10000\n2n_days &lt;- 2\n\n3waits &lt;- expand_grid(sim = 1:reps, day = 1:n_days) |&gt;\n  mutate(wait = rexp(n(), rate = 1/10))\n\nxbar_sims &lt;- waits |&gt;\n  group_by(sim) |&gt;\n  summarise(xbar = mean(wait))\n\n4sigma_xbar &lt;- 10 / sqrt(n_days)\n\n\n1\n\nStill 10,000 simulations.\n\n2\n\nThe only change: each simulation averages 2 waits instead of 30.\n\n3\n\nExactly the same code as before. Because we wrote n_days instead of typing 30, each simulation now gets two rows automatically.\n\n4\n\nThe CLT’s SD for \\(\\overline{X}\\) is now \\(10/\\sqrt{2} \\approx 7.07\\).\n\n\n\n\n\n\n\nPlot code\n5ggplot(xbar_sims, aes(x = xbar)) +\n  geom_histogram(aes(y = after_stat(density)),\n                 binwidth = 1, boundary = 0,\n                 color = \"black\", fill = \"lightblue\") +\n  geom_function(fun = function(x) dnorm(x, mean = 10, sd = sigma_xbar),\n6                xlim = c(-10, 40),\n                color = \"red\", linewidth = 1.5) +\n  coord_cartesian(xlim = c(-10, 40)) +\n7  labs(title = \"Average wait over 2 days (bars)\\nand the CLT Normal pdf (red)\",\n       x = \"Average wait (minutes)\",\n       y = \"Density\") +\n  theme_minimal(base_size = 20)\n\n\n\n5\n\nSame plot code as before, with wider bars (binwidth = 1) and boundary = 0 so bars start at 0.\n\n6\n\nDraw the curve and the x-axis from −10 to 40, so we can see the Normal curve spill below 0, where no wait can be.\n\n7\n\nA new title for 2 days."
+  },
+  {
+    "objectID": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#section",
+    "href": "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.html#section",
+    "title": "Lesson 17: Central Limit Theorem",
+    "section": "",
+    "text": "Sensitivity analysis\n\n\n\nInvestigate how results change when assumptions or parameters of the model are altered.\n\n\n\n\n\nWith 2 days, the Normal curve is a poor fit\n\nSimulated \\(P(\\overline{X} &gt; 12) \\approx\\) 0.31\nCLT answer: 0.39\n\n\n \n\nWith 30 days, they agree: 0.14 vs. 0.14\n\n \n\nSame code with n_days = 1, 2, 5, and 30 (right): as \\(n\\) grows, the histogram becomes bell-shaped, just like the CLT promises\nThe more skewed the \\(X_i\\), the larger \\(n\\) needs to be"
   }
 ]

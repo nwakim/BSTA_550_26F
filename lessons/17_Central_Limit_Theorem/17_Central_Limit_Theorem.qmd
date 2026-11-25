@@ -81,7 +81,7 @@ $$\overline{X}_n \xrightarrow{P} \mu$$
 :::::
 
 -   Back to the bus from Lesson 13: each morning's wait is $X_i \sim \text{Exp}(1/10)$, so $\mu = 10$ minutes
--   Follow 1,000 people for 500 mornings each, and track each person's average morning wait so far, $\overline{X}_n$
+-   Follow 1,000 people for 2,000 mornings each, and track each person's average morning wait so far, $\overline{X}_n$
 
 ::: columns
 ::: {.column width="65%"}
@@ -89,7 +89,7 @@ $$\overline{X}_n \xrightarrow{P} \mu$$
 ```{r}
 set.seed(1124) # <1>
 reps <- 1000 # <2>
-max_days <- 500 # <2>
+max_days <- 2000 # <2>
 
 waits <- expand_grid(sim = 1:reps, day = 1:max_days) |> # <3>
   mutate(wait = rexp(n(), rate = 1/10)) # <3>
@@ -100,8 +100,8 @@ running_sims <- waits |> # <4>
 ```
 
 1. Set the seed so we all get the same random numbers.
-2. 1,000 simulated people, each waiting for the bus for 500 days.
-3. One row for every day for every person (500,000 rows), each with its own wait from `rexp()`.
+2. 1,000 simulated people, each waiting for the bus for 2,000 days.
+3. One row for every day for every person (2,000,000 rows), each with its own wait from `rexp()`.
 4. Like the running average in Lesson 10: within each person (`group_by(sim)`), `cumsum(wait)` is the total wait so far, and dividing by `day` gives the average so far, $\overline{X}_n$ with $n$ = `day`.
 
 :::
@@ -130,30 +130,28 @@ head(running_sims) # <1>
 
 ```{r}
 running_sims |> # <1>
-  filter(day %in% c(1, 10, 30, 100, 500)) |> # <1>
+  filter(day %in% c(1, 10, 100, 500, 2000)) |> # <1>
   group_by(day) |> # <2>
   summarise( # <2>
-    prob_far = mean(abs(running_avg - 10) > 1) # <3>
+    prob_eps_1   = mean(abs(running_avg - 10) > 1), # <3>
+    prob_eps_0.5 = mean(abs(running_avg - 10) > 0.5) # <4>
   )
 ```
 
-1. Keep only days 1, 10, 30, 100 and 500. `%in%` checks whether `day` is one of the values in the list.
+1. Keep only days 1, 10, 100, 500 and 2,000. `%in%` checks whether `day` is one of the values in the list.
 2. One row of summaries for each of those days.
 3. `abs()` is the absolute value. This is the proportion of people whose average so far is more than $\varepsilon = 1$ minute away from $\mu = 10$: it estimates $P(|\overline{X}_n - 10| > 1)$.
-
-<!-- @claude: is an epsilon of 1 small enough?? -->
+4. The same with a smaller window, $\varepsilon = 0.5$. It also shrinks to 0, just more slowly: halving $\varepsilon$ takes about 4 times as many days, because the SD of $\overline{X}_n$ is $\sigma/\sqrt{n}$.
 
 :::
 
 ::: {.column width="52%"}
 
-<!-- @claude: can you put the person legend inside the plot on the top right corner? -->
-
 ```{r}
 #| code-fold: true
 #| code-summary: "Plot code"
 #| fig-width: 9
-#| fig-height: 6
+#| fig-height: 5.5
 
 running_sims |> # <4>
   filter(sim <= 5) |> # <4>
@@ -166,7 +164,10 @@ running_sims |> # <4>
   labs(title = "Average wait so far for 5 people", # <8>
        x = "Number of days", y = "Average wait so far", # <8>
        color = "Person") + # <8>
-  theme_minimal(base_size = 20) # <8>
+  theme_minimal(base_size = 20) + # <8>
+  theme(legend.position = "inside", # <9>
+        legend.position.inside = c(0.98, 0.98), # <9>
+        legend.justification = c(1, 1)) # <9>
 ```
 
 4. Plot only the first 5 simulated people.
@@ -174,11 +175,12 @@ running_sims |> # <4>
 6. Shade the window from 9 to 11 minutes ($\mu \pm \varepsilon$).
 7. Draw each person's running average, and a dashed line at $\mu = 10$.
 8. Zoom the y-axis, then add a title, axis labels and a larger-text theme.
+9. Move the legend inside the plot. `c(0.98, 0.98)` is near the top right corner (0 is the left or bottom edge, 1 is the right or top edge), and `legend.justification` lines up the legend's own top right corner there.
 
 :::
 :::
 
-$P(|\overline{X}_n - 10| > 1)$ shrinks toward 0, so $\overline{X}_n \xrightarrow{P} 10$
+For both $\varepsilon$, $P(|\overline{X}_n - 10| > \varepsilon)$ shrinks toward 0, so $\overline{X}_n \xrightarrow{P} 10$. A smaller $\varepsilon$ just needs a larger $n$.
 
 # Learning Objectives
 
@@ -220,7 +222,29 @@ $$\overline{X}=\frac{\sum_{i=1}^n X_i}{n}  \rightarrow \text{N}\Bigg(\mu, \dfrac
 
 ## Example of Corollary in use
 
-<!-- @claude: can you write out the exact answer for this using my notes and the code I handwrote in class?  -->
+::: columns
+::: {.column width="40%"}
+::: example
+::: ex-title
+Example 1
+:::
+
+::: ex-cont
+According to a large US study, the mean resting heart rate of adult
+women is about 74 beats per minute (bpm), with standard deviation 13
+bpm (NHANES 2003-2004).
+
+1.  Find the probability that the average resting heart rate for a
+    random sample of 36 adult women is more than 3 bpm away from the
+    mean.
+
+2.  Repeat the previous question for a single adult woman.
+:::
+:::
+:::
+:::
+
+## Example of Corollary in use: solution
 
 ::: columns
 ::: {.column width="40%"}
@@ -241,6 +265,29 @@ bpm (NHANES 2003-2004).
 2.  Repeat the previous question for a single adult woman.
 :::
 :::
+:::
+
+::: {.column width="60%"}
+**Part 1:** $n = 36 \geq 30$, so we can use the CLT with $\mu = 74$ and $\sigma = 13$
+
+-   By the CLT, $\overline{X} \approx \text{N}\Big(74, \dfrac{13^2}{36}\Big)$, so $SD(\overline{X}) = \dfrac{13}{\sqrt{36}} \approx 2.17$
+-   "More than 3 bpm away from the mean" means $\overline{X} < 71$ or $\overline{X} > 77$
+
+$$\begin{aligned}
+P(\overline{X} < 71 \text{ or } \overline{X} > 77) &= P(\overline{X} < 71) + P(\overline{X} > 77) \\
+&= 2 \cdot P(\overline{X} < 71) \quad \text{(the Normal is symmetric)}
+\end{aligned}$$
+
+```{r}
+2 * pnorm(71, mean = 74, sd = 13 / sqrt(36)) # <1>
+```
+
+1. `pnorm()` gives $P(\overline{X} < 71)$ for a Normal with mean 74 and SD $13/\sqrt{36}$. Doubling it adds the matching upper tail, $P(\overline{X} > 77)$.
+
+**Part 2:** $n = 1 < 30$, so we **cannot** use the CLT
+
+-   We don't know the distribution of a single woman's heart rate, so we can't find this probability
+-   Rule of thumb: $n \geq 30$ to use the CLT
 :::
 :::
 
@@ -352,7 +399,7 @@ xbar_sims |> # <1>
   )
 ```
 
-**Exact probability:**
+**CLT (Normal) approximation:**
 ```{r}
 sigma_xbar <- 10 / sqrt(n_days) # <4>
 1 - pnorm(12, mean = 10, sd = sigma_xbar) # <4>
@@ -490,19 +537,18 @@ Investigate how results change when assumptions or parameters of the model are a
 
  
 
--   Same code with `n_days` = 1, 2, 5, and 30 (right): as $n$ grows, the histogram becomes bell-shaped, just like the CLT promises
+-   Same code with `n_days` = 2, 5, 30, and 60 (right): as $n$ grows, the histogram becomes bell-shaped, just like the CLT promises
 -   The more skewed the $X_i$, the larger $n$ needs to be
 
 :::
 
 ::: {.column width="58%"}
 
-<!-- @claude: can you make sure these plots span the whole column? And can you change the days to what i put in the code below -->
-
 ```{r}
 #| echo: false
 #| fig-width: 10
 #| fig-height: 6
+#| out-width: "100%"
 
 n_values <- c(2, 5, 30, 60)
 

@@ -650,7 +650,49 @@ ggplot(xbar_by_n, aes(x = xbar)) +
 :::
 :::
 
-<!-- @claude: can you give an example when I might use one approx over the other? -->
+## When would I use each approximation?
+
+**Common outcome, so use the Normal:** 20% of patients get a mild side effect. Out of 500 patients, what is $P(X \leq 90)$?
+
+::: columns
+::: {.column width="60%"}
+```{r}
+c(exact   = pbinom(90, size = 500, prob = 0.2), # <1>
+  normal  = pnorm(90.5, mean = 100, sd = sqrt(80)), # <2>
+  poisson = ppois(90, lambda = 100)) # <3>
+```
+
+1. The exact Binomial probability.
+2. The Normal approximation with $\mu = np = 100$, $\sigma^2 = np(1-p) = 80$ and the continuity correction.
+3. The Poisson approximation with $\lambda = np = 100$.
+:::
+
+::: {.column width="40%"}
+-   Normal: $np = 100$ and $n(1-p) = 400$ are both $\geq 10$ ✓
+-   Poisson: $np(1-p) = 80 > 10$ ✗
+:::
+:::
+
+**Rare outcome, so use the Poisson:** 1 in 1,000 people has a rare reaction to a vaccine. Out of 2,000 vaccinated people, what is $P(X \geq 5)$?
+
+::: columns
+::: {.column width="60%"}
+```{r}
+c(exact   = 1 - pbinom(4, size = 2000, prob = 0.001), # <1>
+  normal  = 1 - pnorm(4.5, mean = 2, sd = sqrt(1.998)), # <2>
+  poisson = 1 - ppois(4, lambda = 2)) # <3>
+```
+
+1. $P(X \geq 5) = 1 - P(X \leq 4)$, using the exact Binomial.
+2. The Normal approximation with $\mu = 2$, $\sigma^2 = 1.998$ and the continuity correction.
+3. The Poisson approximation with $\lambda = np = 2$.
+:::
+
+::: {.column width="40%"}
+-   Normal: $np = 2 < 10$ ✗
+-   Poisson: $\frac{1}{10} \leq np(1-p) = 1.998 \leq 10$ ✓
+:::
+:::
 
 
 ## Larger example 
@@ -675,14 +717,9 @@ women aged 40-49.
 3.  Use the CLT to find the **approximate** probability that more than
     15 of the 20,000 women will develop this type of breast cancer.
 
-4.  Use the CLT to approximate the following probabilities, where $X$ is
-    the number of women that will develop this type of breast cancer.
-
-    a.  $\mathbb{P}(15 \leq X \leq 22)$
-
-    b.  $\mathbb{P}(X > 20)$
-
-    c.  $\mathbb{P}(X < 20)$
+4.  Let $\hat{p} = X/n$ be the proportion of $n$ women who develop this
+    type of breast cancer. Find $P(|\hat{p} - 0.001| > 0.0005)$ for
+    $n$ = 2,000, 20,000 and 200,000. Does $\hat{p} \xrightarrow{P} 0.001$?
 
 5.  Find the **approximate** probability that more than 15 of the 20,000
     women will develop this type of breast cancer—not using the CLT!
@@ -692,29 +729,7 @@ women aged 40-49.
 :::
 :::
 
-## Larger example (2/7) 
-
-<!-- @claude: for these slide titles, can you hide them?  -->
-
-::: example
-::: ex-title
-Example 3
-:::
-
-::: ex-cont
-Suppose that the probability of developing a specific type of breast
-cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
-are independent. Suppose you have data from a random sample of 20,000
-women aged 40-49.
-
-1.  How many of the 20,000 women would you expect to develop this type
-    of breast cancer, and what is the standard deviation?
-:::
-:::
-
-<!-- @claude: no need to have the blank slides -->
-
-## Larger example (2/7): solution 
+## [Larger example: part 1]{style="display: none;"}
 
 ::: example
 ::: ex-title
@@ -762,25 +777,7 @@ c(mu = mu, sigma = sigma) # <3>
 :::
 
 
-## Larger example (3/7) 
-
-::: example
-::: ex-title
-Example 3
-:::
-
-::: ex-cont
-Suppose that the probability of developing a specific type of breast
-cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
-are independent. Suppose you have data from a random sample of 20,000
-women aged 40-49.
-
-2.  Find the **exact** probability that more than 15 of the 20,000 women
-    will develop this type of breast cancer.
-:::
-:::
-
-## Larger example (3/7): solution 
+## [Larger example: part 2]{style="display: none;"}
 
 ::: example
 ::: ex-title
@@ -821,25 +818,7 @@ pbinom(15, size = n_women, prob = p, # <1>
 :::
 
 
-## Larger example (4/7) 
-
-::: example
-::: ex-title
-Example 3
-:::
-
-::: ex-cont
-Suppose that the probability of developing a specific type of breast
-cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
-are independent. Suppose you have data from a random sample of 20,000
-women aged 40-49.
-
-3.  Use the CLT to find the **approximate** probability that more than
-    15 of the 20,000 women will develop this type of breast cancer.
-:::
-:::
-
-## Larger example (4/7): solution 
+## [Larger example: part 3]{style="display: none;"}
 
 ::: example
 ::: ex-title
@@ -882,7 +861,7 @@ pnorm(15.5, mean = mu, sd = sigma, # <1>
 :::
 
 
-## Larger example (5/7) 
+## [Larger example: part 4]{style="display: none;"}
 
 ::: example
 ::: ex-title
@@ -895,38 +874,39 @@ cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
 are independent. Suppose you have data from a random sample of 20,000
 women aged 40-49.
 
-4.  Use the CLT to approximate the following probabilities, where $X$ is
-    the number of women that will develop this type of breast cancer.
-
-    a.  $\mathbb{P}(15 \leq X \leq 22)$
-
-    b.  $\mathbb{P}(X > 20)$
-
-    c.  $\mathbb{P}(X < 20)$
+4.  Let $\hat{p} = X/n$ be the proportion of $n$ women who develop this
+    type of breast cancer. Find $P(|\hat{p} - 0.001| > 0.0005)$ for
+    $n$ = 2,000, 20,000 and 200,000. Does $\hat{p} \xrightarrow{P} 0.001$?
 :::
 :::
 
-<!-- @claude: maybe make this a check for the convergence of probability? -->
-
-## Larger example (6/7) 
-
-::: example
-::: ex-title
-Example 3
+::: columns
+::: {.column width="45%"}
+-   $\hat{p}$ is a sample mean: $X_i = 1$ if woman $i$ develops cancer (Bernoulli), so $\hat{p} = \overline{X}_n$ with $\mu = p = 0.001$
+-   $|\hat{p} - 0.001| > 0.0005$ means $X < 0.0005n$ or $X > 0.0015n$
+-   The probability shrinks toward 0 as $n$ grows, so **yes**: $\hat{p} \xrightarrow{P} 0.001$, just like the LLN says
 :::
 
-::: ex-cont
-Suppose that the probability of developing a specific type of breast
-cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
-are independent. Suppose you have data from a random sample of 20,000
-women aged 40-49.
+::: {.column width="55%"}
+```{r}
+n_sample <- c(2000, 20000, 200000) # <1>
 
-5.  Find the **approximate** probability that more than 15 of the 20,000
-    women will develop this type of breast cancer—not using the CLT!
+p_below <- pbinom(0.0005 * n_sample - 1, # <2>
+                  size = n_sample, prob = p) # <2>
+p_above <- pbinom(0.0015 * n_sample, # <3>
+                  size = n_sample, prob = p, # <3>
+                  lower.tail = FALSE) # <3>
+round(p_below + p_above, 4) # <4>
+```
+
+1. The three sample sizes. R works on all three at once.
+2. $P(X < 0.0005n)$: for $n$ = 2,000, that is $X < 1$, the same as $X \leq 0$, so we subtract 1 from the cutoff. `p` is still 0.001 from part 1.
+3. $P(X > 0.0015n)$, the upper tail.
+4. Add the two tails, and round to 4 decimal places.
 :::
 :::
 
-## Larger example (6/7): solution 
+## [Larger example: part 5]{style="display: none;"}
 
 ::: example
 ::: ex-title
@@ -967,25 +947,7 @@ ppois(15, lambda = mu, # <1>
 :::
 
 
-## Larger example (7/7) 
-
-::: example
-::: ex-title
-Example 3
-:::
-
-::: ex-cont
-Suppose that the probability of developing a specific type of breast
-cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
-are independent. Suppose you have data from a random sample of 20,000
-women aged 40-49.
-
-6.  Use the CLT to approximate the approximate probability in the
-    previous question!
-:::
-:::
-
-## Larger example (7/7): solution 
+## [Larger example: part 6]{style="display: none;"}
 
 ::: example
 ::: ex-title

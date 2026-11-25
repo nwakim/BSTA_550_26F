@@ -126,26 +126,28 @@ head(running_sims) # <1>
 :::::
 
 ::: columns
-::: {.column width="48%"}
+::: {.column width="53%"}
 
 ```{r}
 running_sims |> # <1>
   filter(day %in% c(1, 10, 100, 500, 2000)) |> # <1>
-  group_by(day) |> # <2>
-  summarise( # <2>
-    prob_eps_1   = mean(abs(running_avg - 10) > 1), # <3>
-    prob_eps_0.5 = mean(abs(running_avg - 10) > 0.5) # <4>
+  mutate(dist = abs(running_avg - 10)) |> # <2>
+  group_by(day) |> # <3>
+  summarise( # <3>
+    prob_eps_1   = mean(dist > 1), # <4>
+    prob_eps_0.5 = mean(dist > 0.5) # <5>
   )
 ```
 
 1. Keep only days 1, 10, 100, 500 and 2,000. `%in%` checks whether `day` is one of the values in the list.
-2. One row of summaries for each of those days.
-3. `abs()` is the absolute value. This is the proportion of people whose average so far is more than $\varepsilon = 1$ minute away from $\mu = 10$: it estimates $P(|\overline{X}_n - 10| > 1)$.
-4. The same with a smaller window, $\varepsilon = 0.5$. It also shrinks to 0, just more slowly: halving $\varepsilon$ takes about 4 times as many days, because the SD of $\overline{X}_n$ is $\sigma/\sqrt{n}$.
+2. `abs()` is the absolute value, so `dist` is how far each person's average so far is from $\mu = 10$.
+3. One row of summaries for each of those days.
+4. The proportion of people whose average so far is more than $\varepsilon = 1$ minute away from $\mu = 10$: it estimates $P(|\overline{X}_n - 10| > 1)$.
+5. The same with a smaller window, $\varepsilon = 0.5$. It also shrinks to 0, just more slowly: halving $\varepsilon$ takes about 4 times as many days, because the SD of $\overline{X}_n$ is $\sigma/\sqrt{n}$.
 
 :::
 
-::: {.column width="52%"}
+::: {.column width="47%"}
 
 ```{r}
 #| code-fold: true
@@ -655,10 +657,10 @@ ggplot(xbar_by_n, aes(x = xbar)) +
 **Common outcome, so use the Normal:** 20% of patients get a mild side effect. Out of 500 patients, what is $P(X \leq 90)$?
 
 ::: columns
-::: {.column width="60%"}
+::: {.column width="65%"}
 ```{r}
-c(exact   = pbinom(90, size = 500, prob = 0.2), # <1>
-  normal  = pnorm(90.5, mean = 100, sd = sqrt(80)), # <2>
+c(exact = pbinom(90, size = 500, prob = 0.2), # <1>
+  normal = pnorm(90.5, mean = 100, sd = sqrt(80)), # <2>
   poisson = ppois(90, lambda = 100)) # <3>
 ```
 
@@ -667,7 +669,7 @@ c(exact   = pbinom(90, size = 500, prob = 0.2), # <1>
 3. The Poisson approximation with $\lambda = np = 100$.
 :::
 
-::: {.column width="40%"}
+::: {.column width="35%"}
 -   Normal: $np = 100$ and $n(1-p) = 400$ are both $\geq 10$ ✓
 -   Poisson: $np(1-p) = 80 > 10$ ✗
 :::
@@ -676,10 +678,10 @@ c(exact   = pbinom(90, size = 500, prob = 0.2), # <1>
 **Rare outcome, so use the Poisson:** 1 in 1,000 people has a rare reaction to a vaccine. Out of 2,000 vaccinated people, what is $P(X \geq 5)$?
 
 ::: columns
-::: {.column width="60%"}
+::: {.column width="65%"}
 ```{r}
-c(exact   = 1 - pbinom(4, size = 2000, prob = 0.001), # <1>
-  normal  = 1 - pnorm(4.5, mean = 2, sd = sqrt(1.998)), # <2>
+c(exact = 1 - pbinom(4, size = 2000, prob = 0.001), # <1>
+  normal = 1 - pnorm(4.5, mean = 2, sd = sqrt(1.998)), # <2>
   poisson = 1 - ppois(4, lambda = 2)) # <3>
 ```
 
@@ -688,7 +690,7 @@ c(exact   = 1 - pbinom(4, size = 2000, prob = 0.001), # <1>
 3. The Poisson approximation with $\lambda = np = 2$.
 :::
 
-::: {.column width="40%"}
+::: {.column width="35%"}
 -   Normal: $np = 2 < 10$ ✗
 -   Poisson: $\frac{1}{10} \leq np(1-p) = 1.998 \leq 10$ ✓
 :::

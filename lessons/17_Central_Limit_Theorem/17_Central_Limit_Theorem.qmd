@@ -703,10 +703,8 @@ Example 3
 :::
 
 ::: ex-cont
-Suppose that the probability of developing a specific type of breast
-cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
-are independent. Suppose you have data from a random sample of 20,000
-women aged 40-49.
+Suppose the probability of developing a specific type of breast
+cancer in women aged 40-49 is 0.001. You have data from a random sample of 20,000 women aged 40-49. (Assume each woman is independent.)
 
 1.  How many of the 20,000 women would you expect to develop this type
     of breast cancer, and what is the standard deviation?
@@ -837,7 +835,7 @@ women aged 40-49.
 :::
 
 ::: columns
-::: {.column width="50%"}
+::: {.column width="60%"}
 -   Check the rule of thumb: $np = 20 \geq 10$ and $n(1-p) = 19{,}980 \geq 10$, so we can use the CLT
 -   $X \approx \text{N}(\mu = np = 20, \; \sigma^2 = np(1-p) = 19.98)$
 -   **Continuity correction:** $X$ is discrete but the Normal is continuous, so we split the difference between whole numbers
@@ -847,14 +845,17 @@ women aged 40-49.
 $$P(X > 15) = P(X \geq 16) \approx P(\text{Normal} \geq 15.5)$$
 :::
 
-::: {.column width="50%"}
+::: {.column width="40%"}
 ```{r}
-pnorm(15.5, mean = mu, sd = sigma, # <1>
+pnorm(15.5, mean = mu, 
+      sd = sigma, # <1>
       lower.tail = FALSE) # <2>
 ```
 
 1. The Normal with the Binomial's mean (20) and SD (4.4699), at the continuity-corrected cutoff 15.5.
 2. Upper tail: $P(\text{Normal} \geq 15.5)$. Without the correction, `pnorm(15, ...)` gives about 0.868, much further from the exact answer.
+
+ 
 
 -   The CLT gives about **0.8430**, very close to the exact 0.8436
 :::

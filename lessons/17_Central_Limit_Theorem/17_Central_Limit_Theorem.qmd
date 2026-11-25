@@ -230,34 +230,11 @@ $$\overline{X}=\frac{\sum_{i=1}^n X_i}{n}  \rightarrow \text{N}\Bigg(\mu, \dfrac
 -   **LLN:** $\overline{X}_n \xrightarrow{P} \mu$ tells us *where* $\overline{X}_n$ ends up
 -   **CLT:** $\overline{X}_n \approx \text{N}(\mu, \sigma^2/n)$ tells us *how* $\overline{X}_n$ is spread around $\mu$ along the way, with SD $\sigma/\sqrt{n}$
 
-## Example of Corollary in use
-
-::: columns
-::: {.column width="40%"}
-::: example
-::: ex-title
-Example 1
-:::
-
-::: ex-cont
-According to a large US study, the mean resting heart rate of adult
-women is about 74 beats per minute (bpm), with standard deviation 13
-bpm (NHANES 2003-2004).
-
-1.  Find the probability that the average resting heart rate for a
-    random sample of 36 adult women is more than 3 bpm away from the
-    mean.
-
-2.  Repeat the previous question for a single adult woman.
-:::
-:::
-:::
-:::
 
 ## Example of Corollary in use: solution
 
 ::: columns
-::: {.column width="40%"}
+::: {.column width="34%"}
 ::: example
 ::: ex-title
 Example 1
@@ -277,7 +254,10 @@ bpm (NHANES 2003-2004).
 :::
 :::
 
-::: {.column width="60%"}
+::: {.column width="1%"}
+:::
+
+::: {.column width="65%"}
 **Part 1:** $n = 36 \geq 30$, so we can use the CLT with $\mu = 74$ and $\sigma = 13$
 
 -   By the CLT, $\overline{X} \approx \text{N}\Big(74, \dfrac{13^2}{36}\Big)$, so $SD(\overline{X}) = \dfrac{13}{\sqrt{36}} \approx 2.17$
@@ -654,7 +634,7 @@ ggplot(xbar_by_n, aes(x = xbar)) +
 
 ## When would I use each approximation?
 
-**Common outcome, so use the Normal:** 20% of patients get a mild side effect. Out of 500 patients, what is $P(X \leq 90)$?
+[**Common outcome, so use the Normal:**]{style="color:#006a4e;"} 20% of patients get a mild side effect. Out of 500 patients, what is $P(X \leq 90)$?
 
 ::: columns
 ::: {.column width="65%"}
@@ -675,7 +655,9 @@ c(exact = pbinom(90, size = 500, prob = 0.2), # <1>
 :::
 :::
 
-**Rare outcome, so use the Poisson:** 1 in 1,000 people has a rare reaction to a vaccine. Out of 2,000 vaccinated people, what is $P(X \geq 5)$?
+ 
+
+[**Rare outcome, so use the Poisson:**]{style="color:#6B8CC4"} 1 in 1,000 people has a rare reaction to a vaccine. Out of 2,000 vaccinated people, what is $P(X \geq 5)$?
 
 ::: columns
 ::: {.column width="65%"}

@@ -627,6 +627,8 @@ ggplot(xbar_by_n, aes(x = xbar)) +
 -   $X \sim \text{Binomial}(n, p)$ has mean $\mu = np$ and SD $\sigma = \sqrt{np(1-p)}$
     -   Both depend on $p$, so the **mean and SD are linked**: change the mean and the spread changes too
 
+ 
+
 ::: columns
 ::: {.column width="49.5%"}
 **[Normal approximation]{style="color:#006a4e;"}:** $X \approx \text{N}\big(np, \, np(1-p)\big)$
@@ -648,8 +650,10 @@ ggplot(xbar_by_n, aes(x = xbar)) +
 :::
 :::
 
+<!-- @claude: can you give an example when I might use one approx over the other? -->
 
-## Larger example (1/7) {.smaller}
+
+## Larger example 
 
 ::: example
 ::: ex-title
@@ -688,7 +692,9 @@ women aged 40-49.
 :::
 :::
 
-## Larger example (2/7) {.smaller}
+## Larger example (2/7) 
+
+<!-- @claude: for these slide titles, can you hide them?  -->
 
 ::: example
 ::: ex-title
@@ -706,7 +712,9 @@ women aged 40-49.
 :::
 :::
 
-## Larger example (2/7): solution {.smaller}
+<!-- @claude: no need to have the blank slides -->
+
+## Larger example (2/7): solution 
 
 ::: example
 ::: ex-title
@@ -754,7 +762,7 @@ c(mu = mu, sigma = sigma) # <3>
 :::
 
 
-## Larger example (3/7) {.smaller}
+## Larger example (3/7) 
 
 ::: example
 ::: ex-title
@@ -772,7 +780,7 @@ women aged 40-49.
 :::
 :::
 
-## Larger example (3/7): solution {.smaller}
+## Larger example (3/7): solution 
 
 ::: example
 ::: ex-title
@@ -813,7 +821,7 @@ pbinom(15, size = n_women, prob = p, # <1>
 :::
 
 
-## Larger example (4/7) {.smaller}
+## Larger example (4/7) 
 
 ::: example
 ::: ex-title
@@ -831,7 +839,7 @@ women aged 40-49.
 :::
 :::
 
-## Larger example (4/7): solution {.smaller}
+## Larger example (4/7): solution 
 
 ::: example
 ::: ex-title
@@ -874,7 +882,7 @@ pnorm(15.5, mean = mu, sd = sigma, # <1>
 :::
 
 
-## Larger example (5/7) {.smaller}
+## Larger example (5/7) 
 
 ::: example
 ::: ex-title
@@ -898,7 +906,9 @@ women aged 40-49.
 :::
 :::
 
-## Larger example (6/7) {.smaller}
+<!-- @claude: maybe make this a check for the convergence of probability? -->
+
+## Larger example (6/7) 
 
 ::: example
 ::: ex-title
@@ -916,7 +926,7 @@ women aged 40-49.
 :::
 :::
 
-## Larger example (6/7): solution {.smaller}
+## Larger example (6/7): solution 
 
 ::: example
 ::: ex-title
@@ -957,7 +967,7 @@ ppois(15, lambda = mu, # <1>
 :::
 
 
-## Larger example (7/7) {.smaller}
+## Larger example (7/7) 
 
 ::: example
 ::: ex-title
@@ -975,7 +985,7 @@ women aged 40-49.
 :::
 :::
 
-## Larger example (7/7): solution {.smaller}
+## Larger example (7/7): solution 
 
 ::: example
 ::: ex-title

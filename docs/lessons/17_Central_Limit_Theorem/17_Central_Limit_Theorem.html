@@ -909,16 +909,42 @@ P(\overline{X} &lt; 71 \text{ or } \overline{X} &gt; 77) &amp;= P(\overline{X} &
 <ul>
 <li><span class="math inline">\(X = \displaystyle\sum_{i=1}^n X_i\)</span>, where <span class="math inline">\(X_i\)</span> are iid <span class="math inline">\(\text{Poisson}(\lambda/n)\)</span></li>
 <li>Recall from <a href="../../lessons/15_Discrete_RVs/15_Discrete_RVs.html">Lesson 15</a> that if <span class="math inline">\(X_i \sim \text{Poisson}(\lambda_i)\)</span> and <span class="math inline">\(X_i\)</span> independent, then <span class="math inline">\(\sum_{i=1}^n X_i \sim \text{Poisson}(\sum_{i=1}^n \lambda_i)\)</span></li>
-<li>Rule of thumb: <span class="math inline">\(\lambda \geq10\)</span> to use Normal approximation</li>
+<li>Rule of thumb: <span class="math inline">\(\lambda \geq10\)</span> to use <span style="color:#006a4e;"><strong>Normal approximation</strong></span></li>
 </ul></li>
 </ol>
-<!-- @claude: why is this normal approx not colored? -->
 </div></div>
-<!-- @claude: can you add another slide here about the normal vs poisson approx of the binomial? I have them in my handwritten notes -->
 </section>
-<section id="larger-example-17" class="slide level2 smaller">
-<h2>Larger example (1/7)</h2>
-<!-- @claude: for the slides with handwritten R code, can you write out the solutions like we did in previous slides? -->
+<section id="normal-vs.-poisson-approximation-of-the-binomial" class="slide level2">
+<h2>Normal vs.&nbsp;Poisson approximation of the Binomial</h2>
+<ul>
+<li><span class="math inline">\(X \sim \text{Binomial}(n, p)\)</span> has mean <span class="math inline">\(\mu = np\)</span> and SD <span class="math inline">\(\sigma = \sqrt{np(1-p)}\)</span>
+<ul>
+<li>Both depend on <span class="math inline">\(p\)</span>, so the <strong>mean and SD are linked</strong>: change the mean and the spread changes too</li>
+</ul></li>
+</ul>
+<p>&nbsp;</p>
+<div class="columns">
+<div class="column" style="width:49.5%;">
+<p><strong><span style="color:#006a4e;">Normal approximation</span>:</strong> <span class="math inline">\(X \approx \text{N}\big(np, \, np(1-p)\big)\)</span></p>
+<ul>
+<li>Rule of thumb: <span class="math inline">\(np \geq 10\)</span> and <span class="math inline">\(n(1-p) \geq 10\)</span></li>
+<li>The Normal has <strong>separate</strong> parameters: knowing <span class="math inline">\(\mu\)</span> tells us nothing about <span class="math inline">\(\sigma\)</span></li>
+<li>Same assumption as <strong>linear models</strong> (linear regression): the variance stays the same, whatever the mean</li>
+</ul>
+</div><div class="column" style="width:1%;">
+
+</div><div class="column" style="width:49.5%;">
+<p><strong><span style="color:#6B8CC4">Poisson approximation</span>:</strong> <span class="math inline">\(X \approx \text{Poisson}(\lambda = np)\)</span></p>
+<ul>
+<li>Rule of thumb (Lesson 15): <span class="math inline">\(\frac{1}{10} \leq np(1-p) \leq 10\)</span></li>
+<li>The Poisson’s mean and variance are <strong>both</strong> <span class="math inline">\(\lambda\)</span>, so they stay linked, like the Binomial’s</li>
+<li>Same idea as <strong>logistic</strong> and <strong>Poisson regression</strong>: the variance depends on the mean</li>
+</ul>
+</div></div>
+<!-- @claude: can you give an example when I might use one approx over the other? -->
+</section>
+<section id="larger-example" class="slide level2">
+<h2>Larger example</h2>
 <div class="example">
 <div class="ex-title">
 <p>Example 3</p>
@@ -941,8 +967,9 @@ P(\overline{X} &lt; 71 \text{ or } \overline{X} &gt; 77) &amp;= P(\overline{X} &
 </div>
 </div>
 </section>
-<section id="larger-example-27" class="slide level2 smaller">
+<section id="larger-example-27" class="slide level2">
 <h2>Larger example (2/7)</h2>
+<!-- @claude: for these slide titles, can you hide them?  -->
 <div class="example">
 <div class="ex-title">
 <p>Example 3</p>
@@ -954,8 +981,66 @@ P(\overline{X} &lt; 71 \text{ or } \overline{X} &gt; 77) &amp;= P(\overline{X} &
 </ol>
 </div>
 </div>
+<!-- @claude: no need to have the blank slides -->
 </section>
-<section id="larger-example-37" class="slide level2 smaller">
+<section id="larger-example-27-solution" class="slide level2">
+<h2>Larger example (2/7): solution</h2>
+<div class="example">
+<div class="ex-title">
+<p>Example 3</p>
+</div>
+<div class="ex-cont">
+<p>Suppose that the probability of developing a specific type of breast cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer are independent. Suppose you have data from a random sample of 20,000 women aged 40-49.</p>
+<ol type="1">
+<li>How many of the 20,000 women would you expect to develop this type of breast cancer, and what is the standard deviation?</li>
+</ol>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Let <span class="math inline">\(X\)</span> = number of the 20,000 women who develop this type of breast cancer</li>
+<li><span class="math inline">\(X \sim \text{Binomial}(n = 20000, p = 0.001)\)</span></li>
+</ul>
+<p><span class="math display">\[\begin{aligned}
+\mu &amp;= np = 20000 \cdot 0.001 = 20 \\
+\sigma &amp;= \sqrt{np(1-p)} = \sqrt{20000 \cdot 0.001 \cdot 0.999} \approx 4.4699
+\end{aligned}\]</span></p>
+<ul>
+<li>We expect <strong>20 women</strong>, with a standard deviation of about <strong>4.47 women</strong></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-19"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="1">1</button><span id="annotated-cell-19-1" class="code-annotation-target"><a href="#annotated-cell-19-1" aria-label="1"></a>n_women <span class="ot">&lt;-</span> <span class="dv">20000</span></span>
+<span id="annotated-cell-19-2"><a href="#annotated-cell-19-2" aria-label="2"></a>p <span class="ot">&lt;-</span> <span class="fl">0.001</span></span>
+<span id="annotated-cell-19-3"><a href="#annotated-cell-19-3" aria-label="3"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="2">2</button><span id="annotated-cell-19-4" class="code-annotation-target"><a href="#annotated-cell-19-4" aria-label="4"></a>mu <span class="ot">&lt;-</span> n_women <span class="sc">*</span> p</span>
+<span id="annotated-cell-19-5"><a href="#annotated-cell-19-5" aria-label="5"></a>sigma <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(n_women <span class="sc">*</span> p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p))</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="3">3</button><span id="annotated-cell-19-6" class="code-annotation-target"><a href="#annotated-cell-19-6" aria-label="6"></a><span class="fu">c</span>(<span class="at">mu =</span> mu, <span class="at">sigma =</span> sigma)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-19" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-19" data-code-lines="1,2" data-code-annotation="1">Save the Binomial parameters, so we can reuse them in the next parts.</span>
+</dd>
+<dt data-target-cell="annotated-cell-19" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-19" data-code-lines="4,5" data-code-annotation="2">The mean <span class="math inline">\(np\)</span> and SD <span class="math inline">\(\sqrt{np(1-p)}\)</span> of a Binomial.</span>
+</dd>
+<dt data-target-cell="annotated-cell-19" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-19" data-code-lines="6" data-code-annotation="3"><code>c()</code> puts the two values together, with names, so they print side by side.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       mu     sigma 
+20.000000  4.469899 </code></pre>
+</div>
+</div>
+</div></div>
+</section>
+<section id="larger-example-37" class="slide level2">
 <h2>Larger example (3/7)</h2>
 <div class="example">
 <div class="ex-title">
@@ -969,7 +1054,54 @@ P(\overline{X} &lt; 71 \text{ or } \overline{X} &gt; 77) &amp;= P(\overline{X} &
 </div>
 </div>
 </section>
-<section id="larger-example-47" class="slide level2 smaller">
+<section id="larger-example-37-solution" class="slide level2">
+<h2>Larger example (3/7): solution</h2>
+<div class="example">
+<div class="ex-title">
+<p>Example 3</p>
+</div>
+<div class="ex-cont">
+<p>Suppose that the probability of developing a specific type of breast cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer are independent. Suppose you have data from a random sample of 20,000 women aged 40-49.</p>
+<ol start="2" type="1">
+<li>Find the <strong>exact</strong> probability that more than 15 of the 20,000 women will develop this type of breast cancer.</li>
+</ol>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>“More than 15” means <span class="math inline">\(X &gt; 15\)</span>, which is the same as <span class="math inline">\(X \geq 16\)</span> for a count</li>
+</ul>
+<p><span class="math display">\[P(X &gt; 15) = \sum_{x=16}^{20000} \binom{20000}{x} 0.001^x \, 0.999^{20000-x}\]</span></p>
+<ul>
+<li>Too many terms to add by hand, so we use R</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-21"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="1">1</button><span id="annotated-cell-21-1" class="code-annotation-target"><a href="#annotated-cell-21-1" aria-label="1"></a><span class="fu">pbinom</span>(<span class="dv">15</span>, <span class="at">size =</span> n_women, <span class="at">prob =</span> p,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-21" data-target-annotation="2">2</button><span id="annotated-cell-21-2" class="code-annotation-target"><a href="#annotated-cell-21-2" aria-label="2"></a>       <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-21" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-21" data-code-lines="1" data-code-annotation="1"><code>pbinom()</code> is the Binomial CDF: by itself it gives <span class="math inline">\(P(X \leq 15)\)</span>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-21" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-21" data-code-lines="2" data-code-annotation="2"><code>lower.tail = FALSE</code> gives the other side instead, <span class="math inline">\(P(X &gt; 15)\)</span>.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.843616</code></pre>
+</div>
+</div>
+<ul>
+<li>The exact probability is about <strong>0.8436</strong></li>
+</ul>
+</div></div>
+</section>
+<section id="larger-example-47" class="slide level2">
 <h2>Larger example (4/7)</h2>
 <div class="example">
 <div class="ex-title">
@@ -983,7 +1115,57 @@ P(\overline{X} &lt; 71 \text{ or } \overline{X} &gt; 77) &amp;= P(\overline{X} &
 </div>
 </div>
 </section>
-<section id="larger-example-57" class="slide level2 smaller">
+<section id="larger-example-47-solution" class="slide level2">
+<h2>Larger example (4/7): solution</h2>
+<div class="example">
+<div class="ex-title">
+<p>Example 3</p>
+</div>
+<div class="ex-cont">
+<p>Suppose that the probability of developing a specific type of breast cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer are independent. Suppose you have data from a random sample of 20,000 women aged 40-49.</p>
+<ol start="3" type="1">
+<li>Use the CLT to find the <strong>approximate</strong> probability that more than 15 of the 20,000 women will develop this type of breast cancer.</li>
+</ol>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Check the rule of thumb: <span class="math inline">\(np = 20 \geq 10\)</span> and <span class="math inline">\(n(1-p) = 19{,}980 \geq 10\)</span>, so we can use the CLT</li>
+<li><span class="math inline">\(X \approx \text{N}(\mu = np = 20, \; \sigma^2 = np(1-p) = 19.98)\)</span></li>
+<li><strong>Continuity correction:</strong> <span class="math inline">\(X\)</span> is discrete but the Normal is continuous, so we split the difference between whole numbers
+<ul>
+<li><span class="math inline">\(P(X \leq k) \approx P(\text{Normal} \leq k + 0.5)\)</span></li>
+<li><span class="math inline">\(P(X \geq k) \approx P(\text{Normal} \geq k - 0.5)\)</span></li>
+</ul></li>
+</ul>
+<p><span class="math display">\[P(X &gt; 15) = P(X \geq 16) \approx P(\text{Normal} \geq 15.5)\]</span></p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-23"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-23" data-target-annotation="1">1</button><span id="annotated-cell-23-1" class="code-annotation-target"><a href="#annotated-cell-23-1" aria-label="1"></a><span class="fu">pnorm</span>(<span class="fl">15.5</span>, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-23" data-target-annotation="2">2</button><span id="annotated-cell-23-2" class="code-annotation-target"><a href="#annotated-cell-23-2" aria-label="2"></a>      <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-23" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-23" data-code-lines="1" data-code-annotation="1">The Normal with the Binomial’s mean (20) and SD (4.4699), at the continuity-corrected cutoff 15.5.</span>
+</dd>
+<dt data-target-cell="annotated-cell-23" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-23" data-code-lines="2" data-code-annotation="2">Upper tail: <span class="math inline">\(P(\text{Normal} \geq 15.5)\)</span>. Without the correction, <code>pnorm(15, ...)</code> gives about 0.868, much further from the exact answer.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8429687</code></pre>
+</div>
+</div>
+<ul>
+<li>The CLT gives about <strong>0.8430</strong>, very close to the exact 0.8436</li>
+</ul>
+</div></div>
+</section>
+<section id="larger-example-57" class="slide level2">
 <h2>Larger example (5/7)</h2>
 <div class="example">
 <div class="ex-title">
@@ -1001,8 +1183,9 @@ P(\overline{X} &lt; 71 \text{ or } \overline{X} &gt; 77) &amp;= P(\overline{X} &
 </ol>
 </div>
 </div>
+<!-- @claude: maybe make this a check for the convergence of probability? -->
 </section>
-<section id="larger-example-67" class="slide level2 smaller">
+<section id="larger-example-67" class="slide level2">
 <h2>Larger example (6/7)</h2>
 <div class="example">
 <div class="ex-title">
@@ -1016,7 +1199,53 @@ P(\overline{X} &lt; 71 \text{ or } \overline{X} &gt; 77) &amp;= P(\overline{X} &
 </div>
 </div>
 </section>
-<section id="larger-example-77" class="slide level2 smaller">
+<section id="larger-example-67-solution" class="slide level2">
+<h2>Larger example (6/7): solution</h2>
+<div class="example">
+<div class="ex-title">
+<p>Example 3</p>
+</div>
+<div class="ex-cont">
+<p>Suppose that the probability of developing a specific type of breast cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer are independent. Suppose you have data from a random sample of 20,000 women aged 40-49.</p>
+<ol start="5" type="1">
+<li>Find the <strong>approximate</strong> probability that more than 15 of the 20,000 women will develop this type of breast cancer—not using the CLT!</li>
+</ol>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><strong>Poisson approximation of the Binomial:</strong> <span class="math inline">\(Y \sim \text{Poisson}(\lambda = np = 20)\)</span></li>
+<li>Check the rule of thumb (Lesson 15): <span class="math inline">\(np(1-p) = 19.98\)</span> is <strong>not</strong> <span class="math inline">\(\leq 10\)</span>, so it does <strong>not</strong> meet the requirement</li>
+<li>If we use it anyway:</li>
+</ul>
+<p><span class="math display">\[P(Y &gt; 15) = \sum_{y=16}^{\infty} \frac{e^{-20} \, 20^y}{y!}\]</span></p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-25"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="1">1</button><span id="annotated-cell-25-1" class="code-annotation-target"><a href="#annotated-cell-25-1" aria-label="1"></a><span class="fu">ppois</span>(<span class="dv">15</span>, <span class="at">lambda =</span> mu,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="2">2</button><span id="annotated-cell-25-2" class="code-annotation-target"><a href="#annotated-cell-25-2" aria-label="2"></a>      <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-25" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-25" data-code-lines="1" data-code-annotation="1"><code>ppois()</code> is the Poisson CDF, with <span class="math inline">\(\lambda = np = 20\)</span> (saved as <code>mu</code>).</span>
+</dd>
+<dt data-target-cell="annotated-cell-25" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-25" data-code-lines="2" data-code-annotation="2"><code>lower.tail = FALSE</code> gives <span class="math inline">\(P(Y &gt; 15)\)</span>.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8434869</code></pre>
+</div>
+</div>
+<ul>
+<li>About <strong>0.8435</strong>: still very close to the exact 0.8436</li>
+</ul>
+</div></div>
+</section>
+<section id="larger-example-77" class="slide level2">
 <h2>Larger example (7/7)</h2>
 <div class="example">
 <div class="ex-title">
@@ -1029,6 +1258,48 @@ P(\overline{X} &lt; 71 \text{ or } \overline{X} &gt; 77) &amp;= P(\overline{X} &
 </ol>
 </div>
 </div>
+</section>
+<section id="larger-example-77-solution" class="slide level2">
+<h2>Larger example (7/7): solution</h2>
+<div class="example">
+<div class="ex-title">
+<p>Example 3</p>
+</div>
+<div class="ex-cont">
+<p>Suppose that the probability of developing a specific type of breast cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer are independent. Suppose you have data from a random sample of 20,000 women aged 40-49.</p>
+<ol start="6" type="1">
+<li>Use the CLT to approximate the approximate probability in the previous question!</li>
+</ol>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><span class="math inline">\(Y \sim \text{Poisson}(\lambda = 20)\)</span>, and <span class="math inline">\(\lambda = 20 \geq 10\)</span>, so we can use the CLT</li>
+<li><span class="math inline">\(Y \approx \text{N}(\mu = \lambda = 20, \; \sigma^2 = \lambda = 20)\)</span></li>
+<li>With the continuity correction:</li>
+</ul>
+<p><span class="math display">\[P(Y &gt; 15) = P(Y \geq 16) \approx P(\text{Normal} \geq 15.5)\]</span></p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-27"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-27" data-target-annotation="1">1</button><span id="annotated-cell-27-1" class="code-annotation-target"><a href="#annotated-cell-27-1" aria-label="1"></a><span class="fu">pnorm</span>(<span class="fl">15.5</span>, <span class="at">mean =</span> <span class="dv">20</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">20</span>),</span>
+<span id="annotated-cell-27-2"><a href="#annotated-cell-27-2" aria-label="2"></a>      <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-27" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-27" data-code-lines="1,2" data-code-annotation="1">For a Poisson, the variance is also <span class="math inline">\(\lambda = 20\)</span>, so the SD is <span class="math inline">\(\sqrt{20}\)</span>. Upper tail at the corrected cutoff 15.5.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8428477</code></pre>
+</div>
+</div>
+<ul>
+<li>About <strong>0.8428</strong>. All four answers agree to about 0.84!</li>
+</ul>
+</div></div>
 
 
 </section></section>

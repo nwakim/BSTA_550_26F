@@ -4146,17 +4146,16 @@ window.Quarto = {
   <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a>
   <ul class="collapse">
   <li><a href="#medication-absorption-transformed" id="toc-medication-absorption-transformed" class="nav-link" data-scroll-target="#medication-absorption-transformed">1. Medication absorption (transformed)</a></li>
-  <li><a href="#maximum-of-i.i.d.-rvs" id="toc-maximum-of-i.i.d.-rvs" class="nav-link" data-scroll-target="#maximum-of-i.i.d.-rvs">2. Maximum of i.i.d. RVs</a></li>
-  <li><a href="#smoking-policy-and-education" id="toc-smoking-policy-and-education" class="nav-link" data-scroll-target="#smoking-policy-and-education">3. Smoking policy and education</a></li>
-  <li><a href="#expected-value-from-a-joint-pdf" id="toc-expected-value-from-a-joint-pdf" class="nav-link" data-scroll-target="#expected-value-from-a-joint-pdf">4. Expected value from a joint pdf</a></li>
-  <li><a href="#ratio-of-two-rvs" id="toc-ratio-of-two-rvs" class="nav-link" data-scroll-target="#ratio-of-two-rvs">5. Ratio of two RVs</a></li>
-  <li><a href="#maudes-phone-and-breakfast" id="toc-maudes-phone-and-breakfast" class="nav-link" data-scroll-target="#maudes-phone-and-breakfast">6. Maude’s phone and breakfast</a></li>
-  <li><a href="#minimum-of-a-uniform-and-an-exponential" id="toc-minimum-of-a-uniform-and-an-exponential" class="nav-link" data-scroll-target="#minimum-of-a-uniform-and-an-exponential">7. Minimum of a uniform and an exponential</a></li>
-  <li><a href="#constant-density-on-a-quadrilateral" id="toc-constant-density-on-a-quadrilateral" class="nav-link" data-scroll-target="#constant-density-on-a-quadrilateral">8. Constant density on a quadrilateral</a></li>
+  <li><a href="#smoking-policy-and-education" id="toc-smoking-policy-and-education" class="nav-link" data-scroll-target="#smoking-policy-and-education">2. Smoking policy and education</a></li>
+  <li><a href="#expected-value-from-a-joint-pdf" id="toc-expected-value-from-a-joint-pdf" class="nav-link" data-scroll-target="#expected-value-from-a-joint-pdf">3. Expected value from a joint pdf</a></li>
+  <li><a href="#ratio-of-two-rvs" id="toc-ratio-of-two-rvs" class="nav-link" data-scroll-target="#ratio-of-two-rvs">4. Ratio of two RVs</a></li>
+  <li><a href="#maudes-phone-and-breakfast" id="toc-maudes-phone-and-breakfast" class="nav-link" data-scroll-target="#maudes-phone-and-breakfast">5. Maude’s phone and breakfast</a></li>
+  <li><a href="#minimum-of-a-uniform-and-an-exponential" id="toc-minimum-of-a-uniform-and-an-exponential" class="nav-link" data-scroll-target="#minimum-of-a-uniform-and-an-exponential">6. Minimum of a uniform and an exponential</a></li>
+  <li><a href="#constant-density-on-a-quadrilateral" id="toc-constant-density-on-a-quadrilateral" class="nav-link" data-scroll-target="#constant-density-on-a-quadrilateral">7. Constant density on a quadrilateral</a></li>
   </ul></li>
   <li><a href="#extra-problems" id="toc-extra-problems" class="nav-link" data-scroll-target="#extra-problems">Extra problems</a>
   <ul class="collapse">
-  <li><a href="#pdf-of-the-maximum" id="toc-pdf-of-the-maximum" class="nav-link" data-scroll-target="#pdf-of-the-maximum">1. pdf of the maximum</a></li>
+  <li><a href="#maximum-of-i.i.d.-rvs" id="toc-maximum-of-i.i.d.-rvs" class="nav-link" data-scroll-target="#maximum-of-i.i.d.-rvs">1. Maximum of i.i.d. RVs</a></li>
   <li><a href="#freddy-and-janes-winnings" id="toc-freddy-and-janes-winnings" class="nav-link" data-scroll-target="#freddy-and-janes-winnings">2. Freddy and Jane’s winnings</a></li>
   <li><a href="#expected-value-from-a-joint-pdf-exactly" id="toc-expected-value-from-a-joint-pdf-exactly" class="nav-link" data-scroll-target="#expected-value-from-a-joint-pdf-exactly">3. Expected value from a joint pdf, exactly</a></li>
   <li><a href="#cdf-of-a-ratio" id="toc-cdf-of-a-ratio" class="nav-link" data-scroll-target="#cdf-of-a-ratio">4. CDF of a ratio</a></li>
@@ -4291,7 +4290,7 @@ HOW TO USE THIS FILE
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Questions 1–2 practice transformations of RVs (Lesson 14), Questions 3–5 practice joint distributions (Lesson 15), and Questions 6–8 practice independence and conditioning (Lesson 16). Most questions follow our simulation method: <strong>find the possible values, simulate, transform, summarize.</strong></p>
+<p>Question 1 practices transformations of RVs (Lesson 14), Questions 2–4 practice joint distributions (Lesson 15), and Questions 5–7 practice independence and conditioning (Lesson 16). Most questions follow our simulation method: <strong>find the possible values, simulate, transform, summarize.</strong></p>
 <section id="medication-absorption-transformed" class="level3">
 <h3 class="anchored" data-anchor-id="medication-absorption-transformed">1. Medication absorption (transformed)</h3>
 <p>In Homeworks 4 and 5, the proportion <span class="math inline">\(X\)</span> of a medication dose that is absorbed in the first hour had pdf <span class="math display">\[f_X(x) = \begin{cases} 3x^2 &amp; \text{if } 0 \leq x \leq 1 \\ 0 &amp; \text{otherwise} \end{cases}\]</span> and CDF <span class="math inline">\(F_X(x) = x^3\)</span> for <span class="math inline">\(0 \leq x \leq 1\)</span>.</p>
@@ -4364,39 +4363,8 @@ HOW TO USE THIS FILE
 </div>
 </section>
 </section>
-<section id="maximum-of-i.i.d.-rvs" class="level3">
-<h3 class="anchored" data-anchor-id="maximum-of-i.i.d.-rvs">2. Maximum of i.i.d. RVs</h3>
-<p>Let <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> be i.i.d. random variables with common CDF <span class="math inline">\(F_X(x)\)</span>, and let <span class="math inline">\(Z = \max(X_1, X_2, \ldots, X_n)\)</span>.</p>
-<section id="part-a-1" class="level4">
-<h4 class="anchored" data-anchor-id="part-a-1">Part a</h4>
-<p>Show that the CDF of <span class="math inline">\(Z\)</span> is <span class="math inline">\(F_Z(z) = \left[F_X(z)\right]^n\)</span>.</p>
-<ul>
-<li><em>Hint:</em> The largest value is <span class="math inline">\(z\)</span> or less only if <em>every</em> <span class="math inline">\(X_i\)</span> is <span class="math inline">\(z\)</span> or less (like <span class="math inline">\(P(M \leq 2)\)</span> in Lesson 15, Example 3). Then use independence (Lesson 16, “Extra notes”).</li>
-</ul>
-<p><strong><em>Answer:</em></strong></p>
-</section>
-<section id="part-b-1" class="level4">
-<h4 class="anchored" data-anchor-id="part-b-1">Part b</h4>
-<p>Now suppose <span class="math inline">\(n = 3\)</span> and each <span class="math inline">\(X_i \sim \text{Uniform}[0, 1]\)</span>. Use Part a to find <span class="math inline">\(P(Z \leq 0.8)\)</span>.</p>
-<p><strong><em>Answer:</em></strong></p>
-</section>
-<section id="part-c-1" class="level4">
-<h4 class="anchored" data-anchor-id="part-c-1">Part c</h4>
-<p>Simulate 10,000 values of <span class="math inline">\(Z\)</span> to check your answer to Part b, and make a histogram of <span class="math inline">\(Z\)</span>. How is its shape different from the flat shape of each <span class="math inline">\(X_i\)</span>?</p>
-<ul>
-<li><em>Hint:</em> Start with <code>tibble(sim = 1:reps)</code>, then use <code>mutate()</code> with three columns <code>x1</code>, <code>x2</code>, and <code>x3</code>, each from <code>runif(n(), min = 0, max = 1)</code>. Then <code>z = pmax(x1, x2, x3)</code> takes the largest value in <strong>each row</strong> (Lesson 15, Example 3).</li>
-</ul>
-<p><strong><em>Answer:</em></strong></p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5656</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-</section>
 <section id="smoking-policy-and-education" class="level3">
-<h3 class="anchored" data-anchor-id="smoking-policy-and-education">3. Smoking policy and education</h3>
+<h3 class="anchored" data-anchor-id="smoking-policy-and-education">2. Smoking policy and education</h3>
 <p>The following table shows the results of a survey in which the subjects were a sample of 300 adults residing in a certain metropolitan area. Each subject was asked to indicate which of three policies they favored with respect to smoking in public places, or that they had no opinion. (Table is from <em>Biostatistics: A Foundation for Analysis in the Health Sciences</em>, 10th Edition, Daniel, Wayne W.; Cross, Chad L., pg. 630)</p>
 <table class="caption-top table">
 <colgroup>
@@ -4453,71 +4421,56 @@ HOW TO USE THIS FILE
 </tbody>
 </table>
 <p>Let <span class="math inline">\(X=\)</span> highest education level and <span class="math inline">\(Y=\)</span> policy favored. We can let <span class="math inline">\(X=1\)</span> for college graduate, <span class="math inline">\(X=2\)</span> for high-school graduate, etc., and similarly for <span class="math inline">\(Y\)</span>, or just keep the category names for the different levels of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
-<section id="part-a-2" class="level4">
-<h4 class="anchored" data-anchor-id="part-a-2">Part a</h4>
+<section id="part-a-1" class="level4">
+<h4 class="anchored" data-anchor-id="part-a-1">Part a</h4>
 <p>Make a table for the joint pmf <span class="math inline">\(p_{X,Y}(x,y)\)</span> and briefly describe in words what the values are the probability of.</p>
 <p><strong><em>Answer:</em></strong></p>
 </section>
-<section id="part-b-2" class="level4">
-<h4 class="anchored" data-anchor-id="part-b-2">Part b</h4>
+<section id="part-b-1" class="level4">
+<h4 class="anchored" data-anchor-id="part-b-1">Part b</h4>
 <p>Find the marginal pmf <span class="math inline">\(p_{X}(x)\)</span> and briefly describe in words what the values are the probability of.</p>
 <p><strong><em>Answer:</em></strong></p>
 </section>
-<section id="part-c-2" class="level4">
-<h4 class="anchored" data-anchor-id="part-c-2">Part c</h4>
+<section id="part-c-1" class="level4">
+<h4 class="anchored" data-anchor-id="part-c-1">Part c</h4>
 <p>Find the marginal pmf <span class="math inline">\(p_{Y}(y)\)</span> and briefly describe in words what the values are the probability of.</p>
 <p><strong><em>Answer:</em></strong></p>
 </section>
 <section id="part-d-1" class="level4">
 <h4 class="anchored" data-anchor-id="part-d-1">Part d</h4>
-<p>Make a table for the joint CDF <span class="math inline">\(F_{X,Y}(x,y)\)</span> and briefly describe in words what the values are the probability of.</p>
+<p>Make a table for the conditional pmf <span class="math inline">\(p_{X|Y}(x|y)\)</span> and briefly describe in words what the values are the probability of.</p>
 <p><strong><em>Answer:</em></strong></p>
 </section>
 <section id="part-e-1" class="level4">
 <h4 class="anchored" data-anchor-id="part-e-1">Part e</h4>
-<p>Find the marginal CDF <span class="math inline">\(F_{X}(x)\)</span> and briefly describe in words what the values are the probability of.</p>
+<p>Make a table for the conditional pmf <span class="math inline">\(p_{Y|X}(y|x)\)</span> and briefly describe in words what the values are the probability of.</p>
 <p><strong><em>Answer:</em></strong></p>
 </section>
 <section id="part-f" class="level4">
 <h4 class="anchored" data-anchor-id="part-f">Part f</h4>
-<p>Find the marginal CDF <span class="math inline">\(F_{Y}(y)\)</span> and briefly describe in words what the values are the probability of.</p>
-<p><strong><em>Answer:</em></strong></p>
-</section>
-<section id="part-g" class="level4">
-<h4 class="anchored" data-anchor-id="part-g">Part g</h4>
-<p>Make a table for the conditional pmf <span class="math inline">\(p_{X|Y}(x|y)\)</span> and briefly describe in words what the values are the probability of.</p>
-<p><strong><em>Answer:</em></strong></p>
-</section>
-<section id="part-h" class="level4">
-<h4 class="anchored" data-anchor-id="part-h">Part h</h4>
-<p>Make a table for the conditional pmf <span class="math inline">\(p_{Y|X}(y|x)\)</span> and briefly describe in words what the values are the probability of.</p>
-<p><strong><em>Answer:</em></strong></p>
-</section>
-<section id="part-i" class="level4">
-<h4 class="anchored" data-anchor-id="part-i">Part i</h4>
 <p>Are <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> independent? Explain using your answers above.</p>
 <ul>
 <li><em>Hint:</em> <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent only if <span class="math inline">\(p_{X,Y}(x,y) = p_X(x)\,p_Y(y)\)</span> for <em>every</em> pair <span class="math inline">\((x, y)\)</span> (Lesson 16). How many pairs do you need to check to show they are <em>not</em> independent?</li>
 </ul>
 <p><strong><em>Answer:</em></strong></p>
 </section>
-<section id="part-j" class="level4">
-<h4 class="anchored" data-anchor-id="part-j">Part j</h4>
-<p>Simulate 10,000 adults by drawing from the table, to check one value from each of Parts a, g, and i.</p>
+<section id="part-g" class="level4">
+<h4 class="anchored" data-anchor-id="part-g">Part g</h4>
+<p>Simulate 10,000 adults by drawing from the table, to check one value from each of Parts a, d, and f.</p>
 <p><strong>Step 1: Set up.</strong> This chunk is done for you. Run it before the others. Each row of <code>smoking_cells</code> is one cell of the table, and <code>count</code> is how many of the 300 adults are in it.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">6969</span>)    <span class="co"># so you get the same &quot;random&quot; adults each time</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span>     <span class="co"># number of simulated adults</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>smoking_cells <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">education =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;College&quot;</span>, <span class="st">&quot;High school&quot;</span>, <span class="st">&quot;Grade school&quot;</span>),</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">each =</span> <span class="dv">4</span>),</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">policy =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;No restrictions&quot;</span>, <span class="st">&quot;Designated areas&quot;</span>,</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;No smoking&quot;</span>, <span class="st">&quot;No opinion&quot;</span>), <span class="at">times =</span> <span class="dv">3</span>),</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">count =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">44</span>, <span class="dv">23</span>, <span class="dv">3</span>,</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>            <span class="dv">15</span>, <span class="dv">100</span>, <span class="dv">30</span>, <span class="dv">5</span>,</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>            <span class="dv">15</span>, <span class="dv">40</span>, <span class="dv">10</span>, <span class="dv">10</span>)</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">6969</span>)    <span class="co"># so you get the same &quot;random&quot; adults each time</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span>     <span class="co"># number of simulated adults</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>smoking_cells <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">education =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;College&quot;</span>, <span class="st">&quot;High school&quot;</span>, <span class="st">&quot;Grade school&quot;</span>),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">each =</span> <span class="dv">4</span>),</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">policy =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;No restrictions&quot;</span>, <span class="st">&quot;Designated areas&quot;</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;No smoking&quot;</span>, <span class="st">&quot;No opinion&quot;</span>), <span class="at">times =</span> <span class="dv">3</span>),</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">count =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">44</span>, <span class="dv">23</span>, <span class="dv">3</span>,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>            <span class="dv">15</span>, <span class="dv">100</span>, <span class="dv">30</span>, <span class="dv">5</span>,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>            <span class="dv">15</span>, <span class="dv">40</span>, <span class="dv">10</span>, <span class="dv">10</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Step 2: Simulate.</strong> Draw 10,000 rows (adults) from <code>smoking_cells</code>, with replacement, so that each cell’s chance of being drawn is proportional to its count.</p>
 <ul>
@@ -4525,7 +4478,7 @@ HOW TO USE THIS FILE
 </ul>
 <p><strong><em>Answer:</em></strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Step 3: Summarize.</strong> Approximate:</p>
 <ul>
@@ -4535,101 +4488,101 @@ HOW TO USE THIS FILE
 </ul>
 <p><strong><em>Answer:</em></strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Are your simulated answers close to your answers in Parts a, g, and i? (They do not need to match exactly!)</p>
+<p>Are your simulated answers close to your answers in Parts a, d, and f? (They do not need to match exactly!)</p>
 <p><strong><em>Answer:</em></strong></p>
 </section>
 </section>
 <section id="expected-value-from-a-joint-pdf" class="level3">
-<h3 class="anchored" data-anchor-id="expected-value-from-a-joint-pdf">4. Expected value from a joint pdf</h3>
+<h3 class="anchored" data-anchor-id="expected-value-from-a-joint-pdf">3. Expected value from a joint pdf</h3>
 <p>Consider the joint density of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>: <span class="math display">\[f_{X,Y}(x,y)= \dfrac32 x y\]</span> for <span class="math inline">\(0 \leq x\)</span> and <span class="math inline">\(0 \leq y\)</span> and <span class="math inline">\(x+y \leq 2\)</span>, and <span class="math inline">\(f_{X,Y}(x,y)=0\)</span> otherwise.</p>
-<section id="part-a-3" class="level4">
-<h4 class="anchored" data-anchor-id="part-a-3">Part a</h4>
+<section id="part-a-2" class="level4">
+<h4 class="anchored" data-anchor-id="part-a-2">Part a</h4>
 <p>Draw the possible values of <span class="math inline">\((X, Y)\)</span>: the region where <span class="math inline">\(f_{X,Y}(x,y) &gt; 0\)</span>.</p>
 <p><strong><em>Answer:</em></strong></p>
 </section>
-<section id="part-b-3" class="level4">
-<h4 class="anchored" data-anchor-id="part-b-3">Part b</h4>
+<section id="part-b-2" class="level4">
+<h4 class="anchored" data-anchor-id="part-b-2">Part b</h4>
 <p>Use 2D grid sampling to approximate <span class="math inline">\(\mathbb{E}[X]\)</span> and <span class="math inline">\(\mathbb{E}[Y]\)</span>.</p>
 <ul>
 <li><em>Hint:</em> Follow Lesson 15, Example 4. Make a grid with <code>expand_grid(x = seq(0, 2, length.out = 1001), y = seq(0, 2, length.out = 1001))</code>, keep only the possible values with <code>filter(x + y &lt;= 2)</code>, and add a <code>height</code> column with the joint pdf. Then <code>slice_sample(n = reps, weight_by = height, replace = TRUE)</code>, and use <code>mean(x)</code> and <code>mean(y)</code>. (The grid has about half a million tickets, so it may take a few seconds.)</li>
 </ul>
 <p><strong><em>Answer:</em></strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">7878</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">7878</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="part-c-3" class="level4">
-<h4 class="anchored" data-anchor-id="part-c-3">Part c</h4>
+<section id="part-c-2" class="level4">
+<h4 class="anchored" data-anchor-id="part-c-2">Part c</h4>
 <p>Are <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> independent? Explain using your drawing from Part a, then check with your simulated pairs from Part b.</p>
 <ul>
 <li><em>Hint:</em> See “Final statement on independence” in Lesson 16: can the possible values of <span class="math inline">\(Y\)</span> depend on <span class="math inline">\(x\)</span>? For the check, compare <code>mean(x &lt;= 1 &amp; y &lt;= 1)</code> with <code>mean(x &lt;= 1) * mean(y &lt;= 1)</code>, like “joint vs. product” in Lesson 16.</li>
 </ul>
 <p><strong><em>Answer:</em></strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
 <section id="ratio-of-two-rvs" class="level3">
-<h3 class="anchored" data-anchor-id="ratio-of-two-rvs">5. Ratio of two RVs</h3>
+<h3 class="anchored" data-anchor-id="ratio-of-two-rvs">4. Ratio of two RVs</h3>
 <p>Suppose that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have constant joint density on the rectangle <span class="math inline">\(0 \leq x \leq 1\)</span> and <span class="math inline">\(\frac{1}{2} \leq y \leq 1\)</span>. Let <span class="math inline">\(Z = X/Y\)</span>.</p>
-<section id="part-a-4" class="level4">
-<h4 class="anchored" data-anchor-id="part-a-4">Part a</h4>
+<section id="part-a-3" class="level4">
+<h4 class="anchored" data-anchor-id="part-a-3">Part a</h4>
 <p>What is the height of the joint pdf? What are the possible values of <span class="math inline">\(Z\)</span>?</p>
 <ul>
 <li><em>Hint:</em> The volume over the rectangle must be 1. For <span class="math inline">\(Z\)</span>, try the corners of the rectangle: which corner makes <span class="math inline">\(X/Y\)</span> smallest? Largest?</li>
 </ul>
 <p><strong><em>Answer:</em></strong></p>
 </section>
-<section id="part-b-4" class="level4">
-<h4 class="anchored" data-anchor-id="part-b-4">Part b</h4>
+<section id="part-b-3" class="level4">
+<h4 class="anchored" data-anchor-id="part-b-3">Part b</h4>
 <p>Rewrite the event <span class="math inline">\(Z \leq 1\)</span> as a region of <span class="math inline">\((x, y)\)</span> points, and shade it on a drawing of the rectangle. Find <span class="math inline">\(P(Z \leq 1)\)</span> using areas.</p>
 <ul>
 <li><em>Hint:</em> Since <span class="math inline">\(Y &gt; 0\)</span>, <span class="math inline">\(X/Y \leq 1\)</span> is the same as <span class="math inline">\(X \leq Y\)</span>. With a constant density, probability = area <span class="math inline">\(\times\)</span> height (Lesson 15, Example 3).</li>
 </ul>
 <p><strong><em>Answer:</em></strong></p>
 </section>
-<section id="part-c-4" class="level4">
-<h4 class="anchored" data-anchor-id="part-c-4">Part c</h4>
+<section id="part-c-3" class="level4">
+<h4 class="anchored" data-anchor-id="part-c-3">Part c</h4>
 <p>Simulate 10,000 pairs <span class="math inline">\((X, Y)\)</span> to check your answer to Part b, and make a histogram of <span class="math inline">\(Z\)</span>.</p>
 <ul>
 <li><em>Hint:</em> A constant density on a rectangle is the same as an independent <span class="math inline">\(X \sim \text{Uniform}[0, 1]\)</span> and <span class="math inline">\(Y \sim \text{Uniform}[\frac12, 1]\)</span> (Lesson 16), so you can use <code>runif()</code> for each column. Then make <code>z = x / y</code> and use <code>mean(z &lt;= 1)</code>.</li>
 </ul>
 <p><strong><em>Answer:</em></strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">9898</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">9898</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
 <section id="maudes-phone-and-breakfast" class="level3">
-<h3 class="anchored" data-anchor-id="maudes-phone-and-breakfast">6. Maude’s phone and breakfast</h3>
+<h3 class="anchored" data-anchor-id="maudes-phone-and-breakfast">5. Maude’s phone and breakfast</h3>
 <p>Each day, Maude has a 1% chance of losing her cell phone (her behavior on different days is independent). Each day, Maude has a 3% chance of forgetting to eat breakfast (again, her behavior on different days is independent). Her breakfast and cell phone habits are independent. Let <span class="math inline">\(X\)</span> be the number of days until she first loses her cell phone. Let <span class="math inline">\(Y\)</span> be the number of days until she first forgets to eat breakfast. (Here, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent.)</p>
-<section id="part-a-5" class="level4">
-<h4 class="anchored" data-anchor-id="part-a-5">Part a</h4>
+<section id="part-a-4" class="level4">
+<h4 class="anchored" data-anchor-id="part-a-4">Part a</h4>
 <p>Find the joint pmf of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
 <ul>
 <li><em>Hint:</em> What is the distribution of <span class="math inline">\(X\)</span>? Of <span class="math inline">\(Y\)</span>? Then use independence (Lesson 16).</li>
 </ul>
 <p><strong><em>Answer:</em></strong></p>
 </section>
-<section id="part-b-5" class="level4">
-<h4 class="anchored" data-anchor-id="part-b-5">Part b</h4>
+<section id="part-b-4" class="level4">
+<h4 class="anchored" data-anchor-id="part-b-4">Part b</h4>
 <p>Find the joint CDF of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> and briefly explain what <span class="math inline">\(F_{X,Y}(x,y)\)</span> represents in the context of the problem.</p>
 <ul>
 <li><em>Hint:</em> For independent RVs, <span class="math inline">\(F_{X,Y}(x,y) = F_X(x)\,F_Y(y)\)</span> (Lesson 16), and the Geometric CDF is in Lesson 12.</li>
 </ul>
 <p><strong><em>Answer:</em></strong></p>
 </section>
-<section id="part-c-5" class="level4">
-<h4 class="anchored" data-anchor-id="part-c-5">Part c</h4>
+<section id="part-c-4" class="level4">
+<h4 class="anchored" data-anchor-id="part-c-4">Part c</h4>
 <p>Find the conditional pmf <span class="math inline">\(p_{Y|X}(y|x)\)</span>.</p>
 <p><strong><em>Answer:</em></strong></p>
 </section>
@@ -4641,33 +4594,33 @@ HOW TO USE THIS FILE
 </ul>
 <p><strong><em>Answer:</em></strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2424</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2424</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Is your simulated answer close to your answer from the joint CDF? (They do not need to match exactly!)</p>
 <p><strong><em>Answer:</em></strong></p>
 </section>
 </section>
 <section id="minimum-of-a-uniform-and-an-exponential" class="level3">
-<h3 class="anchored" data-anchor-id="minimum-of-a-uniform-and-an-exponential">7. Minimum of a uniform and an exponential</h3>
+<h3 class="anchored" data-anchor-id="minimum-of-a-uniform-and-an-exponential">6. Minimum of a uniform and an exponential</h3>
 <p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be independent random variables with respective pdfs <span class="math inline">\(f_X(x)=\frac{1}{5}\)</span>, for <span class="math inline">\(0\leq x\leq 5\)</span>, and <span class="math inline">\(f_Y(y)=2e^{-2y}\)</span>, for <span class="math inline">\(y&gt;0\)</span>. Let <span class="math inline">\(Z = \min(X, Y)\)</span>, the smaller of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
-<section id="part-a-6" class="level4">
-<h4 class="anchored" data-anchor-id="part-a-6">Part a</h4>
+<section id="part-a-5" class="level4">
+<h4 class="anchored" data-anchor-id="part-a-5">Part a</h4>
 <p>Find the joint pdf <span class="math inline">\(f_{X,Y}(x,y)\)</span>.</p>
 <p><strong><em>Answer:</em></strong></p>
 </section>
-<section id="part-b-6" class="level4">
-<h4 class="anchored" data-anchor-id="part-b-6">Part b</h4>
+<section id="part-b-5" class="level4">
+<h4 class="anchored" data-anchor-id="part-b-5">Part b</h4>
 <p>What are the possible values of <span class="math inline">\(Z\)</span>? Use independence to find <span class="math inline">\(P(Z &gt; 0.5)\)</span> exactly.</p>
 <ul>
 <li><em>Hint:</em> The smaller value is greater than 0.5 only if <em>both</em> <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are greater than 0.5.</li>
 </ul>
 <p><strong><em>Answer:</em></strong></p>
 </section>
-<section id="part-c-6" class="level4">
-<h4 class="anchored" data-anchor-id="part-c-6">Part c</h4>
+<section id="part-c-5" class="level4">
+<h4 class="anchored" data-anchor-id="part-c-5">Part c</h4>
 <p>Use the idea in Part b to find the CDF of <span class="math inline">\(Z\)</span>, <span class="math inline">\(F_Z(z) = P(Z \leq z) = 1 - P(Z &gt; z)\)</span>, for <span class="math inline">\(0 \leq z \leq 5\)</span>.</p>
 <p><strong><em>Answer:</em></strong></p>
 </section>
@@ -4676,8 +4629,8 @@ HOW TO USE THIS FILE
 <p>Simulate 10,000 pairs of <span class="math inline">\((X, Y)\)</span> to approximate <span class="math inline">\(P(X &lt; Y)\)</span> and to check your answers to Parts b and c.</p>
 <p><strong>Step 1: Set up.</strong> This chunk is done for you. Run it before the others.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">3535</span>)    <span class="co"># so you get the same &quot;random&quot; pairs each time</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span>     <span class="co"># number of simulated pairs</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">3535</span>)    <span class="co"># so you get the same &quot;random&quot; pairs each time</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span>     <span class="co"># number of simulated pairs</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Step 2: Simulate and transform.</strong> Simulate <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, then find <span class="math inline">\(Z\)</span>, the smaller of the two, for each pair.</p>
 <ul>
@@ -4685,12 +4638,12 @@ HOW TO USE THIS FILE
 </ul>
 <p><strong><em>Answer:</em></strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Step 3: Summarize.</strong> Approximate <span class="math inline">\(P(X &lt; Y)\)</span> and <span class="math inline">\(P(Z &gt; 0.5)\)</span>.</p>
 <p><strong><em>Answer:</em></strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Step 4: Plot.</strong> Plot the simulated CDF of <span class="math inline">\(Z\)</span> with <code>stat_ecdf()</code>, and add your CDF from Part c as a red line.</p>
 <ul>
@@ -4698,33 +4651,33 @@ HOW TO USE THIS FILE
 </ul>
 <p><strong><em>Answer:</em></strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Is your simulated <span class="math inline">\(P(Z &gt; 0.5)\)</span> close to your answer in Part b? Does the red line sit on top of the simulated CDF? (They do not need to match exactly!)</p>
 <p><strong><em>Answer:</em></strong></p>
 </section>
 </section>
 <section id="constant-density-on-a-quadrilateral" class="level3">
-<h3 class="anchored" data-anchor-id="constant-density-on-a-quadrilateral">8. Constant density on a quadrilateral</h3>
+<h3 class="anchored" data-anchor-id="constant-density-on-a-quadrilateral">7. Constant density on a quadrilateral</h3>
 <p>Consider a pair of random variables <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span> with constant joint density on the quadrilateral with vertices <span class="math inline">\((0,0)\)</span>, <span class="math inline">\((2,0)\)</span>, <span class="math inline">\((2,6)\)</span>, <span class="math inline">\((0,12)\)</span>.</p>
 <ul>
 <li><em>Hint:</em> Start by drawing the quadrilateral. Find the equation of the line through <span class="math inline">\((2,6)\)</span> and <span class="math inline">\((0,12)\)</span>.</li>
 </ul>
-<section id="part-a-7" class="level4">
-<h4 class="anchored" data-anchor-id="part-a-7">Part a</h4>
+<section id="part-a-6" class="level4">
+<h4 class="anchored" data-anchor-id="part-a-6">Part a</h4>
 <p>For <span class="math inline">\(0 \leq y \leq 6\)</span>, find the conditional density <span class="math inline">\(f_{X|Y}(x|y)\)</span> of <span class="math inline">\(X\)</span>, given <span class="math inline">\(Y=y\)</span>.</p>
 <ul>
 <li><em>Hint:</em> With a constant joint density, the slice of the joint pdf at <span class="math inline">\(Y = y\)</span> is flat. So <span class="math inline">\(X\)</span> given <span class="math inline">\(Y = y\)</span> is Uniform over the possible values of <span class="math inline">\(x\)</span> on that slice (Lesson 16, “a slice of the joint pdf, rescaled to area 1”).</li>
 </ul>
 <p><strong><em>Answer:</em></strong></p>
 </section>
-<section id="part-b-7" class="level4">
-<h4 class="anchored" data-anchor-id="part-b-7">Part b</h4>
+<section id="part-b-6" class="level4">
+<h4 class="anchored" data-anchor-id="part-b-6">Part b</h4>
 <p>For <span class="math inline">\(6 \leq y \leq 12\)</span>, find the conditional density <span class="math inline">\(f_{X|Y}(x|y)\)</span> of <span class="math inline">\(X\)</span>, given <span class="math inline">\(Y=y\)</span>.</p>
 <p><strong><em>Answer:</em></strong></p>
 </section>
-<section id="part-c-7" class="level4">
-<h4 class="anchored" data-anchor-id="part-c-7">Part c</h4>
+<section id="part-c-6" class="level4">
+<h4 class="anchored" data-anchor-id="part-c-6">Part c</h4>
 <p>Find <span class="math inline">\(P(0.5 \leq X \leq 3 \mid Y=7)\)</span>.</p>
 <ul>
 <li><em>Hint:</em> Use your answer to Part b with <span class="math inline">\(y = 7\)</span>. What are the possible values of <span class="math inline">\(X\)</span> when <span class="math inline">\(Y = 7\)</span>?</li>
@@ -4739,10 +4692,10 @@ HOW TO USE THIS FILE
 </ul>
 <p><strong><em>Answer:</em></strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">4646</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">4646</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Is your simulated answer close to your answer in Part c? (They do not need to match exactly!)</p>
 <p><strong><em>Answer:</em></strong></p>
@@ -4751,10 +4704,33 @@ HOW TO USE THIS FILE
 </section>
 <section id="extra-problems" class="level2">
 <h2 class="anchored" data-anchor-id="extra-problems">Extra problems</h2>
-<p><strong>You do NOT need to complete the extra problems!</strong> These use the calculus versions of the ideas above.</p>
-<section id="pdf-of-the-maximum" class="level3">
-<h3 class="anchored" data-anchor-id="pdf-of-the-maximum">1. pdf of the maximum</h3>
-<p>Use your CDF from Question 2, Part a, to find the pdf of <span class="math inline">\(Z = \max(X_1, X_2, \ldots, X_n)\)</span> in terms of <span class="math inline">\(f_X(x)\)</span> and <span class="math inline">\(F_X(x)\)</span>. Then find the pdf of <span class="math inline">\(Z\)</span> when <span class="math inline">\(n = 3\)</span> and each <span class="math inline">\(X_i \sim \text{Uniform}[0, 1]\)</span>, and add it to your histogram from Question 2, Part c.</p>
+<p><strong>You do NOT need to complete the extra problems!</strong> Extra Problem 1 is more practice like Questions 1 and 6, and the rest use the calculus versions of the ideas above.</p>
+<section id="maximum-of-i.i.d.-rvs" class="level3">
+<h3 class="anchored" data-anchor-id="maximum-of-i.i.d.-rvs">1. Maximum of i.i.d. RVs</h3>
+<p>Let <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> be i.i.d. random variables with common CDF <span class="math inline">\(F_X(x)\)</span>, and let <span class="math inline">\(Z = \max(X_1, X_2, \ldots, X_n)\)</span>.</p>
+<section id="part-a-7" class="level4">
+<h4 class="anchored" data-anchor-id="part-a-7">Part a</h4>
+<p>Show that the CDF of <span class="math inline">\(Z\)</span> is <span class="math inline">\(F_Z(z) = \left[F_X(z)\right]^n\)</span>.</p>
+<ul>
+<li><em>Hint:</em> The largest value is <span class="math inline">\(z\)</span> or less only if <em>every</em> <span class="math inline">\(X_i\)</span> is <span class="math inline">\(z\)</span> or less (like <span class="math inline">\(P(M \leq 2)\)</span> in Lesson 15, Example 3). Then use independence (Lesson 16, “Extra notes”).</li>
+</ul>
+</section>
+<section id="part-b-7" class="level4">
+<h4 class="anchored" data-anchor-id="part-b-7">Part b</h4>
+<p>Now suppose <span class="math inline">\(n = 3\)</span> and each <span class="math inline">\(X_i \sim \text{Uniform}[0, 1]\)</span>. Use Part a to find <span class="math inline">\(P(Z \leq 0.8)\)</span>.</p>
+</section>
+<section id="part-c-7" class="level4">
+<h4 class="anchored" data-anchor-id="part-c-7">Part c</h4>
+<p>Simulate 10,000 values of <span class="math inline">\(Z\)</span> to check your answer to Part b, and make a histogram of <span class="math inline">\(Z\)</span>. How is its shape different from the flat shape of each <span class="math inline">\(X_i\)</span>?</p>
+<ul>
+<li><em>Hint:</em> Start with <code>tibble(sim = 1:reps)</code>, then use <code>mutate()</code> with three columns <code>x1</code>, <code>x2</code>, and <code>x3</code>, each from <code>runif(n(), min = 0, max = 1)</code>. Then <code>z = pmax(x1, x2, x3)</code> takes the largest value in <strong>each row</strong> (Lesson 15, Example 3).</li>
+</ul>
+<p>Use <code>set.seed(5656)</code> and <code>reps &lt;- 10000</code> so your answers match the solutions.</p>
+</section>
+<section id="part-d-5" class="level4">
+<h4 class="anchored" data-anchor-id="part-d-5">Part d</h4>
+<p>Use your CDF from Part a to find the pdf of <span class="math inline">\(Z = \max(X_1, X_2, \ldots, X_n)\)</span> in terms of <span class="math inline">\(f_X(x)\)</span> and <span class="math inline">\(F_X(x)\)</span>. Then find the pdf of <span class="math inline">\(Z\)</span> when <span class="math inline">\(n = 3\)</span> and each <span class="math inline">\(X_i \sim \text{Uniform}[0, 1]\)</span>, and add it to your histogram from Part c.</p>
+</section>
 </section>
 <section id="freddy-and-janes-winnings" class="level3">
 <h3 class="anchored" data-anchor-id="freddy-and-janes-winnings">2. Freddy and Jane’s winnings</h3>
@@ -4762,9 +4738,9 @@ HOW TO USE THIS FILE
 </section>
 <section id="expected-value-from-a-joint-pdf-exactly" class="level3">
 <h3 class="anchored" data-anchor-id="expected-value-from-a-joint-pdf-exactly">3. Expected value from a joint pdf, exactly</h3>
-<p>For the joint pdf in Question 4, find <span class="math inline">\(\mathbb{E}[Y]\)</span> exactly, and compare it with your simulated answer in Question 4, Part b.</p>
+<p>For the joint pdf in Question 3, find <span class="math inline">\(\mathbb{E}[Y]\)</span> exactly, and compare it with your simulated answer in Question 3, Part b.</p>
 <ul>
-<li><em>Hint:</em> Use Option 1 (find <span class="math inline">\(f_Y(y)\)</span> first) or Option 2 (integrate <span class="math inline">\(y\,f_{X,Y}(x,y)\)</span> over the region) from “Expected value of one RV from joint pdf” in Lesson 15. Your drawing from Question 4, Part a gives the limits.</li>
+<li><em>Hint:</em> Use Option 1 (find <span class="math inline">\(f_Y(y)\)</span> first) or Option 2 (integrate <span class="math inline">\(y\,f_{X,Y}(x,y)\)</span> over the region) from “Expected value of one RV from joint pdf” in Lesson 15. Your drawing from Question 3, Part a gives the limits.</li>
 </ul>
 </section>
 <section id="cdf-of-a-ratio" class="level3">
@@ -4776,14 +4752,14 @@ HOW TO USE THIS FILE
 </section>
 <section id="more-on-the-minimum-of-a-uniform-and-an-exponential" class="level3">
 <h3 class="anchored" data-anchor-id="more-on-the-minimum-of-a-uniform-and-an-exponential">5. More on the minimum of a uniform and an exponential</h3>
-<p>For <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> in Question 7:</p>
+<p>For <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> in Question 6:</p>
 <section id="part-a-8" class="level4">
 <h4 class="anchored" data-anchor-id="part-a-8">Part a</h4>
 <p>Find <span class="math inline">\(P(X &lt; Y)\)</span> exactly with a double integral, and compare it with your simulated answer.</p>
 </section>
 <section id="part-b-8" class="level4">
 <h4 class="anchored" data-anchor-id="part-b-8">Part b</h4>
-<p>Find the pdf of <span class="math inline">\(Z = \min(X, Y)\)</span> by taking the derivative of your CDF from Question 7, Part c.</p>
+<p>Find the pdf of <span class="math inline">\(Z = \min(X, Y)\)</span> by taking the derivative of your CDF from Question 6, Part c.</p>
 
 
 </section>

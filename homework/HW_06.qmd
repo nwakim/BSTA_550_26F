@@ -105,7 +105,7 @@ Before using AI, check the table of allowed uses in the [Generative AI Policy](h
 library(tidyverse)
 ```
 
-Questions 1–2 practice transformations of RVs (Lesson 14), Questions 3–5 practice joint distributions (Lesson 15), and Questions 6–8 practice independence and conditioning (Lesson 16). Most questions follow our simulation method: **find the possible values, simulate, transform, summarize.**
+Question 1 practices transformations of RVs (Lesson 14), Questions 2–4 practice joint distributions (Lesson 15), and Questions 5–7 practice independence and conditioning (Lesson 16). Most questions follow our simulation method: **find the possible values, simulate, transform, summarize.**
 
 ### 1. Medication absorption (transformed)
 
@@ -203,43 +203,7 @@ The histogram of $W$ should look like one of the named distributions from Lesson
 
 ```
 
-### 2. Maximum of i.i.d. RVs
-
-Let $X_1, X_2, \ldots, X_n$ be i.i.d. random variables with common CDF $F_X(x)$, and let $Z = \max(X_1, X_2, \ldots, X_n)$.
-
-#### Part a
-
-Show that the CDF of $Z$ is $F_Z(z) = \left[F_X(z)\right]^n$.
-
--   *Hint:* The largest value is $z$ or less only if *every* $X_i$ is $z$ or less (like $P(M \leq 2)$ in Lesson 15, Example 3). Then use independence (Lesson 16, "Extra notes").
-
-***Answer:***
-
-#### Part b
-
-Now suppose $n = 3$ and each $X_i \sim \text{Uniform}[0, 1]$. Use Part a to find $P(Z \leq 0.8)$.
-
-***Answer:***
-
-#### Part c
-
-Simulate 10,000 values of $Z$ to check your answer to Part b, and make a histogram of $Z$. How is its shape different from the flat shape of each $X_i$?
-
--   *Hint:* Start with `tibble(sim = 1:reps)`, then use `mutate()` with three columns `x1`, `x2`, and `x3`, each from `runif(n(), min = 0, max = 1)`. Then `z = pmax(x1, x2, x3)` takes the largest value in **each row** (Lesson 15, Example 3).
-
-***Answer:***
-
-```{r}
-#| label: "q2c-simulate"
-
-set.seed(5656)
-reps <- 10000
-
-# Your code here
-
-```
-
-### 3. Smoking policy and education
+### 2. Smoking policy and education
 
 The following table shows the results of a survey in which the subjects were a sample of 300 adults residing in a certain metropolitan area. Each subject was asked to indicate which of three policies they favored with respect to smoking in public places, or that they had no opinion. (Table is from *Biostatistics: A Foundation for Analysis in the Health Sciences*, 10th Edition, Daniel, Wayne W.; Cross, Chad L., pg. 630)
 
@@ -272,35 +236,17 @@ Find the marginal pmf $p_{Y}(y)$ and briefly describe in words what the values a
 
 #### Part d
 
-Make a table for the joint CDF $F_{X,Y}(x,y)$ and briefly describe in words what the values are the probability of.
+Make a table for the conditional pmf $p_{X|Y}(x|y)$ and briefly describe in words what the values are the probability of.
 
 ***Answer:***
 
 #### Part e
 
-Find the marginal CDF $F_{X}(x)$ and briefly describe in words what the values are the probability of.
-
-***Answer:***
-
-#### Part f
-
-Find the marginal CDF $F_{Y}(y)$ and briefly describe in words what the values are the probability of.
-
-***Answer:***
-
-#### Part g
-
-Make a table for the conditional pmf $p_{X|Y}(x|y)$ and briefly describe in words what the values are the probability of.
-
-***Answer:***
-
-#### Part h
-
 Make a table for the conditional pmf $p_{Y|X}(y|x)$ and briefly describe in words what the values are the probability of.
 
 ***Answer:***
 
-#### Part i
+#### Part f
 
 Are $X$ and $Y$ independent? Explain using your answers above.
 
@@ -308,14 +254,14 @@ Are $X$ and $Y$ independent? Explain using your answers above.
 
 ***Answer:***
 
-#### Part j
+#### Part g
 
-Simulate 10,000 adults by drawing from the table, to check one value from each of Parts a, g, and i.
+Simulate 10,000 adults by drawing from the table, to check one value from each of Parts a, d, and f.
 
 **Step 1: Set up.** This chunk is done for you. Run it before the others. Each row of `smoking_cells` is one cell of the table, and `count` is how many of the 300 adults are in it.
 
 ```{r}
-#| label: "q3j-setup"
+#| label: "q2g-setup"
 
 set.seed(6969)    # so you get the same "random" adults each time
 reps <- 10000     # number of simulated adults
@@ -338,7 +284,7 @@ smoking_cells <- tibble(
 ***Answer:***
 
 ```{r}
-#| label: "q3j-simulate"
+#| label: "q2g-simulate"
 
 # Your code here
 
@@ -354,17 +300,17 @@ smoking_cells <- tibble(
 ***Answer:***
 
 ```{r}
-#| label: "q3j-summarize"
+#| label: "q2g-summarize"
 
 # Your code here
 
 ```
 
-Are your simulated answers close to your answers in Parts a, g, and i? (They do not need to match exactly!)
+Are your simulated answers close to your answers in Parts a, d, and f? (They do not need to match exactly!)
 
 ***Answer:***
 
-### 4. Expected value from a joint pdf
+### 3. Expected value from a joint pdf
 
 Consider the joint density of $X$ and $Y$: $$f_{X,Y}(x,y)= \dfrac32 x y$$ for $0 \leq x$ and $0 \leq y$ and $x+y \leq 2$, and $f_{X,Y}(x,y)=0$ otherwise.
 
@@ -383,7 +329,7 @@ Use 2D grid sampling to approximate $\mathbb{E}[X]$ and $\mathbb{E}[Y]$.
 ***Answer:***
 
 ```{r}
-#| label: "q4b-simulate"
+#| label: "q3b-simulate"
 
 set.seed(7878)
 reps <- 10000
@@ -401,13 +347,13 @@ Are $X$ and $Y$ independent? Explain using your drawing from Part a, then check 
 ***Answer:***
 
 ```{r}
-#| label: "q4c-check"
+#| label: "q3c-check"
 
 # Your code here
 
 ```
 
-### 5. Ratio of two RVs
+### 4. Ratio of two RVs
 
 Suppose that $X$ and $Y$ have constant joint density on the rectangle $0 \leq x \leq 1$ and $\frac{1}{2} \leq y \leq 1$. Let $Z = X/Y$.
 
@@ -436,7 +382,7 @@ Simulate 10,000 pairs $(X, Y)$ to check your answer to Part b, and make a histog
 ***Answer:***
 
 ```{r}
-#| label: "q5c-simulate"
+#| label: "q4c-simulate"
 
 set.seed(9898)
 reps <- 10000
@@ -445,7 +391,7 @@ reps <- 10000
 
 ```
 
-### 6. Maude's phone and breakfast
+### 5. Maude's phone and breakfast
 
 Each day, Maude has a 1% chance of losing her cell phone (her behavior on different days is independent). Each day, Maude has a 3% chance of forgetting to eat breakfast (again, her behavior on different days is independent). Her breakfast and cell phone habits are independent. Let $X$ be the number of days until she first loses her cell phone. Let $Y$ be the number of days until she first forgets to eat breakfast. (Here, $X$ and $Y$ are independent.)
 
@@ -480,7 +426,7 @@ Use your joint CDF from Part b to find the probability that Maude loses her phon
 ***Answer:***
 
 ```{r}
-#| label: "q6d-simulate"
+#| label: "q5d-simulate"
 
 set.seed(2424)
 reps <- 10000
@@ -493,7 +439,7 @@ Is your simulated answer close to your answer from the joint CDF? (They do not n
 
 ***Answer:***
 
-### 7. Minimum of a uniform and an exponential
+### 6. Minimum of a uniform and an exponential
 
 Let $X$ and $Y$ be independent random variables with respective pdfs $f_X(x)=\frac{1}{5}$, for $0\leq x\leq 5$, and $f_Y(y)=2e^{-2y}$, for $y>0$. Let $Z = \min(X, Y)$, the smaller of $X$ and $Y$.
 
@@ -524,7 +470,7 @@ Simulate 10,000 pairs of $(X, Y)$ to approximate $P(X < Y)$ and to check your an
 **Step 1: Set up.** This chunk is done for you. Run it before the others.
 
 ```{r}
-#| label: "q7d-setup"
+#| label: "q6d-setup"
 
 set.seed(3535)    # so you get the same "random" pairs each time
 reps <- 10000     # number of simulated pairs
@@ -537,7 +483,7 @@ reps <- 10000     # number of simulated pairs
 ***Answer:***
 
 ```{r}
-#| label: "q7d-simulate"
+#| label: "q6d-simulate"
 
 # Your code here
 
@@ -548,7 +494,7 @@ reps <- 10000     # number of simulated pairs
 ***Answer:***
 
 ```{r}
-#| label: "q7d-summarize"
+#| label: "q6d-summarize"
 
 # Your code here
 
@@ -561,7 +507,7 @@ reps <- 10000     # number of simulated pairs
 ***Answer:***
 
 ```{r}
-#| label: "q7d-plot"
+#| label: "q6d-plot"
 
 # Your code here
 
@@ -571,7 +517,7 @@ Is your simulated $P(Z > 0.5)$ close to your answer in Part b? Does the red line
 
 ***Answer:***
 
-### 8. Constant density on a quadrilateral
+### 7. Constant density on a quadrilateral
 
 Consider a pair of random variables $X$, $Y$ with constant joint density on the quadrilateral with vertices $(0,0)$, $(2,0)$, $(2,6)$, $(0,12)$.
 
@@ -608,7 +554,7 @@ Simulate 10,000 values of $X$ given $Y = 7$ to check your answer to Part c.
 ***Answer:***
 
 ```{r}
-#| label: "q8d-simulate"
+#| label: "q7d-simulate"
 
 set.seed(4646)
 reps <- 10000
@@ -623,11 +569,33 @@ Is your simulated answer close to your answer in Part c? (They do not need to ma
 
 ## Extra problems
 
-**You do NOT need to complete the extra problems!** These use the calculus versions of the ideas above.
+**You do NOT need to complete the extra problems!** Extra Problem 1 is more practice like Questions 1 and 6, and the rest use the calculus versions of the ideas above.
 
-### 1. pdf of the maximum
+### 1. Maximum of i.i.d. RVs
 
-Use your CDF from Question 2, Part a, to find the pdf of $Z = \max(X_1, X_2, \ldots, X_n)$ in terms of $f_X(x)$ and $F_X(x)$. Then find the pdf of $Z$ when $n = 3$ and each $X_i \sim \text{Uniform}[0, 1]$, and add it to your histogram from Question 2, Part c.
+Let $X_1, X_2, \ldots, X_n$ be i.i.d. random variables with common CDF $F_X(x)$, and let $Z = \max(X_1, X_2, \ldots, X_n)$.
+
+#### Part a
+
+Show that the CDF of $Z$ is $F_Z(z) = \left[F_X(z)\right]^n$.
+
+-   *Hint:* The largest value is $z$ or less only if *every* $X_i$ is $z$ or less (like $P(M \leq 2)$ in Lesson 15, Example 3). Then use independence (Lesson 16, "Extra notes").
+
+#### Part b
+
+Now suppose $n = 3$ and each $X_i \sim \text{Uniform}[0, 1]$. Use Part a to find $P(Z \leq 0.8)$.
+
+#### Part c
+
+Simulate 10,000 values of $Z$ to check your answer to Part b, and make a histogram of $Z$. How is its shape different from the flat shape of each $X_i$?
+
+-   *Hint:* Start with `tibble(sim = 1:reps)`, then use `mutate()` with three columns `x1`, `x2`, and `x3`, each from `runif(n(), min = 0, max = 1)`. Then `z = pmax(x1, x2, x3)` takes the largest value in **each row** (Lesson 15, Example 3).
+
+Use `set.seed(5656)` and `reps <- 10000` so your answers match the solutions.
+
+#### Part d
+
+Use your CDF from Part a to find the pdf of $Z = \max(X_1, X_2, \ldots, X_n)$ in terms of $f_X(x)$ and $F_X(x)$. Then find the pdf of $Z$ when $n = 3$ and each $X_i \sim \text{Uniform}[0, 1]$, and add it to your histogram from Part c.
 
 ### 2. Freddy and Jane's winnings
 
@@ -635,9 +603,9 @@ Freddy and Jane have entered a game in which they each win between 0 and 2 dolla
 
 ### 3. Expected value from a joint pdf, exactly
 
-For the joint pdf in Question 4, find $\mathbb{E}[Y]$ exactly, and compare it with your simulated answer in Question 4, Part b.
+For the joint pdf in Question 3, find $\mathbb{E}[Y]$ exactly, and compare it with your simulated answer in Question 3, Part b.
 
--   *Hint:* Use Option 1 (find $f_Y(y)$ first) or Option 2 (integrate $y\,f_{X,Y}(x,y)$ over the region) from "Expected value of one RV from joint pdf" in Lesson 15. Your drawing from Question 4, Part a gives the limits.
+-   *Hint:* Use Option 1 (find $f_Y(y)$ first) or Option 2 (integrate $y\,f_{X,Y}(x,y)$ over the region) from "Expected value of one RV from joint pdf" in Lesson 15. Your drawing from Question 3, Part a gives the limits.
 
 ### 4. CDF of a ratio
 
@@ -647,7 +615,7 @@ Suppose that the random variables $X$ and $Y$ have joint density $f_{X,Y}(x,y)$,
 
 ### 5. More on the minimum of a uniform and an exponential
 
-For $X$ and $Y$ in Question 7:
+For $X$ and $Y$ in Question 6:
 
 #### Part a
 
@@ -655,4 +623,4 @@ Find $P(X < Y)$ exactly with a double integral, and compare it with your simulat
 
 #### Part b
 
-Find the pdf of $Z = \min(X, Y)$ by taking the derivative of your CDF from Question 7, Part c.
+Find the pdf of $Z = \min(X, Y)$ by taking the derivative of your CDF from Question 6, Part c.

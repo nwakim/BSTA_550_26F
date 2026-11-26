@@ -114,57 +114,7 @@ Add the pdf of an $\text{Exp}(3)$ RV to your histogram of `w`. Does it match? If
 Not given
 :::
 
-### 2. Maximum of i.i.d. RVs
-
-Let $X_1, X_2, \ldots, X_n$ be i.i.d. with common CDF $F_X(x)$, and $Z = \max(X_1, X_2, \ldots, X_n)$.
-
-#### Part a
-
-Show that the CDF of $Z$ is $F_Z(z) = \left[F_X(z)\right]^n$.
-
-::: answer
-$F_Z(z) = P(X_1 \leq z, \ldots, X_n \leq z) = \prod_{i=1}^n P(X_i \leq z) = \left[F_X(z)\right]^n$
-:::
-
-#### Part b
-
-Now suppose $n = 3$ and each $X_i \sim \text{Uniform}[0, 1]$. Find $P(Z \leq 0.8)$.
-
-::: answer
-Not given
-:::
-
-#### Part c
-
-Simulate 10,000 values of $Z$ to check your answer to Part b, and make a histogram of $Z$.
-
-::: answer
-```{r}
-#| label: "q2c-simulate"
-#| fig-width: 7
-#| fig-height: 3.5
-
-set.seed(5656)
-reps <- 10000
-
-max_sims <- tibble(sim = 1:reps) |>
-  mutate(x1 = runif(n(), min = 0, max = 1),
-         x2 = runif(n(), min = 0, max = 1),
-         x3 = runif(n(), min = 0, max = 1),
-         z = pmax(x1, x2, x3))
-
-ggplot(max_sims, aes(x = z)) +
-  geom_histogram(aes(y = after_stat(density)),
-                 binwidth = 0.02, boundary = 0,
-                 color = "black", fill = "lightblue") +
-  labs(title = "Simulated Z = max(X1, X2, X3)", x = "z", y = "Density") +
-  theme_minimal(base_size = 12)
-```
-
-$Z$ piles up near 1: the largest of three values is more likely to be big. The simulated $P(Z \leq 0.8)$ should be close to your answer in Part b.
-:::
-
-### 3. Smoking policy and education
+### 2. Smoking policy and education
 
 Let $X=$ highest education level and $Y=$ policy favored, from the table of 300 adults.
 
@@ -194,37 +144,13 @@ Not given
 
 #### Part d
 
-Make a table for the joint CDF $F_{X,Y}(x,y)$.
-
-::: answer
-Partial answer: $F_{X,Y}(\text{high school}, \text{designated areas only}) = \dfrac{5 + 44 + 15 + 100}{300} \approx 0.547$
-:::
-
-#### Part e
-
-Find the marginal CDF $F_{X}(x)$.
-
-::: answer
-Not given
-:::
-
-#### Part f
-
-Find the marginal CDF $F_{Y}(y)$.
-
-::: answer
-Not given
-:::
-
-#### Part g
-
 Make a table for the conditional pmf $p_{X|Y}(x|y)$.
 
 ::: answer
 Partial answer: $p_{X|Y}(\text{high school} \mid \text{no smoking at all}) = \dfrac{30}{63} \approx 0.476$
 :::
 
-#### Part h
+#### Part e
 
 Make a table for the conditional pmf $p_{Y|X}(y|x)$.
 
@@ -232,7 +158,7 @@ Make a table for the conditional pmf $p_{Y|X}(y|x)$.
 Partial answer: $p_{Y|X}(\text{no smoking at all} \mid \text{high school}) = \dfrac{30}{150} = 0.200$
 :::
 
-#### Part i
+#### Part f
 
 Are $X$ and $Y$ independent? Explain using your answers above.
 
@@ -240,13 +166,13 @@ Are $X$ and $Y$ independent? Explain using your answers above.
 No. For example, $p_{X,Y}(\text{college}, \text{no restrictions}) = \frac{5}{300} \approx 0.017$, but $p_X(\text{college})\,p_Y(\text{no restrictions}) = 0.25 \times \frac{35}{300} \approx 0.029$.
 :::
 
-#### Part j
+#### Part g
 
-Simulate 10,000 adults by drawing from the table, to check one value from each of Parts a, g, and i.
+Simulate 10,000 adults by drawing from the table, to check one value from each of Parts a, d, and f.
 
 ::: answer
 ```{r}
-#| label: "q3j-simulate"
+#| label: "q2g-simulate"
 
 set.seed(6969)
 reps <- 10000
@@ -276,10 +202,10 @@ smoking_cond <- smoking_sims |>
 -   Joint $\approx$ `r round(smoking_summary$joint, 4)` and product $\approx$ `r round(smoking_summary$product, 4)`
 -   $p_{X|Y}(\text{high school} \mid \text{no smoking at all}) \approx$ `r round(smoking_cond$prob, 4)`
 
-Answers will vary slightly, but should be close to your answers in Parts a, g, and i.
+Answers will vary slightly, but should be close to your answers in Parts a, d, and f.
 :::
 
-### 4. Expected value from a joint pdf
+### 3. Expected value from a joint pdf
 
 Consider the joint density $f_{X,Y}(x,y)= \dfrac32 x y$ for $0 \leq x$, $0 \leq y$, and $x+y \leq 2$.
 
@@ -297,7 +223,7 @@ Use 2D grid sampling to approximate $\mathbb{E}[X]$ and $\mathbb{E}[Y]$.
 
 ::: answer
 ```{r}
-#| label: "q4b-simulate"
+#| label: "q3b-simulate"
 
 set.seed(7878)
 reps <- 10000
@@ -325,7 +251,7 @@ Are $X$ and $Y$ independent? Explain, then check with your simulated pairs from 
 
 ::: answer
 ```{r}
-#| label: "q4c-check"
+#| label: "q3c-check"
 
 triangle_check <- triangle_sims |>
   summarise(joint = mean(x <= 1 & y <= 1),
@@ -335,7 +261,7 @@ triangle_check <- triangle_sims |>
 No. The possible values are a triangle, not a rectangle: the possible values of $Y$ ($0 \leq y \leq 2 - x$) depend on $x$. In the simulation, joint $\approx$ `r round(triangle_check$joint, 3)` but product $\approx$ `r round(triangle_check$product, 3)`.
 :::
 
-### 5. Ratio of two RVs
+### 4. Ratio of two RVs
 
 $X$ and $Y$ have constant joint density on the rectangle $0 \leq x \leq 1$, $\frac{1}{2} \leq y \leq 1$, and $Z = X/Y$.
 
@@ -361,7 +287,7 @@ Simulate 10,000 pairs $(X, Y)$ to check your answer to Part b, and make a histog
 
 ::: answer
 ```{r}
-#| label: "q5c-simulate"
+#| label: "q4c-simulate"
 #| fig-width: 7
 #| fig-height: 3.5
 
@@ -384,7 +310,7 @@ ggplot(ratio_sims, aes(x = z)) +
 The simulated $P(Z \leq 1)$ should be close to your answer in Part b.
 :::
 
-### 6. Maude's phone and breakfast
+### 5. Maude's phone and breakfast
 
 Let $X$ be the number of days until Maude first loses her cell phone (1% chance each day), and $Y$ the number of days until she first forgets to eat breakfast (3% chance each day). $X$ and $Y$ are independent.
 
@@ -418,7 +344,7 @@ Find $F_{X,Y}(30, 10)$, then simulate 10,000 pairs of $(X, Y)$ to check your ans
 
 ::: answer
 ```{r}
-#| label: "q6d-simulate"
+#| label: "q5d-simulate"
 
 set.seed(2424)
 reps <- 10000
@@ -436,7 +362,7 @@ prob_maude <- mean(maude_sims$X <= 30 & maude_sims$Y <= 10)
 Answers will vary slightly, but should be close to 0.0683.
 :::
 
-### 7. Minimum of a uniform and an exponential
+### 6. Minimum of a uniform and an exponential
 
 $X$ and $Y$ are independent with $f_X(x)=\frac{1}{5}$ for $0\leq x\leq 5$ and $f_Y(y)=2e^{-2y}$ for $y>0$, and $Z = \min(X, Y)$.
 
@@ -470,7 +396,7 @@ Simulate 10,000 pairs of $(X, Y)$ to approximate $P(X < Y)$ and to check your an
 
 ::: answer
 ```{r}
-#| label: "q7d-simulate"
+#| label: "q6d-simulate"
 
 set.seed(3535)
 reps <- 10000
@@ -491,7 +417,7 @@ min_summary <- min_sims |>
 Answers will vary slightly, but should be close to your answers in Parts b and c.
 :::
 
-### 8. Constant density on a quadrilateral
+### 7. Constant density on a quadrilateral
 
 $X$ and $Y$ have constant joint density on the quadrilateral with vertices $(0,0)$, $(2,0)$, $(2,6)$, $(0,12)$.
 
@@ -525,7 +451,7 @@ Simulate 10,000 values of $X$ given $Y = 7$ to check your answer to Part c.
 
 ::: answer
 ```{r}
-#| label: "q8d-simulate"
+#| label: "q7d-simulate"
 
 set.seed(4646)
 reps <- 10000

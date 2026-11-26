@@ -362,5 +362,11 @@
   },
   "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.qmd": {
     "17_Central_Limit_Theorem.html": "37051c7f"
+  },
+  "project/Final_Project_template.qmd": {
+    "Final_Project_template.html": "be154ad6"
+  },
+  "project/lastname_firstinitial_final_appendix.qmd": {
+    "lastname_firstinitial_final_appendix.html": "e998960c"
   }
 }

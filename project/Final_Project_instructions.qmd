@@ -6,6 +6,9 @@ format:
   html:
     link-external-newwindow: true
     toc: true
+    highlight-style: ayu
+    code-block-bg: "#FFFAFA"
+    code-block-border-left: "#E89543"
   pdf: default
 editor_options:
   chunk_output_type: console
@@ -26,7 +29,7 @@ source(here("class_dates.R"))
 ```
 
 ::: callout-important
-**Due `r proj %>% format("%m/%d")`**. See [Project Central](/project.qmd) for the full project overview. Make sure you have addressed the feedback from all of your checkpoints.
+**Due `r proj %>% format("%m/%d")`** (24 points). See [Project Central](/project.qmd) for the full project overview. Make sure you have addressed the feedback from all of your checkpoints.
 :::
 
 ## Goal
@@ -35,18 +38,29 @@ All quarter, you have used probability and simulation to study one public health
 
 Your brief should answer one question: ***What does probability tell us about this program, and what should the manager keep in mind when making decisions?***
 
+## Your three guiding questions
+
+You already wrote the questions your brief will answer. Your three **guiding questions** from Checkpoint 0 (with any changes from my feedback) are the manager's questions, and each finding in your brief answers one of them:
+
+| Finding | Checkpoint | Your guiding question asked... | Example (Scenario B) |
+|----|----|----|----|
+| **1. What a positive result means** | CP 1 | what a positive result means for one person | If a resident without symptoms gets a positive rapid test, what is the probability that they are infected? |
+| **2. Planning for the count** | CP 2 | how often an unusual day, household, or year happens | For a case who lives with 3 other people, what is the probability that at least 2 of them also get infected? |
+| **3. One person versus the average** | CP 3 | how often an average across many people is beyond a cutoff | What is the probability that the average incubation period across the county's next 50 cases is more than 3.5 days? |
+
+You also already wrote a first draft of each finding: the **"Say it"** task at the end of each checkpoint. Start from those.
+
 ## What you will submit
 
-You will submit **two pieces**. One submission per team.
+You will submit **one piece**: a **public health brief** for the manager of the program in your scenario. One submission per team.
 
-| Piece | What it is | Who it is for | Format |
-|----|----|----|----|
-| **1. Public health brief** | A 2-page summary of your findings, **or** a 5-minute recorded explanation | The manager of the program in your scenario | PDF (brief), **or** a video link plus a PDF of your slides (recording) |
-| **2. Technical appendix** | Your revised Checkpoints 1–3 combined into one Quarto file | Me (and any statistician who wants to check your work) | Rendered HTML (with `code-fold: true`) plus your `.qmd` |
+-   **Format:** a one-page information page made from the [brief template](#sec-template).
+-   **Files:** your rendered HTML and your `.qmd`, named `lastname_firstinitial_final_brief.html` and `lastname_firstinitial_final_brief.qmd`. If you work in a pair, use both last names (e.g., `lastname1_lastname2_final_brief.html`).
+-   Submit everything on Brightspace.
 
-Name your files `lastname_firstinit_final_brief.pdf` and `lastname_firstinit_final_appendix.html` (and `.qmd`). If you work in a pair, use both last names. Submit everything on Brightspace.
+Every number in your brief should be the **corrected** value from your checkpoints, after you address my feedback. I will check your numbers against the correct values for your scenario, so a correct number in the brief shows that you fixed it.
 
-## Part 1: The public health brief
+## The public health brief
 
 ### Who you are writing for
 
@@ -58,34 +72,34 @@ Your reader is the manager of the program in your scenario:
 
 This person knows their program well. They know what a mammogram, a rapid test, or a pulse oximetry screen is. They do **not** know what $P(D \mid T^+)$, a Binomial distribution, or the Central Limit Theorem is, and they do not need to. They need to know what your results mean for the decisions they make.
 
-### Format
+### Format {#sec-template}
 
-Choose **one** format:
+Make your brief with the **brief template**, which builds a one-page information page with colored boxes for each section and a tab for each finding.
 
--   **Written brief:** at most **2 pages** (8.5" × 11"), exported as a PDF. You may make it in Quarto, Word, PowerPoint, Google Docs, Canva, or any other tool.
--   **Recorded explanation:** a video of **5 minutes or less** where you walk through slides. Submit a link to the video (make sure I can view it) and a PDF of your slides. If you work in a pair, both partners should speak.
+[You can download the brief template here.](https://github.com/nwakim/BSTA_550_26F/blob/main/project/Final_Project_template.qmd) The link takes you to GitHub, where you can click the download button (the arrow pointing down) near the top right of the file. Rename it `lastname_firstinitial_final_brief.qmd`.
 
-Both formats need the same seven sections, described below. You are welcome to change the layout and style.
+-   **Length:** at most **600 words** on the page, not counting the "How we got these numbers" box, text inside your plots, the sources, or the AI Use Statement. The "How we got these numbers" box can have at most **120 words**.
+-   **Style:** You are welcome to change the colors and theme (the template shows you where), as long as every section is there and the page is easy to read.
 
 ### What your brief should include
 
-1.  [**Title and headline takeaway**](#sec-title)
+The template has a box for each of these sections, in this order:
+
+1.  [**Title and the bottom line**](#sec-title)
 2.  [**The program and the question**](#sec-program)
 3.  [**Where the numbers come from**](#sec-numbers)
-4.  [**Finding 1: What a positive result means**](#sec-findings) (from Checkpoint 1)
-5.  [**Finding 2: Planning for the count**](#sec-findings) (from Checkpoint 2)
-6.  [**Finding 3: One person versus the average**](#sec-findings) (from Checkpoint 3)
-7.  [**What to keep in mind**](#sec-keep-in-mind)
+4.  [**How we got these numbers**](#sec-how)
+5.  [**What we found**](#sec-findings): Finding 1, Finding 2, and Finding 3, one tab each
+6.  [**What to keep in mind**](#sec-keep-in-mind)
+7.  [**Sources and AI Use Statement**](#sec-sources), in small print at the bottom
 
-A short **sources** line goes at the bottom of the brief (see [Sources](#sec-sources)).
+#### Title and the bottom line {#sec-title}
 
-#### Title and headline takeaway {#sec-title}
-
--   **Title:** Keep it plain and descriptive. A reader should know what the brief is about before they read a full sentence. For example: "What Probability Tells Us About Our Mobile Mammography Program." Include your name(s) under the title.
--   **Headline takeaway:** One sentence, in plain language, that states the most important thing you want the manager to remember. If the manager only reads one line, this is it.
+-   **Title:** Keep it plain and descriptive. A reader should know what the brief is about before they read a full sentence. For example: "What Probability Tells Us About Our COVID-19 Testing and Contact Tracing Program." Put your name(s) in the `author` line.
+-   **The bottom line:** One sentence, in plain language, that states the most important thing you want the manager to remember. If the manager only reads one line, this is it.
 
 ::: callout-tip
-Write the title and headline **last**, after you have written your findings. It is much easier to summarize findings you have already written.
+Write the title and the bottom line **last**, after you have written your findings. It is much easier to summarize findings you have already written.
 :::
 
 #### The program and the question {#sec-program}
@@ -96,103 +110,92 @@ In 2–4 sentences, describe the program (who it serves, and what test, count, o
 
 In 2–3 sentences, explain in plain language where your input values come from: the published studies in your source packet and the course values on your scenario card. You do not need to list every number here. The point is to show the reader that your results rest on real, published estimates.
 
-#### Findings {#sec-findings}
+#### How we got these numbers {#sec-how}
 
-You will have **three findings**, one from each checkpoint. Each finding has three parts:
+In at most **120 words**, explain in plain language how you turned those numbers into your findings: **one sentence for each finding**, and **one sentence** about how you checked your results with simulation. Use no notation, formulas, or distribution names. For example, for Scenario B:
 
--   **A short headline:** a few words that name the point, like a newspaper subheading. For example: "Most Abnormal Reads Are Not Cancer."
+> -   **Finding 1:** We imagined 10,000 residents without symptoms taking a rapid test and used the published accuracy of rapid tests to count how many people with a positive result are actually infected.
+> -   **Finding 2:** We treated each of the 3 people who live with a case as their own yes-or-no outcome with the same chance of infection, and worked out how often at least 2 of them get infected.
+> -   **Finding 3:** We used the published average and spread of the time from infection to symptoms to describe one person, then worked out how much the average across 50 cases varies.
+> -   **Checking our work:** We checked every result by having a computer simulate thousands of residents, households, and groups of cases.
+
+#### What we found {#sec-findings}
+
+You will have **three findings**, one from each checkpoint, each in its own tab. Each finding has three parts:
+
+-   **A short headline** in the tab name: the finding number and a few words that name the point, like a newspaper subheading. For example: "Finding 1: Most positive rapid tests are false alarms."
 -   **One visual:** a polished plot or table from your checkpoint (see [Polishing your visuals](#sec-visuals)).
 -   **A 2–4 sentence caption:** state the key number, then say what it means for the program.
 
-Here is what each finding should cover:
+Here is what each finding should cover, and where to start:
 
-| Finding | Checkpoint | What it should tell the manager | Good visuals to consider |
+| Finding | Start from | What it should tell the manager | Visual |
 |----|----|----|----|
-| **1. What a positive result means** | CP 1 | Out of the people who get a positive result, how many actually have the condition? How would this change in a group with a higher or lower prevalence? | A natural frequency diagram (e.g., "out of 10,000 people screened...") or your PPV-versus-prevalence plot |
-| **2. Planning for the count** | CP 2 | What is a typical day, household, or year? How often does an unusual one happen, and what does that mean for planning? | Your PMF plot, with the planning threshold marked |
-| **3. One person versus the average** | CP 3 | How different is what happens to *one* person from what happens *on average* across many people? | The distribution of a single observation next to the distribution of the average |
+| **1. What a positive result means** | CP 1 "Say it" message and Task 4 | Out of the people who get a positive result, how many actually have the condition? How would this change in a group with a higher or lower prevalence? | A natural frequency table or bar chart (e.g., "out of 1,000 people screened..."), or your PPV-versus-prevalence plot |
+| **2. Planning for the count** | CP 2 "Say it" paragraph | What is a typical day, household, or year? How often does the situation in your guiding question happen, and what does that mean for planning? | Your PMF plot, without the simulation, with the bars past your cutoff highlighted |
+| **3. One person versus the average** | CP 3 "Say it" paragraph | How different is what happens to *one* person from what happens *on average* across many people? | The distribution for one person and the distribution of the average, on the same axis |
 
-Use **natural frequencies** instead of probability notation wherever you can. For example, a Finding 1 caption might read:
+The code chunk in each tab of the template has a hint for making these visuals.
 
-> **Headline:** Most Abnormal Reads Are Not Cancer
+Use **natural frequencies**, with the probability in parentheses if it helps, just like in your Checkpoint 2 and 3 "Say it" paragraphs. For example, a Finding 1 caption might read:
+
+> **Finding 1: Most positive rapid tests are false alarms**
 >
-> **Caption:** Out of every 1,000 women screened on the van, about 83 will have an abnormal read, but only about 6 of those 83 will have breast cancer. This means that most women who are called back will get good news at their follow-up appointment.
+> Out of every 10,000 residents without symptoms who take a rapid test, about 77 will test positive, but only about 28 of those 77 are actually infected (probability 0.36). This means that a positive rapid test in someone without symptoms should be confirmed with a PCR test before we ask them and their household to isolate.
 
 ::: callout-note
 ## Be honest about uncertainty
 
-Your numbers come from models built on published estimates, not from the program's own data. Use words like "about," "we expect," and "roughly" rather than stating results as exact facts. For example, "we expect about 24 babies with CCHD each year," not "there will be 24 babies with CCHD."
+Your numbers come from models built on published estimates, not from the program's own data. Use words like "about," "we expect," and "roughly" rather than stating results as exact facts. For example, "we expect about 1 of the 3 people who live with each case to get infected," not "1 of the 3 people will get infected."
 :::
 
 #### What to keep in mind {#sec-keep-in-mind}
 
 In 3–5 sentences (or bullet points), tell the manager what your findings mean for their decisions. For example: how to talk with people who get a positive result, how much capacity to plan for, or how to read the averages the program reports.
 
-Include **at least one assumption** from your checkpoints that might not hold in real life (for example, the assumption most likely to fail from Checkpoint 2), and explain in plain language how it could change your advice.
+Include **at least one assumption** from your checkpoints that might not hold in real life, and explain in plain language how it could change your advice. Good places to look:
+
+-   the assumption most likely to fail from Checkpoint 2 (and your Stretch result, if you did it),
+-   where your distribution might not match the real quantity, from Checkpoint 3, Task 2.
 
 ::: callout-tip
 You do not need to make formal policy recommendations. Describe what your results suggest and what is worth a closer look. Be careful not to claim more than your models can support.
 :::
 
-#### Sources {#sec-sources}
+#### Sources and AI Use Statement {#sec-sources}
 
-Add a short line at the bottom of the brief that cites the published sources you used from your source packet. A short format is fine (e.g., "Lee CI, et al. *Radiology*. 2023."), since the full citations are in your technical appendix.
+At the bottom of the page, in small print:
+
+-   **Sources:** full citations for the published sources you used from your source packet (authors, title, journal, year, and a link).
+-   **AI Use Statement:** say whether you used AI, and if so, how. If not, write "AI was not used in this assignment."
 
 ### Polishing your visuals {#sec-visuals}
 
 The plots from your checkpoints were made for me. In the brief, they need to stand on their own for a manager. Before you add each one, revise it so that it has:
 
--   A plain-language, descriptive title (e.g., "Follow-up appointments needed after a van day of 40 screens," not "PMF of X")
+-   A plain-language, descriptive title (e.g., "Household members infected per COVID-19 case (homes of 4)," not "PMF of X")
 -   Axis labels in plain language, with units (no $X$, $Y$, or variable names from your code)
 -   Only the information the reader needs. Remove simulation-versus-theory comparisons, extra lines, and default legends that do not help the reader.
--   A deliberate color choice that is consistent across your visuals, and a clean theme (e.g., `theme_minimal()` instead of the default gray background)
+-   A deliberate color choice that is consistent across your visuals (for example, the same colors as your page's boxes), and a clean theme (e.g., `theme_minimal()` instead of the default gray background)
+-   Text that is large enough to read on the page (e.g., `theme_minimal(base_size = 16)`)
 
-To save a `ggplot` as an image:
-
-```{r}
-#| eval: false
-ggsave(here("project", "images", "finding_2.png"), plot = my_plot,
-       width = 5, height = 3.5, units = "in", dpi = 300)
-```
-
-Save at `dpi = 300` so the image looks crisp on a printed page, and set the `width` and `height` to roughly the size of the space in your brief so you do not have to stretch or squish it. Then open the image and check that the text is still readable at that size.
+The template sets the size of every plot. To change the size of one plot, add `#| fig-width: 7` and `#| fig-height: 4` (in inches) at the top of its code chunk.
 
 ::: callout-tip
 **Simpler is better.** A clear bar chart with one highlighted bar is often easier to understand than a detailed plot. Ask yourself: what is the one thing I want the manager to see in this visual?
 :::
-
-## Part 2: The technical appendix
-
-The technical appendix is your full statistical work, revised and combined into one document.
-
--   Combine your Checkpoints 1–3 into **one** Quarto file with a section for each checkpoint.
--   **Revise each checkpoint using my feedback.** Fix any calculation errors, missing work, or unclear explanations.
--   At the top of the file, include a short **revision notes** list that says what you changed in each checkpoint (for example, "CP 2: corrected $P(X > 6)$, which used the wrong inequality").
--   Include a **references** section at the end with the full citation for each source you used.
--   Render to HTML with `code-fold: true`, and make sure the file renders without errors.
-
-The numbers in your brief should **match** the numbers in your technical appendix. If you rounded a number in the brief, round it from the value in your appendix.
 
 ## Before you submit
 
 Read your brief as if you were the program manager seeing it for the first time:
 
 -   Does it read cleanly from top to bottom?
--   Does every visual have a headline and a caption?
+-   Does every finding have a headline, a visual, and a caption?
 -   Is there anything left that still sounds like it was written for this class instead of for the manager (probability notation, distribution names, variable names, or numbers without an explanation)?
--   Do the numbers in the brief match your technical appendix?
-
-For a recording, watch it once all the way through before you submit, and check that the link works when you are logged out.
+-   Is there any leftover template text in [square brackets]?
+-   Are all of your numbers the corrected values, after addressing my feedback on each checkpoint?
+-   Is the page within 600 words (and the "How we got these numbers" box within 120)?
 
 ## Rubric
 
-| Criterion | 3 | 2 | 1 |
-|----|----|----|----|
-| **Accurate results** (numbers in the brief and appendix are correct and match each other) | Correct and consistent throughout | Small errors or mismatches | Major errors |
-| **Revisions** (appendix addresses checkpoint feedback; revision notes included) | All feedback addressed and documented | Most feedback addressed | Little feedback addressed, or no revision notes |
-| **Context** (program, question, and sources are clear) | Reader understands the program, the decisions, and where the numbers come from | Some context is missing or unclear | Little or no context |
-| **Findings** (three findings, each with a headline, visual, and caption) | All three findings are clear, and each connects to the program | One finding is missing a piece or is unclear | Findings are missing or disconnected from the program |
-| **Plain language** (written for the manager, using natural frequencies) | No unexplained jargon or notation; numbers are always interpreted | Some jargon, notation, or uninterpreted numbers | Written mostly for a statistician |
-| **What to keep in mind** (implications and at least one assumption) | Practical, honest, and does not overreach | Vague or overreaches a little | Missing or misleading |
-| **Visuals** (polished and able to stand on their own) | Clear, legible, and consistent | Readable but not fully polished | Hard to read, or missing |
-| **Format** (length, sources line, file names, renders or plays correctly) | Meets all requirements | Minor issues | Major issues |
+The full rubric, with every item and its points, is in the [Final Project rubric spreadsheet](Final_Project_rubric.xlsx).

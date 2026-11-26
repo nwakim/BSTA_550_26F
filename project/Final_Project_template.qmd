@@ -1,0 +1,190 @@
+---
+title: "[Your descriptive title]"
+subtitle: "A public health brief for the manager of [your program]"
+author: "[Your name(s)]"
+date: today
+format:
+  html:
+    theme: cosmo                      # try flatly, lux, minty, united, ...
+    title-block-banner: "#006a4e"     # banner color (match --box-2 in the CSS below)
+    title-block-banner-color: "white" # text color in the banner
+    fig-width: 8                      # default plot width (inches)
+    fig-height: 4.5                   # default plot height (inches)
+    fig-align: center
+    toc: false
+    embed-resources: true
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+<!--
+  FINAL PROJECT TEMPLATE: PUBLIC HEALTH BRIEF
+  - Replace everything in [square brackets] with your own content.
+  - Text between these arrows is a comment: it won't show up on your page.
+    You can delete the comments when you're done.
+  - Your reader is the manager of the program in your scenario. They know
+    their program well, but have never taken a probability class and will
+    never see your code. No probability notation, distribution names, or
+    variable names on the page!
+  - Render early and often! Open the .html in your web browser to check it.
+  - Length: at most 600 words on the page (not counting the "How we got these
+    numbers" box, text in plots, the sources, or the AI Use Statement),
+    and at most 120 words for the "How we got these numbers" box.
+  - Every number should be the corrected value from your checkpoints.
+-->
+
+```{css}
+/* ---- Page styling (optional to change) ----------------------------------
+   Change the three colors below to restyle every box at once.
+   Colors are hex codes. These match our course colors. */
+:root {
+  --box-1: #193D78;   /* dark blue */
+  --box-2: #006a4e;   /* green     */
+  --box-3: #E25D3B;   /* orange    */
+}
+
+/* Boxes like the lesson notes: a colored outline with a colored title bar.
+   Use them with ::: blue-box, ::: green-box, or ::: orange-box */
+.blue-box   { --box: var(--box-1); }
+.green-box  { --box: var(--box-2); }
+.orange-box { --box: var(--box-3); }
+.blue-box, .green-box, .orange-box {
+  border: 3px solid var(--box);
+  border-radius: 10px;
+  padding: 0 16px 8px 16px;
+  margin: 1.5em 0;
+}
+.blue-box > h3, .green-box > h3, .orange-box > h3,
+.blue-box > h4, .green-box > h4, .orange-box > h4 {
+  background-color: var(--box);
+  color: white;
+  margin: 0 -16px 12px -16px;
+  padding: 0.4em 0.75em;
+  border-radius: 7px 7px 0 0;
+  border-bottom: none;
+}
+.blue-box strong, .green-box strong, .orange-box strong { color: var(--box); }
+
+/* Smaller, gray text for the sources and AI statement */
+.fine-print { font-size: 0.85em; color: #6c757d; }
+```
+
+```{r}
+#| include: false
+
+# Load your packages (add any others you need)
+library(tidyverse)
+```
+
+```{r}
+#| include: false
+
+# Your input values (copy them from your Checkpoint 0 table, with any
+# corrections from my feedback).
+# For example, for Scenario B:
+#   p_D <- 0.005           # prevalence
+#   p_pos_if_D <- 0.550    # sensitivity
+#   ...
+
+```
+
+```{r}
+#| include: false
+
+# Calculate the numbers for your text here, using the corrected work from
+# your checkpoints. You can then either type them into your
+# text, or use inline code: writing `r ppv_per_1000` in your text puts the
+# value of ppv_per_1000 into your sentence when you render.
+# For example:
+#   ppv <- p_pos_if_D * p_D / p_pos
+#   ppv_per_1000 <- round(ppv * 1000)
+
+```
+
+::: green-box
+#### The bottom line
+
+[Your one-sentence headline takeaway: the single most important thing the manager should remember. Write this last!]
+:::
+
+::: blue-box
+### The program and the question
+
+[2-4 sentences: who the program serves, what test, count, or measurement it deals with, and the decisions the manager has to make. You can start from your Checkpoint 0 description.]
+:::
+
+::: blue-box
+### Where the numbers come from
+
+[2-3 sentences, in plain language: our results come from published studies (name them in words, e.g., "a large review of studies on rapid COVID-19 tests") and a few planning values from the program. No need to list every number here.]
+:::
+
+::: blue-box
+### How we got these numbers
+
+<!-- At most 120 words. One plain-language sentence per finding, plus one about
+     checking with simulation. No notation, formulas, or distribution names. -->
+
+-   **Finding 1:** [How you found what a positive result means. Example: "We imagined 10,000 residents without symptoms taking a rapid test and used the published accuracy of rapid tests to count how many people with a positive result are actually infected."]
+-   **Finding 2:** [How you found how often the unusual day, household, or year happens.]
+-   **Finding 3:** [How you compared one person with the average of many people.]
+-   **Checking our work:** [How you checked your results with computer simulation.]
+:::
+
+::: green-box
+### What we found
+
+<!-- Each tab header: the finding number, a colon, and a quick summary (3-6 words) of what you found. Example: "#### Finding 1: Most positive rapid tests are false alarms" -->
+
+::: {.panel-tabset .nav-pills}
+#### Finding 1: [quick summary of Finding 1]
+
+```{r}
+# Finding 1 (Checkpoint 1): what a positive result means
+# Start from your Checkpoint 1 PPV-versus-prevalence plot, or make a simple
+# natural frequency table or bar chart (e.g., "out of 1,000 people screened").
+
+```
+
+[2-4 sentence caption: out of the people who get a positive result, how many actually have the condition? Use natural frequencies (e.g., "out of every 1,000..."). Then say what it means for the program, and how it would change in a group with a higher or lower prevalence.]
+
+#### Finding 2: [quick summary of Finding 2]
+
+```{r}
+# Finding 2 (Checkpoint 2): planning for the count
+# Start from your Checkpoint 2 PMF plot. Keep only the bars for the theoretical
+# PMF (no simulation dots), and highlight the bars past your guiding question's
+# cutoff, for example with aes(fill = x >= 2) in geom_col().
+
+```
+
+[2-4 sentence caption: what a typical day, household, or year looks like, and how often the situation in your Checkpoint 2 guiding question happens. Start from your Checkpoint 2 "Say it" paragraph.]
+
+#### Finding 3: [quick summary of Finding 3]
+
+```{r}
+# Finding 3 (Checkpoint 3): one person versus the average
+# Show the distribution for one person next to the distribution of the average,
+# on the same x-axis. For example, make a tibble with a grid of values, add one
+# column with dgamma() or dnorm() for one person and one column with dnorm()
+# for the average (SD = sigma / sqrt(n)), and draw both with geom_line().
+
+```
+
+[2-4 sentence caption: how often one tumor, case, or baby is beyond your cutoff, compared with how often the average is. Start from your Checkpoint 3 "Say it" paragraph.]
+:::
+:::
+
+::: orange-box
+### What to keep in mind
+
+[3-5 sentences (or bullet points): what your findings mean for the manager's decisions (how to talk with people who get a positive result, how much capacity to plan for, how to read the averages the program reports). Include at least one assumption that might not hold in real life, such as the assumption most likely to fail from Checkpoint 2, and how it could change your advice.]
+:::
+
+::: fine-print
+**Sources:** [Full citations for the published sources in your source packet: authors, title, journal, year, and a link.]
+
+**AI Use Statement:** [Say whether you used AI, and if so, how. If not: "AI was not used in this assignment."]
+:::

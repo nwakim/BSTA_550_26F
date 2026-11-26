@@ -1,0 +1,348 @@
+---
+title: "Final Project: Technical Appendix"
+author: "Your name(s) here!"
+subtitle: "BSTA 550"
+date-modified: "today"
+format:
+  html:
+    link-external-newwindow: true
+    toc: true
+    toc-depth: 3
+    embed-resources: true
+    number-sections: true
+    number-depth: 3
+    code-fold: true
+editor_options:
+  chunk_output_type: console
+---
+
+```{r}
+#| message: false
+#| echo: false
+
+# PLEASE DO NOT REMOVE THIS CODE CHUNK!!!
+### ADD YOUR LIBRARIES HERE!!! ####
+library(tidyverse)
+```
+
+::: callout-warning
+Note that this is the editing file for the technical appendix. **There are detailed instructions on our course page for the Final Project that are not in this file.**
+
+-   Copy your revised work from Checkpoints 1–3 into the sections below, and fix everything from my feedback.
+-   Please do not remove any headings or task boxes. Only add your work.
+-   Name your files `lastname_firstinitial_final_appendix.qmd` and `.html` (or `lastname1_lastname2_final_appendix.qmd` and `.html` for a pair).
+:::
+
+## Revision notes {.unnumbered}
+
+::: callout-important
+#### Task
+
+List what you changed in each checkpoint because of my feedback (or your own corrections). For example: "CP 2: corrected $P(X > 6)$, which used the wrong inequality." If you made no changes to a checkpoint, write "No changes."
+:::
+
+-   **Checkpoint 1:**
+-   **Checkpoint 2:**
+-   **Checkpoint 3:**
+
+## Your scenario and guiding questions {.unnumbered}
+
+Scenario (A, B, or C):
+
+**Checkpoint 1 guiding question:**
+
+**Checkpoint 2 guiding question:**
+
+**Checkpoint 3 guiding question:**
+
+## Checkpoint 1: When Is a Positive Really Positive?
+
+### Set up the problem
+
+::: callout-important
+#### Task
+
+-   Copy your events and your three Checkpoint 1 probability statements from Checkpoint 0, with any corrections from feedback. Keep the source for each value.
+-   Add the one conditional probability you did not record in Checkpoint 0, using the complement rule: $P(T^+ \mid D^c)$ for Scenarios A and B, or $P(T^- \mid D^c)$ for Scenario C.
+-   Draw a tree diagram **or** a 2×2 table for a hypothetical population of 100,000 people screened by your program. Round each count to a whole number of people.
+:::
+
+**Events:**
+
+-   $D$ =
+-   $T^+$ =
+
+| Input | Probability statement | Source |
+|----|----|----|
+| Prevalence |  |  |
+| Sensitivity |  |  |
+| Specificity (A, B) or false-positive rate (C), from Checkpoint 0 |  |  |
+| New: complement of the row above |  | Complement rule |
+
+**Tree diagram or 2×2 table:**
+
+### Solve it analytically
+
+::: callout-important
+#### Task
+
+-   Use the Law of Total Probability to find $P(T^+)$.
+-   Use Bayes' rule to find the positive predictive value $P(D \mid T^+)$ and the negative predictive value $P(D^c \mid T^-)$.
+-   Write out each formula first, then compute (you may use R as a calculator).
+:::
+
+```{r}
+
+```
+
+### Simulate it
+
+::: callout-important
+#### Task
+
+-   Simulate a population of at least 100,000 people. Assign each person a disease status, then a test result that depends on their disease status.
+-   Estimate PPV and NPV from your simulation and compare them with your analytic answers.
+-   In 1–2 sentences, explain why the simulated and analytic values are close but not identical.
+:::
+
+```{r}
+
+```
+
+### Explore: how does prevalence matter?
+
+::: callout-important
+#### Task
+
+-   Compute the analytic PPV for prevalence values from 0.01% to 50%, keeping sensitivity and specificity fixed.
+-   Plot PPV (y-axis) against prevalence (x-axis), and mark your scenario's prevalence.
+-   In 2–3 sentences, describe what happens to PPV as prevalence changes. Then describe a group or setting your program might serve with a higher or lower prevalence, and how a positive result would mean something different there.
+:::
+
+```{r}
+
+```
+
+### Say it
+
+::: callout-important
+#### Task
+
+-   Write a short paragraph (4–6 sentences) for the letter or text message your program sends to every person with a positive result. Use natural frequencies instead of probability notation, and say what the next step is.
+-   Answer your Checkpoint 1 guiding question from Checkpoint 0 in one sentence.
+:::
+
+**Message:**
+
+**Answer to my Checkpoint 1 guiding question:**
+
+## Checkpoint 2: Counting Events
+
+### Define your random variable
+
+::: callout-important
+#### Task
+
+-   Write $X$ in words, including its units and time frame, using the definition for your scenario.
+-   List the possible values (the support) of $X$.
+:::
+
+**$X$ =**
+
+**Possible values of $X$:**
+
+### Justify the distribution
+
+::: callout-important
+#### Task
+
+-   State the distribution for your scenario and its parameter(s), citing where each value came from.
+-   List the assumptions of that distribution, and explain whether each is reasonable for your scenario.
+-   Identify the assumption **most likely to fail** in real life, and explain why.
+:::
+
+**Distribution:** $X \sim$
+
+| Parameter | Value | Source |
+|----|----|----|
+|  |  |  |
+|  |  |  |
+
+**Assumptions:**
+
+**Assumption most likely to fail:**
+
+### Solve it analytically
+
+::: callout-important
+#### Task
+
+-   Find $E(X)$, $\text{Var}(X)$, and $\text{SD}(X)$ using formulas from class.
+-   Calculate the probability in your Checkpoint 2 guiding question. Show the formula (PMF or CDF), then compute with R.
+:::
+
+```{r}
+
+```
+
+### Simulate it
+
+::: callout-important
+#### Task
+
+-   Simulate at least 100,000 values of $X$ in R.
+-   Make a plot comparing the simulated distribution with the theoretical PMF.
+-   Compare the simulated mean, variance, and guiding-question probability with the analytic values in a small table.
+:::
+
+```{r}
+
+```
+
+### Stretch (optional)
+
+::: callout-important
+#### Task
+
+Break the assumption you identified above and show how the answer changes.
+:::
+
+```{r}
+
+```
+
+### Say it
+
+::: callout-important
+#### Task
+
+-   Write a short paragraph (4–6 sentences) for the program manager who needs to plan around this count. Use plain language, with no probability notation. Answer these questions in order:
+    1.  What should I expect on a typical day, household, or year? (Use $E(X)$ and $\text{SD}(X)$.)
+    2.  How often does the situation in our guiding question happen? (Use your guiding-question probability as a natural frequency, with the probability in parentheses.)
+    3.  What could make these numbers wrong? (Use the assumption most likely to fail.)
+    4.  So what should we plan for?
+-   Answer your Checkpoint 2 guiding question in one sentence, using the probability.
+:::
+
+**Paragraph for the program manager:**
+
+**Answer to my Checkpoint 2 guiding question:**
+
+## Checkpoint 3: Averages and the Central Limit Theorem
+
+### Define your random variable
+
+::: callout-important
+#### Task
+
+-   Write $Y$ in words, including its units, using the definition for your scenario.
+-   State the support of $Y$.
+:::
+
+**$Y$ =**
+
+**Support of $Y$:**
+
+### Justify the distribution
+
+::: callout-important
+#### Task
+
+-   State the distribution for your scenario and its parameter(s), citing where each value came from. For a Gamma, show how you found the shape and rate from the mean and SD.
+-   Explain why this distribution is a reasonable choice, and where it might not match the real quantity.
+-   Plot the PDF of your distribution.
+:::
+
+**Distribution:** $Y \sim$
+
+| Parameter | Value | Source |
+|----|----|----|
+|  |  |  |
+|  |  |  |
+
+**Why it is reasonable, and where it might not match:**
+
+```{r}
+
+```
+
+### Solve it analytically (for one person)
+
+::: callout-important
+#### Task
+
+-   Find $E(Y)$, $\text{Var}(Y)$, and $\text{SD}(Y)$.
+-   Find the probability that **one** person is beyond the cutoff in your guiding question. Show the setup (integral or CDF), then compute with R.
+:::
+
+```{r}
+
+```
+
+### Simulate averages and discover the Central Limit Theorem
+
+::: callout-important
+#### Task
+
+-   For $n = 5$, $30$, and $100$ (and your scenario's $n$ if it is not one of these), simulate at least 10,000 sample means.
+-   For each $n$, make a histogram of the sample means with the Normal curve $N(\mu, \sigma^2/n)$ overlaid.
+-   Compare the mean and SD of your simulated sample means with $\mu$ and $\sigma/\sqrt{n}$.
+-   In 2–3 sentences, describe what happens to the distribution of $\bar{Y}_n$ as $n$ gets bigger, and how the shape (skewness) of $Y$ affects this.
+:::
+
+```{r}
+
+```
+
+### Answer your guiding question
+
+::: callout-important
+#### Task
+
+-   Use the Central Limit Theorem to find the probability in your Checkpoint 3 guiding question.
+-   Check it with your simulation.
+-   Compare it with your probability for **one** person from Task 3, and explain why the two answers are so different.
+:::
+
+```{r}
+
+```
+
+### Stretch (optional)
+
+::: callout-important
+#### Task
+
+How good is the CLT approximation for your scenario? Compare it with the exact answer (Scenarios A and B) or check it at $n = 5$ (Scenario C).
+:::
+
+```{r}
+
+```
+
+### Say it
+
+::: callout-important
+#### Task
+
+-   Write a short paragraph (4–6 sentences) for the program manager or health department who reports these averages. Use plain language, with no probability notation. Answer in order:
+    1.  What should we expect for one tumor, case, or baby? (Use $E(Y)$ and $\text{SD}(Y)$.)
+    2.  How often is one beyond the cutoff? (Use your one-person probability as a natural frequency, with the probability in parentheses.)
+    3.  How often is the average of $n$ beyond the cutoff? (Use your guiding-question probability as a natural frequency, with the probability in parentheses.)
+    4.  Why are these so different, and what does it mean for what we report?
+-   Answer your Checkpoint 3 guiding question in one sentence, using the probability.
+:::
+
+**Paragraph for the program manager:**
+
+**Answer to my Checkpoint 3 guiding question:**
+
+## References {.unnumbered}
+
+::: callout-important
+#### Task
+
+Give the full citation for every published source you used from your source packet (authors, title, journal, year, and a link).
+:::
+
+1.  

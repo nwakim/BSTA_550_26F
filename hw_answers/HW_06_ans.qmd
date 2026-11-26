@@ -2,37 +2,564 @@
 title: "Homework 6 Answers"
 subtitle: "BSTA 550"
 date-modified: "today"
-format: 
-  html: 
-    link-external-newwindow: true
+format:
+  html:
     toc: true
-  pdf: default 
-editor_options: 
+    embed-resources: true
+    link-external-newwindow: true
+editor_options:
   chunk_output_type: console
 ---
 
+```{=html}
+<style>
+div.answer { background-color: #f8eded; border-left: 4px solid #8B0000; border-radius: 5px; padding: 1em 1.25em; margin-bottom: 1em; }
+</style>
+```
+
+Below are some select answers from the homework.
+
+```{r}
+#| label: "setup"
+#| include: false
+
+knitr::opts_chunk$set(echo = FALSE, message = FALSE)
+library(tidyverse)
+```
+
+
 ## Questions
 
-1. Partial answers:
+### 1. Medication absorption (transformed)
 
- - (g) $p_{X|Y}(X=\text{high school}| Y=\text{no smoking at all}) = 0.476$
+$X$ has pdf $f_X(x) = 3x^2$ and CDF $F_X(x) = x^3$ for $0 \leq x \leq 1$.
 
- - (h) $p_{Y|X}( Y=\text{no smoking at all}|X=\text{high school}) = 0.200$
+#### Part a
 
-2. 
-    
-    - (a) $p_{X,Y}(x,y) = [0.99^{x-1}0.01][0.97^{y-1}0.03]$ for $x,y = 0, 1, 2, ...$
-    - (b) ![](./images/HW_04_NTB_2_B.png) And hint: ![](./images/Hint_NTB_9_02.png)
-        
-    - (c) ![](./images/HW_04_NTB_2_C.png)
+Let $Y = 100X$. Is this linear or nonlinear? What are the possible values of $Y$? Find $P(Y \leq 50)$ exactly.
 
-3.  
-    - (a) $f_{X|Y}(x|y)=\frac{1}{2}$ for (need $x$ and $y$ domains) 
-    - (c) $\frac{4}{7}$
+::: answer
+Linear, with $0 \leq Y \leq 100$. $P(Y \leq 50) = P(X \leq 0.5) = 0.5^3 = 0.125$
+:::
 
-4. Not given
+#### Part b
 
-5. First row given in homework problem
+Let $W = -\ln(X)$. Is this linear or nonlinear? What are the possible values of $W$? Find $P(W \leq 0.5)$ exactly.
 
+::: answer
+Not given
+:::
 
-6. #3: Poisson approximation of Binomial when $n$ is large and $p$ is small
+#### Part c
+
+Use the simulation method (simulate, transform, summarize) to check your answers to Parts a and b.
+
+::: answer
+```{r}
+#| label: "q1c-simulate"
+#| fig-width: 7
+#| fig-height: 3.5
+
+set.seed(1616)
+reps <- 10000
+x_grid <- seq(0, 1, length.out = 10001)
+
+dose_sims <- tibble(sim = 1:reps) |>
+  mutate(x = sample(x_grid, size = n(), replace = TRUE,
+                    prob = 3 * x_grid^2),
+         y = 100 * x,
+         w = -log(x))
+
+prob_y <- mean(dose_sims$y <= 50)
+```
+
+$P(Y \leq 50) \approx$ `r round(prob_y, 4)`
+
+Answers will vary slightly, but should be close to your answers in Parts a and b.
+:::
+
+#### Part d
+
+Make a histogram of each of the simulated `x`, `y`, and `w` values. Which transformation kept the shape, and which changed it?
+
+::: answer
+```{r}
+#| label: "q1d-histograms"
+#| fig-width: 7
+#| fig-height: 3.5
+
+ggplot(dose_sims, aes(x = y)) +
+  geom_histogram(aes(y = after_stat(density)),
+                 binwidth = 2, boundary = 0,
+                 color = "black", fill = "lightblue") +
+  labs(title = "Simulated Y = 100X", x = "y", y = "Density") +
+  theme_minimal(base_size = 12)
+
+ggplot(dose_sims, aes(x = w)) +
+  geom_histogram(aes(y = after_stat(density)),
+                 binwidth = 0.1, boundary = 0,
+                 color = "black", fill = "#E89543") +
+  labs(title = "Simulated W = -ln(X)", x = "w", y = "Density") +
+  theme_minimal(base_size = 12)
+```
+
+$Y = 100X$ (linear) keeps the shape of $X$, just stretched to 0–100. $W = -\ln(X)$ (nonlinear) changes the shape: it piles up near 0 and has a long right tail.
+:::
+
+#### Part e
+
+Add the pdf of an $\text{Exp}(3)$ RV to your histogram of `w`. Does it match? If $W \sim \text{Exp}(3)$, what is $\mathbb{E}[W]$?
+
+::: answer
+Not given
+:::
+
+### 2. Maximum of i.i.d. RVs
+
+Let $X_1, X_2, \ldots, X_n$ be i.i.d. with common CDF $F_X(x)$, and $Z = \max(X_1, X_2, \ldots, X_n)$.
+
+#### Part a
+
+Show that the CDF of $Z$ is $F_Z(z) = \left[F_X(z)\right]^n$.
+
+::: answer
+$F_Z(z) = P(X_1 \leq z, \ldots, X_n \leq z) = \prod_{i=1}^n P(X_i \leq z) = \left[F_X(z)\right]^n$
+:::
+
+#### Part b
+
+Now suppose $n = 3$ and each $X_i \sim \text{Uniform}[0, 1]$. Find $P(Z \leq 0.8)$.
+
+::: answer
+Not given
+:::
+
+#### Part c
+
+Simulate 10,000 values of $Z$ to check your answer to Part b, and make a histogram of $Z$.
+
+::: answer
+```{r}
+#| label: "q2c-simulate"
+#| fig-width: 7
+#| fig-height: 3.5
+
+set.seed(5656)
+reps <- 10000
+
+max_sims <- tibble(sim = 1:reps) |>
+  mutate(x1 = runif(n(), min = 0, max = 1),
+         x2 = runif(n(), min = 0, max = 1),
+         x3 = runif(n(), min = 0, max = 1),
+         z = pmax(x1, x2, x3))
+
+ggplot(max_sims, aes(x = z)) +
+  geom_histogram(aes(y = after_stat(density)),
+                 binwidth = 0.02, boundary = 0,
+                 color = "black", fill = "lightblue") +
+  labs(title = "Simulated Z = max(X1, X2, X3)", x = "z", y = "Density") +
+  theme_minimal(base_size = 12)
+```
+
+$Z$ piles up near 1: the largest of three values is more likely to be big. The simulated $P(Z \leq 0.8)$ should be close to your answer in Part b.
+:::
+
+### 3. Smoking policy and education
+
+Let $X=$ highest education level and $Y=$ policy favored, from the table of 300 adults.
+
+#### Part a
+
+Make a table for the joint pmf $p_{X,Y}(x,y)$.
+
+::: answer
+Not given
+:::
+
+#### Part b
+
+Find the marginal pmf $p_{X}(x)$.
+
+::: answer
+$p_X(\text{college}) = 0.25$, $p_X(\text{high school}) = 0.50$, $p_X(\text{grade school}) = 0.25$
+:::
+
+#### Part c
+
+Find the marginal pmf $p_{Y}(y)$.
+
+::: answer
+Not given
+:::
+
+#### Part d
+
+Make a table for the joint CDF $F_{X,Y}(x,y)$.
+
+::: answer
+Partial answer: $F_{X,Y}(\text{high school}, \text{designated areas only}) = \dfrac{5 + 44 + 15 + 100}{300} \approx 0.547$
+:::
+
+#### Part e
+
+Find the marginal CDF $F_{X}(x)$.
+
+::: answer
+Not given
+:::
+
+#### Part f
+
+Find the marginal CDF $F_{Y}(y)$.
+
+::: answer
+Not given
+:::
+
+#### Part g
+
+Make a table for the conditional pmf $p_{X|Y}(x|y)$.
+
+::: answer
+Partial answer: $p_{X|Y}(\text{high school} \mid \text{no smoking at all}) = \dfrac{30}{63} \approx 0.476$
+:::
+
+#### Part h
+
+Make a table for the conditional pmf $p_{Y|X}(y|x)$.
+
+::: answer
+Partial answer: $p_{Y|X}(\text{no smoking at all} \mid \text{high school}) = \dfrac{30}{150} = 0.200$
+:::
+
+#### Part i
+
+Are $X$ and $Y$ independent? Explain using your answers above.
+
+::: answer
+No. For example, $p_{X,Y}(\text{college}, \text{no restrictions}) = \frac{5}{300} \approx 0.017$, but $p_X(\text{college})\,p_Y(\text{no restrictions}) = 0.25 \times \frac{35}{300} \approx 0.029$.
+:::
+
+#### Part j
+
+Simulate 10,000 adults by drawing from the table, to check one value from each of Parts a, g, and i.
+
+::: answer
+```{r}
+#| label: "q3j-simulate"
+
+set.seed(6969)
+reps <- 10000
+
+smoking_cells <- tibble(
+  education = rep(c("College", "High school", "Grade school"),
+                  each = 4),
+  policy = rep(c("No restrictions", "Designated areas",
+                 "No smoking", "No opinion"), times = 3),
+  count = c(5, 44, 23, 3,
+            15, 100, 30, 5,
+            15, 40, 10, 10)
+)
+
+smoking_sims <- smoking_cells |>
+  slice_sample(n = reps, weight_by = count, replace = TRUE)
+
+smoking_summary <- smoking_sims |>
+  summarise(joint = mean(education == "College" & policy == "No restrictions"),
+            product = mean(education == "College") * mean(policy == "No restrictions"))
+
+smoking_cond <- smoking_sims |>
+  filter(policy == "No smoking") |>
+  summarise(prob = mean(education == "High school"))
+```
+
+-   Joint $\approx$ `r round(smoking_summary$joint, 4)` and product $\approx$ `r round(smoking_summary$product, 4)`
+-   $p_{X|Y}(\text{high school} \mid \text{no smoking at all}) \approx$ `r round(smoking_cond$prob, 4)`
+
+Answers will vary slightly, but should be close to your answers in Parts a, g, and i.
+:::
+
+### 4. Expected value from a joint pdf
+
+Consider the joint density $f_{X,Y}(x,y)= \dfrac32 x y$ for $0 \leq x$, $0 \leq y$, and $x+y \leq 2$.
+
+#### Part a
+
+Draw the possible values of $(X, Y)$.
+
+::: answer
+Not given
+:::
+
+#### Part b
+
+Use 2D grid sampling to approximate $\mathbb{E}[X]$ and $\mathbb{E}[Y]$.
+
+::: answer
+```{r}
+#| label: "q4b-simulate"
+
+set.seed(7878)
+reps <- 10000
+
+triangle_grid <- expand_grid(x = seq(0, 2, length.out = 1001),
+                             y = seq(0, 2, length.out = 1001)) |>
+  filter(x + y <= 2) |>
+  mutate(height = 3/2 * x * y)
+
+triangle_sims <- triangle_grid |>
+  slice_sample(n = reps, weight_by = height, replace = TRUE)
+
+triangle_summary <- triangle_sims |>
+  summarise(avg_X = mean(x), avg_Y = mean(y))
+```
+
+$\mathbb{E}[X] \approx$ `r round(triangle_summary$avg_X, 3)` and $\mathbb{E}[Y] \approx$ `r round(triangle_summary$avg_Y, 3)`
+
+Answers will vary slightly, but should both be close to $\frac45 = 0.8$.
+:::
+
+#### Part c
+
+Are $X$ and $Y$ independent? Explain, then check with your simulated pairs from Part b.
+
+::: answer
+```{r}
+#| label: "q4c-check"
+
+triangle_check <- triangle_sims |>
+  summarise(joint = mean(x <= 1 & y <= 1),
+            product = mean(x <= 1) * mean(y <= 1))
+```
+
+No. The possible values are a triangle, not a rectangle: the possible values of $Y$ ($0 \leq y \leq 2 - x$) depend on $x$. In the simulation, joint $\approx$ `r round(triangle_check$joint, 3)` but product $\approx$ `r round(triangle_check$product, 3)`.
+:::
+
+### 5. Ratio of two RVs
+
+$X$ and $Y$ have constant joint density on the rectangle $0 \leq x \leq 1$, $\frac{1}{2} \leq y \leq 1$, and $Z = X/Y$.
+
+#### Part a
+
+What is the height of the joint pdf? What are the possible values of $Z$?
+
+::: answer
+The height is 2 (the rectangle's area is $\frac12$), and $0 \leq Z \leq 2$
+:::
+
+#### Part b
+
+Rewrite the event $Z \leq 1$ as a region of $(x, y)$ points, and find $P(Z \leq 1)$ using areas.
+
+::: answer
+Not given
+:::
+
+#### Part c
+
+Simulate 10,000 pairs $(X, Y)$ to check your answer to Part b, and make a histogram of $Z$.
+
+::: answer
+```{r}
+#| label: "q5c-simulate"
+#| fig-width: 7
+#| fig-height: 3.5
+
+set.seed(9898)
+reps <- 10000
+
+ratio_sims <- tibble(sim = 1:reps) |>
+  mutate(x = runif(n(), min = 0, max = 1),
+         y = runif(n(), min = 0.5, max = 1),
+         z = x / y)
+
+ggplot(ratio_sims, aes(x = z)) +
+  geom_histogram(aes(y = after_stat(density)),
+                 binwidth = 0.05, boundary = 0,
+                 color = "black", fill = "lightblue") +
+  labs(title = "Simulated Z = X / Y", x = "z", y = "Density") +
+  theme_minimal(base_size = 12)
+```
+
+The simulated $P(Z \leq 1)$ should be close to your answer in Part b.
+:::
+
+### 6. Maude's phone and breakfast
+
+Let $X$ be the number of days until Maude first loses her cell phone (1% chance each day), and $Y$ the number of days until she first forgets to eat breakfast (3% chance each day). $X$ and $Y$ are independent.
+
+#### Part a
+
+Find the joint pmf of $X$ and $Y$.
+
+::: answer
+$p_{X,Y}(x,y) = \left[0.99^{x-1}(0.01)\right]\left[0.97^{y-1}(0.03)\right]$ for $x = 1, 2, 3, \ldots$ and $y = 1, 2, 3, \ldots$
+:::
+
+#### Part b
+
+Find the joint CDF of $X$ and $Y$ and briefly explain what $F_{X,Y}(x,y)$ represents.
+
+::: answer
+Not given
+:::
+
+#### Part c
+
+Find the conditional pmf $p_{Y|X}(y|x)$.
+
+::: answer
+$p_{Y|X}(y|x) = 0.97^{y-1}(0.03)$ for $y = 1, 2, 3, \ldots$ (the same as $p_Y(y)$, since $X$ and $Y$ are independent)
+:::
+
+#### Part d
+
+Find $F_{X,Y}(30, 10)$, then simulate 10,000 pairs of $(X, Y)$ to check your answer.
+
+::: answer
+```{r}
+#| label: "q6d-simulate"
+
+set.seed(2424)
+reps <- 10000
+
+maude_sims <- tibble(sim = 1:reps) |>
+  mutate(X = rgeom(n(), prob = 0.01) + 1,
+         Y = rgeom(n(), prob = 0.03) + 1)
+
+prob_maude <- mean(maude_sims$X <= 30 & maude_sims$Y <= 10)
+```
+
+-   Exact: $F_{X,Y}(30, 10) \approx 0.0683$
+-   Simulated: $\approx$ `r round(prob_maude, 4)`
+
+Answers will vary slightly, but should be close to 0.0683.
+:::
+
+### 7. Minimum of a uniform and an exponential
+
+$X$ and $Y$ are independent with $f_X(x)=\frac{1}{5}$ for $0\leq x\leq 5$ and $f_Y(y)=2e^{-2y}$ for $y>0$, and $Z = \min(X, Y)$.
+
+#### Part a
+
+Find the joint pdf $f_{X,Y}(x,y)$.
+
+::: answer
+Not given
+:::
+
+#### Part b
+
+What are the possible values of $Z$? Find $P(Z > 0.5)$ exactly.
+
+::: answer
+$0 \leq Z \leq 5$, and $P(Z > 0.5) = P(X > 0.5)\,P(Y > 0.5) = \dfrac{4.5}{5}e^{-1} \approx 0.3311$
+:::
+
+#### Part c
+
+Find the CDF of $Z$ for $0 \leq z \leq 5$.
+
+::: answer
+Not given
+:::
+
+#### Part d
+
+Simulate 10,000 pairs of $(X, Y)$ to approximate $P(X < Y)$ and to check your answers to Parts b and c.
+
+::: answer
+```{r}
+#| label: "q7d-simulate"
+
+set.seed(3535)
+reps <- 10000
+
+min_sims <- tibble(sim = 1:reps) |>
+  mutate(x = runif(n(), min = 0, max = 5),
+         y = rexp(n(), rate = 2),
+         z = pmin(x, y))
+
+min_summary <- min_sims |>
+  summarise(prob_x_less = mean(x < y),
+            prob_z_big = mean(z > 0.5))
+```
+
+-   $P(X < Y) \approx$ `r round(min_summary$prob_x_less, 4)`
+-   $P(Z > 0.5) \approx$ `r round(min_summary$prob_z_big, 4)`
+
+Answers will vary slightly, but should be close to your answers in Parts b and c.
+:::
+
+### 8. Constant density on a quadrilateral
+
+$X$ and $Y$ have constant joint density on the quadrilateral with vertices $(0,0)$, $(2,0)$, $(2,6)$, $(0,12)$.
+
+#### Part a
+
+For $0 \leq y \leq 6$, find the conditional density $f_{X|Y}(x|y)$.
+
+::: answer
+$f_{X|Y}(x|y) = \dfrac{1}{2}$ for $0 \leq x \leq 2$
+:::
+
+#### Part b
+
+For $6 \leq y \leq 12$, find the conditional density $f_{X|Y}(x|y)$.
+
+::: answer
+Not given
+:::
+
+#### Part c
+
+Find the conditional probability that $X \leq 1$, given $3 \leq Y \leq 9$.
+
+::: answer
+$\dfrac{4}{7} \approx 0.571$
+:::
+
+#### Part d
+
+Find $P(0.5 \leq X \leq 3 \mid Y=4)$.
+
+::: answer
+Not given
+:::
+
+#### Part e
+
+Find $P(0.5 \leq X \leq 3 \mid Y=7)$.
+
+::: answer
+$0.7$
+:::
+
+#### Part f
+
+Use 2D grid sampling to check your answer to Part c.
+
+::: answer
+```{r}
+#| label: "q8f-simulate"
+
+set.seed(4646)
+reps <- 10000
+
+quad_grid <- expand_grid(x = seq(0, 2, length.out = 1001),
+                         y = seq(0, 12, length.out = 1001)) |>
+  filter(y <= 12 - 3 * x) |>
+  mutate(height = 1)
+
+quad_sims <- quad_grid |>
+  slice_sample(n = reps, weight_by = height, replace = TRUE)
+
+quad_cond <- quad_sims |>
+  filter(y >= 3, y <= 9) |>
+  summarise(prob = mean(x <= 1))
+```
+
+$P(X \leq 1 \mid 3 \leq Y \leq 9) \approx$ `r round(quad_cond$prob, 4)`
+
+Answers will vary slightly, but should be close to $\frac47 \approx 0.571$.
+:::

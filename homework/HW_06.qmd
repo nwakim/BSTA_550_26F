@@ -96,7 +96,6 @@ Before using AI, check the table of allowed uses in the [Generative AI Policy](h
 
 ## Questions
 
-
 **Load packages.** This chunk is done for you. Run it before any of the R code below.
 
 ```{r}
@@ -106,7 +105,7 @@ Before using AI, check the table of allowed uses in the [Generative AI Policy](h
 library(tidyverse)
 ```
 
-Questions 1–2 practice transformations of RVs (Lesson 14), Questions 3–5 practice joint distributions (Lesson 15), and Questions 6–8 practice independence and conditioning (Lesson 16).
+Questions 1–2 practice transformations of RVs (Lesson 14), Questions 3–5 practice joint distributions (Lesson 15), and Questions 6–8 practice independence and conditioning (Lesson 16). Most questions follow our simulation method: **find the possible values, simulate, transform, summarize.**
 
 ### 1. Medication absorption (transformed)
 
@@ -114,99 +113,131 @@ In Homeworks 4 and 5, the proportion $X$ of a medication dose that is absorbed i
 
 #### Part a
 
-Let $Y = 100X$ be the *percent* of the dose absorbed in the first hour. What are the possible values of $Y$? Find the pdf of $Y$.
+Let $Y = 100X$ be the *percent* of the dose absorbed in the first hour. Is this a linear or nonlinear transformation? What are the possible values of $Y$? Rewrite the event $Y \leq 50$ as an event about $X$, and use $F_X(x)$ to find $P(Y \leq 50)$ exactly.
 
--   *Hint:* This is a linear rescaling (Lesson 14, Example 1). You can use the CDF method, or the summary formula $f_Y(y) = \dfrac{1}{|b|} f_X\left(\dfrac{y-a}{b}\right)$ for $Y = a + bX$.
+-   *Hint:* See "For step 1: possible values and rewriting events" in Lesson 14.
 
 ***Answer:***
 
 #### Part b
 
-Researchers sometimes work with $W = -\ln(X)$. What are the possible values of $W$? Use the CDF method to find the CDF of $W$, then the pdf of $W$.
+Researchers sometimes work with $W = -\ln(X)$. Is this a linear or nonlinear transformation? What are the possible values of $W$? Rewrite the event $W \leq 0.5$ as an event about $X$, and use $F_X(x)$ to find $P(W \leq 0.5)$ exactly.
 
--   *Hint:* Follow the four steps of the CDF method in Lesson 14. To get $X$ alone in $-\ln(X) \leq w$, multiply both sides by $-1$ (which flips the inequality), then take $e$ to both sides.
+-   *Hint:* Graph $g(x) = -\ln(x)$ for $0 < x \leq 1$ to find the possible values. To get $X$ alone in $-\ln(X) \leq 0.5$, multiply both sides by $-1$ (which flips the inequality), then take $e$ to both sides.
 
 ***Answer:***
 
 #### Part c
 
-What is the name of the distribution of $W$, and what is its parameter? Use it to find $\mathbb{E}[W]$.
-
-***Answer:***
-
-#### Part d
-
-Simulate 10,000 values of $X$, $Y$, and $W$ to check your answers to Parts a and b.
+Use the simulation method (simulate, transform, summarize) to check your answers to Parts a and b.
 
 **Step 1: Set up.** This chunk is done for you. Run it before the others.
 
 ```{r}
-#| label: "q1d-setup"
+#| label: "q1c-setup"
 
-set.seed(1414)    # so you get the same "random" doses each time
+set.seed(1616)    # so you get the same "random" doses each time
 reps <- 10000     # number of simulated doses
+
+# tickets for grid sampling: 10,001 values from 0 to 1
+x_grid <- seq(0, 1, length.out = 10001)
 ```
 
-**Step 2: Simulate.** Simulate $X$ with the inverse CDF method, then transform each simulated `x` into `y` and `w`.
+**Step 2: Simulate and transform.** Simulate $X$ with grid sampling, then transform each simulated `x` into `y` and `w`.
 
--   *Hint:* Follow "Let's simulate Example 1" in Lesson 14. Start with `tibble(u = runif(n = reps, min = 0, max = 1))`, then use `mutate()` to make `x = u^(1/3)` (the inverse CDF from Homework 5), `y = 100 * x`, and `w = -log(x)`. In R, $\ln$ is `log()`.
+-   *Hint:* Follow "Grid sampling: code and plot" in Lesson 14. Start with `tibble(sim = 1:reps)`, then use `mutate()` with `sample(x_grid, size = n(), replace = TRUE, prob = 3 * x_grid^2)` to make `x`. Then make `y = 100 * x` and `w = -log(x)`. In R, $\ln$ is `log()`.
 
 ***Answer:***
 
 ```{r}
-#| label: "q1d-simulate"
+#| label: "q1c-simulate"
 
 # Your code here
 
 ```
 
-**Step 3: Summarize.** Use `summarise()` to approximate $P(Y \leq 50)$ and $P(W \leq 0.5)$. Then find the exact values with your CDFs from Parts a and b.
+**Step 3: Summarize.** Use `summarise()` to approximate $P(Y \leq 50)$ and $P(W \leq 0.5)$.
 
 -   *Hint:* `mean(y <= 50)` is the proportion of simulated doses with $Y \leq 50$.
 
 ***Answer:***
 
 ```{r}
-#| label: "q1d-summarize"
+#| label: "q1c-summarize"
 
 # Your code here
 
 ```
 
-**Step 4: Plot.** Make a histogram of the simulated `w` values, scaled like a pdf, and add your pdf of $W$ from Part b as a red line.
+Are your simulated answers close to your exact answers in Parts a and b? (They do not need to match exactly!)
 
--   *Hint:* Follow the plot in "Let's simulate Example 2" in Lesson 14: `geom_histogram(aes(y = after_stat(density)), ...)`, then `geom_line(aes(y = ...), color = "red")`, where `...` is your pdf from Part b written with `w`. In R, $e^{w}$ is `exp(w)`.
+***Answer:***
+
+#### Part d
+
+Make a histogram (scaled like a pdf) of each of the simulated `x`, `y`, and `w` values. Which transformation kept the shape of the distribution of $X$, and which one changed it?
+
+-   *Hint:* Follow the plots in Lesson 14: `ggplot(..., aes(x = y)) + geom_histogram(aes(y = after_stat(density)), ...)`.
 
 ***Answer:***
 
 ```{r}
-#| label: "q1d-plot"
+#| label: "q1d-histograms"
 
 # Your code here
 
 ```
 
-Are your simulated answers close to your exact answers? Does the red line follow the histogram? (They do not need to match exactly!)
+#### Part e
+
+The histogram of $W$ should look like one of the named distributions from Lesson 13. Add the pdf of an $\text{Exp}(3)$ RV, $3e^{-3w}$, to your histogram of `w` as a red line. Does it match? If $W \sim \text{Exp}(3)$, what is $\mathbb{E}[W]$? Check it with `mean(w)`.
+
+-   *Hint:* Use `geom_function(fun = function(w) 3 * exp(-3 * w), color = "red")`, like the red pdf lines in Lesson 14.
 
 ***Answer:***
 
+```{r}
+#| label: "q1e-exp-check"
+
+# Your code here
+
+```
+
 ### 2. Maximum of i.i.d. RVs
 
-Let $X_1, X_2, \ldots, X_n$ be i.i.d. random variables with common pdf $f_X(x)$ and CDF $F_X(x)$.
+Let $X_1, X_2, \ldots, X_n$ be i.i.d. random variables with common CDF $F_X(x)$, and let $Z = \max(X_1, X_2, \ldots, X_n)$.
 
 #### Part a
 
-Find the pdf for the random variable $Z$, where $Z = \max(X_1, X_2, \ldots, X_n)$.
+Show that the CDF of $Z$ is $F_Z(z) = \left[F_X(z)\right]^n$.
 
--   *Hint:* Use the CDF method: find $F_Z(z) = P(Z \leq z)$ first, then take the derivative. The largest value is $z$ or less only if *every* $X_i$ is $z$ or less. Then use independence, and the chain rule when you take the derivative.
+-   *Hint:* The largest value is $z$ or less only if *every* $X_i$ is $z$ or less (like $P(M \leq 2)$ in Lesson 15, Example 3). Then use independence (Lesson 16, "Extra notes").
 
 ***Answer:***
 
 #### Part b
 
-Now suppose $n = 3$ and each $X_i \sim \text{U}[0, 1]$. Use your answer to Part a to find the pdf of $Z$.
+Now suppose $n = 3$ and each $X_i \sim \text{Uniform}[0, 1]$. Use Part a to find $P(Z \leq 0.8)$.
 
 ***Answer:***
+
+#### Part c
+
+Simulate 10,000 values of $Z$ to check your answer to Part b, and make a histogram of $Z$. How is its shape different from the flat shape of each $X_i$?
+
+-   *Hint:* Start with `tibble(sim = 1:reps)`, then use `mutate()` with three columns `x1`, `x2`, and `x3`, each from `runif(n(), min = 0, max = 1)`. Then `z = pmax(x1, x2, x3)` takes the largest value in **each row** (Lesson 15, Example 3).
+
+***Answer:***
+
+```{r}
+#| label: "q2c-simulate"
+
+set.seed(5656)
+reps <- 10000
+
+# Your code here
+
+```
 
 ### 3. Smoking policy and education
 
@@ -277,21 +308,135 @@ Are $X$ and $Y$ independent? Explain using your answers above.
 
 ***Answer:***
 
+#### Part j
+
+Simulate 10,000 adults by drawing from the table, to check one value from each of Parts a, g, and i.
+
+**Step 1: Set up.** This chunk is done for you. Run it before the others. Each row of `smoking_cells` is one cell of the table, and `count` is how many of the 300 adults are in it.
+
+```{r}
+#| label: "q3j-setup"
+
+set.seed(6969)    # so you get the same "random" adults each time
+reps <- 10000     # number of simulated adults
+
+smoking_cells <- tibble(
+  education = rep(c("College", "High school", "Grade school"),
+                  each = 4),
+  policy = rep(c("No restrictions", "Designated areas",
+                 "No smoking", "No opinion"), times = 3),
+  count = c(5, 44, 23, 3,
+            15, 100, 30, 5,
+            15, 40, 10, 10)
+)
+```
+
+**Step 2: Simulate.** Draw 10,000 rows (adults) from `smoking_cells`, with replacement, so that each cell's chance of being drawn is proportional to its count.
+
+-   *Hint:* Use `slice_sample(n = reps, weight_by = count, replace = TRUE)`, like 2D grid sampling in Lesson 15. Each row drawn is one simulated adult, with an `education` and a `policy`.
+
+***Answer:***
+
+```{r}
+#| label: "q3j-simulate"
+
+# Your code here
+
+```
+
+**Step 3: Summarize.** Approximate:
+
+-   the joint probability $p_{X,Y}(\text{college}, \text{no restrictions})$, and the product $p_X(\text{college})\,p_Y(\text{no restrictions})$
+-   the conditional probability $p_{X|Y}(\text{high school} \mid \text{no smoking at all})$
+
+-   *Hint:* For the joint and the product, follow "joint vs. product" in Lesson 16: `mean(education == "College" & policy == "No restrictions")` and `mean(education == "College") * mean(policy == "No restrictions")`. For the conditional probability, first `filter(policy == "No smoking")`, then `summarise()` with `mean(education == "High school")`.
+
+***Answer:***
+
+```{r}
+#| label: "q3j-summarize"
+
+# Your code here
+
+```
+
+Are your simulated answers close to your answers in Parts a, g, and i? (They do not need to match exactly!)
+
+***Answer:***
+
 ### 4. Expected value from a joint pdf
 
-Consider the joint density of $X$ and $Y$: $$f_{X,Y}(x,y)= \dfrac32 x y$$ for $0 \leq x$ and $0 \leq y$ and $x+y \leq 2$, and $f_{X,Y}(x,y)=0$ otherwise. Find $\mathbb{E}[Y]$.
+Consider the joint density of $X$ and $Y$: $$f_{X,Y}(x,y)= \dfrac32 x y$$ for $0 \leq x$ and $0 \leq y$ and $x+y \leq 2$, and $f_{X,Y}(x,y)=0$ otherwise.
 
--   *Hint:* Draw the domain first. Then either find the marginal pdf $f_Y(y)$ first, or find $\mathbb{E}[Y]$ directly from the joint pdf (Lesson 15, Options 1 and 2).
+#### Part a
+
+Draw the possible values of $(X, Y)$: the region where $f_{X,Y}(x,y) > 0$.
+
+***Answer:***
+
+#### Part b
+
+Use 2D grid sampling to approximate $\mathbb{E}[X]$ and $\mathbb{E}[Y]$.
+
+-   *Hint:* Follow Lesson 15, Example 4. Make a grid with `expand_grid(x = seq(0, 2, length.out = 1001), y = seq(0, 2, length.out = 1001))`, keep only the possible values with `filter(x + y <= 2)`, and add a `height` column with the joint pdf. Then `slice_sample(n = reps, weight_by = height, replace = TRUE)`, and use `mean(x)` and `mean(y)`. (The grid has about half a million tickets, so it may take a few seconds.)
 
 ***Answer:***
 
-### 5. CDF of a ratio
+```{r}
+#| label: "q4b-simulate"
 
-Suppose that the random variables $X$ and $Y$ have joint density $f_{X,Y}(x,y)$, for $0<x<1$, and $\frac{1}{2}<y<1$. Set up the equation for the CDF of $Z$, where $Z=X/Y$. (You do not need to know $f_{X,Y}(x,y)$ to set up the integrals.)
+set.seed(7878)
+reps <- 10000
 
--   *Hint:* First determine what the possible values for $Z$ are. Then make a sketch of the domain of the joint pdf and shade in the region representing the CDF of $Z$ for different values of $z$. Make sure to pay close attention to how the region we need to integrate over changes as $z$ changes. The CDF has two different cases depending on the value of $z$. Plug in specific values of $z$ and shade in the region representing the CDF to see why two different cases are needed.
+# Your code here
+
+```
+
+#### Part c
+
+Find $\mathbb{E}[Y]$ exactly from the joint pdf, and compare it with your simulated answer in Part b.
+
+-   *Hint:* Use Option 1 (find $f_Y(y)$ first) or Option 2 (integrate $y\,f_{X,Y}(x,y)$ over the region) from "Expected value of one RV from joint pdf" in Lesson 15. Your drawing from Part a gives the limits.
 
 ***Answer:***
+
+### 5. Ratio of two RVs
+
+Suppose that $X$ and $Y$ have constant joint density on the rectangle $0 \leq x \leq 1$ and $\frac{1}{2} \leq y \leq 1$. Let $Z = X/Y$.
+
+#### Part a
+
+What is the height of the joint pdf? What are the possible values of $Z$?
+
+-   *Hint:* The volume over the rectangle must be 1. For $Z$, try the corners of the rectangle: which corner makes $X/Y$ smallest? Largest?
+
+***Answer:***
+
+#### Part b
+
+Rewrite the event $Z \leq 1$ as a region of $(x, y)$ points, and shade it on a drawing of the rectangle. Find $P(Z \leq 1)$ using areas.
+
+-   *Hint:* Since $Y > 0$, $X/Y \leq 1$ is the same as $X \leq Y$. With a constant density, probability = area $\times$ height (Lesson 15, Example 3).
+
+***Answer:***
+
+#### Part c
+
+Simulate 10,000 pairs $(X, Y)$ to check your answer to Part b, and make a histogram of $Z$.
+
+-   *Hint:* A constant density on a rectangle is the same as an independent $X \sim \text{Uniform}[0, 1]$ and $Y \sim \text{Uniform}[\frac12, 1]$ (Lesson 16), so you can use `runif()` for each column. Then make `z = x / y` and use `mean(z <= 1)`.
+
+***Answer:***
+
+```{r}
+#| label: "q5c-simulate"
+
+set.seed(9898)
+reps <- 10000
+
+# Your code here
+
+```
 
 ### 6. Maude's phone and breakfast
 
@@ -309,7 +454,7 @@ Find the joint pmf of $X$ and $Y$.
 
 Find the joint CDF of $X$ and $Y$ and briefly explain what $F_{X,Y}(x,y)$ represents in the context of the problem.
 
--   *Hint:* $\sum_{n=1}^{N} r^{n-1} = \dfrac{1-r^N}{1-r}$ for $r \neq 1$.
+-   *Hint:* For independent RVs, $F_{X,Y}(x,y) = F_X(x)\,F_Y(y)$ (Lesson 16), and the Geometric CDF is in Lesson 12.
 
 ***Answer:***
 
@@ -323,7 +468,7 @@ Find the conditional pmf $p_{Y|X}(y|x)$.
 
 Use your joint CDF from Part b to find the probability that Maude loses her phone within the first 30 days *and* forgets breakfast within the first 10 days, $F_{X,Y}(30, 10)$. Then simulate 10,000 pairs of $(X, Y)$ to check your answer.
 
--   *Hint:* Follow "Let's simulate the bullseye example" in Lesson 12. Start with `tibble(sim = 1:reps)`, then use `mutate()` with `rgeom(n(), prob = 0.01) + 1` for `X` and `rgeom(n(), prob = 0.03) + 1` for `Y`. Then `summarise()` with `mean(X <= 30 & Y <= 10)`.
+-   *Hint:* Since $X$ and $Y$ are independent, simulate them separately (Lesson 16). Start with `tibble(sim = 1:reps)`, then use `mutate()` with `rgeom(n(), prob = 0.01) + 1` for `X` and `rgeom(n(), prob = 0.03) + 1` for `Y`, like the bullseye example in Lesson 12. Then `summarise()` with `mean(X <= 30 & Y <= 10)`.
 
 ***Answer:***
 
@@ -343,7 +488,7 @@ Is your simulated answer close to your answer from the joint CDF? (They do not n
 
 ### 7. Minimum of a uniform and an exponential
 
-Let $X$ and $Y$ be independent random variables with respective pdfs $f_X(x)=\frac{1}{5}$, for $0\leq x\leq 5$, and $f_Y(y)=2e^{-2y}$, for $y>0$.
+Let $X$ and $Y$ be independent random variables with respective pdfs $f_X(x)=\frac{1}{5}$, for $0\leq x\leq 5$, and $f_Y(y)=2e^{-2y}$, for $y>0$. Let $Z = \min(X, Y)$, the smaller of $X$ and $Y$.
 
 #### Part a
 
@@ -353,58 +498,50 @@ Find the joint pdf $f_{X,Y}(x,y)$.
 
 #### Part b
 
-Find the probability that $X$ is less than $Y$.
+What are the possible values of $Z$? Use independence to find $P(Z > 0.5)$ exactly.
 
--   *Hint:* Draw the domain and shade the region where $x < y$. Think about which variable is easier to integrate over first.
+-   *Hint:* The smaller value is greater than 0.5 only if *both* $X$ and $Y$ are greater than 0.5.
 
 ***Answer:***
 
 #### Part c
 
-Let $Z$ be the random variable that is the smaller of $X$ and $Y$. Find the CDF of $Z$.
-
--   *Hint:* $P(\min(X, Y) \leq z) = 1 - P(\min(X,Y) > z)$, and the smaller value is greater than $z$ only if *both* $X$ and $Y$ are greater than $z$.
+Use the idea in Part b to find the CDF of $Z$, $F_Z(z) = P(Z \leq z) = 1 - P(Z > z)$, for $0 \leq z \leq 5$.
 
 ***Answer:***
 
 #### Part d
 
-Find the pdf of $Z$.
-
-***Answer:***
-
-#### Part e
-
-Simulate 10,000 pairs of $(X, Y)$ to check your answers to Parts b and c.
+Simulate 10,000 pairs of $(X, Y)$ to approximate $P(X < Y)$ and to check your answers to Parts b and c.
 
 **Step 1: Set up.** This chunk is done for you. Run it before the others.
 
 ```{r}
-#| label: "q7e-setup"
+#| label: "q7d-setup"
 
 set.seed(3535)    # so you get the same "random" pairs each time
 reps <- 10000     # number of simulated pairs
 ```
 
-**Step 2: Simulate.** Simulate $X$ and $Y$, then find $Z$, the smaller of the two, for each pair.
+**Step 2: Simulate and transform.** Simulate $X$ and $Y$, then find $Z$, the smaller of the two, for each pair.
 
--   *Hint:* Start with `tibble(sim = 1:reps)`, then use `mutate()` with `runif(n(), min = 0, max = 5)` for `X` and `rexp(n(), rate = 2)` for `Y`. For `Z`, use `if_else(X < Y, X, Y)` (we used `if_else()` in Lesson 4): it keeps `X` when `X` is smaller and `Y` otherwise.
+-   *Hint:* Since $X$ and $Y$ are independent, simulate them separately: start with `tibble(sim = 1:reps)`, then use `mutate()` with `runif(n(), min = 0, max = 5)` for `x` and `rexp(n(), rate = 2)` for `y`. For `z`, use `pmin(x, y)`: it works like `pmax()` from Lesson 15, but keeps the *smaller* value in each row.
 
 ***Answer:***
 
 ```{r}
-#| label: "q7e-simulate"
+#| label: "q7d-simulate"
 
 # Your code here
 
 ```
 
-**Step 3: Summarize.** Approximate $P(X < Y)$ and $P(Z \leq 0.5)$. Use your CDF from Part c to find the exact $P(Z \leq 0.5)$.
+**Step 3: Summarize.** Approximate $P(X < Y)$ and $P(Z > 0.5)$.
 
 ***Answer:***
 
 ```{r}
-#| label: "q7e-summarize"
+#| label: "q7d-summarize"
 
 # Your code here
 
@@ -412,18 +549,18 @@ reps <- 10000     # number of simulated pairs
 
 **Step 4: Plot.** Plot the simulated CDF of $Z$ with `stat_ecdf()`, and add your CDF from Part c as a red line.
 
--   *Hint:* Follow the CDF plot in Lesson 9: `ggplot(..., aes(x = Z)) + stat_ecdf() + geom_line(aes(y = ...), color = "red")`, where `...` is your CDF from Part c written with `Z`.
+-   *Hint:* Follow the CDF plot in Lesson 9: `ggplot(..., aes(x = z)) + stat_ecdf() + geom_function(fun = function(z) ..., color = "red")`, where `...` is your CDF from Part c.
 
 ***Answer:***
 
 ```{r}
-#| label: "q7e-plot"
+#| label: "q7d-plot"
 
 # Your code here
 
 ```
 
-Are your simulated answers close to your answers in Parts b and c? Does the red line sit on top of the simulated CDF? (They do not need to match exactly!)
+Is your simulated $P(Z > 0.5)$ close to your answer in Part b? Does the red line sit on top of the simulated CDF? (They do not need to match exactly!)
 
 ***Answer:***
 
@@ -437,6 +574,8 @@ Consider a pair of random variables $X$, $Y$ with constant joint density on the 
 
 For $0 \leq y \leq 6$, find the conditional density $f_{X|Y}(x|y)$ of $X$, given $Y=y$.
 
+-   *Hint:* With a constant joint density, the slice of the joint pdf at $Y = y$ is flat. So $X$ given $Y = y$ is Uniform over the possible values of $x$ on that slice (Lesson 16, "a slice of the joint pdf, rescaled to area 1").
+
 ***Answer:***
 
 #### Part b
@@ -448,6 +587,8 @@ For $6 \leq y \leq 12$, find the conditional density $f_{X|Y}(x|y)$ of $X$, give
 #### Part c
 
 Find the conditional probability that $X \leq 1$, given $3 \leq Y \leq 9$.
+
+-   *Hint:* This one conditions on an *event*, so use $P(A|B) = \dfrac{P(A \cap B)}{P(B)}$. With a constant density, each probability is an area times the height, so the height cancels.
 
 ***Answer:***
 
@@ -463,10 +604,50 @@ Find $P(0.5 \leq X \leq 3 \mid Y=7)$.
 
 ***Answer:***
 
+#### Part f
+
+Use 2D grid sampling to check your answer to Part c.
+
+-   *Hint:* Make a grid with `expand_grid(x = seq(0, 2, length.out = 1001), y = seq(0, 12, length.out = 1001))`, keep only the points in the quadrilateral with `filter()`, and set `height = 1` (any constant works, since R rescales the weights). Then `slice_sample()` like Lesson 15. To condition on $3 \leq Y \leq 9$, `filter()` to keep those simulations, like Lesson 16, then use `mean(x <= 1)`.
+
+***Answer:***
+
+```{r}
+#| label: "q8f-simulate"
+
+set.seed(4646)
+reps <- 10000
+
+# Your code here
+
+```
+
 ## Extra problems
 
-**You do NOT need to complete the extra problems!**
+**You do NOT need to complete the extra problems!** These use the calculus versions of the ideas above.
 
 ### 1. Freddy and Jane's winnings
 
 Freddy and Jane have entered a game in which they each win between 0 and 2 dollars. If $X$ is the amount Freddy wins, and $Y$ is the amount that Jane wins, they believe that the joint density of their winnings will be $$f_{X,Y}(x, y) = \dfrac{1}{4}xy \text{ for } 0 \leq x \leq 2 \text{ and } 0 \leq y \leq 2$$ and $f_{X,Y}(x, y) = 0$ otherwise. Find the probability that their combined winnings exceed 2, i.e., find $P(X + Y > 2)$.
+
+### 2. pdf of the maximum
+
+Use your CDF from Question 2, Part a, to find the pdf of $Z = \max(X_1, X_2, \ldots, X_n)$ in terms of $f_X(x)$ and $F_X(x)$. Then find the pdf of $Z$ when $n = 3$ and each $X_i \sim \text{Uniform}[0, 1]$, and add it to your histogram from Question 2, Part c.
+
+### 3. More on the minimum of a uniform and an exponential
+
+For $X$ and $Y$ in Question 7:
+
+#### Part a
+
+Find $P(X < Y)$ exactly with a double integral, and compare it with your simulated answer.
+
+#### Part b
+
+Find the pdf of $Z = \min(X, Y)$ by taking the derivative of your CDF from Question 7, Part c.
+
+### 4. CDF of a ratio
+
+Suppose that the random variables $X$ and $Y$ have joint density $f_{X,Y}(x,y)$, for $0<x<1$, and $\frac{1}{2}<y<1$. Set up the equation for the CDF of $Z$, where $Z=X/Y$. (You do not need to know $f_{X,Y}(x,y)$ to set up the integrals.)
+
+-   *Hint:* First determine what the possible values for $Z$ are. Then make a sketch of the domain of the joint pdf and shade in the region representing the CDF of $Z$ for different values of $z$. Make sure to pay close attention to how the region we need to integrate over changes as $z$ changes. The CDF has two different cases depending on the value of $z$. Plug in specific values of $z$ and shade in the region representing the CDF to see why two different cases are needed.

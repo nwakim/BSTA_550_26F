@@ -593,34 +593,22 @@ For $6 \leq y \leq 12$, find the conditional density $f_{X|Y}(x|y)$ of $X$, give
 
 #### Part c
 
-Find the conditional probability that $X \leq 1$, given $3 \leq Y \leq 9$.
+Find $P(0.5 \leq X \leq 3 \mid Y=7)$.
 
--   *Hint:* This one conditions on an *event*, so use $P(A|B) = \dfrac{P(A \cap B)}{P(B)}$. With a constant density, each probability is an area times the height, so the height cancels.
+-   *Hint:* Use your answer to Part b with $y = 7$. What are the possible values of $X$ when $Y = 7$?
 
 ***Answer:***
 
 #### Part d
 
-Find $P(0.5 \leq X \leq 3 \mid Y=4)$.
+Simulate 10,000 values of $X$ given $Y = 7$ to check your answer to Part c.
 
-***Answer:***
-
-#### Part e
-
-Find $P(0.5 \leq X \leq 3 \mid Y=7)$.
-
-***Answer:***
-
-#### Part f
-
-Use 2D grid sampling to check your answer to Part c.
-
--   *Hint:* Make a grid with `expand_grid(x = seq(0, 2, length.out = 1001), y = seq(0, 12, length.out = 1001))`, keep only the points in the quadrilateral with `filter()`, and set `height = 1` (any constant works, since R rescales the weights). Then `slice_sample()` like Lesson 15. To condition on $3 \leq Y \leq 9$, `filter()` to keep those simulations, like Lesson 16, then use `mean(x <= 1)`.
+-   *Hint:* Follow Lesson 16, Example 5: grid sampling along the plane $y = 7$, using only the joint pdf. Make tickets with `x_grid <- seq(0, 2, length.out = 10001)`. For `prob`, use the joint pdf with $y = 7$ plugged in: `if_else(7 <= 12 - 3 * x_grid, 1/18, 0)` is $\frac{1}{18}$ inside the quadrilateral and 0 outside it, so tickets outside are never drawn. Then use `mean(x >= 0.5 & x <= 3)`.
 
 ***Answer:***
 
 ```{r}
-#| label: "q8f-simulate"
+#| label: "q8d-simulate"
 
 set.seed(4646)
 reps <- 10000
@@ -628,6 +616,10 @@ reps <- 10000
 # Your code here
 
 ```
+
+Is your simulated answer close to your answer in Part c? (They do not need to match exactly!)
+
+***Answer:***
 
 ## Extra problems
 

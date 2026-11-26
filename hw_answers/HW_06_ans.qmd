@@ -513,53 +513,32 @@ Not given
 
 #### Part c
 
-Find the conditional probability that $X \leq 1$, given $3 \leq Y \leq 9$.
-
-::: answer
-$\dfrac{4}{7} \approx 0.571$
-:::
-
-#### Part d
-
-Find $P(0.5 \leq X \leq 3 \mid Y=4)$.
-
-::: answer
-Not given
-:::
-
-#### Part e
-
 Find $P(0.5 \leq X \leq 3 \mid Y=7)$.
 
 ::: answer
 $0.7$
 :::
 
-#### Part f
+#### Part d
 
-Use 2D grid sampling to check your answer to Part c.
+Simulate 10,000 values of $X$ given $Y = 7$ to check your answer to Part c.
 
 ::: answer
 ```{r}
-#| label: "q8f-simulate"
+#| label: "q8d-simulate"
 
 set.seed(4646)
 reps <- 10000
+x_grid <- seq(0, 2, length.out = 10001)
 
-quad_grid <- expand_grid(x = seq(0, 2, length.out = 1001),
-                         y = seq(0, 12, length.out = 1001)) |>
-  filter(y <= 12 - 3 * x) |>
-  mutate(height = 1)
+slice_sims <- tibble(sim = 1:reps) |>
+  mutate(x = sample(x_grid, size = n(), replace = TRUE,
+                    prob = if_else(7 <= 12 - 3 * x_grid, 1/18, 0)))
 
-quad_sims <- quad_grid |>
-  slice_sample(n = reps, weight_by = height, replace = TRUE)
-
-quad_cond <- quad_sims |>
-  filter(y >= 3, y <= 9) |>
-  summarise(prob = mean(x <= 1))
+prob_slice <- mean(slice_sims$x >= 0.5 & slice_sims$x <= 3)
 ```
 
-$P(X \leq 1 \mid 3 \leq Y \leq 9) \approx$ `r round(quad_cond$prob, 4)`
+$P(0.5 \leq X \leq 3 \mid Y=7) \approx$ `r round(prob_slice, 4)`
 
-Answers will vary slightly, but should be close to $\frac47 \approx 0.571$.
+Answers will vary slightly, but should be close to 0.7.
 :::

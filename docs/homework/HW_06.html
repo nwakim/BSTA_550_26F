@@ -4725,27 +4725,17 @@ HOW TO USE THIS FILE
 </section>
 <section id="part-c-7" class="level4">
 <h4 class="anchored" data-anchor-id="part-c-7">Part c</h4>
-<p>Find the conditional probability that <span class="math inline">\(X \leq 1\)</span>, given <span class="math inline">\(3 \leq Y \leq 9\)</span>.</p>
+<p>Find <span class="math inline">\(P(0.5 \leq X \leq 3 \mid Y=7)\)</span>.</p>
 <ul>
-<li><em>Hint:</em> This one conditions on an <em>event</em>, so use <span class="math inline">\(P(A|B) = \dfrac{P(A \cap B)}{P(B)}\)</span>. With a constant density, each probability is an area times the height, so the height cancels.</li>
+<li><em>Hint:</em> Use your answer to Part b with <span class="math inline">\(y = 7\)</span>. What are the possible values of <span class="math inline">\(X\)</span> when <span class="math inline">\(Y = 7\)</span>?</li>
 </ul>
 <p><strong><em>Answer:</em></strong></p>
 </section>
 <section id="part-d-4" class="level4">
 <h4 class="anchored" data-anchor-id="part-d-4">Part d</h4>
-<p>Find <span class="math inline">\(P(0.5 \leq X \leq 3 \mid Y=4)\)</span>.</p>
-<p><strong><em>Answer:</em></strong></p>
-</section>
-<section id="part-e-2" class="level4">
-<h4 class="anchored" data-anchor-id="part-e-2">Part e</h4>
-<p>Find <span class="math inline">\(P(0.5 \leq X \leq 3 \mid Y=7)\)</span>.</p>
-<p><strong><em>Answer:</em></strong></p>
-</section>
-<section id="part-f-1" class="level4">
-<h4 class="anchored" data-anchor-id="part-f-1">Part f</h4>
-<p>Use 2D grid sampling to check your answer to Part c.</p>
+<p>Simulate 10,000 values of <span class="math inline">\(X\)</span> given <span class="math inline">\(Y = 7\)</span> to check your answer to Part c.</p>
 <ul>
-<li><em>Hint:</em> Make a grid with <code>expand_grid(x = seq(0, 2, length.out = 1001), y = seq(0, 12, length.out = 1001))</code>, keep only the points in the quadrilateral with <code>filter()</code>, and set <code>height = 1</code> (any constant works, since R rescales the weights). Then <code>slice_sample()</code> like Lesson 15. To condition on <span class="math inline">\(3 \leq Y \leq 9\)</span>, <code>filter()</code> to keep those simulations, like Lesson 16, then use <code>mean(x &lt;= 1)</code>.</li>
+<li><em>Hint:</em> Follow Lesson 16, Example 5: grid sampling along the plane <span class="math inline">\(y = 7\)</span>, using only the joint pdf. Make tickets with <code>x_grid &lt;- seq(0, 2, length.out = 10001)</code>. For <code>prob</code>, use the joint pdf with <span class="math inline">\(y = 7\)</span> plugged in: <code>if_else(7 &lt;= 12 - 3 * x_grid, 1/18, 0)</code> is <span class="math inline">\(\frac{1}{18}\)</span> inside the quadrilateral and 0 outside it, so tickets outside are never drawn. Then use <code>mean(x &gt;= 0.5 &amp; x &lt;= 3)</code>.</li>
 </ul>
 <p><strong><em>Answer:</em></strong></p>
 <div class="cell">
@@ -4754,6 +4744,8 @@ HOW TO USE THIS FILE
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>Is your simulated answer close to your answer in Part c? (They do not need to match exactly!)</p>
+<p><strong><em>Answer:</em></strong></p>
 </section>
 </section>
 </section>

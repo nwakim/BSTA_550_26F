@@ -1,0 +1,15 @@
+{
+  "hash": "8af0fa6ecc06e66bbf4383250cc6310f",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Key Info\"\ndate-modified: \"today\"\nformat: \n  html:\n    link-external-newwindow: true\neditor_options: \n  chunk_output_type: console\n---\n\n\n\n## Announcements\n\n- No class on Wednesday!\n\n## Key Dates\n\n- Checkpoint 3 due 11/29\n- Homework 6 due 12/06\n- Quiz 3 opens on 12/02 at 3pm\n  - Closes 12/06 at 11pm\n\n\n  \n\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

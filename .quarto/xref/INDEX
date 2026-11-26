@@ -347,5 +347,20 @@
   },
   "lessons/14_Transformations/14_Transformations_no_calc.qmd": {
     "14_Transformations_no_calc.html": "e0ad33a5"
+  },
+  "lessons/14_Transformations/14_Transformations_calc.qmd": {
+    "14_Transformations_calc.html": "cbd07ba1"
+  },
+  "lessons/15_Joint_distributions/15_Joint_distributions_3d_plots.qmd": {
+    "15_Joint_distributions_3d_plots.html": "792464f1"
+  },
+  "lessons/12_Independence_Conditioning/12_Independence_conditioning.qmd": {
+    "12_Independence_conditioning.html": "1f3d2d3d"
+  },
+  "lessons/16_Independence_Conditioning/16_Independence_conditioning_3d_plots.qmd": {
+    "16_Independence_conditioning_3d_plots.html": "c2742868"
+  },
+  "lessons/17_Central_Limit_Theorem/17_Central_Limit_Theorem.qmd": {
+    "17_Central_Limit_Theorem.html": "37051c7f"
   }
 }

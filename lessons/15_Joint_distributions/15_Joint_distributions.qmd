@@ -1,10 +1,10 @@
 ---
 title: "Lesson 15: Joint distributions"
-author: "Meike Niederhausen and Nicky Wakim"
+author: "Nicky Wakim"
 date: "`r library(here); source(here('class_dates.R')); w8d2`"
 title-slide-attributes:
     data-background-color: "#006a4e"
-format: 
+format:
   revealjs:
     theme: "../simple_NW.scss"
     slide-number: true
@@ -13,6 +13,10 @@ format:
     height: 1100
     footer: Lesson 15 Slides
     html-math-method: mathjax
+    highlight-style: arrow
+    code-annotations: hover
+execute:
+  echo: true
 ---
 
 ```{r setup, include=FALSE}
@@ -20,37 +24,112 @@ library(here)
 source(here("class_dates.R"))
 
 library(tidyverse)
+
+theme_set(theme_bw(base_size = 28))
+
+# Draws a static 3D picture of a joint pdf: the domain as a blue floor,
+# the pdf as a grey wireframe, and an event's volume in orange
+draw_pdf_volume <- function(f, x_vals, y_vals, domain_corners,
+                            in_domain = function(x, y) rep(TRUE, length(x)),
+                            event_corners = NULL,
+                            in_event = function(x, y) rep(FALSE, length(x)),
+                            flat_top = FALSE,
+                            zlim, title = "", theta = 35, phi = 25) {
+  heights <- outer(x_vals, y_vals, f)
+  heights[!outer(x_vals, y_vals, in_domain)] <- NA
+
+  x_mid <- (head(x_vals, -1) + tail(x_vals, -1)) / 2
+  y_mid <- (head(y_vals, -1) + tail(y_vals, -1)) / 2
+  facet_in_event <- outer(x_mid, y_mid, in_event) & !flat_top
+  facet_colors <- ifelse(facet_in_event, adjustcolor("#E89543", 0.85), NA)
+
+  par(mar = c(0, 0, 2, 0), cex = 1.8)
+  view_args <- list(x = x_vals, y = y_vals, z = heights, zlim = zlim,
+                    theta = theta, phi = phi, expand = 0.8, r = 4,
+                    xlab = "x", ylab = "y", zlab = "f(x, y)")
+  # 1. Set up the 3D view and axes, without the surface
+  view_3d <- do.call(persp, c(view_args, list(border = NA)))
+  # 2. Floor: the possible values (domain), at height 0
+  floor <- trans3d(domain_corners[, 1], domain_corners[, 2], 0, view_3d)
+  polygon(floor, col = adjustcolor("#29abe0", 0.25), border = "#29abe0")
+  # 3. The joint pdf surface, drawn on top of the floor
+  par(new = TRUE)
+  do.call(persp, c(view_args, list(col = facet_colors, border = "grey60",
+                                   box = FALSE)))
+  # 4. The event's volume: walls from the floor up to the surface
+  if (!is.null(event_corners)) {
+    corners <- rbind(event_corners, event_corners[1, ])
+    for (k in 1:(nrow(corners) - 1)) {
+      s <- seq(0, 1, length.out = 50)
+      edge_x <- corners[k, 1] + s * (corners[k + 1, 1] - corners[k, 1])
+      edge_y <- corners[k, 2] + s * (corners[k + 1, 2] - corners[k, 2])
+      edge_top <- f(edge_x, edge_y)
+      wall <- trans3d(c(edge_x, rev(edge_x)), c(edge_y, rev(edge_y)),
+                      c(0 * edge_top, rev(edge_top)), view_3d)
+      polygon(wall, col = adjustcolor("#E89543", 0.35), border = NA)
+      lines(trans3d(edge_x, edge_y, edge_top, view_3d), col = "#E89543")
+      lines(trans3d(edge_x, edge_y, 0, view_3d), col = "#E89543")
+    }
+    # Vertical edges only at real corners (where the boundary turns)
+    n_c <- nrow(event_corners)
+    for (k in 1:n_c) {
+      before <- event_corners[k, ] - event_corners[ifelse(k == 1, n_c, k - 1), ]
+      after <- event_corners[ifelse(k == n_c, 1, k + 1), ] - event_corners[k, ]
+      turn <- abs(atan2(after[2], after[1]) - atan2(before[2], before[1]))
+      if (min(turn, 2 * pi - turn) > pi / 12) {
+        cx <- event_corners[k, 1]; cy <- event_corners[k, 2]
+        lines(trans3d(c(cx, cx), c(cy, cy), c(0, f(cx, cy)), view_3d),
+              col = "#E89543")
+      }
+    }
+    if (flat_top) {
+      lid <- trans3d(event_corners[, 1], event_corners[, 2],
+                     f(event_corners[, 1], event_corners[, 2]), view_3d)
+      polygon(lid, col = adjustcolor("#E89543", 0.6), border = "#E89543")
+    }
+  }
+  title(title, font.main = 1)
+}
 ```
 
 # Learning Objectives
 
-1.  Define **joint and marginal** distributions for discrete and continuous random variables
+1.  Define **joint and marginal** distributions (pmf's, pdf's, and CDF's) for discrete and continuous random variables
 
-2.  Calculate or find **joint and marginal** probabilities, pmf's, and CDF's for discrete random variables
+2.  Find and simulate **joint and marginal** probabilities and pmf's for discrete random variables
 
-3.  Calculate or find **joint and marginal** probabilities, pdf's, and CDF's for continuous random variables
+3.  Use simulation to approximate **joint and marginal** probabilities and pdf's for continuous random variables
 
-4.  Calculate expected value for joint densities (continuous RVs)
+4.  Use simulation to approximate the distribution of a transformation of two random variables
 
-5.  Extra practice on your own: solve double integrals in a mini lesson
+5.  Use simulation to approximate expected values from a joint distribution
 
 ## Where are we?
 
 ![](../img_slides/course_map.png){fig-align="center"}
 
+## New R functions in this lesson
+
+| Function | What it does | First used |
+|------|----------------------------|----------|
+| `first()`, `last()` | The first or last value in each group | Example 1 |
+| `slice_sample()` | Draws whole rows from a table; `weight_by` makes some rows more likely | 2D grid sampling |
+| `pmax()` | The larger value in **each row** of two columns | Example 3 |
+
+
 # Learning Objectives
 
 ::: lob
-1.  Define **joint and marginal** distributions for discrete and continuous random variables
+1.  Define **joint and marginal** distributions (pmf's, pdf's, and CDF's) for discrete and continuous random variables
 :::
 
-2.  Calculate or find **joint and marginal** probabilities, pmf's, and CDF's for discrete random variables
+2.  Find and simulate **joint and marginal** probabilities and pmf's for discrete random variables
 
-3.  Calculate or find **joint and marginal** probabilities, pdf's, and CDF's for continuous random variables
+3.  Use simulation to approximate **joint and marginal** probabilities and pdf's for continuous random variables
 
-4.  Calculate expected value for joint densities (continuous RVs)
+4.  Use simulation to approximate the distribution of a transformation of two random variables
 
-5.  Extra practice on your own: solve double integrals in a mini lesson
+5.  Use simulation to approximate expected values from a joint distribution
 
 ## What is a joint distribution?
 
@@ -62,7 +141,7 @@ Definition: joint pmf
 :::
 
 ::: proof-cont
-The **joint pmf** of a pair of discrete RV's $X$ and $Y$ is $$\begin{aligned}
+The [**joint pmf**]{style="color:#E25D3B;"} of a pair of discrete RV's $X$ and $Y$ is $$\begin{aligned}
 p_{X,Y}(x,y) = & \mathbb{P}(X=x \cap Y=y) \\ = & \mathbb{P}(X=x, Y=y)
 \end{aligned}$$
 :::
@@ -76,7 +155,7 @@ Definition: joint pdf
 :::
 
 ::: thm-cont
-The **joint pdf** for two continuous RVs ($X$ and $Y$) is $f_{X,Y}(x,y)$, such that we have the following joint probability: $$\begin{aligned}
+The [**joint pdf**]{style="color:#E25D3B;"} for two continuous RVs ($X$ and $Y$) is $f_{X,Y}(x,y)$, such that we have the following joint probability: $$\begin{aligned}
 \mathbb{P}(a \leq X \leq b, & c \leq Y \leq d) = \\ & \int_a^b \int_c^d f_{X,Y}(x,y)dydx
 \end{aligned}$$
 :::
@@ -96,9 +175,9 @@ Properties of joint pmf's
 ::: proof-cont
 -   A joint pmf $p_{X,Y}(x,y)$ must satisfy the following properties:
 
-    -   $0 \geq p_{X,Y}(x,y) \leq 1$ for all $x, y$
+    -   $0 \leq p_{X,Y}(x,y) \leq 1$ for all $x, y$
 
-     
+      
 
     -   $\sum \limits_{\{all\ x\}} \sum \limits_{\{all\ y\}} p_{X,Y}(x,y)=1$
 :::
@@ -116,11 +195,11 @@ Properties of joint pdf's
 
     -   $f_{X,Y}(x,y)\geq 0$ for all $x,y$
 
-     
+      
 
     -   $\displaystyle\int_{-\infty}^{\infty}\displaystyle\int_{-\infty}^{\infty} f_{X,Y}(x,y)dxdy=1$
 
- 
+  
 
 -   Remember that $f_{X,Y}(x,y)\neq \mathbb{P}(X=x, Y=y)$!!!
 :::
@@ -138,7 +217,7 @@ Marginal pmf's
 :::
 
 ::: proof-cont
-Suppose $X$ and $Y$ are discrete RV's, with joint pmf $p_{X,Y}(x,y)$. Then the **marginal probability mass functions** are
+Suppose $X$ and $Y$ are discrete RV's, with joint pmf $p_{X,Y}(x,y)$. Then the [**marginal probability mass functions**]{style="color:#E25D3B;"} are
 
 $$p_X(x) = \sum \limits_{\{all\ y\}} p_{X,Y}(x,y)$$
 
@@ -154,9 +233,9 @@ Marginal pdf's
 :::
 
 ::: thm-cont
-Suppose $X$ and $Y$ are continuous RV's, with joint pdf $f_{X,Y}(x,y)$. Then the **marginal probability density functions** are $$\begin{aligned}
-f_X(x)&=& \int_{-\infty}^{\infty} f_{X,Y}(x,y)dy\\
-f_Y(y)&=& \int_{-\infty}^{\infty} f_{X,Y}(x,y)dx
+Suppose $X$ and $Y$ are continuous RV's, with joint pdf $f_{X,Y}(x,y)$. Then the [**marginal probability density functions**]{style="color:#E25D3B;"} are $$\begin{aligned}
+f_X(x)&= \int_{-\infty}^{\infty} f_{X,Y}(x,y)dy\\
+f_Y(y)&= \int_{-\infty}^{\infty} f_{X,Y}(x,y)dx
 \end{aligned}$$
 :::
 :::::
@@ -173,7 +252,7 @@ Joint CDF for discrete RVs
 :::
 
 ::: proof-cont
-The **joint CDF** of a pair of discrete RV's $X$ and $Y$ is 
+The [**joint CDF**]{style="color:#E25D3B;"} of a pair of discrete RV's $X$ and $Y$ is
 $$\begin{aligned}
 F_{X,Y}(x,y) = &\mathbb{P}(X \leq x\ and\ Y \leq y) \\ = &\mathbb{P}(X \leq x, Y \leq y)
 \end{aligned}$$
@@ -188,7 +267,7 @@ Joint CDF for continuous RVs
 :::
 
 ::: thm-cont
-The **joint CDF** of continuous random variables $X$ and $Y$, is the function $F_{X,Y}(x,y)$, such that for all real values of $x$ and $y$, 
+The **joint CDF** of continuous random variables $X$ and $Y$, is the function $F_{X,Y}(x,y)$, such that for all real values of $x$ and $y$,
 $$\begin{aligned}
 F_{X,Y}(x,y)= \mathbb{P}(X \leq x, & Y \leq y) = \\
 & \int_{-\infty}^x\int_{-\infty}^y f_{X,Y}(s,t)dtds
@@ -200,19 +279,19 @@ F_{X,Y}(x,y)= \mathbb{P}(X \leq x, & Y \leq y) = \\
 
 # Learning Objectives
 
-1.  Define **joint and marginal** distributions for discrete and continuous random variables
+1.  Define **joint and marginal** distributions (pmf's, pdf's, and CDF's) for discrete and continuous random variables
 
 ::: lob
-2.  Calculate or find **joint and marginal** probabilities, pmf's, and CDF's for discrete random variables
+2.  Find and simulate **joint and marginal** probabilities and pmf's for discrete random variables
 :::
 
-3.  Calculate or find **joint and marginal** probabilities, pdf's, and CDF's for continuous random variables
+3.  Use simulation to approximate **joint and marginal** probabilities and pdf's for continuous random variables
 
-4.  Calculate expected value for joint densities (continuous RVs)
+4.  Use simulation to approximate the distribution of a transformation of two random variables
 
-5.  Extra practice on your own: solve double integrals in a mini lesson
+5.  Use simulation to approximate expected values from a joint distribution
 
-## Joint distribution for two discrete random variables (1/5)
+## [Joint distribution for two discrete random variables (1/6)]{style="display: none;"}
 
 ::::::: columns
 :::::: {.column width="100%"}
@@ -231,16 +310,12 @@ Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, a
 3.  Find $\mathbb{P}(Y = 1)$
 
 4.  Find $\mathbb{P}(Y \leq 2)$
-
-5.  Find the joint CDF $F_{X,Y}(x,y)$ for the joint pmf $p_{X,Y}(x,y)$
-
-6.  Find the marginal CDFs $F_{X}(x)$ and $F_{Y}(y)$
 :::
 :::::
 ::::::
 :::::::
 
-## Joint distribution for two discrete random variables (2/5)
+## [Joint distribution for two discrete random variables (2/6)]{style="display: none;"}
 
 ::::::: columns
 :::::: {.column width="35%"}
@@ -261,7 +336,7 @@ Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, a
 ::::::
 :::::::
 
-## Joint distribution for two discrete random variables (3/5)
+## [Joint distribution for two discrete random variables (3/6)]{style="display: none;"}
 
 ::::::: columns
 :::::: {.column width="35%"}
@@ -282,7 +357,161 @@ Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, a
 ::::::
 :::::::
 
-## Joint distribution for two discrete random variables (4/5)
+## [Joint distribution for two discrete random variables (4/6): simulate]{style="display: none;"}
+
+
+:::: example
+::: ex-cont
+1.  Check the joint pmf with simulation: draw two balls from the box, many times.
+:::
+::::
+
+::::::: columns
+::::: {.column width="54%"}
+```{r}
+set.seed(1111) # <1>
+reps <- 100000 # <2>
+
+ex1_sims <- expand_grid( # <3>
+    sim = 1:reps, # <3>
+    draw = 1:2 # <3>
+  ) |>
+  group_by(sim) |> # <4>
+  mutate(ball = sample(1:3, size = n())) |> # <5>
+  summarise( # <6>
+    x = first(ball), # <6>
+    y = last(ball) # <6>
+  )
+```
+
+1.  Set the random seed once, so we get the same simulation every time.
+2.  Save the number of simulations as `reps`, so it is easy to change later.
+3.  One row per draw: 2 draws for each of the 100,000 simulations, like in Lesson 2.
+4.  Work within each simulation separately.
+5.  `n()` is 2 here (two draws per simulation). With no `replace = TRUE`, `sample()` draws **without** replacement, so the two balls are different, just like the box.
+6.  One row per simulation: `first()` is the first ball drawn ($X$) and `last()` is the second ($Y$).
+:::::
+
+::::: {.column width="2%"}
+:::::
+
+::: {.column width="44%"}
+```{r}
+ex1_sims |> # <7>
+  group_by(x, y) |> # <7>
+  summarise( # <8>
+    prob = n() / reps, # <8>
+    .groups = "drop" # <8>
+  )
+```
+
+7.  One group for each pair $(x, y)$ that showed up in the simulations.
+8.  `n()` counts the simulations in each group. Dividing by `reps` gives relative frequencies: this approximates the joint pmf. `.groups = "drop"` removes the grouping when we are done.
+
+Pairs like $(1, 1)$ never show up, 
+
+so $p_{X,Y}(1,1) = 0$
+:::
+:::::::
+
+## [Joint distribution for two discrete random variables (5/6): 3D picture]{style="display: none;"}
+
+:::: example
+::: ex-cont
+1.  Picture the simulated joint pmf in 3D.
+:::
+::::
+
+::::::: columns
+::::: {.column width="40%"}
+- Each stick stands on one pair $(x, y)$. Its height is the simulated $p_{X,Y}(x,y) \approx \frac16$
+
+  
+
+- The $\times$ marks $(1, 1)$, $(2, 2)$, and $(3, 3)$: height 0, because we can't draw the same ball twice
+
+  
+
+- The heights add up to 1: the discrete version of "total volume = 1" for a joint pdf
+
+[[Rotate this plot (interactive) ↗](15_Joint_distributions_3d_plots.qmd#ex1-pmf){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
+:::::
+
+::::: {.column width="2%"}
+:::::
+
+::::: {.column width="58%"}
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 6.5
+#| out-width: "85%"
+#| fig-align: center
+
+ex1_pmf_3d <- expand_grid(x = 1:3, y = 1:3) |>
+  left_join(
+    ex1_sims |> group_by(x, y) |> summarise(prob = n() / reps, .groups = "drop"),
+    by = c("x", "y")
+  ) |>
+  mutate(prob = replace_na(prob, 0))
+
+par(mar = c(1, 1, 2, 1), cex = 1.6)
+view_3d <- persp(x = c(0.5, 3.5), y = c(0.5, 3.5), z = matrix(0, 2, 2),
+                 zlim = c(0, 0.25), theta = 35, phi = 25, expand = 0.8, r = 4,
+                 col = adjustcolor("#29abe0", 0.15), border = "#29abe0",
+                 xlab = "x", ylab = "y", zlab = "",
+                 ticktype = "detailed", nticks = 3)
+for (k in 1:3) {
+  lines(trans3d(c(0.5, 3.5), c(k, k), 0, view_3d), col = "grey75")
+  lines(trans3d(c(k, k), c(0.5, 3.5), 0, view_3d), col = "grey75")
+}
+sticks <- ex1_pmf_3d |> filter(prob > 0)
+zeros <- ex1_pmf_3d |> filter(prob == 0)
+stick_bottom <- trans3d(sticks$x, sticks$y, 0, view_3d)
+stick_top <- trans3d(sticks$x, sticks$y, sticks$prob, view_3d)
+segments(stick_bottom$x, stick_bottom$y, stick_top$x, stick_top$y,
+         col = "#E89543", lwd = 8)
+points(stick_top, pch = 19, col = "#E89543", cex = 1.5)
+points(trans3d(zeros$x, zeros$y, 0, view_3d),
+       pch = 4, col = "grey40", cex = 1.8, lwd = 3)
+title("Simulated joint pmf p(x, y)", font.main = 1)
+```
+:::::
+:::::::
+
+## [Joint distribution for two discrete random variables (6/6): simulate]{style="display: none;"}
+
+:::: example
+::: ex-cont
+Parts 2 to 4: check $\mathbb{P}(X+Y=3)$, $\mathbb{P}(Y = 1)$, and $\mathbb{P}(Y \leq 2)$ with simulation.
+:::
+::::
+
+::::::: columns
+::::: {.column width="55%"}
+```{r}
+ex1_sims |> # <1>
+  summarise( # <1>
+    prob_sum_3 = mean(x + y == 3), # <1>
+    prob_Y_1 = mean(y == 1), # <2>
+    prob_Y_le_2 = mean(y <= 2) # <2>
+  )
+```
+
+1.  Reuse the 100,000 simulated pairs. `mean()` of a `TRUE`/`FALSE` condition is the proportion of simulations where it is `TRUE`: this approximates $\mathbb{P}(X+Y=3)$.
+2.  Marginal probabilities only use the `y` column.
+:::::
+
+::: {.column width="45%"}
+:::: proof1
+::: proof-cont
+For reference, the exact answers are $p_{X,Y}(x,y) = \frac16 \approx 0.1667$ for each possible pair, $\mathbb{P}(X+Y=3) = \mathbb{P}(Y=1) = \frac13$, and $\mathbb{P}(Y \leq 2) = \frac23$
+:::
+::::
+:::
+:::::::
+
+## [Joint distribution for two discrete random variables part 5]{style="display: none;"} {visibility="hidden"}
 
 ::::::: columns
 :::::: {.column width="35%"}
@@ -301,7 +530,67 @@ Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, a
 ::::::
 :::::::
 
-## Joint distribution for two discrete random variables (5/5)
+## [Joint distribution for two discrete random variables part 5: simulate]{style="display: none;"} {visibility="hidden"}
+
+:::: example
+::: ex-cont
+5.  Check the joint CDF with simulation: $F_{X,Y}(x,y) = \mathbb{P}(X \leq x, Y \leq y)$
+:::
+::::
+
+::::::: columns
+::::: {.column width="54%"}
+```{r}
+ex1_cdf <- expand_grid( # <1>
+    ex1_sims, # <1>
+    x_cut = 1:3, # <2>
+    y_cut = 1:3 # <2>
+  ) |>
+  group_by(x_cut, y_cut) |> # <3>
+  summarise( # <4>
+    F_xy = mean(x <= x_cut & y <= y_cut), # <4>
+    .groups = "drop" # <5>
+  )
+```
+
+1.  Reuse the 100,000 simulated pairs. `expand_grid()` with a table makes a copy of every simulation for each combination of cutoffs: $100{,}000 \times 9$ rows.
+2.  The cutoffs are the cells of the CDF table: $x = 1, 2, 3$ and $y = 1, 2, 3$. Between these values the CDF stays flat, so 9 cells fill the table.
+3.  One group for each cell $(x, y)$ of the table.
+4.  `&` means "and": both must be `TRUE`. The proportion of simulations with $X \leq x$ and $Y \leq y$ approximates $F_{X,Y}(x,y)$.
+5.  Remove the grouping when we are done.
+
+:::: proof1
+::: proof-cont
+For reference, the exact joint CDF $F_{X,Y}(x,y)$:
+
+|         | $y = 1$ | $y = 2$       | $y = 3$       |
+|---------|---------|---------------|---------------|
+| $x = 1$ | 0       | $\frac16$     | $\frac26$     |
+| $x = 2$ | $\frac16$ | $\frac26$  | $\frac46$     |
+| $x = 3$ | $\frac26$ | $\frac46$  | 1             |
+:::
+::::
+:::::
+
+::::: {.column width="2%"}
+:::::
+
+::: {.column width="44%"}
+```{r}
+ex1_cdf |> # <6>
+  pivot_wider( # <6>
+    names_from = y_cut, # <6>
+    names_prefix = "y_", # <7>
+    values_from = F_xy # <6>
+  )
+```
+
+6.  `pivot_wider()` spreads the `y_cut` values into columns, so the output looks like our table: rows are $x$, columns are $y$.
+7.  Start each new column name with `y_`, so the columns are `y_1`, `y_2`, and `y_3`.
+:::
+:::::::
+
+## [Joint distribution for two discrete random variables part 6]{style="display: none;"} {visibility="hidden"}
 
 ::::::: columns
 :::::: {.column width="35%"}
@@ -320,11 +609,56 @@ Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, a
 ::::::
 :::::::
 
-## Quick remarks on the joint and marginal CDF
+## [Joint distribution for two discrete random variables part 6: simulate]{style="display: none;"} {visibility="hidden"}
 
--   $F_X(x)$: right most columns of the CDF table (where the $Y$ values are largest)
+:::: example
+::: ex-cont
+6.  Check the marginal CDFs with simulation: $F_X(x) = \mathbb{P}(X \leq x)$ and $F_Y(y) = \mathbb{P}(Y \leq y)$
+:::
+::::
 
--   $F_Y(y)$: bottom row of the table (where X values are largest)
+::::::: columns
+::::: {.column width="54%"}
+```{r}
+expand_grid( # <1>
+    ex1_sims, # <1>
+    cut = 1:3 # <1>
+  ) |>
+  group_by(cut) |> # <2>
+  summarise( # <3>
+    F_X = mean(x <= cut), # <3>
+    F_Y = mean(y <= cut) # <4>
+  )
+```
+
+1.  Same idea as part 5, with one cutoff at a time: a copy of every simulation for each cutoff 1, 2, and 3.
+2.  One group for each cutoff.
+3.  Marginal CDF of $X$: only uses the `x` column. The proportion with $X \leq$ `cut` approximates $F_X$(`cut`).
+4.  Marginal CDF of $Y$: only uses the `y` column.
+:::::
+
+::::: {.column width="2%"}
+:::::
+
+::: {.column width="44%"}
+Compare with the joint CDF table from part 5:
+
+- `F_X` matches the rightmost column (`y_3`), where $Y$ is largest
+- `F_Y` matches the bottom row ($x = 3$), where $X$ is largest
+
+:::: proof1
+::: proof-cont
+For reference, the exact marginal CDFs are $F_X(1) = \frac13$, $F_X(2) = \frac23$, $F_X(3) = 1$, and the same for $F_Y$
+:::
+::::
+:::
+:::::::
+
+## Quick remarks on the joint and marginal CDF {visibility="hidden"}
+
+-   $F_X(x)$: rightmost column of the CDF table (where the $Y$ values are largest)
+
+-   $F_Y(y)$: bottom row of the table (where the $X$ values are largest)
 
 -   $F_X(x)=\lim\limits_{y\rightarrow\infty}F_{X, Y}(x,y)$
 
@@ -332,310 +666,609 @@ Let $X$ and $Y$ be two random draws from a box containing balls labelled 1, 2, a
 
 # Learning Objectives
 
-1.  Define **joint and marginal** distributions for discrete and continuous random variables
+1.  Define **joint and marginal** distributions (pmf's, pdf's, and CDF's) for discrete and continuous random variables
 
-2.  Calculate or find **joint and marginal** probabilities, pmf's, and CDF's for discrete random variables
+2.  Find and simulate **joint and marginal** probabilities and pmf's for discrete random variables
 
 ::: lob
-3.  Calculate or find **joint and marginal** probabilities, pdf's, and CDF's for continuous random variables
+3.  Use simulation to approximate **joint and marginal** probabilities and pdf's for continuous random variables
 :::
 
-4.  Calculate expected value for joint densities (continuous RVs)
+4.  Use simulation to approximate the distribution of a transformation of two random variables
 
-5.  Extra practice on your own: solve double integrals in a mini lesson
+5.  Use simulation to approximate expected values from a joint distribution
 
-## Common steps for joint pdfs and CDFs
+## Our main tool for joint distributions: simulate pairs
 
-1.  Set up the domain of the pdf with a picture
+::::: definition
+::: def-title
+The simulation method for joint distributions
+:::
 
- 
+::: def-cont
+To learn about $X$ and $Y$ with joint pdf $f_{X,Y}(x,y)$:
 
-2.  Translate to needed integrands
+1.  **Possible values:** Draw the region where $f_{X,Y}(x,y) > 0$
 
-    -   For probability: shade in the area of interest, then translate
-    -   For expected value: translate domain
+2.  **Simulate:** Simulate many *pairs* $(x, y)$: one row per simulation, with an `x` column and a `y` column
 
- 
+3.  **Summarize:**
+    - Joint probabilities: `mean(x <= 1 & y <= 0.5)` approximates $\mathbb{P}(X \leq 1, Y \leq 0.5)$
+    - Marginal distribution of $X$: use only the `x` column (histogram of `x`)
+:::
+:::::
 
-3.  Set up integral: $dxdy$ or $dydx$?
+  
 
- 
+- Same [**simulation method**]{style="color:#E25D3B;"} as Lesson 14, now with two columns
+- Most joint pdfs have no `r*()` function, so we use [**grid sampling**]{style="color:#E25D3B;"} from Lesson 14, in 2D (next slide)
 
-4.  Solve integral!
+## 2D grid sampling: the steps {#grid-sampling-2d}
 
-## Example 2: Joint pdf (1/2)
+- Same idea as Lesson 14: a box of tickets, where tickets in taller parts of the pdf are more likely to be drawn
+- Now each ticket is a **point** $(x, y)$
 
-::::::: columns
-:::::: {.column width="30%"}
+::::: columns
+::: {.column width="55%"}
+1.  **Find the possible values** of $(X, Y)$: the region where $f_{X,Y}(x,y) > 0$
+
+2.  **Make a grid:** many evenly spaced points that cover the region, made with `expand_grid()`. Each point is a ticket in the box
+
+3.  **Find the joint pdf's height** at each ticket
+
+4.  **Draw many tickets with replacement:** `slice_sample()` draws whole rows (points). Each draw is one simulated pair $(x, y)$
+
+    - Each ticket has a chance of being drawn proportional to its height
+
+5.  **Check:** the simulated points should pile up where the pdf is tall
+:::
+
+::: {.column width="45%"}
+```{r}
+#| echo: false
+#| fig-width: 9
+#| fig-height: 7
+
+x_vals <- seq(0, 2, by = 0.5)
+y_vals <- seq(0, 1, by = 0.25)
+
+small_grid_2d <- expand_grid(x = x_vals, y = y_vals) |>
+  mutate(height = 3/2 * y^2)
+
+pdf_heights <- outer(x_vals, y_vals, function(x, y) 3/2 * y^2)
+
+par(mar = c(1, 1, 2.5, 1), cex = 2)
+view_3d <- persp(x_vals, y_vals, pdf_heights,
+                 theta = 35, phi = 25, expand = 0.75,
+                 zlim = c(0, 1.5), col = NA, border = "grey75",
+                 xlab = "x", ylab = "y", zlab = "Height")
+
+stick_bottom <- trans3d(small_grid_2d$x, small_grid_2d$y, 0, view_3d)
+stick_top <- trans3d(small_grid_2d$x, small_grid_2d$y,
+                     small_grid_2d$height, view_3d)
+
+segments(stick_bottom$x, stick_bottom$y, stick_top$x, stick_top$y,
+         col = "#29abe0", lwd = 3)
+points(stick_top, pch = 19, col = "#29abe0", cex = 1)
+title("A small grid for f(x, y) = (3/2) y^2", font.main = 1)
+```
+
+*Each stick is a ticket: taller sticks are more likely to be drawn*
+
+[[Rotate this plot (interactive) ↗](15_Joint_distributions_3d_plots.qmd#grid-sampling){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
+:::
+:::::
+
+## [Example 2: Joint pdf (1/3)]{style="display: none;"}
+
 ::::: example
 ::: ex-title
-Example 2.1
+Example 2: Joint pdf on a rectangle
 :::
 
 ::: ex-cont
 Let $f_{X,Y}(x,y)= \frac32 y^2$, for $0 \leq x \leq 2, \ 0 \leq y \leq 1$.
 
-1.  Find $\mathbb{P}(0 \leq X \leq 1, 0 \leq Y \leq \frac12)$
+1.  Shade the event $\{0 \leq X \leq 1, 0 \leq Y \leq \frac12\}$. Approximate its probability with simulation.
+2.  Use simulation to look at the marginal distributions of $X$ and $Y$.
 :::
 :::::
 
+:::::: columns
+::::: {.column width="34%"}
 ```{r}
+#| echo: false
 #| fig-width: 6
 #| fig-height: 5.5
 
-library(tidyverse)
-joint1 = tibble(
-  x = seq(0, 2, 0.01), 
-  y = seq(0, 1, 0.005)
+domain_2 <- ggplot() +
+  annotate("rect", xmin = 0, xmax = 2, ymin = 0, ymax = 1,
+           fill = "#29abe0", alpha = 0.15) +
+  scale_x_continuous(breaks = c(0, 1, 2), limits = c(0, 2)) +
+  scale_y_continuous(breaks = c(0, 0.5, 1), limits = c(0, 1)) +
+  labs(x = "x", y = "y")
+domain_2
+```
+:::::
+
+::::: {.column width="2%"}
+:::::
+
+::::: {.column width="64%"}
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 6.5
+#| out-width: "48%"
+#| fig-align: center
+
+draw_pdf_volume(
+  f = function(x, y) 3/2 * y^2,
+  x_vals = seq(0, 2, by = 0.125), y_vals = seq(0, 1, by = 0.0625),
+  domain_corners = rbind(c(0, 0), c(2, 0), c(2, 1), c(0, 1)),
+  event_corners = rbind(c(0, 0), c(1, 0), c(1, 0.5), c(0, 0.5)),
+  in_event = function(x, y) x <= 1 & y <= 0.5,
+  zlim = c(0, 1.5),
+  title = "Volume = P(0 <= X <= 1, 0 <= Y <= 1/2)"
 )
-
-x_y_plot1 = ggplot(joint1, aes(x = x, y = y)) +
-  labs(x = "x", y = "y") +
-  scale_x_continuous(breaks = c(0, 1, 2)) +
-  scale_y_continuous(breaks = c(0, 0.5, 1)) +
-  theme_bw() +
-  theme(text = element_text(size=30))
-x_y_plot1
 ```
-::::::
-:::::::
 
-## Example 2: Joint pdf (2/2)
+[[Rotate this plot (interactive) ↗](15_Joint_distributions_3d_plots.qmd#ex2-volume){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
+:::::
+::::::
+
+## [Example 2: Joint pdf (2/3): simulate]{style="display: none;"}
+
+:::: example
+::: ex-cont
+1.  Shade the event $\{0 \leq X \leq 1, 0 \leq Y \leq \frac12\}$. Approximate its probability with simulation.
+:::
+::::
 
 ::::::: columns
-:::::: {.column width="30%"}
-::::: example
-::: ex-title
-Example 2.2
-:::
-
-::: ex-cont
-Let $f_{X,Y}(x,y)= \frac32 y^2$, for $0 \leq x \leq 2, \ 0 \leq y \leq 1$.
-
-2.  Find $f_X(x)$ and $f_Y(y)$.
-:::
-:::::
-
+::::: {.column width="55%"}
 ```{r}
-#| fig-width: 6
-#| fig-height: 5.5
+ex2_grid <- expand_grid( # <1>
+    x = seq(0, 2, length.out = 1001), # <1>
+    y = seq(0, 1, length.out = 1001) # <1>
+  ) |>
+  mutate(height = 3/2 * y^2) # <2>
 
-x_y_plot1
+ex2_sims <- ex2_grid |> # <3>
+  slice_sample( # <3>
+    n = reps, # <3>
+    weight_by = height, # <4>
+    replace = TRUE # <3>
+  )
+
+ex2_sims |> # <5>
+  summarise(prob = mean(x <= 1 & y <= 0.5)) # <5>
 ```
 
-::::::
+1.  Steps 1 and 2: `expand_grid()` makes every combination of 1,001 values of $x$ and 1,001 values of $y$: about 1 million tickets covering the rectangle.
+2.  Step 3: the joint pdf's height at each ticket.
+3.  Step 4: `slice_sample()` draws `reps` rows from the grid, with replacement. Each row drawn is one simulated pair $(x, y)$.
+4.  `weight_by` gives each ticket the pdf's height, so taller tickets are more likely to be drawn. It works like `prob` in `sample()`.
+5.  `&` means "and": both conditions must be `TRUE`. The proportion approximates $\mathbb{P}(0 \leq X \leq 1, 0 \leq Y \leq \frac12)$.
+:::::
+
+::: {.column width="45%"}
+:::: proof1
+::: proof-cont
+For reference, the exact answer is $\mathbb{P}(0 \leq X \leq 1, 0 \leq Y \leq \frac12) = \frac{1}{16} = 0.0625$
+:::
+::::
+
+  
+
+- The volume under $f_{X,Y}(x,y)$ over the event is the probability (the double integral in the definition)
+- The simulation counts the proportion of points that land in the event instead
+:::
 :::::::
 
-## Example with more complicated pdf (1/2)
+## [Example 2: Joint pdf (3/3): marginals]{style="display: none;"}
 
-::: {.callout-important appearance="simple" icon="false"}
-Do this problem at home for extra practice. I'll add the solution to the annotated notes!
-:::
-
-::::::: columns
-:::::: {.column width="30%"}
-::::: example
-::: ex-title
-Example 3.1
-:::
-
+:::: example
 ::: ex-cont
-Let $f_{X,Y}(x,y)= 2 e^{-(x+y)}$, for $0 \leq x \leq y$.
+2.  Use simulation to look at the marginal distributions of $X$ and $Y$.
+:::
+::::
 
-1.  Find $f_X(x)$ and $f_Y(y)$.
+::::: columns
+::: {.column width="34%"}
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 7
+
+draw_pdf_volume(
+  f = function(x, y) 3/2 * y^2,
+  x_vals = seq(0, 2, by = 0.125), y_vals = seq(0, 1, by = 0.0625),
+  domain_corners = rbind(c(0, 0), c(2, 0), c(2, 1), c(0, 1)),
+  zlim = c(0, 1.5),
+  title = "Joint pdf f(x, y) = (3/2) y^2"
+)
+```
+
+[[Rotate this plot (interactive) ↗](15_Joint_distributions_3d_plots.qmd#ex2-pdf){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
+
+- Marginal of $X$: squash the volume onto the $x$ axis (add up over $y$)
+- Marginal of $Y$: squash it onto the $y$ axis
+:::
+
+::: {.column width="33%"}
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 8
+#| fig-height: 6
+
+ggplot(ex2_sims, aes(x = x)) + # <1>
+  geom_histogram(aes(y = after_stat(density)), # <1>
+                 binwidth = 0.05, boundary = 0, # <1>
+                 color = "black", fill = "lightblue") + # <1>
+  geom_function(fun = function(x) 1/2 + 0 * x, # <2>
+                xlim = c(0, 2), # <2>
+                color = "red", linewidth = 1.5) + # <2>
+  labs(subtitle = "Simulated X (the x column only)", # <3>
+       x = "x", y = "Density") # <3>
+```
+
+1.  Histogram of only the `x` column, scaled like a pdf. Ignoring `y` gives the marginal distribution of $X$.
+2.  For reference, the marginal pdf $f_X(x) = \frac12$ for $0 \leq x \leq 2$, in red. (`0 * x` keeps the line flat.)
+3.  Add a subtitle and axis labels.
+
+- $X$ is flat: Uniform$[0, 2]$
+:::
+
+::: {.column width="33%"}
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 8
+#| fig-height: 6
+
+ggplot(ex2_sims, aes(x = y)) + # <1>
+  geom_histogram(aes(y = after_stat(density)), # <1>
+                 binwidth = 0.025, boundary = 0, # <1>
+                 color = "black", fill = "#E89543") + # <1>
+  geom_function(fun = function(y) 3 * y^2, # <2>
+                xlim = c(0, 1), # <2>
+                color = "red", linewidth = 1.5) + # <2>
+  labs(subtitle = "Simulated Y (the y column only)", # <3>
+       x = "y", y = "Density") # <3>
+```
+
+1.  Histogram of only the `y` column: the marginal distribution of $Y$.
+2.  For reference, the marginal pdf $f_Y(y) = 3y^2$ for $0 \leq y \leq 1$, in red.
+3.  Add a subtitle and axis labels.
+
+- $Y$ piles up near 1, where the joint pdf is tallest
 :::
 :::::
-::::::
-:::::::
 
-## Example with more complicated pdf (2/2)
+# Learning Objectives
 
-::: {.callout-important appearance="simple" icon="false"}
-Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+1.  Define **joint and marginal** distributions (pmf's, pdf's, and CDF's) for discrete and continuous random variables
+
+2.  Find and simulate **joint and marginal** probabilities and pmf's for discrete random variables
+
+3.  Use simulation to approximate **joint and marginal** probabilities and pdf's for continuous random variables
+
+::: lob
+4.  Use simulation to approximate the distribution of a transformation of two random variables
 :::
 
-::::::: columns
-:::::: {.column width="30%"}
-::::: example
-::: ex-title
-Example 3.2
-:::
+5.  Use simulation to approximate expected values from a joint distribution
 
-::: ex-cont
-Let $f_{X,Y}(x,y)= 2 e^{-(x+y)}$, for $0 \leq x \leq y$.
-
-2.  Find $\mathbb{P}(Y < 3)$.
-:::
-:::::
-::::::
-:::::::
-
-## Recall: Finding the pdf of a transformation
+## Recall: simulate, transform, summarize (Lesson 14)
 
 -   Let $M$ be a transformation of $X$ and $Y$: $M = g(X, Y)$
 
--   When we have a transformation of $X$ and $Y$, $M$, we need to follow the **CDF method** to find the pdf of $M$
+-   $M$ is a random variable, so it has a distribution
 
-We follow **CDF method**:
+-   We use the same [**simulation method**]{style="color:#E25D3B;"} as Lesson 14, now with two columns:
 
-1.  Start with the joint pdf for $X$ and $Y$
+1.  **Possible values:** Find the possible values of $M$ from the region where $f_{X,Y}(x, y) > 0$
 
-    -   aka $f_{X,Y}(x, y)$
+2.  **Simulate:** Simulate many pairs $(x, y)$
 
-2.  Translate the domain of $X$ and $Y$ to $M$: find possible values of $M$
+3.  **Transform:** Apply $g$ to every simulated pair: `mutate(m = g(x, y))`
 
-3.  Find the CDF of $M$
+4.  **Summarize:** `mean(m <= c)` approximates $\mathbb{P}(M \leq c)$, and a histogram of `m` shows its shape
 
-    - aka $F_M(m) = P(M \leq m) = P(g(X, Y) \leq m)$
+  
 
-4.  Take the derivative of the CDF of $M$ with respect to $m$ to find the pdf of $M$ 
+-   Rewriting an event about $M$ as a region of $(x, y)$ points checks the simulation, and gives an exact answer when the density is constant (area $\times$ height)
 
-    -   aka $f_M(m) = \dfrac{d}{dm}F_M(m)$
+## [Example of a joint pdf with a transformation (1/5)]{style="display: none;"}
 
-## Example of a joint pdf with a transformation (1/3)
-
-::::::: columns
-:::::: {.column width="30%"}
 ::::: example
 ::: ex-title
-Example 4.1
+Example 3: Constant density on a square
 :::
 
 ::: ex-cont
 Let $X$ and $Y$ have constant density on the square $0 \leq X \leq 4, 0 \leq Y \leq 4$.
 
-1.  Find $\mathbb{P}(|X-Y| < 2)$
+1.  Shade the event $|X-Y| < 2$. Find $\mathbb{P}(|X-Y| < 2)$ using areas, and check it with simulation.
 :::
 :::::
 
+:::::: columns
+::::: {.column width="34%"}
 ```{r}
+#| echo: false
 #| fig-width: 6
 #| fig-height: 5.5
 
-library(tidyverse)
-joint2 = tibble(
-  x = seq(0, 4, 0.5), 
-  y = seq(0, 4, 0.5)
+domain_square <- ggplot() +
+  annotate("rect", xmin = 0, xmax = 4, ymin = 0, ymax = 4,
+           fill = "#29abe0", alpha = 0.15) +
+  scale_x_continuous(breaks = c(0, 2, 4), limits = c(0, 4)) +
+  scale_y_continuous(breaks = c(0, 2, 4), limits = c(0, 4)) +
+  labs(x = "x", y = "y")
+domain_square
+```
+:::::
+
+::::: {.column width="2%"}
+:::::
+
+::::: {.column width="64%"}
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 6.5
+#| out-width: "48%"
+#| fig-align: center
+
+draw_pdf_volume(
+  f = function(x, y) 1/16 + 0 * x,
+  x_vals = seq(0, 4, by = 0.25), y_vals = seq(0, 4, by = 0.25),
+  domain_corners = rbind(c(0, 0), c(4, 0), c(4, 4), c(0, 4)),
+  zlim = c(0, 0.1),
+  title = "Joint pdf: f(x, y) = 1/16 on the square"
 )
-
-x_y_plot2 = ggplot(joint2, aes(x = x, y = y)) +
-  labs(x = "x", y = "y") +
-  scale_x_continuous(breaks = c(0, 2, 4)) +
-  scale_y_continuous(breaks = c(0, 2, 4)) +
-  theme_bw() +
-  theme(text = element_text(size=30))
-x_y_plot2
 ```
 
-::::::
-:::::::
-
-## Example of a joint pdf with a transformation (2/3)
-
-::::::: columns
-:::::: {.column width="30%"}
-::::: example
-::: ex-title
-Example 4.2
-:::
-
-::: ex-cont
-Let $X$ and $Y$ have constant density on the square $0 \leq X \leq 4, 0 \leq Y \leq 4$.
-
-2.  Let $M = \max(X,Y)$. Find the pdf for $M$, that is $f_M(m)$
-:::
+[[Rotate this plot (interactive) ↗](15_Joint_distributions_3d_plots.qmd#ex3-pdf){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
 :::::
+::::::
 
+## [Example of a joint pdf with a transformation (2/5): the event as a volume]{style="display: none;"}
+
+:::: example
+::: ex-cont
+1.  Shade the event $|X-Y| < 2$. Find $\mathbb{P}(|X-Y| < 2)$ using areas.
+:::
+::::
+
+:::::: columns
+::::: {.column width="34%"}
 ```{r}
+#| echo: false
 #| fig-width: 6
 #| fig-height: 5.5
 
-x_y_plot2
+domain_square +
+  annotate("polygon", x = c(0, 2, 4, 4, 2, 0), y = c(0, 0, 2, 4, 4, 2),
+           fill = "#E89543", alpha = 0.5)
 ```
 
-::::::
-:::::::
-
-## Example of a joint pdf with a transformation (3/3)
-
-::::::: columns
-:::::: {.column width="30%"}
-::::: example
-::: ex-title
-Example 4.3
-:::
-
-::: ex-cont
-Let $X$ and $Y$ have constant density on the square $0 \leq X \leq 4, 0 \leq Y \leq 4$.
-
-3.  Let $Z = \min(X,Y)$. Find the pdf for $Z$, that is $f_Z(z)$.
-:::
+- Area of the event: $16 - 2 \cdot \frac12 \cdot 2 \cdot 2 = 12$
 :::::
 
-```{r}
-#| fig-width: 6
-#| fig-height: 5.5
-
-x_y_plot2
-```
-
-::::::
-
-:::::: {.column width="70%"}
-::: {.callout-important appearance="simple" icon="false"}
-Do this problem at home for extra practice. I'll add the solution to the annotated notes!
-:::
-::::::
-:::::::
-
-## Last example *for home*: more complicated transformation
-
-::::::: columns
-:::::: {.column width="30%"}
-::::: example
-::: ex-title
-Example 5
-:::
-
-::: ex-cont
-Let $X$ and $Y$ have joint density $f_{X,Y}(x,y)= \frac85(x+y)$ in the region $0 < x < 1,\ \frac12 < y <1$. Find the pdf of the RV $Z$, where $Z=XY$.
-:::
+::::: {.column width="2%"}
 :::::
 
+::::: {.column width="64%"}
 ```{r}
-#| fig-width: 6
-#| fig-height: 5.5
+#| echo: false
+#| fig-width: 8
+#| fig-height: 6.5
+#| out-width: "48%"
+#| fig-align: center
 
-joint3 = tibble(
-  x = seq(0, 1, 0.5), 
-  y = seq(0, 1, 0.5)
+draw_pdf_volume(
+  f = function(x, y) 1/16 + 0 * x,
+  x_vals = seq(0, 4, by = 0.25), y_vals = seq(0, 4, by = 0.25),
+  domain_corners = rbind(c(0, 0), c(4, 0), c(4, 4), c(0, 4)),
+  event_corners = rbind(c(0, 0), c(2, 0), c(4, 2), c(4, 4), c(2, 4), c(0, 2)),
+  flat_top = TRUE, zlim = c(0, 0.1),
+  title = "Volume = P(|X - Y| < 2)"
 )
-
-x_y_plot3 = ggplot(joint3, aes(x = x, y = y)) +
-  labs(x = "x", y = "y") +
-  scale_x_continuous(breaks = c(0, 0.5, 1)) +
-  scale_y_continuous(breaks = c(0, 0.5, 1)) +
-  theme_bw() +
-  theme(text = element_text(size=30))
-x_y_plot3
 ```
 
+[[Rotate this plot (interactive) ↗](15_Joint_distributions_3d_plots.qmd#ex3-abs){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
+
+- Volume = area $\times$ height $= 12 \cdot \frac{1}{16} = \frac34$
+:::::
 ::::::
+
+## [Example of a joint pdf with a transformation (3/5): simulate]{style="display: none;"}
+
+:::: example
+::: ex-cont
+1.  Shade the event $|X-Y| < 2$. Find $\mathbb{P}(|X-Y| < 2)$ using areas, and check it with simulation.
+:::
+::::
+
+::::::: columns
+::::: {.column width="52%"}
+```{r}
+ex3_grid <- expand_grid( # <1>
+    x = seq(0, 4, length.out = 1001), # <1>
+    y = seq(0, 4, length.out = 1001) # <1>
+  ) |>
+  mutate(height = 1/16) # <2>
+
+ex3_sims <- ex3_grid |> # <3>
+  slice_sample( # <3>
+    n = reps, # <3>
+    weight_by = height, # <3>
+    replace = TRUE # <3>
+  )
+
+ex3_sims |> # <4>
+  summarise(prob = mean(abs(x - y) < 2)) # <4>
+```
+
+1.  Steps 1 and 2 of 2D grid sampling: a grid of about 1 million tickets covering the square.
+2.  Step 3: the joint pdf's height at each ticket. The density is constant, so every ticket has the same height, $\frac{1}{16}$.
+3.  Step 4: draw `reps` tickets, weighted by height, like Example 2. Equal heights mean every ticket is equally likely.
+4.  `abs()` is the absolute value. The proportion of simulations with $|X - Y| < 2$ approximates the probability.
+:::::
+
+::: {.column width="48%"}
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 10
+#| fig-height: 6.5
+
+ex3_sims |>
+  head(2000) |> # <5>
+  ggplot(aes(x = x, y = y, color = abs(x - y) < 2)) + # <6>
+  geom_point(alpha = 0.6, size = 2) + # <6>
+  scale_color_manual(values = c("grey60", "#29abe0")) + # <7>
+  coord_equal() + # <8>
+  labs(subtitle = "First 2,000 simulated points", # <9>
+       x = "x", y = "y", color = "|x - y| < 2") # <9>
+```
+
+5.  Plot only the first 2,000 simulated pairs, so the points don't cover each other.
+6.  One point per simulated pair, colored by whether it is in the event.
+7.  Grey for `FALSE`, blue for `TRUE`.
+8.  Make the square look like a square.
+9.  Add a subtitle and labels.
+
+:::: proof1
+::: proof-cont
+For reference, the exact answer is $\mathbb{P}(|X-Y| < 2) = \frac34 = 0.75$ (previous slide)
+:::
+::::
+:::
+:::::::
+
+## [Example of a joint pdf with a transformation (4/5)]{style="display: none;"}
+
+::::: example
+::: ex-title
+Example 3: Constant density on a square
+:::
+
+::: ex-cont
+Let $X$ and $Y$ have constant density on the square $0 \leq X \leq 4, 0 \leq Y \leq 4$.
+
+2.  Let $M = \max(X,Y)$. What are the possible values of $M$? Shade the event $M \leq 2$ and find $\mathbb{P}(M \leq 2)$ using areas.
+:::
+:::::
+
+:::::: columns
+::::: {.column width="34%"}
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 5.5
+
+domain_square
+```
+:::::
+
+::::: {.column width="2%"}
+:::::
+
+::::: {.column width="64%"}
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 6.5
+#| out-width: "48%"
+#| fig-align: center
+
+draw_pdf_volume(
+  f = function(x, y) 1/16 + 0 * x,
+  x_vals = seq(0, 4, by = 0.25), y_vals = seq(0, 4, by = 0.25),
+  domain_corners = rbind(c(0, 0), c(4, 0), c(4, 4), c(0, 4)),
+  event_corners = rbind(c(0, 0), c(2, 0), c(2, 2), c(0, 2)),
+  flat_top = TRUE, zlim = c(0, 0.1),
+  title = "Volume = P(M <= 2) = P(X <= 2, Y <= 2)"
+)
+```
+
+[[Rotate this plot (interactive) ↗](15_Joint_distributions_3d_plots.qmd#ex3-max){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
+:::::
+::::::
+
+## [Example of a joint pdf with a transformation (5/5): simulate]{style="display: none;"}
+
+:::: example
+::: ex-cont
+2.  Let $M = \max(X,Y)$. Check $\mathbb{P}(M \leq 2)$ with simulation, and look at the distribution of $M$.
+:::
+::::
+
+::::::: columns
+::::: {.column width="52%"}
+```{r}
+ex3_sims <- ex3_sims |> # <1>
+  mutate(m = pmax(x, y)) # <2>
+
+ex3_sims |> # <3>
+  summarise(prob_M = mean(m <= 2)) # <3>
+```
+
+1.  Reuse the 100,000 simulated pairs from part 1.
+2.  The transformation: `pmax()` takes the larger of `x` and `y` in **each row**. (`max()` would give one number: the largest value in the whole column!)
+3.  The proportion of simulations with $M \leq 2$ approximates $\mathbb{P}(M \leq 2)$.
+
+:::: proof1
+::: proof-cont
+For reference, the exact answer is $\mathbb{P}(M \leq 2) = \mathbb{P}(X \leq 2, Y \leq 2) = \frac{2 \cdot 2}{16} = \frac14$
+:::
+::::
+:::::
+
+::: {.column width="48%"}
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 10
+#| fig-height: 6
+
+ggplot(ex3_sims, aes(x = m)) + # <4>
+  geom_histogram(aes(y = after_stat(density)), # <4>
+                 binwidth = 0.1, boundary = 0, # <4>
+                 color = "black", fill = "lightblue") + # <4>
+  geom_function(fun = function(m) m / 8, # <5>
+                xlim = c(0, 4), # <5>
+                color = "red", linewidth = 1.5) + # <5>
+  labs(subtitle = "Simulated M = max(X, Y)", # <6>
+       x = "m", y = "Density") # <6>
+```
+
+4.  Histogram of the simulated values of $M$, scaled like a pdf.
+5.  For reference, the pdf of $M$ in red: $f_M(m) = \frac{m}{8}$ for $0 \leq m \leq 4$. The histogram follows it.
+6.  Add a subtitle and axis labels.
+
+- $X$ and $Y$ are flat, but $M$ is not: the larger of two values is more likely to be big
+:::
 :::::::
 
 # Learning Objectives
 
-1.  Define **joint and marginal** distributions for discrete and continuous random variables
+1.  Define **joint and marginal** distributions (pmf's, pdf's, and CDF's) for discrete and continuous random variables
 
-2.  Calculate or find **joint and marginal** probabilities, pmf's, and CDF's for discrete random variables
+2.  Find and simulate **joint and marginal** probabilities and pmf's for discrete random variables
 
-3.  Calculate or find **joint and marginal** probabilities, pdf's, and CDF's for continuous random variables
+3.  Use simulation to approximate **joint and marginal** probabilities and pdf's for continuous random variables
+
+4.  Use simulation to approximate the distribution of a transformation of two random variables
 
 ::: lob
-4.  Calculate expected value for joint densities (continuous RVs)
+5.  Use simulation to approximate expected values from a joint distribution
 :::
-
-5.  Extra practice on your own: solve double integrals in a mini lesson
 
 ## Expected value of one RV from joint pdf
 
@@ -646,67 +1279,643 @@ you have two options:
 
 2.  Calculate $\mathbb{E}[X]$ using the joint density:
     $$\mathbb{E}[X] = \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}x f_{X,Y}(x,y)dydx.$$
-    
-    
+
+
 You can do the same for $\mathbb{E}[Y]$!
 
-## Option 1: Find marginal first
+  
 
-::: columns
-::: {.column width="30%"}
-::: example
+-   With simulation, there is a third option: simulate pairs $(x, y)$, then `mean(x)` approximates $\mathbb{E}[X]$. No integral needed!
+
+## [Example 4: Expected value from a joint pdf (1/2)]{style="display: none;"}
+
+::::: example
 ::: ex-title
-Example 6
-:::
-::: ex-cont
-Let $f_{X,Y}(x,y)= 2e^{-(x+y)}$, for
-$0 \leq x \leq y$. Find $\mathbb{E}[X]$.
-:::
-:::
-
-
-:::
-
-::: {.column width="70%"}
-Do this one at home by finding $f_X(x)$ then $\mathbb{E}[X] = \displaystyle\int_{-\infty}^\infty xf_X(x) dx$. See if you get the same result as next page's answer!
-:::
-:::
-
-## Option 2: Expected value from a joint distribution
-
-::: columns
-::: {.column width="30%"}
-::: example
-::: ex-title
-Example 6
+Example 4: Expected value from a joint pdf
 :::
 
 ::: ex-cont
-Let $f_{X,Y}(x,y)= 2e^{-(x+y)}$, for $0 \leq x \leq y$. Find
-$\mathbb{E}[X]$.
+Let $f_{X,Y}(x,y)= 2e^{-(x+y)}$, for $0 \leq x \leq y$. Approximate $\mathbb{E}[X]$ and $\mathbb{E}[Y]$ with simulation.
 :::
+:::::
+
+- Possible values: $0 \leq x \leq y$, with no upper limit, but $f_{X,Y}(x,y)$ is almost 0 once $y$ is past 10, so our grid can stop at 10
+
+:::::: columns
+::::: {.column width="34%"}
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 5.5
+
+domain_triangle <- ggplot() +
+  annotate("polygon", x = c(0, 0, 4), y = c(0, 4, 4),
+           fill = "#29abe0", alpha = 0.15) +
+  scale_x_continuous(breaks = 0:4, limits = c(0, 4)) +
+  scale_y_continuous(breaks = 0:4, limits = c(0, 4)) +
+  labs(x = "x", y = "y", subtitle = "(keeps going up and right)")
+domain_triangle
+```
+:::::
+
+::::: {.column width="2%"}
+:::::
+
+::::: {.column width="64%"}
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 6.5
+#| out-width: "48%"
+#| fig-align: center
+
+draw_pdf_volume(
+  f = function(x, y) 2 * exp(-(x + y)),
+  x_vals = seq(0, 4, by = 0.2), y_vals = seq(0, 4, by = 0.2),
+  domain_corners = rbind(c(0, 0), c(0, 4), c(4, 4)),
+  in_domain = function(x, y) x <= y,
+  zlim = c(0, 2),
+  title = "Total volume = 1: tallest near (0, 0)"
+)
+```
+
+[[Rotate this plot (interactive) ↗](15_Joint_distributions_3d_plots.qmd#ex4-pdf){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
+:::::
+::::::
+
+## [Example 4: Expected value from a joint pdf (2/2): simulate]{style="display: none;"}
+
+:::: example
+::: ex-cont
+Let $f_{X,Y}(x,y)= 2e^{-(x+y)}$, for $0 \leq x \leq y$. Approximate $\mathbb{E}[X]$ and $\mathbb{E}[Y]$ with simulation.
 :::
+::::
+
+::::::: columns
+::::: {.column width="55%"}
+```{r}
+ex4_grid <- expand_grid( # <1>
+    x = seq(0, 10, length.out = 1001), # <1>
+    y = seq(0, 10, length.out = 1001) # <1>
+  ) |>
+  filter(x <= y) |> # <2>
+  mutate(height = 2 * exp(-(x + y))) # <3>
+
+ex4_sims <- ex4_grid |> # <4>
+  slice_sample( # <4>
+    n = reps, # <4>
+    weight_by = height, # <4>
+    replace = TRUE # <4>
+  )
+```
+
+1.  Make a grid of tickets from 0 to 10 in both directions.
+2.  Keep only the possible values, where $x \leq y$: a triangle.
+3.  The joint pdf's height at each ticket.
+4.  Draw `reps` tickets, weighted by height, like Example 2.
+:::::
+
+::: {.column width="45%"}
+```{r}
+ex4_sims |> # <5>
+  summarise( # <5>
+    avg_X = mean(x), # <5>
+    avg_Y = mean(y) # <5>
+  )
+```
+
+5.  The averages of the `x` and `y` columns approximate $\mathbb{E}[X]$ and $\mathbb{E}[Y]$.
+
+:::: proof1
+::: proof-cont
+For reference, the exact answers are $\mathbb{E}[X] = \frac12$ and $\mathbb{E}[Y] = \frac32$
 :::
+::::
+
+  
+
+- `mean(x + y)` would approximate $\mathbb{E}[X + Y]$: transform first, then average
 :::
+:::::::
 
-# Learning Objectives
+## Summary of joint distributions
 
-1.  Define **joint and marginal** distributions for discrete and continuous random variables
+|   | Discrete $X$ and $Y$ | Continuous $X$ and $Y$ |
+|----|----|----|
+| Joint distribution | joint pmf: $p_{X,Y}(x,y) = \mathbb{P}(X=x, Y=y)$ | joint pdf $f_{X,Y}(x,y)$: probabilities are volumes (double integrals) |
+| Marginal distribution | sum the joint pmf over the other variable | integrate the joint pdf over the other variable |
+| Simulate pairs with | `sample()`, like the box | 2D grid sampling from the joint pdf |
+| Summarize | `group_by(x, y)`, `mean(...)` | `mean(...)`, histogram of one column |
 
-2.  Calculate or find **joint and marginal** probabilities, pmf's, and CDF's for discrete random variables
+  
 
-3.  Calculate or find **joint and marginal** probabilities, pdf's, and CDF's for continuous random variables
+- The [**joint distribution**]{style="color:#E25D3B;"} describes $X$ and $Y$ together; a [**marginal distribution**]{style="color:#E25D3B;"} describes one of them alone
+- With simulation: joint probabilities use both columns, marginals use one column, and transformations add a new column with `mutate()`
 
-4.  Calculate expected value for joint densities (continuous RVs)
+## Some more reference slides {visibility="hidden"}
 
-::: lob
-5.  Extra practice on your own: solve double integrals in a mini lesson
-:::
-
-## Double Integrals Mini Lesson (1/3)
+## [Example 5: Joint pdf on a triangle (1/2)]{style="display: none;"} {visibility="hidden"}
 
 ::: {.callout-important appearance="simple" icon="false"}
-Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+Do this problem at home for extra practice! Try it first, then check the solution.
+:::
+
+::::::: columns
+:::::: {.column width="30%"}
+::::: example
+::: ex-title
+Example 5: Joint pdf on a triangle (for home)
+:::
+
+::: ex-cont
+Let $f_{X,Y}(x,y)= 2 e^{-(x+y)}$, for $0 \leq x \leq y$.
+
+1.  Use simulation to look at the marginal distributions of $X$ and $Y$.
+:::
+:::::
+::::::
+
+:::::: {.column width="30%"}
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 5.5
+
+domain_triangle
+```
+::::::
+
+:::::: {.column width="40%"}
+- Hint: Example 4 simulates this same joint pdf. The grid only needs to go up to about 10, because $f_{X,Y}(x,y)$ is almost 0 past there
+::::::
+:::::::
+
+## [Example 5: Joint pdf on a triangle (2/2)]{style="display: none;"} {visibility="hidden"}
+
+::: {.callout-important appearance="simple" icon="false"}
+Do this problem at home for extra practice! Try it first, then check the solution.
+:::
+
+::::::: columns
+:::::: {.column width="30%"}
+::::: example
+::: ex-title
+Example 5: Joint pdf on a triangle (for home)
+:::
+
+::: ex-cont
+Let $f_{X,Y}(x,y)= 2 e^{-(x+y)}$, for $0 \leq x \leq y$.
+
+2.  Approximate $\mathbb{P}(Y < 3)$ with simulation.
+:::
+:::::
+::::::
+
+:::::: {.column width="30%"}
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 5.5
+
+domain_triangle
+```
+::::::
+:::::::
+
+## [Example 5: Joint pdf on a triangle: solution (1/2)]{style="display: none;"} {visibility="hidden"}
+
+:::: example
+::: ex-cont
+Solution, part 1: Use simulation to look at the marginal distributions of $X$ and $Y$.
+:::
+::::
+
+- Same joint pdf as Example 4, so we reuse its 100,000 simulated pairs, `ex4_sims`
+
+::::: columns
+::: {.column width="49%"}
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 10
+#| fig-height: 6
+
+ggplot(ex4_sims, aes(x = x)) + # <1>
+  geom_histogram(aes(y = after_stat(density)), # <1>
+                 binwidth = 0.05, boundary = 0, # <1>
+                 color = "black", fill = "lightblue") + # <1>
+  geom_function(fun = function(x) 2 * exp(-2 * x), # <2>
+                xlim = c(0, 3), # <2>
+                color = "red", linewidth = 1.5) + # <2>
+  coord_cartesian(xlim = c(0, 3)) + # <3>
+  labs(subtitle = "Simulated X (the x column only)", # <4>
+       x = "x", y = "Density") # <4>
+```
+
+1.  Histogram of only the `x` column, scaled like a pdf: the marginal distribution of $X$.
+2.  For reference, the marginal pdf $f_X(x) = 2e^{-2x}$ for $x \geq 0$, in red.
+3.  Zoom in to where almost all of the values are.
+4.  Add a subtitle and axis labels.
+
+- $X \sim \text{Exponential}(2)$
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="49%"}
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 10
+#| fig-height: 6
+
+ggplot(ex4_sims, aes(x = y)) + # <1>
+  geom_histogram(aes(y = after_stat(density)), # <1>
+                 binwidth = 0.1, boundary = 0, # <1>
+                 color = "black", fill = "#E89543") + # <1>
+  geom_function( # <2>
+    fun = function(y) 2 * exp(-y) * (1 - exp(-y)), # <2>
+    xlim = c(0, 8), color = "red", linewidth = 1.5 # <2>
+  ) +
+  coord_cartesian(xlim = c(0, 8)) + # <3>
+  labs(subtitle = "Simulated Y (the y column only)", # <4>
+       x = "y", y = "Density") # <4>
+```
+
+1.  Histogram of only the `y` column: the marginal distribution of $Y$.
+2.  For reference, the marginal pdf $f_Y(y) = 2e^{-y}(1 - e^{-y})$ for $y \geq 0$, in red.
+3.  Zoom in to where almost all of the values are.
+4.  Add a subtitle and axis labels.
+
+- $Y$ starts at 0, since $Y \geq X \geq 0$, and is usually bigger than $X$
+:::
+:::::
+
+## [Example 5: Joint pdf on a triangle: solution (2/2)]{style="display: none;"} {visibility="hidden"}
+
+:::: example
+::: ex-cont
+Solution, part 2: Approximate $\mathbb{P}(Y < 3)$ with simulation.
+:::
+::::
+
+::::::: columns
+::::: {.column width="44%"}
+```{r}
+
+ex4_sims |> # <1>
+  summarise(prob_Y = mean(y < 3)) # <2>
+```
+
+1.  Reuse the simulated pairs from Example 4.
+2.  The proportion of simulations with $Y < 3$ approximates $\mathbb{P}(Y < 3)$. Only the `y` column is needed.
+
+:::: proof1
+::: proof-cont
+For reference, the exact answer is $\mathbb{P}(Y < 3) = 1 - 2e^{-3} + e^{-6} \approx 0.9029$
+:::
+::::
+:::::
+
+::::: {.column width="2%"}
+:::::
+
+::::: {.column width="54%"}
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 6.5
+#| out-width: "80%"
+#| fig-align: center
+
+draw_pdf_volume(
+  f = function(x, y) 2 * exp(-(x + y)),
+  x_vals = seq(0, 4, by = 0.2), y_vals = seq(0, 4, by = 0.2),
+  domain_corners = rbind(c(0, 0), c(0, 4), c(4, 4)),
+  in_domain = function(x, y) x <= y,
+  event_corners = rbind(c(0, 0), c(0, 3), c(3, 3)),
+  in_event = function(x, y) x <= y & y < 3,
+  zlim = c(0, 2),
+  title = "Volume = P(Y < 3)"
+)
+```
+
+[[Rotate this plot (interactive) ↗](15_Joint_distributions_3d_plots.qmd#ex5-volume){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
+:::::
+:::::::
+
+## [Example of a joint pdf with a transformation: part 3 for home]{style="display: none;"} {visibility="hidden"}
+
+::::::: columns
+:::::: {.column width="30%"}
+::::: example
+::: ex-title
+Example 3: Constant density on a square (for home)
+:::
+
+::: ex-cont
+Let $X$ and $Y$ have constant density on the square $0 \leq X \leq 4, 0 \leq Y \leq 4$.
+
+3.  Let $Z = \min(X,Y)$. Find $\mathbb{P}(Z \leq 2)$ using areas. Check it with simulation, and look at the distribution of $Z$.
+:::
+:::::
+::::::
+
+:::::: {.column width="30%"}
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 5.5
+
+domain_square
+```
+
+::::::
+
+:::::: {.column width="40%"}
+::: {.callout-important appearance="simple" icon="false"}
+Do this problem at home for extra practice! Try it first, then check the solution.
+:::
+
+- Hint: start from the code for part 2, and use `pmin()` instead of `pmax()`
+::::::
+:::::::
+
+## [Example of a joint pdf with a transformation: part 3 solution (1/2)]{style="display: none;"} {visibility="hidden"}
+
+:::: example
+::: ex-cont
+Solution, part 3: Let $Z = \min(X,Y)$. Find $\mathbb{P}(Z \leq 2)$ using areas.
+:::
+::::
+
+::::::: columns
+::::: {.column width="44%"}
+- Possible values of $Z$: from 0 to 4
+
+  
+
+- $Z \leq 2$ means *at least one* of $X$ and $Y$ is $\leq 2$: an L-shaped region
+
+  
+
+- Easier with the complement: $Z > 2$ means *both* $X > 2$ and $Y > 2$, a $2 \times 2$ square
+
+  
+
+- $\mathbb{P}(Z \leq 2) = 1 - \mathbb{P}(Z > 2) = 1 - \frac{2 \cdot 2}{16} = \frac34$
+:::::
+
+::::: {.column width="2%"}
+:::::
+
+::::: {.column width="54%"}
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 6.5
+#| out-width: "80%"
+#| fig-align: center
+
+draw_pdf_volume(
+  f = function(x, y) 1/16 + 0 * x,
+  x_vals = seq(0, 4, by = 0.25), y_vals = seq(0, 4, by = 0.25),
+  domain_corners = rbind(c(0, 0), c(4, 0), c(4, 4), c(0, 4)),
+  event_corners = rbind(c(0, 0), c(4, 0), c(4, 2), c(2, 2), c(2, 4), c(0, 4)),
+  flat_top = TRUE, zlim = c(0, 0.1),
+  title = "Volume = P(Z <= 2)"
+)
+```
+
+[[Rotate this plot (interactive) ↗](15_Joint_distributions_3d_plots.qmd#ex3-min){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
+:::::
+:::::::
+
+## [Example of a joint pdf with a transformation: part 3 solution (2/2): simulate]{style="display: none;"} {visibility="hidden"}
+
+:::: example
+::: ex-cont
+Solution, part 3: Check $\mathbb{P}(Z \leq 2)$ with simulation, and look at the distribution of $Z$.
+:::
+::::
+
+::::::: columns
+::::: {.column width="52%"}
+```{r}
+
+ex3_sims <- ex3_sims |> # <1>
+  mutate(z = pmin(x, y)) # <2>
+
+ex3_sims |> # <3>
+  summarise(prob_Z = mean(z <= 2)) # <3>
+```
+
+1.  Reuse the 100,000 simulated pairs from Example 3.
+2.  The only change from part 2: `pmin()` takes the smaller of `x` and `y` in each row.
+3.  The proportion of simulations with $Z \leq 2$ approximates $\mathbb{P}(Z \leq 2)$.
+
+:::: proof1
+::: proof-cont
+For reference, the exact answer is $\mathbb{P}(Z \leq 2) = \frac34$
+:::
+::::
+:::::
+
+::: {.column width="48%"}
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 10
+#| fig-height: 6
+
+ggplot(ex3_sims, aes(x = z)) + # <4>
+  geom_histogram(aes(y = after_stat(density)), # <4>
+                 binwidth = 0.1, boundary = 0, # <4>
+                 color = "black", fill = "lightblue") + # <4>
+  geom_function(fun = function(z) (4 - z) / 8, # <5>
+                xlim = c(0, 4), # <5>
+                color = "red", linewidth = 1.5) + # <5>
+  labs(subtitle = "Simulated Z = min(X, Y)", # <6>
+       x = "z", y = "Density") # <6>
+```
+
+4.  Histogram of the simulated values of $Z$, scaled like a pdf.
+5.  For reference, the pdf of $Z$ in red: $f_Z(z) = \frac{4 - z}{8}$ for $0 \leq z \leq 4$.
+6.  Add a subtitle and axis labels.
+
+- The mirror image of $M = \max(X, Y)$: the smaller of two values is more likely to be small
+:::
+:::::::
+
+## [Last example *for home*: more complicated transformation]{style="display: none;"} {visibility="hidden"}
+
+::: {.callout-important appearance="simple" icon="false"}
+Do this problem at home for extra practice! Try it first, then check the solution.
+:::
+
+::::::: columns
+:::::: {.column width="30%"}
+::::: example
+::: ex-title
+Example 6: Product of two RVs (for home)
+:::
+
+::: ex-cont
+Let $X$ and $Y$ have joint density $f_{X,Y}(x,y)= \frac85(x+y)$ in the region $0 < x < 1,\ \frac12 < y <1$. Let $Z=XY$.
+
+1.  What are the possible values of $Z$?
+2.  Use 2D grid sampling to simulate $Z$. Approximate $\mathbb{P}(Z \leq \frac14)$ and make a histogram of $Z$.
+:::
+:::::
+::::::
+
+:::::: {.column width="30%"}
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 5.5
+
+ggplot() +
+  annotate("rect", xmin = 0, xmax = 1, ymin = 0.5, ymax = 1,
+           fill = "#29abe0", alpha = 0.15) +
+  scale_x_continuous(breaks = c(0, 0.5, 1), limits = c(0, 1)) +
+  scale_y_continuous(breaks = c(0, 0.5, 1), limits = c(0, 1)) +
+  labs(x = "x", y = "y")
+```
+
+::::::
+:::::::
+
+## [Last example *for home*: solution (1/2)]{style="display: none;"} {visibility="hidden"}
+
+:::: example
+::: ex-cont
+Solution, part 1: What are the possible values of $Z = XY$?
+:::
+::::
+
+::::::: columns
+::::: {.column width="44%"}
+- $X$ is between 0 and 1, and $Y$ is between $\frac12$ and 1
+
+  
+
+- So $Z = XY$ is between $0 \cdot \frac12 = 0$ and $1 \cdot 1 = 1$
+
+  
+
+- The event $Z \leq \frac14$ is the region under the curve $x = \frac{1}{4y}$: not a rectangle, so its volume is hard to find by hand
+
+  
+
+- Simulation does not care about the shape!
+:::::
+
+::::: {.column width="2%"}
+:::::
+
+::::: {.column width="54%"}
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 6.5
+#| out-width: "80%"
+#| fig-align: center
+
+curve_y <- seq(0.5, 1, by = 0.05)
+
+draw_pdf_volume(
+  f = function(x, y) 8/5 * (x + y),
+  x_vals = seq(0, 1, by = 0.0625), y_vals = seq(0.5, 1, by = 0.03125),
+  domain_corners = rbind(c(0, 0.5), c(1, 0.5), c(1, 1), c(0, 1)),
+  event_corners = rbind(c(0, 0.5), cbind(1 / (4 * curve_y), curve_y),
+                        c(0, 1)),
+  in_event = function(x, y) x * y <= 1/4,
+  zlim = c(0, 3.2),
+  title = "Volume = P(Z <= 1/4)"
+)
+```
+
+[[Rotate this plot (interactive) ↗](15_Joint_distributions_3d_plots.qmd#ex6-volume){target="_blank"}]{style="display: block; text-align: center; font-size: 0.5em;"}
+:::::
+:::::::
+
+## [Last example *for home*: solution (2/2): simulate]{style="display: none;"} {visibility="hidden"}
+
+:::: example
+::: ex-cont
+Solution, part 2: Use 2D grid sampling to simulate $Z$. Approximate $\mathbb{P}(Z \leq \frac14)$ and make a histogram of $Z$.
+:::
+::::
+
+::::::: columns
+::::: {.column width="52%"}
+```{r}
+
+ex6_grid <- expand_grid( # <1>
+    x = seq(0, 1, length.out = 1001), # <1>
+    y = seq(0.5, 1, length.out = 501) # <1>
+  ) |>
+  mutate(height = 8/5 * (x + y)) # <2>
+
+ex6_sims <- ex6_grid |> # <3>
+  slice_sample( # <3>
+    n = reps, # <3>
+    weight_by = height, # <3>
+    replace = TRUE # <3>
+  ) |>
+  mutate(z = x * y) # <4>
+
+ex6_sims |> # <5>
+  summarise(prob_Z = mean(z <= 1/4)) # <5>
+```
+
+1.  A grid of tickets covering the rectangle $0 < x < 1$, $\frac12 < y < 1$.
+2.  The joint pdf's height at each ticket.
+3.  Draw `reps` tickets, weighted by height, like Example 2.
+4.  The transformation: $Z = XY$ for each simulated pair.
+5.  The proportion of simulations with $Z \leq \frac14$ approximates $\mathbb{P}(Z \leq \frac14)$.
+:::::
+
+::: {.column width="48%"}
+:::: proof1
+::: proof-cont
+For reference, the exact answer is $\mathbb{P}(Z \leq \frac14) = \frac14$
+:::
+::::
+
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 10
+#| fig-height: 6
+
+f_Z <- function(z) { # <6>
+  if_else(z < 1/2, 8/5 * (z + 1/2), 16/5 * (1 - z)) # <6>
+}
+
+ggplot(ex6_sims, aes(x = z)) + # <7>
+  geom_histogram(aes(y = after_stat(density)), # <7>
+                 binwidth = 0.02, boundary = 0, # <7>
+                 color = "black", fill = "lightblue") + # <7>
+  geom_function(fun = f_Z, xlim = c(0, 1), # <8>
+                color = "red", linewidth = 1.5) + # <8>
+  labs(subtitle = "Simulated Z = XY", # <9>
+       x = "z", y = "Density") # <9>
+```
+
+6.  For reference, the pdf of $Z$: $f_Z(z) = \frac85\left(z + \frac12\right)$ for $0 < z < \frac12$, and $\frac{16}{5}(1 - z)$ for $\frac12 \leq z < 1$. `if_else()` picks the piece.
+7.  Histogram of the simulated values of $Z$, scaled like a pdf.
+8.  The pdf of $Z$ in red. The histogram follows it.
+9.  Add a subtitle and axis labels.
+:::
+:::::::
+
+## Double Integrals Mini Lesson (1/3) {visibility="hidden"}
+
+::: {.callout-important appearance="simple" icon="false"}
+Do this problem at home for extra practice! Try it first, then check the solution.
 :::
 
 ::::::: columns
@@ -721,12 +1930,21 @@ Solve the following integral: $\displaystyle\int_{2}^{3}\displaystyle\int_{0}^{1
 :::
 :::::
 ::::::
+
+:::::: {.column width="70%"}
+Work:
+
+$$\begin{aligned}
+\int_{2}^{3}\int_{0}^{1} xy \, dy\,dx &= \int_{2}^{3} x \left[\frac{y^2}{2}\right]_{0}^{1} dx = \int_{2}^{3} \frac{x}{2}\, dx \\
+&= \left[\frac{x^2}{4}\right]_{2}^{3} = \frac{9}{4} - \frac{4}{4} = \frac54
+\end{aligned}$$
+::::::
 :::::::
 
-## Double Integrals Mini Lesson (2/3)
+## Double Integrals Mini Lesson (2/3) {visibility="hidden"}
 
 ::: {.callout-important appearance="simple" icon="false"}
-Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+Do this problem at home for extra practice! Try it first, then check the solution.
 :::
 
 ::::::: columns
@@ -741,12 +1959,21 @@ Solve the following integral: $\displaystyle\int_{2}^{3}\displaystyle\int_{0}^{1
 :::
 :::::
 ::::::
+
+:::::: {.column width="70%"}
+Work:
+
+$$\begin{aligned}
+\int_{2}^{3}\int_{0}^{1} (x+y) \, dy\,dx &= \int_{2}^{3} \left[xy + \frac{y^2}{2}\right]_{0}^{1} dx = \int_{2}^{3} \left(x + \frac12\right) dx \\
+&= \left[\frac{x^2}{2} + \frac{x}{2}\right]_{2}^{3} = (4.5 + 1.5) - (2 + 1) = 3
+\end{aligned}$$
+::::::
 :::::::
 
-## Double Integrals Mini Lesson (3/3)
+## Double Integrals Mini Lesson (3/3) {visibility="hidden"}
 
 ::: {.callout-important appearance="simple" icon="false"}
-Do this problem at home for extra practice. I'll add the solution to the annotated notes!
+Do this problem at home for extra practice! Try it first, then check the solution.
 :::
 
 ::::::: columns
@@ -760,5 +1987,14 @@ Mini Lesson Example 3
 Solve the following integral: $\displaystyle\int_{2}^{3}\displaystyle\int_{0}^{1} e^{x+y} dydx$
 :::
 :::::
+::::::
+
+:::::: {.column width="70%"}
+Work: $e^{x+y} = e^x e^y$, so the integral splits into two single integrals
+
+$$\begin{aligned}
+\int_{2}^{3}\int_{0}^{1} e^{x+y} \, dy\,dx &= \int_{2}^{3} e^x \left[e^y\right]_{0}^{1} dx = (e - 1)\int_{2}^{3} e^x \, dx \\
+&= (e - 1)\left(e^3 - e^2\right) \approx 21.8
+\end{aligned}$$
 ::::::
 :::::::

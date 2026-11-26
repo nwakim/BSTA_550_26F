@@ -1,0 +1,25 @@
+---
+title: "Key Info"
+date-modified: "today"
+format: 
+  html:
+    link-external-newwindow: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Announcements
+
+- We will finish up the example from last class
+- No class on 12/1
+  - Majority voted for no class on 12/1 
+  - Vote 7 to 4
+- Biostatistics tutoring starts today
+  - [Schedule a meeting here](https://traccloud.go-redrock.com/ohsu)
+  - Or email Charles directly
+
+## Key Dates
+
+- HW 7 dues Sunday 11/23
+- Quiz 3 opens 12/3
+- HW 8 due 12/7

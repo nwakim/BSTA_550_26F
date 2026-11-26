@@ -1,8 +1,8 @@
 {
-  "hash": "f5ceabcfa46c9d510ad798daea73cb03",
+  "hash": "646e07d1b643bb40767f9af34e255552",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Key Info\"\ndate: \"10/21/2024\"\ndate-modified: \"today\"\nformat: \n  html:\n    link-external-newwindow: true\neditor_options: \n  chunk_output_type: console\n---\n\n\n\n\n## Announcements\n\n- Quiz 1 grades look pretty good! Everyone got score above 11/15\n  - Feedback released at 12:10pm today\n  - Will go over questions next class\n\n## Key Dates\n\n- Homework 4 due 11/08 at 11pm\n\n",
+    "markdown": "---\ntitle: \"Key Info\"\ndate: \"10/21/2024\"\ndate-modified: \"today\"\nformat: \n  html:\n    link-external-newwindow: true\neditor_options: \n  chunk_output_type: console\n---\n\n\n\n\n## Announcements\n\n- ASA Oregon Chapter meeting tomorrow at 6pm!!\n  - Chipotle catering - free for students!\n  - [RSVP!!](https://docs.google.com/forms/d/e/1FAIpQLSdnaPmGyNYIpcNgbMi6ID4EAPCIVI3ghr3u_KOa4eSnBslUHQ/viewform?usp=header)\n- [Apply to Graduate Scholarships](https://ohsu-psu-sph.org/graduate-scholarships/)\n\n## Key Dates\n\n- Homework 5 due 11/22 at 11pm\n\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

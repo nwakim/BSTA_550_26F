@@ -13,33 +13,205 @@ format:
     height: 1100
     footer: Lesson 17 Slides
     html-math-method: mathjax
+    highlight-style: arrow
+    code-annotations: hover
+execute:
+  echo: true
 ---
-
-```{r setup, include=FALSE}
-library(here)
-source(here("class_dates.R"))
-```
 
 # Learning Objectives
 
-1.  Calculate probability of a sample mean using a population mean and
-    variance with unknown distribution
-2.  Use the Central Limit Theorem to construct the Normal approximation
+1.  Explain the [**Law of Large Numbers**]{style="color:#E89543;"} and [**convergence in probability**]{style="color:#E25D3B;"}
+2.  Calculate probability of a [**sample mean**]{style="color:#E89543;"} using a population mean and variance with unknown distribution
+3.  Use the [**Central Limit Theorem**]{style="color:#006a4e;"} to construct the [**Normal approximation**]{style="color:#006a4e;"}
     of the Binomial and Poisson distributions
+    
+```{r setup, include=FALSE}
+library(here)
+source(here("class_dates.R"))
+
+library(tidyverse)
+```
+
+## Convergence in probability
+
+-   Lesson 1: the running proportion of heads settled near 0.5
+-   Lesson 10: the running average of die rolls settled at $\mathbb{E}[X] = 4.14$
+-   Today we make "settles at" precise with [**convergence in probability**]{style="color:#E25D3B;"}
+
+::: definition
+::: def-title
+Definition: Convergence in probability
+:::
+
+::: def-cont
+A sequence of RVs $Y_1, Y_2, \ldots$ converges in probability to a constant $c$, written $Y_n \xrightarrow{P} c$, if for every $\varepsilon > 0$,
+$$P\big(|Y_n - c| > \varepsilon\big) \rightarrow 0 \quad \text{as } n \rightarrow \infty$$
+:::
+:::
+
+-   In words: pick any small window $(c - \varepsilon, c + \varepsilon)$ around $c$. As $n$ grows, the chance that $Y_n$ lands outside the window shrinks to 0.
+
+## Law of Large Numbers
+
+::: theorem
+::: thm-title
+Theorem 1: (Weak) Law of Large Numbers (LLN)
+:::
+
+::: thm-cont
+Let $X_i$ be iid RVs with common mean $\mu$ and variance $\sigma^2 < \infty$,
+for $i=1,2,\ldots,n$, and let $\overline{X}_n = \frac{1}{n}\sum_{i=1}^n X_i$. Then
+$$\overline{X}_n \xrightarrow{P} \mu$$
+:::
+:::
+
+-   The [**Law of Large Numbers**]{style="color:#E89543;"} is why long-run averages approximate $\mathbb{E}[X]$, and why our simulations work!
+-   Why is it true? The spread of $\overline{X}_n$ shrinks to 0:
+    -   $\mathbb{E}(\overline{X}_n) = \mu$
+    -   $Var(\overline{X}_n) = \frac{1}{n^2} Var\big(\sum_{i=1}^n X_i\big) = \frac{1}{n^2} \cdot n\sigma^2 = \frac{\sigma^2}{n} \rightarrow 0$ (Lesson 14, Corollary 3)
+-   We say $\overline{X}_n$ is a **consistent** estimator of $\mu$: it converges in probability to the value it estimates. You will see this word a lot in BSTA 551!
+
+## Seeing the LLN: simulate
+
+::::: proof1
+::: proof-title
+2.  Simulate
+:::
+:::::
+
+-   Back to the bus from Lesson 13: each morning's wait is $X_i \sim \text{Exp}(1/10)$, so $\mu = 10$ minutes
+-   Follow 1,000 people for 2,000 mornings each, and track each person's average morning wait so far, $\overline{X}_n$
+
+::: columns
+::: {.column width="65%"}
+
+```{r}
+set.seed(1124) # <1>
+reps <- 1000 # <2>
+max_days <- 2000 # <2>
+
+waits <- expand_grid(sim = 1:reps, day = 1:max_days) |> # <3>
+  mutate(wait = rexp(n(), rate = 1/10)) # <3>
+
+running_sims <- waits |> # <4>
+  group_by(sim) |> # <4>
+  mutate(running_avg = cumsum(wait) / day) # <4>
+```
+
+1. Set the seed so we all get the same random numbers.
+2. 1,000 simulated people, each waiting for the bus for 2,000 days.
+3. One row for every day for every person (2,000,000 rows), each with its own wait from `rexp()`.
+4. Like the running average in Lesson 10: within each person (`group_by(sim)`), `cumsum(wait)` is the total wait so far, and dividing by `day` gives the average so far, $\overline{X}_n$ with $n$ = `day`.
+
+:::
+
+::: {.column width="35%"}
+
+```{r}
+head(running_sims) # <1>
+```
+
+1. The first 6 days for person 1. The last column is their average wait so far. The `# Groups` line is a reminder that the table is still grouped by `sim`.
+
+:::
+:::
+
+## Seeing the LLN: summarize
+
+::::: example
+::: ex-title
+3.  Summarize
+:::
+:::::
+
+::: columns
+::: {.column width="53%"}
+
+```{r}
+running_sims |> # <1>
+  filter(day %in% c(1, 10, 100, 500, 2000)) |> # <1>
+  mutate(dist = abs(running_avg - 10)) |> # <2>
+  group_by(day) |> # <3>
+  summarise( # <3>
+    prob_eps_1   = mean(dist > 1), # <4>
+    prob_eps_0.5 = mean(dist > 0.5) # <5>
+  )
+```
+
+1. Keep only days 1, 10, 100, 500 and 2,000. `%in%` checks whether `day` is one of the values in the list.
+2. `abs()` is the absolute value, so `dist` is how far each person's average so far is from $\mu = 10$.
+3. One row of summaries for each of those days.
+4. The proportion of people whose average so far is more than $\varepsilon = 1$ minute away from $\mu = 10$: it estimates $P(|\overline{X}_n - 10| > 1)$.
+5. The same with a smaller window, $\varepsilon = 0.5$. It also shrinks to 0, just more slowly: halving $\varepsilon$ takes about 4 times as many days, because the SD of $\overline{X}_n$ is $\sigma/\sqrt{n}$.
+
+:::
+
+::: {.column width="47%"}
+
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 9
+#| fig-height: 5.5
+
+running_sims |> # <4>
+  filter(sim <= 5) |> # <4>
+  ggplot(aes(x = day, y = running_avg, color = factor(sim))) + # <5>
+  annotate("rect", xmin = 0, xmax = max_days, ymin = 9, ymax = 11, # <6>
+           alpha = 0.2, fill = "grey40") + # <6>
+  geom_line(linewidth = 1) + # <7>
+  geom_hline(yintercept = 10, linetype = "dashed") + # <7>
+  coord_cartesian(ylim = c(0, 25)) + # <8>
+  labs(title = "Average wait so far for 5 people", # <8>
+       x = "Number of days", y = "Average wait so far", # <8>
+       color = "Person") + # <8>
+  theme_minimal(base_size = 20) + # <8>
+  theme(legend.position = "inside", # <9>
+        legend.position.inside = c(0.98, 0.98), # <9>
+        legend.justification = c(1, 1)) # <9>
+```
+
+4. Plot only the first 5 simulated people.
+5. Days on the x-axis and the average so far on the y-axis, with one color per person.
+6. Shade the window from 9 to 11 minutes ($\mu \pm \varepsilon$).
+7. Draw each person's running average, and a dashed line at $\mu = 10$.
+8. Zoom the y-axis, then add a title, axis labels and a larger-text theme.
+9. Move the legend inside the plot. `c(0.98, 0.98)` is near the top right corner (0 is the left or bottom edge, 1 is the right or top edge), and `legend.justification` lines up the legend's own top right corner there.
+
+:::
+:::
+
+For both $\varepsilon$, $P(|\overline{X}_n - 10| > \varepsilon)$ shrinks toward 0, so $\overline{X}_n \xrightarrow{P} 10$. A smaller $\varepsilon$ just needs a larger $n$.
+
+# Learning Objectives
+
+1.  Explain the Law of Large Numbers and convergence in probability
+
+::: lob
+2.  Calculate probability of a sample mean using a population mean and variance with unknown distribution
+:::
+
+3.  Use the Central Limit Theorem to construct the Normal approximation of the Binomial and Poisson distributions
 
 ## The Central Limit Theorem
 
 ::: theorem
 ::: thm-title
-Theorem 1: Central Limit Theorem (CLT)
+Theorem 2: Central Limit Theorem (CLT)
 :::
 
 ::: thm-cont
-Let $X_i$ be iid rv's with common mean $\mu$ and variance $\sigma^2$,
+Let $X_i$ be iid RVs with common mean $\mu$ and variance $\sigma^2$,
 for $i=1,2,\ldots,n$. Then
 $$\sum_{i=1}^n X_i \rightarrow \text{N}(n\mu, n\sigma^2)$$
 :::
 :::
+
+-   The $\rightarrow$ here is shorthand for "is approximately, for large $n$"
+-   Formally, the CLT is about **convergence in distribution**, written $\xrightarrow{d}$:
+    $$\frac{\overline{X}_n - \mu}{\sigma/\sqrt{n}} \xrightarrow{d} \text{N}(0, 1)$$
+    -   You will use this notation in BSTA 551
 
 ## Extension of the CLT
 
@@ -49,16 +221,20 @@ Corollary 1
 :::
 
 ::: prop-cont
-Let $X_i$ be iid rv's with common mean $\mu$ and variance $\sigma^2$,
+Let $X_i$ be iid RVs with common mean $\mu$ and variance $\sigma^2$,
 for $i=1,2,\ldots,n$. Then
 $$\overline{X}=\frac{\sum_{i=1}^n X_i}{n}  \rightarrow \text{N}\Bigg(\mu, \dfrac{\sigma^2}{n}\Bigg)$$
 :::
 :::
 
-## Example of Corollary in use
+-   **LLN:** $\overline{X}_n \xrightarrow{P} \mu$ tells us *where* $\overline{X}_n$ ends up
+-   **CLT:** $\overline{X}_n \approx \text{N}(\mu, \sigma^2/n)$ tells us *how* $\overline{X}_n$ is spread around $\mu$ along the way, with SD $\sigma/\sqrt{n}$
+
+
+## Example of Corollary in use: solution
 
 ::: columns
-::: {.column width="40%"}
+::: {.column width="34%"}
 ::: example
 ::: ex-title
 Example 1
@@ -66,7 +242,7 @@ Example 1
 
 ::: ex-cont
 According to a large US study, the mean resting heart rate of adult
-women is about 74 beats per minutes (bpm), with standard deviation 13
+women is about 74 beats per minute (bpm), with standard deviation 13
 bpm (NHANES 2003-2004).
 
 1.  Find the probability that the average resting heart rate for a
@@ -76,6 +252,32 @@ bpm (NHANES 2003-2004).
 2.  Repeat the previous question for a single adult woman.
 :::
 :::
+:::
+
+::: {.column width="1%"}
+:::
+
+::: {.column width="65%"}
+**Part 1:** $n = 36 \geq 30$, so we can use the CLT with $\mu = 74$ and $\sigma = 13$
+
+-   By the CLT, $\overline{X} \approx \text{N}\Big(74, \dfrac{13^2}{36}\Big)$, so $SD(\overline{X}) = \dfrac{13}{\sqrt{36}} \approx 2.17$
+-   "More than 3 bpm away from the mean" means $\overline{X} < 71$ or $\overline{X} > 77$
+
+$$\begin{aligned}
+P(\overline{X} < 71 \text{ or } \overline{X} > 77) &= P(\overline{X} < 71) + P(\overline{X} > 77) \\
+&= 2 \cdot P(\overline{X} < 71) \quad \text{(the Normal is symmetric)}
+\end{aligned}$$
+
+```{r}
+2 * pnorm(71, mean = 74, sd = 13 / sqrt(36)) # <1>
+```
+
+1. `pnorm()` gives $P(\overline{X} < 71)$ for a Normal with mean 74 and SD $13/\sqrt{36}$. Doubling it adds the matching upper tail, $P(\overline{X} > 77)$.
+
+**Part 2:** $n = 1 < 30$, so we **cannot** use the CLT
+
+-   We don't know the distribution of a single woman's heart rate, so we can't find this probability
+-   Rule of thumb: $n \geq 30$ to use the CLT
 :::
 :::
 
@@ -89,41 +291,395 @@ Example 2
 :::
 
 ::: ex-cont
-Let $X_i \sim Exp(\lambda)$ be iid RVs for $i=1,2,\ldots,n$. Then
+Let $X_i \sim \text{Exp}(\lambda)$ be iid RVs for $i=1,2,\ldots,n$. Then
 $$\sum_{i=1}^n X_i \rightarrow$$
 :::
 :::
 :::
 :::
 
+## Seeing the CLT: waiting for the bus
+
+::::: proposition
+::: prop-title
+1.  Set up
+:::
+
+::: prop-cont
+Define the probability space and related random variables and events, including assumptions.
+:::
+:::::
+
+-   Same bus as in the LLN simulation: each morning's wait is $X_i \sim \text{Exp}(1/10)$ minutes
+    -   $\mu = 1/\lambda = 10$ minutes and $\sigma = 1/\lambda = 10$ minutes
+-   **Random variable:** the [**sample mean**]{style="color:#E89543;"} $\overline{X}$, your average wait over $n = 30$ days
+-   **Assumptions:** waits on different days are independent and all $\text{Exp}(1/10)$
+-   The exponential pdf is very skewed, but the [**CLT**]{style="color:#006a4e;"} says
+    $$\overline{X} \approx \text{N}\Bigg(10, \dfrac{10^2}{30}\Bigg), \quad \text{so } SD(\overline{X}) = \dfrac{10}{\sqrt{30}} \approx 1.83$$
+-   **Goal:** check this with a simulation, and estimate $P(\overline{X} > 12)$
+
+## Seeing the CLT: simulate
+
+::::: proof1
+::: proof-title
+2.  Simulate
+:::
+
+::: proof-cont
+Run the simulation to generate outcomes according to the assumptions.
+:::
+:::::
+
+::: columns
+::: {.column width="65%"}
+
+```{r}
+reps <- 10000 # <1>
+n_days <- 30 # <1>
+
+
+waits <- expand_grid(sim = 1:reps, day = 1:n_days) |> # <2>
+  mutate(wait = rexp(n(), rate = 1/10)) # <2>
+
+
+xbar_sims <- waits |> # <3>
+  group_by(sim) |> # <3>
+  summarise(xbar = mean(wait)) # <3>
+```
+
+1. Save the settings: 10,000 simulations, each with 30 days of waiting. (The seed was set once, in the LLN simulation.)
+2. One row for every day in every simulation (300,000 rows). `rexp()` draws one wait for each row, like in Lesson 13.
+3. For each simulation, `mean()` averages its 30 waits. This is one simulated value of $\overline{X}$.
+
+:::
+
+::: {.column width="2%"}
+:::
+
+
+::: {.column width="33%"}
+
+```{r}
+head(xbar_sims) # <1>
+```
+
+1. The first 6 simulated averages. Each one is the average of 30 waits.
+
+:::
+:::
+
+## Seeing the CLT: summarize
+
+::::: example
+::: ex-title
+3.  Summarize
+:::
+:::::
+
+::: columns
+::: {.column width="52%"}
+
+**Probability based on our simulations:**
+```{r}
+xbar_sims |> # <1>
+  summarise( # <1>
+    average      = mean(xbar), # <2>
+    std_dev      = sd(xbar), # <2>
+    prob_over_12 = mean(xbar > 12) # <3>
+  )
+```
+
+**CLT (Normal) approximation:**
+```{r}
+sigma_xbar <- 10 / sqrt(n_days) # <4>
+1 - pnorm(12, mean = 10, sd = sigma_xbar) # <4>
+```
+
+1. One row of summaries of the 10,000 simulated averages.
+2. Compare with the CLT: mean $\mu = 10$ and SD $\sigma/\sqrt{n} \approx 1.83$.
+3. The proportion of simulations with an average wait over 12 minutes. This estimates $P(\overline{X} > 12)$.
+4. The CLT answer: save $SD(\overline{X}) = 10/\sqrt{30}$, then use `pnorm()` for the Normal probability. (The exact answer is about 0.138, because the sum of 30 waits is $\text{Gamma}(30, 1/10)$ from Lesson 13.)
+
+```{r}
+#| echo: false
+prob_30 <- mean(xbar_sims$xbar > 12)
+```
+
+:::
+
+::: {.column width="48%"}
+
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 8
+#| fig-height: 6
+
+ggplot(xbar_sims, aes(x = xbar)) + # <5>
+  geom_histogram(aes(y = after_stat(density)), # <5>
+                 binwidth = 0.5, # <5>
+                 color = "black", fill = "lightblue") + # <5>
+  geom_function(fun = function(x) dnorm(x, mean = 10, sd = sigma_xbar), # <6>
+                color = "red", linewidth = 1.5) + # <6>
+  labs(title = "Simulated average wait over 30 days (bars)\nand the CLT Normal pdf (red)", # <7>
+       x = "Average wait (minutes)", # <7>
+       y = "Density") + # <7>
+  theme_minimal(base_size = 20) # <7>
+```
+
+5. A histogram of the 10,000 simulated averages, scaled so the total area is 1, like a pdf (Lesson 8).
+6. The Normal pdf the CLT predicts, from `dnorm()`, drawn in red.
+7. Add a title and axis labels, with a clean theme and larger text.
+
+:::
+:::
+
+## Seeing the CLT: sensitivity analysis
+
+::::: extra
+::: ext-title
+4.  Sensitivity analysis
+:::
+
+::: ext-cont
+Investigate how results change when assumptions or parameters of the model are altered.
+:::
+:::::
+
+::: columns
+::: {.column width="60%"}
+
+-   What if we only average over **2 days**? Only `n_days` changes (highlighted)
+
+```{r}
+#| code-line-numbers: "2"
+reps <- 10000 # <1>
+n_days <- 2 # <2>
+
+waits <- expand_grid(sim = 1:reps, day = 1:n_days) |> # <3>
+  mutate(wait = rexp(n(), rate = 1/10)) # <3>
+
+xbar_sims <- waits |> # <3>
+  group_by(sim) |> # <3>
+  summarise(xbar = mean(wait)) # <3>
+
+sigma_xbar <- 10 / sqrt(n_days) # <4>
+```
+
+1. Still 10,000 simulations.
+2. The only change: each simulation averages 2 waits instead of 30.
+3. Exactly the same code as before. Because we wrote `n_days` instead of typing 30, each simulation now gets two rows automatically.
+4. The CLT's SD for $\overline{X}$ is now $10/\sqrt{2} \approx 7.07$.
+
+:::
+
+::: {.column width="40%"}
+
+```{r}
+#| code-fold: true
+#| code-summary: "Plot code"
+#| fig-width: 8
+#| fig-height: 6
+
+ggplot(xbar_sims, aes(x = xbar)) + # <5>
+  geom_histogram(aes(y = after_stat(density)), # <5>
+                 binwidth = 1, boundary = 0, # <5>
+                 color = "black", fill = "lightblue") + # <5>
+  geom_function(fun = function(x) dnorm(x, mean = 10, sd = sigma_xbar), # <5>
+                xlim = c(-10, 40), # <6>
+                color = "red", linewidth = 1.5) + # <5>
+  coord_cartesian(xlim = c(-10, 40)) + # <6>
+  labs(title = "Average wait over 2 days (bars)\nand the CLT Normal pdf (red)", # <7>
+       x = "Average wait (minutes)", # <7>
+       y = "Density") + # <7>
+  theme_minimal(base_size = 20) # <7>
+```
+
+5. Same plot code as before, with wider bars (`binwidth = 1`) and `boundary = 0` so bars start at 0.
+6. Draw the curve and the x-axis from −10 to 40, so we can see the Normal curve spill below 0, where no wait can be.
+7. A new title for 2 days.
+
+:::
+:::
+
+## 
+
+::::: extra
+::: ext-title
+4.  Sensitivity analysis
+:::
+
+::: ext-cont
+Investigate how results change when assumptions or parameters of the model are altered.
+:::
+:::::
+
+::: columns
+::: {.column width="40%"}
+
+-   With **2 days**, the Normal curve is a poor fit
+    -   Simulated $P(\overline{X} > 12) \approx$ `r round(mean(xbar_sims$xbar > 12), 2)`
+    -   CLT answer: `r round(1 - pnorm(12, mean = 10, sd = 10 / sqrt(2)), 2)`
+
+-   With **30 days**, they agree: `r round(prob_30, 2)` vs. `r round(1 - pnorm(12, mean = 10, sd = 10 / sqrt(30)), 2)`
+
+ 
+
+-   Same code with `n_days` = 2, 5, 30, and 60 (right): as $n$ grows, the histogram becomes bell-shaped, just like the CLT promises
+-   The more skewed the $X_i$, the larger $n$ needs to be
+
+:::
+
+::: {.column width="60%"}
+
+```{r}
+#| echo: false
+#| fig-width: 10
+#| fig-height: 7
+#| out-width: "100%"
+
+n_values <- c(2, 5, 30, 60)
+
+xbar_by_n <- tibble(n_days = n_values) |>
+  mutate(sims = map(n_days, \(k) {
+    expand_grid(sim = 1:reps, day = 1:k) |>
+      mutate(wait = rexp(n(), rate = 1/10)) |>
+      group_by(sim) |>
+      summarise(xbar = mean(wait))
+  })) |>
+  unnest(sims)
+
+clt_curves <- expand_grid(n_days = n_values, x = seq(-10, 40, by = 0.1)) |>
+  mutate(density = dnorm(x, mean = 10, sd = 10 / sqrt(n_days)))
+
+ggplot(xbar_by_n, aes(x = xbar)) +
+  geom_histogram(aes(y = after_stat(density)),
+                 binwidth = 0.5, boundary = 0,
+                 color = "black", fill = "lightblue") +
+  geom_line(data = clt_curves, aes(x = x, y = density),
+            color = "red", linewidth = 1.2) +
+  facet_wrap(~ n_days, scales = "free_y",
+             labeller = labeller(n_days = \(n) paste("n_days =", n))) +
+  coord_cartesian(xlim = c(-0, 30)) +
+  labs(x = "Average wait (minutes)", y = "Density") +
+  theme_minimal(base_size = 23)
+```
+
+:::
+:::
+
+# Learning Objectives
+
+1.  Explain the Law of Large Numbers and convergence in probability
+
+2.  Calculate probability of a sample mean using a population mean and variance with unknown distribution
+
+::: lob
+3.  Use the Central Limit Theorem to construct the Normal approximation of the Binomial and Poisson distributions
+:::
+
 ## CLT for Discrete RVs
 
 ::: columns
 ::: {.column width="49.5%"}
-1.  [**Binomial rv's**]{style="color:#F08897"}: Let $X \sim Bin(n,p)$
+1.  [**Binomial RVs**]{style="color:#F08897"}: Let $X \sim \text{Binomial}(n,p)$
 
     -   $X = \displaystyle\sum_{i=1}^n X_i$, where $X_i$ are iid
         $\text{Bernoulli}(p)$
-    -   Rule of thumb: $np\geq10$ and $n(1-p)\geq 10$ to use Normal approximation
+    -   Rule of thumb: $np\geq10$ and $n(1-p)\geq 10$ to use [**Normal approximation**]{style="color:#006a4e;"}
 :::
 
 ::: {.column width="1%"}
 :::
 
 ::: {.column width="49.5%"}
-2.  [**Poisson rv's**]{style="color:#6B8CC4"}: Let $X \sim Poisson(\lambda)$
+2.  [**Poisson RVs**]{style="color:#6B8CC4"}: Let $X \sim \text{Poisson}(\lambda)$
 
     -   $X = \displaystyle\sum_{i=1}^n X_i$, where $X_i$ are iid
-        $\text{Poiss}(1)$
-    -   Recall from [Chapter 18](/slides/18_Poisson_rv.qmd) that if
-        $X_i \sim Poiss(\lambda_i)$ and $X_i$ independent, then
-        $\sum_{i=1}^n X_i \sim Poiss(\sum_{i=1}^n \lambda_i)$
-    -   Rule of thumb: $\lambda \geq10$ to use Normal approximation
-
+        $\text{Poisson}(\lambda/n)$
+    -   Recall from [Lesson 15](../15_Discrete_RVs/15_Discrete_RVs.qmd) that if
+        $X_i \sim \text{Poisson}(\lambda_i)$ and $X_i$ independent, then
+        $\sum_{i=1}^n X_i \sim \text{Poisson}(\sum_{i=1}^n \lambda_i)$
+    -   Rule of thumb: $\lambda \geq10$ to use [**Normal approximation**]{style="color:#006a4e;"}
 :::
 :::
 
-## Larger example (1/7) {.smaller} 
+## Normal vs. Poisson approximation of the Binomial
+
+-   $X \sim \text{Binomial}(n, p)$ has mean $\mu = np$ and SD $\sigma = \sqrt{np(1-p)}$
+    -   Both depend on $p$, so the **mean and SD are linked**: change the mean and the spread changes too
+
+ 
+
+::: columns
+::: {.column width="49.5%"}
+**[Normal approximation]{style="color:#006a4e;"}:** $X \approx \text{N}\big(np, \, np(1-p)\big)$
+
+-   Rule of thumb: $np \geq 10$ and $n(1-p) \geq 10$
+-   The Normal has **separate** parameters: knowing $\mu$ tells us nothing about $\sigma$
+-   Same assumption as **linear models** (linear regression): the variance stays the same, whatever the mean
+:::
+
+::: {.column width="1%"}
+:::
+
+::: {.column width="49.5%"}
+**[Poisson approximation]{style="color:#6B8CC4"}:** $X \approx \text{Poisson}(\lambda = np)$
+
+-   Rule of thumb (Lesson 15): $\frac{1}{10} \leq np(1-p) \leq 10$
+-   The Poisson's mean and variance are **both** $\lambda$, so they stay linked, like the Binomial's
+-   Same idea as **logistic** and **Poisson regression**: the variance depends on the mean
+:::
+:::
+
+## When would I use each approximation?
+
+[**Common outcome, so use the Normal:**]{style="color:#006a4e;"} 20% of patients get a mild side effect. Out of 500 patients, what is $P(X \leq 90)$?
+
+::: columns
+::: {.column width="65%"}
+```{r}
+c(exact = pbinom(90, size = 500, prob = 0.2), # <1>
+  normal = pnorm(90.5, mean = 100, sd = sqrt(80)), # <2>
+  poisson = ppois(90, lambda = 100)) # <3>
+```
+
+1. The exact Binomial probability.
+2. The Normal approximation with $\mu = np = 100$, $\sigma^2 = np(1-p) = 80$ and the continuity correction.
+3. The Poisson approximation with $\lambda = np = 100$.
+:::
+
+::: {.column width="35%"}
+-   Normal: $np = 100$ and $n(1-p) = 400$ are both $\geq 10$ ✓
+-   Poisson: $np(1-p) = 80 > 10$ ✗
+:::
+:::
+
+ 
+
+[**Rare outcome, so use the Poisson:**]{style="color:#6B8CC4"} 1 in 1,000 people has a rare reaction to a vaccine. Out of 2,000 vaccinated people, what is $P(X \geq 5)$?
+
+::: columns
+::: {.column width="65%"}
+```{r}
+c(exact = 1 - pbinom(4, size = 2000, prob = 0.001), # <1>
+  normal = 1 - pnorm(4.5, mean = 2, sd = sqrt(1.998)), # <2>
+  poisson = 1 - ppois(4, lambda = 2)) # <3>
+```
+
+1. $P(X \geq 5) = 1 - P(X \leq 4)$, using the exact Binomial.
+2. The Normal approximation with $\mu = 2$, $\sigma^2 = 1.998$ and the continuity correction.
+3. The Poisson approximation with $\lambda = np = 2$.
+:::
+
+::: {.column width="35%"}
+-   Normal: $np = 2 < 10$ ✗
+-   Poisson: $\frac{1}{10} \leq np(1-p) = 1.998 \leq 10$ ✓
+:::
+:::
+
+
+## Larger example 
 
 ::: example
 ::: ex-title
@@ -131,10 +687,8 @@ Example 3
 :::
 
 ::: ex-cont
-Suppose that the probability of developing a specific type of breast
-cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
-are independent. Suppose you have data from a random sample of 20,000
-women aged 40-49.
+Suppose the probability of developing a specific type of breast
+cancer in women aged 40-49 is 0.001. You have data from a random sample of 20,000 women aged 40-49. (Assume each woman is independent.)
 
 1.  How many of the 20,000 women would you expect to develop this type
     of breast cancer, and what is the standard deviation?
@@ -145,24 +699,19 @@ women aged 40-49.
 3.  Use the CLT to find the **approximate** probability that more than
     15 of the 20,000 women will develop this type of breast cancer.
 
-4.  Use the CLT to approximate the following probabilities, where $X$ is
-    the number of women that will develop this type of breast cancer.
-
-    a.  $\mathbb{P}(15 \leq X \leq 22)$
-
-    b.  $\mathbb{P}(X > 20)$
-
-    c.  $\mathbb{P}(X < 20)$
+4.  Let $\hat{p} = X/n$ be the proportion of $n$ women who develop this
+    type of breast cancer. Find $P(|\hat{p} - 0.001| > 0.0005)$ for
+    $n$ = 2,000, 20,000 and 200,000. Does $\hat{p} \xrightarrow{P} 0.001$?
 
 5.  Find the **approximate** probability that more than 15 of the 20,000
-    women will develop this type of breast cancer - not using the CLT!
+    women will develop this type of breast cancer—not using the CLT!
 
 6.  Use the CLT to approximate the approximate probability in the
     previous question!
 :::
 :::
 
-## Larger example (2/7) {.smaller} 
+## [Larger example: part 1]{style="display: none;"}
 
 ::: example
 ::: ex-title
@@ -170,17 +719,45 @@ Example 3
 :::
 
 ::: ex-cont
-Suppose that the probability of developing a specific type of breast
-cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
-are independent. Suppose you have data from a random sample of 20,000
-women aged 40-49.
+Suppose the probability of developing a specific type of breast
+cancer in women aged 40-49 is 0.001. You have data from a random sample of 20,000 women aged 40-49. (Assume each woman is independent.)
 
 1.  How many of the 20,000 women would you expect to develop this type
     of breast cancer, and what is the standard deviation?
 :::
 :::
 
-## Larger example (3/7) {.smaller} 
+::: columns
+::: {.column width="53%"}
+-   Let $X$ = number of the 20,000 women who develop this type of breast cancer
+-   $X \sim \text{Binomial}(n = 20000, p = 0.001)$
+
+$$\begin{aligned}
+\mu &= np = 20000 \cdot 0.001 = 20 \\
+\sigma &= \sqrt{np(1-p)} = \sqrt{20000 \cdot 0.001 \cdot 0.999} \approx 4.4699
+\end{aligned}$$
+
+-   We expect **20 women**, with a standard deviation of about **4.47 women**
+:::
+
+::: {.column width="47%"}
+```{r}
+n_women <- 20000 # <1>
+p <- 0.001 # <1>
+
+mu <- n_women * p # <2>
+sigma <- sqrt(n_women * p * (1 - p)) # <2>
+c(mu = mu, sigma = sigma) # <3>
+```
+
+1. Save the Binomial parameters, so we can reuse them in the next parts.
+2. The mean $np$ and SD $\sqrt{np(1-p)}$ of a Binomial.
+3. `c()` puts the two values together, with names, so they print side by side.
+:::
+:::
+
+
+## [Larger example: part 2]{style="display: none;"}
 
 ::: example
 ::: ex-title
@@ -188,17 +765,38 @@ Example 3
 :::
 
 ::: ex-cont
-Suppose that the probability of developing a specific type of breast
-cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
-are independent. Suppose you have data from a random sample of 20,000
-women aged 40-49.
+Suppose the probability of developing a specific type of breast
+cancer in women aged 40-49 is 0.001. You have data from a random sample of 20,000 women aged 40-49. (Assume each woman is independent.)
 
 2.  Find the **exact** probability that more than 15 of the 20,000 women
     will develop this type of breast cancer.
 :::
 :::
 
-## Larger example (4/7) {.smaller} 
+::: columns
+::: {.column width="50%"}
+-   "More than 15" means $X > 15$, which is the same as $X \geq 16$ for a count
+
+$$P(X > 15) = \sum_{x=16}^{20000} \binom{20000}{x} 0.001^x \, 0.999^{20000-x}$$
+
+-   Too many terms to add by hand, so we use R
+:::
+
+::: {.column width="50%"}
+```{r}
+pbinom(15, size = n_women, prob = p, # <1>
+       lower.tail = FALSE) # <2>
+```
+
+1. `pbinom()` is the Binomial CDF: by itself it gives $P(X \leq 15)$.
+2. `lower.tail = FALSE` gives the other side instead, $P(X > 15)$.
+
+-   The exact probability is about **0.8436**
+:::
+:::
+
+
+## [Larger example: part 3]{style="display: none;"}
 
 ::: example
 ::: ex-title
@@ -206,17 +804,43 @@ Example 3
 :::
 
 ::: ex-cont
-Suppose that the probability of developing a specific type of breast
-cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
-are independent. Suppose you have data from a random sample of 20,000
-women aged 40-49.
+Suppose the probability of developing a specific type of breast
+cancer in women aged 40-49 is 0.001. You have data from a random sample of 20,000 women aged 40-49. (Assume each woman is independent.)
 
 3.  Use the CLT to find the **approximate** probability that more than
     15 of the 20,000 women will develop this type of breast cancer.
 :::
 :::
 
-## Larger example (5/7) {.smaller} 
+::: columns
+::: {.column width="60%"}
+-   Check the rule of thumb: $np = 20 \geq 10$ and $n(1-p) = 19{,}980 \geq 10$, so we can use the CLT
+-   $X \approx \text{N}(\mu = np = 20, \; \sigma^2 = np(1-p) = 19.98)$
+-   **Continuity correction:** $X$ is discrete but the Normal is continuous, so we split the difference between whole numbers
+    -   $P(X \leq k) \approx P(\text{Normal} \leq k + 0.5)$
+    -   $P(X \geq k) \approx P(\text{Normal} \geq k - 0.5)$
+
+$$P(X > 15) = P(X \geq 16) \approx P(\text{Normal} \geq 15.5)$$
+:::
+
+::: {.column width="40%"}
+```{r}
+pnorm(15.5, mean = mu, 
+      sd = sigma, # <1>
+      lower.tail = FALSE) # <2>
+```
+
+1. The Normal with the Binomial's mean (20) and SD (4.4699), at the continuity-corrected cutoff 15.5.
+2. Upper tail: $P(\text{Normal} \geq 15.5)$. Without the correction, `pnorm(15, ...)` gives about 0.868, much further from the exact answer.
+
+ 
+
+-   The CLT gives about **0.8430**, very close to the exact 0.8436
+:::
+:::
+
+
+## [Larger example: part 4]{style="display: none;"}
 
 ::: example
 ::: ex-title
@@ -224,23 +848,42 @@ Example 3
 :::
 
 ::: ex-cont
-Suppose that the probability of developing a specific type of breast
-cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
-are independent. Suppose you have data from a random sample of 20,000
-women aged 40-49.
+Suppose the probability of developing a specific type of breast
+cancer in women aged 40-49 is 0.001. You have data from a random sample of 20,000 women aged 40-49. (Assume each woman is independent.)
 
-4.  Use the CLT to approximate the following probabilities, where $X$ is
-    the number of women that will develop this type of breast cancer.
-
-    a.  $\mathbb{P}(15 \leq X \leq 22)$
-
-    b.  $\mathbb{P}(X > 20)$
-
-    c.  $\mathbb{P}(X < 20)$
+4.  Let $\hat{p} = X/n$ be the proportion of $n$ women who develop this
+    type of breast cancer. Find $P(|\hat{p} - 0.001| > 0.0005)$ for
+    $n$ = 2,000, 20,000 and 200,000. Does $\hat{p} \xrightarrow{P} 0.001$?
 :::
 :::
 
-## Larger example (6/7) {.smaller} 
+::: columns
+::: {.column width="45%"}
+-   $\hat{p}$ is a sample mean: $X_i = 1$ if woman $i$ develops cancer (Bernoulli), so $\hat{p} = \overline{X}_n$ with $\mu = p = 0.001$
+-   $|\hat{p} - 0.001| > 0.0005$ means $X < 0.0005n$ or $X > 0.0015n$
+-   The probability shrinks toward 0 as $n$ grows, so **yes**: $\hat{p} \xrightarrow{P} 0.001$, just like the LLN says
+:::
+
+::: {.column width="55%"}
+```{r}
+n_sample <- c(2000, 20000, 200000) # <1>
+
+p_below <- pbinom(0.0005 * n_sample - 1, # <2>
+                  size = n_sample, prob = p) # <2>
+p_above <- pbinom(0.0015 * n_sample, # <3>
+                  size = n_sample, prob = p, # <3>
+                  lower.tail = FALSE) # <3>
+round(p_below + p_above, 4) # <4>
+```
+
+1. The three sample sizes. R works on all three at once.
+2. $P(X < 0.0005n)$: for $n$ = 2,000, that is $X < 1$, the same as $X \leq 0$, so we subtract 1 from the cutoff. `p` is still 0.001 from part 1.
+3. $P(X > 0.0015n)$, the upper tail.
+4. Add the two tails, and round to 4 decimal places.
+:::
+:::
+
+## [Larger example: part 5]{style="display: none;"}
 
 ::: example
 ::: ex-title
@@ -248,17 +891,38 @@ Example 3
 :::
 
 ::: ex-cont
-Suppose that the probability of developing a specific type of breast
-cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
-are independent. Suppose you have data from a random sample of 20,000
-women aged 40-49.
+Suppose the probability of developing a specific type of breast
+cancer in women aged 40-49 is 0.001. You have data from a random sample of 20,000 women aged 40-49. (Assume each woman is independent.)
 
 5.  Find the **approximate** probability that more than 15 of the 20,000
-    women will develop this type of breast cancer - not using the CLT!
+    women will develop this type of breast cancer—not using the CLT!
 :::
 :::
 
-## Larger example (7/7) {.smaller} 
+::: columns
+::: {.column width="50%"}
+-   **Poisson approximation of the Binomial:** $Y \sim \text{Poisson}(\lambda = np = 20)$
+-   Check the rule of thumb (Lesson 15): $np(1-p) = 19.98$ is **not** $\leq 10$, so it does **not** meet the requirement
+-   If we use it anyway:
+
+$$P(Y > 15) = \sum_{y=16}^{\infty} \frac{e^{-20} \, 20^y}{y!}$$
+:::
+
+::: {.column width="50%"}
+```{r}
+ppois(15, lambda = mu, # <1>
+      lower.tail = FALSE) # <2>
+```
+
+1. `ppois()` is the Poisson CDF, with $\lambda = np = 20$ (saved as `mu`).
+2. `lower.tail = FALSE` gives $P(Y > 15)$.
+
+-   About **0.8435**: still very close to the exact 0.8436
+:::
+:::
+
+
+## [Larger example: part 6]{style="display: none;"}
 
 ::: example
 ::: ex-title
@@ -266,13 +930,32 @@ Example 3
 :::
 
 ::: ex-cont
-Suppose that the probability of developing a specific type of breast
-cancer in women aged 40-49 is 0.001. Assume the occurrences of cancer
-are independent. Suppose you have data from a random sample of 20,000
-women aged 40-49.
+Suppose the probability of developing a specific type of breast
+cancer in women aged 40-49 is 0.001. You have data from a random sample of 20,000 women aged 40-49. (Assume each woman is independent.)
 
 6.  Use the CLT to approximate the approximate probability in the
     previous question!
+:::
+:::
+
+::: columns
+::: {.column width="50%"}
+-   $Y \sim \text{Poisson}(\lambda = 20)$, and $\lambda = 20 \geq 10$, so we can use the CLT
+-   $Y \approx \text{N}(\mu = \lambda = 20, \; \sigma^2 = \lambda = 20)$
+-   With the continuity correction:
+
+$$P(Y > 15) = P(Y \geq 16) \approx P(\text{Normal} \geq 15.5)$$
+:::
+
+::: {.column width="50%"}
+```{r}
+pnorm(15.5, mean = 20, sd = sqrt(20), # <1>
+      lower.tail = FALSE) # <1>
+```
+
+1. For a Poisson, the variance is also $\lambda = 20$, so the SD is $\sqrt{20}$. Upper tail at the corrected cutoff 15.5.
+
+-   About **0.8428**. All four answers agree to about 0.84!
 :::
 :::
 

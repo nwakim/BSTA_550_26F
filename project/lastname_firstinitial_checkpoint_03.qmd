@@ -1,6 +1,6 @@
 ---
 title: "Checkpoint 3: Averages and the Central Limit Theorem"
-author: "Your name here!"
+author: "Your name(s) here!"
 subtitle: "BSTA 550"
 date-modified: "today"
 format:
@@ -26,11 +26,16 @@ library(tidyverse)
 
 ::: callout-warning
 Note that this is the editing file. **There are detailed instructions on our course page for Checkpoint 3 that are not in this file.**
+
+-   Please do not remove anything from this file. Only add your work to it.
+-   Name your files `lastname_firstinitial_checkpoint_03.qmd` and `.html` (or `lastname1_lastname2_checkpoint_03.qmd` and `.html` for a pair). One submission per team.
 :::
 
 ## Your scenario {.unnumbered}
 
 Scenario (A, B, or C):
+
+**My Checkpoint 3 guiding question** (with any changes from feedback):
 
 ## Define your random variable
 
@@ -41,56 +46,81 @@ Scenario (A, B, or C):
 -   State the support of $Y$.
 :::
 
+**$Y$ =**
+
+**Support of $Y$:**
+
 ## Justify the distribution
 
 ::: callout-important
 #### Task
 
--   State the distribution for your scenario and its parameter(s), citing where each value came from.
+-   State the distribution for your scenario and its parameter(s), citing where each value came from. For a Gamma, show how you found the shape and rate from the mean and SD.
 -   Explain why this distribution is a reasonable choice, and where it might not match the real quantity.
 -   Plot the PDF of your distribution.
 :::
 
+**Distribution:** $Y \sim$
+
+| Parameter | Value | Source |
+|----|----|----|
+|  |  |  |
+|  |  |  |
+
+**Why it is reasonable, and where it might not match:**
+
 ```{r}
 
 ```
 
-## Solve it analytically
+## Solve it analytically (for one person)
 
 ::: callout-important
 #### Task
 
--   Find $E(Y)$ and $\text{Var}(Y)$.
--   Calculate **two** probabilities or quantiles that answer practical questions for your program. Show the setup (integral or CDF) for at least one of them, then compute with R.
+-   Find $E(Y)$, $\text{Var}(Y)$, and $\text{SD}(Y)$.
+-   Find the probability that **one** person is beyond the cutoff in your guiding question. Show the setup (integral or CDF), then compute with R.
 :::
 
 ```{r}
 
 ```
 
-## Simulate the Central Limit Theorem
+## Simulate averages and discover the Central Limit Theorem
 
 ::: callout-important
 #### Task
 
--   For $n = 5$, $30$, and $100$, simulate at least 5,000 sample means.
--   For each $n$, plot a histogram of the sample means with the normal curve predicted by the CLT overlaid.
--   Compare the mean and SD of your simulated sample means with the CLT's predictions.
--   In 2–3 sentences, describe how quickly the distribution of $\bar{Y}_n$ looks normal, and how the shape (skewness) of $Y$ affects this.
+-   For $n = 5$, $30$, and $100$ (and your scenario's $n$ if it is not one of these), simulate at least 10,000 sample means.
+-   For each $n$, make a histogram of the sample means with the Normal curve $N(\mu, \sigma^2/n)$ overlaid.
+-   Compare the mean and SD of your simulated sample means with $\mu$ and $\sigma/\sqrt{n}$.
+-   In 2–3 sentences, describe what happens to the distribution of $\bar{Y}_n$ as $n$ gets bigger, and how the shape (skewness) of $Y$ affects this.
 :::
 
 ```{r}
 
 ```
 
-## Answer a question about an average
+## Answer your guiding question
 
 ::: callout-important
 #### Task
 
--   Use the CLT to answer a practical question about $\bar{Y}_n$, using the $n$ for your scenario.
+-   Use the Central Limit Theorem to find the probability in your Checkpoint 3 guiding question.
 -   Check it with your simulation.
--   Compare it with the probability that a **single** observation is beyond the same cutoff, and explain why the two answers differ.
+-   Compare it with your probability for **one** person from Task 3, and explain why the two answers are so different.
+:::
+
+```{r}
+
+```
+
+## Stretch (optional, +1 bonus)
+
+::: callout-important
+#### Task
+
+How good is the CLT approximation for your scenario? Compare it with the exact answer (Scenarios A and B) or check it at $n = 5$ (Scenario C).
 :::
 
 ```{r}
@@ -102,5 +132,14 @@ Scenario (A, B, or C):
 ::: callout-important
 #### Task
 
-Write a short paragraph (4–6 sentences) for the program manager or health department that explains the difference between what happens to *one* person and what happens *on average* across many people. Why does this difference matter when the program reports averages to the public?
+-   Write a short paragraph (4–6 sentences) for the program manager or health department who reports these averages. Use plain language, with no probability notation. Answer in order:
+    1.  What should we expect for one tumor, case, or baby? (Use $E(Y)$ and $\text{SD}(Y)$.)
+    2.  How often is one beyond the cutoff? (Use your one-person probability as a natural frequency, with the probability in parentheses.)
+    3.  How often is the average of $n$ beyond the cutoff? (Use your guiding-question probability as a natural frequency, with the probability in parentheses.)
+    4.  Why are these so different, and what does it mean for what we report?
+-   Answer your Checkpoint 3 guiding question in one sentence, using the probability.
 :::
+
+**Paragraph for the program manager:**
+
+**Answer to my Checkpoint 3 guiding question:**

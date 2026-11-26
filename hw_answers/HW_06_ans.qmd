@@ -316,15 +316,23 @@ triangle_summary <- triangle_sims |>
 
 $\mathbb{E}[X] \approx$ `r round(triangle_summary$avg_X, 3)` and $\mathbb{E}[Y] \approx$ `r round(triangle_summary$avg_Y, 3)`
 
-Answers will vary slightly, but should be close to your answer in Part c.
+Answers will vary slightly, but should both be close to $\frac45 = 0.8$.
 :::
 
 #### Part c
 
-Find $\mathbb{E}[Y]$ exactly from the joint pdf.
+Are $X$ and $Y$ independent? Explain, then check with your simulated pairs from Part b.
 
 ::: answer
-$\mathbb{E}[Y] = \dfrac{4}{5}$
+```{r}
+#| label: "q4c-check"
+
+triangle_check <- triangle_sims |>
+  summarise(joint = mean(x <= 1 & y <= 1),
+            product = mean(x <= 1) * mean(y <= 1))
+```
+
+No. The possible values are a triangle, not a rectangle: the possible values of $Y$ ($0 \leq y \leq 2 - x$) depend on $x$. In the simulation, joint $\approx$ `r round(triangle_check$joint, 3)` but product $\approx$ `r round(triangle_check$product, 3)`.
 :::
 
 ### 5. Ratio of two RVs

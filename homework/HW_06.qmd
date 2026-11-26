@@ -394,11 +394,18 @@ reps <- 10000
 
 #### Part c
 
-Find $\mathbb{E}[Y]$ exactly from the joint pdf, and compare it with your simulated answer in Part b.
+Are $X$ and $Y$ independent? Explain using your drawing from Part a, then check with your simulated pairs from Part b.
 
--   *Hint:* Use Option 1 (find $f_Y(y)$ first) or Option 2 (integrate $y\,f_{X,Y}(x,y)$ over the region) from "Expected value of one RV from joint pdf" in Lesson 15. Your drawing from Part a gives the limits.
+-   *Hint:* See "Final statement on independence" in Lesson 16: can the possible values of $Y$ depend on $x$? For the check, compare `mean(x <= 1 & y <= 1)` with `mean(x <= 1) * mean(y <= 1)`, like "joint vs. product" in Lesson 16.
 
 ***Answer:***
+
+```{r}
+#| label: "q4c-check"
+
+# Your code here
+
+```
 
 ### 5. Ratio of two RVs
 
@@ -626,15 +633,27 @@ reps <- 10000
 
 **You do NOT need to complete the extra problems!** These use the calculus versions of the ideas above.
 
-### 1. Freddy and Jane's winnings
-
-Freddy and Jane have entered a game in which they each win between 0 and 2 dollars. If $X$ is the amount Freddy wins, and $Y$ is the amount that Jane wins, they believe that the joint density of their winnings will be $$f_{X,Y}(x, y) = \dfrac{1}{4}xy \text{ for } 0 \leq x \leq 2 \text{ and } 0 \leq y \leq 2$$ and $f_{X,Y}(x, y) = 0$ otherwise. Find the probability that their combined winnings exceed 2, i.e., find $P(X + Y > 2)$.
-
-### 2. pdf of the maximum
+### 1. pdf of the maximum
 
 Use your CDF from Question 2, Part a, to find the pdf of $Z = \max(X_1, X_2, \ldots, X_n)$ in terms of $f_X(x)$ and $F_X(x)$. Then find the pdf of $Z$ when $n = 3$ and each $X_i \sim \text{Uniform}[0, 1]$, and add it to your histogram from Question 2, Part c.
 
-### 3. More on the minimum of a uniform and an exponential
+### 2. Freddy and Jane's winnings
+
+Freddy and Jane have entered a game in which they each win between 0 and 2 dollars. If $X$ is the amount Freddy wins, and $Y$ is the amount that Jane wins, they believe that the joint density of their winnings will be $$f_{X,Y}(x, y) = \dfrac{1}{4}xy \text{ for } 0 \leq x \leq 2 \text{ and } 0 \leq y \leq 2$$ and $f_{X,Y}(x, y) = 0$ otherwise. Find the probability that their combined winnings exceed 2, i.e., find $P(X + Y > 2)$.
+
+### 3. Expected value from a joint pdf, exactly
+
+For the joint pdf in Question 4, find $\mathbb{E}[Y]$ exactly, and compare it with your simulated answer in Question 4, Part b.
+
+-   *Hint:* Use Option 1 (find $f_Y(y)$ first) or Option 2 (integrate $y\,f_{X,Y}(x,y)$ over the region) from "Expected value of one RV from joint pdf" in Lesson 15. Your drawing from Question 4, Part a gives the limits.
+
+### 4. CDF of a ratio
+
+Suppose that the random variables $X$ and $Y$ have joint density $f_{X,Y}(x,y)$, for $0<x<1$, and $\frac{1}{2}<y<1$. Set up the equation for the CDF of $Z$, where $Z=X/Y$. (You do not need to know $f_{X,Y}(x,y)$ to set up the integrals.)
+
+-   *Hint:* First determine what the possible values for $Z$ are. Then make a sketch of the domain of the joint pdf and shade in the region representing the CDF of $Z$ for different values of $z$. Make sure to pay close attention to how the region we need to integrate over changes as $z$ changes. The CDF has two different cases depending on the value of $z$. Plug in specific values of $z$ and shade in the region representing the CDF to see why two different cases are needed.
+
+### 5. More on the minimum of a uniform and an exponential
 
 For $X$ and $Y$ in Question 7:
 
@@ -645,9 +664,3 @@ Find $P(X < Y)$ exactly with a double integral, and compare it with your simulat
 #### Part b
 
 Find the pdf of $Z = \min(X, Y)$ by taking the derivative of your CDF from Question 7, Part c.
-
-### 4. CDF of a ratio
-
-Suppose that the random variables $X$ and $Y$ have joint density $f_{X,Y}(x,y)$, for $0<x<1$, and $\frac{1}{2}<y<1$. Set up the equation for the CDF of $Z$, where $Z=X/Y$. (You do not need to know $f_{X,Y}(x,y)$ to set up the integrals.)
-
--   *Hint:* First determine what the possible values for $Z$ are. Then make a sketch of the domain of the joint pdf and shade in the region representing the CDF of $Z$ for different values of $z$. Make sure to pay close attention to how the region we need to integrate over changes as $z$ changes. The CDF has two different cases depending on the value of $z$. Plug in specific values of $z$ and shade in the region representing the CDF to see why two different cases are needed.
